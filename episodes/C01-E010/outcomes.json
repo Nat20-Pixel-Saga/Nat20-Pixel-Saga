@@ -1,0 +1,62 @@
+{
+  "episode_id": "C01-E010",
+  "seed": "C01-E010-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "oriel",
+      "what": "Oriel - Insight",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 4,
+      "natural": 12,
+      "note": "",
+      "means": "Oriel sees how tired Rook is, how frightened she is for her soldiers, and that she has known all along exactly who Brannoc is, and is protecting him."
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "tamsin",
+      "what": "Tamsin - Persuasion",
+      "dc": 18,
+      "result": "FAILURE",
+      "margin": -12,
+      "natural": 3,
+      "note": "by a lot",
+      "means": "'Ten. Take it or walk.' Tamsin takes it."
+    },
+    {
+      "id": "c3",
+      "scene": "s3",
+      "who": "ilsevel",
+      "what": "Ilsevel - Arcana",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 1,
+      "natural": 9,
+      "note": "barely",
+      "means": "The lamplight leans toward the glass and goes dim, as if the pendant were drinking it. It is cold the way the dead cores were cold."
+    }
+  ],
+  "fights": [],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

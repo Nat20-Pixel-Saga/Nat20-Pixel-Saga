@@ -1,0 +1,86 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E003",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {"op": "move", "actor": "brannoc", "to": [18, 5], "face": "down", "wait": false},
+    {"op": "move", "actor": "tamsin", "to": [19, 5], "face": "down", "wait": false},
+    {"op": "move", "actor": "ilsevel", "to": [18, 4], "face": "left", "wait": false},
+    {"op": "move", "actor": "oriel", "to": [19, 4], "face": "down", "wait": false},
+    {"op": "narrate", "text": "The south road out of Brindle Cross. Four strangers, one mile, and no agreement yet on who walks in front."},
+    {"op": "say", "speaker": "brannoc", "text": "Mossfoot. Why's a card player walking an empty road?"},
+    {"op": "say", "speaker": "tamsin", "text": "Big Man! You do talk to me. I was starting to think you only spoke to goblins and onions.", "emote": "happy"},
+    {"op": "say", "speaker": "tamsin", "text": "Truth is, I once walked the whole width of the Vael for a bet. Roads are where the good stories are."},
+    {"op": "say", "speaker": "brannoc", "text": "That's not an answer."},
+    {"op": "say", "speaker": "tamsin", "text": "It's a story. Better than an answer. Lasts longer."},
+    {"op": "emote", "actor": "brannoc", "emote": "dots"},
+    {"op": "say", "speaker": "ilsevel", "text": "'Brindle Cross, one mile. Fort Harrow, thirty-nine.' It is thirty-eight and a half. Someone carved this in a hurry."},
+    {"op": "say", "speaker": "brannoc", "text": "Thirty-nine miles. Two days' march. Less, with nobody arguing."},
+    {"op": "face", "actor": "oriel", "facing": "right"},
+    {"op": "narrate", "text": "Past the bend, the birds have stopped singing. The grass around the dark lantern is the colour of old ash."},
+    {"op": "say", "speaker": "oriel", "text": "Listen. No birds past the bend. And the grass has gone grey. In daylight.", "emote": "question"},
+    {"op": "say", "speaker": "ilsevel", "text": "Fringe Unlight. Halbrecht's Lantern Theory, the 1002 edition, says it takes days to gather. It has been one night."},
+    {"op": "say", "speaker": "tamsin", "text": "Lovely. Let's go and stand in it.", "emote": "sweat"}
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {"op": "lantern", "id": "lantern_road.037", "state": "dead", "flicker": 0, "sfx": false, "unlight": {"radius": 56, "grow": 1.0, "strength": 0.45}},
+    {"op": "narrate", "text": "Lantern Thirty-Seven. Its glass is grey and furred with frost, though the afternoon sun is warm on everyone's back."},
+    {"op": "say", "speaker": "ilsevel", "text": "The Order issues every inspector a housing key. It is in here. Somewhere. Between the almanac and my spare quills."},
+    {"op": "say", "speaker": "tamsin", "text": "Professor, may I? It's a catch, not a riddle."},
+    {"op": "check", "id": "c1"},
+    {"op": "narrate", "text": "Tamsin breathes on her fingers, slides a hairpin under the frosted catch, and leans. For a long moment, nothing. Then it gives."},
+    {"op": "say", "speaker": "tamsin", "text": "There. Stubborn little thing. And somebody's been in here before me.", "emote": "exclaim"},
+    {"op": "say", "speaker": "tamsin", "text": "See the scratches round the catch? Fresh. Someone opened this lately, and not with a key."},
+    {"op": "say", "speaker": "ilsevel", "text": "You did that in less time than it takes me to find a key. I am writing that down."},
+    {"op": "say", "speaker": "tamsin", "text": "Write down that I'm charming."},
+    {"op": "say", "speaker": "ilsevel", "text": "I will write down that you are practised."},
+    {"op": "emote", "actor": "tamsin", "emote": "sweat"},
+    {"op": "narrate", "text": "Ilsevel leans into the open housing, close enough that her breath frosts on the glass."},
+    {"op": "check", "id": "c2"},
+    {"op": "narrate", "text": "The cradle inside is empty. No shards in the grass, no crack in the glass. Whatever burned here was lifted out whole."},
+    {"op": "say", "speaker": "ilsevel", "text": "It was not broken. It was taken. Lifted out of its cradle like an egg from a nest."},
+    {"op": "say", "speaker": "ilsevel", "text": "Who did it, or how, this housing will not tell me. I have read every book on lantern-craft in the Hall. None of them covers theft.", "emote": "sad"},
+    {"op": "say", "speaker": "brannoc", "text": "Goblins. The goblin said they carry the stones."},
+    {"op": "say", "speaker": "ilsevel", "text": "Goblins who open a Lamplighter housing without a key. Technically possible. I do not like it."},
+    {"op": "face", "actor": "oriel", "facing": "up"},
+    {"op": "narrate", "text": "Oriel lays her palm flat against the iron post. It is cold enough to ache."},
+    {"op": "say", "speaker": "oriel", "text": "Aurelan, keep the light. Keep the road. Keep..."},
+    {"op": "narrate", "text": "She waits for the warmth that has always answered her. It does not come. Oriel takes her hand away."},
+    {"op": "say", "speaker": "brannoc", "text": "Oriel?"},
+    {"op": "say", "speaker": "oriel", "text": "It's cold. That's all. It's only cold.", "emote": "sweat"}
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {"op": "move", "actor": "brannoc", "to": [25, 14], "face": "right"},
+    {"op": "narrate", "text": "The sun slides down behind the field. Where the dark trail leaves the road, Brannoc goes down on one knee."},
+    {"op": "check", "id": "c3"},
+    {"op": "narrate", "text": "The earth has been trodden to mud by many feet, over and over. Brannoc reads it three ways and believes none of them."},
+    {"op": "say", "speaker": "brannoc", "text": "Goblins. Some. Last night, or last week. Can't tell."},
+    {"op": "say", "speaker": "brannoc", "text": "Ground's been walked to soup. Could be four. Could be forty."},
+    {"op": "say", "speaker": "tamsin", "text": "Forty. Lovely. My favourite number of goblins is none."},
+    {"op": "say", "speaker": "ilsevel", "text": "It will be fully dark within the hour. I would like that noted before anyone decides anything."},
+    {"op": "say", "speaker": "tamsin", "text": "And goblins like the dark. Noted twice."},
+    {"op": "say", "speaker": "brannoc", "text": "That's where they went."},
+    {"op": "say", "speaker": "oriel", "text": "Then that's where the light went too. Brannoc, in front?"},
+    {"op": "say", "speaker": "brannoc", "text": "Single file. Behind me."},
+    {"op": "move", "actor": "brannoc", "to": [30, 16], "face": "right", "wait": false},
+    {"op": "move", "actor": "oriel", "to": [29, 16], "face": "right", "wait": false},
+    {"op": "move", "actor": "tamsin", "to": [28, 16], "face": "right", "wait": false},
+    {"op": "move", "actor": "ilsevel", "to": [28, 15], "face": "right", "wait": false},
+    {"op": "narrate", "text": "Behind them, the road still holds the last of the light. Ahead, the Thornpike Woods are already night."},
+    {"op": "narrate", "text": "Somebody starts to hum a hymn, very quietly and not very well."},
+    {"op": "say", "speaker": "tamsin", "text": "Sunshine. Are you singing?"},
+    {"op": "say", "speaker": "oriel", "text": "Only when I'm nervous. Keep walking.", "emote": "smile"}
+   ]
+  }
+ ],
+ "next_time": "Night falls in the Thornpike Woods."
+}

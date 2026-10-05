@@ -1,0 +1,51 @@
+{
+  "episode_id": "C01-E006",
+  "seed": "C01-E006-1",
+  "checks": [
+    {
+      "id": "c2",
+      "scene": "s1",
+      "who": "ilsevel",
+      "what": "Ilsevel - History",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 4,
+      "natural": 12,
+      "note": "",
+      "means": "A Lamplighter way-marker from the old road, the one that ran here before the Lantern Road was laid: its carving gives the old miles and the Order's sign. The road moved; the stone stayed."
+    },
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "tamsin",
+      "what": "Tamsin - Sleight Of Hand",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 5,
+      "natural": 11,
+      "note": "",
+      "means": "Ilsevel never stirs. Tamsin reads the page and slides the notebook back exactly as it was, with a sprig of heather tucked into it.",
+      "against": "passive perception 13"
+    }
+  ],
+  "fights": [],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

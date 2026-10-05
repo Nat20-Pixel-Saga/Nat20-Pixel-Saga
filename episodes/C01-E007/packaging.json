@@ -1,0 +1,43 @@
+{
+  "schema": "pqc/packaging@1",
+  "episode_id": "C01-E007",
+  "title": "The Saint of the Open Hand | Nat 20 Pixels C1E7",
+  "description": "Home to Brindle Cross, with three dead lantern-cores and no lit lantern.\nAn old priest has two stories to tell tonight. One of them is Oriel's.\n\nEpisode 7 of a daily pixel-art D&D 5e story. Brannoc, Ilsevel, Tamsin and Oriel return to the Crooked Kettle, where Father Tobin tells the tale of Saint Wenna by the hearth, and of the frost night he found a baby at the foot of the oldest lantern on the road. Then the door bangs open. Every roll is decided by real, seeded dice shown on screen.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.",
+  "tags": [
+    "Nat 20 Pixels",
+    "D&D 5e",
+    "Dungeons and Dragons",
+    "pixel art",
+    "actual play",
+    "fantasy story",
+    "Father Tobin",
+    "Saint Wenna",
+    "Brannoc",
+    "Ilsevel",
+    "Tamsin",
+    "Oriel",
+    "Brindle Cross",
+    "Crooked Kettle"
+  ],
+  "thumbnail_text": "THE OPEN HAND",
+  "thumbnail_moment": "s2",
+  "chapters": [
+    {
+      "time": "0:00",
+      "seconds": 0.0,
+      "title": "Coming Home"
+    },
+    {
+      "time": "2:12",
+      "seconds": 132.23,
+      "title": "By the Hearth"
+    },
+    {
+      "time": "5:29",
+      "seconds": 328.63,
+      "title": "Forty-One"
+    }
+  ],
+  "duration_s": 421.8,
+  "description_full": "Home to Brindle Cross, with three dead lantern-cores and no lit lantern.\nAn old priest has two stories to tell tonight. One of them is Oriel's.\n\nEpisode 7 of a daily pixel-art D&D 5e story. Brannoc, Ilsevel, Tamsin and Oriel return to the Crooked Kettle, where Father Tobin tells the tale of Saint Wenna by the hearth, and of the frost night he found a baby at the foot of the oldest lantern on the road. Then the door bangs open. Every roll is decided by real, seeded dice shown on screen.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.\n\nChapters\n0:00 Coming Home\n2:12 By the Hearth\n5:29 Forty-One\n\nEvery roll in this episode is real: seed C01-E007-1, 2 rolls, all logged and verifiable at https://nat20pixelsaga.com/dice/.\nEpisode page and lore: https://nat20pixelsaga.com/episodes/c01-e007/\n\nArt, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).\nRules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast."
+}

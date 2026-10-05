@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+out/
+vendor
+render_out/
+site/
+episodes/*/video.mp4
+episodes/*/wiki_preview/
+episodes/*/pending/
+.relay/

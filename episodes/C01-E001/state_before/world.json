@@ -1,0 +1,373 @@
+{
+  "schema": "pqc/world@1",
+  "clock": {
+    "year": 1047,
+    "month": 9,
+    "day": 3,
+    "hearthday": null,
+    "time_of_day": "dusk"
+  },
+  "series": {
+    "campaign": 1,
+    "episode": 0,
+    "episode_in_campaign": 0,
+    "phase": "campaign",
+    "interlude": null
+  },
+  "party": {
+    "members": [
+      "brannoc",
+      "ilsevel",
+      "tamsin",
+      "oriel"
+    ],
+    "bonds": [
+      {
+        "a": "brannoc",
+        "b": "ilsevel",
+        "trust": 1,
+        "tension": 1,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "brannoc",
+        "b": "tamsin",
+        "trust": 0,
+        "tension": 2,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "brannoc",
+        "b": "oriel",
+        "trust": 2,
+        "tension": 0,
+        "romance": 0,
+        "notes": [
+          "Brannoc stopped at the shrine twice on dispatch runs and left money in the alms box."
+        ]
+      },
+      {
+        "a": "ilsevel",
+        "b": "tamsin",
+        "trust": 0,
+        "tension": 2,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "ilsevel",
+        "b": "oriel",
+        "trust": 1,
+        "tension": 1,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "tamsin",
+        "b": "oriel",
+        "trust": 1,
+        "tension": 0,
+        "romance": 0,
+        "notes": []
+      }
+    ],
+    "shared_inventory": [],
+    "shared_money_cp": 0,
+    "reputation_title": null
+  },
+  "location": {
+    "id": "loc.crooked-kettle",
+    "region": "lanternmarch",
+    "map": "brindle_cross",
+    "pos": null,
+    "unlight": "none"
+  },
+  "factions": {
+    "fac.lamplighters": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.unlit": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.conclave": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.crown-of-corvane": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.velvet-hand": {
+      "reputation": -1,
+      "known_to_party": false,
+      "notes": [
+        "Known only to Tamsin"
+      ]
+    },
+    "fac.clan-aldhammer": {
+      "reputation": -1,
+      "known_to_party": false,
+      "notes": [
+        "Known only to Brannoc"
+      ]
+    },
+    "fac.gloaming-court": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.saffron-throne": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.wardens-of-the-green": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.sable-free-captains": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    }
+  },
+  "npcs": {
+    "npc.maddy-fenn": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.crooked-kettle",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.wil-fenn": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.crooked-kettle",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.tobin-ashdown": {
+      "status": "alive",
+      "attitude": "helpful",
+      "location": "loc.shrine-of-the-open-hand",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Oriel's adoptive father"
+      ]
+    },
+    "npc.edda-rook": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Brannoc's commanding officer"
+      ]
+    },
+    "npc.rusk": {
+      "status": "unmet",
+      "attitude": "hostile",
+      "location": "loc.thornpike-woods",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.skarrow": {
+      "status": "unmet",
+      "attitude": "hostile",
+      "location": "loc.goblin-warren",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.mother-fennick": {
+      "status": "unmet",
+      "attitude": "indifferent",
+      "location": "loc.thornpike-woods",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.petra-glim": {
+      "status": "unmet",
+      "attitude": "friendly",
+      "location": "loc.lantern-road",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.brother-ambrose": {
+      "status": "captive",
+      "attitude": "friendly",
+      "location": "loc.goblin-warren",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.ysolde-marr": {
+      "status": "missing",
+      "attitude": "indifferent",
+      "location": null,
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Publicly: lost in the Underdeep, 1036 AK"
+      ]
+    },
+    "npc.pell": {
+      "status": "unmet",
+      "attitude": "helpful",
+      "location": null,
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Summoned with Find Familiar in C1E4"
+      ]
+    }
+  },
+  "quests": [
+    {
+      "id": "q.deliver-dispatches",
+      "title": "Deliver the Fort Harrow dispatches",
+      "status": "active",
+      "giver": "npc.edda-rook",
+      "reward_cp": 0,
+      "objectives": [
+        "Bring the sealed dispatches to the Lamplighters"
+      ]
+    },
+    {
+      "id": "q.inspect-lanterns",
+      "title": "Inspect the failing lanterns of the Lantern Road",
+      "status": "active",
+      "giver": "fac.lamplighters",
+      "reward_cp": 2000,
+      "objectives": [
+        "Inspect lanterns 30-45",
+        "Report findings to Lamplighters' Hall"
+      ]
+    }
+  ],
+  "lanterns": {
+    "lantern_road.001": "lit",
+    "lantern_road.036": "lit",
+    "lantern_road.037": "lit",
+    "lantern_road.038": "lit",
+    "lantern_road.041": "lit"
+  },
+  "flags": {
+    "series_started": false
+  },
+  "hooks": [
+    {
+      "id": "hook.shaft-nine-debt",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C5",
+      "summary": "Can Brannoc's name be restored to the Book of Debts?"
+    },
+    {
+      "id": "hook.hilde-lives",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C6",
+      "summary": "Hilde survived Shaft Nine and was taken into the Underdeep."
+    },
+    {
+      "id": "hook.painted-anvil",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C5",
+      "summary": "The anvil painted over on Brannoc's shield."
+    },
+    {
+      "id": "hook.where-is-ysolde",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C4",
+      "summary": "What happened to Ilsevel's mentor?"
+    },
+    {
+      "id": "hook.engraved-button",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C9",
+      "summary": "Ilsevel recognises the engraving style on Oriel's button."
+    },
+    {
+      "id": "hook.hollowmere-vanishings",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C4",
+      "summary": "Elves of Hollowmere vanishing into the Gloaming."
+    },
+    {
+      "id": "hook.velvet-hand-debt",
+      "owner": "tamsin",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C3",
+      "summary": "The Velvet Hand wants 2,000 gp or the key."
+    },
+    {
+      "id": "hook.gloamkey",
+      "owner": "tamsin",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C7",
+      "summary": "What is the key that sings to Tamsin?"
+    },
+    {
+      "id": "hook.pip",
+      "owner": "tamsin",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C8",
+      "summary": "Pip doesn't know who his sister really is."
+    },
+    {
+      "id": "hook.brass-button",
+      "owner": "oriel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C9",
+      "summary": "Who left Oriel at Lantern No. 1?"
+    },
+    {
+      "id": "hook.flickering-warmth",
+      "owner": "oriel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C9",
+      "summary": "Oriel's bond with Aurelan weakens as lanterns die."
+    },
+    {
+      "id": "hook.brindle-cross",
+      "owner": "oriel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C8",
+      "summary": "Will Brindle Cross survive the Dimming?"
+    }
+  ],
+  "lantern_stars_dark": 0
+}

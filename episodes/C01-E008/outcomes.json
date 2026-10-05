@@ -1,0 +1,182 @@
+{
+  "episode_id": "C01-E008",
+  "seed": "C01-E008-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s1",
+      "who": [
+        "brannoc",
+        "ilsevel",
+        "tamsin",
+        "oriel"
+      ],
+      "what": "Party - Athletics",
+      "dc": 12,
+      "result": "SUCCESS",
+      "margin": 3,
+      "natural": 12,
+      "note": "",
+      "means": "They reach the yard gate while the goblins are still hammering at the mill door, backs turned.",
+      "group": [
+        {
+          "who": "brannoc",
+          "total": 8,
+          "success": false
+        },
+        {
+          "who": "ilsevel",
+          "total": 14,
+          "success": true
+        },
+        {
+          "who": "tamsin",
+          "total": 10,
+          "success": false
+        },
+        {
+          "who": "oriel",
+          "total": 15,
+          "success": true
+        }
+      ],
+      "passed": 2
+    }
+  ],
+  "fights": [
+    {
+      "id": "e1",
+      "scene": "s2",
+      "winner": "party",
+      "rounds": 3,
+      "xp": 175,
+      "actions": [
+        "Initiative: Tamsin 25, Goblin 22, Goblin 22, Ilsevel 16, Oriel 11, Goblin 10, Goblin Runt 8, Brannoc 5",
+        "1. [round 1] Tamsin - Shortbow -> Goblin Runt: MISS",
+        "   - Goblin moves 30 ft",
+        "2. [round 1] Ilsevel - Shield (reaction): Ilsevel shield",
+        "3. [round 1] Goblin - Scimitar -> Ilsevel: MISS",
+        "   - Goblin moves 30 ft",
+        "4. [round 1] Goblin - Scimitar -> Brannoc: HIT for 8, Brannoc at 5 HP",
+        "5. [round 1] Ilsevel - Shocking Grasp: Goblin 1 dmg hit",
+        "   - Ilsevel moves 30 ft",
+        "6. [round 1] Oriel - Bless (level 1): Brannoc bless; Oriel bless; Tamsin bless",
+        "   - Goblin moves 25 ft",
+        "7. [round 1] Goblin - Scimitar -> Tamsin: HIT for 5, Tamsin at 5 HP",
+        "8. [round 1] Goblin Runt - Dagger -> Tamsin: HIT for 3, Tamsin at 2 HP",
+        "9. [round 1] Brannoc - Second Wind: Brannoc +4 HP",
+        "10. [round 1] Brannoc - Longsword -> Goblin: MISS",
+        "11. [round 2] Tamsin - Shortsword -> Goblin: HIT for 10 (sneak attack), Goblin at 0 HP",
+        "   - Goblin falls",
+        "12. [round 2] Goblin - Scimitar -> Brannoc: HIT for 5, Brannoc at 4 HP",
+        "13. [round 2] Ilsevel - Fire Bolt: Goblin Runt 8 dmg hit",
+        "   - Goblin Runt falls",
+        "14. [round 2] Oriel - Healing Word (level 1): Tamsin +8 HP",
+        "15. [round 2] Oriel - Sacred Flame: Goblin 7 dmg failed save",
+        "16. [round 2] Goblin - Scimitar -> Tamsin: HIT for 4, Tamsin at 6 HP",
+        "17. [round 2] Brannoc - Second Wind: Brannoc +9 HP",
+        "18. [round 2] Brannoc - Longsword -> Goblin: HIT for 8, Goblin at 2 HP",
+        "19. [round 3] Tamsin - Shortsword -> Goblin: HIT for 14 (sneak attack), Goblin at 0 HP",
+        "   - Goblin falls",
+        "   - Tamsin moves 30 ft",
+        "20. [round 3] Goblin - Scimitar -> Brannoc: MISS",
+        "21. [round 3] Ilsevel - Magic Missile (level 1): Goblin 4 dmg",
+        "   - Goblin falls",
+        "END: victory, 175 XP"
+      ],
+      "end_state": {
+        "brannoc": {
+          "hp": 13,
+          "down": false,
+          "dead": false,
+          "pos": [
+            21,
+            14
+          ]
+        },
+        "oriel": {
+          "hp": 10,
+          "down": false,
+          "dead": false,
+          "pos": [
+            22,
+            13
+          ]
+        },
+        "tamsin": {
+          "hp": 6,
+          "down": false,
+          "dead": false,
+          "pos": [
+            26,
+            7
+          ]
+        },
+        "ilsevel": {
+          "hp": 8,
+          "down": false,
+          "dead": false,
+          "pos": [
+            28,
+            12
+          ]
+        },
+        "goblin-1": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            21,
+            13
+          ]
+        },
+        "goblin-2": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            20,
+            14
+          ]
+        },
+        "goblin-3": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            21,
+            15
+          ]
+        },
+        "goblin-4": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            16,
+            17
+          ]
+        }
+      }
+    }
+  ],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "6/10",
+      "conditions": []
+    }
+  }
+}

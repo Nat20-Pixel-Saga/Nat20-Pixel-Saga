@@ -1,0 +1,12 @@
+{
+ "C01-E001": {"text": "The road goes dark", "faces": ["brannoc"], "focus": "brannoc"},
+ "C01-E002": {"text": "Make him talk", "faces": ["oriel", "rusk"], "focus": "rusk"},
+ "C01-E003": {"text": "The light was taken", "faces": ["ilsevel"], "focus": "ilsevel"},
+ "C01-E004": {"text": "Wolves in the dark", "faces": ["wolf", "tamsin"], "focus": "tamsin"},
+ "C01-E005": {"text": "The boss sent me", "faces": ["tamsin"], "focus": "tamsin"},
+ "C01-E006": {"text": "First watch", "faces": ["brannoc", "oriel"], "focus": "brannoc"},
+ "C01-E007": {"text": "The open hand", "faces": ["tobin_ashdown", "oriel"], "focus": "tobin_ashdown"},
+ "C01-E008": {"text": "Run!", "faces": ["brannoc"], "focus": "brannoc"},
+ "C01-E009": {"text": "Still breathing", "faces": ["goblin_boss", "oriel"], "focus": "oriel"},
+ "C01-E010": {"text": "Black glass", "faces": ["edda_rook"], "focus": "edda_rook"}
+}

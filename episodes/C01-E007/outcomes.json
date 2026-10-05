@@ -1,0 +1,50 @@
+{
+  "episode_id": "C01-E007",
+  "seed": "C01-E007-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "ilsevel",
+      "what": "Ilsevel - History",
+      "dc": 12,
+      "result": "FAILURE",
+      "margin": -4,
+      "natural": 3,
+      "note": "",
+      "means": "Ilsevel's version is the dry one from the Hall's primer: founded the Order in the fourth year After Kindling. Tamsin likes Tobin's better, and says so."
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "oriel",
+      "what": "Oriel - Religion",
+      "dc": 14,
+      "result": "FAILURE",
+      "margin": -4,
+      "natural": 9,
+      "note": "",
+      "means": "She feels nothing at all, not even the cold. That frightens her more than she lets Tobin see."
+    }
+  ],
+  "fights": [],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

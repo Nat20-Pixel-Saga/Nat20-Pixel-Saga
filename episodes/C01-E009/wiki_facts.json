@@ -1,0 +1,83 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E009",
+  "summary": "At Wending Mill on 6 Emberfall, Brannoc heaved the bar off the burning barn's doors and Bet Hollis and a hired lad came out; the lad had breathed too much smoke, and Oriel was still tending him when a goblin boss with lantern-glass riveted to his helmet walked out of the smoke with two of his crew. With no spells left but cantrips, the party fought: the boss cut Oriel down, Brannoc killed the goblin and then held the boss alone while Oriel fought her way back to stable, and Ilsevel's fire bolt finally dropped the boss. Brannoc tended Oriel himself. The barn burned, but the mill was saved.",
+  "npcs": [
+    {
+      "id": "npc.bet-hollis",
+      "name": "Bet Hollis",
+      "description": "Ned Hollis's wife, pulled out of the burning barn at Wending Mill along with a hired lad who had gone back in for the cow.",
+      "status": "alive",
+      "attitude": "friendly"
+    },
+    {
+      "id": "npc.ned-hollis",
+      "name": "Ned Hollis",
+      "description": "The old miller of Wending Mill. Brought blankets and bread to the party after the fight and gave them his hearth for the night.",
+      "status": "alive",
+      "attitude": "helpful"
+    }
+  ],
+  "places": [
+    {
+      "id": "loc.wending-mill",
+      "name": "Wending Mill",
+      "description": "A hamlet on the road south of Brindle Cross: a watermill on a millpond, a mill yard, cottages. Its barn was burned by goblins on 6 Emberfall; the villagers saved the mill with a bucket line from the pond."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "ilsevel",
+      "text": "He says: 'The boss pays for stones. He pays more for the ones who stop us.'"
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Then it's steel. Get behind me."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Not you. Not you as well."
+    },
+    {
+      "speaker": "tamsin",
+      "text": "Big Man. Sit down. You're bleeding on the bread."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Then tomorrow we tell Rook. All of it."
+    }
+  ],
+  "events": [
+    "Brannoc heaved the heat-swollen pole off the burning barn's doors at the first try.",
+    "Bet Hollis walked out; the hired lad had breathed too much smoke, and Oriel could not get him on his feet, so she carried him to the yard's edge.",
+    "A goblin boss in a dented helmet with lantern-glass riveted to it came out of the smoke with two goblins; Ilsevel translated: 'The boss pays for stones. He pays more for the ones who stop us.'",
+    "The boss went straight for Oriel and cut her down; she made her death saves and became stable on her own.",
+    "Ilsevel killed the goblin runt, and Brannoc killed the goblin and then held the boss alone, dropping to his last few hit points.",
+    "Tamsin's arrows all missed the boss; Ilsevel's fire bolt killed him.",
+    "Brannoc tended the unconscious Oriel himself. The barn burned down; the mill was saved."
+  ],
+  "items": [
+    {
+      "id": "goblin_boss_helmet",
+      "name": "Goblin boss's helmet",
+      "holder": "party",
+      "note": "Dented, with a strip of lantern-glass riveted across the brow like a crown."
+    }
+  ],
+  "hooks_planted": [],
+  "character_notes": {
+    "brannoc": [
+      "Held the goblin boss alone while Oriel lay dying, and would not look away from the fight.",
+      "Tended Oriel with shaking hands: 'Not you. Not you as well.'"
+    ],
+    "oriel": [
+      "Was cut down by the goblin boss while caring for the hurt lad, and pulled through on her own, unconscious until night."
+    ],
+    "ilsevel": [
+      "Translated the goblin boss's words; her fire bolt ended the fight."
+    ],
+    "tamsin": [
+      "Missed the goblin boss with every arrow, and took it hard."
+    ]
+  }
+}

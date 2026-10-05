@@ -1,0 +1,425 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E010",
+  "title": "Fort Harrow",
+  "summary": "8 Emberfall, after two days on the road from Wending Mill. The party reaches Fort Harrow, the tired royal garrison at the south end of the Lantern Road. At the gate, two of Brannoc's old comrades greet 'Bran Vow' and one of them lets slip the name he has never said: Ironvow, an exile out of Aldhammer. Captain Edda Rook hears the report, short version, and hires all four to ride the road for her at ten crowns a week each, since she has no soldiers to spare. Tamsin tries to haggle. That evening a patrol brings in a dead goblin from the road, and around its neck is a pendant of black glass that seems to drink the light.",
+  "dm_intro": {
+    "title": "Fort Harrow",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  8 Emberfall 1047 AK",
+    "text": "Lanterns are going dark on the Lantern Road, and somebody is paying goblins for their cores. Four strangers from Brindle Cross have fought goblins three times in four days, and two days ago they saved the hamlet of Wending Mill from a burning raid. Now they have walked to the far end of the road, to Fort Harrow, to tell Captain Rook what they found. The fort has forty soldiers and no hope of more."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "The Gate",
+      "location": "loc.fort-harrow",
+      "map": "fort_harrow",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        23
+      ],
+      "music": "adventure",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            21,
+            24
+          ],
+          "facing": "up",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            22,
+            25
+          ],
+          "facing": "up",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            20,
+            24
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            19,
+            25
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "dunn",
+          "sprite": "soldier",
+          "at": [
+            22,
+            22
+          ],
+          "facing": "down",
+          "name": "Corporal Dunn"
+        },
+        {
+          "id": "ferrick",
+          "sprite": "soldier_b",
+          "at": [
+            21,
+            22
+          ],
+          "facing": "down",
+          "name": "Ferrick"
+        }
+      ],
+      "beats": [
+        "Fort Harrow's gate: stone walls, a lantern burning beside the arch, two soldiers who look as if they have not slept in a week.",
+        "Corporal Dunn recognises 'Bran Vow' and is glad to see him. Young Ferrick says the sergeant told him that isn't his name at all: he's an Ironvow, an exile out of Aldhammer. Dunn cuffs him.",
+        "Brannoc says nothing. Everyone heard. Tamsin, who knows a thing or two about names, changes the subject."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "bond"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "Report. Short Version.",
+      "location": "loc.fort-harrow",
+      "map": "fort_harrow",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        10
+      ],
+      "music": "calm_village",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "edda_rook",
+          "at": [
+            21,
+            9
+          ],
+          "facing": "down",
+          "name": "Captain Rook"
+        },
+        {
+          "id": "brannoc",
+          "at": [
+            21,
+            11
+          ],
+          "facing": "up",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            20,
+            12
+          ],
+          "facing": "up",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            22,
+            12
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            23,
+            11
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        }
+      ],
+      "beats": [
+        "Captain Edda Rook outside her command house: 'Report. Short version.' Brannoc gives it in a dozen words: Lantern 37's core stolen by hand, goblins carting cores east, goblins paid in food, Wending Mill saved, Lantern 41 dark.",
+        "Oriel watches Rook as she listens (c1).",
+        "Rook has forty soldiers for a hundred and forty lanterns and the Crown sends nothing. She offers the four of them ten crowns a week each to ride the road for her and find out who is buying cores. Tamsin tries to haggle (c2).",
+        "They accept. Rook to Brannoc, quietly: 'You're three days late with my dispatches, soldier.' He hands them over."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "oriel",
+          "skill": "insight",
+          "dc": 13,
+          "reason": "Read a veteran officer who has spent twenty years not letting her face say anything.",
+          "on_success": "Oriel sees how tired Rook is, how frightened she is for her soldiers, and that she has known all along exactly who Brannoc is, and is protecting him.",
+          "on_failure": "Rook's face gives Oriel nothing at all. It is like reading a wall."
+        },
+        {
+          "id": "c2",
+          "actor": "tamsin",
+          "skill": "persuasion",
+          "dc": 18,
+          "reason": "Haggle a frontier captain up from ten crowns a week, when her fort is short of soldiers, food and coin, and she knows it.",
+          "on_success": "Rook will not raise the pay, but she throws in board at the fort, the loan of a mule, and a written warrant to requisition food on the road. Tamsin is delighted.",
+          "on_failure": "'Ten. Take it or walk.' Tamsin takes it."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "talk"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Black Glass",
+      "location": "loc.fort-harrow",
+      "map": "fort_harrow",
+      "time_of_day": "evening",
+      "camera": [
+        31,
+        10
+      ],
+      "music": "mystical",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "edda_rook",
+          "at": [
+            31,
+            9
+          ],
+          "facing": "right",
+          "name": "Captain Rook"
+        },
+        {
+          "id": "holt",
+          "sprite": "soldier_c",
+          "at": [
+            32,
+            10
+          ],
+          "facing": "left",
+          "name": "Sergeant Holt"
+        },
+        {
+          "id": "brannoc",
+          "at": [
+            30,
+            11
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            29,
+            11
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            31,
+            12
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            32,
+            11
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        }
+      ],
+      "beats": [
+        "Evening. Sergeant Holt's patrol comes in with a cart; under a sack, a goblin killed on the road at dusk while trying to pry open Lantern 52.",
+        "Around its neck, on a greasy cord: a pendant of polished black glass. Rook hands it to Ilsevel, the only Lamplighter in the fort.",
+        "Ilsevel holds it near the lantern-light.",
+        "Cliffhanger: whatever this is, goblins did not make it. Last line belongs to a party member."
+      ],
+      "checks": [
+        {
+          "id": "c3",
+          "actor": "ilsevel",
+          "skill": "arcana",
+          "dc": 13,
+          "reason": "Make sense of an unknown piece of black glass by lamplight: weight, cold, how the light behaves around it.",
+          "on_success": "The lamplight leans toward the glass and goes dim, as if the pendant were drinking it. It is cold the way the dead cores were cold.",
+          "on_failure": "Polished black glass, cold to the touch, and nothing more she can tell tonight. She does not like that it is so cold."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "explore"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "location",
+      "id": "loc.fort-harrow",
+      "map": "fort_harrow",
+      "region": "lanternmarch"
+    },
+    {
+      "type": "npc",
+      "id": "npc.edda-rook",
+      "note": "Hired Brannoc, Ilsevel, Tamsin and Oriel at ten crowns a week each to ride the Lantern Road and find out who is buying cores (C01-E010)."
+    },
+    {
+      "type": "npc",
+      "id": "npc.corporal-dunn",
+      "name": "Corporal Dunn",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "note": "Served with Brannoc at Fort Harrow; glad to see him."
+    },
+    {
+      "type": "npc",
+      "id": "npc.ferrick",
+      "name": "Ferrick",
+      "status": "alive",
+      "attitude": "indifferent",
+      "location": "loc.fort-harrow",
+      "note": "Young soldier who repeated the gossip that Brannoc is an 'Ironvow exile' out of Aldhammer."
+    },
+    {
+      "type": "npc",
+      "id": "npc.sergeant-holt",
+      "name": "Sergeant Holt",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "note": "Led the patrol that brought in the goblin with the black-glass pendant."
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "brannoc"
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "ilsevel"
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "tamsin"
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "oriel"
+    },
+    {
+      "type": "quest",
+      "id": "q.ride-for-rook",
+      "title": "Ride the Lantern Road for Captain Rook",
+      "giver": "npc.edda-rook",
+      "reward_cp": 1000,
+      "objectives": [
+        "Patrol the Lantern Road (ten crowns a week each)",
+        "Find out who is buying the stolen lantern-cores"
+      ]
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "status": "completed",
+      "objectives": [
+        "Report to Captain Rook at Fort Harrow"
+      ]
+    },
+    {
+      "type": "quest",
+      "id": "q.deliver-dispatches",
+      "status": "completed"
+    },
+    {
+      "type": "item",
+      "id": "black_glass_pendant",
+      "name": "Black-glass pendant",
+      "holder": "ilsevel",
+      "qty": 1
+    },
+    {
+      "type": "item",
+      "id": "requisition_warrant",
+      "name": "Captain Rook's warrant to requisition food on the road",
+      "holder": "party",
+      "qty": 1,
+      "if": "c2.success"
+    },
+    {
+      "type": "flag",
+      "id": "black_glass_pendant_found",
+      "value": true
+    },
+    {
+      "type": "flag",
+      "id": "pendant_drinks_light",
+      "value": true,
+      "if": "c3.success"
+    },
+    {
+      "type": "flag",
+      "id": "party_knows_ironvow_name",
+      "value": true
+    },
+    {
+      "type": "hook",
+      "id": "hook.shaft-nine-debt",
+      "status": "planted"
+    },
+    {
+      "type": "lantern",
+      "id": "lantern_road.052",
+      "state": "lit"
+    },
+    {
+      "type": "faction",
+      "id": "fac.crown-of-corvane",
+      "reputation_delta": 1,
+      "note": "Hired by Captain Rook of Fort Harrow."
+    },
+    {
+      "type": "bond",
+      "a": "brannoc",
+      "b": "tamsin",
+      "trust": 1,
+      "note": "Tamsin heard 'Ironvow' at the fort gate and changed the subject instead of asking."
+    },
+    {
+      "type": "clock",
+      "advance_days": 1,
+      "time_of_day": "evening"
+    },
+    {
+      "type": "rest",
+      "kind": "long"
+    }
+  ],
+  "next_time": "Black glass, and a letter to Lamplighters' Hall."
+}

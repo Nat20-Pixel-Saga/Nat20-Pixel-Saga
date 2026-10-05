@@ -1,0 +1,19 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E001",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s5#6",
+   "problem": "Tamsin's 'Mostly with your face' lands right after Ilsevel nearly died; it is in voice (she deflects with jokes) but could read as cold.",
+   "fix": "Keep it, but consider a beat of relief first, e.g. an emote on Tamsin before the line."
+  },
+  {
+   "severity": "warning",
+   "where": "s4#16",
+   "problem": "Ilsevel says the lantern has burned for three hundred years; the DM intro says the same. Consistent, but the repetition is close together.",
+   "fix": "Optional: have Ilsevel cite the year it was first lit instead."
+  }
+ ]
+}

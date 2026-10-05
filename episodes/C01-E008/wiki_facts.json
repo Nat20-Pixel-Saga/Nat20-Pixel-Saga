@@ -1,0 +1,77 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E008",
+  "summary": "On 6 Emberfall the party walked south to answer Captain Rook's letter. Pell spotted goblins battering the door of the watermill at Wending Mill, and the four ran the last stretch and fought four goblins in the mill yard; Brannoc and Tamsin were both badly cut before Tamsin's blade and Ilsevel's spells ended it. The miller, Ned Hollis, said the goblins wanted the grain because 'the boss wants meal'. Then they saw smoke: the barn was burning, barred from outside, with Ned's wife Bet and a hired lad inside, and something behind the smoke had stopped shouting.",
+  "npcs": [
+    {
+      "id": "npc.ned-hollis",
+      "name": "Ned Hollis",
+      "description": "The old miller of Wending Mill. Barricaded the villagers inside his watermill when goblins came at dawn for the grain. His wife Bet and a hired lad went to the barn before the attack.",
+      "want": "His wife Bet safe.",
+      "status": "alive",
+      "attitude": "friendly"
+    },
+    {
+      "id": "npc.pell",
+      "name": "Pell",
+      "description": "Ilsevel's brown owl familiar. Scouted ahead on the road south and spotted the goblins at the mill.",
+      "status": "alive",
+      "attitude": "helpful"
+    }
+  ],
+  "places": [
+    {
+      "id": "loc.wending-mill",
+      "name": "Wending Mill",
+      "description": "A hamlet on the road south of Brindle Cross: a watermill on an oval millpond, a fenced mill yard, three cottages and a big barn on the east side. Attacked by goblins on 6 Emberfall."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "brannoc",
+      "text": "Most things."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "No time to creep. Run."
+    },
+    {
+      "speaker": "tamsin",
+      "text": "Still mostly on the inside, Sunshine. Mostly."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "Magic Missile. It never misses. That is rather the point of it."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Get those doors open. I'll watch the smoke."
+    }
+  ],
+  "events": [
+    "On the road south Pell spotted four goblins battering the door of the watermill at Wending Mill.",
+    "The party ran the last stretch and reached the mill yard; Ilsevel and Oriel kept the pace while Brannoc and Tamsin lagged.",
+    "Two goblins won the first moves; Brannoc was cut and twice caught his second wind, and Tamsin was dropped to her last breaths before Oriel's Healing Word.",
+    "Tamsin killed two goblins with sneak attacks; Ilsevel killed the runt with Fire Bolt and the last goblin with Magic Missile.",
+    "The miller, Ned Hollis, said the goblins came for the grain because 'the boss wants meal'.",
+    "The barn was burning, its doors barred from outside, with Ned's wife Bet and a hired lad inside.",
+    "A deeper voice had been giving orders behind the smoke; it stopped as the party reached the barn."
+  ],
+  "items": [],
+  "hooks_planted": [],
+  "character_notes": {
+    "brannoc": [
+      "Counts milestones on the road ('Most things').",
+      "Took the first cuts in the mill yard and kept standing."
+    ],
+    "tamsin": [
+      "Killed two goblins with sneak attacks after being badly hurt."
+    ],
+    "ilsevel": [
+      "Kept pace on the run to the mill, to everyone's surprise; finished the fight with Magic Missile."
+    ],
+    "oriel": [
+      "Blessed the party and healed Tamsin mid-fight."
+    ]
+  }
+}

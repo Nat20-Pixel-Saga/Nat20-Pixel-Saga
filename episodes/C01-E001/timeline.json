@@ -1,0 +1,2527 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E001",
+  "title": "C01-E001 - Lantern Thirty-Seven",
+  "fps": 30,
+  "seed": "C01-E001-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 1 - Lantern Thirty-Seven"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        17,
+        11
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        16,
+        11
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "wil_fenn",
+      "sprite": "wil_fenn",
+      "at": [
+        18,
+        11
+      ],
+      "facing": "left",
+      "name": "Wil Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "Lantern Thirty-Seven",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  3 Emberfall 1047 AK",
+      "text": "Brindle Cross is a crossroads village on the southern edge of the Lanternmarch, where the oldest lantern road in the Vael begins. Its lanterns have burned every night for three hundred years. Tonight four strangers share its market square at dusk: a soldier carrying dispatches, a Lamplighter archivist, a card player with a borrowed name, and the shrine's young acolyte. None of them knows the others yet."
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  Cards by the Well  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "say",
+      "text": "Again. Double or nothing, Mistress Mossfoot.",
+      "speaker": "wil_fenn"
+    },
+    {
+      "op": "say",
+      "text": "Tam, please. 'Mistress' makes me sound like I own a boot shop.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "I've watched your hands the whole time. You can't cheat if I'm watching.",
+      "speaker": "wil_fenn",
+      "emote": "angry"
+    },
+    {
+      "op": "say",
+      "text": "Cheat? Me? I once beat a river captain using nothing but my honest face.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Palm the Crown card while Wil, who has lost three hands in a row, watches her fingers.",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 16
+          }
+        ],
+        "rolls": [
+          16
+        ],
+        "kept": [
+          16
+        ],
+        "modifier": 7,
+        "total": 23,
+        "advantage": "none",
+        "natural": 16,
+        "dc": 14,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Sleight Of Hand",
+      "line": "16 + 7 = 23 vs DC 14 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "The Crown card leaves Tamsin's sleeve and arrives in her hand. Wil, watching very closely, sees nothing at all."
+    },
+    {
+      "op": "say",
+      "text": "Lantern and Crown. That's the hand, I'm afraid.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "say",
+      "text": "Eight blind! That was my honey-cake money.",
+      "speaker": "wil_fenn",
+      "emote": "sad"
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "dots",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "...Here. Have a honey cake. Don't tell anyone I'm soft.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "A soldier's riding through tonight. Fort Harrow colours. I'm going to ask him to take me with him.",
+      "speaker": "wil_fenn"
+    },
+    {
+      "op": "say",
+      "text": "A soldier. Lovely. I'll be sure to be somewhere else.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        10,
+        10
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        10,
+        9
+      ],
+      "facing": "left",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        8,
+        9
+      ],
+      "facing": "right",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  The Lantern Ledger  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "say",
+      "text": "Two candles already, and the night's barely started. Who's paying for those, the Eight?",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "The Order of Lamplighters, Mistress Fenn. I will sign for them. I always sign for things.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Spot what is wrong in a year of tidy entries for the lanterns south of the village.",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 5,
+        "total": 22,
+        "advantage": "none",
+        "natural": 17,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Investigation",
+      "line": "17 + 5 = 22 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "emote",
+      "actor": "ilsevel",
+      "emote": "exclaim",
+      "duration": 1.0
+    },
+    {
+      "op": "say",
+      "text": "Here. Lantern thirty-seven, trimmed on the twenty-second of Harvestmoon. And again on the first of Emberfall.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "A lantern is trimmed once a year. And that mark is no warden's I know. I know all of them.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Is that bad? You've got the face my Wil makes before he tells me he's broken something.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "It is... irregular. I wrote it down.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        28,
+        9
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        27,
+        8
+      ],
+      "facing": "down",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tobin_ashdown",
+      "sprite": "tobin_ashdown",
+      "at": [
+        28,
+        8
+      ],
+      "facing": "left",
+      "name": "Father Tobin"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  The Dusk Devotion  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "say",
+      "text": "Hold the light. Hold the road. Hold on to each other.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Very good. Better than me; I always rush the middle part. Here, child. Hold out your hand.",
+      "speaker": "tobin_ashdown",
+      "emote": "smile"
+    },
+    {
+      "op": "emote",
+      "actor": "oriel",
+      "emote": "exclaim",
+      "duration": 1.0
+    },
+    {
+      "op": "say",
+      "text": "My sun-disc. Forty years round my neck. It's done more praying than I have.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "Father, I can't take this. It's yours.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "The open hand holds more than the fist. Take it. My knees have earned the rest.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        40,
+        10
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          40,
+          9
+        ],
+        [
+          30,
+          9
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "narrate",
+      "text": "A dwarf in a soldier's coat comes up the east road. He stops at the alms box, drops a coin, and says nothing."
+    },
+    {
+      "op": "say",
+      "text": "You're the one who leaves silver and never stays for the hymn.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Didn't think anyone noticed.",
+      "speaker": "brannoc",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "I count the box every night. Silver doesn't come often. What's your name?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Brannoc. Dispatches for Fort Harrow. Gone by morning.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Oriel. Light on your road, Brannoc.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "And on yours.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "narrate",
+      "text": "The brass button on Oriel's collar catches the last of the sun. Father Tobin looks at it a moment too long."
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        19,
+        12
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        21,
+        10
+      ],
+      "facing": "down",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        23,
+        11
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        17,
+        12
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        19,
+        13
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "wil_fenn",
+      "sprite": "wil_fenn",
+      "at": [
+        15,
+        12
+      ],
+      "facing": "right",
+      "name": "Wil Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  Lantern Thirty-Seven  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "say",
+      "text": "Sir! You're from Fort Harrow? I can carry a pike. I've practised with a broom.",
+      "speaker": "wil_fenn",
+      "emote": "exclaim"
+    },
+    {
+      "op": "say",
+      "text": "Go home, lad. Your mother's looking for you.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Listen to the Big Man, Sprout. He's got a face like a locked door.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "And you are?",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Tam Mossfoot. Card player, storyteller, honest woman.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "She won every hand the boy played at the well. Every one. Statistically, that is remarkable.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Professor! You were counting my cards from across the square? I'm flattered.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "say",
+      "text": "Everyone's welcome in the square. Even card players. What's your name? Your real one?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "That was my real one, Sunshine. Cross my heart.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "camera",
+      "to": [
+        20,
+        19
+      ],
+      "duration": 1.4
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5
+    },
+    {
+      "op": "lantern",
+      "id": "lantern_road.037",
+      "state": "dead",
+      "flicker": 1.8,
+      "unlight": {
+        "radius": 70,
+        "grow": 3.0,
+        "strength": 0.6
+      }
+    },
+    {
+      "op": "time_of_day",
+      "preset": "evening",
+      "duration": 2.5,
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "On the south road, Lantern Thirty-Seven gutters once. Then the road is dark."
+    },
+    {
+      "op": "emote",
+      "actor": "oriel",
+      "emote": "shock",
+      "duration": 1.2
+    },
+    {
+      "op": "camera",
+      "to": [
+        19,
+        12
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Did you feel that? Like a candle going out in my chest.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "A lantern cannot simply go out. That one has burned for three hundred years.",
+      "speaker": "ilsevel",
+      "emote": "exclaim"
+    },
+    {
+      "op": "say",
+      "text": "Quiet. Something on the road.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0002",
+        "index": 2,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c3: Make out shapes moving on the unlit south road before they reach the square.",
+        "actor": "brannoc",
+        "target": null,
+        "draws": [
+          {
+            "counter": 2,
+            "sides": 20,
+            "value": 7
+          }
+        ],
+        "rolls": [
+          7
+        ],
+        "kept": [
+          7
+        ],
+        "modifier": 3,
+        "total": 10,
+        "advantage": "none",
+        "natural": 7,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Brannoc - Perception",
+      "line": "7 + 3 = 10 vs DC 13 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc stares into the dark and sees only dark. By the time the shapes have edges, they are already running."
+    },
+    {
+      "op": "emote",
+      "actor": "wil_fenn",
+      "emote": "alert",
+      "duration": 0.8,
+      "sfx": "alert"
+    },
+    {
+      "op": "say",
+      "text": "Goblins! Mam! MAM!",
+      "speaker": "wil_fenn"
+    },
+    {
+      "op": "move",
+      "actor": "wil_fenn",
+      "path": [
+        [
+          12,
+          12
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "speed": 6
+    },
+    {
+      "op": "despawn",
+      "actor": "wil_fenn"
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 0.3,
+      "volume": 0.5
+    },
+    {
+      "op": "say",
+      "text": "Four goblins. One road. One of me. Fine. Get behind the shield.",
+      "speaker": "brannoc",
+      "emote": "angry"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-1",
+      "sprite": "goblin_warrior",
+      "at": [
+        19,
+        26
+      ],
+      "facing": "up",
+      "name": "Goblin"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-2",
+      "sprite": "goblin_warrior",
+      "at": [
+        21,
+        26
+      ],
+      "facing": "up",
+      "name": "Goblin"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-3",
+      "sprite": "goblin_minion",
+      "at": [
+        17,
+        26
+      ],
+      "facing": "up",
+      "name": "Goblin Runt"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-4",
+      "sprite": "rusk",
+      "at": [
+        22,
+        26
+      ],
+      "facing": "up",
+      "name": "Goblin Runt"
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "speed": 5,
+      "path": [
+        [
+          20,
+          14
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "speed": 5,
+      "path": [
+        [
+          21,
+          13
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "speed": 5,
+      "path": [
+        [
+          19,
+          12
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "speed": 5,
+      "path": [
+        [
+          17,
+          13
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "goblin-2",
+      "speed": 5,
+      "path": [
+        [
+          21,
+          24
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          21,
+          19
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "goblin-3",
+      "speed": 5,
+      "path": [
+        [
+          18,
+          26
+        ],
+        [
+          18,
+          21
+        ],
+        [
+          17,
+          20
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "goblin-4",
+      "speed": 5,
+      "path": [
+        [
+          22,
+          20
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "goblin-1",
+      "speed": 5,
+      "path": [
+        [
+          19,
+          19
+        ]
+      ],
+      "wait": true
+    },
+    {
+      "op": "battle_start",
+      "party": [
+        {
+          "id": "brannoc",
+          "sprite": "brannoc",
+          "hp": 13,
+          "max_hp": 13,
+          "name": "Brannoc",
+          "at": [
+            20,
+            14
+          ]
+        },
+        {
+          "id": "oriel",
+          "sprite": "oriel",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Oriel",
+          "at": [
+            21,
+            13
+          ]
+        },
+        {
+          "id": "ilsevel",
+          "sprite": "ilsevel",
+          "hp": 8,
+          "max_hp": 8,
+          "name": "Ilsevel",
+          "at": [
+            19,
+            12
+          ]
+        },
+        {
+          "id": "tamsin",
+          "sprite": "tamsin",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Tamsin",
+          "at": [
+            17,
+            13
+          ]
+        }
+      ],
+      "enemies": [
+        {
+          "id": "goblin-1",
+          "sprite": "goblin_warrior",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Goblin",
+          "at": [
+            19,
+            19
+          ]
+        },
+        {
+          "id": "goblin-2",
+          "sprite": "goblin_warrior",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Goblin",
+          "at": [
+            21,
+            19
+          ]
+        },
+        {
+          "id": "goblin-3",
+          "sprite": "goblin_minion",
+          "hp": 7,
+          "max_hp": 7,
+          "name": "Goblin Runt",
+          "at": [
+            17,
+            20
+          ]
+        },
+        {
+          "id": "goblin-4",
+          "sprite": "rusk",
+          "hp": 7,
+          "max_hp": 7,
+          "name": "Goblin Runt",
+          "at": [
+            22,
+            20
+          ]
+        }
+      ],
+      "music": "battle"
+    },
+    {
+      "op": "initiative",
+      "order": [
+        {
+          "id": "goblin-1",
+          "name": "Goblin",
+          "total": 17,
+          "team": "enemies"
+        },
+        {
+          "id": "goblin-2",
+          "name": "Goblin",
+          "total": 13,
+          "team": "enemies"
+        },
+        {
+          "id": "ilsevel",
+          "name": "Ilsevel",
+          "total": 12,
+          "team": "party"
+        },
+        {
+          "id": "brannoc",
+          "name": "Brannoc",
+          "total": 11,
+          "team": "party"
+        },
+        {
+          "id": "tamsin",
+          "name": "Tamsin",
+          "total": 10,
+          "team": "party"
+        },
+        {
+          "id": "oriel",
+          "name": "Oriel",
+          "total": 5,
+          "team": "party"
+        },
+        {
+          "id": "goblin-4",
+          "name": "Goblin Runt",
+          "total": 4,
+          "team": "enemies"
+        },
+        {
+          "id": "goblin-3",
+          "name": "Goblin Runt",
+          "total": 3,
+          "team": "enemies"
+        }
+      ]
+    },
+    {
+      "op": "narrate",
+      "text": "The goblins are fast and they are hungry, and they have already picked the one in the robes."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-1",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "goblin-1",
+      "path": [
+        [
+          19,
+          19
+        ],
+        [
+          19,
+          18
+        ],
+        [
+          18,
+          17
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          16,
+          15
+        ],
+        [
+          17,
+          14
+        ],
+        [
+          18,
+          13
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-1",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0011",
+        "index": 11,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-1",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 11,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 4,
+        "total": 8,
+        "advantage": "none",
+        "natural": 4,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "4 + 4 = 8 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-2",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "goblin-2",
+      "path": [
+        [
+          21,
+          19
+        ],
+        [
+          20,
+          18
+        ],
+        [
+          19,
+          17
+        ],
+        [
+          18,
+          16
+        ],
+        [
+          18,
+          15
+        ],
+        [
+          19,
+          14
+        ],
+        [
+          20,
+          13
+        ]
+      ]
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shield",
+      "results": [
+        {
+          "target": "ilsevel",
+          "effect": "shield"
+        }
+      ],
+      "label": "Ilsevel - Shield (reaction)",
+      "line": "AC rises to 17"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-2",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0012",
+        "index": 12,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-2",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 12,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 4,
+        "total": 14,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "target cast Shield"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "10 + 4 = 14 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shocking_grasp",
+      "results": [
+        {
+          "target": "goblin-2",
+          "damage": 2,
+          "hp_after": 8,
+          "hit": true
+        }
+      ],
+      "label": "Ilsevel - Shocking Grasp",
+      "roll": {
+        "id": "r0013",
+        "index": 13,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Shocking Grasp",
+        "actor": "ilsevel",
+        "target": "goblin-2",
+        "draws": [
+          {
+            "counter": 13,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 5,
+        "total": 15,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "10 + 5 = 15 vs AC 15 HIT"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-2",
+      "roll": {
+        "id": "r0015",
+        "index": 15,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-2",
+        "draws": [
+          {
+            "counter": 15,
+            "sides": 20,
+            "value": 19
+          }
+        ],
+        "rolls": [
+          19
+        ],
+        "kept": [
+          19
+        ],
+        "modifier": 5,
+        "total": 24,
+        "advantage": "none",
+        "natural": 19,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "19 + 5 = 24 vs AC 15 HIT",
+      "damage": 9,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-2"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc's first swing ends the first goblin. He does not look at it twice."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-1",
+      "roll": {
+        "id": "r0018",
+        "index": 18,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortsword",
+        "actor": "tamsin",
+        "target": "goblin-1",
+        "draws": [
+          {
+            "counter": 18,
+            "sides": 20,
+            "value": 16
+          }
+        ],
+        "rolls": [
+          16
+        ],
+        "kept": [
+          16
+        ],
+        "modifier": 5,
+        "total": 21,
+        "advantage": "none",
+        "natural": 16,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Tamsin - Shortsword",
+      "line": "16 + 5 = 21 vs AC 15 HIT",
+      "damage": 7,
+      "hp_after": 3,
+      "sneak_attack": true
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "bless",
+      "results": [
+        {
+          "target": "brannoc",
+          "effect": "bless"
+        },
+        {
+          "target": "oriel",
+          "effect": "bless"
+        },
+        {
+          "target": "ilsevel",
+          "effect": "bless"
+        }
+      ],
+      "label": "Oriel - Bless (level 1)",
+      "line": "Brannoc, Oriel, Ilsevel"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-4",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-4",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0021",
+        "index": 21,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-4",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 21,
+            "sides": 20,
+            "value": 3
+          },
+          {
+            "counter": 22,
+            "sides": 20,
+            "value": 2
+          }
+        ],
+        "rolls": [
+          3,
+          2
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 4,
+        "total": 6,
+        "advantage": "disadvantage",
+        "natural": 2,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 2 + 4 = 6 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-3",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-3",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0022",
+        "index": 22,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-3",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 23,
+            "sides": 20,
+            "value": 2
+          },
+          {
+            "counter": 24,
+            "sides": 20,
+            "value": 14
+          }
+        ],
+        "rolls": [
+          2,
+          14
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 4,
+        "total": 6,
+        "advantage": "disadvantage",
+        "natural": 2,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 2 + 4 = 6 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-1",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shield",
+      "results": [
+        {
+          "target": "ilsevel",
+          "effect": "shield"
+        }
+      ],
+      "label": "Ilsevel - Shield (reaction)",
+      "line": "AC rises to 17"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-1",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0023",
+        "index": 23,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-1",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 25,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 4,
+        "total": 15,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "target cast Shield"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "11 + 4 = 15 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shocking_grasp",
+      "results": [
+        {
+          "target": "goblin-1",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Shocking Grasp",
+      "roll": {
+        "id": "r0024",
+        "index": 24,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Shocking Grasp",
+        "actor": "ilsevel",
+        "target": "goblin-1",
+        "draws": [
+          {
+            "counter": 26,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 6,
+        "total": 9,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 15,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +1 (r0025)"
+        ]
+      },
+      "line": "3 + 6 = 9 vs AC 15 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 2
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          20,
+          14
+        ],
+        [
+          19,
+          13
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-1",
+      "roll": {
+        "id": "r0026",
+        "index": 26,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-1",
+        "draws": [
+          {
+            "counter": 28,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 7,
+        "total": 17,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +2 (r0027)"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "10 + 7 = 17 vs AC 15 HIT",
+      "damage": 9,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-1"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-4",
+      "roll": {
+        "id": "r0030",
+        "index": 30,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-4",
+        "draws": [
+          {
+            "counter": 32,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 5,
+        "total": 16,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "11 + 5 = 16 vs AC 12 HIT",
+      "damage": 5,
+      "hp_after": 2,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "sacred_flame",
+      "results": [
+        {
+          "target": "goblin-4",
+          "saved": true
+        }
+      ],
+      "label": "Oriel - Sacred Flame",
+      "roll": {
+        "id": "r0033",
+        "index": 33,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "Sacred Flame save",
+        "actor": "goblin-4",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 35,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 2,
+        "total": 13,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "Goblin Runt: 11 + 2 = 13 vs DC 13 SAVED"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-4",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-4",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0034",
+        "index": 34,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-4",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 36,
+            "sides": 20,
+            "value": 9
+          },
+          {
+            "counter": 37,
+            "sides": 20,
+            "value": 19
+          }
+        ],
+        "rolls": [
+          9,
+          19
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 4,
+        "total": 13,
+        "advantage": "disadvantage",
+        "natural": 9,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 9 + 4 = 13 vs AC 12 HIT",
+      "damage": 3,
+      "hp_after": 5,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-3",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-3",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0036",
+        "index": 36,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-3",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 39,
+            "sides": 20,
+            "value": 13
+          },
+          {
+            "counter": 40,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          13,
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 4,
+        "total": 13,
+        "advantage": "disadvantage",
+        "natural": 9,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 9 + 4 = 13 vs AC 12 HIT",
+      "damage": 6,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "ilsevel",
+      "pc": true,
+      "narrate_hint": "pc_down"
+    },
+    {
+      "op": "narrate",
+      "text": "The second dagger finds its mark. Ilsevel folds into the dust without a sound."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 3
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0038",
+        "index": 38,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "death save",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 42,
+            "sides": 20,
+            "value": 7
+          }
+        ],
+        "rolls": [
+          7
+        ],
+        "kept": [
+          7
+        ],
+        "modifier": 0,
+        "total": 7,
+        "advantage": "none",
+        "natural": 7,
+        "dc": 10,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Death save",
+      "line": "7 : failure"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 3
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          19,
+          13
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          17,
+          15
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          15,
+          17
+        ],
+        [
+          15,
+          18
+        ],
+        [
+          16,
+          19
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-3",
+      "roll": {
+        "id": "r0039",
+        "index": 39,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-3",
+        "draws": [
+          {
+            "counter": 43,
+            "sides": 20,
+            "value": 7
+          }
+        ],
+        "rolls": [
+          7
+        ],
+        "kept": [
+          7
+        ],
+        "modifier": 6,
+        "total": 13,
+        "advantage": "none",
+        "natural": 7,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +1 (r0040)"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "7 + 6 = 13 vs AC 12 HIT",
+      "damage": 8,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-3"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 3
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-4",
+      "roll": {
+        "id": "r0043",
+        "index": 43,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "2d20kh1",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-4",
+        "draws": [
+          {
+            "counter": 47,
+            "sides": 20,
+            "value": 8
+          },
+          {
+            "counter": 48,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          8,
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 5,
+        "total": 22,
+        "advantage": "advantage",
+        "natural": 17,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "+vex"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "ADV 17 + 5 = 22 vs AC 12 HIT",
+      "damage": 15,
+      "hp_after": 0,
+      "sneak_attack": true
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-4",
+      "pc": true,
+      "nonlethal": true
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin's arrow takes the last runt in the shoulder. He drops, still breathing."
+    },
+    {
+      "op": "battle_end",
+      "result": "victory",
+      "xp": 150
+    },
+    {
+      "op": "camera",
+      "to": [
+        20,
+        15
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "sad",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  The One Left Breathing  -  Evening",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Then it is quiet. Three goblins will not get up. The fourth is breathing. So, barely, is Ilsevel."
+    },
+    {
+      "op": "say",
+      "text": "Ilsevel! Stay with me. Aurelan, if you're listening, now would be good.",
+      "speaker": "oriel",
+      "emote": "shock"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          20,
+          12
+        ]
+      ],
+      "speed": 6,
+      "face": "left"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0046",
+        "index": 46,
+        "seed": "C01-E001-1",
+        "kind": "dice",
+        "notation": "2d4",
+        "purpose": "a1: Healing Word on Ilsevel Starwick after the fight",
+        "actor": "oriel",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 51,
+            "sides": 4,
+            "value": 1
+          },
+          {
+            "counter": 52,
+            "sides": 4,
+            "value": 1
+          }
+        ],
+        "rolls": [
+          1,
+          1
+        ],
+        "kept": [
+          1,
+          1
+        ],
+        "modifier": 3,
+        "total": 5,
+        "advantage": "none",
+        "natural": null,
+        "dc": null,
+        "success": null,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Healing Word",
+      "line": "2d4 (1, 1) + 3 = 5 HP"
+    },
+    {
+      "op": "battle_revive",
+      "actor": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "Warm light runs from Oriel's hands into Ilsevel like water into dry ground. Ilsevel's eyes open."
+    },
+    {
+      "op": "camera",
+      "to": [
+        20,
+        12
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "I am... technically fine. I would like it recorded that I was stabbed. Twice.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Recorded, Professor. Very brave. Mostly with your face.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          21,
+          19
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "camera",
+      "to": [
+        21,
+        20
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "This one's alive. Small. Tie him up. Someone will want to ask him questions.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          23,
+          19
+        ]
+      ],
+      "speed": 4,
+      "face": "left",
+      "wait": false
+    },
+    {
+      "op": "say",
+      "text": "Do goblins carry coin? Asking for the village. Purely civic interest.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          20,
+          16
+        ],
+        [
+          22,
+          18
+        ],
+        [
+          22,
+          19
+        ]
+      ],
+      "speed": 4,
+      "face": "down"
+    },
+    {
+      "op": "say",
+      "text": "He's bleeding. Hold the lamp closer, Brannoc. Nobody dies in my square tonight.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0047",
+        "index": 47,
+        "seed": "C01-E001-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c4: Stop the bleeding of the goblin left alive, by lamplight, with her hands still shaking.",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 53,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 5,
+        "total": 9,
+        "advantage": "none",
+        "natural": 4,
+        "dc": 10,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Medicine",
+      "line": "4 + 5 = 9 vs DC 10 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel's hands are shaking, and the bandage slips twice. The goblin lives, but only just. He won't be talking before morning."
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        9,
+        9
+      ],
+      "facing": "down",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "move",
+      "actor": "maddy_fenn",
+      "path": [
+        [
+          12,
+          12
+        ],
+        [
+          14,
+          12
+        ],
+        [
+          19,
+          17
+        ],
+        [
+          19,
+          18
+        ]
+      ],
+      "speed": 5,
+      "face": "right"
+    },
+    {
+      "op": "say",
+      "text": "Is it over? Who's hurt? Inside, the lot of you. There's stew on, and nobody argues with me tonight.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "face",
+      "actor": "brannoc",
+      "facing": "right"
+    },
+    {
+      "op": "face",
+      "actor": "oriel",
+      "facing": "left"
+    },
+    {
+      "op": "say",
+      "text": "You stood in front of all of us. You didn't even know our names.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "You kept them standing behind me. That's holding the line.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Then we held it together.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "...Aye.",
+      "speaker": "brannoc",
+      "emote": "dots"
+    },
+    {
+      "op": "say",
+      "text": "Free stew, then? Lovely. I'll bring the cards.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: The goblin who talked."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "Cards by the Well"
+    },
+    {
+      "cue": 21,
+      "title": "The Lantern Ledger"
+    },
+    {
+      "cue": 37,
+      "title": "The Dusk Devotion"
+    },
+    {
+      "cue": 61,
+      "title": "Lantern Thirty-Seven"
+    },
+    {
+      "cue": 165,
+      "title": "The One Left Breathing"
+    },
+    {
+      "cue": 197,
+      "title": "Next time"
+    }
+  ]
+}

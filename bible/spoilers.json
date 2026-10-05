@@ -1,0 +1,26 @@
+{
+ "schema": "pqc/spoilers@1",
+ "description": "Phrases that must not appear in anything viewers read (wiki pages, YouTube text, on-screen dialogue) before their reveal campaign. Checked deterministically by pqc.pipeline.continuity and pqc.pipeline.wiki. Keep in sync with the SECRET blocks in the bible.",
+ "terms": [
+  {"phrase": "First Light", "reveal_campaign": 6, "secret": "The Eight devoured the First Light"},
+  {"phrase": "devoured a ninth", "reveal_campaign": 6, "secret": "The Eight devoured the First Light"},
+  {"phrase": "Heartstone", "reveal_campaign": 9, "secret": "The Heartstone"},
+  {"phrase": "master key", "reveal_campaign": 3, "secret": "The Gloamkey is a Lamplighter master key"},
+  {"phrase": "Gloamkey", "reveal_campaign": 3, "secret": "The key has a name"},
+  {"phrase": "Saint Wenna made", "reveal_campaign": 3, "secret": "Saint Wenna made the key"},
+  {"phrase": "Y.M.", "reveal_campaign": 9, "secret": "Oriel's button is engraved Y.M."},
+  {"phrase": "carried to Lantern No. 1", "reveal_campaign": 9, "secret": "Who left Oriel at Lantern No. 1"},
+  {"phrase": "leads the Unlit", "reveal_campaign": 4, "secret": "Ysolde leads the Unlit"},
+  {"phrase": "founder of the Unlit", "reveal_campaign": 4, "secret": "Ysolde founded the Unlit"},
+  {"phrase": "Quiet Flame", "reveal_campaign": 4, "secret": "Ysolde's title among the Unlit"},
+  {"phrase": "Ysolde is alive", "reveal_campaign": 4, "secret": "Ysolde is alive"},
+  {"phrase": "Hilde lives", "reveal_campaign": 5, "secret": "Hilde survived Shaft Nine"},
+  {"phrase": "Hilde survived", "reveal_campaign": 5, "secret": "Hilde survived Shaft Nine"},
+  {"phrase": "Ulathyx", "reveal_campaign": 6, "secret": "The aboleth"},
+  {"phrase": "was sabotage", "reveal_campaign": 5, "secret": "Shaft Nine was sabotage"},
+  {"phrase": "Corin Venn", "reveal_campaign": 8, "secret": "Ash is Corin Venn"},
+  {"phrase": "Quill has chosen", "reveal_campaign": 7, "secret": "Quill chose Tamsin"},
+  {"phrase": "storyteller is Wil", "reveal_campaign": 10, "secret": "The narrator is Wil Fenn"},
+  {"phrase": "unmake the Eight", "reveal_campaign": 7, "secret": "Ysolde's plan"}
+ ]
+}

@@ -1,0 +1,711 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E007",
+  "title": "C01-E007 - The Saint of the Open Hand",
+  "fps": 30,
+  "seed": "C01-E007-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 7 - The Saint of the Open Hand"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "day",
+      "camera": [
+        19,
+        12
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        19,
+        13
+      ],
+      "facing": "up",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        20,
+        13
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        18,
+        14
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        21,
+        14
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        16,
+        12
+      ],
+      "facing": "right",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "The Saint of the Open Hand",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  5 Emberfall 1047 AK",
+      "text": "Two days ago Lantern Thirty-Seven went dark outside the village of Brindle Cross. Brannoc the soldier, Ilsevel the archivist, Tamsin the card player and Oriel the priestess followed a goblin trail into Thornpike Woods, fought wolves and goblins, and found the lantern's core had been stolen by hand. They are coming home with three dead cores, and more questions than they left with."
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  Coming Home  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "Brindle Cross, the afternoon of the fifth."
+    },
+    {
+      "op": "narrate",
+      "text": "Four travellers come up the south road, filthy and tired, carrying something wrapped in a soldier's cloak."
+    },
+    {
+      "op": "say",
+      "text": "Well? Is it lit?",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "camera",
+      "to": [
+        17,
+        14
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "No. But we know why it went out. Somebody took its core. By hand.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc opens the cloak. Three cloudy grey stones lie in it like eggs gone cold."
+    },
+    {
+      "op": "say",
+      "text": "Three? We only lost the one! Whose are the other two? And who's paying for all this, the Eight?",
+      "speaker": "maddy_fenn",
+      "emote": "shock"
+    },
+    {
+      "op": "say",
+      "text": "The goblins, technically. They just don't know it yet.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "tobin_ashdown",
+      "sprite": "tobin_ashdown",
+      "at": [
+        27,
+        8
+      ],
+      "facing": "left",
+      "name": "Father Tobin"
+    },
+    {
+      "op": "move",
+      "actor": "tobin_ashdown",
+      "path": [
+        [
+          25,
+          8
+        ],
+        [
+          21,
+          12
+        ]
+      ],
+      "speed": 2,
+      "face": "left"
+    },
+    {
+      "op": "narrate",
+      "text": "Father Tobin comes down from the shrine as fast as his cane allows, which is not very fast."
+    },
+    {
+      "op": "say",
+      "text": "Oriel. Let me look at you. Are you hurt? Have you eaten? You haven't. I can tell by your ears.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "Father! I'm well. Better than well. These are my friends: Brannoc, Ilsevel, and Tam.",
+      "speaker": "oriel",
+      "emote": "happy"
+    },
+    {
+      "op": "say",
+      "text": "Brannoc. The silver in my alms box. I always wondered whose hand it came from.",
+      "speaker": "tobin_ashdown",
+      "emote": "smile"
+    },
+    {
+      "op": "emote",
+      "actor": "brannoc",
+      "emote": "sweat",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Supper at the shrine, all of you. There's soup. There's mostly soup.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "Supper's at my inn, Father, thank you. And the board is free, as I promised. Lantern lit or not.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "Free! My favourite word, Mistress Fenn. You remembered.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "crooked_kettle_interior",
+      "time_of_day": "evening",
+      "camera": [
+        5,
+        5
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "tobin_ashdown",
+      "sprite": "tobin_ashdown",
+      "at": [
+        3,
+        4
+      ],
+      "facing": "down",
+      "name": "Father Tobin"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        4,
+        5
+      ],
+      "facing": "left",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        6,
+        4
+      ],
+      "facing": "left",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        6,
+        6
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        2,
+        5
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        13,
+        2
+      ],
+      "facing": "down",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "The Crooked Kettle (inside)  -  By the Hearth  -  Evening",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "That evening. The Crooked Kettle smells of mutton stew and woodsmoke, and Father Tobin has the best seat by the hearth."
+    },
+    {
+      "op": "say",
+      "text": "Go on then, Father. Who was Saint Wenna? Sunshine says you tell it best.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "In the fourth year after the Kindling, every road in the world was dark. A woman named Wenna walked out of the last lit town.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "She carried a lantern in her open hand, and whoever she met on the road walked in its light.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "narrate",
+      "text": "The fire pops. Even Maddy, behind the bar, stops wiping the same cup."
+    },
+    {
+      "op": "say",
+      "text": "She never closed that hand. Not to fight, not to sleep. At the next town she lit a second lantern from the first, and walked on.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "'The open hand holds more than the fist.' Forty years I've preached it. I still don't know if it's about lanterns or about people.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "The Order's own histories are rather more precise, Father. If I may.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E007-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Recall what the Lamplighters' own histories say about Saint Wenna, the Order's founder, to set beside a village prie",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 5,
+        "total": 8,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - History",
+      "line": "3 + 5 = 8 vs DC 12 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "What comes back to Ilsevel is the first page of the Hall's primer, and not one word more."
+    },
+    {
+      "op": "say",
+      "text": "'Saint Wenna founded the Order of Lamplighters in the fourth year After Kindling.' That is... the whole of the entry.",
+      "speaker": "ilsevel",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "I like his better.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "So do I. I shall not be writing that down.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel unwraps one of the dead cores and lays it in Father Tobin's hands."
+    },
+    {
+      "op": "say",
+      "text": "Pray with me, Father? It should be warm. I want to know why it isn't.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E007-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Hold a dead lantern-core and pray over it, trying to understand by faith why the flame will not come back to it.",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 1,
+        "total": 10,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 14,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Religion",
+      "line": "9 + 1 = 10 vs DC 14 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel bows her head and reaches for the warmth she has felt since she was twelve. She feels nothing. Not the warmth. Not even the cold."
+    },
+    {
+      "op": "say",
+      "text": "Nothing. It's as if it isn't there at all.",
+      "speaker": "oriel",
+      "emote": "sad"
+    },
+    {
+      "op": "say",
+      "text": "Then they'll sit on the altar, where the light is, until someone of the Order can see to them.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "I will write to Lamplighters' Hall tonight. Someone there can rekindle a core. In theory.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Father. Tell them my story. Please.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Your story. Very well. A frost night, in 1022. I was locking the shrine when I heard crying from Lantern No. 1.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "There you were at the foot of it, wrapped in a grey coat far too big for you, with a brass button at the collar.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel's fingers find the button on the cord at her neck. Tobin's eyes rest on it a moment too long, as they always do."
+    },
+    {
+      "op": "say",
+      "text": "I named you Oriel. Golden. Because that lantern was the only light in the square, and you were in it.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "Good name.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "camera",
+      "to": [
+        7,
+        7
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "spawn",
+      "actor": "wil_fenn",
+      "sprite": "wil_fenn",
+      "at": [
+        8,
+        13
+      ],
+      "facing": "up",
+      "name": "Wil Fenn"
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "The Crooked Kettle (inside)  -  Forty-One  -  Evening",
+      "duration": 3.0
+    },
+    {
+      "op": "move",
+      "actor": "wil_fenn",
+      "path": [
+        [
+          8,
+          8
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "speed": 6,
+      "face": "left"
+    },
+    {
+      "op": "say",
+      "text": "Mam! Father Tobin! Lantern Forty-One's gone dark! The carter saw it from the south road!",
+      "speaker": "wil_fenn",
+      "emote": "alert"
+    },
+    {
+      "op": "camera",
+      "to": [
+        13,
+        2
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Forty-One as well? And who's going to see to that one, the goblins?",
+      "speaker": "maddy_fenn",
+      "emote": "angry"
+    },
+    {
+      "op": "camera",
+      "to": [
+        7,
+        8
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "And a rider came through at dusk, in Fort Harrow colours! He wouldn't stop. He left this for 'Bran Vow'.",
+      "speaker": "wil_fenn"
+    },
+    {
+      "op": "move",
+      "actor": "wil_fenn",
+      "path": [
+        [
+          7,
+          6
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "say",
+      "text": "'Bran Vow'? Big Man, is that you?",
+      "speaker": "tamsin",
+      "emote": "question"
+    },
+    {
+      "op": "say",
+      "text": "Army name.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc breaks the seal and reads, his lips moving slightly."
+    },
+    {
+      "op": "say",
+      "text": "'Bran. Goblins seen near Wending Mill. Too many. I have no one to spare.'",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "'Look in on your way back. Bring help if you find any. Rook.'",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "camera",
+      "to": [
+        6,
+        6
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Wending Mill is on the road south. It is also, technically, where my inspection goes next.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Then we're the help.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Then go with my blessing. And come back, all of you. That part isn't in the scripture, but it should be.",
+      "speaker": "tobin_ashdown"
+    },
+    {
+      "op": "say",
+      "text": "At dawn, then. Everyone sleeps. I'll take the...",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "You'll sleep too, Brannoc.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "...Fine.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Smoke on the road south. Wending Mill."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "Coming Home"
+    },
+    {
+      "cue": 30,
+      "title": "By the Hearth"
+    },
+    {
+      "cue": 68,
+      "title": "Forty-One"
+    },
+    {
+      "cue": 92,
+      "title": "Next time"
+    }
+  ]
+}

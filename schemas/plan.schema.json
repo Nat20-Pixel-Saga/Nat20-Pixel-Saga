@@ -1,0 +1,385 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/plan@1",
+ "title": "Episode plan",
+ "description": "Planner output (Sonnet 5.5). Declares intents only: checks with DCs and encounters with positions. The engine rolls; the writer narrates afterwards.",
+ "type": "object",
+ "required": [
+  "schema",
+  "episode_id",
+  "title",
+  "summary",
+  "dm_intro",
+  "scenes",
+  "state_proposals",
+  "next_time"
+ ],
+ "$defs": {
+  "xy": {
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "minItems": 2
+  },
+  "check": {
+   "type": "object",
+   "required": [
+    "id",
+    "actor",
+    "reason"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^c[0-9]+$"
+    },
+    "actor": {
+     "type": "string"
+    },
+    "skill": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "ability": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "dc": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 5,
+     "maximum": 30
+    },
+    "contest": {
+     "type": [
+      "object",
+      "null"
+     ],
+     "properties": {
+      "actor": {
+       "type": "string"
+      },
+      "skill": {
+       "type": "string"
+      },
+      "passive": {
+       "type": "boolean"
+      },
+      "monster": {
+       "type": "string"
+      }
+     }
+    },
+    "save": {
+     "type": "boolean"
+    },
+    "advantage": {
+     "type": "boolean"
+    },
+    "disadvantage": {
+     "type": "boolean"
+    },
+    "group": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "reason": {
+     "type": "string",
+     "minLength": 3
+    },
+    "on_success": {
+     "type": "string"
+    },
+    "on_failure": {
+     "type": "string"
+    },
+    "offscreen": {
+     "type": "boolean"
+    }
+   }
+  },
+  "encounter": {
+   "type": "object",
+   "required": [
+    "id",
+    "name",
+    "enemies",
+    "party_at"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^e[0-9]+$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "enemies": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": [
+       "id",
+       "kind",
+       "at"
+      ],
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "kind": {
+        "type": "string"
+       },
+       "at": {
+        "type": "array",
+        "items": {
+         "type": "integer"
+        },
+        "minItems": 2
+       },
+       "name": {
+        "type": "string"
+       },
+       "nonlethal": {
+        "type": "boolean"
+       },
+       "sprite": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "party_at": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      },
+      "minItems": 2
+     }
+    },
+    "objective": {
+     "type": "string"
+    },
+    "options": {
+     "type": "object"
+    },
+    "stakes": {
+     "type": "string"
+    }
+   }
+  },
+  "scene": {
+   "type": "object",
+   "required": [
+    "id",
+    "name",
+    "map",
+    "time_of_day",
+    "cast",
+    "beats"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^s[0-9]+$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    },
+    "map": {
+     "type": "string"
+    },
+    "time_of_day": {
+     "type": "string",
+     "enum": [
+      "day",
+      "morning",
+      "dusk",
+      "evening",
+      "night"
+     ]
+    },
+    "camera": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2
+    },
+    "music": {
+     "type": "string"
+    },
+    "cast": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "id",
+       "at"
+      ],
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "sprite": {
+        "type": "string"
+       },
+       "name": {
+        "type": "string"
+       },
+       "at": {
+        "type": "array",
+        "items": {
+         "type": "integer"
+        },
+        "minItems": 2
+       },
+       "facing": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "beats": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "checks": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/check"
+     }
+    },
+    "encounter": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/encounter"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "pillars": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "explore",
+       "fight",
+       "talk",
+       "bond"
+      ]
+     }
+    },
+    "transition": {
+     "type": "string",
+     "enum": [
+      "cut",
+      "continue"
+     ],
+     "description": "cut (default): fade out, re-stage the scene with the cast on their marks. continue: same map, no cut - whoever is on screen stays where the previous scene or fight left them (the writer moves them); only cast members not on screen are placed on their marks."
+    }
+   }
+  }
+ },
+ "properties": {
+  "schema": {
+   "const": "pqc/plan@1"
+  },
+  "episode_id": {
+   "type": "string",
+   "pattern": "^C[0-9]{2}-E[0-9]{3}$"
+  },
+  "title": {
+   "type": "string",
+   "minLength": 1
+  },
+  "summary": {
+   "type": "string",
+   "minLength": 20
+  },
+  "dm_intro": {
+   "type": "object",
+   "required": [
+    "title",
+    "subtitle",
+    "text"
+   ],
+   "properties": {
+    "title": {
+     "type": "string"
+    },
+    "subtitle": {
+     "type": "string"
+    },
+    "text": {
+     "type": "string",
+     "minLength": 40
+    }
+   }
+  },
+  "scenes": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/scene"
+   }
+  },
+  "state_proposals": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "type"
+    ],
+    "properties": {
+     "type": {
+      "type": "string",
+      "enum": [
+       "quest",
+       "npc",
+       "item",
+       "lantern",
+       "hook",
+       "bond",
+       "faction",
+       "flag",
+       "xp",
+       "gold",
+       "location",
+       "clock",
+       "rest"
+      ]
+     },
+     "if": {
+      "type": "string",
+      "pattern": "^[ce][0-9]+\\.(success|failure|won|lost)$"
+     }
+    }
+   }
+  },
+  "next_time": {
+   "type": "string",
+   "maxLength": 80
+  }
+ }
+}

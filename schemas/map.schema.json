@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/map@1",
+  "title": "Tile map",
+  "description": "A 16x16-tile map. Terrain layers are character grids ('.' = none) autotiled at render time; props are placed by their top-left tile.",
+  "type": "object",
+  "required": ["schema", "id", "size", "base", "layers", "props"],
+  "properties": {
+    "schema": {"const": "pqc/map@1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "name": {"type": "string"},
+    "region": {"type": "string"},
+    "biome": {"type": "string"},
+    "size": {"type": "array", "items": {"type": "integer", "minimum": 1, "maximum": 512}, "minItems": 2},
+    "base": {"type": "string"},
+    "seed": {"type": "integer"},
+    "layers": {"type": "array", "items": {"type": "object", "required": ["terrain", "rows"],
+      "properties": {"terrain": {"type": "string"}, "rows": {"type": "array", "items": {"type": "string"}}}}},
+    "props": {"type": "array", "items": {"type": "object", "required": ["prop", "at"],
+      "properties": {"prop": {"type": "string"}, "at": {"type": "array", "items": {"type": "integer"}, "minItems": 2},
+                     "id": {"type": "string"}, "label": {"type": "string"}, "light": {"type": "string", "enum": ["lit", "flicker", "dead"]}}}},
+    "points": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "integer"}, "minItems": 2}}
+  }
+}

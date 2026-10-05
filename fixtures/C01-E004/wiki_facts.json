@@ -1,0 +1,46 @@
+{
+ "schema": "pqc/wiki_facts@1",
+ "episode_id": "C01-E004",
+ "summary": "On the night of 4 Emberfall the goblin trail forked at a great stump in Thornpike Woods. Ilsevel performed an hour-long ritual and called her familiar for the first time: a small brown owl she named Pell. In the birch clearing to the north, seeing through Pell's eyes proved dizzying and three wolves were on the party before anyone saw them; Tamsin went down to a wolf's bite until Oriel's prayer brought her back, and the party killed all three. Ilsevel found the wolves starved and grey at the fur tips, like the grass at Lantern 37, and the party set off east.",
+ "npcs": [
+  {
+   "id": "npc.pell",
+   "name": "Pell",
+   "description": "Ilsevel's familiar: a small brown owl she called with a ritual at the fork of the goblin trail. He does not speak; Ilsevel 'translates' his hoots, usually as insults.",
+   "voice": "Hoots, as translated by Ilsevel: 'Pell says you smell of cards and onions.'",
+   "status": "alive",
+   "attitude": "helpful"
+  }
+ ],
+ "places": [
+  {
+   "id": "loc.thornpike-woods",
+   "name": "Thornpike Woods",
+   "description": "Dark pine woods east of the Lantern Road. The goblin trail forks at a great dead stump: north to a clearing ringed with pale birches, and on east and south-west. Starving wolves hunt there."
+  }
+ ],
+ "quotes": [
+  {"speaker": "brannoc", "text": "Somebody has to."},
+  {"speaker": "ilsevel", "text": "Hello. I have read about familiars for thirty years. You are smaller than the diagrams."},
+  {"speaker": "ilsevel", "text": "Pell says you smell of cards and onions. I am paraphrasing. He was ruder."},
+  {"speaker": "oriel", "text": "You went down and didn't get up. Humour me."},
+  {"speaker": "ilsevel", "text": "Pell says he will go first. He says he is the only one of us with any sense."}
+ ],
+ "events": [
+  "At the fork in the goblin trail, Brannoc kept watch and counted trees while Ilsevel performed an hour-long ritual.",
+  "Ilsevel called her familiar for the first time, a small brown owl, and named him Pell.",
+  "In the birch clearing, Ilsevel's first try at seeing through Pell's eyes failed: three wolves reached the party before anyone saw them.",
+  "Ilsevel's Shield turned two bites; a wolf's bite dropped Tamsin, and Oriel's Healing Word brought her back.",
+  "Ilsevel killed one wolf with Shocking Grasp and Brannoc killed the other two.",
+  "Ilsevel found the wolves starved, far from their range, and grey at the fur tips, like the grass at Lantern 37.",
+  "Pell returned to Ilsevel, and the party set off east along the trail."
+ ],
+ "items": [],
+ "hooks_planted": [],
+ "character_notes": {
+  "ilsevel": ["Called her familiar Pell for the first time, and was more moved by it than she let anyone see.", "Seeing through Pell's eyes does not come easily to her yet."],
+  "brannoc": ["Counts things on watch: trees, movements.", "Killed two of the three wolves."],
+  "tamsin": ["Was knocked out by a wolf's bite and brought back by Oriel; claims she once lost an argument with a duke's hound.", "Adores Pell, who does not return the feeling."],
+  "oriel": ["Blessed the party and brought Tamsin back with Healing Word in the wolf fight."]
+ }
+}

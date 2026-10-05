@@ -1,0 +1,893 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E002",
+  "title": "C01-E002 - The Goblin Who Talked",
+  "fps": 30,
+  "seed": "C01-E002-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 2 - The Goblin Who Talked"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "morning",
+      "camera": [
+        11,
+        9
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        14,
+        9
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "rusk",
+      "sprite": "rusk",
+      "at": [
+        12,
+        8
+      ],
+      "facing": "down",
+      "name": "Goblin"
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        9,
+        8
+      ],
+      "facing": "down",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "The Goblin Who Talked",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+      "text": "Morning comes grey over Brindle Cross. Last night Lantern Thirty-Seven on the south road went dark, and goblins came up out of the night. Four strangers held the square together: a dwarf soldier, an elf archivist, a halfling card player and the shrine's young priestess. One goblin was taken alive. He has spent the night tied to a rain barrel outside the Crooked Kettle, and he has not said a word."
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  The Night Watch Ends  -  Morning",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "Dawn at the Crooked Kettle. Brannoc has not slept. The goblin tied to the rain barrel has not either."
+    },
+    {
+      "op": "say",
+      "text": "Four shutters broken. Two arrows in the door. One goblin. Still one goblin.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "emote",
+      "actor": "rusk",
+      "emote": "angry",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Four shutters! And who's going to pay for those, the Eight? Him?",
+      "speaker": "maddy_fenn",
+      "emote": "angry"
+    },
+    {
+      "op": "say",
+      "text": "He's got no purse. I checked. Twice.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Did you sit out here all night with that? There's a bed upstairs, you stubborn dwarf. I aired it myself.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "Somebody had to watch him.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        19,
+        10
+      ],
+      "facing": "left",
+      "name": "Oriel"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          18,
+          11
+        ],
+        [
+          15,
+          11
+        ],
+        [
+          14,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          12,
+          9
+        ]
+      ],
+      "speed": 4,
+      "face": "up",
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel comes across the square from the shrine with a loaf under one arm and a bowl held in both hands."
+    },
+    {
+      "op": "say",
+      "text": "Morning, Mistress Fenn. Brannoc. Have either of you eaten? No. I can see you haven't.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Is that shrine bread? For a goblin? And what does Father Tobin say about that?",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "He packed it.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel holds out the bowl. The goblin looks at it, then at the dwarf, and does not move."
+    },
+    {
+      "op": "say",
+      "text": "Well. Shout if he bites.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "despawn",
+      "actor": "maddy_fenn"
+    },
+    {
+      "op": "camera",
+      "to": [
+        11,
+        9
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        10,
+        11
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        14,
+        10
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  Bread and a Name  -  Morning",
+      "duration": 3.0
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          10,
+          10
+        ]
+      ],
+      "speed": 4,
+      "face": "up",
+      "wait": false
+    },
+    {
+      "op": "say",
+      "text": "Is this breakfast or an interrogation? I can't do both before noon.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "It is both, Mistress Mossfoot. I have prepared seven questions, in order of importance.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "One question. Who sent you. Then I stop being patient.",
+      "speaker": "brannoc",
+      "emote": "angry"
+    },
+    {
+      "op": "say",
+      "text": "Brannoc. Stand behind me, please. Just stand. You're very good at standing.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "emote",
+      "actor": "brannoc",
+      "emote": "dots",
+      "duration": 1.2
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          13,
+          9
+        ]
+      ],
+      "speed": 4,
+      "face": "up"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel kneels in the dirt so her eyes are level with the goblin's. Behind her, Brannoc folds his arms and becomes a wall."
+    },
+    {
+      "op": "say",
+      "text": "I'm Oriel. That bread is yours, whatever you say. What's your name? Your real one.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E002-1",
+        "kind": "d20",
+        "notation": "2d20kh1",
+        "purpose": "c1: Get a hostile, half-starved goblin captive to talk by kneeling with bread and asking his name, while Brannoc stands ",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 17
+          },
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          17,
+          12
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 3,
+        "total": 20,
+        "advantage": "advantage",
+        "natural": 17,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Persuasion",
+      "line": "ADV 17 + 3 = 20 vs DC 15 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "The goblin looks at the bread, then at the wall behind her. Then he eats, fast, as if someone might take it back."
+    },
+    {
+      "op": "say",
+      "text": "Rusk. Name is Rusk.",
+      "speaker": "rusk"
+    },
+    {
+      "op": "say",
+      "text": "Thank you, Rusk. Why do goblins come down to our road at night?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Shiny stones. From the tall lights. Goblins carry them up into the hills. To the boss.",
+      "speaker": "rusk"
+    },
+    {
+      "op": "say",
+      "text": "Boss gives food. Sacks of meal. Boss gets the food from somewhere else. Rusk not asks. Asking gets you hit.",
+      "speaker": "rusk"
+    },
+    {
+      "op": "say",
+      "text": "And what's one of those stones worth to a goblin, roughly?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Supper.",
+      "speaker": "rusk"
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "dots",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "A lantern-core holds a living mote of divine flame. And someone is paying for them in porridge.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel studies the goblin's face the way she studies a damaged page: slowly, and without blinking."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E002-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Read whether the goblin is telling the truth or only what keeps him fed. Ilsevel has studied goblins in books, never",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 2,
+            "sides": 20,
+            "value": 13
+          }
+        ],
+        "rolls": [
+          13
+        ],
+        "kept": [
+          13
+        ],
+        "modifier": 3,
+        "total": 16,
+        "advantage": "none",
+        "natural": 13,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Insight",
+      "line": "13 + 3 = 16 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "say",
+      "text": "He is telling the truth. Look at his hands. He is not afraid of us. He is afraid of going back.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "No sending Rusk back. Please. Boss counts the goblins who come home with no stones.",
+      "speaker": "rusk",
+      "emote": "sad"
+    },
+    {
+      "op": "say",
+      "text": "Nobody's sending you anywhere today, Rusk. Eat.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "He's still tied up.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "He can be tied up and fed. Those aren't opposites.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "day",
+      "camera": [
+        19,
+        11
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        18,
+        12
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        20,
+        12
+      ],
+      "facing": "left",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  The Velvet Thread  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "By the well, Ilsevel writes up the morning. Tamsin reads over her shoulder, which Ilsevel has asked her twice not to do."
+    },
+    {
+      "op": "say",
+      "text": "You've spelled goblin wrong, Professor. There's a second B.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "There is not. I have read four bestiaries, including Orrin's Lesser Folk of the Vael, 1019 edition. Not one has a second B.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Then four books are wrong. Happens to the best of us.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel's eyes drop to Tamsin's wrist. A thin velvet thread is tied there, worn soft with age."
+    },
+    {
+      "op": "say",
+      "text": "That thread. Velvet, knotted twice. You touch it whenever someone looks at you for too long.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "This? Lucky charm. My grandmother tied it on when I was small. Kept me out of trouble ever since.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0002",
+        "index": 2,
+        "seed": "C01-E002-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c3: Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the: tamsin",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 3,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 3,
+        "total": 14,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Deception",
+      "line": "11 + 3 = 14 vs DC 17 FAIL"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0003",
+        "index": 3,
+        "seed": "C01-E002-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c3: Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the: ilsevel",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 4,
+            "sides": 20,
+            "value": 14
+          }
+        ],
+        "rolls": [
+          14
+        ],
+        "kept": [
+          14
+        ],
+        "modifier": 3,
+        "total": 17,
+        "advantage": "none",
+        "natural": 14,
+        "dc": null,
+        "success": null,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Insight",
+      "line": "14 + 3 = 17"
+    },
+    {
+      "op": "narrate",
+      "text": "It is a good story, and well told. Ilsevel listens to all of it and believes none of it."
+    },
+    {
+      "op": "say",
+      "text": "I do not believe a word of that. Technically, you have been in trouble since the moment I met you.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "sweat",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Ooh, look. There's your second B. Right there. Look closer.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel does not look at the page. She writes one more line in the margin. Tamsin pretends not to see it."
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "brindle_cross",
+      "time_of_day": "day",
+      "camera": [
+        10,
+        10
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "maddy_fenn",
+      "sprite": "maddy_fenn",
+      "at": [
+        9,
+        9
+      ],
+      "facing": "down",
+      "name": "Maddy Fenn"
+    },
+    {
+      "op": "spawn",
+      "actor": "wil_fenn",
+      "sprite": "wil_fenn",
+      "at": [
+        7,
+        10
+      ],
+      "facing": "right",
+      "name": "Wil Fenn"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        11,
+        10
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        10,
+        11
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        8,
+        11
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        12,
+        9
+      ],
+      "facing": "left",
+      "name": "Tamsin"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Brindle Cross  -  Free Board  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "say",
+      "text": "Right. All four of you, here, where I can see you. Is that goblin in my cellar fed?",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "Fed, and he has a blanket. He's asleep on your onions.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "On my onions. Of course he is.",
+      "speaker": "maddy_fenn",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "In fairness, Mistress Fenn, they're very comfortable onions. I tried them first.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "That south road is how flour, letters and doctors get to us. And not a soul in Brindle Cross knows how to light a lantern.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "So. Free board and hot meals at the Kettle, for as long as it takes, to whoever brings that light back.",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "I'll go! I know the south road better than anyone. I've walked it a hundred times!",
+      "speaker": "wil_fenn",
+      "emote": "exclaim"
+    },
+    {
+      "op": "say",
+      "text": "No.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "But I can...",
+      "speaker": "wil_fenn"
+    },
+    {
+      "op": "say",
+      "text": "No, lad. Somebody stays and holds the village. That's you.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "emote",
+      "actor": "wil_fenn",
+      "emote": "happy",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "I will go. Inspecting those lanterns is the task the Order gave me, and the ledger for Thirty-Seven is wrong. I intend to know why.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "I'll go too. It's my road. I felt that light go out. Someone should be there when it comes back.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Free board, you said? Free is my favourite word, Mistress Fenn. Count me in.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "narrate",
+      "text": "Nobody asks why a card player would want to walk an empty road out of town. Brannoc looks as if he might."
+    },
+    {
+      "op": "say",
+      "text": "And you, soldier? Haven't you got letters to carry?",
+      "speaker": "maddy_fenn"
+    },
+    {
+      "op": "say",
+      "text": "Letters can wait. Road's dark. Somebody has to hold it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Big Man, was that a speech? I think that was a speech.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "Ten words. Don't get used to it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: The long walk to Lantern Thirty-Seven."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "The Night Watch Ends"
+    },
+    {
+      "cue": 26,
+      "title": "Bread and a Name"
+    },
+    {
+      "cue": 56,
+      "title": "The Velvet Thread"
+    },
+    {
+      "cue": 78,
+      "title": "Free Board"
+    },
+    {
+      "cue": 110,
+      "title": "Next time"
+    }
+  ]
+}

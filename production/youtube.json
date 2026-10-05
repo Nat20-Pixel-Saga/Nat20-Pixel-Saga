@@ -1,0 +1,22 @@
+{
+ "enabled": false,
+ "category_id": "20",
+ "language": "en",
+ "made_for_kids": false,
+ "contains_synthetic_media": false,
+ "playlist_id": null,
+ "max_per_run": 5,
+ "schedule": {
+  "timezone": "America/New_York",
+  "time": "15:00",
+  "weekdays": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "min_lead_hours": 2
+ },
+ "notes": "enabled: turn on once the secrets are set and the API project has passed YouTube's audit (production/YOUTUBE.md). category 20 = Gaming (24 = Entertainment, 1 = Film & Animation). schedule: null publishes immediately with 'privacy' instead of scheduling. weekdays: 0 = Monday."
+}

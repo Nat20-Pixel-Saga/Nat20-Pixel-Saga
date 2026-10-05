@@ -1,0 +1,320 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E005",
+  "title": "The Scout Camp",
+  "summary": "Later the same night. Following the trail east, the party sees firelight: a goblin scout camp with a patched tent, a fire and a cart. They are in poor shape after the wolves: Ilsevel is hurt and both she and Oriel have spent their prayers and spells until they can sleep. Brannoc wants to wait for dawn; Tamsin has a better idea. The four creep to the edge of the camp, and Tamsin walks in alone with a lie: she has come from the boss to collect the stones early. Then the knives come out. After the fight, the cart holds three lantern-cores, all dead.",
+  "dm_intro": {
+    "title": "The Scout Camp",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+    "text": "Deep in Thornpike Woods, on the trail of whoever stole the core of Lantern Thirty-Seven, four tired strangers have just fought off a pack of starving wolves. Ilsevel's new familiar, the owl Pell, flies ahead in the dark. Brannoc leads, Oriel watches the rear, and Tamsin, as usual, is thinking of something she probably should not do."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "Firelight",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        26,
+        18
+      ],
+      "music": "dark_forest",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            27,
+            19
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            26,
+            18
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            25,
+            18
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            24,
+            17
+          ],
+          "facing": "right",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "pell",
+          "sprite": "pell",
+          "at": [
+            25,
+            17
+          ],
+          "facing": "right",
+          "name": "Pell"
+        }
+      ],
+      "beats": [
+        "East along the trail, firelight between the pines and goblin voices arguing. Pell comes back to Ilsevel's shoulder.",
+        "A council in whispers. Ilsevel is hurt and has nothing left to cast but cantrips; Oriel admits she has nothing left to pray with until she sleeps. Brannoc wants to wait for dawn. Tamsin points out that by dawn the cart will be gone.",
+        "Tamsin's plan: the others creep to the bushes at the edge of the camp; she walks in alone and lies. 'Rusk told us what they want to hear.'",
+        "The four creep up through the undergrowth (c1)."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "tamsin",
+          "skill": "stealth",
+          "dc": 11,
+          "group": [
+            "brannoc",
+            "ilsevel",
+            "tamsin",
+            "oriel"
+          ],
+          "reason": "Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries are busy arguing.",
+          "on_success": "They reach the bushes at the edge of the firelight unseen and can watch the camp: three goblins, a tent, a fire, a cart with something grey in it.",
+          "on_failure": "A branch cracks under someone's boot. The goblins go quiet and stare into the dark, hands on their knives: Tamsin will be walking into a camp that is already listening."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "explore",
+        "talk"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Collector",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        36,
+        21
+      ],
+      "music": "tension",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "tamsin",
+          "at": [
+            35,
+            20
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "brannoc",
+          "at": [
+            32,
+            20
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            31,
+            21
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            29,
+            20
+          ],
+          "facing": "right",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "goblin-1",
+          "sprite": "goblin_warrior",
+          "at": [
+            40,
+            21
+          ],
+          "facing": "left",
+          "name": "Goblin"
+        },
+        {
+          "id": "goblin-2",
+          "sprite": "goblin_minion",
+          "at": [
+            42,
+            23
+          ],
+          "facing": "left",
+          "name": "Goblin Runt"
+        },
+        {
+          "id": "goblin-3",
+          "sprite": "goblin_minion",
+          "at": [
+            38,
+            24
+          ],
+          "facing": "left",
+          "name": "Goblin Runt"
+        }
+      ],
+      "beats": [
+        "Tamsin strolls into the firelight as if she owns the woods: she has come from the boss, the stones are wanted early, tonight, and where is her supper? (c2)",
+        "What the goblins give away depends on c2. However it goes, the lie does not last: a goblin sees Brannoc's shield in the bushes, or simply decides a lone halfling is cheaper to rob than to obey.",
+        "The fight (e1). The others charge out of the dark; Ilsevel stays back; Pell keeps to the trees."
+      ],
+      "checks": [
+        {
+          "id": "c2",
+          "actor": "tamsin",
+          "skill": "deception",
+          "dc": 12,
+          "reason": "Convince three wary goblins that a strange halfling was sent by their boss to collect the stones early, using only what Rusk said about stones and supper.",
+          "on_success": "They believe her for a few precious breaths: the leader grumbles that the cart was not due to leave until dawn and that the boss counts every stone, and the goblins step away from their weapons. The others get the jump on them.",
+          "on_failure": "The leader laughs at her. Nobody collects early. Nobody. Knives out."
+        }
+      ],
+      "encounter": {
+        "id": "e1",
+        "name": "The Scout Camp",
+        "enemies": [
+          {
+            "id": "goblin-1",
+            "kind": "goblin_warrior",
+            "at": [
+              40,
+              21
+            ],
+            "sprite": "goblin_warrior",
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-2",
+            "kind": "goblin_minion",
+            "at": [
+              42,
+              23
+            ],
+            "sprite": "goblin_minion",
+            "name": "Goblin Runt"
+          },
+          {
+            "id": "goblin-3",
+            "kind": "goblin_minion",
+            "at": [
+              38,
+              24
+            ],
+            "sprite": "goblin_minion",
+            "name": "Goblin Runt"
+          }
+        ],
+        "party_at": {
+          "tamsin": [
+            35,
+            20
+          ],
+          "brannoc": [
+            32,
+            20
+          ],
+          "oriel": [
+            31,
+            21
+          ],
+          "ilsevel": [
+            29,
+            20
+          ]
+        },
+        "objective": "Take the camp and the cart.",
+        "stakes": "Ilsevel is hurt and nobody has a spell or prayer left beyond cantrips."
+      },
+      "pillars": [
+        "talk",
+        "fight"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Three Grey Stones",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        39,
+        21
+      ],
+      "music": "mystical",
+      "transition": "continue",
+      "cast": [],
+      "beats": [
+        "After the fight, everyone where the fight left them; anyone down is seen to.",
+        "The cart: three lantern-cores lie in the straw, cloudy and cold as river stones. Ilsevel holds one: it should be warm. Oriel cannot bring herself to touch them.",
+        "Nobody knows which core, if any, is Thirty-Seven's. Three lanterns somewhere are dark. They take the cores and look for somewhere safer to spend what is left of the night.",
+        "Last line belongs to a party member."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "explore",
+        "bond"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "item",
+      "id": "dead_lantern_core",
+      "name": "Dead lantern-core",
+      "holder": "party",
+      "qty": 3,
+      "if": "e1.won"
+    },
+    {
+      "type": "flag",
+      "id": "core_cart_due_at_dawn",
+      "value": true,
+      "if": "c2.success"
+    },
+    {
+      "type": "flag",
+      "id": "scout_camp_taken",
+      "value": true,
+      "if": "e1.won"
+    },
+    {
+      "type": "quest",
+      "id": "q.inspect-lanterns",
+      "objectives": [
+        "Find out where the stolen lantern-cores are taken"
+      ],
+      "if": "e1.won"
+    },
+    {
+      "type": "clock",
+      "time_of_day": "night"
+    }
+  ],
+  "next_time": "A campfire, a long watch, and an old stone."
+}

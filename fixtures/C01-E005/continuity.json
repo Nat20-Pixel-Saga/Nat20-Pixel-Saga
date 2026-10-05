@@ -1,0 +1,13 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E005",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s2 battle_narration",
+   "problem": "Ilsevel's missed Fire Bolt and Oriel's first Sacred Flame are not narrated; with six lines the fight still reads, but Ilsevel is invisible in it.",
+   "fix": "Acceptable for a two-round fight."
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E004",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s3#1",
+   "problem": "Ilsevel ends the fight at half her strength but nobody remarks on it; Oriel only tends Tamsin.",
+   "fix": "Acceptable: Tamsin was the one who went down. Ilsevel can be patched up off screen."
+  }
+ ]
+}

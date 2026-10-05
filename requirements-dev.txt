@@ -1,0 +1,4 @@
+# The engine and tests use only the Python standard library.
+# Optional: richer test runner and full JSON Schema validation.
+pytest>=8
+jsonschema>=4.21

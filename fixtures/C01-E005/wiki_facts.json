@@ -1,0 +1,40 @@
+{
+ "schema": "pqc/wiki_facts@1",
+ "episode_id": "C01-E005",
+ "summary": "Later on the night of 4 Emberfall the party found a goblin scout camp east along the trail. With Ilsevel hurt and no spells or prayers left but cantrips, Tamsin walked into the firelight alone and claimed the boss had sent her to collect the stones early; the goblins believed her long enough to let slip that the cart leaves at dawn and the boss counts every stone. When a goblin spotted Brannoc, the party took the camp in two rounds. The cart held three lantern-cores, all dead and cold, and the party took them to look for a safer place to sleep.",
+ "npcs": [],
+ "places": [
+  {
+   "id": "loc.thornpike-woods",
+   "name": "Thornpike Woods",
+   "description": "Dark pine woods east of the Lantern Road. East along the goblin trail lies a goblin scout camp: a patched tent, a fire ring and a cart for carrying lantern-cores. South of the trail's fork is a sheltered hollow with an old stone in it."
+  }
+ ],
+ "quotes": [
+  {"speaker": "tamsin", "text": "Alone's the only way anyone believes a story. You lot creep up to the bushes and look large."},
+  {"speaker": "tamsin", "text": "Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?"},
+  {"speaker": "goblin-2", "text": "Why boss send a dwarf?"},
+  {"speaker": "ilsevel", "text": "A core is always warm. This is like holding a stone from the bottom of a well."},
+  {"speaker": "brannoc", "text": "Then we sleep there. I'll take first watch."}
+ ],
+ "events": [
+  "The party crept unseen to the edge of a goblin scout camp east of the birch clearing.",
+  "Tamsin walked in alone and convinced the goblins the boss had sent her to collect the stones early; they let slip that the cart leaves at dawn and the boss counts every stone.",
+  "A goblin spotted Brannoc in the bushes and the fight began; Tamsin shot first.",
+  "Brannoc killed a goblin runt and the goblin leader; Oriel's Sacred Flame finished the other runt.",
+  "The goblin leader wounded Tamsin badly; she drank a healing potion mid-fight.",
+  "The cart held three dead lantern-cores, cloudy and cold. Oriel could not bring herself to touch them.",
+  "The party took the cores and headed for a sheltered hollow Pell had spotted south of the fork."
+ ],
+ "items": [
+  {"id": "dead_lantern_core", "name": "Dead lantern-cores (3)", "holder": "party", "note": "Taken from the goblin cart. Cloudy and cold; nobody knows which lanterns they came from."},
+  {"id": "potion_of_healing", "name": "Potion of Healing", "holder": "tamsin", "note": "Drunk by Tamsin during the fight at the scout camp."}
+ ],
+ "hooks_planted": ["hook.flickering-warmth"],
+ "character_notes": {
+  "tamsin": ["Talked her way into a goblin camp alone; admits she is 'a little bit proud' of the lie.", "Always carries a healing potion: 'old habit'."],
+  "brannoc": ["Wanted to wait for dawn, then went along with Tamsin's plan; killed two of the three goblins.", "Takes first watch without being asked."],
+  "ilsevel": ["Counts what nobody else has written down: three lanterns dark that no ledger records."],
+  "oriel": ["Could not bring herself to touch the dead cores."]
+ }
+}

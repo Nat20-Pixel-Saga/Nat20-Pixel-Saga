@@ -1,0 +1,1163 @@
+{
+ "schema": "pqc/campaign@1",
+ "campaign": 1,
+ "title": "The Lantern Road",
+ "levels": [
+  1,
+  3
+ ],
+ "logline": "When the lanterns on the oldest road in the Vael start going dark, four strangers in a frontier inn become the only people willing to walk into the night.",
+ "generated_by": "Authored from bible/07_campaign_arcs.md (the Fable 5.1 campaign-bible step reproduces this shape; see prompts/campaign_planner.md)",
+ "episodes": [
+  {
+   "episode": 1,
+   "title": "Lantern Thirty-Seven",
+   "act": 1,
+   "beat": "3 Emberfall 1047 AK, dusk. The four meet in Brindle Cross: Tamsin hustles cards outside the Crooked Kettle, Ilsevel inspects the lantern ledger, Oriel leads the dusk devotion, Brannoc arrives with dispatches. Lantern 37 on the south road dies; goblins raid the square. Tutorial fight. A goblin is left alive.",
+   "tags": [
+    "loc.brindle-cross",
+    "loc.crooked-kettle",
+    "npc.maddy-fenn",
+    "npc.wil-fenn",
+    "lantern_road.037",
+    "fac.lamplighters",
+    "npc.rusk"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_minion",
+     "goblin_minion"
+    ],
+    "where": "market square",
+    "note": ""
+   },
+   "key_rolls": [
+    "initiative",
+    "first attacks",
+    "Sleight of Hand at cards"
+   ],
+   "pillars": [
+    "talk",
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.brass-button",
+    "hook.flickering-warmth"
+   ],
+   "reveal": null,
+   "bond": "Brannoc and Oriel stand together in the first fight"
+  },
+  {
+   "episode": 2,
+   "title": "The Goblin Who Talked",
+   "act": 1,
+   "beat": "Aftermath at the Crooked Kettle. Rusk, the captured goblin, is questioned: goblins are paid in food to bring lantern-cores to someone. Maddy offers free board to whoever fixes the lantern. Each party member agrees for their own reason.",
+   "tags": [
+    "npc.rusk",
+    "npc.maddy-fenn",
+    "loc.crooked-kettle"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Intimidation or Persuasion on Rusk",
+    "Insight"
+   ],
+   "pillars": [
+    "talk",
+    "bond"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.velvet-hand-debt"
+   ],
+   "reveal": null,
+   "bond": "Tamsin and Ilsevel trade barbs"
+  },
+  {
+   "episode": 3,
+   "title": "The Empty Housing",
+   "act": 1,
+   "beat": "Walk to Lantern 37. Ilsevel finds the core was removed, not broken. Goblin tracks lead into Thornpike Woods.",
+   "tags": [
+    "lantern_road.037",
+    "loc.lantern-road",
+    "loc.thornpike-woods"
+   ],
+   "maps": [
+    "lantern_road"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Investigation",
+    "Survival"
+   ],
+   "pillars": [
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": "The core was removed by hand",
+   "bond": null
+  },
+  {
+   "episode": 4,
+   "title": "Wolves at the Birches",
+   "act": 1,
+   "beat": "Thornpike Woods at night. Wolves attack; Ilsevel summons Pell for the first time.",
+   "tags": [
+    "loc.thornpike-woods",
+    "npc.pell"
+   ],
+   "maps": [
+    "thornpike_woods"
+   ],
+   "encounter": {
+    "enemies": [
+     "wolf",
+     "wolf",
+     "wolf"
+    ],
+    "where": "birch clearing",
+    "note": ""
+   },
+   "key_rolls": [
+    "Perception",
+    "Pack Tactics"
+   ],
+   "pillars": [
+    "fight",
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Ilsevel and Pell"
+  },
+  {
+   "episode": 5,
+   "title": "The Scout Camp",
+   "act": 1,
+   "beat": "A goblin scout camp with a cart of three dead cores. Stealth approach or bluff.",
+   "tags": [
+    "loc.thornpike-woods"
+   ],
+   "maps": [
+    "thornpike_woods"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_minion",
+     "goblin_minion"
+    ],
+    "where": "scout camp",
+    "note": ""
+   },
+   "key_rolls": [
+    "group Stealth",
+    "Deception"
+   ],
+   "pillars": [
+    "explore",
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 6,
+   "title": "First Watch",
+   "act": 1,
+   "beat": "Campfire. Brannoc and Oriel on watch; Oriel notices the painted-over anvil. Tamsin steals Ilsevel's notes and gives them back. The Gloamkey hums near an old Lamplighter marker.",
+   "tags": [
+    "brannoc",
+    "ilsevel",
+    "tamsin",
+    "oriel"
+   ],
+   "maps": [
+    "thornpike_woods"
+   ],
+   "encounter": null,
+   "key_rolls": [],
+   "pillars": [
+    "bond"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.painted-anvil",
+    "hook.gloamkey"
+   ],
+   "reveal": null,
+   "bond": "All pairs, especially Brannoc-Oriel"
+  },
+  {
+   "episode": 7,
+   "title": "The Saint of the Open Hand",
+   "act": 1,
+   "beat": "Back in Brindle Cross. Father Tobin tells the story of Saint Wenna and of the night he found Oriel. Lantern 41 dies. Captain Rook's message arrives.",
+   "tags": [
+    "npc.tobin-ashdown",
+    "loc.shrine-of-the-open-hand",
+    "lantern_road.041",
+    "npc.edda-rook"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "History"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.brass-button"
+   ],
+   "reveal": null,
+   "bond": "Oriel and Tobin"
+  },
+  {
+   "episode": 8,
+   "title": "Wending Mill",
+   "act": 1,
+   "beat": "Wending Mill under goblin attack. A race against time.",
+   "tags": [
+    "loc.wending-mill"
+   ],
+   "maps": [
+    "wending_mill"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_minion"
+    ],
+    "where": "mill yard",
+    "note": ""
+   },
+   "key_rolls": [
+    "Athletics",
+    "attacks"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 9,
+   "title": "Smoke Over the Millpond",
+   "act": 1,
+   "beat": "The rescue at the mill; real danger, a party member likely drops to 0 HP.",
+   "tags": [
+    "loc.wending-mill"
+   ],
+   "maps": [
+    "wending_mill"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_boss",
+     "goblin_warrior",
+     "goblin_minion"
+    ],
+    "where": "burning barn",
+    "note": ""
+   },
+   "key_rolls": [
+    "death saves"
+   ],
+   "pillars": [
+    "fight",
+    "bond"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Whoever is downed and whoever saves them"
+  },
+  {
+   "episode": 10,
+   "title": "Fort Harrow",
+   "act": 1,
+   "beat": "Captain Rook hires the party at 10 gp each a week. Brannoc's old comrades call him an Ironvow exile. A dead goblin carries a black-glass pendant.",
+   "tags": [
+    "loc.fort-harrow",
+    "npc.edda-rook",
+    "fac.crown-of-corvane",
+    "fac.unlit"
+   ],
+   "maps": [
+    "fort_harrow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Insight"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.shaft-nine-debt"
+   ],
+   "reveal": "Black-glass pendant",
+   "bond": null
+  },
+  {
+   "episode": 11,
+   "title": "Glass That Drinks Light",
+   "act": 2,
+   "beat": "Ilsevel studies the pendant: it drinks light. She writes to Lamplighters' Hall.",
+   "tags": [
+    "fac.unlit",
+    "fac.lamplighters"
+   ],
+   "maps": [
+    "fort_harrow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Arcana"
+   ],
+   "pillars": [
+    "explore",
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 12,
+   "title": "Saint Petra and Prophecy",
+   "act": 2,
+   "beat": "Patrolling the road; the merchant Petra Glim and her mule Prophecy. First shop. A letter from the Velvet Hand on Tamsin's pillow.",
+   "tags": [
+    "npc.petra-glim",
+    "loc.lantern-road"
+   ],
+   "maps": [
+    "lantern_road"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Persuasion (haggling)"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.velvet-hand-debt"
+   ],
+   "reveal": null,
+   "bond": "Tamsin hides the letter"
+  },
+  {
+   "episode": 13,
+   "title": "Goblins Who Aren't",
+   "act": 2,
+   "beat": "Bandits disguised as goblins rob the road; their captain has bought dead cores.",
+   "tags": [
+    "loc.lantern-road"
+   ],
+   "maps": [
+    "lantern_road"
+   ],
+   "encounter": {
+    "enemies": [
+     "bandit",
+     "bandit",
+     "bandit"
+    ],
+    "where": "road ambush",
+    "note": ""
+   },
+   "key_rolls": [
+    "Perception",
+    "attacks"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 14,
+   "title": "The Bandit Hideout",
+   "act": 2,
+   "beat": "Raid the hideout; the captain names a buyer: a lady in a grey coat.",
+   "tags": [
+    "loc.lantern-road"
+   ],
+   "maps": [
+    "bandit_hideout"
+   ],
+   "encounter": {
+    "enemies": [
+     "bandit",
+     "bandit",
+     "bandit",
+     "bandit"
+    ],
+    "where": "hideout",
+    "note": ""
+   },
+   "key_rolls": [
+    "Intimidation"
+   ],
+   "pillars": [
+    "fight",
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": "A lady in a grey coat",
+   "bond": null
+  },
+  {
+   "episode": 15,
+   "title": "Light on Your Road",
+   "act": 2,
+   "beat": "Heroes' return. Level 2 training montage: Action Surge, Cunning Action, new slots.",
+   "tags": [
+    "brannoc",
+    "ilsevel",
+    "tamsin",
+    "oriel",
+    "npc.maddy-fenn"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [],
+   "pillars": [
+    "bond"
+   ],
+   "milestone_level": 2,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Party celebration"
+  },
+  {
+   "episode": 16,
+   "title": "Waystation Nine",
+   "act": 2,
+   "beat": "An abandoned Lamplighter waystation. Ilsevel finds a logbook in her mentor's hand.",
+   "tags": [
+    "loc.lamplighter-waystation",
+    "npc.ysolde-marr"
+   ],
+   "maps": [
+    "waystation_nine"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Investigation"
+   ],
+   "pillars": [
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.where-is-ysolde"
+   ],
+   "reveal": "Ysolde's handwriting",
+   "bond": null
+  },
+  {
+   "episode": 17,
+   "title": "The Hollowed",
+   "act": 2,
+   "beat": "The waystation is haunted by the hollowed: first Unlight creatures.",
+   "tags": [
+    "loc.lamplighter-waystation"
+   ],
+   "maps": [
+    "waystation_nine"
+   ],
+   "encounter": {
+    "enemies": [
+     "hollowed",
+     "hollowed",
+     "skeleton"
+    ],
+    "where": "logbook room",
+    "note": ""
+   },
+   "key_rolls": [
+    "Wisdom saves"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 18,
+   "title": "The Moth and the Lamp",
+   "act": 2,
+   "beat": "Mother Fennick appears in the woods with a warning about a warlord.",
+   "tags": [
+    "npc.mother-fennick",
+    "fac.wardens-of-the-green"
+   ],
+   "maps": [
+    "thornpike_woods"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Insight"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": "The moth loves the lamp",
+   "bond": null
+  },
+  {
+   "episode": 19,
+   "title": "Rusk's Choice",
+   "act": 2,
+   "beat": "Rusk escapes, or defects if treated well, and shows the way to Gnash Hollow.",
+   "tags": [
+    "npc.rusk",
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "thornpike_woods"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Persuasion"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Oriel and Rusk"
+  },
+  {
+   "episode": 20,
+   "title": "The Throne of Posts",
+   "act": 2,
+   "beat": "Gnash Hollow's outer cave: a pile of dead cores under a throne of lantern posts.",
+   "tags": [
+    "loc.goblin-warren",
+    "npc.skarrow"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Stealth"
+   ],
+   "pillars": [
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 21,
+   "title": "Gnash Hollow, Upper Level",
+   "act": 3,
+   "beat": "Traps and goblin guards.",
+   "tags": [
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_minion"
+    ],
+    "where": "guard post",
+    "note": ""
+   },
+   "key_rolls": [
+    "Investigation (traps)"
+   ],
+   "pillars": [
+    "explore",
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 22,
+   "title": "Brother Ambrose",
+   "act": 3,
+   "beat": "A captive Lamplighter Wick, Brother Ambrose, is freed.",
+   "tags": [
+    "npc.brother-ambrose"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Sleight of Hand (locks)"
+   ],
+   "pillars": [
+    "explore",
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 23,
+   "title": "The Pit Room",
+   "act": 3,
+   "beat": "A pit trap and a goblin ambush.",
+   "tags": [
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_warrior"
+    ],
+    "where": "pit room",
+    "note": ""
+   },
+   "key_rolls": [
+    "Dexterity saves"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 24,
+   "title": "Goblins Who Never Chose",
+   "act": 3,
+   "beat": "Parley: many goblins are paid in stolen food and never chose this.",
+   "tags": [
+    "npc.skarrow"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Persuasion",
+    "Insight"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Oriel argues for mercy"
+  },
+  {
+   "episode": 25,
+   "title": "The Worg Kennels",
+   "act": 3,
+   "beat": "Worg kennels on the second level.",
+   "tags": [
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "worg",
+     "goblin_warrior"
+    ],
+    "where": "kennels",
+    "note": ""
+   },
+   "key_rolls": [
+    "Animal Handling"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 26,
+   "title": "The Alchemist",
+   "act": 3,
+   "beat": "A goblin alchemist and his explosive stores.",
+   "tags": [
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_boss",
+     "goblin_minion"
+    ],
+    "where": "alchemy den",
+    "note": ""
+   },
+   "key_rolls": [
+    "Arcana"
+   ],
+   "pillars": [
+    "fight",
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 27,
+   "title": "A Letter from Ash",
+   "act": 3,
+   "beat": "A letter from 'Ash' offering Skarrow 5 gp per core.",
+   "tags": [
+    "fac.unlit",
+    "npc.wick-ash"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Investigation"
+   ],
+   "pillars": [
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": "Ash pays per core",
+   "bond": null
+  },
+  {
+   "episode": 28,
+   "title": "Taken",
+   "act": 3,
+   "beat": "The party is captured or retreats; the dice decide.",
+   "tags": [
+    "brannoc",
+    "ilsevel",
+    "tamsin",
+    "oriel"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_boss",
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_warrior"
+    ],
+    "where": "great hall",
+    "note": ""
+   },
+   "key_rolls": [
+    "Athletics",
+    "Stealth"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 29,
+   "title": "Tamsin's Night",
+   "act": 3,
+   "beat": "Escape or rescue; Tamsin's big moment.",
+   "tags": [
+    "tamsin"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Sleight of Hand",
+    "Stealth"
+   ],
+   "pillars": [
+    "explore",
+    "bond"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.gloamkey"
+   ],
+   "reveal": null,
+   "bond": "Tamsin proves herself"
+  },
+  {
+   "episode": 30,
+   "title": "No Soldiers to Spare",
+   "act": 3,
+   "beat": "Return to Fort Harrow with proof. Rook can't spare soldiers. The party will finish it themselves.",
+   "tags": [
+    "npc.edda-rook",
+    "loc.fort-harrow"
+   ],
+   "maps": [
+    "fort_harrow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Persuasion"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 31,
+   "title": "The Open Hand",
+   "act": 4,
+   "beat": "Preparing. Oriel blesses the party; Tamsin tells Oriel the truth about the Velvet Hand.",
+   "tags": [
+    "loc.shrine-of-the-open-hand"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [],
+   "pillars": [
+    "bond"
+   ],
+   "milestone_level": null,
+   "hooks": [
+    "hook.velvet-hand-debt"
+   ],
+   "reveal": null,
+   "bond": "Tamsin and Oriel"
+  },
+  {
+   "episode": 32,
+   "title": "Lantern Number One",
+   "act": 4,
+   "beat": "The goblins strike Brindle Cross itself; Lantern No. 1 is targeted.",
+   "tags": [
+    "lantern_road.001",
+    "loc.brindle-cross"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_minion",
+     "goblin_minion"
+    ],
+    "where": "crossroads",
+    "note": ""
+   },
+   "key_rolls": [
+    "attacks"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 33,
+   "title": "Defence of Brindle Cross",
+   "act": 4,
+   "beat": "A multi-wave fight in the village.",
+   "tags": [
+    "loc.brindle-cross"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_boss",
+     "goblin_warrior",
+     "goblin_warrior",
+     "worg"
+    ],
+    "where": "village square",
+    "note": ""
+   },
+   "key_rolls": [
+    "attacks",
+    "saves"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 34,
+   "title": "The Deep Level",
+   "act": 4,
+   "beat": "Counter-assault into Gnash Hollow's deep level.",
+   "tags": [
+    "loc.goblin-warren"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "goblin_warrior",
+     "goblin_warrior",
+     "goblin_minion"
+    ],
+    "where": "deep tunnels",
+    "note": ""
+   },
+   "key_rolls": [
+    "Stealth"
+   ],
+   "pillars": [
+    "fight",
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 35,
+   "title": "The Lantern-Eater",
+   "act": 4,
+   "beat": "Skarrow's throne room. Negotiation possible.",
+   "tags": [
+    "npc.skarrow"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Persuasion",
+    "Intimidation"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 36,
+   "title": "Crown of Glass",
+   "act": 4,
+   "beat": "Boss fight: Skarrow, two goblin warriors and a worg.",
+   "tags": [
+    "npc.skarrow"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": {
+    "enemies": [
+     "skarrow",
+     "goblin_warrior",
+     "goblin_warrior",
+     "worg"
+    ],
+    "where": "throne room",
+    "note": ""
+   },
+   "key_rolls": [
+    "attacks",
+    "death saves"
+   ],
+   "pillars": [
+    "fight"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 37,
+   "title": "What Skarrow Knew",
+   "act": 4,
+   "beat": "Aftermath: Skarrow, if alive, tells what he knows of Ash.",
+   "tags": [
+    "npc.skarrow",
+    "npc.wick-ash"
+   ],
+   "maps": [
+    "gnash_hollow"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Insight"
+   ],
+   "pillars": [
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": null
+  },
+  {
+   "episode": 38,
+   "title": "The Grey Rider",
+   "act": 4,
+   "beat": "Ash's courier escapes with the best cores on a black horse.",
+   "tags": [
+    "npc.wick-ash",
+    "fac.unlit"
+   ],
+   "maps": [
+    "lantern_road"
+   ],
+   "encounter": null,
+   "key_rolls": [
+    "Athletics",
+    "Perception"
+   ],
+   "pillars": [
+    "explore"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": "A grey-coated rider",
+   "bond": null
+  },
+  {
+   "episode": 39,
+   "title": "The Feast",
+   "act": 4,
+   "beat": "Victory feast at the Crooked Kettle; lanterns re-kindled; a bond scene for each pair.",
+   "tags": [
+    "brannoc",
+    "ilsevel",
+    "tamsin",
+    "oriel",
+    "npc.maddy-fenn",
+    "npc.tobin-ashdown"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [],
+   "pillars": [
+    "bond",
+    "talk"
+   ],
+   "milestone_level": null,
+   "hooks": [],
+   "reveal": null,
+   "bond": "Every pair"
+  },
+  {
+   "episode": 40,
+   "title": "One More Mile",
+   "act": 4,
+   "beat": "Level 3: subclasses unlock. A reply from Lamplighters' Hall sends the party to the Sunken Abbey. Departure.",
+   "tags": [
+    "brannoc",
+    "ilsevel",
+    "tamsin",
+    "oriel",
+    "fac.lamplighters",
+    "loc.abbey-of-saint-halloran"
+   ],
+   "maps": [
+    "brindle_cross"
+   ],
+   "encounter": null,
+   "key_rolls": [],
+   "pillars": [
+    "bond",
+    "explore"
+   ],
+   "milestone_level": 3,
+   "hooks": [
+    "hook.where-is-ysolde"
+   ],
+   "reveal": "The Sunken Abbey",
+   "bond": null
+  }
+ ]
+}

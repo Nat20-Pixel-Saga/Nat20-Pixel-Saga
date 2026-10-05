@@ -1,0 +1,70 @@
+# Apply the work of the scheduled Claude shifts. Shifts can't push to GitHub, so
+# they upload change bundles to a Google Drive folder (secrets DRIVE_FOLDER_ID and
+# DRIVE_API_KEY; production/relay.json); every 10 minutes this job applies new ones in order
+# (scripts/relay.py: hash-checked, maps and episodes regenerated, tests run),
+# commits, pushes, and starts the wiki and release workflows.
+name: relay
+on:
+  schedule:
+    - cron: "4-59/10 * * * *"     # off the top of the hour, when GitHub drops the most scheduled runs
+  push:                       # also right after the relay itself changes
+    branches: [main]
+    paths: [".github/workflows/relay.yml", "scripts/relay.py", "production/relay.json"]
+  workflow_dispatch:
+permissions: {contents: write, actions: write}
+concurrency: {group: relay, cancel-in-progress: false}
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Any new bundles in Drive?
+        id: check
+        env: {DRIVE_API_KEY: "${{ secrets.DRIVE_API_KEY }}", DRIVE_FOLDER_ID: "${{ secrets.DRIVE_FOLDER_ID }}"}
+        run: python scripts/relay.py check-drive
+      - name: Install the renderer's dependencies and assets
+        if: steps.check.outputs.new != '0'
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install pillow numpy
+          scripts/fetch_assets.sh
+      - name: Apply bundles
+        id: apply
+        if: steps.check.outputs.new != '0'
+        env: {DRIVE_API_KEY: "${{ secrets.DRIVE_API_KEY }}", DRIVE_FOLDER_ID: "${{ secrets.DRIVE_FOLDER_ID }}"}
+        run: |
+          git config user.name "pqc-relay"
+          git config user.email "pqc-relay@users.noreply.github.com"
+          python scripts/relay.py apply-drive
+          git push
+      - name: Rebuild the wiki
+        if: steps.apply.outputs.changed == 'true'
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: gh workflow run wiki.yml
+      - name: Render and release new episodes
+        if: steps.apply.outputs.episodes != '0' && steps.apply.outputs.episodes != ''
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: gh workflow run release.yml
+      # Fallback while GitHub isn't firing this workflow's schedule (it can take
+      # hours to start on a new repository): queue the next relay run ourselves.
+      # Stops by itself once scheduled runs appear.
+      - name: Keep the relay going
+        if: always() && steps.check.outputs.configured == 'true'
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          last=$(gh run list --workflow relay.yml --event schedule --limit 1 --json createdAt -q '.[0].createdAt' || true)
+          if [ -n "$last" ] && [ $(( $(date +%s) - $(date -d "$last" +%s) )) -lt 1800 ]; then
+            echo "Scheduled runs are working (last $last); no fallback needed."; exit 0
+          fi
+          hour=$(date -u +%H)
+          if [ "${{ steps.check.outputs.new }}" != "0" ] || [ "$hour" -ge 20 ] || [ "$hour" -lt 7 ]; then
+            wait=480   # busy, or shift hours (Paris night): every ~10 minutes
+          else
+            wait=2700  # quiet daytime: every ~45 minutes
+          fi
+          echo "No recent scheduled run; next relay in $wait s."
+          sleep $wait
+          gh workflow run relay.yml

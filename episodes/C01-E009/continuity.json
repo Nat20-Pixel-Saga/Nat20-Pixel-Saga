@@ -1,0 +1,43 @@
+{
+  "schema": "pqc/continuity@1",
+  "episode_id": "C01-E009",
+  "ok": true,
+  "issues": [
+    {
+      "severity": "warning",
+      "where": "s1#0",
+      "problem": "146 characters (max 140); the assembler split it",
+      "fix": "split it into two boxes"
+    },
+    {
+      "severity": "warning",
+      "where": "s1#18",
+      "problem": "146 characters (max 140); the assembler split it",
+      "fix": "split it into two boxes"
+    },
+    {
+      "severity": "warning",
+      "where": "s2#0",
+      "problem": "146 characters (max 140); the assembler split it",
+      "fix": "split it into two boxes"
+    },
+    {
+      "severity": "warning",
+      "where": "s3",
+      "problem": "Oriel is stable but unconscious for the rest of the episode (1 HP after 1d4 hours); the first draft had her wake and speak, which the mechanical check correctly refused. The callback line now goes to Tamsin.",
+      "fix": "Next episode should open with Oriel awake and sore after a night at the Hollises' hearth."
+    },
+    {
+      "severity": "warning",
+      "where": "s3#6",
+      "problem": "Tamsin's line counts only her shots at the boss (four, all missed); her first arrow did hit the runt. Accurate as written.",
+      "fix": "None needed."
+    },
+    {
+      "severity": "warning",
+      "where": "s3#4",
+      "problem": "'Not you as well' is a half-line pointing at Brannoc's past loss (Shaft Nine). It names nothing, so it stays on the right side of the line.",
+      "fix": "None needed; keep it as a quiet plant."
+    }
+  ]
+}

@@ -1,0 +1,3630 @@
+{
+  "schema": "pqc/episode@1",
+  "id": "C01-E008",
+  "campaign": 1,
+  "episode": 8,
+  "title": "Wending Mill",
+  "seed": "C01-E008-1",
+  "attempt": 1,
+  "status": "scripted",
+  "in_world_date": {
+    "year": 1047,
+    "month": 9,
+    "day": 6,
+    "hearthday": null,
+    "time_of_day": "morning"
+  },
+  "checks": [
+    {
+      "id": "c1",
+      "actor": "brannoc",
+      "skill": "athletics",
+      "ability": null,
+      "dc": 12,
+      "roll": "r0003",
+      "success": true,
+      "reason": "Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and arrive with enough breath left to fight.",
+      "offscreen": false
+    }
+  ],
+  "encounters": [
+    {
+      "name": "The Mill Yard",
+      "winner": "party",
+      "rounds": 3,
+      "xp": 175,
+      "events": [
+        {
+          "seq": 0,
+          "round": 0,
+          "t": "encounter_start",
+          "name": "The Mill Yard",
+          "combatants": [
+            {
+              "id": "brannoc",
+              "name": "Brannoc Ironvow",
+              "team": "party",
+              "hp": 13,
+              "max_hp": 13,
+              "temp_hp": 0,
+              "ac": 19,
+              "pos": [
+                21,
+                14
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "oriel",
+              "name": "Oriel Ashdown",
+              "team": "party",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 18,
+              "pos": [
+                22,
+                13
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "tamsin",
+              "name": "Tamsin Underbough",
+              "team": "party",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 14,
+              "pos": [
+                20,
+                13
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "ilsevel",
+              "name": "Ilsevel Starwick",
+              "team": "party",
+              "hp": 8,
+              "max_hp": 8,
+              "temp_hp": 0,
+              "ac": 12,
+              "pos": [
+                22,
+                12
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-1",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                18,
+                19
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-2",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                25,
+                19
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-3",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                22,
+                21
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-4",
+              "name": "Goblin Runt",
+              "team": "enemies",
+              "hp": 7,
+              "max_hp": 7,
+              "temp_hp": 0,
+              "ac": 12,
+              "pos": [
+                16,
+                17
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            }
+          ]
+        },
+        {
+          "seq": 1,
+          "round": 0,
+          "t": "initiative",
+          "actor": "brannoc",
+          "roll": "r0004",
+          "total": 5
+        },
+        {
+          "seq": 2,
+          "round": 0,
+          "t": "initiative",
+          "actor": "oriel",
+          "roll": "r0005",
+          "total": 11
+        },
+        {
+          "seq": 3,
+          "round": 0,
+          "t": "initiative",
+          "actor": "tamsin",
+          "roll": "r0006",
+          "total": 25
+        },
+        {
+          "seq": 4,
+          "round": 0,
+          "t": "initiative",
+          "actor": "ilsevel",
+          "roll": "r0007",
+          "total": 16
+        },
+        {
+          "seq": 5,
+          "round": 0,
+          "t": "initiative",
+          "actor": "goblin-1",
+          "roll": "r0008",
+          "total": 22
+        },
+        {
+          "seq": 6,
+          "round": 0,
+          "t": "initiative",
+          "actor": "goblin-2",
+          "roll": "r0009",
+          "total": 10
+        },
+        {
+          "seq": 7,
+          "round": 0,
+          "t": "initiative",
+          "actor": "goblin-3",
+          "roll": "r0010",
+          "total": 22
+        },
+        {
+          "seq": 8,
+          "round": 0,
+          "t": "initiative",
+          "actor": "goblin-4",
+          "roll": "r0011",
+          "total": 8
+        },
+        {
+          "seq": 9,
+          "round": 0,
+          "t": "initiative_order",
+          "order": [
+            "tamsin",
+            "goblin-1",
+            "goblin-3",
+            "ilsevel",
+            "oriel",
+            "goblin-2",
+            "goblin-4",
+            "brannoc"
+          ]
+        },
+        {
+          "seq": 10,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "tamsin",
+          "hp": 10,
+          "pos": [
+            20,
+            13
+          ]
+        },
+        {
+          "seq": 11,
+          "round": 1,
+          "t": "attack",
+          "actor": "tamsin",
+          "target": "goblin-4",
+          "attack": "shortbow",
+          "roll": "r0014",
+          "hit": false,
+          "critical": false,
+          "total": 8,
+          "ac": 12,
+          "advantage": "none",
+          "overlay": "d20 (3) + 5 = 8 vs 12 — FAIL",
+          "opportunity": false,
+          "damage_rolls": []
+        },
+        {
+          "seq": 12,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "tamsin"
+        },
+        {
+          "seq": 13,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "goblin-1",
+          "hp": 10,
+          "pos": [
+            18,
+            19
+          ]
+        },
+        {
+          "seq": 14,
+          "round": 1,
+          "t": "move",
+          "actor": "goblin-1",
+          "frm": [
+            18,
+            19
+          ],
+          "to": [
+            21,
+            13
+          ],
+          "cost": 30,
+          "path": [
+            [
+              18,
+              19
+            ],
+            [
+              18,
+              18
+            ],
+            [
+              19,
+              17
+            ],
+            [
+              20,
+              16
+            ],
+            [
+              21,
+              15
+            ],
+            [
+              20,
+              14
+            ],
+            [
+              21,
+              13
+            ]
+          ]
+        },
+        {
+          "seq": 15,
+          "round": 1,
+          "t": "reaction",
+          "actor": "ilsevel",
+          "reaction": "shield",
+          "slot": 1,
+          "ac": 17
+        },
+        {
+          "seq": 16,
+          "round": 1,
+          "t": "attack",
+          "actor": "goblin-1",
+          "target": "ilsevel",
+          "attack": "scimitar",
+          "roll": "r0015",
+          "hit": false,
+          "critical": false,
+          "total": 13,
+          "ac": 17,
+          "advantage": "none",
+          "overlay": "d20 (9) + 4 = 13 vs 17 — FAIL",
+          "opportunity": false,
+          "damage_rolls": []
+        },
+        {
+          "seq": 17,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "goblin-1"
+        },
+        {
+          "seq": 18,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "goblin-3",
+          "hp": 10,
+          "pos": [
+            22,
+            21
+          ]
+        },
+        {
+          "seq": 19,
+          "round": 1,
+          "t": "move",
+          "actor": "goblin-3",
+          "frm": [
+            22,
+            21
+          ],
+          "to": [
+            21,
+            15
+          ],
+          "cost": 30,
+          "path": [
+            [
+              22,
+              21
+            ],
+            [
+              21,
+              20
+            ],
+            [
+              20,
+              19
+            ],
+            [
+              19,
+              18
+            ],
+            [
+              19,
+              17
+            ],
+            [
+              20,
+              16
+            ],
+            [
+              21,
+              15
+            ]
+          ]
+        },
+        {
+          "seq": 20,
+          "round": 1,
+          "t": "attack",
+          "actor": "goblin-3",
+          "target": "brannoc",
+          "attack": "scimitar",
+          "roll": "r0016",
+          "hit": true,
+          "critical": false,
+          "total": 22,
+          "ac": 19,
+          "advantage": "none",
+          "overlay": "d20 (18) + 4 = 22 vs 19 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0017"
+          ],
+          "damage": {
+            "target": "brannoc",
+            "total": 8,
+            "parts": [
+              {
+                "amount": 8,
+                "type": "slashing",
+                "note": null,
+                "hp_before": 13,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 5
+              }
+            ],
+            "hp_after": 5
+          }
+        },
+        {
+          "seq": 21,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "goblin-3"
+        },
+        {
+          "seq": 22,
+          "round": 1,
+          "t": "effect_end",
+          "target": "ilsevel",
+          "effect": "shield_spell",
+          "reason": "start of ilsevel's turn"
+        },
+        {
+          "seq": 23,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "ilsevel",
+          "hp": 8,
+          "pos": [
+            22,
+            12
+          ]
+        },
+        {
+          "seq": 24,
+          "round": 1,
+          "t": "cast",
+          "actor": "ilsevel",
+          "spell": "shocking_grasp",
+          "level": 0,
+          "targets": [
+            "goblin-1"
+          ],
+          "fx": "sparkle",
+          "results": [
+            {
+              "target": "goblin-1",
+              "roll": "r0018",
+              "hit": true,
+              "critical": false,
+              "overlay": "d20 (16) + 5 = 21 vs 15 — SUCCESS",
+              "damage_rolls": [
+                "r0019"
+              ],
+              "damage": {
+                "target": "goblin-1",
+                "total": 1,
+                "parts": [
+                  {
+                    "amount": 1,
+                    "type": "lightning",
+                    "note": null,
+                    "hp_before": 10,
+                    "temp_absorbed": 0,
+                    "dropped_to_zero": false,
+                    "died": false,
+                    "instant_death": false,
+                    "death_save_failures": 0,
+                    "hp_after": 9
+                  }
+                ],
+                "hp_after": 9
+              },
+              "effect": "no_opportunity_attacks"
+            }
+          ]
+        },
+        {
+          "seq": 25,
+          "round": 1,
+          "t": "move",
+          "actor": "ilsevel",
+          "frm": [
+            22,
+            12
+          ],
+          "to": [
+            28,
+            12
+          ],
+          "cost": 30,
+          "path": [
+            [
+              22,
+              12
+            ],
+            [
+              23,
+              11
+            ],
+            [
+              24,
+              11
+            ],
+            [
+              25,
+              10
+            ],
+            [
+              26,
+              10
+            ],
+            [
+              27,
+              11
+            ],
+            [
+              28,
+              12
+            ]
+          ]
+        },
+        {
+          "seq": 26,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "ilsevel"
+        },
+        {
+          "seq": 27,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "oriel",
+          "hp": 10,
+          "pos": [
+            22,
+            13
+          ]
+        },
+        {
+          "seq": 28,
+          "round": 1,
+          "t": "cast",
+          "actor": "oriel",
+          "spell": "bless",
+          "level": 1,
+          "targets": [
+            "brannoc",
+            "oriel",
+            "tamsin"
+          ],
+          "fx": "aura",
+          "results": [
+            {
+              "target": "brannoc",
+              "effect": "bless"
+            },
+            {
+              "target": "oriel",
+              "effect": "bless"
+            },
+            {
+              "target": "tamsin",
+              "effect": "bless"
+            }
+          ]
+        },
+        {
+          "seq": 29,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "oriel"
+        },
+        {
+          "seq": 30,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "goblin-2",
+          "hp": 10,
+          "pos": [
+            25,
+            19
+          ]
+        },
+        {
+          "seq": 31,
+          "round": 1,
+          "t": "move",
+          "actor": "goblin-2",
+          "frm": [
+            25,
+            19
+          ],
+          "to": [
+            20,
+            14
+          ],
+          "cost": 25,
+          "path": [
+            [
+              25,
+              19
+            ],
+            [
+              24,
+              18
+            ],
+            [
+              23,
+              17
+            ],
+            [
+              22,
+              16
+            ],
+            [
+              21,
+              15
+            ],
+            [
+              20,
+              14
+            ]
+          ]
+        },
+        {
+          "seq": 32,
+          "round": 1,
+          "t": "attack",
+          "actor": "goblin-2",
+          "target": "tamsin",
+          "attack": "scimitar",
+          "roll": "r0020",
+          "hit": true,
+          "critical": false,
+          "total": 17,
+          "ac": 14,
+          "advantage": "none",
+          "overlay": "d20 (13) + 4 = 17 vs 14 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0021"
+          ],
+          "damage": {
+            "target": "tamsin",
+            "total": 5,
+            "parts": [
+              {
+                "amount": 5,
+                "type": "slashing",
+                "note": null,
+                "hp_before": 10,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 5
+              }
+            ],
+            "hp_after": 5
+          }
+        },
+        {
+          "seq": 33,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "goblin-2"
+        },
+        {
+          "seq": 34,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "goblin-4",
+          "hp": 7,
+          "pos": [
+            16,
+            17
+          ]
+        },
+        {
+          "seq": 35,
+          "round": 1,
+          "t": "attack",
+          "actor": "goblin-4",
+          "target": "tamsin",
+          "attack": "dagger:thrown",
+          "roll": "r0022",
+          "hit": true,
+          "critical": false,
+          "total": 23,
+          "ac": 14,
+          "advantage": "none",
+          "overlay": "d20 (19) + 4 = 23 vs 14 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0023"
+          ],
+          "damage": {
+            "target": "tamsin",
+            "total": 3,
+            "parts": [
+              {
+                "amount": 3,
+                "type": "piercing",
+                "note": null,
+                "hp_before": 5,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 2
+              }
+            ],
+            "hp_after": 2
+          }
+        },
+        {
+          "seq": 36,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "goblin-4"
+        },
+        {
+          "seq": 37,
+          "round": 1,
+          "t": "turn_start",
+          "actor": "brannoc",
+          "hp": 5,
+          "pos": [
+            21,
+            14
+          ]
+        },
+        {
+          "seq": 38,
+          "round": 1,
+          "t": "second_wind",
+          "actor": "brannoc",
+          "roll": "r0024",
+          "amount": 4,
+          "hp_before": 5,
+          "hp_after": 9,
+          "revived": false
+        },
+        {
+          "seq": 39,
+          "round": 1,
+          "t": "attack",
+          "actor": "brannoc",
+          "target": "goblin-1",
+          "attack": "longsword",
+          "roll": "r0025",
+          "hit": false,
+          "critical": false,
+          "total": 14,
+          "ac": 15,
+          "advantage": "none",
+          "overlay": "d20 (8) + 6 = 14 vs 15 — FAIL",
+          "opportunity": false,
+          "damage_rolls": []
+        },
+        {
+          "seq": 40,
+          "round": 1,
+          "t": "turn_end",
+          "actor": "brannoc"
+        },
+        {
+          "seq": 41,
+          "round": 2,
+          "t": "round_start"
+        },
+        {
+          "seq": 42,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "tamsin",
+          "hp": 2,
+          "pos": [
+            20,
+            13
+          ]
+        },
+        {
+          "seq": 43,
+          "round": 2,
+          "t": "attack",
+          "actor": "tamsin",
+          "target": "goblin-1",
+          "attack": "shortsword",
+          "roll": "r0027",
+          "hit": true,
+          "critical": false,
+          "total": 16,
+          "ac": 15,
+          "advantage": "none",
+          "overlay": "d20 (9) + 7 = 16 vs 15 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0029",
+            "r0030"
+          ],
+          "sneak_attack": true,
+          "damage": {
+            "target": "goblin-1",
+            "total": 10,
+            "parts": [
+              {
+                "amount": 10,
+                "type": "piercing",
+                "note": null,
+                "hp_before": 9,
+                "temp_absorbed": 0,
+                "dropped_to_zero": true,
+                "died": true,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 0
+              }
+            ],
+            "hp_after": 0
+          }
+        },
+        {
+          "seq": 44,
+          "round": 2,
+          "t": "death",
+          "actor": "goblin-1",
+          "cause": "tamsin",
+          "instant": false
+        },
+        {
+          "seq": 45,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "tamsin"
+        },
+        {
+          "seq": 46,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "goblin-3",
+          "hp": 10,
+          "pos": [
+            21,
+            15
+          ]
+        },
+        {
+          "seq": 47,
+          "round": 2,
+          "t": "attack",
+          "actor": "goblin-3",
+          "target": "brannoc",
+          "attack": "scimitar",
+          "roll": "r0031",
+          "hit": true,
+          "critical": false,
+          "total": 22,
+          "ac": 19,
+          "advantage": "none",
+          "overlay": "d20 (18) + 4 = 22 vs 19 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0032"
+          ],
+          "damage": {
+            "target": "brannoc",
+            "total": 5,
+            "parts": [
+              {
+                "amount": 5,
+                "type": "slashing",
+                "note": null,
+                "hp_before": 9,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 4
+              }
+            ],
+            "hp_after": 4
+          }
+        },
+        {
+          "seq": 48,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "goblin-3"
+        },
+        {
+          "seq": 49,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "ilsevel",
+          "hp": 8,
+          "pos": [
+            28,
+            12
+          ]
+        },
+        {
+          "seq": 50,
+          "round": 2,
+          "t": "cast",
+          "actor": "ilsevel",
+          "spell": "fire_bolt",
+          "level": 0,
+          "targets": [
+            "goblin-4"
+          ],
+          "fx": "projectile",
+          "results": [
+            {
+              "target": "goblin-4",
+              "roll": "r0033",
+              "hit": true,
+              "critical": false,
+              "overlay": "d20 (9) + 5 = 14 vs 12 — SUCCESS",
+              "damage_rolls": [
+                "r0034"
+              ],
+              "damage": {
+                "target": "goblin-4",
+                "total": 8,
+                "parts": [
+                  {
+                    "amount": 8,
+                    "type": "fire",
+                    "note": null,
+                    "hp_before": 7,
+                    "temp_absorbed": 0,
+                    "dropped_to_zero": true,
+                    "died": true,
+                    "instant_death": false,
+                    "death_save_failures": 0,
+                    "hp_after": 0
+                  }
+                ],
+                "hp_after": 0
+              }
+            }
+          ]
+        },
+        {
+          "seq": 51,
+          "round": 2,
+          "t": "death",
+          "actor": "goblin-4",
+          "cause": "ilsevel",
+          "instant": false
+        },
+        {
+          "seq": 52,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "ilsevel"
+        },
+        {
+          "seq": 53,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "oriel",
+          "hp": 10,
+          "pos": [
+            22,
+            13
+          ]
+        },
+        {
+          "seq": 54,
+          "round": 2,
+          "t": "cast",
+          "actor": "oriel",
+          "spell": "healing_word",
+          "level": 1,
+          "targets": [
+            "tamsin"
+          ],
+          "fx": "sparkle",
+          "results": [
+            {
+              "target": "tamsin",
+              "roll": "r0035",
+              "amount": 8,
+              "hp_before": 2,
+              "hp_after": 10,
+              "revived": false
+            }
+          ]
+        },
+        {
+          "seq": 55,
+          "round": 2,
+          "t": "cast",
+          "actor": "oriel",
+          "spell": "sacred_flame",
+          "level": 0,
+          "targets": [
+            "goblin-3"
+          ],
+          "fx": "pillar",
+          "results": [
+            {
+              "target": "goblin-3",
+              "roll": "r0037",
+              "saved": false,
+              "dc": 13,
+              "overlay": "d20 (9) + 2 = 11 vs 13 — FAIL",
+              "damage": {
+                "target": "goblin-3",
+                "total": 7,
+                "parts": [
+                  {
+                    "amount": 7,
+                    "type": "radiant",
+                    "note": null,
+                    "hp_before": 10,
+                    "temp_absorbed": 0,
+                    "dropped_to_zero": false,
+                    "died": false,
+                    "instant_death": false,
+                    "death_save_failures": 0,
+                    "hp_after": 3
+                  }
+                ],
+                "hp_after": 3
+              }
+            }
+          ],
+          "damage_roll": "r0036"
+        },
+        {
+          "seq": 56,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "oriel"
+        },
+        {
+          "seq": 57,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "goblin-2",
+          "hp": 10,
+          "pos": [
+            20,
+            14
+          ]
+        },
+        {
+          "seq": 58,
+          "round": 2,
+          "t": "attack",
+          "actor": "goblin-2",
+          "target": "tamsin",
+          "attack": "scimitar",
+          "roll": "r0038",
+          "hit": true,
+          "critical": false,
+          "total": 15,
+          "ac": 14,
+          "advantage": "none",
+          "overlay": "d20 (11) + 4 = 15 vs 14 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0039"
+          ],
+          "damage": {
+            "target": "tamsin",
+            "total": 4,
+            "parts": [
+              {
+                "amount": 4,
+                "type": "slashing",
+                "note": null,
+                "hp_before": 10,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 6
+              }
+            ],
+            "hp_after": 6
+          }
+        },
+        {
+          "seq": 59,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "goblin-2"
+        },
+        {
+          "seq": 60,
+          "round": 2,
+          "t": "turn_start",
+          "actor": "brannoc",
+          "hp": 4,
+          "pos": [
+            21,
+            14
+          ]
+        },
+        {
+          "seq": 61,
+          "round": 2,
+          "t": "second_wind",
+          "actor": "brannoc",
+          "roll": "r0040",
+          "amount": 9,
+          "hp_before": 4,
+          "hp_after": 13,
+          "revived": false
+        },
+        {
+          "seq": 62,
+          "round": 2,
+          "t": "attack",
+          "actor": "brannoc",
+          "target": "goblin-2",
+          "attack": "longsword",
+          "roll": "r0041",
+          "hit": true,
+          "critical": false,
+          "total": 26,
+          "ac": 15,
+          "advantage": "none",
+          "overlay": "d20 (19) + 7 = 26 vs 15 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0043",
+            "r0044"
+          ],
+          "damage": {
+            "target": "goblin-2",
+            "total": 8,
+            "parts": [
+              {
+                "amount": 8,
+                "type": "slashing",
+                "note": null,
+                "hp_before": 10,
+                "temp_absorbed": 0,
+                "dropped_to_zero": false,
+                "died": false,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 2
+              }
+            ],
+            "hp_after": 2
+          },
+          "mastery": "sap"
+        },
+        {
+          "seq": 63,
+          "round": 2,
+          "t": "turn_end",
+          "actor": "brannoc"
+        },
+        {
+          "seq": 64,
+          "round": 3,
+          "t": "round_start"
+        },
+        {
+          "seq": 65,
+          "round": 3,
+          "t": "turn_start",
+          "actor": "tamsin",
+          "hp": 6,
+          "pos": [
+            20,
+            13
+          ]
+        },
+        {
+          "seq": 66,
+          "round": 3,
+          "t": "attack",
+          "actor": "tamsin",
+          "target": "goblin-2",
+          "attack": "shortsword",
+          "roll": "r0045",
+          "hit": true,
+          "critical": false,
+          "total": 15,
+          "ac": 15,
+          "advantage": "none",
+          "overlay": "d20 (8) + 7 = 15 vs 15 — SUCCESS",
+          "opportunity": false,
+          "damage_rolls": [
+            "r0047",
+            "r0048"
+          ],
+          "sneak_attack": true,
+          "damage": {
+            "target": "goblin-2",
+            "total": 14,
+            "parts": [
+              {
+                "amount": 14,
+                "type": "piercing",
+                "note": null,
+                "hp_before": 2,
+                "temp_absorbed": 0,
+                "dropped_to_zero": true,
+                "died": true,
+                "instant_death": false,
+                "death_save_failures": 0,
+                "hp_after": 0
+              }
+            ],
+            "hp_after": 0
+          }
+        },
+        {
+          "seq": 67,
+          "round": 3,
+          "t": "death",
+          "actor": "goblin-2",
+          "cause": "tamsin",
+          "instant": false
+        },
+        {
+          "seq": 68,
+          "round": 3,
+          "t": "move",
+          "actor": "tamsin",
+          "frm": [
+            20,
+            13
+          ],
+          "to": [
+            26,
+            7
+          ],
+          "cost": 30,
+          "path": [
+            [
+              20,
+              13
+            ],
+            [
+              21,
+              12
+            ],
+            [
+              22,
+              11
+            ],
+            [
+              23,
+              10
+            ],
+            [
+              24,
+              9
+            ],
+            [
+              25,
+              8
+            ],
+            [
+              26,
+              7
+            ]
+          ]
+        },
+        {
+          "seq": 69,
+          "round": 3,
+          "t": "turn_end",
+          "actor": "tamsin"
+        },
+        {
+          "seq": 70,
+          "round": 3,
+          "t": "turn_start",
+          "actor": "goblin-3",
+          "hp": 3,
+          "pos": [
+            21,
+            15
+          ]
+        },
+        {
+          "seq": 71,
+          "round": 3,
+          "t": "attack",
+          "actor": "goblin-3",
+          "target": "brannoc",
+          "attack": "scimitar",
+          "roll": "r0049",
+          "hit": false,
+          "critical": false,
+          "total": 11,
+          "ac": 19,
+          "advantage": "none",
+          "overlay": "d20 (7) + 4 = 11 vs 19 — FAIL",
+          "opportunity": false,
+          "damage_rolls": []
+        },
+        {
+          "seq": 72,
+          "round": 3,
+          "t": "turn_end",
+          "actor": "goblin-3"
+        },
+        {
+          "seq": 73,
+          "round": 3,
+          "t": "turn_start",
+          "actor": "ilsevel",
+          "hp": 8,
+          "pos": [
+            28,
+            12
+          ]
+        },
+        {
+          "seq": 74,
+          "round": 3,
+          "t": "cast",
+          "actor": "ilsevel",
+          "spell": "magic_missile",
+          "level": 1,
+          "targets": [
+            "goblin-3"
+          ],
+          "fx": "projectile",
+          "results": [
+            {
+              "target": "goblin-3",
+              "dart": 1,
+              "damage_rolls": [
+                "r0050"
+              ],
+              "damage": {
+                "target": "goblin-3",
+                "total": 4,
+                "parts": [
+                  {
+                    "amount": 4,
+                    "type": "force",
+                    "note": null,
+                    "hp_before": 3,
+                    "temp_absorbed": 0,
+                    "dropped_to_zero": true,
+                    "died": true,
+                    "instant_death": false,
+                    "death_save_failures": 0,
+                    "hp_after": 0
+                  }
+                ],
+                "hp_after": 0
+              }
+            },
+            {
+              "target": "goblin-3",
+              "dart": 2,
+              "blocked": "dead"
+            },
+            {
+              "target": "goblin-3",
+              "dart": 3,
+              "blocked": "dead"
+            }
+          ]
+        },
+        {
+          "seq": 75,
+          "round": 3,
+          "t": "death",
+          "actor": "goblin-3",
+          "cause": "ilsevel",
+          "instant": false
+        },
+        {
+          "seq": 76,
+          "round": 3,
+          "t": "encounter_end",
+          "winner": "party",
+          "rounds": 3,
+          "xp": 175,
+          "survivors": [
+            {
+              "id": "brannoc",
+              "name": "Brannoc Ironvow",
+              "team": "party",
+              "hp": 13,
+              "max_hp": 13,
+              "temp_hp": 0,
+              "ac": 19,
+              "pos": [
+                21,
+                14
+              ],
+              "conditions": [],
+              "effects": [
+                "bless"
+              ],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "oriel",
+              "name": "Oriel Ashdown",
+              "team": "party",
+              "hp": 10,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 18,
+              "pos": [
+                22,
+                13
+              ],
+              "conditions": [],
+              "effects": [
+                "bless"
+              ],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": "bless"
+            },
+            {
+              "id": "tamsin",
+              "name": "Tamsin Underbough",
+              "team": "party",
+              "hp": 6,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 14,
+              "pos": [
+                26,
+                7
+              ],
+              "conditions": [],
+              "effects": [
+                "bless"
+              ],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "ilsevel",
+              "name": "Ilsevel Starwick",
+              "team": "party",
+              "hp": 8,
+              "max_hp": 8,
+              "temp_hp": 0,
+              "ac": 12,
+              "pos": [
+                28,
+                12
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": false,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-1",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 0,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                21,
+                13
+              ],
+              "conditions": [],
+              "effects": [
+                "no_opportunity_attacks"
+              ],
+              "dead": true,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-2",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 0,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                20,
+                14
+              ],
+              "conditions": [],
+              "effects": [
+                "sapped"
+              ],
+              "dead": true,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-3",
+              "name": "Goblin",
+              "team": "enemies",
+              "hp": 0,
+              "max_hp": 10,
+              "temp_hp": 0,
+              "ac": 15,
+              "pos": [
+                21,
+                15
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": true,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            },
+            {
+              "id": "goblin-4",
+              "name": "Goblin Runt",
+              "team": "enemies",
+              "hp": 0,
+              "max_hp": 7,
+              "temp_hp": 0,
+              "ac": 12,
+              "pos": [
+                16,
+                17
+              ],
+              "conditions": [],
+              "effects": [],
+              "dead": true,
+              "stable": false,
+              "death_saves": {
+                "successes": 0,
+                "failures": 0
+              },
+              "concentration": null
+            }
+          ]
+        }
+      ],
+      "combatants": [
+        {
+          "id": "brannoc",
+          "name": "Brannoc Ironvow",
+          "team": "party",
+          "hp": 13,
+          "max_hp": 13,
+          "temp_hp": 0,
+          "ac": 19,
+          "pos": [
+            21,
+            14
+          ],
+          "conditions": [],
+          "effects": [
+            "bless"
+          ],
+          "dead": false,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "oriel",
+          "name": "Oriel Ashdown",
+          "team": "party",
+          "hp": 10,
+          "max_hp": 10,
+          "temp_hp": 0,
+          "ac": 18,
+          "pos": [
+            22,
+            13
+          ],
+          "conditions": [],
+          "effects": [
+            "bless"
+          ],
+          "dead": false,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": "bless"
+        },
+        {
+          "id": "tamsin",
+          "name": "Tamsin Underbough",
+          "team": "party",
+          "hp": 6,
+          "max_hp": 10,
+          "temp_hp": 0,
+          "ac": 14,
+          "pos": [
+            26,
+            7
+          ],
+          "conditions": [],
+          "effects": [
+            "bless"
+          ],
+          "dead": false,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "ilsevel",
+          "name": "Ilsevel Starwick",
+          "team": "party",
+          "hp": 8,
+          "max_hp": 8,
+          "temp_hp": 0,
+          "ac": 12,
+          "pos": [
+            28,
+            12
+          ],
+          "conditions": [],
+          "effects": [],
+          "dead": false,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "goblin-1",
+          "name": "Goblin",
+          "team": "enemies",
+          "hp": 0,
+          "max_hp": 10,
+          "temp_hp": 0,
+          "ac": 15,
+          "pos": [
+            21,
+            13
+          ],
+          "conditions": [],
+          "effects": [
+            "no_opportunity_attacks"
+          ],
+          "dead": true,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "goblin-2",
+          "name": "Goblin",
+          "team": "enemies",
+          "hp": 0,
+          "max_hp": 10,
+          "temp_hp": 0,
+          "ac": 15,
+          "pos": [
+            20,
+            14
+          ],
+          "conditions": [],
+          "effects": [
+            "sapped"
+          ],
+          "dead": true,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "goblin-3",
+          "name": "Goblin",
+          "team": "enemies",
+          "hp": 0,
+          "max_hp": 10,
+          "temp_hp": 0,
+          "ac": 15,
+          "pos": [
+            21,
+            15
+          ],
+          "conditions": [],
+          "effects": [],
+          "dead": true,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        },
+        {
+          "id": "goblin-4",
+          "name": "Goblin Runt",
+          "team": "enemies",
+          "hp": 0,
+          "max_hp": 7,
+          "temp_hp": 0,
+          "ac": 12,
+          "pos": [
+            16,
+            17
+          ],
+          "conditions": [],
+          "effects": [],
+          "dead": true,
+          "stable": false,
+          "death_saves": {
+            "successes": 0,
+            "failures": 0
+          },
+          "concentration": null
+        }
+      ]
+    }
+  ],
+  "rolls": [
+    {
+      "id": "r0000",
+      "index": 0,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and ar",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 0,
+          "sides": 20,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 5,
+      "total": 8,
+      "advantage": "none",
+      "natural": 3,
+      "dc": 12,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0001",
+      "index": 1,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and ar",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 1,
+          "sides": 20,
+          "value": 15
+        }
+      ],
+      "rolls": [
+        15
+      ],
+      "kept": [
+        15
+      ],
+      "modifier": -1,
+      "total": 14,
+      "advantage": "none",
+      "natural": 15,
+      "dc": 12,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0002",
+      "index": 2,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and ar",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 2,
+          "sides": 20,
+          "value": 11
+        }
+      ],
+      "rolls": [
+        11
+      ],
+      "kept": [
+        11
+      ],
+      "modifier": -1,
+      "total": 10,
+      "advantage": "none",
+      "natural": 11,
+      "dc": 12,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0003",
+      "index": 3,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and ar",
+      "actor": "oriel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 3,
+          "sides": 20,
+          "value": 12
+        }
+      ],
+      "rolls": [
+        12
+      ],
+      "kept": [
+        12
+      ],
+      "modifier": 3,
+      "total": 15,
+      "advantage": "none",
+      "natural": 12,
+      "dc": 12,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0004",
+      "index": 4,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 4,
+          "sides": 20,
+          "value": 4
+        }
+      ],
+      "rolls": [
+        4
+      ],
+      "kept": [
+        4
+      ],
+      "modifier": 1,
+      "total": 5,
+      "advantage": "none",
+      "natural": 4,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0005",
+      "index": 5,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "oriel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 5,
+          "sides": 20,
+          "value": 11
+        }
+      ],
+      "rolls": [
+        11
+      ],
+      "kept": [
+        11
+      ],
+      "modifier": 0,
+      "total": 11,
+      "advantage": "none",
+      "natural": 11,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0006",
+      "index": 6,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 6,
+          "sides": 20,
+          "value": 20
+        }
+      ],
+      "rolls": [
+        20
+      ],
+      "kept": [
+        20
+      ],
+      "modifier": 5,
+      "total": 25,
+      "advantage": "none",
+      "natural": 20,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0007",
+      "index": 7,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 7,
+          "sides": 20,
+          "value": 14
+        }
+      ],
+      "rolls": [
+        14
+      ],
+      "kept": [
+        14
+      ],
+      "modifier": 2,
+      "total": 16,
+      "advantage": "none",
+      "natural": 14,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0008",
+      "index": 8,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "goblin-1",
+      "target": null,
+      "draws": [
+        {
+          "counter": 8,
+          "sides": 20,
+          "value": 20
+        }
+      ],
+      "rolls": [
+        20
+      ],
+      "kept": [
+        20
+      ],
+      "modifier": 2,
+      "total": 22,
+      "advantage": "none",
+      "natural": 20,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0009",
+      "index": 9,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "goblin-2",
+      "target": null,
+      "draws": [
+        {
+          "counter": 9,
+          "sides": 20,
+          "value": 8
+        }
+      ],
+      "rolls": [
+        8
+      ],
+      "kept": [
+        8
+      ],
+      "modifier": 2,
+      "total": 10,
+      "advantage": "none",
+      "natural": 8,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0010",
+      "index": 10,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "goblin-3",
+      "target": null,
+      "draws": [
+        {
+          "counter": 10,
+          "sides": 20,
+          "value": 20
+        }
+      ],
+      "rolls": [
+        20
+      ],
+      "kept": [
+        20
+      ],
+      "modifier": 2,
+      "total": 22,
+      "advantage": "none",
+      "natural": 20,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0011",
+      "index": 11,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative",
+      "actor": "goblin-4",
+      "target": null,
+      "draws": [
+        {
+          "counter": 11,
+          "sides": 20,
+          "value": 6
+        }
+      ],
+      "rolls": [
+        6
+      ],
+      "kept": [
+        6
+      ],
+      "modifier": 2,
+      "total": 8,
+      "advantage": "none",
+      "natural": 6,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0012",
+      "index": 12,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative tiebreak",
+      "actor": "goblin-1",
+      "target": null,
+      "draws": [
+        {
+          "counter": 12,
+          "sides": 20,
+          "value": 20
+        }
+      ],
+      "rolls": [
+        20
+      ],
+      "kept": [
+        20
+      ],
+      "modifier": 0,
+      "total": 20,
+      "advantage": "none",
+      "natural": 20,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0013",
+      "index": 13,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "initiative tiebreak",
+      "actor": "goblin-3",
+      "target": null,
+      "draws": [
+        {
+          "counter": 13,
+          "sides": 20,
+          "value": 20
+        }
+      ],
+      "rolls": [
+        20
+      ],
+      "kept": [
+        20
+      ],
+      "modifier": 0,
+      "total": 20,
+      "advantage": "none",
+      "natural": 20,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0014",
+      "index": 14,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Shortbow",
+      "actor": "tamsin",
+      "target": "goblin-4",
+      "draws": [
+        {
+          "counter": 14,
+          "sides": 20,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 5,
+      "total": 8,
+      "advantage": "none",
+      "natural": 3,
+      "dc": 12,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0015",
+      "index": 15,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-1",
+      "target": "ilsevel",
+      "draws": [
+        {
+          "counter": 15,
+          "sides": 20,
+          "value": 9
+        }
+      ],
+      "rolls": [
+        9
+      ],
+      "kept": [
+        9
+      ],
+      "modifier": 4,
+      "total": 13,
+      "advantage": "none",
+      "natural": 9,
+      "dc": 17,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "target cast Shield"
+      ]
+    },
+    {
+      "id": "r0016",
+      "index": 16,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-3",
+      "target": "brannoc",
+      "draws": [
+        {
+          "counter": 16,
+          "sides": 20,
+          "value": 18
+        }
+      ],
+      "rolls": [
+        18
+      ],
+      "kept": [
+        18
+      ],
+      "modifier": 4,
+      "total": 22,
+      "advantage": "none",
+      "natural": 18,
+      "dc": 19,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0017",
+      "index": 17,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+2",
+      "purpose": "damage: Scimitar",
+      "actor": "goblin-3",
+      "target": "brannoc",
+      "draws": [
+        {
+          "counter": 17,
+          "sides": 6,
+          "value": 6
+        }
+      ],
+      "rolls": [
+        6
+      ],
+      "kept": [
+        6
+      ],
+      "modifier": 2,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0018",
+      "index": 18,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "spell attack: Shocking Grasp",
+      "actor": "ilsevel",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 18,
+          "sides": 20,
+          "value": 16
+        }
+      ],
+      "rolls": [
+        16
+      ],
+      "kept": [
+        16
+      ],
+      "modifier": 5,
+      "total": 21,
+      "advantage": "none",
+      "natural": 16,
+      "dc": 15,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0019",
+      "index": 19,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d8",
+      "purpose": "damage: Shocking Grasp",
+      "actor": "ilsevel",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 19,
+          "sides": 8,
+          "value": 1
+        }
+      ],
+      "rolls": [
+        1
+      ],
+      "kept": [
+        1
+      ],
+      "modifier": 0,
+      "total": 1,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0020",
+      "index": 20,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-2",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 20,
+          "sides": 20,
+          "value": 13
+        }
+      ],
+      "rolls": [
+        13
+      ],
+      "kept": [
+        13
+      ],
+      "modifier": 4,
+      "total": 17,
+      "advantage": "none",
+      "natural": 13,
+      "dc": 14,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0021",
+      "index": 21,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+2",
+      "purpose": "damage: Scimitar",
+      "actor": "goblin-2",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 21,
+          "sides": 6,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 2,
+      "total": 5,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0022",
+      "index": 22,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Dagger",
+      "actor": "goblin-4",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 22,
+          "sides": 20,
+          "value": 19
+        }
+      ],
+      "rolls": [
+        19
+      ],
+      "kept": [
+        19
+      ],
+      "modifier": 4,
+      "total": 23,
+      "advantage": "none",
+      "natural": 19,
+      "dc": 14,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0023",
+      "index": 23,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4+2",
+      "purpose": "damage: Dagger",
+      "actor": "goblin-4",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 23,
+          "sides": 4,
+          "value": 1
+        }
+      ],
+      "rolls": [
+        1
+      ],
+      "kept": [
+        1
+      ],
+      "modifier": 2,
+      "total": 3,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0024",
+      "index": 24,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d10",
+      "purpose": "Second Wind",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 24,
+          "sides": 10,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 1,
+      "total": 4,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0025",
+      "index": 25,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Longsword",
+      "actor": "brannoc",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 25,
+          "sides": 20,
+          "value": 8
+        }
+      ],
+      "rolls": [
+        8
+      ],
+      "kept": [
+        8
+      ],
+      "modifier": 6,
+      "total": 14,
+      "advantage": "none",
+      "natural": 8,
+      "dc": 15,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "bless +1 (r0026)"
+      ]
+    },
+    {
+      "id": "r0026",
+      "index": 26,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4",
+      "purpose": "bless",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 26,
+          "sides": 4,
+          "value": 1
+        }
+      ],
+      "rolls": [
+        1
+      ],
+      "kept": [
+        1
+      ],
+      "modifier": 0,
+      "total": 1,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0027",
+      "index": 27,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Shortsword",
+      "actor": "tamsin",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 27,
+          "sides": 20,
+          "value": 9
+        }
+      ],
+      "rolls": [
+        9
+      ],
+      "kept": [
+        9
+      ],
+      "modifier": 7,
+      "total": 16,
+      "advantage": "none",
+      "natural": 9,
+      "dc": 15,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "bless +2 (r0028)"
+      ]
+    },
+    {
+      "id": "r0028",
+      "index": 28,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4",
+      "purpose": "bless",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 28,
+          "sides": 4,
+          "value": 2
+        }
+      ],
+      "rolls": [
+        2
+      ],
+      "kept": [
+        2
+      ],
+      "modifier": 0,
+      "total": 2,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0029",
+      "index": 29,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+3",
+      "purpose": "damage: Shortsword",
+      "actor": "tamsin",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 29,
+          "sides": 6,
+          "value": 5
+        }
+      ],
+      "rolls": [
+        5
+      ],
+      "kept": [
+        5
+      ],
+      "modifier": 3,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0030",
+      "index": 30,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6",
+      "purpose": "damage: Sneak Attack",
+      "actor": "tamsin",
+      "target": "goblin-1",
+      "draws": [
+        {
+          "counter": 30,
+          "sides": 6,
+          "value": 2
+        }
+      ],
+      "rolls": [
+        2
+      ],
+      "kept": [
+        2
+      ],
+      "modifier": 0,
+      "total": 2,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0031",
+      "index": 31,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-3",
+      "target": "brannoc",
+      "draws": [
+        {
+          "counter": 31,
+          "sides": 20,
+          "value": 18
+        }
+      ],
+      "rolls": [
+        18
+      ],
+      "kept": [
+        18
+      ],
+      "modifier": 4,
+      "total": 22,
+      "advantage": "none",
+      "natural": 18,
+      "dc": 19,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0032",
+      "index": 32,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+2",
+      "purpose": "damage: Scimitar",
+      "actor": "goblin-3",
+      "target": "brannoc",
+      "draws": [
+        {
+          "counter": 32,
+          "sides": 6,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 2,
+      "total": 5,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0033",
+      "index": 33,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "spell attack: Fire Bolt",
+      "actor": "ilsevel",
+      "target": "goblin-4",
+      "draws": [
+        {
+          "counter": 33,
+          "sides": 20,
+          "value": 9
+        }
+      ],
+      "rolls": [
+        9
+      ],
+      "kept": [
+        9
+      ],
+      "modifier": 5,
+      "total": 14,
+      "advantage": "none",
+      "natural": 9,
+      "dc": 12,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0034",
+      "index": 34,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d10",
+      "purpose": "damage: Fire Bolt",
+      "actor": "ilsevel",
+      "target": "goblin-4",
+      "draws": [
+        {
+          "counter": 34,
+          "sides": 10,
+          "value": 8
+        }
+      ],
+      "rolls": [
+        8
+      ],
+      "kept": [
+        8
+      ],
+      "modifier": 0,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0035",
+      "index": 35,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "2d4",
+      "purpose": "healing: Healing Word",
+      "actor": "oriel",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 35,
+          "sides": 4,
+          "value": 2
+        },
+        {
+          "counter": 36,
+          "sides": 4,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        2,
+        3
+      ],
+      "kept": [
+        2,
+        3
+      ],
+      "modifier": 3,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0036",
+      "index": 36,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d8",
+      "purpose": "damage: Sacred Flame",
+      "actor": "oriel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 37,
+          "sides": 8,
+          "value": 7
+        }
+      ],
+      "rolls": [
+        7
+      ],
+      "kept": [
+        7
+      ],
+      "modifier": 0,
+      "total": 7,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0037",
+      "index": 37,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "Sacred Flame save",
+      "actor": "goblin-3",
+      "target": "oriel",
+      "draws": [
+        {
+          "counter": 38,
+          "sides": 20,
+          "value": 9
+        }
+      ],
+      "rolls": [
+        9
+      ],
+      "kept": [
+        9
+      ],
+      "modifier": 2,
+      "total": 11,
+      "advantage": "none",
+      "natural": 9,
+      "dc": 13,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0038",
+      "index": 38,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-2",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 39,
+          "sides": 20,
+          "value": 11
+        }
+      ],
+      "rolls": [
+        11
+      ],
+      "kept": [
+        11
+      ],
+      "modifier": 4,
+      "total": 15,
+      "advantage": "none",
+      "natural": 11,
+      "dc": 14,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0039",
+      "index": 39,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+2",
+      "purpose": "damage: Scimitar",
+      "actor": "goblin-2",
+      "target": "tamsin",
+      "draws": [
+        {
+          "counter": 40,
+          "sides": 6,
+          "value": 2
+        }
+      ],
+      "rolls": [
+        2
+      ],
+      "kept": [
+        2
+      ],
+      "modifier": 2,
+      "total": 4,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0040",
+      "index": 40,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d10",
+      "purpose": "Second Wind",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 41,
+          "sides": 10,
+          "value": 10
+        }
+      ],
+      "rolls": [
+        10
+      ],
+      "kept": [
+        10
+      ],
+      "modifier": 1,
+      "total": 11,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0041",
+      "index": 41,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Longsword",
+      "actor": "brannoc",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 42,
+          "sides": 20,
+          "value": 19
+        }
+      ],
+      "rolls": [
+        19
+      ],
+      "kept": [
+        19
+      ],
+      "modifier": 7,
+      "total": 26,
+      "advantage": "none",
+      "natural": 19,
+      "dc": 15,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "bless +2 (r0042)"
+      ]
+    },
+    {
+      "id": "r0042",
+      "index": 42,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4",
+      "purpose": "bless",
+      "actor": "brannoc",
+      "target": null,
+      "draws": [
+        {
+          "counter": 43,
+          "sides": 4,
+          "value": 2
+        }
+      ],
+      "rolls": [
+        2
+      ],
+      "kept": [
+        2
+      ],
+      "modifier": 0,
+      "total": 2,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0043",
+      "index": 43,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d8+3",
+      "purpose": "damage: Longsword",
+      "actor": "brannoc",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 44,
+          "sides": 8,
+          "value": 5
+        }
+      ],
+      "rolls": [
+        5
+      ],
+      "kept": [
+        5
+      ],
+      "modifier": 3,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "kept (Savage Attacker)"
+      ]
+    },
+    {
+      "id": "r0044",
+      "index": 44,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d8+3",
+      "purpose": "damage: Longsword (Savage Attacker)",
+      "actor": "brannoc",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 45,
+          "sides": 8,
+          "value": 4
+        }
+      ],
+      "rolls": [
+        4
+      ],
+      "kept": [
+        4
+      ],
+      "modifier": 3,
+      "total": 7,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0045",
+      "index": 45,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Shortsword",
+      "actor": "tamsin",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 46,
+          "sides": 20,
+          "value": 8
+        }
+      ],
+      "rolls": [
+        8
+      ],
+      "kept": [
+        8
+      ],
+      "modifier": 7,
+      "total": 15,
+      "advantage": "none",
+      "natural": 8,
+      "dc": 15,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": [
+        "bless +2 (r0046)"
+      ]
+    },
+    {
+      "id": "r0046",
+      "index": 46,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4",
+      "purpose": "bless",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 47,
+          "sides": 4,
+          "value": 2
+        }
+      ],
+      "rolls": [
+        2
+      ],
+      "kept": [
+        2
+      ],
+      "modifier": 0,
+      "total": 2,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0047",
+      "index": 47,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6+3",
+      "purpose": "damage: Shortsword",
+      "actor": "tamsin",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 48,
+          "sides": 6,
+          "value": 5
+        }
+      ],
+      "rolls": [
+        5
+      ],
+      "kept": [
+        5
+      ],
+      "modifier": 3,
+      "total": 8,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0048",
+      "index": 48,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d6",
+      "purpose": "damage: Sneak Attack",
+      "actor": "tamsin",
+      "target": "goblin-2",
+      "draws": [
+        {
+          "counter": 49,
+          "sides": 6,
+          "value": 6
+        }
+      ],
+      "rolls": [
+        6
+      ],
+      "kept": [
+        6
+      ],
+      "modifier": 0,
+      "total": 6,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0049",
+      "index": 49,
+      "seed": "C01-E008-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "attack: Scimitar",
+      "actor": "goblin-3",
+      "target": "brannoc",
+      "draws": [
+        {
+          "counter": 50,
+          "sides": 20,
+          "value": 7
+        }
+      ],
+      "rolls": [
+        7
+      ],
+      "kept": [
+        7
+      ],
+      "modifier": 4,
+      "total": 11,
+      "advantage": "none",
+      "natural": 7,
+      "dc": 19,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0050",
+      "index": 50,
+      "seed": "C01-E008-1",
+      "kind": "dice",
+      "notation": "1d4+1",
+      "purpose": "damage: Magic Missile dart 1",
+      "actor": "ilsevel",
+      "target": "goblin-3",
+      "draws": [
+        {
+          "counter": 51,
+          "sides": 4,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 1,
+      "total": 4,
+      "advantage": "none",
+      "natural": null,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    }
+  ],
+  "state_changes": [
+    {
+      "type": "location",
+      "id": "loc.wending-mill",
+      "map": "wending_mill",
+      "region": "lanternmarch",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.ned-hollis",
+      "name": "Ned Hollis",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.wending-mill",
+      "note": "Old miller of Wending Mill; barricaded the villagers in the watermill when goblins attacked (C01-E008).",
+      "if": "e1.won",
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "wending_mill_barn_burning",
+      "value": true,
+      "applied": true
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "objectives": [
+        "Save the people trapped in the burning barn"
+      ],
+      "applied": true
+    },
+    {
+      "type": "clock",
+      "time_of_day": "day",
+      "applied": true
+    },
+    {
+      "type": "xp",
+      "amount_each": 43,
+      "source": "encounters",
+      "applied": true
+    }
+  ],
+  "xp_awarded": 43,
+  "loot": [],
+  "level_ups": []
+}

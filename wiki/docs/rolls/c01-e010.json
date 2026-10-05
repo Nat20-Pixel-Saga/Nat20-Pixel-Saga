@@ -1,0 +1,104 @@
+{
+ "seed": "C01-E010-1",
+ "rolls": [
+  {
+   "id": "r0000",
+   "index": 0,
+   "seed": "C01-E010-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c1: Read a veteran officer who has spent twenty years not letting her face say anything.",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 0,
+     "sides": 20,
+     "value": 12
+    }
+   ],
+   "rolls": [
+    12
+   ],
+   "kept": [
+    12
+   ],
+   "modifier": 5,
+   "total": 17,
+   "advantage": "none",
+   "natural": 12,
+   "dc": 13,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0001",
+   "index": 1,
+   "seed": "C01-E010-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c2: Haggle a frontier captain up from ten crowns a week, when her fort is short of soldiers, food and coin, and she know",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 1,
+     "sides": 20,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 3,
+   "total": 6,
+   "advantage": "none",
+   "natural": 3,
+   "dc": 18,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0002",
+   "index": 2,
+   "seed": "C01-E010-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c3: Make sense of an unknown piece of black glass by lamplight: weight, cold, how the light behaves around it.",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 2,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 5,
+   "total": 14,
+   "advantage": "none",
+   "natural": 9,
+   "dc": 13,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  }
+ ]
+}

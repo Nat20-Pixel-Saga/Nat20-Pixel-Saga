@@ -1,0 +1,19 @@
+{
+  "schema": "pqc/continuity@1",
+  "episode_id": "C01-E003",
+  "ok": true,
+  "issues": [
+    {
+      "severity": "warning",
+      "where": "s3#6",
+      "problem": "Tamsin says 'Lovely' for the second time this episode (s1#17 and here). It is her verbal tic, but twice in eight minutes starts to show.",
+      "fix": "Optional: vary one, e.g. 'Forty. Wonderful. My favourite number of goblins is none.'"
+    },
+    {
+      "severity": "warning",
+      "where": "s2#13",
+      "problem": "Ilsevel's failed Investigation still lands the episode's reveal (the core was lifted out whole). That is what the failure branch allows; the failure cost is shown in her next line (she can say nothing about who or how), so it reads fairly.",
+      "fix": "None needed."
+    }
+  ]
+}

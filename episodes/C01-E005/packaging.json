@@ -1,0 +1,43 @@
+{
+  "schema": "pqc/packaging@1",
+  "episode_id": "C01-E005",
+  "title": "The Scout Camp | Nat 20 Pixels C1E5",
+  "description": "Firelight in the woods, goblin voices, and a cart that leaves at dawn.\nThe party is hurt, out of spells, and Tamsin has a plan that involves walking in alone.\n\nEpisode 5 of a daily pixel-art D&D 5e story. Brannoc, Ilsevel, Tamsin and Oriel follow the goblin trail to a scout camp deep in Thornpike Woods. A group stealth check, one very confident lie, and whatever is waiting in the cart. Every check and attack is decided by real, seeded dice shown on screen: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.",
+  "tags": [
+    "Nat 20 Pixels",
+    "D&D 5e",
+    "Dungeons and Dragons",
+    "pixel art",
+    "actual play",
+    "fantasy story",
+    "goblins",
+    "stealth",
+    "bluff",
+    "Brannoc",
+    "Ilsevel",
+    "Tamsin",
+    "Oriel",
+    "Thornpike Woods"
+  ],
+  "thumbnail_text": "THE BOSS SENT ME",
+  "thumbnail_moment": "s2",
+  "chapters": [
+    {
+      "time": "0:00",
+      "seconds": 0.0,
+      "title": "Firelight"
+    },
+    {
+      "time": "2:06",
+      "seconds": 126.37,
+      "title": "The Collector"
+    },
+    {
+      "time": "4:30",
+      "seconds": 270.23,
+      "title": "Three Grey Stones"
+    }
+  ],
+  "duration_s": 361.4,
+  "description_full": "Firelight in the woods, goblin voices, and a cart that leaves at dawn.\nThe party is hurt, out of spells, and Tamsin has a plan that involves walking in alone.\n\nEpisode 5 of a daily pixel-art D&D 5e story. Brannoc, Ilsevel, Tamsin and Oriel follow the goblin trail to a scout camp deep in Thornpike Woods. A group stealth check, one very confident lie, and whatever is waiting in the cart. Every check and attack is decided by real, seeded dice shown on screen: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.\n\nChapters\n0:00 Firelight\n2:06 The Collector\n4:30 Three Grey Stones\n\nEvery roll in this episode is real: seed C01-E005-1, 32 rolls, all logged and verifiable at https://nat20pixelsaga.com/dice/.\nEpisode page and lore: https://nat20pixelsaga.com/episodes/c01-e005/\n\nArt, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).\nRules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast."
+}

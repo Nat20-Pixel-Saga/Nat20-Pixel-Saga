@@ -1,0 +1,328 @@
+{
+  "schema": "pqc/episode@1",
+  "id": "C01-E010",
+  "campaign": 1,
+  "episode": 10,
+  "title": "Fort Harrow",
+  "seed": "C01-E010-1",
+  "attempt": 1,
+  "status": "scripted",
+  "in_world_date": {
+    "year": 1047,
+    "month": 9,
+    "day": 7,
+    "hearthday": null,
+    "time_of_day": "morning"
+  },
+  "checks": [
+    {
+      "id": "c1",
+      "actor": "oriel",
+      "skill": "insight",
+      "ability": null,
+      "dc": 13,
+      "roll": "r0000",
+      "success": true,
+      "reason": "Read a veteran officer who has spent twenty years not letting her face say anything.",
+      "offscreen": false
+    },
+    {
+      "id": "c2",
+      "actor": "tamsin",
+      "skill": "persuasion",
+      "ability": null,
+      "dc": 18,
+      "roll": "r0001",
+      "success": false,
+      "reason": "Haggle a frontier captain up from ten crowns a week, when her fort is short of soldiers, food and coin, and she knows it.",
+      "offscreen": false
+    },
+    {
+      "id": "c3",
+      "actor": "ilsevel",
+      "skill": "arcana",
+      "ability": null,
+      "dc": 13,
+      "roll": "r0002",
+      "success": true,
+      "reason": "Make sense of an unknown piece of black glass by lamplight: weight, cold, how the light behaves around it.",
+      "offscreen": false
+    }
+  ],
+  "encounters": [],
+  "rolls": [
+    {
+      "id": "r0000",
+      "index": 0,
+      "seed": "C01-E010-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Read a veteran officer who has spent twenty years not letting her face say anything.",
+      "actor": "oriel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 0,
+          "sides": 20,
+          "value": 12
+        }
+      ],
+      "rolls": [
+        12
+      ],
+      "kept": [
+        12
+      ],
+      "modifier": 5,
+      "total": 17,
+      "advantage": "none",
+      "natural": 12,
+      "dc": 13,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0001",
+      "index": 1,
+      "seed": "C01-E010-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c2: Haggle a frontier captain up from ten crowns a week, when her fort is short of soldiers, food and coin, and she know",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 1,
+          "sides": 20,
+          "value": 3
+        }
+      ],
+      "rolls": [
+        3
+      ],
+      "kept": [
+        3
+      ],
+      "modifier": 3,
+      "total": 6,
+      "advantage": "none",
+      "natural": 3,
+      "dc": 18,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0002",
+      "index": 2,
+      "seed": "C01-E010-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c3: Make sense of an unknown piece of black glass by lamplight: weight, cold, how the light behaves around it.",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 2,
+          "sides": 20,
+          "value": 9
+        }
+      ],
+      "rolls": [
+        9
+      ],
+      "kept": [
+        9
+      ],
+      "modifier": 5,
+      "total": 14,
+      "advantage": "none",
+      "natural": 9,
+      "dc": 13,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    }
+  ],
+  "state_changes": [
+    {
+      "type": "location",
+      "id": "loc.fort-harrow",
+      "map": "fort_harrow",
+      "region": "lanternmarch",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.edda-rook",
+      "note": "Hired Brannoc, Ilsevel, Tamsin and Oriel at ten crowns a week each to ride the Lantern Road and find out who is buying cores (C01-E010).",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.corporal-dunn",
+      "name": "Corporal Dunn",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "note": "Served with Brannoc at Fort Harrow; glad to see him.",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.ferrick",
+      "name": "Ferrick",
+      "status": "alive",
+      "attitude": "indifferent",
+      "location": "loc.fort-harrow",
+      "note": "Young soldier who repeated the gossip that Brannoc is an 'Ironvow exile' out of Aldhammer.",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.sergeant-holt",
+      "name": "Sergeant Holt",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "note": "Led the patrol that brought in the goblin with the black-glass pendant.",
+      "applied": true
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "brannoc",
+      "applied": true
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "ilsevel",
+      "applied": true
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "tamsin",
+      "applied": true
+    },
+    {
+      "type": "gold",
+      "cp": 1000,
+      "to": "oriel",
+      "applied": true
+    },
+    {
+      "type": "quest",
+      "id": "q.ride-for-rook",
+      "title": "Ride the Lantern Road for Captain Rook",
+      "giver": "npc.edda-rook",
+      "reward_cp": 1000,
+      "objectives": [
+        "Patrol the Lantern Road (ten crowns a week each)",
+        "Find out who is buying the stolen lantern-cores"
+      ],
+      "applied": true
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "status": "completed",
+      "objectives": [
+        "Report to Captain Rook at Fort Harrow"
+      ],
+      "applied": true
+    },
+    {
+      "type": "quest",
+      "id": "q.deliver-dispatches",
+      "status": "completed",
+      "applied": true
+    },
+    {
+      "type": "item",
+      "id": "black_glass_pendant",
+      "name": "Black-glass pendant",
+      "holder": "ilsevel",
+      "qty": 1,
+      "applied": true
+    },
+    {
+      "type": "item",
+      "id": "requisition_warrant",
+      "name": "Captain Rook's warrant to requisition food on the road",
+      "holder": "party",
+      "qty": 1,
+      "if": "c2.success",
+      "applied": false,
+      "why": "condition c2.success not met (c2 was failure)"
+    },
+    {
+      "type": "flag",
+      "id": "black_glass_pendant_found",
+      "value": true,
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "pendant_drinks_light",
+      "value": true,
+      "if": "c3.success",
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "party_knows_ironvow_name",
+      "value": true,
+      "applied": true
+    },
+    {
+      "type": "hook",
+      "id": "hook.shaft-nine-debt",
+      "status": "planted",
+      "applied": true
+    },
+    {
+      "type": "lantern",
+      "id": "lantern_road.052",
+      "state": "lit",
+      "applied": true
+    },
+    {
+      "type": "faction",
+      "id": "fac.crown-of-corvane",
+      "reputation_delta": 1,
+      "note": "Hired by Captain Rook of Fort Harrow.",
+      "applied": true
+    },
+    {
+      "type": "bond",
+      "a": "brannoc",
+      "b": "tamsin",
+      "trust": 1,
+      "note": "Tamsin heard 'Ironvow' at the fort gate and changed the subject instead of asking.",
+      "applied": true
+    },
+    {
+      "type": "clock",
+      "advance_days": 1,
+      "time_of_day": "evening",
+      "applied": true
+    },
+    {
+      "type": "rest",
+      "kind": "long",
+      "applied": true
+    }
+  ],
+  "xp_awarded": 0,
+  "loot": [],
+  "level_ups": []
+}

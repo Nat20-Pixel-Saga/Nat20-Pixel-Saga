@@ -1,0 +1,319 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E009",
+  "title": "Smoke Over the Millpond",
+  "summary": "Moments later, 6 Emberfall. The barn at Wending Mill is burning with its doors barred from outside and the miller's wife Bet and a hired lad inside. Brannoc throws his weight at the heat-swollen bar; Oriel drags the two out of the smoke and tries to get them breathing. Then the ones who set the fire come out of the smoke: a goblin boss in a scavenged helmet and two of his crew. Nobody in the party has a spell left beyond cantrips, and Tamsin is still bleeding from the mill yard. It is the hardest fight they have had.",
+  "dm_intro": {
+    "title": "Smoke Over the Millpond",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  6 Emberfall 1047 AK",
+    "text": "At the hamlet of Wending Mill, four strangers from Brindle Cross have just driven four goblins out of the mill yard. They had no time to catch their breath. The barn across the yard is on fire, its doors barred from outside, and the miller's wife and a hired lad are trapped inside. Behind the smoke, someone was giving the goblins orders."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "The Barred Door",
+      "location": "loc.wending-mill",
+      "map": "wending_mill_burning",
+      "time_of_day": "day",
+      "camera": [
+        33,
+        21
+      ],
+      "music": "tension",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            33,
+            22
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            32,
+            23
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            31,
+            22
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            31,
+            24
+          ],
+          "facing": "right",
+          "name": "Ilsevel"
+        }
+      ],
+      "beats": [
+        "Heat, smoke, a cow bellowing. The cart-pole barring the barn doors is jammed and swollen with heat. Brannoc puts his shoulder under it (c1).",
+        "Bet Hollis and the lad stagger or are dragged out, choking. Oriel kneels over them in the yard (c2). Tamsin and Ilsevel get the cow out, more or less.",
+        "Ilsevel: whoever set this fire is still here. The smoke parts."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "brannoc",
+          "skill": "athletics",
+          "dc": 13,
+          "reason": "Heave a heat-swollen cart-pole out of the iron brackets barring a burning barn's doors, with fire coming through the roof.",
+          "on_success": "The pole comes free on the first heave and the doors swing open; Bet and the lad stumble out on their own feet.",
+          "on_failure": "The pole will not shift. Brannoc burns his hands on it and in the end smashes through a plank beside the door with his shield; it costs precious time, and the two inside have to be dragged out."
+        },
+        {
+          "id": "c2",
+          "actor": "oriel",
+          "skill": "medicine",
+          "dc": 12,
+          "reason": "Get two people who have been breathing smoke coughing, breathing and moving, in the middle of a burning yard.",
+          "on_success": "Bet and the lad cough, breathe, and can walk; Oriel sends them running for the mill.",
+          "on_failure": "The lad is too dazed to stand. Oriel has to haul him to the yard fence herself, and she is still there, out of position, when the goblins come."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "explore",
+        "bond"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Boss",
+      "location": "loc.wending-mill",
+      "map": "wending_mill_burning",
+      "time_of_day": "day",
+      "camera": [
+        34,
+        23
+      ],
+      "music": "battle_boss",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            32,
+            22
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            31,
+            23
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            30,
+            22
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            29,
+            24
+          ],
+          "facing": "right",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "goblin-5",
+          "sprite": "goblin_boss",
+          "at": [
+            38,
+            25
+          ],
+          "facing": "left",
+          "name": "Goblin Boss"
+        },
+        {
+          "id": "goblin-6",
+          "sprite": "goblin_warrior",
+          "at": [
+            39,
+            22
+          ],
+          "facing": "left",
+          "name": "Goblin"
+        },
+        {
+          "id": "goblin-7",
+          "sprite": "goblin_minion",
+          "at": [
+            37,
+            26
+          ],
+          "facing": "left",
+          "name": "Goblin Runt"
+        }
+      ],
+      "beats": [
+        "Out of the smoke: a goblin bigger than the others, in a scavenged helmet with a strip of lantern-glass riveted to it, and two of his crew. He looks at the dead goblins in the yard, then at the party.",
+        "He says something in Goblin; Ilsevel translates it, white-faced: 'The boss pays for stones. He pays more for the ones who stop us.'",
+        "The fight (e1). Nobody has a spell left beyond cantrips. Brannoc goes for the boss."
+      ],
+      "checks": [],
+      "encounter": {
+        "id": "e1",
+        "name": "Smoke Over the Millpond",
+        "enemies": [
+          {
+            "id": "goblin-5",
+            "kind": "goblin_boss",
+            "at": [
+              38,
+              25
+            ],
+            "sprite": "goblin_boss",
+            "name": "Goblin Boss"
+          },
+          {
+            "id": "goblin-6",
+            "kind": "goblin_warrior",
+            "at": [
+              39,
+              22
+            ],
+            "sprite": "goblin_warrior",
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-7",
+            "kind": "goblin_minion",
+            "at": [
+              37,
+              26
+            ],
+            "sprite": "goblin_minion",
+            "name": "Goblin Runt"
+          }
+        ],
+        "party_at": {
+          "brannoc": [
+            32,
+            22
+          ],
+          "oriel": [
+            31,
+            23
+          ],
+          "tamsin": [
+            30,
+            22
+          ],
+          "ilsevel": [
+            29,
+            24
+          ]
+        },
+        "objective": "Survive, and keep them away from the mill.",
+        "stakes": "No spells left, Tamsin already hurt, and the villagers have nowhere else to run."
+      },
+      "pillars": [
+        "fight"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "After the Fire",
+      "location": "loc.wending-mill",
+      "map": "wending_mill_burning",
+      "time_of_day": "dusk",
+      "camera": [
+        33,
+        22
+      ],
+      "music": "sad",
+      "transition": "continue",
+      "cast": [],
+      "beats": [
+        "After the fight, everyone where the fight left them. Whoever went down is brought back (aftermath), and whoever brought them back is the one they see first.",
+        "The barn burns down to its frame; the villagers form a bucket line from the millpond to save the mill. Ned and Bet Hollis offer the party their hearth for the night.",
+        "Someone picks up the boss's helmet: the strip of glass riveted to it is lantern-glass. Last line belongs to a party member."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "bond"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "npc",
+      "id": "npc.bet-hollis",
+      "name": "Bet Hollis",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.wending-mill",
+      "note": "Ned Hollis's wife; pulled out of the burning barn at Wending Mill (C01-E009)."
+    },
+    {
+      "type": "npc",
+      "id": "npc.ned-hollis",
+      "attitude": "helpful",
+      "note": "Gave the party his hearth for the night after the fight at the barn.",
+      "if": "e1.won"
+    },
+    {
+      "type": "item",
+      "id": "goblin_boss_helmet",
+      "name": "Goblin boss's helmet with a strip of lantern-glass riveted to it",
+      "holder": "party",
+      "qty": 1,
+      "if": "e1.won"
+    },
+    {
+      "type": "flag",
+      "id": "wending_mill_saved",
+      "value": true,
+      "if": "e1.won"
+    },
+    {
+      "type": "flag",
+      "id": "party_routed_at_wending_mill",
+      "value": true,
+      "if": "e1.lost"
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "objectives": [
+        "Save the people trapped in the burning barn"
+      ]
+    },
+    {
+      "type": "clock",
+      "time_of_day": "dusk"
+    },
+    {
+      "type": "rest",
+      "kind": "long",
+      "if": "e1.won"
+    }
+  ],
+  "next_time": "Fort Harrow, and Captain Rook."
+}

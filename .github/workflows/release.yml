@@ -1,0 +1,26 @@
+# Render each newly committed episode on the runner (the renderer is deterministic)
+# and publish it as a GitHub release: <episode id>.mp4 + thumbnail + description.
+name: release
+on:
+  push:
+    branches: [main]
+    paths: ["state/world.json", ".github/workflows/release.yml", "scripts/release_episodes.py"]
+  workflow_dispatch:
+permissions: {contents: write, actions: write}
+concurrency: {group: release, cancel-in-progress: false}
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg && pip install pillow numpy
+      - run: scripts/fetch_assets.sh
+      - name: Render and release committed episodes
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: python scripts/release_episodes.py
+      - name: Hand new releases to the YouTube uploader
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: gh workflow run youtube.yml

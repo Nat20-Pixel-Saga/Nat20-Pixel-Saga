@@ -1,0 +1,711 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E006",
+  "title": "C01-E006 - First Watch",
+  "fps": 30,
+  "seed": "C01-E006-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 6 - First Watch"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        8,
+        22
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        11,
+        21
+      ],
+      "facing": "down",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        10,
+        22
+      ],
+      "facing": "left",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        6,
+        22
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        7,
+        25
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        4,
+        22
+      ],
+      "facing": "right",
+      "name": "Pell"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "First Watch",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  5 Emberfall 1047 AK",
+      "text": "Three days ago they were strangers in a frontier inn. Tonight, after a goblin raid, a stolen lantern-core, a pack of wolves and a goblin camp, four tired people carry three dead lantern-cores into a hollow in Thornpike Woods: Brannoc the soldier, Ilsevel the archivist and her owl Pell, Tamsin the card player, and Oriel the priestess. Somebody has to keep watch."
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  The Hollow  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "A hollow south of the fork, after midnight. An old ring of stones becomes a fire. The three dead cores sleep in Brannoc's cloak."
+    },
+    {
+      "op": "say",
+      "text": "Two ways in. One way out, if it comes to it. Good enough.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Our first fire, the four of us. Someone should say something.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "camera",
+      "to": [
+        8,
+        24
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Something. There. Can we eat now?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "face",
+      "actor": "ilsevel",
+      "facing": "left"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel scrapes the moss from a squat old stone at the edge of the hollow and leans close to the carving."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E006-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Read a moss-eaten carving on a stone older than the road, by firelight, from what she remembers of the Hall's road a",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          12
+        ],
+        "kept": [
+          12
+        ],
+        "modifier": 5,
+        "total": 17,
+        "advantage": "none",
+        "natural": 12,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - History",
+      "line": "12 + 5 = 17 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "say",
+      "text": "A Lamplighter way-marker. Here is the Order's sign, and here the old miles. This stone marked the road before the Lantern Road was laid.",
+      "speaker": "ilsevel",
+      "emote": "exclaim"
+    },
+    {
+      "op": "say",
+      "text": "The road moved. The stone stayed.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "camera",
+      "to": [
+        8,
+        22
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Stones do.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Three cores. Three villages somewhere with a dark road tonight, and no idea why.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Then we take them back. What's done with a dead one?",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Technically, a core is rekindled at a temple altar, by a Lamplighter of the second rank. I am of the fourth.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "camera",
+      "to": [
+        6,
+        24
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Professor, is that a long way of saying you can't?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "It is a long way of saying I have never been allowed to try.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Father Tobin's altar has never once gone out. Would it do?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "I do not know. That is the honest answer. I would like to find out.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          7,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "down",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          7,
+          24
+        ],
+        [
+          6,
+          23
+        ],
+        [
+          6,
+          21
+        ]
+      ],
+      "speed": 4,
+      "face": "down"
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin sits down with her back against the old stone."
+    },
+    {
+      "op": "narrate",
+      "text": "At her throat, the plain iron key on its cord begins to hum: one low note, felt more than heard."
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "shock",
+      "duration": 1.2
+    },
+    {
+      "op": "narrate",
+      "text": "Nobody else looks up. Tamsin closes her hand around the key, gets up, and moves to the far side of the fire without a word."
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          6,
+          24
+        ],
+        [
+          7,
+          25
+        ],
+        [
+          10,
+          25
+        ],
+        [
+          10,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "say",
+      "text": "Tamsin? You've gone pale.",
+      "speaker": "oriel",
+      "emote": "question"
+    },
+    {
+      "op": "say",
+      "text": "Smoke in my eyes, Sunshine. Wrong side of the fire.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "camera",
+      "to": [
+        8,
+        23
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  The Notebook  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Later. Oriel sleeps. Brannoc keeps the edge of the hollow."
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel sits upright, notebook open on her knees, in the half-waking trance elves have instead of sleep."
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          11,
+          23
+        ],
+        [
+          13,
+          25
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          11,
+          23
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          9,
+          21
+        ],
+        [
+          8,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin has never been able to leave a closed book alone, any more than a locked box."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E006-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Lift a notebook from the lap of an elf in trance, who is resting, not asleep, and still half aware of the world.",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 7,
+        "total": 18,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Sleight Of Hand",
+      "line": "11 + 7 = 18 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "The notebook leaves Ilsevel's knees the way a leaf leaves a branch. Ilsevel does not stir."
+    },
+    {
+      "op": "say",
+      "text": "'T.M. Velvet thread; lies about it. Practised hands.' Fair, Professor. Fair.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "'Gave the boy a honey cake when she thought no one was looking.'",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "dots",
+      "duration": 1.2
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin reads that line twice. Then she slides the notebook back exactly as it was, with a sprig of heather between the pages."
+    },
+    {
+      "op": "emote",
+      "actor": "pell",
+      "emote": "question",
+      "duration": 1.2
+    },
+    {
+      "op": "camera",
+      "to": [
+        11,
+        23
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "sad",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  First Watch  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "camera",
+      "to": [
+        11,
+        24
+      ],
+      "duration": 1.5
+    },
+    {
+      "op": "narrate",
+      "text": "First watch. Brannoc sits at the edge of the firelight with his shield across his knees."
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          10,
+          23
+        ],
+        [
+          12,
+          25
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "say",
+      "text": "I can't sleep. May I sit?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Log's big enough.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Two ways in.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "You said. Twice.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Counting helps.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Helps with what?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "...Counting.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "narrate",
+      "text": "In the firelight Oriel sees it: under the grey paint on his shield, the faint raised outline of an anvil."
+    },
+    {
+      "op": "narrate",
+      "text": "His thumb is tracing it, and he doesn't know he's doing it."
+    },
+    {
+      "op": "say",
+      "text": "There's something under the paint.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Old paint.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "All right.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel sits as close to the fire as she can get without burning, and never once turns her back on the dark."
+    },
+    {
+      "op": "say",
+      "text": "You don't like the dark.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "I sleep with a candle. A priestess of the Lantern-Bearer, twenty-five years old, and I sleep with a candle.",
+      "speaker": "oriel",
+      "emote": "sweat"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc unhooks the small lantern from his pack, lights it from the fire, and sets it down beside her bedroll."
+    },
+    {
+      "op": "say",
+      "text": "I see in the dark. You keep it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Brannoc...",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Don't thank me. Just sleep.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          12,
+          24
+        ],
+        [
+          10,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "down"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel lies down beside the lantern and hums the dusk hymn under her breath until she falls asleep. Badly. Brannoc doesn't mind."
+    },
+    {
+      "op": "time_of_day",
+      "preset": "morning",
+      "duration": 4.0,
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "Somewhere past the fourth hour, the pines go grey, then gold. The lantern is still burning beside Oriel when she wakes."
+    },
+    {
+      "op": "say",
+      "text": "Big Man. Did you sleep at all?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Some.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "He gave the last watch to the owl.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "Pell says he was excellent at it. Pell says nothing happened at all, which is the point of a watch.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Back to Brindle Cross, and an old priest's story."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "The Hollow"
+    },
+    {
+      "cue": 41,
+      "title": "The Notebook"
+    },
+    {
+      "cue": 56,
+      "title": "First Watch"
+    },
+    {
+      "cue": 90,
+      "title": "Next time"
+    }
+  ]
+}

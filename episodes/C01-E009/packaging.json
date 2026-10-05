@@ -1,0 +1,42 @@
+{
+  "schema": "pqc/packaging@1",
+  "episode_id": "C01-E009",
+  "title": "Smoke Over the Millpond | Nat 20 Pixels C1E9",
+  "description": "The barn is burning with two people inside, and the goblins who lit it are still here.\nNobody has a spell left. Somebody is going to fall.\n\nEpisode 9 of a daily pixel-art D&D 5e story. At Wending Mill, Brannoc, Ilsevel, Tamsin and Oriel fight to get the villagers out of a burning barn, and then face the one giving the goblins their orders. Death saves are real, and every one of them is rolled on screen with seeded dice: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.",
+  "tags": [
+    "Nat 20 Pixels",
+    "D&D 5e",
+    "Dungeons and Dragons",
+    "pixel art",
+    "actual play",
+    "fantasy story",
+    "goblin boss",
+    "death saves",
+    "Brannoc",
+    "Ilsevel",
+    "Tamsin",
+    "Oriel",
+    "Wending Mill"
+  ],
+  "thumbnail_text": "STILL BREATHING",
+  "thumbnail_moment": "e1:12",
+  "chapters": [
+    {
+      "time": "0:00",
+      "seconds": 0.0,
+      "title": "The Barred Door"
+    },
+    {
+      "time": "1:43",
+      "seconds": 103.2,
+      "title": "The Boss"
+    },
+    {
+      "time": "5:32",
+      "seconds": 332.23,
+      "title": "After the Fire"
+    }
+  ],
+  "duration_s": 434.0,
+  "description_full": "The barn is burning with two people inside, and the goblins who lit it are still here.\nNobody has a spell left. Somebody is going to fall.\n\nEpisode 9 of a daily pixel-art D&D 5e story. At Wending Mill, Brannoc, Ilsevel, Tamsin and Oriel fight to get the villagers out of a burning barn, and then face the one giving the goblins their orders. Death saves are real, and every one of them is rolled on screen with seeded dice: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.\n\nChapters\n0:00 The Barred Door\n1:43 The Boss\n5:32 After the Fire\n\nEvery roll in this episode is real: seed C01-E009-1, 63 rolls, all logged and verifiable at https://nat20pixelsaga.com/dice/.\nEpisode page and lore: https://nat20pixelsaga.com/episodes/c01-e009/\n\nArt, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).\nRules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast."
+}

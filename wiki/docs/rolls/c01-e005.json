@@ -1,0 +1,1092 @@
+{
+ "seed": "C01-E005-1",
+ "rolls": [
+  {
+   "id": "r0000",
+   "index": 0,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "2d20kl1",
+   "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+   "actor": "brannoc",
+   "target": null,
+   "draws": [
+    {
+     "counter": 0,
+     "sides": 20,
+     "value": 18
+    },
+    {
+     "counter": 1,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    18,
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 1,
+   "total": 6,
+   "advantage": "disadvantage",
+   "natural": 5,
+   "dc": 11,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0001",
+   "index": 1,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 2,
+     "sides": 20,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    4
+   ],
+   "kept": [
+    4
+   ],
+   "modifier": 2,
+   "total": 6,
+   "advantage": "none",
+   "natural": 4,
+   "dc": 11,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0002",
+   "index": 2,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 3,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 7,
+   "total": 16,
+   "advantage": "none",
+   "natural": 9,
+   "dc": 11,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0003",
+   "index": 3,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "2d20kl1",
+   "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 4,
+     "sides": 20,
+     "value": 11
+    },
+    {
+     "counter": 5,
+     "sides": 20,
+     "value": 18
+    }
+   ],
+   "rolls": [
+    11,
+    18
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 0,
+   "total": 11,
+   "advantage": "disadvantage",
+   "natural": 11,
+   "dc": 11,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0004",
+   "index": 4,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c2: Convince three wary goblins that a strange halfling was sent by their boss to collect the stones early, using only w",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 6,
+     "sides": 20,
+     "value": 17
+    }
+   ],
+   "rolls": [
+    17
+   ],
+   "kept": [
+    17
+   ],
+   "modifier": 3,
+   "total": 20,
+   "advantage": "none",
+   "natural": 17,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0005",
+   "index": 5,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 7,
+     "sides": 20,
+     "value": 20
+    }
+   ],
+   "rolls": [
+    20
+   ],
+   "kept": [
+    20
+   ],
+   "modifier": 5,
+   "total": 25,
+   "advantage": "none",
+   "natural": 20,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0006",
+   "index": 6,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "brannoc",
+   "target": null,
+   "draws": [
+    {
+     "counter": 8,
+     "sides": 20,
+     "value": 20
+    }
+   ],
+   "rolls": [
+    20
+   ],
+   "kept": [
+    20
+   ],
+   "modifier": 1,
+   "total": 21,
+   "advantage": "none",
+   "natural": 20,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0007",
+   "index": 7,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 9,
+     "sides": 20,
+     "value": 18
+    }
+   ],
+   "rolls": [
+    18
+   ],
+   "kept": [
+    18
+   ],
+   "modifier": 0,
+   "total": 18,
+   "advantage": "none",
+   "natural": 18,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0008",
+   "index": 8,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 10,
+     "sides": 20,
+     "value": 1
+    }
+   ],
+   "rolls": [
+    1
+   ],
+   "kept": [
+    1
+   ],
+   "modifier": 2,
+   "total": 3,
+   "advantage": "none",
+   "natural": 1,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0009",
+   "index": 9,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "goblin-1",
+   "target": null,
+   "draws": [
+    {
+     "counter": 11,
+     "sides": 20,
+     "value": 11
+    }
+   ],
+   "rolls": [
+    11
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 2,
+   "total": 13,
+   "advantage": "none",
+   "natural": 11,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0010",
+   "index": 10,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "goblin-2",
+   "target": null,
+   "draws": [
+    {
+     "counter": 12,
+     "sides": 20,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 2,
+   "total": 4,
+   "advantage": "none",
+   "natural": 2,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0011",
+   "index": 11,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "goblin-3",
+   "target": null,
+   "draws": [
+    {
+     "counter": 13,
+     "sides": 20,
+     "value": 11
+    }
+   ],
+   "rolls": [
+    11
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 2,
+   "total": 13,
+   "advantage": "none",
+   "natural": 11,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0012",
+   "index": 12,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative tiebreak",
+   "actor": "goblin-1",
+   "target": null,
+   "draws": [
+    {
+     "counter": 14,
+     "sides": 20,
+     "value": 10
+    }
+   ],
+   "rolls": [
+    10
+   ],
+   "kept": [
+    10
+   ],
+   "modifier": 0,
+   "total": 10,
+   "advantage": "none",
+   "natural": 10,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0013",
+   "index": 13,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative tiebreak",
+   "actor": "goblin-3",
+   "target": null,
+   "draws": [
+    {
+     "counter": 15,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 0,
+   "total": 5,
+   "advantage": "none",
+   "natural": 5,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0014",
+   "index": 14,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Shortbow",
+   "actor": "tamsin",
+   "target": "goblin-3",
+   "draws": [
+    {
+     "counter": 16,
+     "sides": 20,
+     "value": 14
+    }
+   ],
+   "rolls": [
+    14
+   ],
+   "kept": [
+    14
+   ],
+   "modifier": 5,
+   "total": 19,
+   "advantage": "none",
+   "natural": 14,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0015",
+   "index": 15,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d6+3",
+   "purpose": "damage: Shortbow",
+   "actor": "tamsin",
+   "target": "goblin-3",
+   "draws": [
+    {
+     "counter": 17,
+     "sides": 6,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 3,
+   "total": 5,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0016",
+   "index": 16,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Longsword",
+   "actor": "brannoc",
+   "target": "goblin-3",
+   "draws": [
+    {
+     "counter": 18,
+     "sides": 20,
+     "value": 11
+    }
+   ],
+   "rolls": [
+    11
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 5,
+   "total": 16,
+   "advantage": "none",
+   "natural": 11,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0017",
+   "index": 17,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword",
+   "actor": "brannoc",
+   "target": "goblin-3",
+   "draws": [
+    {
+     "counter": 19,
+     "sides": 8,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 3,
+   "total": 5,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0018",
+   "index": 18,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword (Savage Attacker)",
+   "actor": "brannoc",
+   "target": "goblin-3",
+   "draws": [
+    {
+     "counter": 20,
+     "sides": 8,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 3,
+   "total": 6,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "kept (Savage Attacker)"
+   ]
+  },
+  {
+   "id": "r0019",
+   "index": 19,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8",
+   "purpose": "damage: Sacred Flame",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 21,
+     "sides": 8,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 0,
+   "total": 3,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0020",
+   "index": 20,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "Sacred Flame save",
+   "actor": "goblin-2",
+   "target": "oriel",
+   "draws": [
+    {
+     "counter": 22,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 2,
+   "total": 7,
+   "advantage": "none",
+   "natural": 5,
+   "dc": 13,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0021",
+   "index": 21,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Scimitar",
+   "actor": "goblin-1",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 23,
+     "sides": 20,
+     "value": 19
+    }
+   ],
+   "rolls": [
+    19
+   ],
+   "kept": [
+    19
+   ],
+   "modifier": 4,
+   "total": 23,
+   "advantage": "none",
+   "natural": 19,
+   "dc": 14,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0022",
+   "index": 22,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d6+2",
+   "purpose": "damage: Scimitar",
+   "actor": "goblin-1",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 24,
+     "sides": 6,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    4
+   ],
+   "kept": [
+    4
+   ],
+   "modifier": 2,
+   "total": 6,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0023",
+   "index": 23,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "2d20kl1",
+   "purpose": "attack: Dagger",
+   "actor": "goblin-2",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 25,
+     "sides": 20,
+     "value": 2
+    },
+    {
+     "counter": 26,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    2,
+    5
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 4,
+   "total": 6,
+   "advantage": "disadvantage",
+   "natural": 2,
+   "dc": 14,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "-long range"
+   ]
+  },
+  {
+   "id": "r0024",
+   "index": 24,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "spell attack: Fire Bolt",
+   "actor": "ilsevel",
+   "target": "goblin-2",
+   "draws": [
+    {
+     "counter": 27,
+     "sides": 20,
+     "value": 6
+    }
+   ],
+   "rolls": [
+    6
+   ],
+   "kept": [
+    6
+   ],
+   "modifier": 5,
+   "total": 11,
+   "advantage": "none",
+   "natural": 6,
+   "dc": 12,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0025",
+   "index": 25,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "2d4+2",
+   "purpose": "healing: Potion of Healing",
+   "actor": "tamsin",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 28,
+     "sides": 4,
+     "value": 2
+    },
+    {
+     "counter": 29,
+     "sides": 4,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    2,
+    4
+   ],
+   "kept": [
+    2,
+    4
+   ],
+   "modifier": 2,
+   "total": 8,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0026",
+   "index": 26,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Shortsword",
+   "actor": "tamsin",
+   "target": "goblin-1",
+   "draws": [
+    {
+     "counter": 30,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 5,
+   "total": 14,
+   "advantage": "none",
+   "natural": 9,
+   "dc": 15,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0027",
+   "index": 27,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Longsword",
+   "actor": "brannoc",
+   "target": "goblin-1",
+   "draws": [
+    {
+     "counter": 31,
+     "sides": 20,
+     "value": 15
+    }
+   ],
+   "rolls": [
+    15
+   ],
+   "kept": [
+    15
+   ],
+   "modifier": 5,
+   "total": 20,
+   "advantage": "none",
+   "natural": 15,
+   "dc": 15,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0028",
+   "index": 28,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword",
+   "actor": "brannoc",
+   "target": "goblin-1",
+   "draws": [
+    {
+     "counter": 32,
+     "sides": 8,
+     "value": 7
+    }
+   ],
+   "rolls": [
+    7
+   ],
+   "kept": [
+    7
+   ],
+   "modifier": 3,
+   "total": 10,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "kept (Savage Attacker)"
+   ]
+  },
+  {
+   "id": "r0029",
+   "index": 29,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword (Savage Attacker)",
+   "actor": "brannoc",
+   "target": "goblin-1",
+   "draws": [
+    {
+     "counter": 33,
+     "sides": 8,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    4
+   ],
+   "kept": [
+    4
+   ],
+   "modifier": 3,
+   "total": 7,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0030",
+   "index": 30,
+   "seed": "C01-E005-1",
+   "kind": "dice",
+   "notation": "1d8",
+   "purpose": "damage: Sacred Flame",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 34,
+     "sides": 8,
+     "value": 7
+    }
+   ],
+   "rolls": [
+    7
+   ],
+   "kept": [
+    7
+   ],
+   "modifier": 0,
+   "total": 7,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0031",
+   "index": 31,
+   "seed": "C01-E005-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "Sacred Flame save",
+   "actor": "goblin-2",
+   "target": "oriel",
+   "draws": [
+    {
+     "counter": 35,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 2,
+   "total": 7,
+   "advantage": "none",
+   "natural": 5,
+   "dc": 13,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  }
+ ]
+}

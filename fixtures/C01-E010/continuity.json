@@ -1,0 +1,19 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E010",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s2",
+   "problem": "Brannoc's dispatches were addressed to Lamplighters' Hall, not to Rook; the scene handles it by having Ilsevel, a Lamplighter, receive them. It closes the dispatch quest a little conveniently.",
+   "fix": "Acceptable; Ilsevel can forward them with her letter to the Hall next episode."
+  },
+  {
+   "severity": "warning",
+   "where": "s3",
+   "problem": "The pendant is described as drinking light, as the plan's Arcana success allows; nobody names who might have made it, which keeps the faction behind it unnamed as the bible requires for C1.",
+   "fix": "None needed."
+  }
+ ]
+}

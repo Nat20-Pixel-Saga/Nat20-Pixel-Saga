@@ -1,0 +1,52 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/continuity@1",
+ "title": "Continuity review",
+ "type": "object",
+ "required": [
+  "schema",
+  "episode_id",
+  "ok",
+  "issues"
+ ],
+ "properties": {
+  "schema": {
+   "const": "pqc/continuity@1"
+  },
+  "episode_id": {
+   "type": "string"
+  },
+  "ok": {
+   "type": "boolean"
+  },
+  "issues": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "severity",
+     "where",
+     "problem"
+    ],
+    "properties": {
+     "severity": {
+      "type": "string",
+      "enum": [
+       "blocker",
+       "warning"
+      ]
+     },
+     "where": {
+      "type": "string"
+     },
+     "problem": {
+      "type": "string"
+     },
+     "fix": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

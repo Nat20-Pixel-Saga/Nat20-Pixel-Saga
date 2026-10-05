@@ -1,0 +1,52 @@
+site_name: Nat 20 Pixels - Wiki
+site_description: Lore, characters and every dice roll of Nat 20 Pixels, a daily pixel-art fantasy story played by 5e rules.
+site_url: https://nat20pixelsaga.com/
+repo_url: https://github.com/Nat20-Pixel-Saga/Nat20-Pixel-Saga
+repo_name: Nat20-Pixel-Saga/Nat20-Pixel-Saga
+docs_dir: docs
+site_dir: ../site
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle: {icon: material/weather-sunny, name: Light mode}
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle: {icon: material/weather-night, name: Dark mode}
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+nav:
+  - Home: index.md
+  - Episodes: episodes/index.md
+  - The party: characters/index.md
+  - People: npcs/index.md
+  - Places: places/index.md
+  - Quotes: quotes.md
+  - The Lantern Road: lanterns.md
+  - Quests: quests.md
+  - Dice: dice.md
+  - About: about.md
+markdown_extensions:
+  - tables
+  - md_in_html
+  - attr_list
+  - admonition
+plugins:
+  - search
+extra:
+  social:
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@Nat20px
+      name: Nat 20 Pixels on YouTube
+    - icon: fontawesome/brands/github
+      link: https://github.com/Nat20-Pixel-Saga/Nat20-Pixel-Saga
+      name: Source and episode videos
+  generator: false
+copyright: Art, music and SFX by Pixel-boy and AAA (CC0). Rules from SRD 5.2 by Wizards of the Coast (CC BY 4.0). Not affiliated with Wizards of the Coast.

@@ -1,0 +1,1872 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E004",
+  "title": "C01-E004 - Wolves at the Birches",
+  "fps": 30,
+  "seed": "C01-E004-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 4 - Wolves at the Birches"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        14,
+        15
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        15,
+        15
+      ],
+      "facing": "up",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        16,
+        17
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        13,
+        16
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        14,
+        17
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "Wolves at the Birches",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+      "text": "Someone took the core out of Lantern Thirty-Seven by hand, and a goblin trail runs from the dead lantern into Thornpike Woods. Four strangers are following it: Brannoc the soldier, Ilsevel the Lamplighter archivist, Tamsin the card player and Oriel the priestess. Night has come down fast under the pines, and the woods are no longer quiet."
+    },
+    {
+      "op": "music",
+      "track": "dark_forest",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  The Fork in the Trail  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "Night comes early under the pines. Where the trail forks at a great dead stump, the dark is total for anyone without elven or dwarven eyes."
+    },
+    {
+      "op": "say",
+      "text": "I can't see my own feet. Big Man, are my feet still there?",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "Both of them. Stop treading on my heels.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "camera",
+      "to": [
+        14,
+        16
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Which way did they go? It all looks like the inside of a sack.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Three trails. Ground's too trampled to tell.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Then we need better eyes than ours. Give me an hour.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          16,
+          16
+        ],
+        [
+          17,
+          15
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel kneels by the stump with her spellbook, a pinch of incense and a little brass dish of charcoal. The ritual takes most of an hour."
+    },
+    {
+      "op": "say",
+      "text": "Eleven trees. Twelve. Something moving, east. Gone.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Big Man. You're counting trees.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Somebody has to.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "sfx",
+      "id": "magic"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        18,
+        15
+      ],
+      "facing": "left",
+      "name": "Pell"
+    },
+    {
+      "op": "narrate",
+      "text": "The charcoal flares blue. When the light fades, a small brown owl is sitting beside the stump, blinking at her."
+    },
+    {
+      "op": "say",
+      "text": "Hello. I have read about familiars for thirty years. You are smaller than the diagrams.",
+      "speaker": "ilsevel",
+      "emote": "exclaim"
+    },
+    {
+      "op": "emote",
+      "actor": "pell",
+      "emote": "question",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Pell. Your name is Pell.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "He's beautiful, Ilsevel.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "Hello, little feathers. Who's a handsome owl, then?",
+      "speaker": "tamsin",
+      "emote": "love"
+    },
+    {
+      "op": "emote",
+      "actor": "pell",
+      "emote": "angry",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Pell says you smell of cards and onions. I am paraphrasing. He was ruder.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "He loves me. I can tell.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel turns away to put her spellbook back in her satchel, and takes rather longer over it than she needs to."
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        12,
+        8
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        12,
+        8
+      ],
+      "facing": "up",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        11,
+        9
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        12,
+        11
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        14,
+        10
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        13,
+        7
+      ],
+      "facing": "up",
+      "name": "Pell"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  The Birch Clearing  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "The north trail opens into a clearing ringed with pale birches. Nothing moves. Nothing sings."
+    },
+    {
+      "op": "say",
+      "text": "Too open. Too quiet. Don't like it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "camera",
+      "to": [
+        12,
+        10
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Pell. Up, please. Show me.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "move",
+      "actor": "pell",
+      "path": [
+        [
+          13,
+          4
+        ]
+      ],
+      "speed": 4,
+      "face": "up",
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "Pell lifts into the birches. Ilsevel closes her eyes and, for the first time in her life, sees through someone else's."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: See through a familiar's eyes for the very first time, at night, from a branch, and make sense of what moves between",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 3,
+        "total": 8,
+        "advantage": "none",
+        "natural": 5,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Perception",
+      "line": "5 + 3 = 8 vs DC 13 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "It is like reading a page while someone spins the book. Branches. Sky. A pale blur that turns out to be her own face."
+    },
+    {
+      "op": "say",
+      "text": "I see trees. Sky. Myself, upside down. I do not know which way is...",
+      "speaker": "ilsevel",
+      "emote": "sweat"
+    },
+    {
+      "op": "despawn",
+      "actor": "pell"
+    },
+    {
+      "op": "narrate",
+      "text": "The first grey shape is already out of the birches, low and fast."
+    },
+    {
+      "op": "say",
+      "text": "Wolves! Three of them. Get behind me!",
+      "speaker": "brannoc",
+      "emote": "alert"
+    },
+    {
+      "op": "spawn",
+      "actor": "wolf-1",
+      "sprite": "wolf",
+      "at": [
+        12,
+        -1
+      ],
+      "facing": "up",
+      "name": "Wolf"
+    },
+    {
+      "op": "spawn",
+      "actor": "wolf-2",
+      "sprite": "wolf",
+      "at": [
+        7,
+        -1
+      ],
+      "facing": "up",
+      "name": "Wolf"
+    },
+    {
+      "op": "spawn",
+      "actor": "wolf-3",
+      "sprite": "wolf",
+      "at": [
+        18,
+        -1
+      ],
+      "facing": "up",
+      "name": "Wolf"
+    },
+    {
+      "op": "move",
+      "actor": "wolf-1",
+      "speed": 5,
+      "path": [
+        [
+          15,
+          -1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          12,
+          3
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "wolf-3",
+      "speed": 5,
+      "path": [
+        [
+          16,
+          -1
+        ],
+        [
+          16,
+          4
+        ],
+        [
+          18,
+          6
+        ]
+      ],
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "wolf-2",
+      "speed": 5,
+      "path": [
+        [
+          15,
+          -1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "wait": true
+    },
+    {
+      "op": "battle_start",
+      "party": [
+        {
+          "id": "brannoc",
+          "sprite": "brannoc",
+          "hp": 13,
+          "max_hp": 13,
+          "name": "Brannoc",
+          "at": [
+            12,
+            8
+          ]
+        },
+        {
+          "id": "oriel",
+          "sprite": "oriel",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Oriel",
+          "at": [
+            11,
+            9
+          ]
+        },
+        {
+          "id": "ilsevel",
+          "sprite": "ilsevel",
+          "hp": 8,
+          "max_hp": 8,
+          "name": "Ilsevel",
+          "at": [
+            12,
+            11
+          ]
+        },
+        {
+          "id": "tamsin",
+          "sprite": "tamsin",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Tamsin",
+          "at": [
+            14,
+            10
+          ]
+        }
+      ],
+      "enemies": [
+        {
+          "id": "wolf-1",
+          "sprite": "wolf",
+          "hp": 11,
+          "max_hp": 11,
+          "name": "Wolf",
+          "at": [
+            12,
+            3
+          ]
+        },
+        {
+          "id": "wolf-2",
+          "sprite": "wolf",
+          "hp": 11,
+          "max_hp": 11,
+          "name": "Wolf",
+          "at": [
+            7,
+            5
+          ]
+        },
+        {
+          "id": "wolf-3",
+          "sprite": "wolf",
+          "hp": 11,
+          "max_hp": 11,
+          "name": "Wolf",
+          "at": [
+            18,
+            6
+          ]
+        }
+      ],
+      "music": "battle"
+    },
+    {
+      "op": "initiative",
+      "order": [
+        {
+          "id": "wolf-3",
+          "name": "Wolf",
+          "total": 22,
+          "team": "enemies"
+        },
+        {
+          "id": "ilsevel",
+          "name": "Ilsevel",
+          "total": 17,
+          "team": "party"
+        },
+        {
+          "id": "brannoc",
+          "name": "Brannoc",
+          "total": 17,
+          "team": "party"
+        },
+        {
+          "id": "oriel",
+          "name": "Oriel",
+          "total": 17,
+          "team": "party"
+        },
+        {
+          "id": "tamsin",
+          "name": "Tamsin",
+          "total": 12,
+          "team": "party"
+        },
+        {
+          "id": "wolf-2",
+          "name": "Wolf",
+          "total": 11,
+          "team": "enemies"
+        },
+        {
+          "id": "wolf-1",
+          "name": "Wolf",
+          "total": 4,
+          "team": "enemies"
+        }
+      ]
+    },
+    {
+      "op": "narrate",
+      "text": "The lead wolf is across the clearing before anyone has drawn steel."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "wolf-3",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "wolf-3",
+      "path": [
+        [
+          18,
+          6
+        ],
+        [
+          17,
+          6
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          13,
+          10
+        ]
+      ]
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shield",
+      "results": [
+        {
+          "target": "ilsevel",
+          "effect": "shield"
+        }
+      ],
+      "label": "Ilsevel - Shield (reaction)",
+      "line": "AC rises to 17"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "wolf-3",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0008",
+        "index": 8,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Bite",
+        "actor": "wolf-3",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 8,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 4,
+        "total": 13,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "target cast Shield"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Wolf - Bite",
+      "line": "9 + 4 = 13 vs AC 17 MISS"
+    },
+    {
+      "op": "narrate",
+      "text": "A pane of blue light snaps up in front of Ilsevel, and the wolf's teeth close on nothing."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shocking_grasp",
+      "results": [
+        {
+          "target": "wolf-3",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Shocking Grasp",
+      "roll": {
+        "id": "r0009",
+        "index": 9,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Shocking Grasp",
+        "actor": "ilsevel",
+        "target": "wolf-3",
+        "draws": [
+          {
+            "counter": 9,
+            "sides": 20,
+            "value": 1
+          }
+        ],
+        "rolls": [
+          1
+        ],
+        "kept": [
+          1
+        ],
+        "modifier": 5,
+        "total": 6,
+        "advantage": "none",
+        "natural": 1,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": true,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "1 + 5 = 6 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          9
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "wolf-3",
+      "roll": {
+        "id": "r0010",
+        "index": 10,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "wolf-3",
+        "draws": [
+          {
+            "counter": 10,
+            "sides": 20,
+            "value": 14
+          }
+        ],
+        "rolls": [
+          14
+        ],
+        "kept": [
+          14
+        ],
+        "modifier": 5,
+        "total": 19,
+        "advantage": "none",
+        "natural": 14,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "14 + 5 = 19 vs AC 12 HIT",
+      "damage": 5,
+      "hp_after": 6,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "bless",
+      "results": [
+        {
+          "target": "brannoc",
+          "effect": "bless"
+        },
+        {
+          "target": "oriel",
+          "effect": "bless"
+        },
+        {
+          "target": "ilsevel",
+          "effect": "bless"
+        }
+      ],
+      "label": "Oriel - Bless (level 1)",
+      "line": "Brannoc, Oriel, Ilsevel"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "wolf-3",
+      "roll": {
+        "id": "r0013",
+        "index": 13,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortsword",
+        "actor": "tamsin",
+        "target": "wolf-3",
+        "draws": [
+          {
+            "counter": 13,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 5,
+        "total": 8,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Tamsin - Shortsword",
+      "line": "3 + 5 = 8 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "wolf-2",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "wolf-2",
+      "path": [
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          11,
+          10
+        ]
+      ]
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shield",
+      "results": [
+        {
+          "target": "ilsevel",
+          "effect": "shield"
+        }
+      ],
+      "label": "Ilsevel - Shield (reaction)",
+      "line": "AC rises to 17"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "wolf-2",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0014",
+        "index": 14,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "2d20kh1",
+        "purpose": "attack: Bite",
+        "actor": "wolf-2",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 14,
+            "sides": 20,
+            "value": 3
+          },
+          {
+            "counter": 15,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          3,
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 4,
+        "total": 13,
+        "advantage": "advantage",
+        "natural": 9,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "+pack tactics",
+          "target cast Shield"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Wolf - Bite",
+      "line": "ADV 9 + 4 = 13 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "wolf-1",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "wolf-1",
+      "path": [
+        [
+          12,
+          3
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          13,
+          7
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          15,
+          9
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "wolf-1",
+      "target": "tamsin",
+      "roll": {
+        "id": "r0015",
+        "index": 15,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "2d20kh1",
+        "purpose": "attack: Bite",
+        "actor": "wolf-1",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 16,
+            "sides": 20,
+            "value": 6
+          },
+          {
+            "counter": 17,
+            "sides": 20,
+            "value": 20
+          }
+        ],
+        "rolls": [
+          6,
+          20
+        ],
+        "kept": [
+          20
+        ],
+        "modifier": 4,
+        "total": 24,
+        "advantage": "advantage",
+        "natural": 20,
+        "dc": 14,
+        "success": true,
+        "critical": true,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "+pack tactics"
+        ]
+      },
+      "hit": true,
+      "critical": true,
+      "ranged": false,
+      "label": "Wolf - Bite",
+      "line": "ADV 20 + 4 = 24 vs AC 14 CRIT!",
+      "damage": 10,
+      "hp_after": 0,
+      "sneak_attack": false,
+      "fx": "claw"
+    },
+    {
+      "op": "battle_faint",
+      "actor": "tamsin",
+      "pc": true,
+      "narrate_hint": "pc_down"
+    },
+    {
+      "op": "narrate",
+      "text": "The last wolf comes in fast and low at Tamsin. She never sees it. She goes down hard and stays down."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "wolf-3",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "wolf-3",
+      "target": "ilsevel",
+      "roll": {
+        "id": "r0017",
+        "index": 17,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Bite",
+        "actor": "wolf-3",
+        "target": "ilsevel",
+        "draws": [
+          {
+            "counter": 20,
+            "sides": 20,
+            "value": 14
+          }
+        ],
+        "rolls": [
+          14
+        ],
+        "kept": [
+          14
+        ],
+        "modifier": 4,
+        "total": 18,
+        "advantage": "none",
+        "natural": 14,
+        "dc": 17,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "+pack tactics",
+          "-sapped"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Wolf - Bite",
+      "line": "14 + 4 = 18 vs AC 17 HIT",
+      "damage": 4,
+      "hp_after": 4,
+      "sneak_attack": false,
+      "fx": "claw"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 2
+    },
+    {
+      "op": "battle_note",
+      "actor": "ilsevel",
+      "text": "Stands up"
+    },
+    {
+      "op": "battle_revive",
+      "actor": "ilsevel"
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "shocking_grasp",
+      "results": [
+        {
+          "target": "wolf-3",
+          "damage": 7,
+          "hp_after": 0,
+          "hit": true
+        }
+      ],
+      "label": "Ilsevel - Shocking Grasp",
+      "roll": {
+        "id": "r0019",
+        "index": 19,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Shocking Grasp",
+        "actor": "ilsevel",
+        "target": "wolf-3",
+        "draws": [
+          {
+            "counter": 22,
+            "sides": 20,
+            "value": 13
+          }
+        ],
+        "rolls": [
+          13
+        ],
+        "kept": [
+          13
+        ],
+        "modifier": 7,
+        "total": 20,
+        "advantage": "none",
+        "natural": 13,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +2 (r0020)"
+        ]
+      },
+      "line": "13 + 7 = 20 vs AC 12 HIT"
+    },
+    {
+      "op": "battle_faint",
+      "actor": "wolf-3"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel scrambles up out of the grass and grabs the nearest wolf by the scruff. The lightning does the rest."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "wolf-2",
+      "roll": {
+        "id": "r0022",
+        "index": 22,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "wolf-2",
+        "draws": [
+          {
+            "counter": 25,
+            "sides": 20,
+            "value": 20
+          }
+        ],
+        "rolls": [
+          20
+        ],
+        "kept": [
+          20
+        ],
+        "modifier": 9,
+        "total": 29,
+        "advantage": "none",
+        "natural": 20,
+        "dc": 12,
+        "success": true,
+        "critical": true,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +4 (r0023)"
+        ]
+      },
+      "hit": true,
+      "critical": true,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "20 + 9 = 29 vs AC 12 CRIT!",
+      "damage": 12,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "wolf-2"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc's sword comes down once, hard. One wolf left."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "healing_word",
+      "results": [
+        {
+          "target": "tamsin",
+          "heal": 7,
+          "hp_after": 7,
+          "revived": true
+        }
+      ],
+      "label": "Oriel - Healing Word (level 1)",
+      "line": "Restores 7 HP"
+    },
+    {
+      "op": "battle_revive",
+      "actor": "tamsin"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel says one word, and Tamsin's eyes open."
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "sacred_flame",
+      "results": [
+        {
+          "target": "wolf-1",
+          "damage": 5,
+          "hp_after": 6,
+          "saved": false
+        }
+      ],
+      "label": "Oriel - Sacred Flame",
+      "roll": {
+        "id": "r0028",
+        "index": 28,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "Sacred Flame save",
+        "actor": "wolf-1",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 34,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 2,
+        "total": 12,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "Wolf: 10 + 2 = 12 vs DC 13 FAILS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 2
+    },
+    {
+      "op": "battle_note",
+      "actor": "tamsin",
+      "text": "Stands up"
+    },
+    {
+      "op": "battle_revive",
+      "actor": "tamsin"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "wolf-1",
+      "roll": {
+        "id": "r0029",
+        "index": 29,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortsword",
+        "actor": "tamsin",
+        "target": "wolf-1",
+        "draws": [
+          {
+            "counter": 35,
+            "sides": 20,
+            "value": 2
+          }
+        ],
+        "rolls": [
+          2
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 5,
+        "total": 7,
+        "advantage": "none",
+        "natural": 2,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Tamsin - Shortsword",
+      "line": "2 + 5 = 7 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "wolf-1",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "wolf-1",
+      "target": "tamsin",
+      "roll": {
+        "id": "r0030",
+        "index": 30,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Bite",
+        "actor": "wolf-1",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 36,
+            "sides": 20,
+            "value": 2
+          }
+        ],
+        "rolls": [
+          2
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 4,
+        "total": 6,
+        "advantage": "none",
+        "natural": 2,
+        "dc": 14,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Wolf - Bite",
+      "line": "2 + 4 = 6 vs AC 14 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 3
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "wolf-1",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0031",
+        "index": 31,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "wolf-1",
+        "draws": [
+          {
+            "counter": 37,
+            "sides": 20,
+            "value": 2
+          }
+        ],
+        "rolls": [
+          2
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 8,
+        "total": 10,
+        "advantage": "none",
+        "natural": 2,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +3 (r0032)"
+        ]
+      },
+      "line": "2 + 8 = 10 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 3
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          12,
+          9
+        ],
+        [
+          13,
+          8
+        ],
+        [
+          14,
+          9
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "wolf-1",
+      "roll": {
+        "id": "r0033",
+        "index": 33,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "wolf-1",
+        "draws": [
+          {
+            "counter": 39,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 8,
+        "total": 12,
+        "advantage": "none",
+        "natural": 4,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "bless +3 (r0034)"
+        ]
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "4 + 8 = 12 vs AC 12 HIT",
+      "damage": 10,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "wolf-1"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc's last swing ends it."
+    },
+    {
+      "op": "battle_end",
+      "result": "victory",
+      "xp": 150
+    },
+    {
+      "op": "camera",
+      "to": [
+        12,
+        8
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "dark_forest",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  Grey at the Edges  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Then the clearing is quiet again. The right kind of quiet, this time."
+    },
+    {
+      "op": "say",
+      "text": "Tamsin. Sit. Let me see that bite.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "camera",
+      "to": [
+        12,
+        10
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "It's nothing. I once lost an argument with a duke's hound. This is a scratch.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "You went down and didn't get up. Humour me.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "face",
+      "actor": "ilsevel",
+      "facing": "up"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel kneels where the wolves fell. Their ribs show through their coats, and the tips of their fur have no colour in them at all."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0037",
+        "index": 37,
+        "seed": "C01-E004-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Read why wolves would hunt armed people a mile from a road: their condition, their fur, their wounds.",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 43,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 3,
+        "total": 14,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Nature",
+      "line": "11 + 3 = 14 vs DC 12 SUCCESS"
+    },
+    {
+      "op": "say",
+      "text": "Starved, and far from wherever they belong. And look at the fur. It has gone grey at the tips. Not old. Drained.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Like the grass at Lantern Thirty-Seven. Something drove them out of the deep woods.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Then we're walking toward it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        13,
+        11
+      ],
+      "facing": "left",
+      "name": "Pell"
+    },
+    {
+      "op": "narrate",
+      "text": "Wings, then a small weight beside Ilsevel. Pell has come back down from the birches."
+    },
+    {
+      "op": "say",
+      "text": "You came back.",
+      "speaker": "ilsevel",
+      "emote": "smile"
+    },
+    {
+      "op": "emote",
+      "actor": "pell",
+      "emote": "happy",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "East, then? Toward the something?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "East. Quiet. Single file.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Pell says he will go first. He says he is the only one of us with any sense.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Firelight ahead, and goblin voices."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "The Fork in the Trail"
+    },
+    {
+      "cue": 35,
+      "title": "The Birch Clearing"
+    },
+    {
+      "cue": 121,
+      "title": "Grey at the Edges"
+    },
+    {
+      "cue": 143,
+      "title": "Next time"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "episode_id": "C01-E009",
+  "seed": "C01-E009-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s1",
+      "who": "brannoc",
+      "what": "Brannoc - Athletics",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 7,
+      "natural": 15,
+      "note": "by a lot",
+      "means": "The pole comes free on the first heave and the doors swing open; Bet and the lad stumble out on their own feet."
+    },
+    {
+      "id": "c2",
+      "scene": "s1",
+      "who": "oriel",
+      "what": "Oriel - Medicine",
+      "dc": 12,
+      "result": "FAILURE",
+      "margin": -4,
+      "natural": 3,
+      "note": "",
+      "means": "The lad is too dazed to stand. Oriel has to haul him to the yard fence herself, and she is still there, out of position, when the goblins come."
+    }
+  ],
+  "fights": [
+    {
+      "id": "e1",
+      "scene": "s2",
+      "winner": "party",
+      "rounds": 6,
+      "xp": 275,
+      "actions": [
+        "Initiative: Tamsin 21, Ilsevel 19, Oriel 18, Goblin 15, Brannoc 15, Goblin Runt 14, Goblin Boss 5",
+        "1. [round 1] Tamsin - Shortbow -> Goblin Runt: HIT for 5, Goblin Runt at 2 HP",
+        "2. [round 1] Ilsevel - Fire Bolt: Goblin Runt miss",
+        "3. [round 1] Oriel - Sacred Flame: Goblin Runt saved",
+        "   - Goblin moves 30 ft",
+        "4. [round 1] Goblin - Scimitar -> Brannoc: CRIT HIT for 5, Brannoc at 8 HP",
+        "5. [round 1] Brannoc - Longsword -> Goblin: HIT for 5, Goblin at 5 HP",
+        "6. [round 1] Goblin Runt - Dagger -> Tamsin: MISS",
+        "   - Goblin Boss moves 30 ft",
+        "7. [round 1] Goblin Boss - Scimitar -> Oriel: HIT for 7, Oriel at 3 HP",
+        "8. [round 1] Goblin Boss - Scimitar -> Oriel: HIT for 8, Oriel at 0 HP",
+        "   - Oriel drops to 0 HP",
+        "9. [round 2] Tamsin - Shortbow -> Goblin: MISS",
+        "   - Tamsin moves 30 ft",
+        "10. [round 2] Ilsevel - Fire Bolt: Goblin Runt 7 dmg hit",
+        "   - Goblin Runt falls",
+        "   - Oriel - Death save: 8 : failure",
+        "11. [round 2] Goblin - Scimitar -> Brannoc: MISS",
+        "12. [round 2] Brannoc - Longsword -> Goblin: HIT for 11, Goblin at 0 HP",
+        "   - Goblin falls",
+        "13. [round 2] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "14. [round 2] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "15. [round 3] Tamsin - Shortbow -> Goblin Boss: MISS",
+        "16. [round 3] Ilsevel - Fire Bolt: Goblin Boss 2 dmg hit",
+        "   - Oriel - Death save: 19 : success",
+        "17. [round 3] Brannoc - Longsword -> Goblin Boss: HIT for 5, Goblin Boss at 14 HP",
+        "18. [round 3] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "19. [round 3] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "20. [round 4] Tamsin - Shortbow -> Goblin Boss: MISS",
+        "21. [round 4] Ilsevel - Fire Bolt: Goblin Boss miss",
+        "   - Oriel - Death save: 11 : success",
+        "22. [round 4] Brannoc - Longsword -> Goblin Boss: MISS",
+        "23. [round 4] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "24. [round 4] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "25. [round 5] Tamsin - Shortbow -> Goblin Boss: MISS",
+        "26. [round 5] Ilsevel - Fire Bolt: Goblin Boss miss",
+        "   - Oriel - Death save: 12 : stable",
+        "27. [round 5] Brannoc - Longsword -> Goblin Boss: HIT for 9, Goblin Boss at 5 HP",
+        "28. [round 5] Goblin Boss - Scimitar -> Brannoc: MISS",
+        "29. [round 5] Goblin Boss - Scimitar -> Brannoc: HIT for 6, Brannoc at 2 HP",
+        "30. [round 6] Tamsin - Shortbow -> Goblin Boss: MISS",
+        "31. [round 6] Ilsevel - Fire Bolt: Goblin Boss 7 dmg hit",
+        "   - Goblin Boss falls",
+        "END: victory, 275 XP"
+      ],
+      "end_state": {
+        "brannoc": {
+          "hp": 2,
+          "down": false,
+          "dead": false,
+          "pos": [
+            32,
+            22
+          ]
+        },
+        "oriel": {
+          "hp": 0,
+          "down": true,
+          "dead": false,
+          "pos": [
+            31,
+            23
+          ]
+        },
+        "tamsin": {
+          "hp": 6,
+          "down": false,
+          "dead": false,
+          "pos": [
+            24,
+            28
+          ]
+        },
+        "ilsevel": {
+          "hp": 8,
+          "down": false,
+          "dead": false,
+          "pos": [
+            29,
+            24
+          ]
+        },
+        "goblin-5": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            32,
+            23
+          ]
+        },
+        "goblin-6": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            33,
+            21
+          ]
+        },
+        "goblin-7": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            37,
+            26
+          ]
+        }
+      }
+    }
+  ],
+  "aftermath": [
+    {
+      "id": "a1",
+      "who": "brannoc",
+      "target": "oriel",
+      "kind": "medicine",
+      "what": "Brannoc - Medicine",
+      "result": "SUCCESS",
+      "means": "stable",
+      "scene": "s3"
+    }
+  ],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": [
+        "prone"
+      ]
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

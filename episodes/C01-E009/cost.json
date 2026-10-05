@@ -1,0 +1,59 @@
+{
+  "total_usd": 0.0972,
+  "estimated": true,
+  "steps": {
+    "plan": {
+      "model": "claude-sonnet-5-5",
+      "calls": 1,
+      "input": 5859,
+      "cache_write": 22855,
+      "cache_read": 0,
+      "output": 2075,
+      "batch": true,
+      "cost_usd": 0.0448
+    },
+    "script": {
+      "model": "claude-sonnet-5-5",
+      "calls": 1,
+      "input": 8861,
+      "cache_write": 0,
+      "cache_read": 22855,
+      "output": 1843,
+      "batch": true,
+      "cost_usd": 0.02036
+    },
+    "continuity": {
+      "model": "claude-haiku-4-5-20251001",
+      "calls": 1,
+      "input": 8562,
+      "cache_write": 22855,
+      "cache_read": 0,
+      "output": 277,
+      "batch": true,
+      "cost_usd": 0.01926
+    },
+    "wiki_facts": {
+      "model": "claude-haiku-4-5-20251001",
+      "calls": 1,
+      "input": 6321,
+      "cache_write": 6914,
+      "cache_read": 0,
+      "output": 1052,
+      "batch": true,
+      "cost_usd": 0.01011
+    },
+    "packaging": {
+      "model": "claude-haiku-4-5-20251001",
+      "calls": 1,
+      "input": 3130,
+      "cache_write": 0,
+      "cache_read": 6914,
+      "output": 293,
+      "batch": true,
+      "cost_usd": 0.00264
+    }
+  },
+  "episode": "C01-E009",
+  "minutes": 7.23,
+  "mode": "agent"
+}

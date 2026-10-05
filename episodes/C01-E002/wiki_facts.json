@@ -1,0 +1,116 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E002",
+  "summary": "On the morning of 4 Emberfall, Oriel fed the captured goblin while Brannoc stood silently behind her, and the goblin, Rusk, talked: goblins carry the 'shiny stones' from the lanterns up into the hills to their boss and are paid in sacks of meal. Ilsevel judged that he was telling the truth and was afraid of going back. By the well, Ilsevel did not believe Tamsin's story about the velvet thread on her wrist. At noon Maddy Fenn offered free board to whoever brings the light back to Lantern 37, and all four agreed.",
+  "npcs": [
+    {
+      "id": "npc.rusk",
+      "name": "Rusk",
+      "description": "The small goblin taken alive in the raid on Brindle Cross. Spent the night tied to the Crooked Kettle's rain barrel, then talked after Oriel fed him. Speaks in short, broken sentences and calls himself by name. Now kept in the Kettle's cellar with a blanket, asleep on Maddy's onions.",
+      "want": "Food, and not to be sent back to his boss.",
+      "voice": "Clipped and plain: 'Rusk not asks. Asking gets you hit.'",
+      "status": "captive",
+      "attitude": "indifferent"
+    },
+    {
+      "id": "npc.maddy-fenn",
+      "name": "Maddy Fenn",
+      "description": "Innkeeper of the Crooked Kettle. Counted her broken shutters, scolded Brannoc for sitting up all night, and offered free board and hot meals to whoever brings back the light of Lantern 37.",
+      "want": "The south road lit again: it is how flour, letters and doctors reach Brindle Cross.",
+      "status": "alive",
+      "attitude": "friendly"
+    },
+    {
+      "id": "npc.wil-fenn",
+      "name": "Wil Fenn",
+      "description": "Maddy's son. Asked to go with the party to Lantern 37; Brannoc told him to stay and hold the village, which seemed to please him.",
+      "status": "alive",
+      "attitude": "friendly"
+    },
+    {
+      "id": "npc.tobin-ashdown",
+      "name": "Father Tobin",
+      "description": "Mentioned only: he packed the shrine bread that Oriel brought for the goblin.",
+      "status": "alive",
+      "attitude": "helpful"
+    }
+  ],
+  "places": [
+    {
+      "id": "loc.crooked-kettle",
+      "name": "The Crooked Kettle",
+      "description": "Maddy Fenn's inn on the west side of the square. Four shutters were broken in the raid. Its cellar now holds Rusk, the captured goblin."
+    },
+    {
+      "id": "loc.brindle-cross",
+      "name": "Brindle Cross",
+      "description": "Crossroads village whose south road brings it flour, letters and doctors. Nobody in the village knows how to light a lantern."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "brannoc",
+      "text": "Four shutters broken. Two arrows in the door. One goblin. Still one goblin."
+    },
+    {
+      "speaker": "oriel",
+      "text": "Brannoc. Stand behind me, please. Just stand. You're very good at standing."
+    },
+    {
+      "speaker": "rusk",
+      "text": "Supper."
+    },
+    {
+      "speaker": "oriel",
+      "text": "He can be tied up and fed. Those aren't opposites."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "I do not believe a word of that. Technically, you have been in trouble since the moment I met you."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Ten words. Don't get used to it."
+    }
+  ],
+  "events": [
+    "Brannoc kept watch over the captured goblin all night outside the Crooked Kettle.",
+    "Oriel knelt with shrine bread while Brannoc stood behind her; her persuasion worked and the goblin gave his name, Rusk.",
+    "Rusk said goblins carry the 'shiny stones' from the lanterns up into the hills to their boss, who pays them in sacks of meal that come from somewhere else.",
+    "Ilsevel read Rusk's face correctly: he was telling the truth and was more afraid of going back than of the party.",
+    "By the well, Ilsevel asked about the velvet thread on Tamsin's wrist; Tamsin's lucky-charm story failed to convince her, and Tamsin changed the subject.",
+    "Rusk was moved to the Kettle's cellar with a blanket.",
+    "Maddy Fenn offered free board and meals to whoever brings back the light of Lantern 37; Brannoc told Wil to stay and hold the village.",
+    "Ilsevel, Oriel, Tamsin and Brannoc all agreed to go, each for a reason of their own."
+  ],
+  "items": [
+    {
+      "id": "velvet_thread",
+      "name": "Velvet thread",
+      "holder": "tamsin",
+      "note": "A thin velvet thread knotted twice around Tamsin's wrist. She says it is a lucky charm from her grandmother; Ilsevel does not believe her."
+    }
+  ],
+  "hooks_planted": [
+    "hook.velvet-hand-debt"
+  ],
+  "character_notes": {
+    "brannoc": [
+      "Sat up all night watching the captive and counts things: shutters, arrows, goblins.",
+      "Agreed to the job because 'Road's dark. Somebody has to hold it.' and put his letters off to do it."
+    ],
+    "oriel": [
+      "Chose to feed the goblin rather than frighten him, and asked his real name.",
+      "Agreed to go because it is her road and she felt the light go out."
+    ],
+    "ilsevel": [
+      "Prepared seven questions for the goblin and can read a frightened face.",
+      "Does not believe Tamsin's story about the velvet thread, and wrote something about it in her notes.",
+      "Going because inspecting the lanterns is the task her Order gave her and the ledger for Lantern 37 is wrong."
+    ],
+    "tamsin": [
+      "Wears a thin velvet thread on her wrist that she touches when people look at her too long; claims it is from her grandmother.",
+      "Agreed to go because 'free' is her favourite word."
+    ]
+  }
+}

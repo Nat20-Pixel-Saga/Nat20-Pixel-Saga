@@ -1,0 +1,52 @@
+# Weekday episode run: plan -> dice -> script -> continuity -> render -> wiki -> packaging.
+# Commits the archive, the new state and the rebuilt wiki pages; uploads the video
+# and thumbnail as an artifact (YouTube upload is a separate, human-approved step).
+#
+# Manual for now: episodes are being produced by the overnight agent sessions
+# (production/RUNBOOK.md). Once ANTHROPIC_API_KEY is set as a repository secret,
+# add a schedule here, e.g.  schedule: [{cron: "0 4 * * 1-5"}]  (04:00 UTC, weekdays).
+name: episode
+on:
+  workflow_dispatch:
+    inputs:
+      episode: {description: "Episode number in the campaign (blank = next)", required: false}
+      campaign: {description: "Campaign", required: false, default: "1"}
+concurrency: {group: episode, cancel-in-progress: false}
+permissions: {contents: write}
+jobs:
+  episode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg && pip install pillow numpy
+      - run: scripts/fetch_assets.sh
+      - name: Which episode
+        id: which
+        run: |
+          N="${{ github.event.inputs.episode }}"
+          if [ -z "$N" ]; then N=$(python -c "import json;print(json.load(open('state/world.json'))['series']['episode_in_campaign']+1)"); fi
+          echo "n=$N" >> "$GITHUB_OUTPUT"
+      - name: Produce the episode
+        env: {ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY }}"}
+        run: >
+          python scripts/run_episode.py ${{ steps.which.outputs.n }}
+          --campaign ${{ github.event.inputs.campaign || '1' }} --live --render full --commit
+          --wiki-url "$(python3 -c "import json;print(json.load(open('wiki/data/site.json'))['site_url'])")"
+      - name: Contact sheet for review
+        run: python scripts/contact_sheet.py "$(ls -d episodes/C* | tail -1 | xargs basename)"
+      - name: Commit archive, state and wiki
+        run: |
+          git config user.name "pqc-bot" && git config user.email "pqc-bot@users.noreply.github.com"
+          git add episodes state wiki/docs
+          git commit -m "Episode $(ls -d episodes/C* | tail -1 | xargs basename)" && git push
+      - uses: actions/upload-artifact@v4
+        with:
+          name: episode-video
+          path: |
+            episodes/*/video.mp4
+            episodes/*/thumbnail.png
+            episodes/*/contact_sheet.png
+            episodes/*/packaging.json

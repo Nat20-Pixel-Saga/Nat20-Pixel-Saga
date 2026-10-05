@@ -1,0 +1,5 @@
+{
+ "drive_folder_id": null,
+ "description": "Scheduled sessions upload change bundles (scripts/relay.py pack) to a Google Drive folder; .github/workflows/relay.yml applies them to the repository. The folder id is kept out of this public repository: the Action reads it from the DRIVE_FOLDER_ID secret and shifts from PQC_DRIVE_FOLDER (set from their private instructions).",
+ "schedule": "The relay workflow runs every 10 minutes (GitHub may delay scheduled runs) and on every change to the relay itself."
+}

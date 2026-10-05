@@ -1,0 +1,202 @@
+{
+  "episode_id": "C01-E001",
+  "seed": "C01-E001-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s1",
+      "who": "tamsin",
+      "what": "Tamsin - Sleight Of Hand",
+      "dc": 14,
+      "result": "SUCCESS",
+      "margin": 9,
+      "natural": 16,
+      "note": "by a lot",
+      "means": "Wil never sees it; Tamsin wins the pot."
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "ilsevel",
+      "what": "Ilsevel - Investigation",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 9,
+      "natural": 17,
+      "note": "by a lot",
+      "means": "Lantern 37 was signed as serviced twice in nine days, by a warden's mark Ilsevel does not recognise."
+    },
+    {
+      "id": "c3",
+      "scene": "s4",
+      "who": "brannoc",
+      "what": "Brannoc - Perception",
+      "dc": 13,
+      "result": "FAILURE",
+      "margin": -3,
+      "natural": 7,
+      "note": "",
+      "means": "The goblins are almost at the square before anyone sees them."
+    },
+    {
+      "id": "c4",
+      "scene": "s5",
+      "who": "oriel",
+      "what": "Oriel - Medicine",
+      "dc": 10,
+      "result": "FAILURE",
+      "margin": -1,
+      "natural": 4,
+      "note": "barely",
+      "means": "He lives, but only just; he won't be talking until morning."
+    }
+  ],
+  "fights": [
+    {
+      "id": "e1",
+      "scene": "s4",
+      "winner": "party",
+      "rounds": 3,
+      "xp": 150,
+      "actions": [
+        "Initiative: Goblin 17, Goblin 13, Ilsevel 12, Brannoc 11, Tamsin 10, Oriel 5, Goblin Runt 4, Goblin Runt 3",
+        "   - Goblin moves 30 ft",
+        "1. [round 1] Goblin - Scimitar -> Ilsevel: MISS",
+        "   - Goblin moves 30 ft",
+        "2. [round 1] Ilsevel - Shield (reaction): Ilsevel shield",
+        "3. [round 1] Goblin - Scimitar -> Ilsevel: MISS",
+        "4. [round 1] Ilsevel - Shocking Grasp: Goblin 2 dmg hit",
+        "5. [round 1] Brannoc - Longsword -> Goblin: HIT for 9, Goblin at 0 HP",
+        "   - Goblin falls",
+        "6. [round 1] Tamsin - Shortsword -> Goblin: HIT for 7 (sneak attack), Goblin at 3 HP",
+        "7. [round 1] Oriel - Bless (level 1): Brannoc bless; Oriel bless; Ilsevel bless",
+        "8. [round 1] Goblin Runt - Dagger -> Ilsevel: MISS",
+        "9. [round 1] Goblin Runt - Dagger -> Ilsevel: MISS",
+        "10. [round 2] Ilsevel - Shield (reaction): Ilsevel shield",
+        "11. [round 2] Goblin - Scimitar -> Ilsevel: MISS",
+        "12. [round 2] Ilsevel - Shocking Grasp: Goblin miss",
+        "   - Brannoc moves 5 ft",
+        "13. [round 2] Brannoc - Longsword -> Goblin: HIT for 9, Goblin at 0 HP",
+        "   - Goblin falls",
+        "14. [round 2] Tamsin - Shortbow -> Goblin Runt: HIT for 5, Goblin Runt at 2 HP",
+        "15. [round 2] Oriel - Sacred Flame: Goblin Runt saved",
+        "16. [round 2] Goblin Runt - Dagger -> Ilsevel: HIT for 3, Ilsevel at 5 HP",
+        "17. [round 2] Goblin Runt - Dagger -> Ilsevel: HIT for 6, Ilsevel at 0 HP",
+        "   - Ilsevel drops to 0 HP",
+        "   - Ilsevel - Death save: 7 : failure",
+        "   - Brannoc moves 30 ft",
+        "18. [round 3] Brannoc - Longsword -> Goblin Runt: HIT for 8, Goblin Runt at 0 HP",
+        "   - Goblin Runt falls",
+        "19. [round 3] Tamsin - Shortbow -> Goblin Runt: HIT for 15 (sneak attack), Goblin Runt at 0 HP",
+        "   - Goblin Runt is knocked out (alive)",
+        "END: victory, 150 XP"
+      ],
+      "end_state": {
+        "brannoc": {
+          "hp": 13,
+          "down": false,
+          "dead": false,
+          "pos": [
+            16,
+            19
+          ]
+        },
+        "oriel": {
+          "hp": 10,
+          "down": false,
+          "dead": false,
+          "pos": [
+            21,
+            13
+          ]
+        },
+        "ilsevel": {
+          "hp": 0,
+          "down": true,
+          "dead": false,
+          "pos": [
+            19,
+            12
+          ]
+        },
+        "tamsin": {
+          "hp": 10,
+          "down": false,
+          "dead": false,
+          "pos": [
+            17,
+            13
+          ]
+        },
+        "goblin-1": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            18,
+            13
+          ]
+        },
+        "goblin-2": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            20,
+            13
+          ]
+        },
+        "goblin-3": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            17,
+            20
+          ]
+        },
+        "goblin-4": {
+          "hp": 0,
+          "down": true,
+          "dead": false,
+          "pos": [
+            22,
+            20
+          ],
+          "note": "knocked out, alive (nonlethal)"
+        }
+      }
+    }
+  ],
+  "aftermath": [
+    {
+      "id": "a1",
+      "who": "oriel",
+      "target": "ilsevel",
+      "kind": "healing",
+      "spell": "healing_word",
+      "what": "Oriel - Healing Word",
+      "result": "SUCCESS",
+      "means": "Ilsevel wakes with 5 HP.",
+      "scene": "s5"
+    }
+  ],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E003",
+  "summary": "On the afternoon of 4 Emberfall the four walked the mile south to Lantern 37, where the grass had gone grey and the glass was frosted in daylight. Tamsin opened the frozen housing catch with a hairpin and noticed fresh scratches: someone had opened it recently without a key. Ilsevel found the core had been lifted out whole, not broken, but could tell nothing about who took it. At dusk Brannoc could not read how many goblins had used the trail east, and the party followed it into Thornpike Woods anyway.",
+  "npcs": [],
+  "places": [
+    {
+      "id": "loc.lantern-road",
+      "name": "The Lantern Road",
+      "description": "The old road south from Brindle Cross toward Fort Harrow, one lantern to every mile. A milestone a mile out reads 'Brindle Cross 1 mile, Fort Harrow 39'. Around dead Lantern 37 no birds sing and the grass has turned grey."
+    },
+    {
+      "id": "loc.thornpike-woods",
+      "name": "Thornpike Woods",
+      "description": "Dark pine woods east of the Lantern Road. A trampled goblin trail leaves the road at Lantern 37 and runs into the trees."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "tamsin",
+      "text": "It's a story. Better than an answer. Lasts longer."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "I will write down that you are practised."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "It was not broken. It was taken. Lifted out of its cradle like an egg from a nest."
+    },
+    {
+      "speaker": "oriel",
+      "text": "It's cold. That's all. It's only cold."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Ground's been walked to soup. Could be four. Could be forty."
+    },
+    {
+      "speaker": "oriel",
+      "text": "Only when I'm nervous. Keep walking."
+    }
+  ],
+  "events": [
+    "Brannoc asked Tamsin why a card player would walk an empty road; she answered with a tall tale.",
+    "Ilsevel read the milestone and declared the carving half a mile out.",
+    "Near Lantern 37 the birds had fallen silent and the grass had gone grey; Ilsevel called it fringe Unlight, arriving far faster than her books say it should.",
+    "Tamsin worked the frost-stiff housing catch open with a hairpin, just barely, and pointed out fresh scratches: someone had opened it lately without a key.",
+    "Ilsevel's examination failed to show who took the core or how, but it was clear the core had been lifted out whole rather than broken.",
+    "Oriel laid her hand on the cold post and prayed; she told Brannoc it was only cold.",
+    "Brannoc could not read the goblin trail: he could not tell how many goblins had used it or when.",
+    "At dusk the party followed the trail east into Thornpike Woods, Brannoc in front."
+  ],
+  "items": [
+    {
+      "id": "lantern_core_37",
+      "name": "Core of Lantern 37",
+      "holder": "unknown",
+      "note": "Missing: lifted out of its cradle whole. Someone opened the housing recently without a key."
+    }
+  ],
+  "hooks_planted": [
+    "hook.flickering-warmth"
+  ],
+  "character_notes": {
+    "tamsin": [
+      "Can open a frozen lock with a hairpin, and reads lock scratches like handwriting.",
+      "Answers personal questions with tall tales: she claims to have walked the width of the Vael for a bet."
+    ],
+    "ilsevel": [
+      "Cites Halbrecht's Lantern Theory, the 1002 edition.",
+      "Noted that Tamsin is 'practised'."
+    ],
+    "oriel": [
+      "Prayed at the dead lantern and, by her face, felt nothing answer; she said it was only cold.",
+      "Hums hymns, badly, when she is nervous."
+    ],
+    "brannoc": [
+      "Leads from the front: 'Single file. Behind me.'"
+    ]
+  }
+}

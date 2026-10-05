@@ -1,0 +1,2777 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E009",
+  "title": "C01-E009 - Smoke Over the Millpond",
+  "fps": 30,
+  "seed": "C01-E009-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 9 - Smoke Over the Millpond"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "wending_mill_burning",
+      "time_of_day": "day",
+      "camera": [
+        33,
+        21
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        33,
+        22
+      ],
+      "facing": "right",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        32,
+        23
+      ],
+      "facing": "right",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        31,
+        22
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        31,
+        24
+      ],
+      "facing": "right",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "Smoke Over the Millpond",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  6 Emberfall 1047 AK",
+      "text": "At the hamlet of Wending Mill, four strangers from Brindle Cross have just driven four goblins out of the mill yard. They had no time to catch their breath. The barn across the yard is on fire, its doors barred from outside, and the miller's wife and a hired lad are trapped inside. Behind the smoke, someone was giving the goblins orders."
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Wending Mill (burning)  -  The Barred Door  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "The heat hits them like a door slamming."
+    },
+    {
+      "op": "narrate",
+      "text": "The barn's roof is alight from end to end, and the pole across its doors is swollen fast in its brackets."
+    },
+    {
+      "op": "say",
+      "text": "Stand back.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Heave a heat-swollen cart-pole out of the iron brackets barring a burning barn's doors, with fire coming through the",
+        "actor": "brannoc",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 15
+          }
+        ],
+        "rolls": [
+          15
+        ],
+        "kept": [
+          15
+        ],
+        "modifier": 5,
+        "total": 20,
+        "advantage": "none",
+        "natural": 15,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Brannoc - Athletics",
+      "line": "15 + 5 = 20 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc gets his shoulder under the pole and heaves. It comes free at the first try, and the doors swing wide."
+    },
+    {
+      "op": "spawn",
+      "actor": "bet",
+      "sprite": "villager_c",
+      "at": [
+        36,
+        22
+      ],
+      "facing": "down",
+      "name": "Bet Hollis"
+    },
+    {
+      "op": "spawn",
+      "actor": "lad",
+      "sprite": "villager_a",
+      "at": [
+        37,
+        22
+      ],
+      "facing": "down",
+      "name": "Lad"
+    },
+    {
+      "op": "move",
+      "actor": "bet",
+      "path": [
+        [
+          35,
+          22
+        ],
+        [
+          34,
+          23
+        ]
+      ],
+      "speed": 4,
+      "face": "left",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "lad",
+      "path": [
+        [
+          35,
+          24
+        ],
+        [
+          34,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "camera",
+      "to": [
+        34,
+        23
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Oh, thank the Eight. The lad... he went back for the cow. He breathed too much of it.",
+      "speaker": "bet",
+      "emote": "sweat"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          33,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Get two people who have been breathing smoke coughing, breathing and moving, in the middle of a burning yard.",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 5,
+        "total": 8,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Medicine",
+      "line": "3 + 5 = 8 vs DC 12 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "The lad's eyes roll back. Oriel gets him breathing, barely, but his legs will not hold him."
+    },
+    {
+      "op": "say",
+      "text": "Tamsin, take Bet to the mill! I'll bring him!",
+      "speaker": "oriel"
+    },
+    {
+      "op": "move",
+      "actor": "bet",
+      "path": [
+        [
+          29,
+          23
+        ],
+        [
+          24,
+          18
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "despawn",
+      "actor": "bet"
+    },
+    {
+      "op": "move",
+      "actor": "lad",
+      "path": [
+        [
+          34,
+          23
+        ],
+        [
+          32,
+          23
+        ],
+        [
+          31,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "left"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          32,
+          23
+        ],
+        [
+          31,
+          23
+        ]
+      ],
+      "speed": 4,
+      "face": "left",
+      "wait": false
+    },
+    {
+      "op": "despawn",
+      "actor": "lad"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel hauls the lad to the yard's edge, one arm across her shoulders, and lays him in the grass."
+    },
+    {
+      "op": "narrate",
+      "text": "She is still kneeling there when the smoke parts."
+    },
+    {
+      "op": "say",
+      "text": "Brannoc. Whoever set this fire is still here.",
+      "speaker": "ilsevel",
+      "emote": "alert"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "wending_mill_burning",
+      "time_of_day": "day",
+      "camera": [
+        34,
+        23
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        32,
+        22
+      ],
+      "facing": "right",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        31,
+        23
+      ],
+      "facing": "right",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        30,
+        22
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        29,
+        24
+      ],
+      "facing": "right",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-5",
+      "sprite": "goblin_boss",
+      "at": [
+        38,
+        25
+      ],
+      "facing": "left",
+      "name": "Goblin Boss"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-6",
+      "sprite": "goblin_warrior",
+      "at": [
+        39,
+        22
+      ],
+      "facing": "left",
+      "name": "Goblin"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-7",
+      "sprite": "goblin_minion",
+      "at": [
+        37,
+        26
+      ],
+      "facing": "left",
+      "name": "Goblin Runt"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "battle_boss",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Wending Mill (burning)  -  The Boss  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Out of the smoke walks a goblin bigger than the rest, in a dented helmet with a strip of glass riveted across the brow."
+    },
+    {
+      "op": "narrate",
+      "text": "Two of his crew flank him."
+    },
+    {
+      "op": "narrate",
+      "text": "He looks at his dead in the mill yard. Then at the four of them. Then he says something in Goblin, quite calmly."
+    },
+    {
+      "op": "say",
+      "text": "He says: 'The boss pays for stones. He pays more for the ones who stop us.'",
+      "speaker": "ilsevel",
+      "emote": "shock"
+    },
+    {
+      "op": "say",
+      "text": "Wonderful. We've got a price on us.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "Ilsevel. Anything left?",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Cantrips. Only cantrips.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Me too. I'm sorry.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Then it's steel. Get behind me.",
+      "speaker": "brannoc",
+      "emote": "angry"
+    },
+    {
+      "op": "battle_start",
+      "party": [
+        {
+          "id": "brannoc",
+          "sprite": "brannoc",
+          "hp": 13,
+          "max_hp": 13,
+          "name": "Brannoc",
+          "at": [
+            32,
+            22
+          ]
+        },
+        {
+          "id": "oriel",
+          "sprite": "oriel",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Oriel",
+          "at": [
+            31,
+            23
+          ]
+        },
+        {
+          "id": "tamsin",
+          "sprite": "tamsin",
+          "hp": 6,
+          "max_hp": 10,
+          "name": "Tamsin",
+          "at": [
+            30,
+            22
+          ]
+        },
+        {
+          "id": "ilsevel",
+          "sprite": "ilsevel",
+          "hp": 8,
+          "max_hp": 8,
+          "name": "Ilsevel",
+          "at": [
+            29,
+            24
+          ]
+        }
+      ],
+      "enemies": [
+        {
+          "id": "goblin-5",
+          "sprite": "goblin_boss",
+          "hp": 21,
+          "max_hp": 21,
+          "name": "Goblin Boss",
+          "at": [
+            38,
+            25
+          ]
+        },
+        {
+          "id": "goblin-6",
+          "sprite": "goblin_warrior",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Goblin",
+          "at": [
+            39,
+            22
+          ]
+        },
+        {
+          "id": "goblin-7",
+          "sprite": "goblin_minion",
+          "hp": 7,
+          "max_hp": 7,
+          "name": "Goblin Runt",
+          "at": [
+            37,
+            26
+          ]
+        }
+      ],
+      "music": "battle"
+    },
+    {
+      "op": "initiative",
+      "order": [
+        {
+          "id": "tamsin",
+          "name": "Tamsin",
+          "total": 21,
+          "team": "party"
+        },
+        {
+          "id": "ilsevel",
+          "name": "Ilsevel",
+          "total": 19,
+          "team": "party"
+        },
+        {
+          "id": "oriel",
+          "name": "Oriel",
+          "total": 18,
+          "team": "party"
+        },
+        {
+          "id": "goblin-6",
+          "name": "Goblin",
+          "total": 15,
+          "team": "enemies"
+        },
+        {
+          "id": "brannoc",
+          "name": "Brannoc",
+          "total": 15,
+          "team": "party"
+        },
+        {
+          "id": "goblin-7",
+          "name": "Goblin Runt",
+          "total": 14,
+          "team": "enemies"
+        },
+        {
+          "id": "goblin-5",
+          "name": "Goblin Boss",
+          "total": 5,
+          "team": "enemies"
+        }
+      ]
+    },
+    {
+      "op": "narrate",
+      "text": "Nobody has anything left but steel and small fire."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-7",
+      "roll": {
+        "id": "r0009",
+        "index": 9,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-7",
+        "draws": [
+          {
+            "counter": 9,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 5,
+        "total": 22,
+        "advantage": "none",
+        "natural": 17,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "17 + 5 = 22 vs AC 12 HIT",
+      "damage": 5,
+      "hp_after": 2,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-7",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0011",
+        "index": 11,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-7",
+        "draws": [
+          {
+            "counter": 11,
+            "sides": 20,
+            "value": 6
+          }
+        ],
+        "rolls": [
+          6
+        ],
+        "kept": [
+          6
+        ],
+        "modifier": 5,
+        "total": 11,
+        "advantage": "none",
+        "natural": 6,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "6 + 5 = 11 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "sacred_flame",
+      "results": [
+        {
+          "target": "goblin-7",
+          "saved": true
+        }
+      ],
+      "label": "Oriel - Sacred Flame",
+      "roll": {
+        "id": "r0013",
+        "index": 13,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "Sacred Flame save",
+        "actor": "goblin-7",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 13,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 2,
+        "total": 19,
+        "advantage": "none",
+        "natural": 17,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "Goblin Runt: 17 + 2 = 19 vs DC 13 SAVED"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-6",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "goblin-6",
+      "path": [
+        [
+          39,
+          22
+        ],
+        [
+          38,
+          22
+        ],
+        [
+          37,
+          22
+        ],
+        [
+          36,
+          22
+        ],
+        [
+          35,
+          22
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          21
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-6",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0014",
+        "index": 14,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-6",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 14,
+            "sides": 20,
+            "value": 20
+          }
+        ],
+        "rolls": [
+          20
+        ],
+        "kept": [
+          20
+        ],
+        "modifier": 4,
+        "total": 24,
+        "advantage": "none",
+        "natural": 20,
+        "dc": 19,
+        "success": true,
+        "critical": true,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": true,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "20 + 4 = 24 vs AC 19 CRIT!",
+      "damage": 5,
+      "hp_after": 8,
+      "sneak_attack": false
+    },
+    {
+      "op": "narrate",
+      "text": "The first goblin's scimitar bites into Brannoc's side. He sets his feet and hits back."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-6",
+      "roll": {
+        "id": "r0016",
+        "index": 16,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-6",
+        "draws": [
+          {
+            "counter": 17,
+            "sides": 20,
+            "value": 13
+          }
+        ],
+        "rolls": [
+          13
+        ],
+        "kept": [
+          13
+        ],
+        "modifier": 5,
+        "total": 18,
+        "advantage": "none",
+        "natural": 13,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "13 + 5 = 18 vs AC 15 HIT",
+      "damage": 5,
+      "hp_after": 5,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-7",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-7",
+      "target": "tamsin",
+      "roll": {
+        "id": "r0019",
+        "index": 19,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-7",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 20,
+            "sides": 20,
+            "value": 16
+          },
+          {
+            "counter": 21,
+            "sides": 20,
+            "value": 1
+          }
+        ],
+        "rolls": [
+          16,
+          1
+        ],
+        "kept": [
+          1
+        ],
+        "modifier": 4,
+        "total": 5,
+        "advantage": "disadvantage",
+        "natural": 1,
+        "dc": 14,
+        "success": false,
+        "critical": false,
+        "fumble": true,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 1 + 4 = 5 vs AC 14 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-5",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "goblin-5",
+      "path": [
+        [
+          38,
+          25
+        ],
+        [
+          37,
+          24
+        ],
+        [
+          36,
+          23
+        ],
+        [
+          35,
+          22
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          22
+        ],
+        [
+          32,
+          23
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "oriel",
+      "roll": {
+        "id": "r0020",
+        "index": 20,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 22,
+            "sides": 20,
+            "value": 18
+          }
+        ],
+        "rolls": [
+          18
+        ],
+        "kept": [
+          18
+        ],
+        "modifier": 4,
+        "total": 22,
+        "advantage": "none",
+        "natural": 18,
+        "dc": 18,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "18 + 4 = 22 vs AC 18 HIT",
+      "damage": 7,
+      "hp_after": 3,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "oriel",
+      "roll": {
+        "id": "r0023",
+        "index": 23,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 25,
+            "sides": 20,
+            "value": 18
+          }
+        ],
+        "rolls": [
+          18
+        ],
+        "kept": [
+          18
+        ],
+        "modifier": 4,
+        "total": 22,
+        "advantage": "none",
+        "natural": 18,
+        "dc": 18,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "18 + 4 = 22 vs AC 18 HIT",
+      "damage": 8,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "oriel",
+      "pc": true,
+      "narrate_hint": "pc_down"
+    },
+    {
+      "op": "narrate",
+      "text": "The boss goes straight past Brannoc to Oriel, still kneeling by the fence. Two cuts. She goes down without a sound."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-6",
+      "roll": {
+        "id": "r0025",
+        "index": 25,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-6",
+        "draws": [
+          {
+            "counter": 27,
+            "sides": 20,
+            "value": 8
+          }
+        ],
+        "rolls": [
+          8
+        ],
+        "kept": [
+          8
+        ],
+        "modifier": 5,
+        "total": 13,
+        "advantage": "none",
+        "natural": 8,
+        "dc": 15,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "8 + 5 = 13 vs AC 15 MISS"
+    },
+    {
+      "op": "battle_move",
+      "actor": "tamsin",
+      "path": [
+        [
+          30,
+          22
+        ],
+        [
+          29,
+          23
+        ],
+        [
+          28,
+          24
+        ],
+        [
+          27,
+          25
+        ],
+        [
+          26,
+          26
+        ],
+        [
+          25,
+          27
+        ],
+        [
+          24,
+          28
+        ]
+      ]
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-7",
+          "damage": 7,
+          "hp_after": 0,
+          "hit": true
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0026",
+        "index": 26,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-7",
+        "draws": [
+          {
+            "counter": 28,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 5,
+        "total": 15,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "10 + 5 = 15 vs AC 12 HIT"
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-7"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel's fire bolt takes the runt off its feet. Behind Brannoc, Oriel's breath catches, and falters."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 2
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0028",
+        "index": 28,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "death save",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 30,
+            "sides": 20,
+            "value": 8
+          }
+        ],
+        "rolls": [
+          8
+        ],
+        "kept": [
+          8
+        ],
+        "modifier": 0,
+        "total": 8,
+        "advantage": "none",
+        "natural": 8,
+        "dc": 10,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Death save",
+      "line": "8 : failure"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-6",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-6",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0029",
+        "index": 29,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-6",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 31,
+            "sides": 20,
+            "value": 14
+          },
+          {
+            "counter": 32,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          14,
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 4,
+        "total": 8,
+        "advantage": "disadvantage",
+        "natural": 4,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-sapped"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "DIS 4 + 4 = 8 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-6",
+      "roll": {
+        "id": "r0030",
+        "index": 30,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-6",
+        "draws": [
+          {
+            "counter": 33,
+            "sides": 20,
+            "value": 18
+          }
+        ],
+        "rolls": [
+          18
+        ],
+        "kept": [
+          18
+        ],
+        "modifier": 5,
+        "total": 23,
+        "advantage": "none",
+        "natural": 18,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "18 + 5 = 23 vs AC 15 HIT",
+      "damage": 11,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-6"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc ends the goblin with one stroke and turns, alone, to face the boss."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-5",
+      "round": 2
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0033",
+        "index": 33,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 36,
+            "sides": 20,
+            "value": 1
+          }
+        ],
+        "rolls": [
+          1
+        ],
+        "kept": [
+          1
+        ],
+        "modifier": 4,
+        "total": 5,
+        "advantage": "none",
+        "natural": 1,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": true,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "1 + 4 = 5 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0034",
+        "index": 34,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 37,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 4,
+        "total": 13,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "9 + 4 = 13 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 3
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0035",
+        "index": 35,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 38,
+            "sides": 20,
+            "value": 2
+          }
+        ],
+        "rolls": [
+          2
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 5,
+        "total": 7,
+        "advantage": "none",
+        "natural": 2,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "2 + 5 = 7 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 3
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-5",
+          "damage": 2,
+          "hp_after": 19,
+          "hit": true
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0036",
+        "index": 36,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 39,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 5,
+        "total": 22,
+        "advantage": "none",
+        "natural": 17,
+        "dc": 17,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "17 + 5 = 22 vs AC 17 HIT"
+    },
+    {
+      "op": "narrate",
+      "text": "On the ground, Oriel's fingers move in the dirt. Still here."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 3
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0038",
+        "index": 38,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "death save",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 41,
+            "sides": 20,
+            "value": 19
+          }
+        ],
+        "rolls": [
+          19
+        ],
+        "kept": [
+          19
+        ],
+        "modifier": 0,
+        "total": 19,
+        "advantage": "none",
+        "natural": 19,
+        "dc": 10,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Death save",
+      "line": "19 : success"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 3
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0039",
+        "index": 39,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 42,
+            "sides": 20,
+            "value": 15
+          }
+        ],
+        "rolls": [
+          15
+        ],
+        "kept": [
+          15
+        ],
+        "modifier": 5,
+        "total": 20,
+        "advantage": "none",
+        "natural": 15,
+        "dc": 17,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "15 + 5 = 20 vs AC 17 HIT",
+      "damage": 5,
+      "hp_after": 14,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-5",
+      "round": 3
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0042",
+        "index": 42,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 45,
+            "sides": 20,
+            "value": 3
+          },
+          {
+            "counter": 46,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          3,
+          12
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 4,
+        "total": 7,
+        "advantage": "disadvantage",
+        "natural": 3,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-sapped"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "DIS 3 + 4 = 7 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0043",
+        "index": 43,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 47,
+            "sides": 20,
+            "value": 8
+          }
+        ],
+        "rolls": [
+          8
+        ],
+        "kept": [
+          8
+        ],
+        "modifier": 4,
+        "total": 12,
+        "advantage": "none",
+        "natural": 8,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "8 + 4 = 12 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 4
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0044",
+        "index": 44,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 48,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 5,
+        "total": 15,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "10 + 5 = 15 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 4
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-5",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0045",
+        "index": 45,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 49,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 5,
+        "total": 10,
+        "advantage": "none",
+        "natural": 5,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "5 + 5 = 10 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 4
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0046",
+        "index": 46,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "death save",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 50,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 0,
+        "total": 11,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 10,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Death save",
+      "line": "11 : success"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 4
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0047",
+        "index": 47,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 51,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 5,
+        "total": 10,
+        "advantage": "none",
+        "natural": 5,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "5 + 5 = 10 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-5",
+      "round": 4
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0048",
+        "index": 48,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 52,
+            "sides": 20,
+            "value": 13
+          }
+        ],
+        "rolls": [
+          13
+        ],
+        "kept": [
+          13
+        ],
+        "modifier": 4,
+        "total": 17,
+        "advantage": "none",
+        "natural": 13,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "13 + 4 = 17 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0049",
+        "index": 49,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 53,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 4,
+        "total": 7,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "3 + 4 = 7 vs AC 19 MISS"
+    },
+    {
+      "op": "narrate",
+      "text": "Again and again the boss's blades glance off Brannoc's shield. He does not give an inch, and he does not look down."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 5
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0050",
+        "index": 50,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 54,
+            "sides": 20,
+            "value": 10
+          }
+        ],
+        "rolls": [
+          10
+        ],
+        "kept": [
+          10
+        ],
+        "modifier": 5,
+        "total": 15,
+        "advantage": "none",
+        "natural": 10,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "10 + 5 = 15 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 5
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-5",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0051",
+        "index": 51,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 55,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 5,
+        "total": 16,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "11 + 5 = 16 vs AC 17 MISS"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel's breathing steadies. Not awake. But not slipping any more."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 5
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0052",
+        "index": 52,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "death save",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 56,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          12
+        ],
+        "kept": [
+          12
+        ],
+        "modifier": 0,
+        "total": 12,
+        "advantage": "none",
+        "natural": 12,
+        "dc": 10,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Death save",
+      "line": "12 : stable"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 5
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0053",
+        "index": 53,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 57,
+            "sides": 20,
+            "value": 19
+          }
+        ],
+        "rolls": [
+          19
+        ],
+        "kept": [
+          19
+        ],
+        "modifier": 5,
+        "total": 24,
+        "advantage": "none",
+        "natural": 19,
+        "dc": 17,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "19 + 5 = 24 vs AC 17 HIT",
+      "damage": 9,
+      "hp_after": 5,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-5",
+      "round": 5
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0056",
+        "index": 56,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 60,
+            "sides": 20,
+            "value": 8
+          },
+          {
+            "counter": 61,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          8,
+          17
+        ],
+        "kept": [
+          8
+        ],
+        "modifier": 4,
+        "total": 12,
+        "advantage": "disadvantage",
+        "natural": 8,
+        "dc": 19,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-sapped"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "DIS 8 + 4 = 12 vs AC 19 MISS"
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-5",
+      "target": "brannoc",
+      "roll": {
+        "id": "r0057",
+        "index": 57,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-5",
+        "target": "brannoc",
+        "draws": [
+          {
+            "counter": 62,
+            "sides": 20,
+            "value": 15
+          }
+        ],
+        "rolls": [
+          15
+        ],
+        "kept": [
+          15
+        ],
+        "modifier": 4,
+        "total": 19,
+        "advantage": "none",
+        "natural": 15,
+        "dc": 19,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin Boss - Scimitar",
+      "line": "15 + 4 = 19 vs AC 19 HIT",
+      "damage": 6,
+      "hp_after": 2,
+      "sneak_attack": false
+    },
+    {
+      "op": "narrate",
+      "text": "The second blade gets through. Brannoc staggers, nearly done, and keeps his shield up anyway."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 6
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-5",
+      "roll": {
+        "id": "r0059",
+        "index": 59,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 64,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 5,
+        "total": 16,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 17,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "11 + 5 = 16 vs AC 17 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 6
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-5",
+          "damage": 7,
+          "hp_after": 0,
+          "hit": true
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0060",
+        "index": 60,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-5",
+        "draws": [
+          {
+            "counter": 65,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          12
+        ],
+        "kept": [
+          12
+        ],
+        "modifier": 5,
+        "total": 17,
+        "advantage": "none",
+        "natural": 12,
+        "dc": 17,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "12 + 5 = 17 vs AC 17 HIT"
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-5"
+    },
+    {
+      "op": "narrate",
+      "text": "A bolt of fire from behind him. The boss drops, and the dented helmet rolls across the yard."
+    },
+    {
+      "op": "battle_end",
+      "result": "victory",
+      "xp": 275
+    },
+    {
+      "op": "time_of_day",
+      "preset": "dusk",
+      "duration": 2.0,
+      "wait": false
+    },
+    {
+      "op": "camera",
+      "to": [
+        33,
+        22
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "sad",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Wending Mill (burning)  -  After the Fire  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc lets his sword fall and goes down on his knees beside Oriel."
+    },
+    {
+      "op": "say",
+      "text": "Oriel. Oriel. Breathe. Keep breathing.",
+      "speaker": "brannoc",
+      "emote": "shock"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0062",
+        "index": 62,
+        "seed": "C01-E009-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "a1: stabilise Oriel Ashdown",
+        "actor": "brannoc",
+        "target": null,
+        "draws": [
+          {
+            "counter": 67,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 1,
+        "total": 10,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 10,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Brannoc - Medicine",
+      "line": "1d20 (9) + 1 = 10"
+    },
+    {
+      "op": "narrate",
+      "text": "His big hands are shaking, but they know this work. He turns her on her side, clears her mouth, and holds her steady. She is breathing."
+    },
+    {
+      "op": "say",
+      "text": "Not you. Not you as well.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          27,
+          28
+        ],
+        [
+          30,
+          25
+        ],
+        [
+          30,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "camera",
+      "to": [
+        31,
+        24
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Four arrows at the big one, Big Man. Not one of them hit.",
+      "speaker": "tamsin",
+      "emote": "sad"
+    },
+    {
+      "op": "say",
+      "text": "You kept it looking at you instead of at her. Technically, that counts.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "By dusk the barn is a black frame. All of Wending Mill passes buckets from the millpond, and the mill still stands."
+    },
+    {
+      "op": "spawn",
+      "actor": "miller",
+      "sprite": "miller",
+      "at": [
+        27,
+        22
+      ],
+      "facing": "right",
+      "name": "Ned Hollis"
+    },
+    {
+      "op": "move",
+      "actor": "miller",
+      "path": [
+        [
+          30,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "narrate",
+      "text": "Ned Hollis comes across the yard with blankets and a loaf. Oriel sleeps on, breathing slow and even."
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc has not moved from her side."
+    },
+    {
+      "op": "say",
+      "text": "Big Man. Sit down. You're bleeding on the bread.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "...Don't care.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          29,
+          25
+        ],
+        [
+          31,
+          25
+        ],
+        [
+          32,
+          24
+        ]
+      ],
+      "speed": 4,
+      "face": "up"
+    },
+    {
+      "op": "say",
+      "text": "This glass on the boss's helmet. It is lantern-glass. Riveted on like a crown.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "So somebody's handing out crowns to goblins now.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Then tomorrow we tell Rook. All of it.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Fort Harrow, and Captain Rook."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "The Barred Door"
+    },
+    {
+      "cue": 34,
+      "title": "The Boss"
+    },
+    {
+      "cue": 141,
+      "title": "After the Fire"
+    },
+    {
+      "cue": 166,
+      "title": "Next time"
+    }
+  ]
+}

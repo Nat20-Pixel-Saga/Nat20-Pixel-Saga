@@ -1,0 +1,1560 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E005",
+  "title": "C01-E005 - The Scout Camp",
+  "fps": 30,
+  "seed": "C01-E005-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 5 - The Scout Camp"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        26,
+        18
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        27,
+        19
+      ],
+      "facing": "right",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        26,
+        18
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        25,
+        18
+      ],
+      "facing": "right",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        24,
+        17
+      ],
+      "facing": "right",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        25,
+        17
+      ],
+      "facing": "right",
+      "name": "Pell"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "The Scout Camp",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+      "text": "Deep in Thornpike Woods, on the trail of whoever stole the core of Lantern Thirty-Seven, four tired strangers have just fought off a pack of starving wolves. Ilsevel's new familiar, the owl Pell, flies ahead in the dark. Brannoc leads, Oriel watches the rear, and Tamsin, as usual, is thinking of something she probably should not do."
+    },
+    {
+      "op": "music",
+      "track": "dark_forest",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  Firelight  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "East of the birches the trail dips, and between the pines there is firelight. Goblin voices, arguing about something."
+    },
+    {
+      "op": "say",
+      "text": "Three voices. A fire. They're not expecting anyone.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "I should say, before anyone is brave, that I have nothing left but cantrips. And I am bleeding. A little.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "I've used every prayer I had tonight. Until I sleep, I've only the small ones.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Then we wait for dawn.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "By dawn that cart's gone, Big Man. Wherever it's going.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Rusk told us what goblins like to hear. Stones, a boss, supper. Let me walk in there and tell them a story.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Alone.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Alone's the only way anyone believes a story. You lot creep up to the bushes and look large.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "And if it goes wrong?",
+      "speaker": "oriel",
+      "emote": "question"
+    },
+    {
+      "op": "say",
+      "text": "Then come and save me. Heroically. I'll scream, so you know when.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "narrate",
+      "text": "They go in through the undergrowth, one careful step at a time."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+        "actor": "brannoc",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 18
+          },
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          18,
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 1,
+        "total": 6,
+        "advantage": "disadvantage",
+        "natural": 5,
+        "dc": 11,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Brannoc - Stealth",
+      "line": "DIS 5 + 1 = 6 vs DC 11 FAIL"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 2,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 2,
+        "total": 6,
+        "advantage": "none",
+        "natural": 4,
+        "dc": 11,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Stealth",
+      "line": "4 + 2 = 6 vs DC 11 FAIL"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0002",
+        "index": 2,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 3,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 7,
+        "total": 16,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 11,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Stealth",
+      "line": "9 + 7 = 16 vs DC 11 SUCCESS"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0003",
+        "index": 3,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "c1: Four people, one of them in chain mail, creep through dark undergrowth to the edge of a goblin camp whose sentries a",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 4,
+            "sides": 20,
+            "value": 11
+          },
+          {
+            "counter": 5,
+            "sides": 20,
+            "value": 18
+          }
+        ],
+        "rolls": [
+          11,
+          18
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 0,
+        "total": 11,
+        "advantage": "disadvantage",
+        "natural": 11,
+        "dc": 11,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Stealth",
+      "line": "DIS 11 + 0 = 11 vs DC 11 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc's mail whispers at every step and Ilsevel walks face-first into a branch."
+    },
+    {
+      "op": "narrate",
+      "text": "But Tamsin picks the path, Oriel steadies the rest, and nobody hears them."
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        36,
+        21
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        35,
+        20
+      ],
+      "facing": "right",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        32,
+        20
+      ],
+      "facing": "right",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        31,
+        21
+      ],
+      "facing": "right",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        29,
+        20
+      ],
+      "facing": "right",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-1",
+      "sprite": "goblin_warrior",
+      "at": [
+        40,
+        21
+      ],
+      "facing": "left",
+      "name": "Goblin"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-2",
+      "sprite": "goblin_minion",
+      "at": [
+        42,
+        23
+      ],
+      "facing": "left",
+      "name": "Goblin Runt"
+    },
+    {
+      "op": "spawn",
+      "actor": "goblin-3",
+      "sprite": "goblin_minion",
+      "at": [
+        38,
+        24
+      ],
+      "facing": "left",
+      "name": "Goblin Runt"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  The Collector  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Three goblins around a fire, a patched tent, and a cart with something grey in its straw."
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin walks into the light as if she owns the woods."
+    },
+    {
+      "op": "say",
+      "text": "Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "emote",
+      "actor": "goblin-1",
+      "emote": "question",
+      "duration": 1.2
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0004",
+        "index": 4,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Convince three wary goblins that a strange halfling was sent by their boss to collect the stones early, using only w",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 6,
+            "sides": 20,
+            "value": 17
+          }
+        ],
+        "rolls": [
+          17
+        ],
+        "kept": [
+          17
+        ],
+        "modifier": 3,
+        "total": 20,
+        "advantage": "none",
+        "natural": 17,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Deception",
+      "line": "17 + 3 = 20 vs DC 12 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "The lie is so cheerful, and so sure of itself, that the goblins simply swallow it. Two of them even step away from their knives."
+    },
+    {
+      "op": "say",
+      "text": "Tonight? Cart goes at dawn. Always dawn. Boss counts every stone, he does.",
+      "speaker": "goblin-1"
+    },
+    {
+      "op": "say",
+      "text": "And now he wants them early. Lovely fire, by the way.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "narrate",
+      "text": "Behind the goblins, a grey shield rises slowly out of the bushes."
+    },
+    {
+      "op": "camera",
+      "to": [
+        38,
+        22
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Why boss send a dwarf?",
+      "speaker": "goblin-2",
+      "emote": "alert"
+    },
+    {
+      "op": "say",
+      "text": "Ah. That'll be my cue.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "battle_start",
+      "party": [
+        {
+          "id": "tamsin",
+          "sprite": "tamsin",
+          "hp": 7,
+          "max_hp": 10,
+          "name": "Tamsin",
+          "at": [
+            35,
+            20
+          ]
+        },
+        {
+          "id": "brannoc",
+          "sprite": "brannoc",
+          "hp": 13,
+          "max_hp": 13,
+          "name": "Brannoc",
+          "at": [
+            32,
+            20
+          ]
+        },
+        {
+          "id": "oriel",
+          "sprite": "oriel",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Oriel",
+          "at": [
+            31,
+            21
+          ]
+        },
+        {
+          "id": "ilsevel",
+          "sprite": "ilsevel",
+          "hp": 4,
+          "max_hp": 8,
+          "name": "Ilsevel",
+          "at": [
+            29,
+            20
+          ]
+        }
+      ],
+      "enemies": [
+        {
+          "id": "goblin-1",
+          "sprite": "goblin_warrior",
+          "hp": 10,
+          "max_hp": 10,
+          "name": "Goblin",
+          "at": [
+            40,
+            21
+          ]
+        },
+        {
+          "id": "goblin-2",
+          "sprite": "goblin_minion",
+          "hp": 7,
+          "max_hp": 7,
+          "name": "Goblin Runt",
+          "at": [
+            42,
+            23
+          ]
+        },
+        {
+          "id": "goblin-3",
+          "sprite": "goblin_minion",
+          "hp": 7,
+          "max_hp": 7,
+          "name": "Goblin Runt",
+          "at": [
+            38,
+            24
+          ]
+        }
+      ],
+      "music": "battle"
+    },
+    {
+      "op": "initiative",
+      "order": [
+        {
+          "id": "tamsin",
+          "name": "Tamsin",
+          "total": 25,
+          "team": "party"
+        },
+        {
+          "id": "brannoc",
+          "name": "Brannoc",
+          "total": 21,
+          "team": "party"
+        },
+        {
+          "id": "oriel",
+          "name": "Oriel",
+          "total": 18,
+          "team": "party"
+        },
+        {
+          "id": "goblin-1",
+          "name": "Goblin",
+          "total": 13,
+          "team": "enemies"
+        },
+        {
+          "id": "goblin-3",
+          "name": "Goblin Runt",
+          "total": 13,
+          "team": "enemies"
+        },
+        {
+          "id": "goblin-2",
+          "name": "Goblin Runt",
+          "total": 4,
+          "team": "enemies"
+        },
+        {
+          "id": "ilsevel",
+          "name": "Ilsevel",
+          "total": 3,
+          "team": "party"
+        }
+      ]
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin has an arrow on the string before the goblins have finished turning round."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-3",
+      "roll": {
+        "id": "r0014",
+        "index": 14,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortbow",
+        "actor": "tamsin",
+        "target": "goblin-3",
+        "draws": [
+          {
+            "counter": 16,
+            "sides": 20,
+            "value": 14
+          }
+        ],
+        "rolls": [
+          14
+        ],
+        "kept": [
+          14
+        ],
+        "modifier": 5,
+        "total": 19,
+        "advantage": "none",
+        "natural": 14,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": true,
+      "label": "Tamsin - Shortbow",
+      "line": "14 + 5 = 19 vs AC 12 HIT",
+      "damage": 5,
+      "hp_after": 2,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          32,
+          20
+        ],
+        [
+          32,
+          21
+        ],
+        [
+          33,
+          22
+        ],
+        [
+          34,
+          23
+        ],
+        [
+          35,
+          24
+        ],
+        [
+          36,
+          24
+        ],
+        [
+          37,
+          24
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-3",
+      "roll": {
+        "id": "r0016",
+        "index": 16,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-3",
+        "draws": [
+          {
+            "counter": 18,
+            "sides": 20,
+            "value": 11
+          }
+        ],
+        "rolls": [
+          11
+        ],
+        "kept": [
+          11
+        ],
+        "modifier": 5,
+        "total": 16,
+        "advantage": "none",
+        "natural": 11,
+        "dc": 12,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "11 + 5 = 16 vs AC 12 HIT",
+      "damage": 6,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-3"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc comes out of the bushes at a run and does not stop until the first runt is down."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "sacred_flame",
+      "results": [
+        {
+          "target": "goblin-2",
+          "damage": 3,
+          "hp_after": 4,
+          "saved": false
+        }
+      ],
+      "label": "Oriel - Sacred Flame",
+      "roll": {
+        "id": "r0020",
+        "index": 20,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "Sacred Flame save",
+        "actor": "goblin-2",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 22,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 2,
+        "total": 7,
+        "advantage": "none",
+        "natural": 5,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "Goblin Runt: 5 + 2 = 7 vs DC 13 FAILS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-1",
+      "round": 1
+    },
+    {
+      "op": "battle_move",
+      "actor": "goblin-1",
+      "path": [
+        [
+          40,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          18
+        ],
+        [
+          36,
+          19
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-1",
+      "target": "tamsin",
+      "roll": {
+        "id": "r0021",
+        "index": 21,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Scimitar",
+        "actor": "goblin-1",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 23,
+            "sides": 20,
+            "value": 19
+          }
+        ],
+        "rolls": [
+          19
+        ],
+        "kept": [
+          19
+        ],
+        "modifier": 4,
+        "total": 23,
+        "advantage": "none",
+        "natural": 19,
+        "dc": 14,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Goblin - Scimitar",
+      "line": "19 + 4 = 23 vs AC 14 HIT",
+      "damage": 6,
+      "hp_after": 1,
+      "sneak_attack": false
+    },
+    {
+      "op": "narrate",
+      "text": "The leader's blade catches Tamsin across the arm. She staggers, white-faced."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "goblin-2",
+      "round": 1
+    },
+    {
+      "op": "battle_attack",
+      "actor": "goblin-2",
+      "target": "tamsin",
+      "roll": {
+        "id": "r0023",
+        "index": 23,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "2d20kl1",
+        "purpose": "attack: Dagger",
+        "actor": "goblin-2",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 25,
+            "sides": 20,
+            "value": 2
+          },
+          {
+            "counter": 26,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          2,
+          5
+        ],
+        "kept": [
+          2
+        ],
+        "modifier": 4,
+        "total": 6,
+        "advantage": "disadvantage",
+        "natural": 2,
+        "dc": 14,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": [
+          "-long range"
+        ]
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": true,
+      "label": "Goblin Runt - Dagger",
+      "line": "DIS 2 + 4 = 6 vs AC 14 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "ilsevel",
+      "round": 1
+    },
+    {
+      "op": "battle_cast",
+      "actor": "ilsevel",
+      "spell": "fire_bolt",
+      "results": [
+        {
+          "target": "goblin-2",
+          "hit": false
+        }
+      ],
+      "label": "Ilsevel - Fire Bolt",
+      "roll": {
+        "id": "r0024",
+        "index": 24,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "spell attack: Fire Bolt",
+        "actor": "ilsevel",
+        "target": "goblin-2",
+        "draws": [
+          {
+            "counter": 27,
+            "sides": 20,
+            "value": 6
+          }
+        ],
+        "rolls": [
+          6
+        ],
+        "kept": [
+          6
+        ],
+        "modifier": 5,
+        "total": 11,
+        "advantage": "none",
+        "natural": 6,
+        "dc": 12,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "6 + 5 = 11 vs AC 12 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "tamsin",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "tamsin",
+      "spell": "potion_of_healing",
+      "results": [
+        {
+          "target": "tamsin",
+          "heal": 8,
+          "hp_after": 9
+        }
+      ],
+      "label": "Tamsin - Potion of Healing",
+      "line": "Restores 8 HP",
+      "roll": {
+        "id": "r0025",
+        "index": 25,
+        "seed": "C01-E005-1",
+        "kind": "dice",
+        "notation": "2d4+2",
+        "purpose": "healing: Potion of Healing",
+        "actor": "tamsin",
+        "target": "tamsin",
+        "draws": [
+          {
+            "counter": 28,
+            "sides": 4,
+            "value": 2
+          },
+          {
+            "counter": 29,
+            "sides": 4,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          2,
+          4
+        ],
+        "kept": [
+          2,
+          4
+        ],
+        "modifier": 2,
+        "total": 8,
+        "advantage": "none",
+        "natural": null,
+        "dc": null,
+        "success": null,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      }
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin bites the stopper out of a little red bottle and drinks it in one swallow."
+    },
+    {
+      "op": "battle_attack",
+      "actor": "tamsin",
+      "target": "goblin-1",
+      "roll": {
+        "id": "r0026",
+        "index": 26,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Shortsword",
+        "actor": "tamsin",
+        "target": "goblin-1",
+        "draws": [
+          {
+            "counter": 30,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 5,
+        "total": 14,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 15,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": false,
+      "critical": false,
+      "ranged": false,
+      "label": "Tamsin - Shortsword",
+      "line": "9 + 5 = 14 vs AC 15 MISS"
+    },
+    {
+      "op": "battle_turn",
+      "actor": "brannoc",
+      "round": 2
+    },
+    {
+      "op": "battle_move",
+      "actor": "brannoc",
+      "path": [
+        [
+          37,
+          24
+        ],
+        [
+          38,
+          23
+        ],
+        [
+          37,
+          22
+        ],
+        [
+          36,
+          21
+        ],
+        [
+          36,
+          20
+        ]
+      ]
+    },
+    {
+      "op": "battle_attack",
+      "actor": "brannoc",
+      "target": "goblin-1",
+      "roll": {
+        "id": "r0027",
+        "index": 27,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "attack: Longsword",
+        "actor": "brannoc",
+        "target": "goblin-1",
+        "draws": [
+          {
+            "counter": 31,
+            "sides": 20,
+            "value": 15
+          }
+        ],
+        "rolls": [
+          15
+        ],
+        "kept": [
+          15
+        ],
+        "modifier": 5,
+        "total": 20,
+        "advantage": "none",
+        "natural": 15,
+        "dc": 15,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "hit": true,
+      "critical": false,
+      "ranged": false,
+      "label": "Brannoc - Longsword",
+      "line": "15 + 5 = 20 vs AC 15 HIT",
+      "damage": 10,
+      "hp_after": 0,
+      "sneak_attack": false
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-1"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc's sword finds the goblin leader. He does not get up."
+    },
+    {
+      "op": "battle_turn",
+      "actor": "oriel",
+      "round": 2
+    },
+    {
+      "op": "battle_cast",
+      "actor": "oriel",
+      "spell": "sacred_flame",
+      "results": [
+        {
+          "target": "goblin-2",
+          "damage": 7,
+          "hp_after": 0,
+          "saved": false
+        }
+      ],
+      "label": "Oriel - Sacred Flame",
+      "roll": {
+        "id": "r0031",
+        "index": 31,
+        "seed": "C01-E005-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "Sacred Flame save",
+        "actor": "goblin-2",
+        "target": "oriel",
+        "draws": [
+          {
+            "counter": 35,
+            "sides": 20,
+            "value": 5
+          }
+        ],
+        "rolls": [
+          5
+        ],
+        "kept": [
+          5
+        ],
+        "modifier": 2,
+        "total": 7,
+        "advantage": "none",
+        "natural": 5,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "line": "Goblin Runt: 5 + 2 = 7 vs DC 13 FAILS"
+    },
+    {
+      "op": "battle_faint",
+      "actor": "goblin-2"
+    },
+    {
+      "op": "narrate",
+      "text": "Golden fire drops out of the dark onto the last runt, and the camp is theirs."
+    },
+    {
+      "op": "battle_end",
+      "result": "victory",
+      "xp": 100
+    },
+    {
+      "op": "camera",
+      "to": [
+        39,
+        21
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Thornpike Woods  -  Three Grey Stones  -  Night",
+      "duration": 3.0
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          33,
+          21
+        ],
+        [
+          34,
+          20
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "say",
+      "text": "Tamsin! Your arm...",
+      "speaker": "oriel",
+      "emote": "shock"
+    },
+    {
+      "op": "say",
+      "text": "Potion. Always carry one. Old habit.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "That was a good lie.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "It was, wasn't it? I'm a little bit proud of it, Big Man.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          36,
+          22
+        ],
+        [
+          42,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "up",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          32,
+          20
+        ],
+        [
+          33,
+          21
+        ],
+        [
+          35,
+          21
+        ],
+        [
+          36,
+          22
+        ],
+        [
+          41,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "up"
+    },
+    {
+      "op": "narrate",
+      "text": "In the cart's straw lie three lantern-cores. They should glow like small suns. They are cloudy, and cold as river stones."
+    },
+    {
+      "op": "say",
+      "text": "Three. Three lanterns somewhere along this road are dark tonight, and nobody has written it down.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "A core is always warm. This is like holding a stone from the bottom of a well.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          21
+        ],
+        [
+          36,
+          22
+        ],
+        [
+          39,
+          22
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "say",
+      "text": "I can't touch them. I'm sorry. I don't know why.",
+      "speaker": "oriel",
+      "emote": "sad"
+    },
+    {
+      "op": "say",
+      "text": "Which one's Thirty-Seven, Professor?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "I do not know. Nobody numbers the cores. Perhaps somebody should have.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "We take all three. Then we find somewhere to sleep that isn't here.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "pell",
+      "sprite": "pell",
+      "at": [
+        40,
+        23
+      ],
+      "facing": "right",
+      "name": "Pell"
+    },
+    {
+      "op": "emote",
+      "actor": "pell",
+      "emote": "exclaim",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Pell says there is a hollow south of the fork. Sheltered. There is an old stone in it.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Then we sleep there. I'll take first watch.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: A campfire, a long watch, and an old stone."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "Firelight"
+    },
+    {
+      "cue": 30,
+      "title": "The Collector"
+    },
+    {
+      "cue": 89,
+      "title": "Three Grey Stones"
+    },
+    {
+      "cue": 112,
+      "title": "Next time"
+    }
+  ]
+}

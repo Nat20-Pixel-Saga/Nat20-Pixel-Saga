@@ -1,0 +1,161 @@
+{
+  "schema": "pqc/episode@1",
+  "id": "C01-E006",
+  "campaign": 1,
+  "episode": 6,
+  "title": "First Watch",
+  "seed": "C01-E006-1",
+  "attempt": 1,
+  "status": "scripted",
+  "in_world_date": {
+    "year": 1047,
+    "month": 9,
+    "day": 4,
+    "hearthday": null,
+    "time_of_day": "night"
+  },
+  "checks": [
+    {
+      "id": "c2",
+      "actor": "ilsevel",
+      "skill": "history",
+      "ability": null,
+      "dc": 13,
+      "roll": "r0000",
+      "success": true,
+      "reason": "Read a moss-eaten carving on a stone older than the road, by firelight, from what she remembers of the Hall's road atlases.",
+      "offscreen": false
+    },
+    {
+      "id": "c1",
+      "actor": "tamsin",
+      "skill": "sleight_of_hand",
+      "ability": null,
+      "dc": 13,
+      "roll": "r0001",
+      "success": true,
+      "reason": "Lift a notebook from the lap of an elf in trance, who is resting, not asleep, and still half aware of the world.",
+      "offscreen": false
+    }
+  ],
+  "encounters": [],
+  "rolls": [
+    {
+      "id": "r0000",
+      "index": 0,
+      "seed": "C01-E006-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c2: Read a moss-eaten carving on a stone older than the road, by firelight, from what she remembers of the Hall's road a",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 0,
+          "sides": 20,
+          "value": 12
+        }
+      ],
+      "rolls": [
+        12
+      ],
+      "kept": [
+        12
+      ],
+      "modifier": 5,
+      "total": 17,
+      "advantage": "none",
+      "natural": 12,
+      "dc": 13,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0001",
+      "index": 1,
+      "seed": "C01-E006-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c1: Lift a notebook from the lap of an elf in trance, who is resting, not asleep, and still half aware of the world.",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 1,
+          "sides": 20,
+          "value": 11
+        }
+      ],
+      "rolls": [
+        11
+      ],
+      "kept": [
+        11
+      ],
+      "modifier": 7,
+      "total": 18,
+      "advantage": "none",
+      "natural": 11,
+      "dc": 13,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    }
+  ],
+  "state_changes": [
+    {
+      "type": "hook",
+      "id": "hook.painted-anvil",
+      "status": "planted",
+      "applied": true
+    },
+    {
+      "type": "hook",
+      "id": "hook.gloamkey",
+      "status": "planted",
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "brannoc_knows_oriel_fears_the_dark",
+      "value": true,
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "waymarker_old_road",
+      "value": true,
+      "if": "c2.success",
+      "applied": true
+    },
+    {
+      "type": "bond",
+      "a": "brannoc",
+      "b": "oriel",
+      "trust": 1,
+      "note": "First watch together: she saw the painted-over anvil; he saw she fears the dark and gave her his lantern.",
+      "applied": true
+    },
+    {
+      "type": "bond",
+      "a": "ilsevel",
+      "b": "tamsin",
+      "trust": 1,
+      "note": "Tamsin read Ilsevel's notebook, found herself described kindly, and gave it back.",
+      "applied": true
+    },
+    {
+      "type": "rest",
+      "kind": "long",
+      "applied": true
+    }
+  ],
+  "xp_awarded": 0,
+  "loot": [],
+  "level_ups": []
+}

@@ -1,0 +1,121 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E001",
+  "summary": "On 3 Emberfall 1047 AK, four strangers crossed paths in Brindle Cross: Tamsin won Wil Fenn's coppers at cards, Ilsevel found two odd entries for Lantern 37 in the inn's ledger, and Brannoc met Oriel at the shrine as Father Tobin gave her his holy symbol. Then Lantern 37 went dark and goblins raided the square. The four fought them off together; Ilsevel fell and was brought back by Oriel, and one goblin was taken alive.",
+  "npcs": [
+    {
+      "id": "npc.wil-fenn",
+      "name": "Wil Fenn",
+      "description": "Maddy Fenn's son, sixteen. Lost his coppers to Tamsin at cards and wants to join the soldiers at Fort Harrow; offered Brannoc his services with a pike he has practised with a broom.",
+      "status": "alive",
+      "attitude": "friendly",
+      "want": "To enlist at Fort Harrow."
+    },
+    {
+      "id": "npc.maddy-fenn",
+      "name": "Maddy Fenn",
+      "description": "Innkeeper of the Crooked Kettle. Brisk and warm; keeps the Lamplighters' ledger for the lanterns south of the village and asks who is paying for everything.",
+      "status": "alive",
+      "attitude": "friendly",
+      "voice": "Rhetorical questions: 'Who's paying for those, the Eight?'"
+    },
+    {
+      "id": "npc.tobin-ashdown",
+      "name": "Father Tobin Ashdown",
+      "description": "Old priest of the Shrine of the Open Hand who raised Oriel. Gave her his own sun-disc holy symbol after her first dusk devotion; admits he never understood half the verses.",
+      "status": "alive",
+      "attitude": "helpful"
+    }
+  ],
+  "places": [
+    {
+      "id": "loc.brindle-cross",
+      "name": "Brindle Cross",
+      "description": "Crossroads village at the start of the Lantern Road, built around a market square with a well, an inn, a shrine and a smithy."
+    },
+    {
+      "id": "loc.crooked-kettle",
+      "name": "The Crooked Kettle",
+      "description": "Maddy Fenn's inn on the west side of the square. Keeps the ledger for lanterns thirty to forty-five."
+    },
+    {
+      "id": "loc.shrine-of-the-open-hand",
+      "name": "Shrine of the Open Hand",
+      "description": "Shrine to Aurelan on the north-east of the square, kept by Father Tobin. Holds a dusk devotion every evening."
+    },
+    {
+      "id": "loc.lantern-road",
+      "name": "The Lantern Road",
+      "description": "The old road south out of Brindle Cross, lit by numbered lanterns. Lantern 37 went dark on 3 Emberfall 1047 AK."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "oriel",
+      "text": "Hold the light. Hold the road. Hold on to each other."
+    },
+    {
+      "speaker": "tamsin",
+      "text": "Cheat? Me? I once beat a river captain using nothing but my honest face."
+    },
+    {
+      "speaker": "tobin_ashdown",
+      "text": "The open hand holds more than the fist. Take it. My knees have earned the rest."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "Four goblins. One road. One of me. Fine. Get behind the shield."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "I am... technically fine. I would like it recorded that I was stabbed. Twice."
+    },
+    {
+      "speaker": "oriel",
+      "text": "Then we held it together."
+    }
+  ],
+  "events": [
+    "Tamsin palmed the Crown card and won Wil Fenn's coppers without him noticing, then gave him a honey cake.",
+    "Ilsevel found that Lantern 37 was trimmed twice in nine days, under a warden's mark she did not recognise.",
+    "Father Tobin gave Oriel his sun-disc holy symbol after her first dusk devotion; Brannoc left silver in the alms box.",
+    "Lantern 37 on the south road went dark; Oriel felt it 'like a candle going out in my chest'.",
+    "Brannoc did not spot the goblins in time, and four of them reached the square.",
+    "The party won in three rounds: Brannoc felled three goblins, Tamsin brought down the last one alive.",
+    "Ilsevel was knocked unconscious by thrown daggers; Oriel's Healing Word brought her back.",
+    "Oriel bandaged the captured goblin; he lived, but only just. Maddy Fenn took everyone in for stew."
+  ],
+  "items": [
+    {
+      "id": "holy_symbol_tobin",
+      "name": "Father Tobin's sun-disc holy symbol",
+      "holder": "oriel",
+      "note": "Forty years round Tobin's neck."
+    }
+  ],
+  "hooks_planted": [
+    "hook.flickering-warmth",
+    "hook.brass-button"
+  ],
+  "character_notes": {
+    "brannoc": [
+      "Carries dispatches for Fort Harrow.",
+      "Quietly leaves silver in the shrine's alms box and has never stayed for the hymn.",
+      "Counts enemies before a fight and stands in front of everyone."
+    ],
+    "ilsevel": [
+      "Sent by the Order of Lamplighters to inspect the failing lanterns; signs for everything and writes it all down.",
+      "Says she knows every warden's mark."
+    ],
+    "tamsin": [
+      "Goes by Tam Mossfoot; insists it is her real name.",
+      "Nicknames: Big Man (Brannoc), Professor (Ilsevel), Sunshine (Oriel), Sprout (Wil).",
+      "Gave back a honey cake, but not the coin."
+    ],
+    "oriel": [
+      "Led the dusk devotion for the first time.",
+      "Felt Lantern 37 go dark before anyone else knew.",
+      "Healed Ilsevel, then knelt to bandage the goblin who had attacked them."
+    ]
+  }
+}

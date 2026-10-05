@@ -1,0 +1,38 @@
+{
+  "schema": "pqc/trailer@1",
+  "id": "trailer_c01",
+  "title": "Nat 20 Pixels - Campaign 1 trailer",
+  "thumbnail": {"ep": 9, "cue": 75, "offset": 0.9, "focus": "brannoc", "text": "EVERY ROLL IS REAL.", "label": "TRAILER"},
+  "reading": {"cps": 80, "hold_base": 0.4, "hold_per_char": 0.0},
+  "music": [
+    {"t": 0.0, "track": "tension", "volume": 0.5, "fade_in": 1.5},
+    {"t": 29.0, "track": "battle_boss", "volume": 0.5, "fade_in": 0.3},
+    {"t": -4.2, "track": "theme", "volume": 0.55, "fade_in": 0.3}
+  ],
+  "shots": [
+    {"card": ["FOUR STRANGERS.", "ONE ROAD OF LANTERNS."], "dur": 2.4},
+    {"ep": 1, "cue": 83, "dur": 5.0, "label": "Lantern Thirty-Seven"},
+    {"ep": 1, "cue": 89, "dur": 3.6},
+    {"ep": 1, "cue": 98, "dur": 3.6},
+    {"ep": 1, "cue": 111, "dur": 3.0},
+    {"ep": 1, "cue": 124, "dur": 2.6, "wide_only": true},
+    {"card": ["EVERY ROLL IS REAL.", "Seeded dice, shown on screen. No rerolls."], "dur": 2.2},
+    {"ep": 2, "cue": 39, "dur": 4.0},
+    {"ep": 2, "cue": 45, "dur": 4.2, "wide_only": true},
+    {"ep": 4, "cue": 57, "dur": 2.8},
+    {"ep": 4, "cue": 87, "dur": 3.6},
+    {"ep": 5, "cue": 45, "dur": 3.6},
+    {"ep": 5, "cue": 53, "dur": 3.8, "wide_only": true},
+    {"ep": 6, "cue": 78, "dur": 3.0, "wide_only": true},
+    {"ep": 8, "cue": 28, "dur": 2.2},
+    {"ep": 8, "cue": 107, "dur": 3.4, "wide_only": true},
+    {"ep": 9, "cue": 47, "dur": 3.8},
+    {"ep": 9, "cue": 75, "dur": 4.0},
+    {"ep": 9, "cue": 87, "dur": 3.2},
+    {"ep": 9, "cue": 137, "dur": 3.4},
+    {"ep": 9, "cue": 149, "dur": 2.8},
+    {"ep": 10, "cue": 84, "dur": 3.4, "wide_only": true},
+    {"ep": 10, "cue": 93, "dur": 2.4},
+    {"card": ["NAT 20 PIXELS", "A pixel-art fantasy story, played by 5e rules.", "New episode every weekday."], "dur": 4.2, "logo": true}
+  ]
+}

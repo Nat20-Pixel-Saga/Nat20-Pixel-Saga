@@ -1,0 +1,232 @@
+{
+ "schema": "pqc/queue@1",
+ "description": "Overnight production queue for Campaign 1, Episodes 2-10. Worked through in order by the scheduled session following production/RUNBOOK.md; a task starts only when everything in its 'after' list is done. Status: todo | in_progress | done | blocked.",
+ "lock": null,
+ "tasks": [
+  {
+   "id": "map:lantern_road",
+   "kind": "map",
+   "for": [
+    3
+   ],
+   "after": [],
+   "status": "done",
+   "done_at": "2026-10-04",
+   "note": "Built in the setup session: scripts/maps/lantern_road.py, preview in production/previews/."
+  },
+  {
+   "id": "episode:2",
+   "kind": "episode",
+   "episode": 2,
+   "after": [],
+   "status": "done",
+   "spec": "Brindle Cross only (inn exterior/square). If map:crooked_kettle_interior is done first, use it for the questioning scene.",
+   "started_at": "2026-10-05T06:49:02+00:00",
+   "done_at": "2026-10-05T07:00:05+00:00",
+   "note": "The Goblin Who Talked, 7.9 min"
+  },
+  {
+   "id": "map:crooked_kettle_interior",
+   "kind": "map",
+   "for": [
+    2,
+    7
+   ],
+   "after": [],
+   "status": "done",
+   "optional": true,
+   "spec": "Interior of the Crooked Kettle inn: common room with hearth, tables, bar, stairs, a back storeroom where Rusk is held. Use Backgrounds/Tilesets/Interior/* (floor, walls, furniture) and TilesetElement furniture. Needs an interior floor/wall approach: a new terrain entry or a 'floor' base plus wall props. Only build it if it can be done well; it is optional.",
+   "started_at": "2026-10-05T07:09:05+00:00",
+   "done_at": "2026-10-05T07:09:05+00:00",
+   "note": "Common room (hearth, bar, three tables, stairs, front door) and back storeroom through a doorway; walls from Interior/TilesetWallSimple, wood floor terrain floor_wood"
+  },
+  {
+   "id": "episode:3",
+   "kind": "episode",
+   "episode": 3,
+   "after": [
+    "episode:2"
+   ],
+   "status": "done",
+   "spec": "Map lantern_road (built). Lantern 37 is already dead (state). Points: lantern_37, trail_start, woods_edge, east_exit.",
+   "started_at": "2026-10-05T07:13:04+00:00",
+   "done_at": "2026-10-05T07:19:45+00:00",
+   "note": "The Empty Housing, 6.1 min"
+  },
+  {
+   "id": "map:thornpike_woods",
+   "kind": "map",
+   "for": [
+    4,
+    5,
+    6
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Night forest south-east of Brindle Cross (bible 03: goblin territory, wolves, an old druid circle). One map, about 48x30, with three areas: (a) a birch clearing for the wolf fight (E4, needs open ground ~10x8), (b) a goblin scout camp with a cart carrying three dead lantern-cores, a tent, a fire pit (E5), (c) a sheltered campsite by an old Lamplighter way-marker for the party's night watch (E6). Dark forest floor (dirt_dark / grass), dense pine and dead trees as walls, a stream optional (TilesetWater). Named points for every scene mark.",
+   "started_at": "2026-10-05T07:31:20+00:00",
+   "done_at": "2026-10-05T07:31:20+00:00",
+   "note": "48x30 night forest: birch clearing (E4), goblin scout camp with cart of three dead cores (E5), campsite hollow by a Lamplighter way-marker (E6); trail forks at a stump"
+  },
+  {
+   "id": "materials:woods",
+   "kind": "materials",
+   "for": [
+    4,
+    5,
+    6
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Props and sprites for E4-E6: Pell the owl (Ilsevel's familiar; the pack has no owl - pick the closest small bird/animal and recolour it brown with one white feather, or draw a 16x16 owl sprite sheet in the pack's style), a campfire prop with light (tileset_camp.png / Animated fire), a tent (tileset_camp.png), a goblin cart, a 'dead lantern-core' item prop (grey crystal), an old Lamplighter way-marker stone (stand-in allowed). Add each to assets/manifest.json with solid/light flags; check actor sprites load (tests/test_render).",
+   "started_at": "2026-10-05T07:31:20+00:00",
+   "done_at": "2026-10-05T07:31:20+00:00",
+   "note": "pell (pack owl recoloured brown), tent, tent_ragged, campfire (light), log_bench, stump_big, waymarker (stand-in), core_dead and cart_cores (small sprites under assets/sprites)"
+  },
+  {
+   "id": "episode:4",
+   "kind": "episode",
+   "episode": 4,
+   "after": [
+    "episode:3",
+    "map:thornpike_woods",
+    "materials:woods"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T07:32:27+00:00",
+   "done_at": "2026-10-05T07:36:54+00:00",
+   "note": "Wolves at the Birches, 6.7 min"
+  },
+  {
+   "id": "episode:5",
+   "kind": "episode",
+   "episode": 5,
+   "after": [
+    "episode:4"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T07:37:04+00:00",
+   "done_at": "2026-10-05T07:42:49+00:00",
+   "note": "The Scout Camp, 6.0 min"
+  },
+  {
+   "id": "episode:6",
+   "kind": "episode",
+   "episode": 6,
+   "after": [
+    "episode:5"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T07:43:16+00:00",
+   "done_at": "2026-10-05T07:47:30+00:00",
+   "note": "First Watch, 6.3 min"
+  },
+  {
+   "id": "episode:7",
+   "kind": "episode",
+   "episode": 7,
+   "after": [
+    "episode:6"
+   ],
+   "status": "done",
+   "spec": "Back in Brindle Cross (map brindle_cross). Lantern 41 dies: it is not on the village map - either add Lantern 41 to lantern_road (south part) and cut there, or show it through a messenger. Captain Rook's message arrives (a rider sprite: edda_rook is at the fort, so a courier NPC).",
+   "started_at": "2026-10-05T07:48:35+00:00",
+   "done_at": "2026-10-05T07:52:00+00:00",
+   "note": "The Saint of the Open Hand, 7.0 min"
+  },
+  {
+   "id": "map:wending_mill",
+   "kind": "map",
+   "for": [
+    8,
+    9
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Hamlet of Wending Mill (bible 03): a watermill on a millpond (TilesetWater), mill yard with fences, two or three cottages, a barn that burns in E9 (fire FX on props), a road in from the north. ~44x28. Mill yard needs open ground for a 4-goblin fight; the burning barn needs space for a boss fight.",
+   "started_at": "2026-10-05T07:59:17+00:00",
+   "done_at": "2026-10-05T07:59:17+00:00",
+   "note": "44x28 hamlet: watermill with its wheel in an oval millpond (water terrain + invisible water_block props), fenced mill yard (E8 fight), cottages, barn with open ground (E9); the generator also writes wending_mill_burning (barn on fire, smoke)"
+  },
+  {
+   "id": "materials:mill",
+   "kind": "materials",
+   "for": [
+    8,
+    9
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Watermill building (TilesetHouse / TilesetVillageAbandoned or composed), fences, millpond water terrain, fire/smoke props for the burning barn (FX or Animated tiles), frightened villagers (pack villager sprites, give them ids), goblin boss sprite check.",
+   "started_at": "2026-10-05T07:59:17+00:00",
+   "done_at": "2026-10-05T07:59:17+00:00",
+   "note": "watermill and barn_burning composites, barn, fences, water terrain, water_block, smoke; villagers: miller, villager_a/b/c"
+  },
+  {
+   "id": "episode:8",
+   "kind": "episode",
+   "episode": 8,
+   "after": [
+    "episode:7",
+    "map:wending_mill",
+    "materials:mill"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T08:00:16+00:00",
+   "done_at": "2026-10-05T08:04:27+00:00",
+   "note": "Wending Mill, 6.4 min"
+  },
+  {
+   "id": "episode:9",
+   "kind": "episode",
+   "episode": 9,
+   "after": [
+    "episode:8"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T08:04:54+00:00",
+   "done_at": "2026-10-05T08:09:53+00:00",
+   "note": "Smoke Over the Millpond, 7.2 min"
+  },
+  {
+   "id": "map:fort_harrow",
+   "kind": "map",
+   "for": [
+    10
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Fort Harrow (bible 03: a tired royal garrison of 40 under Captain Edda Rook): palisade or stone wall with a gate (TilesetTowers), barracks, Rook's command house, a training yard, a lantern at the gate. ~44x28.",
+   "started_at": "2026-10-05T07:59:17+00:00",
+   "done_at": "2026-10-05T07:59:17+00:00",
+   "note": "44x28: stone curtain wall with corner watchtowers, arched south gate with a lantern, command house, barracks, parade ground, training yard"
+  },
+  {
+   "id": "materials:fort",
+   "kind": "materials",
+   "for": [
+    10
+   ],
+   "after": [],
+   "status": "done",
+   "spec": "Soldier sprites (2-3 pack characters as garrison troops), walls/gate/towers props, a black-glass pendant item (a small dark gem prop or item icon for the dice/inventory).",
+   "started_at": "2026-10-05T07:59:17+00:00",
+   "done_at": "2026-10-05T07:59:17+00:00",
+   "note": "soldier, soldier_b, soldier_c (stand-in), fort_wall/fort_wall_post/fort_gate, watchtower, banner, pendant_black sprite"
+  },
+  {
+   "id": "episode:10",
+   "kind": "episode",
+   "episode": 10,
+   "after": [
+    "episode:9",
+    "map:fort_harrow",
+    "materials:fort"
+   ],
+   "status": "done",
+   "started_at": "2026-10-05T08:12:38+00:00",
+   "done_at": "2026-10-05T08:18:11+00:00",
+   "note": "Fort Harrow, 6.2 min"
+  }
+ ]
+}

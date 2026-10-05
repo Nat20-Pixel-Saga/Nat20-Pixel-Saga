@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/character@1",
+  "title": "Party member character sheet",
+  "description": "Canonical mechanical state of a party member. Written only by the rules engine.",
+  "type": "object",
+  "required": ["schema", "id", "name", "species", "class", "level", "xp", "background", "abilities", "hp", "hit_dice", "equipment", "skill_proficiencies", "weapon_proficiencies", "armor_proficiencies", "feats", "features", "resources", "inventory", "money_cp", "conditions", "exhaustion", "death_saves"],
+  "additionalProperties": false,
+  "$defs": {
+    "ability": {"type": "string", "enum": ["str", "dex", "con", "int", "wis", "cha"]},
+    "score": {"type": "integer", "minimum": 1, "maximum": 30},
+    "skill": {"type": "string", "enum": ["acrobatics", "animal_handling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "sleight_of_hand", "stealth", "survival"]},
+    "id": {"type": "string", "pattern": "^[a-z0-9_:-]+$"},
+    "resource": {
+      "type": "object",
+      "required": ["max", "current", "recharge"],
+      "additionalProperties": false,
+      "properties": {
+        "max": {"type": "integer", "minimum": 0},
+        "current": {"type": "integer", "minimum": 0},
+        "recharge": {"type": "string", "enum": ["short", "long", "dawn", "none"]},
+        "short_rest_regain": {"type": "integer", "minimum": 0}
+      }
+    },
+    "slot": {
+      "type": "object",
+      "required": ["max", "current"],
+      "additionalProperties": false,
+      "properties": {"max": {"type": "integer", "minimum": 0}, "current": {"type": "integer", "minimum": 0}}
+    },
+    "effect": {
+      "type": "object",
+      "required": ["name", "source"],
+      "properties": {
+        "name": {"type": "string"}, "source": {"type": "string"}, "data": {"type": "object"},
+        "expires": {"type": ["array", "null"]}, "rounds_left": {"type": ["integer", "null"]}, "concentration": {"type": "boolean"}
+      }
+    }
+  },
+  "properties": {
+    "schema": {"const": "pqc/character@1"},
+    "id": {"$ref": "#/$defs/id"},
+    "name": {"type": "string", "minLength": 1},
+    "player_facing_title": {"type": "string"},
+    "species": {"type": "string", "enum": ["dwarf", "elf", "halfling", "human"]},
+    "lineage": {"type": ["string", "null"]},
+    "size": {"type": "string", "enum": ["small", "medium"]},
+    "class": {"type": "string", "enum": ["fighter", "rogue", "wizard", "cleric"]},
+    "subclass": {"type": ["string", "null"], "enum": [null, "champion", "thief", "evoker", "life"]},
+    "level": {"type": "integer", "minimum": 1, "maximum": 20},
+    "xp": {"type": "integer", "minimum": 0},
+    "background": {"type": "string", "enum": ["acolyte", "criminal", "sage", "soldier"]},
+    "deity": {"type": ["string", "null"]},
+    "abilities": {
+      "type": "object",
+      "required": ["str", "dex", "con", "int", "wis", "cha"],
+      "additionalProperties": false,
+      "properties": {
+        "str": {"$ref": "#/$defs/score"}, "dex": {"$ref": "#/$defs/score"}, "con": {"$ref": "#/$defs/score"},
+        "int": {"$ref": "#/$defs/score"}, "wis": {"$ref": "#/$defs/score"}, "cha": {"$ref": "#/$defs/score"}
+      }
+    },
+    "base_scores": {"type": "object", "description": "Standard array assignment before background bonuses, for the wiki."},
+    "hp": {
+      "type": "object",
+      "required": ["max", "current", "temp"],
+      "additionalProperties": false,
+      "properties": {"max": {"type": "integer", "minimum": 1}, "current": {"type": "integer", "minimum": 0}, "temp": {"type": "integer", "minimum": 0}}
+    },
+    "hit_dice": {
+      "type": "object",
+      "required": ["die", "max", "current"],
+      "additionalProperties": false,
+      "properties": {"die": {"type": "integer", "enum": [6, 8, 10, 12]}, "max": {"type": "integer", "minimum": 1}, "current": {"type": "integer", "minimum": 0}}
+    },
+    "speed": {"type": "integer", "minimum": 0},
+    "darkvision": {"type": "integer", "minimum": 0},
+    "ac_bonus": {"type": "integer"},
+    "equipment": {
+      "type": "object",
+      "required": ["weapons"],
+      "additionalProperties": false,
+      "properties": {
+        "armor": {"type": ["string", "null"]},
+        "shield": {"type": "boolean"},
+        "weapons": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+        "focus": {"type": ["string", "null"]}
+      }
+    },
+    "skill_proficiencies": {"type": "array", "items": {"$ref": "#/$defs/skill"}},
+    "expertise": {"type": "array", "items": {"$ref": "#/$defs/skill"}},
+    "tool_proficiencies": {"type": "array", "items": {"type": "string"}},
+    "weapon_proficiencies": {"type": "array", "items": {"type": "string"}},
+    "armor_proficiencies": {"type": "array", "items": {"type": "string", "enum": ["light", "medium", "heavy", "shields"]}},
+    "languages": {"type": "array", "items": {"type": "string"}},
+    "feats": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+    "features": {"type": "array", "items": {"$ref": "#/$defs/id"}, "description": "Engine feature flags."},
+    "feature_names": {"type": "array", "items": {"type": "string"}, "description": "Display names for the wiki."},
+    "traits": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+    "weapon_masteries": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+    "resistances": {"type": "array", "items": {"type": "string"}},
+    "immunities": {"type": "array", "items": {"type": "string"}},
+    "vulnerabilities": {"type": "array", "items": {"type": "string"}},
+    "condition_immunities": {"type": "array", "items": {"type": "string"}},
+    "resources": {"type": "object", "additionalProperties": {"$ref": "#/$defs/resource"}},
+    "spellcasting": {
+      "type": ["object", "null"],
+      "required": ["ability", "cantrips", "prepared", "slots"],
+      "additionalProperties": false,
+      "properties": {
+        "ability": {"$ref": "#/$defs/ability"},
+        "cantrips": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+        "prepared": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+        "spellbook": {"type": "array", "items": {"$ref": "#/$defs/id"}},
+        "slots": {"type": "object", "additionalProperties": {"$ref": "#/$defs/slot"}},
+        "free_casts": {"type": "object", "additionalProperties": {"$ref": "#/$defs/slot"}}
+      }
+    },
+    "inventory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "qty"],
+        "additionalProperties": false,
+        "properties": {"id": {"$ref": "#/$defs/id"}, "qty": {"type": "integer", "minimum": 0}, "note": {"type": "string"}}
+      }
+    },
+    "money_cp": {"type": "integer", "minimum": 0},
+    "conditions": {"type": "object"},
+    "effects": {"type": "array", "items": {"$ref": "#/$defs/effect"}},
+    "exhaustion": {"type": "integer", "minimum": 0, "maximum": 6},
+    "death_saves": {
+      "type": "object",
+      "required": ["successes", "failures"],
+      "additionalProperties": false,
+      "properties": {"successes": {"type": "integer", "minimum": 0, "maximum": 3}, "failures": {"type": "integer", "minimum": 0, "maximum": 3}}
+    },
+    "stable": {"type": "boolean"},
+    "dead": {"type": "boolean"},
+    "concentration": {"type": ["string", "null"]},
+    "heroic_inspiration": {"type": "boolean"},
+    "level_history": {"type": "array", "items": {"type": "object"}},
+    "dossier": {"type": "string"}
+  }
+}

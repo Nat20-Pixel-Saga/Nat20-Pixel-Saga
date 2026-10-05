@@ -1,0 +1,19 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E007",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s2",
+   "problem": "The party spends an evening at the Crooked Kettle and nobody mentions Rusk, who is still in its cellar. Oriel in particular would look in on him.",
+   "fix": "Carry it into a later episode: Oriel took him supper off screen, or he asks after 'the bread priest'."
+  },
+  {
+   "severity": "warning",
+   "where": "s3#13",
+   "problem": "'At dawn' replaces 'First light', which the spoiler list catches as a phrase. Worth remembering for future scripts: characters should not say 'first light' for dawn.",
+   "fix": "None needed here."
+  }
+ ]
+}

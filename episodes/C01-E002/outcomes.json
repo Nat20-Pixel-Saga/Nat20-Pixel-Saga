@@ -1,0 +1,63 @@
+{
+  "episode_id": "C01-E002",
+  "seed": "C01-E002-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "oriel",
+      "what": "Oriel - Persuasion",
+      "dc": 15,
+      "result": "SUCCESS",
+      "margin": 5,
+      "natural": 17,
+      "note": "",
+      "means": "He gives his name, Rusk, eats, and talks freely: goblins carry lantern-cores up into the hills to their boss and are paid in sacks of food that come from somewhere else. He begs not to be sent back."
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "ilsevel",
+      "what": "Ilsevel - Insight",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 3,
+      "natural": 13,
+      "note": "",
+      "means": "He is telling the truth, and he is more afraid of going back than of them."
+    },
+    {
+      "id": "c3",
+      "scene": "s3",
+      "who": "tamsin",
+      "what": "Tamsin - Deception",
+      "dc": 17,
+      "result": "FAILURE",
+      "margin": -3,
+      "natural": 11,
+      "note": "",
+      "means": "Ilsevel says plainly that she does not believe a word of it. Tamsin changes the subject and does not answer.",
+      "against": "insight 17"
+    }
+  ],
+  "fights": [],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E008",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {
+     "op": "move",
+     "actor": "brannoc",
+     "to": [
+      21,
+      5
+     ],
+     "face": "down",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      22,
+      4
+     ],
+     "face": "down",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "tamsin",
+     "to": [
+      22,
+      6
+     ],
+     "face": "down",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "ilsevel",
+     "to": [
+      21,
+      3
+     ],
+     "face": "down",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "pell",
+     "to": [
+      20,
+      3
+     ],
+     "face": "down",
+     "wait": false
+    },
+    {
+     "op": "narrate",
+     "text": "The road south, late morning. Everyone has slept in a bed and eaten Maddy Fenn's porridge, and it shows."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "A bed, Big Man. An actual bed. I could take on a whole goblin warren today.",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Don't say that. Milestone six. Four to the mill."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Do you count everything, Brannoc?"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Most things."
+    },
+    {
+     "op": "emote",
+     "actor": "pell",
+     "emote": "exclaim",
+     "sfx": "alert"
+    },
+    {
+     "op": "narrate",
+     "text": "Pell comes back out of the sky hooting hard and lands on Ilsevel's shoulder. She closes her eyes."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Goblins. In the hamlet, at the door of the watermill. Four of them, with a log. The people are inside.",
+     "emote": "alert"
+    },
+    {
+     "op": "narrate",
+     "text": "The wind brings it to the rest of them a moment later: shouting, and the slow, heavy thud of wood on wood."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "No time to creep. Run."
+    },
+    {
+     "op": "check",
+     "id": "c1"
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc's mail drags at him and Tamsin's legs were not built for this. But Oriel keeps the pace and, to everyone's surprise, so does Ilsevel."
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "The mill yard. Four goblins and a log for a ram; the mill door splintered but holding; a pale face at the window."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Four. One gate. Get behind me.",
+     "emote": "angry"
+    },
+    {
+     "op": "encounter",
+     "id": "e1"
+    },
+    {
+     "op": "narrate",
+     "text": "Then the yard is quiet. Somewhere inside the mill, somebody is crying with relief."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Tamsin! You're bleeding again.",
+     "emote": "shock"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Still mostly on the inside, Sunshine. Mostly."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Ilsevel. The darts. Good work."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Magic Missile. It never misses. That is rather the point of it.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Four down. Nobody else hurt bad. Good."
+    }
+   ],
+   "battle_narration": [
+    {
+     "after": 0,
+     "text": "They make the yard gate before a single goblin looks round. Then one does."
+    },
+    {
+     "after": 4,
+     "text": "A scimitar finds the gap under Brannoc's arm. He grunts, and does not step back."
+    },
+    {
+     "after": 8,
+     "text": "Two blades at once, and Tamsin's knees buckle."
+    },
+    {
+     "after": 11,
+     "text": "Tamsin gets low, gets close, and the first goblin folds."
+    },
+    {
+     "after": 13,
+     "text": "Ilsevel's fire bolt catches the runt square in the chest."
+    },
+    {
+     "after": 14,
+     "text": "Oriel's word reaches Tamsin across the yard, and the colour comes back into her face."
+    },
+    {
+     "after": 17,
+     "text": "Brannoc draws one long breath and straightens. Whatever it costs him, he is not done."
+    },
+    {
+     "after": 19,
+     "text": "Tamsin again. Quick, low, final."
+    },
+    {
+     "after": 21,
+     "text": "Three silver darts leave Ilsevel's fingers, and the yard is still."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "miller",
+     "text": "Bless you. Bless every one of you. Ned Hollis; this is my mill. I thought we were done for.",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "miller",
+     "text": "They came at dawn for the grain. Kept shouting that the boss wants meal. Sacks and sacks of it."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Meal. The goblin in Brindle Cross said they are paid in sacks of meal."
+    },
+    {
+     "op": "say",
+     "speaker": "miller",
+     "text": "But Bet! My Bet and the lad went out to the barn for the cow, before they came!",
+     "emote": "shock"
+    },
+    {
+     "op": "narrate",
+     "text": "Black smoke is pouring off the barn roof. Somebody put a torch to it while the yard was busy."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "That's no accident. Someone's round the back.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "There are voices behind the smoke. Goblin voices. And one deeper than the rest, giving orders."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Ned. Back inside. Bar the door."
+    },
+    {
+     "op": "move",
+     "actor": "miller",
+     "to": [
+      20,
+      13
+     ],
+     "face": "up",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "brannoc",
+     "to": [
+      33,
+      22
+     ],
+     "face": "right",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      32,
+      23
+     ],
+     "face": "right",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "tamsin",
+     "to": [
+      31,
+      22
+     ],
+     "face": "right",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "ilsevel",
+     "to": [
+      31,
+      24
+     ],
+     "face": "right"
+    },
+    {
+     "op": "narrate",
+     "text": "The barn doors are barred from the outside with a cart-pole. Inside, a woman is coughing and a cow is screaming."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Bet! Bet, we're here! Hold on!",
+     "emote": "alert"
+    },
+    {
+     "op": "narrate",
+     "text": "Then the shouting behind the smoke stops. All at once. As if someone has just noticed them."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Get those doors open. I'll watch the smoke."
+    }
+   ]
+  }
+ ],
+ "next_time": "Fire, smoke, and something bigger than a goblin."
+}

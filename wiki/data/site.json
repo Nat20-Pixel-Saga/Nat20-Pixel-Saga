@@ -1,0 +1,7 @@
+{
+ "repo": "Nat20-Pixel-Saga/Nat20-Pixel-Saga",
+ "site_url": "https://nat20pixelsaga.com",
+ "youtube": "https://www.youtube.com/@Nat20px",
+ "youtube_handle": "@Nat20px",
+ "releases": "Each committed episode's video is rendered and attached to a GitHub release tagged with its id by .github/workflows/release.yml."
+}

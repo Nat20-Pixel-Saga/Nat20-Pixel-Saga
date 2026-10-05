@@ -1,0 +1,1035 @@
+{
+ "schema": "pqc/timeline@1",
+ "id": "gate_test_scene",
+ "title": "Phase 2 gate - C1E1 test scene",
+ "fps": 30,
+ "seed": "C01-E001-GATE-135",
+ "tail": 0.3,
+ "cues": [
+  {
+   "op": "title",
+   "lines": [
+    "NAT 20 PIXELS",
+    "Episode 1 - Lantern Thirty-Seven"
+   ],
+   "duration": 2.6
+  },
+  {
+   "op": "scene",
+   "map": "brindle_cross",
+   "time_of_day": "dusk",
+   "camera": [
+    19,
+    11
+   ]
+  },
+  {
+   "op": "fade",
+   "from": "black",
+   "to": "clear",
+   "duration": 1.0,
+   "wait": false
+  },
+  {
+   "op": "dm_intro",
+   "title": "Lantern Thirty-Seven",
+   "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  3 Emberfall 1047 AK",
+   "text": "Brindle Cross is a crossroads village on the southern edge of the Lanternmarch, where the oldest lantern road in the Vael begins. Tonight four strangers share its market square at dusk: a soldier carrying dispatches, a Lamplighter archivist, a card player with a borrowed name, and the shrine's young acolyte. None of them knows the others yet. That is about to change."
+  },
+  {
+   "op": "spawn",
+   "actor": "oriel",
+   "at": [
+    21,
+    10
+   ],
+   "facing": "up",
+   "name": "Oriel"
+  },
+  {
+   "op": "spawn",
+   "actor": "tamsin",
+   "at": [
+    17,
+    12
+   ],
+   "facing": "right",
+   "name": "Tamsin"
+  },
+  {
+   "op": "spawn",
+   "actor": "ilsevel",
+   "at": [
+    19,
+    15
+   ],
+   "facing": "down",
+   "name": "Ilsevel"
+  },
+  {
+   "op": "spawn",
+   "actor": "brannoc",
+   "at": [
+    27,
+    11
+   ],
+   "facing": "left",
+   "name": "Brannoc"
+  },
+  {
+   "op": "music",
+   "track": "calm_village",
+   "fade_in": 1.0,
+   "volume": 0.5
+  },
+  {
+   "op": "location_card",
+   "text": "Brindle Cross  -  The Market Square  -  Dusk",
+   "duration": 3.0
+  },
+  {
+   "op": "wait",
+   "seconds": 0.6
+  },
+  {
+   "op": "say",
+   "speaker": "oriel",
+   "text": "Hold the light. Hold the road. Hold on to each other."
+  },
+  {
+   "op": "say",
+   "speaker": "tamsin",
+   "text": "Lovely prayer, Sunshine. Does it work on card games?",
+   "emote": "smile"
+  },
+  {
+   "op": "move",
+   "actor": "brannoc",
+   "path": [
+    [
+     23,
+     11
+    ],
+    [
+     22,
+     12
+    ]
+   ],
+   "face": "left",
+   "wait": false
+  },
+  {
+   "op": "say",
+   "speaker": "brannoc",
+   "text": "Dispatches for Fort Harrow. Is that lantern meant to do that?"
+  },
+  {
+   "op": "face",
+   "actor": "oriel",
+   "facing": "down"
+  },
+  {
+   "op": "face",
+   "actor": "tamsin",
+   "facing": "down"
+  },
+  {
+   "op": "camera",
+   "to": [
+    20,
+    19
+   ],
+   "duration": 1.4
+  },
+  {
+   "op": "lantern",
+   "id": "lantern_road.037",
+   "state": "dead",
+   "flicker": 1.8,
+   "unlight": {
+    "radius": 70,
+    "grow": 3.0,
+    "strength": 0.6
+   }
+  },
+  {
+   "op": "time_of_day",
+   "preset": "evening",
+   "duration": 2.5,
+   "wait": false
+  },
+  {
+   "op": "music_stop",
+   "fade_out": 1.5
+  },
+  {
+   "op": "narrate",
+   "text": "The lantern gutters once. Then the road is dark."
+  },
+  {
+   "op": "emote",
+   "actor": "ilsevel",
+   "emote": "exclaim",
+   "duration": 1.2,
+   "sfx": "alert"
+  },
+  {
+   "op": "say",
+   "speaker": "ilsevel",
+   "text": "Technically, a lantern cannot simply go out. Someone has taken its core."
+  },
+  {
+   "op": "spawn",
+   "actor": "goblin-1",
+   "sprite": "goblin_warrior",
+   "at": [
+    19,
+    25
+   ],
+   "facing": "up"
+  },
+  {
+   "op": "spawn",
+   "actor": "goblin-2",
+   "sprite": "goblin_warrior",
+   "at": [
+    20,
+    25
+   ],
+   "facing": "up"
+  },
+  {
+   "op": "spawn",
+   "actor": "goblin-3",
+   "sprite": "goblin_minion",
+   "at": [
+    21,
+    26
+   ],
+   "facing": "up"
+  },
+  {
+   "op": "music",
+   "track": "tension",
+   "fade_in": 0.3,
+   "volume": 0.5
+  },
+  {
+   "op": "move",
+   "actor": "goblin-1",
+   "path": [
+    [
+     19,
+     19
+    ]
+   ],
+   "speed": 5,
+   "wait": false
+  },
+  {
+   "op": "move",
+   "actor": "goblin-2",
+   "path": [
+    [
+     20,
+     20
+    ]
+   ],
+   "speed": 5,
+   "wait": false
+  },
+  {
+   "op": "move",
+   "actor": "goblin-3",
+   "path": [
+    [
+     22,
+     20
+    ]
+   ],
+   "speed": 5
+  },
+  {
+   "op": "emote",
+   "actor": "tamsin",
+   "emote": "alert",
+   "duration": 1.0
+  },
+  {
+   "op": "say",
+   "speaker": "tamsin",
+   "text": "Company. Ugly company."
+  },
+  {
+   "op": "say",
+   "speaker": "brannoc",
+   "text": "Get behind the shield.",
+   "emote": "angry"
+  },
+  {
+   "op": "battle_start",
+   "party": [
+    {
+     "id": "brannoc",
+     "sprite": "brannoc",
+     "hp": 13,
+     "max_hp": 13,
+     "name": "Brannoc",
+     "at": [
+      22,
+      12
+     ]
+    },
+    {
+     "id": "ilsevel",
+     "sprite": "ilsevel",
+     "hp": 8,
+     "max_hp": 8,
+     "name": "Ilsevel",
+     "at": [
+      19,
+      15
+     ]
+    },
+    {
+     "id": "oriel",
+     "sprite": "oriel",
+     "hp": 10,
+     "max_hp": 10,
+     "name": "Oriel",
+     "at": [
+      21,
+      10
+     ]
+    },
+    {
+     "id": "tamsin",
+     "sprite": "tamsin",
+     "hp": 10,
+     "max_hp": 10,
+     "name": "Tamsin",
+     "at": [
+      17,
+      12
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "id": "goblin-1",
+     "sprite": "goblin_warrior",
+     "hp": 10,
+     "max_hp": 10,
+     "name": "Goblin",
+     "at": [
+      19,
+      19
+     ]
+    },
+    {
+     "id": "goblin-2",
+     "sprite": "goblin_warrior",
+     "hp": 10,
+     "max_hp": 10,
+     "name": "Goblin",
+     "at": [
+      20,
+      20
+     ]
+    },
+    {
+     "id": "goblin-3",
+     "sprite": "goblin_minion",
+     "hp": 7,
+     "max_hp": 7,
+     "name": "Goblin Runt",
+     "at": [
+      22,
+      20
+     ]
+    }
+   ],
+   "music": "battle"
+  },
+  {
+   "op": "initiative",
+   "order": [
+    {
+     "id": "goblin-2",
+     "name": "Goblin",
+     "total": 17,
+     "team": "enemies"
+    },
+    {
+     "id": "oriel",
+     "name": "Oriel",
+     "total": 15,
+     "team": "party"
+    },
+    {
+     "id": "ilsevel",
+     "name": "Ilsevel",
+     "total": 12,
+     "team": "party"
+    },
+    {
+     "id": "brannoc",
+     "name": "Brannoc",
+     "total": 12,
+     "team": "party"
+    },
+    {
+     "id": "goblin-3",
+     "name": "Goblin Runt",
+     "total": 11,
+     "team": "enemies"
+    },
+    {
+     "id": "goblin-1",
+     "name": "Goblin",
+     "total": 10,
+     "team": "enemies"
+    },
+    {
+     "id": "tamsin",
+     "name": "Tamsin",
+     "total": 9,
+     "team": "party"
+    }
+   ]
+  },
+  {
+   "op": "battle_turn",
+   "actor": "goblin-2",
+   "round": 1
+  },
+  {
+   "op": "battle_move",
+   "actor": "goblin-2",
+   "path": [
+    [
+     20,
+     20
+    ],
+    [
+     19,
+     19
+    ],
+    [
+     19,
+     18
+    ],
+    [
+     18,
+     17
+    ],
+    [
+     18,
+     16
+    ]
+   ]
+  },
+  {
+   "op": "battle_attack",
+   "actor": "goblin-2",
+   "target": "ilsevel",
+   "roll": {
+    "id": "r0007",
+    "index": 7,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "attack: Scimitar",
+    "actor": "goblin-2",
+    "target": "ilsevel",
+    "draws": [
+     {
+      "counter": 7,
+      "sides": 20,
+      "value": 20
+     }
+    ],
+    "rolls": [
+     20
+    ],
+    "kept": [
+     20
+    ],
+    "modifier": 4,
+    "total": 24,
+    "advantage": "none",
+    "natural": 20,
+    "dc": 12,
+    "success": true,
+    "critical": true,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "hit": true,
+   "critical": true,
+   "ranged": false,
+   "label": "Goblin - Scimitar",
+   "line": "20 + 4 = 24 vs AC 12 CRIT!",
+   "damage": 7,
+   "hp_after": 1,
+   "sneak_attack": false
+  },
+  {
+   "op": "battle_turn",
+   "actor": "oriel",
+   "round": 1
+  },
+  {
+   "op": "battle_cast",
+   "actor": "oriel",
+   "spell": "healing_word",
+   "results": [
+    {
+     "target": "ilsevel",
+     "heal": 7,
+     "hp_after": 8,
+     "revived": false
+    }
+   ],
+   "label": "Oriel - Healing Word (level 1)",
+   "line": "Restores 7 HP"
+  },
+  {
+   "op": "battle_cast",
+   "actor": "oriel",
+   "spell": "sacred_flame",
+   "results": [
+    {
+     "target": "goblin-3",
+     "damage": 7,
+     "hp_after": 0,
+     "saved": false
+    }
+   ],
+   "label": "Oriel - Sacred Flame",
+   "roll": {
+    "id": "r0011",
+    "index": 11,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "Sacred Flame save",
+    "actor": "goblin-3",
+    "target": "oriel",
+    "draws": [
+     {
+      "counter": 13,
+      "sides": 20,
+      "value": 4
+     }
+    ],
+    "rolls": [
+     4
+    ],
+    "kept": [
+     4
+    ],
+    "modifier": 2,
+    "total": 6,
+    "advantage": "none",
+    "natural": 4,
+    "dc": 13,
+    "success": false,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "line": "Goblin Runt: 4 + 2 = 6 vs DC 13 FAILS"
+  },
+  {
+   "op": "battle_faint",
+   "actor": "goblin-3"
+  },
+  {
+   "op": "battle_turn",
+   "actor": "ilsevel",
+   "round": 1
+  },
+  {
+   "op": "battle_cast",
+   "actor": "ilsevel",
+   "spell": "shocking_grasp",
+   "results": [
+    {
+     "target": "goblin-2",
+     "damage": 2,
+     "hp_after": 8,
+     "hit": true
+    }
+   ],
+   "label": "Ilsevel - Shocking Grasp",
+   "roll": {
+    "id": "r0012",
+    "index": 12,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "spell attack: Shocking Grasp",
+    "actor": "ilsevel",
+    "target": "goblin-2",
+    "draws": [
+     {
+      "counter": 14,
+      "sides": 20,
+      "value": 18
+     }
+    ],
+    "rolls": [
+     18
+    ],
+    "kept": [
+     18
+    ],
+    "modifier": 5,
+    "total": 23,
+    "advantage": "none",
+    "natural": 18,
+    "dc": 15,
+    "success": true,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "line": "18 + 5 = 23 vs AC 15 HIT"
+  },
+  {
+   "op": "battle_move",
+   "actor": "ilsevel",
+   "path": [
+    [
+     19,
+     15
+    ],
+    [
+     20,
+     14
+    ],
+    [
+     21,
+     13
+    ],
+    [
+     22,
+     12
+    ],
+    [
+     23,
+     11
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     12
+    ]
+   ]
+  },
+  {
+   "op": "battle_turn",
+   "actor": "brannoc",
+   "round": 1
+  },
+  {
+   "op": "battle_move",
+   "actor": "brannoc",
+   "path": [
+    [
+     22,
+     12
+    ],
+    [
+     21,
+     13
+    ],
+    [
+     20,
+     14
+    ],
+    [
+     19,
+     15
+    ]
+   ]
+  },
+  {
+   "op": "battle_attack",
+   "actor": "brannoc",
+   "target": "goblin-2",
+   "roll": {
+    "id": "r0014",
+    "index": 14,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "attack: Longsword",
+    "actor": "brannoc",
+    "target": "goblin-2",
+    "draws": [
+     {
+      "counter": 16,
+      "sides": 20,
+      "value": 2
+     }
+    ],
+    "rolls": [
+     2
+    ],
+    "kept": [
+     2
+    ],
+    "modifier": 5,
+    "total": 7,
+    "advantage": "none",
+    "natural": 2,
+    "dc": 15,
+    "success": false,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "hit": false,
+   "critical": false,
+   "ranged": false,
+   "label": "Brannoc - Longsword",
+   "line": "2 + 5 = 7 vs AC 15 MISS"
+  },
+  {
+   "op": "battle_turn",
+   "actor": "goblin-1",
+   "round": 1
+  },
+  {
+   "op": "battle_move",
+   "actor": "goblin-1",
+   "path": [
+    [
+     19,
+     19
+    ],
+    [
+     19,
+     18
+    ],
+    [
+     20,
+     17
+    ],
+    [
+     21,
+     16
+    ],
+    [
+     22,
+     15
+    ],
+    [
+     23,
+     14
+    ],
+    [
+     24,
+     13
+    ]
+   ]
+  },
+  {
+   "op": "battle_attack",
+   "actor": "goblin-1",
+   "target": "ilsevel",
+   "roll": {
+    "id": "r0015",
+    "index": 15,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "attack: Scimitar",
+    "actor": "goblin-1",
+    "target": "ilsevel",
+    "draws": [
+     {
+      "counter": 17,
+      "sides": 20,
+      "value": 20
+     }
+    ],
+    "rolls": [
+     20
+    ],
+    "kept": [
+     20
+    ],
+    "modifier": 4,
+    "total": 24,
+    "advantage": "none",
+    "natural": 20,
+    "dc": 12,
+    "success": true,
+    "critical": true,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "hit": true,
+   "critical": true,
+   "ranged": false,
+   "label": "Goblin - Scimitar",
+   "line": "20 + 4 = 24 vs AC 12 CRIT!",
+   "damage": 8,
+   "hp_after": 0,
+   "sneak_attack": false
+  },
+  {
+   "op": "battle_faint",
+   "actor": "ilsevel",
+   "pc": true,
+   "narrate_hint": "pc_down"
+  },
+  {
+   "op": "battle_turn",
+   "actor": "tamsin",
+   "round": 1
+  },
+  {
+   "op": "battle_attack",
+   "actor": "tamsin",
+   "target": "goblin-2",
+   "roll": {
+    "id": "r0017",
+    "index": 17,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "attack: Shortbow",
+    "actor": "tamsin",
+    "target": "goblin-2",
+    "draws": [
+     {
+      "counter": 20,
+      "sides": 20,
+      "value": 12
+     }
+    ],
+    "rolls": [
+     12
+    ],
+    "kept": [
+     12
+    ],
+    "modifier": 5,
+    "total": 17,
+    "advantage": "none",
+    "natural": 12,
+    "dc": 15,
+    "success": true,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "hit": true,
+   "critical": false,
+   "ranged": true,
+   "label": "Tamsin - Shortbow",
+   "line": "12 + 5 = 17 vs AC 15 HIT",
+   "damage": 10,
+   "hp_after": 0,
+   "sneak_attack": true
+  },
+  {
+   "op": "battle_faint",
+   "actor": "goblin-2"
+  },
+  {
+   "op": "battle_turn",
+   "actor": "oriel",
+   "round": 2
+  },
+  {
+   "op": "battle_cast",
+   "actor": "oriel",
+   "spell": "healing_word",
+   "results": [
+    {
+     "target": "ilsevel",
+     "heal": 7,
+     "hp_after": 7,
+     "revived": true
+    }
+   ],
+   "label": "Oriel - Healing Word (level 1)",
+   "line": "Restores 7 HP"
+  },
+  {
+   "op": "battle_revive",
+   "actor": "ilsevel"
+  },
+  {
+   "op": "battle_cast",
+   "actor": "oriel",
+   "spell": "sacred_flame",
+   "results": [
+    {
+     "target": "goblin-1",
+     "damage": 2,
+     "hp_after": 8,
+     "saved": false
+    }
+   ],
+   "label": "Oriel - Sacred Flame",
+   "roll": {
+    "id": "r0022",
+    "index": 22,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "Sacred Flame save",
+    "actor": "goblin-1",
+    "target": "oriel",
+    "draws": [
+     {
+      "counter": 26,
+      "sides": 20,
+      "value": 7
+     }
+    ],
+    "rolls": [
+     7
+    ],
+    "kept": [
+     7
+    ],
+    "modifier": 2,
+    "total": 9,
+    "advantage": "none",
+    "natural": 7,
+    "dc": 13,
+    "success": false,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "line": "Goblin: 7 + 2 = 9 vs DC 13 FAILS"
+  },
+  {
+   "op": "battle_turn",
+   "actor": "ilsevel",
+   "round": 2
+  },
+  {
+   "op": "battle_note",
+   "actor": "ilsevel",
+   "text": "Stands up"
+  },
+  {
+   "op": "battle_revive",
+   "actor": "ilsevel"
+  },
+  {
+   "op": "battle_cast",
+   "actor": "ilsevel",
+   "spell": "shocking_grasp",
+   "results": [
+    {
+     "target": "goblin-1",
+     "damage": 8,
+     "hp_after": 0,
+     "hit": true
+    }
+   ],
+   "label": "Ilsevel - Shocking Grasp",
+   "roll": {
+    "id": "r0023",
+    "index": 23,
+    "seed": "C01-E001-GATE-135",
+    "kind": "d20",
+    "notation": "1d20",
+    "purpose": "spell attack: Shocking Grasp",
+    "actor": "ilsevel",
+    "target": "goblin-1",
+    "draws": [
+     {
+      "counter": 27,
+      "sides": 20,
+      "value": 10
+     }
+    ],
+    "rolls": [
+     10
+    ],
+    "kept": [
+     10
+    ],
+    "modifier": 5,
+    "total": 15,
+    "advantage": "none",
+    "natural": 10,
+    "dc": 15,
+    "success": true,
+    "critical": false,
+    "fumble": false,
+    "rerolled": [],
+    "notes": []
+   },
+   "line": "10 + 5 = 15 vs AC 15 HIT"
+  },
+  {
+   "op": "battle_faint",
+   "actor": "goblin-1"
+  },
+  {
+   "op": "battle_end",
+   "result": "victory",
+   "xp": 125
+  },
+  {
+   "op": "camera",
+   "to": [
+    20,
+    13
+   ],
+   "duration": 0.8
+  },
+  {
+   "op": "music",
+   "track": "calm_village",
+   "fade_in": 1.0,
+   "volume": 0.4
+  },
+  {
+   "op": "say",
+   "speaker": "brannoc",
+   "text": "Report. Short version."
+  },
+  {
+   "op": "say",
+   "speaker": "tamsin",
+   "text": "We won. Short enough?",
+   "emote": "happy"
+  },
+  {
+   "op": "narrate",
+   "text": "Next time: the road beyond Lantern Thirty-Seven."
+  },
+  {
+   "op": "music_stop",
+   "fade_out": 1.2
+  },
+  {
+   "op": "fade",
+   "to": "black",
+   "duration": 1.2
+  }
+ ]
+}

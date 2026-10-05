@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/monster@1",
+  "title": "Monster stat block",
+  "description": "One entry of data/monsters.json -> monsters.<id>.",
+  "type": "object",
+  "required": [
+    "name",
+    "size",
+    "type",
+    "cr",
+    "xp",
+    "ac",
+    "hp",
+    "speed",
+    "abilities",
+    "attacks",
+    "verified"
+  ],
+  "$defs": {
+    "attack": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type",
+        "to_hit",
+        "damage",
+        "damage_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "melee",
+            "ranged"
+          ]
+        },
+        "to_hit": {
+          "type": "integer"
+        },
+        "reach_ft": {
+          "type": "integer",
+          "minimum": 5
+        },
+        "range": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2
+        },
+        "damage": {
+          "type": "string",
+          "pattern": "^[0-9]*d[0-9]+([+-][0-9]+)?$"
+        },
+        "damage_type": {
+          "type": "string",
+          "enum": [
+            "acid",
+            "bludgeoning",
+            "cold",
+            "fire",
+            "force",
+            "lightning",
+            "necrotic",
+            "piercing",
+            "poison",
+            "psychic",
+            "radiant",
+            "slashing",
+            "thunder"
+          ]
+        },
+        "extra_damage": {
+          "type": "array"
+        },
+        "extra_damage_if_advantage": {
+          "type": "string"
+        },
+        "on_hit": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "tiny",
+        "small",
+        "medium",
+        "large",
+        "huge",
+        "gargantuan"
+      ]
+    },
+    "type": {
+      "type": "string"
+    },
+    "cr": {
+      "type": "string"
+    },
+    "xp": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "proficiency": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 9
+    },
+    "ac": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "hp": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "hp_formula": {
+      "type": "string"
+    },
+    "speed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "abilities": {
+      "type": "object",
+      "required": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
+    "saves": {
+      "type": "object"
+    },
+    "skills": {
+      "type": "object"
+    },
+    "senses": {
+      "type": "object"
+    },
+    "resistances": {
+      "type": "array"
+    },
+    "immunities": {
+      "type": "array"
+    },
+    "vulnerabilities": {
+      "type": "array"
+    },
+    "condition_immunities": {
+      "type": "array"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "multiattack": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "attacks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attack"
+      },
+      "minItems": 1
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "base": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "ai": {
+      "type": "string",
+      "enum": [
+        "brute",
+        "archer",
+        "skirmisher",
+        "tank",
+        "artillery",
+        "support"
+      ]
+    }
+  }
+}

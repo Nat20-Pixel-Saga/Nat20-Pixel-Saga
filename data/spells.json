@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "source": "SRD 5.2 (CC-BY-4.0), mechanics summarised for the engine",
+    "verified": false,
+    "note": "kind: attack | save | auto | heal | buff | utility. Check each entry against SRD 5.2 and set verified=true before broadcast."
+  },
+  "spells": {
+    "fire_bolt":      {"name": "Fire Bolt", "level": 0, "school": "evocation", "casting_time": "action", "range_ft": 120, "kind": "attack", "attack": "ranged", "damage": "1d10", "damage_type": "fire", "cantrip_scaling": true, "fx": "projectile"},
+    "ray_of_frost":   {"name": "Ray of Frost", "level": 0, "school": "evocation", "casting_time": "action", "range_ft": 60, "kind": "attack", "attack": "ranged", "damage": "1d8", "damage_type": "cold", "cantrip_scaling": true, "on_hit": {"effect": "slowed", "speed_penalty": 10, "expires": "start_of_caster_turn"}, "fx": "beam"},
+    "shocking_grasp": {"name": "Shocking Grasp", "level": 0, "school": "evocation", "casting_time": "action", "range_ft": 5, "kind": "attack", "attack": "melee", "damage": "1d8", "damage_type": "lightning", "cantrip_scaling": true, "on_hit": {"effect": "no_opportunity_attacks", "expires": "start_of_target_turn"}, "fx": "sparkle"},
+    "sacred_flame":   {"name": "Sacred Flame", "level": 0, "school": "evocation", "casting_time": "action", "range_ft": 60, "kind": "save", "save": "dex", "damage": "1d8", "damage_type": "radiant", "half_on_save": false, "cantrip_scaling": true, "ignores_cover": true, "fx": "pillar"},
+    "guidance":       {"name": "Guidance", "level": 0, "school": "divination", "casting_time": "action", "range_ft": 5, "kind": "buff", "concentration": true, "duration_rounds": 10, "buff": {"effect": "guidance", "check_bonus": "1d4"}, "max_targets": 1, "fx": "aura"},
+    "resistance":     {"name": "Resistance", "level": 0, "school": "abjuration", "casting_time": "action", "range_ft": 5, "kind": "buff", "concentration": true, "duration_rounds": 10, "buff": {"effect": "resistance_cantrip", "reduce": "1d4"}, "max_targets": 1, "fx": "aura"},
+    "spare_the_dying":{"name": "Spare the Dying", "level": 0, "school": "necromancy", "casting_time": "action", "range_ft": 15, "kind": "utility", "special": "stabilize", "fx": "sparkle"},
+    "light":          {"name": "Light", "level": 0, "school": "evocation", "casting_time": "action", "range_ft": 5, "kind": "utility", "fx": "aura"},
+    "mage_hand":      {"name": "Mage Hand", "level": 0, "school": "conjuration", "casting_time": "action", "range_ft": 30, "kind": "utility", "fx": "summon"},
+    "prestidigitation":{"name": "Prestidigitation", "level": 0, "school": "transmutation", "casting_time": "action", "range_ft": 10, "kind": "utility", "fx": "sparkle"},
+    "thaumaturgy":    {"name": "Thaumaturgy", "level": 0, "school": "transmutation", "casting_time": "action", "range_ft": 30, "kind": "utility", "fx": "screen"},
+
+    "magic_missile":  {"name": "Magic Missile", "level": 1, "school": "evocation", "casting_time": "action", "range_ft": 120, "kind": "auto", "darts": 3, "dart_damage": "1d4+1", "damage_type": "force", "upcast_darts": 1, "fx": "projectile"},
+    "burning_hands":  {"name": "Burning Hands", "level": 1, "school": "evocation", "casting_time": "action", "range_ft": 15, "area": {"shape": "cone", "size_ft": 15}, "kind": "save", "save": "dex", "damage": "3d6", "damage_type": "fire", "half_on_save": true, "upcast_dice": 1, "fx": "cone"},
+    "thunderwave":    {"name": "Thunderwave", "level": 1, "school": "evocation", "casting_time": "action", "range_ft": 15, "area": {"shape": "cube", "size_ft": 15}, "kind": "save", "save": "con", "damage": "2d8", "damage_type": "thunder", "half_on_save": true, "upcast_dice": 1, "on_fail": {"push_ft": 10}, "fx": "sphere"},
+    "shield":         {"name": "Shield", "level": 1, "school": "abjuration", "casting_time": "reaction", "range_ft": 0, "kind": "buff", "self_only": true, "buff": {"effect": "shield_spell", "ac_bonus": 5, "expires": "start_of_caster_turn"}, "fx": "aura"},
+    "mage_armor":     {"name": "Mage Armor", "level": 1, "school": "abjuration", "casting_time": "action", "range_ft": 5, "kind": "buff", "duration_rounds": 4800, "buff": {"effect": "mage_armor", "base_ac": 13}, "max_targets": 1, "fx": "aura"},
+    "detect_magic":   {"name": "Detect Magic", "level": 1, "school": "divination", "casting_time": "action", "range_ft": 0, "kind": "utility", "concentration": true, "ritual": true, "fx": "screen"},
+    "find_familiar":  {"name": "Find Familiar", "level": 1, "school": "conjuration", "casting_time": "1 hour", "range_ft": 10, "kind": "utility", "ritual": true, "fx": "summon"},
+    "fog_cloud":      {"name": "Fog Cloud", "level": 1, "school": "conjuration", "casting_time": "action", "range_ft": 120, "kind": "utility", "concentration": true, "fx": "sphere"},
+    "feather_fall":   {"name": "Feather Fall", "level": 1, "school": "transmutation", "casting_time": "reaction", "range_ft": 60, "kind": "utility", "fx": "aura"},
+    "cure_wounds":    {"name": "Cure Wounds", "level": 1, "school": "abjuration", "casting_time": "action", "range_ft": 5, "kind": "heal", "heal": "2d8", "add_mod": true, "upcast_dice": 2, "max_targets": 1, "fx": "sparkle"},
+    "healing_word":   {"name": "Healing Word", "level": 1, "school": "abjuration", "casting_time": "bonus_action", "range_ft": 60, "kind": "heal", "heal": "2d4", "add_mod": true, "upcast_dice": 2, "max_targets": 1, "fx": "sparkle"},
+    "bless":          {"name": "Bless", "level": 1, "school": "enchantment", "casting_time": "action", "range_ft": 30, "kind": "buff", "concentration": true, "duration_rounds": 10, "buff": {"effect": "bless", "attack_bonus": "1d4", "save_bonus": "1d4"}, "max_targets": 3, "upcast_targets": 1, "fx": "aura"},
+    "guiding_bolt":   {"name": "Guiding Bolt", "level": 1, "school": "evocation", "casting_time": "action", "range_ft": 120, "kind": "attack", "attack": "ranged", "damage": "4d6", "damage_type": "radiant", "upcast_dice": 1, "on_hit": {"effect": "guiding_bolt", "expires": "end_of_caster_next_turn"}, "fx": "projectile"},
+    "shield_of_faith":{"name": "Shield of Faith", "level": 1, "school": "abjuration", "casting_time": "bonus_action", "range_ft": 60, "kind": "buff", "concentration": true, "duration_rounds": 100, "buff": {"effect": "shield_of_faith", "ac_bonus": 2}, "max_targets": 1, "fx": "aura"},
+    "sanctuary":      {"name": "Sanctuary", "level": 1, "school": "abjuration", "casting_time": "bonus_action", "range_ft": 30, "kind": "buff", "duration_rounds": 10, "buff": {"effect": "sanctuary"}, "max_targets": 1, "fx": "aura"}
+  }
+}

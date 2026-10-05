@@ -1,0 +1,187 @@
+{
+ "change-20261005T062432Z-setup-test-001": {
+  "status": "applied",
+  "message": "relay test",
+  "session": "setup-test",
+  "did": [],
+  "at": "20261005T063732Z"
+ },
+ "change-20261005T065150Z-shift-20261005-0648-001": {
+  "status": "applied",
+  "message": "wip(episode:2): plan",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T085305Z"
+ },
+ "change-20261005T065516Z-shift-20261005-0648-002": {
+  "status": "applied",
+  "message": "wip(episode:2): script, continuity",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T085350Z"
+ },
+ "change-20261005T070005Z-shift-20261005-0648-003": {
+  "status": "applied",
+  "message": "Episode 2: The Goblin Who Talked (part 1/2)",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T085434Z"
+ },
+ "change-20261005T072428Z-shift-20261005-0648-008": {
+  "status": "applied",
+  "message": "tests: queue test checks the queue's shape, not live progress",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T085519Z"
+ },
+ "change-20261005T070005Z-shift-20261005-0648-004": {
+  "status": "rejected",
+  "reason": "episode 2 did not complete:\nFAILED: Can't commit C01-E002: the live state is at C1E2\n",
+  "message": "Episode 2: The Goblin Who Talked (part 2/2)",
+  "at": "20261005T090245Z"
+ },
+ "change-20261005T071009Z-shift-20261005-0648-005": {
+  "status": "applied",
+  "message": "map:crooked_kettle_interior: inn common room and storeroom",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map crooked_kettle_interior regenerated"
+  ],
+  "at": "20261005T090314Z"
+ },
+ "change-20261005T071627Z-shift-20261005-0648-006": {
+  "status": "applied",
+  "message": "wip(episode:3): plan, script, continuity",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T090341Z"
+ },
+ "change-20261005T071946Z-shift-20261005-0648-007": {
+  "status": "applied",
+  "message": "Episode 3: The Empty Housing",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 3 committed"
+  ],
+  "at": "20261005T090410Z"
+ },
+ "change-20261005T073218Z-shift-20261005-0648-009": {
+  "status": "applied",
+  "message": "map:thornpike_woods and materials:woods (part 1/2)",
+  "session": "shift-20261005-0648",
+  "did": [],
+  "at": "20261005T090438Z"
+ },
+ "change-20261005T073218Z-shift-20261005-0648-010": {
+  "status": "applied",
+  "message": "map:thornpike_woods and materials:woods (part 2/2)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map thornpike_woods regenerated"
+  ],
+  "at": "20261005T090505Z"
+ },
+ "change-20261005T073654Z-shift-20261005-0648-011": {
+  "status": "applied",
+  "message": "Episode 4: Wolves at the Birches",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 4 committed"
+  ],
+  "at": "20261005T090534Z"
+ },
+ "change-20261005T074249Z-shift-20261005-0648-012": {
+  "status": "applied",
+  "message": "Episode 5: The Scout Camp",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 5 committed"
+  ],
+  "at": "20261005T090603Z"
+ },
+ "change-20261005T074730Z-shift-20261005-0648-013": {
+  "status": "applied",
+  "message": "Episode 6: First Watch",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 6 committed"
+  ],
+  "at": "20261005T090632Z"
+ },
+ "change-20261005T075200Z-shift-20261005-0648-014": {
+  "status": "applied",
+  "message": "Episode 7: The Saint of the Open Hand",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 7 committed"
+  ],
+  "at": "20261005T090700Z"
+ },
+ "change-20261005T075938Z-shift-20261005-0648-015": {
+  "status": "applied",
+  "message": "Maps wending_mill and fort_harrow, materials mill and fort (part 3/3)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map fort_harrow regenerated",
+   "map wending_mill regenerated"
+  ],
+  "at": "20261005T092027Z"
+ },
+ "change-20261005T075938Z-shift-20261005-0648-016": {
+  "status": "applied",
+  "message": "Maps wending_mill and fort_harrow, materials mill and fort (part 3/3)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map fort_harrow regenerated",
+   "map wending_mill regenerated"
+  ],
+  "at": "20261005T092027Z"
+ },
+ "change-20261005T075938Z-shift-20261005-0648-017": {
+  "status": "applied",
+  "message": "Maps wending_mill and fort_harrow, materials mill and fort (part 3/3)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map fort_harrow regenerated",
+   "map wending_mill regenerated"
+  ],
+  "at": "20261005T092027Z"
+ },
+ "change-20261005T080427Z-shift-20261005-0648-018": {
+  "status": "applied",
+  "message": "Episode 8: Wending Mill",
+  "session": "shift-20261005-0648",
+  "did": [
+   "map wending_mill regenerated",
+   "episode 8 committed"
+  ],
+  "at": "20261005T092052Z"
+ },
+ "change-20261005T080953Z-shift-20261005-0648-019": {
+  "status": "applied",
+  "message": "Episode 9: Smoke Over the Millpond (part 2/2)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 9 committed"
+  ],
+  "at": "20261005T092118Z"
+ },
+ "change-20261005T080953Z-shift-20261005-0648-020": {
+  "status": "applied",
+  "message": "Episode 9: Smoke Over the Millpond (part 2/2)",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 9 committed"
+  ],
+  "at": "20261005T092118Z"
+ },
+ "change-20261005T081829Z-shift-20261005-0648-021": {
+  "status": "applied",
+  "message": "Episode 10: Fort Harrow; Campaign 1 E2-E10 complete",
+  "session": "shift-20261005-0648",
+  "did": [
+   "episode 10 committed"
+  ],
+  "at": "20261005T092143Z"
+ }
+}

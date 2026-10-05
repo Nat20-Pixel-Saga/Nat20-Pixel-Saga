@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "source": "SRD 5.2 (CC-BY-4.0), transcribed for Nat 20 Pixels",
+    "verified": false,
+    "note": "Values entered from the 2024 rules as known; check each row against SRD 5.2 before broadcast and set verified=true."
+  },
+  "weapons": {
+    "dagger":        {"name": "Dagger", "category": "simple", "type": "melee", "damage": "1d4", "damage_type": "piercing", "properties": ["finesse", "light", "thrown"], "range": [20, 60], "mastery": "nick"},
+    "handaxe":       {"name": "Handaxe", "category": "simple", "type": "melee", "damage": "1d6", "damage_type": "slashing", "properties": ["light", "thrown"], "range": [20, 60], "mastery": "vex"},
+    "javelin":       {"name": "Javelin", "category": "simple", "type": "melee", "damage": "1d6", "damage_type": "piercing", "properties": ["thrown"], "range": [30, 120], "mastery": "slow"},
+    "mace":          {"name": "Mace", "category": "simple", "type": "melee", "damage": "1d6", "damage_type": "bludgeoning", "properties": [], "mastery": "sap"},
+    "quarterstaff":  {"name": "Quarterstaff", "category": "simple", "type": "melee", "damage": "1d6", "damage_type": "bludgeoning", "properties": ["versatile"], "versatile": "1d8", "mastery": "topple"},
+    "light_crossbow":{"name": "Light Crossbow", "category": "simple", "type": "ranged", "damage": "1d8", "damage_type": "piercing", "properties": ["ammunition", "loading", "two_handed"], "range": [80, 320], "mastery": "slow"},
+    "shortbow":      {"name": "Shortbow", "category": "simple", "type": "ranged", "damage": "1d6", "damage_type": "piercing", "properties": ["ammunition", "two_handed"], "range": [80, 320], "mastery": "vex"},
+    "battleaxe":     {"name": "Battleaxe", "category": "martial", "type": "melee", "damage": "1d8", "damage_type": "slashing", "properties": ["versatile"], "versatile": "1d10", "mastery": "topple"},
+    "longsword":     {"name": "Longsword", "category": "martial", "type": "melee", "damage": "1d8", "damage_type": "slashing", "properties": ["versatile"], "versatile": "1d10", "mastery": "sap"},
+    "shortsword":    {"name": "Shortsword", "category": "martial", "type": "melee", "damage": "1d6", "damage_type": "piercing", "properties": ["finesse", "light"], "mastery": "vex"},
+    "rapier":        {"name": "Rapier", "category": "martial", "type": "melee", "damage": "1d8", "damage_type": "piercing", "properties": ["finesse"], "mastery": "vex"},
+    "scimitar":      {"name": "Scimitar", "category": "martial", "type": "melee", "damage": "1d6", "damage_type": "slashing", "properties": ["finesse", "light"], "mastery": "nick"},
+    "warhammer":     {"name": "Warhammer", "category": "martial", "type": "melee", "damage": "1d8", "damage_type": "bludgeoning", "properties": ["versatile"], "versatile": "1d10", "mastery": "push"},
+    "greatsword":    {"name": "Greatsword", "category": "martial", "type": "melee", "damage": "2d6", "damage_type": "slashing", "properties": ["heavy", "two_handed"], "mastery": "graze"},
+    "greataxe":      {"name": "Greataxe", "category": "martial", "type": "melee", "damage": "1d12", "damage_type": "slashing", "properties": ["heavy", "two_handed"], "mastery": "cleave"},
+    "longbow":       {"name": "Longbow", "category": "martial", "type": "ranged", "damage": "1d8", "damage_type": "piercing", "properties": ["ammunition", "heavy", "two_handed"], "range": [150, 600], "mastery": "slow"}
+  },
+  "armor": {
+    "padded":       {"name": "Padded Armor", "category": "light", "base_ac": 11, "dex": "full", "stealth_disadvantage": true},
+    "leather":      {"name": "Leather Armor", "category": "light", "base_ac": 11, "dex": "full"},
+    "studded_leather": {"name": "Studded Leather Armor", "category": "light", "base_ac": 12, "dex": "full"},
+    "hide":         {"name": "Hide Armor", "category": "medium", "base_ac": 12, "dex": "max2"},
+    "chain_shirt":  {"name": "Chain Shirt", "category": "medium", "base_ac": 13, "dex": "max2"},
+    "scale_mail":   {"name": "Scale Mail", "category": "medium", "base_ac": 14, "dex": "max2", "stealth_disadvantage": true},
+    "breastplate":  {"name": "Breastplate", "category": "medium", "base_ac": 14, "dex": "max2"},
+    "half_plate":   {"name": "Half Plate Armor", "category": "medium", "base_ac": 15, "dex": "max2", "stealth_disadvantage": true},
+    "ring_mail":    {"name": "Ring Mail", "category": "heavy", "base_ac": 14, "dex": "none", "stealth_disadvantage": true},
+    "chain_mail":   {"name": "Chain Mail", "category": "heavy", "base_ac": 16, "dex": "none", "strength": 13, "stealth_disadvantage": true},
+    "splint":       {"name": "Splint Armor", "category": "heavy", "base_ac": 17, "dex": "none", "strength": 15, "stealth_disadvantage": true},
+    "plate":        {"name": "Plate Armor", "category": "heavy", "base_ac": 18, "dex": "none", "strength": 15, "stealth_disadvantage": true}
+  },
+  "shield": {"name": "Shield", "ac_bonus": 2},
+  "items": {
+    "potion_of_healing": {"name": "Potion of Healing", "heal": "2d4+2", "cost_cp": 5000},
+    "arrows":            {"name": "Arrows (20)", "ammunition_for": ["shortbow", "longbow"], "cost_cp": 100},
+    "bolts":             {"name": "Bolts (20)", "ammunition_for": ["light_crossbow"], "cost_cp": 100},
+    "thieves_tools":     {"name": "Thieves' Tools", "cost_cp": 2500},
+    "healers_kit":       {"name": "Healer's Kit", "uses": 10, "cost_cp": 500},
+    "holy_symbol":       {"name": "Holy Symbol", "cost_cp": 500},
+    "spellbook":         {"name": "Spellbook", "cost_cp": 5000},
+    "rations":           {"name": "Rations (1 day)", "cost_cp": 50},
+    "torch":             {"name": "Torch", "cost_cp": 1},
+    "rope_hempen":       {"name": "Rope (50 ft)", "cost_cp": 100},
+    "lantern_hooded":    {"name": "Hooded Lantern", "cost_cp": 500},
+    "gloamkey":          {"name": "The Gloamkey", "story_item": true}
+  }
+}

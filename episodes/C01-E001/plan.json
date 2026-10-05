@@ -1,0 +1,467 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E001",
+  "title": "Lantern Thirty-Seven",
+  "summary": "Dusk in Brindle Cross. Tamsin cheats Wil Fenn at cards by the well, Ilsevel reads the Lamplighters' ledger at the Crooked Kettle, and Brannoc arrives at the shrine as Father Tobin gives Oriel his own holy symbol. Then Lantern 37 dies and goblins come up the south road. The four strangers fight side by side; one goblin is left alive.",
+  "dm_intro": {
+    "title": "Lantern Thirty-Seven",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  3 Emberfall 1047 AK",
+    "text": "Brindle Cross is a crossroads village on the southern edge of the Lanternmarch, where the oldest lantern road in the Vael begins. Its lanterns have burned every night for three hundred years. Tonight four strangers share its market square at dusk: a soldier carrying dispatches, a Lamplighter archivist, a card player with a borrowed name, and the shrine's young acolyte. None of them knows the others yet."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "Cards by the Well",
+      "location": "loc.brindle-cross",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        17,
+        11
+      ],
+      "music": "calm_village",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "tamsin",
+          "at": [
+            16,
+            11
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "wil_fenn",
+          "at": [
+            18,
+            11
+          ],
+          "facing": "left",
+          "name": "Wil Fenn"
+        }
+      ],
+      "beats": [
+        "Tamsin, calling herself Tam Mossfoot, has won three hands of Lanterns and Crowns from Wil Fenn by the well.",
+        "Wil, sixteen and stubborn, bets his last coppers and watches her hands closely.",
+        "Tamsin palms the Crown card (c1).",
+        "Either she wins and gives Wil a honey cake back out of guilt, or Wil catches her and she laughs it off and returns his coin.",
+        "Wil mentions that a real soldier is due through tonight; he wants to enlist."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "tamsin",
+          "skill": "sleight_of_hand",
+          "dc": 14,
+          "reason": "Palm the Crown card while Wil, who has lost three hands in a row, watches her fingers.",
+          "on_success": "Wil never sees it; Tamsin wins the pot.",
+          "on_failure": "Wil spots the card in her sleeve."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "talk"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Lantern Ledger",
+      "location": "loc.crooked-kettle",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        10,
+        10
+      ],
+      "music": "calm_village",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "ilsevel",
+          "at": [
+            10,
+            9
+          ],
+          "facing": "left",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "maddy_fenn",
+          "at": [
+            8,
+            9
+          ],
+          "facing": "right",
+          "name": "Maddy Fenn"
+        }
+      ],
+      "beats": [
+        "Outside the Crooked Kettle, Maddy Fenn hands Ilsevel the Lamplighters' ledger that the inn keeps for passing wardens.",
+        "Ilsevel is here to inspect the failing lanterns between 30 and 45; she has read every entry for 37 (c2).",
+        "Maddy asks who pays for the candles she's burning to read by."
+      ],
+      "checks": [
+        {
+          "id": "c2",
+          "actor": "ilsevel",
+          "skill": "investigation",
+          "dc": 13,
+          "reason": "Spot what is wrong in a year of tidy entries for the lanterns south of the village.",
+          "on_success": "Lantern 37 was signed as serviced twice in nine days, by a warden's mark Ilsevel does not recognise.",
+          "on_failure": "She finds only that 37's entries note it burning dimmer than its neighbours."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "explore",
+        "talk"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "The Dusk Devotion",
+      "location": "loc.shrine-of-the-open-hand",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        28,
+        9
+      ],
+      "music": "mystical",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "oriel",
+          "at": [
+            27,
+            8
+          ],
+          "facing": "down",
+          "name": "Oriel"
+        },
+        {
+          "id": "tobin_ashdown",
+          "at": [
+            28,
+            8
+          ],
+          "facing": "left",
+          "name": "Father Tobin"
+        }
+      ],
+      "beats": [
+        "Oriel leads the dusk devotion on the shrine steps for the first time: 'Hold the light. Hold the road. Hold on to each other.'",
+        "Father Tobin gives her his own sun-disc holy symbol; he admits he never understood half the verses either.",
+        "Brannoc arrives on the east road with dispatches for Fort Harrow and drops a coin in the alms box without a word. Oriel notices; it is not the first time.",
+        "Oriel's brass button catches the last light. Tobin glances at it and says nothing."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "bond"
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "Lantern Thirty-Seven",
+      "location": "loc.brindle-cross",
+      "map": "brindle_cross",
+      "time_of_day": "dusk",
+      "camera": [
+        19,
+        12
+      ],
+      "music": "calm_village",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "oriel",
+          "at": [
+            21,
+            10
+          ],
+          "facing": "down",
+          "name": "Oriel"
+        },
+        {
+          "id": "brannoc",
+          "at": [
+            23,
+            11
+          ],
+          "facing": "left",
+          "name": "Brannoc"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            17,
+            12
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            19,
+            13
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "wil_fenn",
+          "at": [
+            15,
+            12
+          ],
+          "facing": "right",
+          "name": "Wil Fenn"
+        }
+      ],
+      "beats": [
+        "The four end up in the market square as the lanterns are lit. First introductions, first nicknames.",
+        "Lantern 37 on the south road gutters and dies. Oriel feels the warmth of her prayer falter for a heartbeat.",
+        "Ilsevel: a lantern cannot simply go out.",
+        "Brannoc watches the dark road (c3).",
+        "Wil runs for the inn. Goblins come up the south road; one hangs back, smaller than the others.",
+        "The fight (e1). Brannoc takes the front; Oriel stays at his shoulder."
+      ],
+      "checks": [
+        {
+          "id": "c3",
+          "actor": "brannoc",
+          "skill": "perception",
+          "dc": 13,
+          "reason": "Make out shapes moving on the unlit south road before they reach the square.",
+          "on_success": "Brannoc counts four and calls positions before they arrive.",
+          "on_failure": "The goblins are almost at the square before anyone sees them."
+        }
+      ],
+      "encounter": {
+        "id": "e1",
+        "name": "Goblins on the Lantern Road",
+        "enemies": [
+          {
+            "id": "goblin-1",
+            "kind": "goblin_warrior",
+            "at": [
+              19,
+              19
+            ],
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-2",
+            "kind": "goblin_warrior",
+            "at": [
+              21,
+              19
+            ],
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-3",
+            "kind": "goblin_minion",
+            "at": [
+              17,
+              20
+            ],
+            "name": "Goblin Runt"
+          },
+          {
+            "id": "goblin-4",
+            "kind": "goblin_minion",
+            "sprite": "rusk",
+            "at": [
+              22,
+              20
+            ],
+            "name": "Goblin Runt",
+            "nonlethal": true
+          }
+        ],
+        "party_at": {
+          "brannoc": [
+            20,
+            14
+          ],
+          "oriel": [
+            21,
+            13
+          ],
+          "ilsevel": [
+            19,
+            12
+          ],
+          "tamsin": [
+            17,
+            13
+          ]
+        },
+        "objective": "Drive the goblins out of the square.",
+        "stakes": "The inn and the Fenns are a stone's throw away.",
+        "options": {}
+      },
+      "pillars": [
+        "fight"
+      ]
+    },
+    {
+      "id": "s5",
+      "name": "The One Left Breathing",
+      "location": "loc.brindle-cross",
+      "map": "brindle_cross",
+      "time_of_day": "evening",
+      "camera": [
+        20,
+        15
+      ],
+      "music": "sad",
+      "transition": "continue",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            21,
+            16
+          ],
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            22,
+            16
+          ],
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            19,
+            16
+          ],
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            20,
+            15
+          ],
+          "name": "Ilsevel"
+        },
+        {
+          "id": "goblin-4",
+          "sprite": "rusk",
+          "at": [
+            22,
+            18
+          ],
+          "name": "Goblin"
+        }
+      ],
+      "beats": [
+        "Silence after the fight. One goblin is still breathing.",
+        "Brannoc wants him tied up for questioning; Tamsin wants to know if goblins carry coin; Oriel kneels to stop the bleeding (c4).",
+        "Maddy Fenn comes out of the Crooked Kettle with a lamp and a rolling pin and offers them all a hot meal.",
+        "Brannoc and Oriel exchange a look: they held the line together.",
+        "Last line belongs to a party member."
+      ],
+      "checks": [
+        {
+          "id": "c4",
+          "actor": "oriel",
+          "skill": "medicine",
+          "dc": 10,
+          "reason": "Stop the bleeding of the goblin left alive, by lamplight, with her hands still shaking.",
+          "on_success": "The goblin will live to be questioned.",
+          "on_failure": "He lives, but only just; he won't be talking until morning."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "bond"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "lantern",
+      "id": "lantern_road.037",
+      "state": "dead"
+    },
+    {
+      "type": "npc",
+      "id": "npc.rusk",
+      "status": "captive",
+      "attitude": "hostile",
+      "location": "loc.crooked-kettle",
+      "note": "Taken alive after the raid on Brindle Cross (C01-E001).",
+      "if": "e1.won",
+      "name_known": false
+    },
+    {
+      "type": "npc",
+      "id": "npc.tobin-ashdown",
+      "note": "Gave Oriel his own sun-disc holy symbol at her first dusk devotion."
+    },
+    {
+      "type": "item",
+      "id": "holy_symbol_tobin",
+      "name": "Father Tobin's sun-disc holy symbol",
+      "holder": "oriel",
+      "qty": 1
+    },
+    {
+      "type": "gold",
+      "cp": 15,
+      "to": "tamsin",
+      "if": "c1.success"
+    },
+    {
+      "type": "flag",
+      "id": "ledger_unknown_warden_mark",
+      "value": true,
+      "if": "c2.success"
+    },
+    {
+      "type": "quest",
+      "id": "q.inspect-lanterns",
+      "objectives": [
+        "Find out why Lantern 37 went dark"
+      ]
+    },
+    {
+      "type": "hook",
+      "id": "hook.brass-button",
+      "status": "planted"
+    },
+    {
+      "type": "hook",
+      "id": "hook.flickering-warmth",
+      "status": "planted"
+    },
+    {
+      "type": "bond",
+      "a": "brannoc",
+      "b": "oriel",
+      "trust": 1,
+      "note": "Held the line together in the first fight."
+    },
+    {
+      "type": "clock",
+      "time_of_day": "night"
+    },
+    {
+      "type": "rest",
+      "kind": "long"
+    }
+  ],
+  "next_time": "The goblin who talked."
+}

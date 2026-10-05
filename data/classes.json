@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "source": "SRD 5.2 class tables (CC-BY-4.0), numeric columns used by the engine",
+    "verified": false,
+    "note": "Feature names are listed per level for the wiki; only numeric columns drive the engine. Check against SRD 5.2."
+  },
+  "full_caster_slots": {
+    "1": [2], "2": [3], "3": [4, 2], "4": [4, 3], "5": [4, 3, 2], "6": [4, 3, 3], "7": [4, 3, 3, 1],
+    "8": [4, 3, 3, 2], "9": [4, 3, 3, 3, 1], "10": [4, 3, 3, 3, 2], "11": [4, 3, 3, 3, 2, 1], "12": [4, 3, 3, 3, 2, 1],
+    "13": [4, 3, 3, 3, 2, 1, 1], "14": [4, 3, 3, 3, 2, 1, 1], "15": [4, 3, 3, 3, 2, 1, 1, 1], "16": [4, 3, 3, 3, 2, 1, 1, 1],
+    "17": [4, 3, 3, 3, 2, 1, 1, 1, 1], "18": [4, 3, 3, 3, 3, 1, 1, 1, 1], "19": [4, 3, 3, 3, 3, 2, 1, 1, 1], "20": [4, 3, 3, 3, 3, 2, 2, 1, 1]
+  },
+  "xp_thresholds": [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000],
+  "classes": {
+    "fighter": {
+      "hit_die": 10, "saves": ["str", "con"], "spellcasting": null,
+      "asi_levels": [4, 6, 8, 12, 14, 16],
+      "epic_boon_level": 19,
+      "subclass_level": 3,
+      "columns": {
+        "second_wind_uses": {"1": 2, "4": 3, "10": 4},
+        "action_surge_uses": {"2": 1, "17": 2},
+        "extra_attacks": {"1": 0, "5": 1, "11": 2, "20": 3},
+        "indomitable_uses": {"9": 1, "13": 2, "17": 3},
+        "weapon_masteries": {"1": 3, "4": 4, "10": 5, "16": 6}
+      },
+      "features": {
+        "1": ["Fighting Style", "Second Wind", "Weapon Mastery"], "2": ["Action Surge", "Tactical Mind"], "3": ["Fighter Subclass"],
+        "4": ["Ability Score Improvement"], "5": ["Extra Attack", "Tactical Shift"], "6": ["Ability Score Improvement"], "7": ["Subclass Feature"],
+        "8": ["Ability Score Improvement"], "9": ["Indomitable", "Tactical Master"], "10": ["Subclass Feature"], "11": ["Two Extra Attacks"],
+        "12": ["Ability Score Improvement"], "13": ["Indomitable (2 uses)", "Studied Attacks"], "14": ["Ability Score Improvement"],
+        "15": ["Subclass Feature"], "16": ["Ability Score Improvement"], "17": ["Action Surge (2 uses)", "Indomitable (3 uses)"],
+        "18": ["Subclass Feature"], "19": ["Epic Boon"], "20": ["Three Extra Attacks"]
+      },
+      "subclasses": {
+        "champion": {
+          "columns": {"crit_range": {"3": 19, "15": 18}},
+          "features": {"3": ["Improved Critical", "Remarkable Athlete"], "7": ["Additional Fighting Style"], "10": ["Heroic Warrior"], "15": ["Superior Critical"], "18": ["Survivor"]}
+        }
+      }
+    },
+    "rogue": {
+      "hit_die": 8, "saves": ["dex", "int"], "spellcasting": null,
+      "asi_levels": [4, 8, 10, 12, 16],
+      "epic_boon_level": 19,
+      "subclass_level": 3,
+      "columns": {
+        "sneak_attack_dice": {"1": 1, "3": 2, "5": 3, "7": 4, "9": 5, "11": 6, "13": 7, "15": 8, "17": 9, "19": 10}
+      },
+      "features": {
+        "1": ["Expertise", "Sneak Attack", "Thieves' Cant", "Weapon Mastery"], "2": ["Cunning Action"], "3": ["Rogue Subclass", "Steady Aim"],
+        "4": ["Ability Score Improvement"], "5": ["Cunning Strike", "Uncanny Dodge"], "6": ["Expertise"], "7": ["Evasion", "Reliable Talent"],
+        "8": ["Ability Score Improvement"], "9": ["Subclass Feature"], "10": ["Ability Score Improvement"], "11": ["Improved Cunning Strike"],
+        "12": ["Ability Score Improvement"], "13": ["Subclass Feature"], "14": ["Devious Strikes"], "15": ["Slippery Mind"],
+        "16": ["Ability Score Improvement"], "17": ["Subclass Feature"], "18": ["Elusive"], "19": ["Epic Boon"], "20": ["Stroke of Luck"]
+      },
+      "subclasses": {
+        "thief": {
+          "features": {"3": ["Fast Hands", "Second-Story Work"], "9": ["Supreme Sneak"], "13": ["Use Magic Device"], "17": ["Thief's Reflexes"]}
+        }
+      }
+    },
+    "wizard": {
+      "hit_die": 6, "saves": ["int", "wis"], "spellcasting": {"ability": "int", "type": "full", "prepares_from": "spellbook"},
+      "asi_levels": [4, 8, 12, 16],
+      "epic_boon_level": 19,
+      "subclass_level": 3,
+      "columns": {
+        "cantrips_known": {"1": 3, "4": 4, "10": 5},
+        "prepared_spells": {"1": 4, "2": 5, "3": 6, "4": 7, "5": 9, "6": 10, "7": 11, "8": 12, "9": 14, "10": 15, "11": 16, "12": 16, "13": 17, "14": 18, "15": 19, "16": 21, "17": 22, "18": 23, "19": 24, "20": 25}
+      },
+      "features": {
+        "1": ["Spellcasting", "Ritual Adept", "Arcane Recovery"], "2": ["Scholar"], "3": ["Wizard Subclass"], "4": ["Ability Score Improvement"],
+        "5": ["Memorize Spell"], "6": ["Subclass Feature"], "8": ["Ability Score Improvement"], "10": ["Subclass Feature"],
+        "12": ["Ability Score Improvement"], "14": ["Subclass Feature"], "16": ["Ability Score Improvement"], "18": ["Spell Mastery"],
+        "19": ["Epic Boon"], "20": ["Signature Spells"]
+      },
+      "subclasses": {
+        "evoker": {
+          "features": {"3": ["Evocation Savant", "Potent Cantrip"], "6": ["Sculpt Spells"], "10": ["Empowered Evocation"], "14": ["Overchannel"]}
+        }
+      }
+    },
+    "cleric": {
+      "hit_die": 8, "saves": ["wis", "cha"], "spellcasting": {"ability": "wis", "type": "full", "prepares_from": "class_list"},
+      "asi_levels": [4, 8, 12, 16],
+      "epic_boon_level": 19,
+      "subclass_level": 3,
+      "columns": {
+        "cantrips_known": {"1": 3, "4": 4, "10": 5},
+        "channel_divinity_uses": {"2": 2, "6": 3, "18": 4},
+        "prepared_spells": {"1": 4, "2": 5, "3": 6, "4": 7, "5": 9, "6": 10, "7": 11, "8": 12, "9": 14, "10": 15, "11": 16, "12": 16, "13": 17, "14": 17, "15": 18, "16": 18, "17": 19, "18": 20, "19": 21, "20": 22}
+      },
+      "features": {
+        "1": ["Spellcasting", "Divine Order"], "2": ["Channel Divinity"], "3": ["Cleric Subclass"], "4": ["Ability Score Improvement"],
+        "5": ["Sear Undead"], "6": ["Subclass Feature"], "7": ["Blessed Strikes"], "8": ["Ability Score Improvement"], "10": ["Divine Intervention"],
+        "12": ["Ability Score Improvement"], "14": ["Improved Blessed Strikes"], "16": ["Ability Score Improvement"], "17": ["Subclass Feature"],
+        "19": ["Epic Boon"], "20": ["Greater Divine Intervention"]
+      },
+      "subclasses": {
+        "life": {
+          "features": {"3": ["Disciple of Life", "Preserve Life", "Life Domain Spells"], "6": ["Blessed Healer"], "17": ["Supreme Healing"]}
+        }
+      }
+    }
+  },
+  "species": {
+    "dwarf":    {"speed": 30, "darkvision": 120, "resistances": ["poison"], "traits": ["dwarven_resilience", "dwarven_toughness", "stonecunning"], "hp_per_level": 1},
+    "elf":      {"speed": 30, "darkvision": 60, "traits": ["fey_ancestry", "keen_senses", "trance", "elven_lineage"]},
+    "halfling": {"speed": 30, "traits": ["brave", "halfling_nimbleness", "luck", "naturally_stealthy"]},
+    "human":    {"speed": 30, "traits": ["resourceful", "skillful", "versatile"]}
+  }
+}

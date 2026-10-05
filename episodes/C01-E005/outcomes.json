@@ -1,0 +1,171 @@
+{
+  "episode_id": "C01-E005",
+  "seed": "C01-E005-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s1",
+      "who": [
+        "brannoc",
+        "ilsevel",
+        "tamsin",
+        "oriel"
+      ],
+      "what": "Party - Stealth",
+      "dc": 11,
+      "result": "SUCCESS",
+      "margin": 5,
+      "natural": 9,
+      "note": "",
+      "means": "They reach the bushes at the edge of the firelight unseen and can watch the camp: three goblins, a tent, a fire, a cart with something grey in it.",
+      "group": [
+        {
+          "who": "brannoc",
+          "total": 6,
+          "success": false
+        },
+        {
+          "who": "ilsevel",
+          "total": 6,
+          "success": false
+        },
+        {
+          "who": "tamsin",
+          "total": 16,
+          "success": true
+        },
+        {
+          "who": "oriel",
+          "total": 11,
+          "success": true
+        }
+      ],
+      "passed": 2
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "tamsin",
+      "what": "Tamsin - Deception",
+      "dc": 12,
+      "result": "SUCCESS",
+      "margin": 8,
+      "natural": 17,
+      "note": "by a lot",
+      "means": "They believe her for a few precious breaths: the leader grumbles that the cart was not due to leave until dawn and that the boss counts every stone, and the goblins step away from their weapons. The others get the jump on them."
+    }
+  ],
+  "fights": [
+    {
+      "id": "e1",
+      "scene": "s2",
+      "winner": "party",
+      "rounds": 2,
+      "xp": 100,
+      "actions": [
+        "Initiative: Tamsin 25, Brannoc 21, Oriel 18, Goblin 13, Goblin Runt 13, Goblin Runt 4, Ilsevel 3",
+        "1. [round 1] Tamsin - Shortbow -> Goblin Runt: HIT for 5, Goblin Runt at 2 HP",
+        "   - Brannoc moves 30 ft",
+        "2. [round 1] Brannoc - Longsword -> Goblin Runt: HIT for 6, Goblin Runt at 0 HP",
+        "   - Goblin Runt falls",
+        "3. [round 1] Oriel - Sacred Flame: Goblin Runt 3 dmg failed save",
+        "   - Goblin moves 20 ft",
+        "4. [round 1] Goblin - Scimitar -> Tamsin: HIT for 6, Tamsin at 1 HP",
+        "5. [round 1] Goblin Runt - Dagger -> Tamsin: MISS",
+        "6. [round 1] Ilsevel - Fire Bolt: Goblin Runt miss",
+        "7. [round 2] Tamsin - Potion of Healing: Tamsin +8 HP",
+        "8. [round 2] Tamsin - Shortsword -> Goblin: MISS",
+        "   - Brannoc moves 20 ft",
+        "9. [round 2] Brannoc - Longsword -> Goblin: HIT for 10, Goblin at 0 HP",
+        "   - Goblin falls",
+        "10. [round 2] Oriel - Sacred Flame: Goblin Runt 7 dmg failed save",
+        "   - Goblin Runt falls",
+        "END: victory, 100 XP"
+      ],
+      "end_state": {
+        "tamsin": {
+          "hp": 9,
+          "down": false,
+          "dead": false,
+          "pos": [
+            35,
+            20
+          ]
+        },
+        "brannoc": {
+          "hp": 13,
+          "down": false,
+          "dead": false,
+          "pos": [
+            36,
+            20
+          ]
+        },
+        "oriel": {
+          "hp": 10,
+          "down": false,
+          "dead": false,
+          "pos": [
+            31,
+            21
+          ]
+        },
+        "ilsevel": {
+          "hp": 4,
+          "down": false,
+          "dead": false,
+          "pos": [
+            29,
+            20
+          ]
+        },
+        "goblin-1": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            36,
+            19
+          ]
+        },
+        "goblin-2": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            42,
+            23
+          ]
+        },
+        "goblin-3": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            38,
+            24
+          ]
+        }
+      }
+    }
+  ],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "4/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "9/10",
+      "conditions": []
+    }
+  }
+}

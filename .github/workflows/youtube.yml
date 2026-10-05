@@ -1,0 +1,68 @@
+# Upload released episodes to YouTube and schedule their premieres
+# (scripts/youtube_upload.py, settings in production/youtube.json, setup in
+# production/YOUTUBE.md). Started by release.yml after each new release, and
+# daily after the premiere slot so the wiki gets its "Watch on YouTube" links.
+name: youtube
+on:
+  schedule:
+    - cron: "37 20 * * *"      # after the 15:00 New York premiere (EDT and EST)
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "record = register a video you uploaded by hand; check = test the credentials; plan = dry run; upload = upload and schedule"
+        default: record
+        type: choice
+        options: [record, upload, plan, check]
+      episode:
+        description: "record: episode number (e.g. 3)"
+        required: false
+      video:
+        description: "record: the video's link (e.g. https://youtu.be/abc123)"
+        required: false
+      when:
+        description: "record: when it goes public, Paris time (e.g. 2026-10-08 21:00); empty = already public"
+        required: false
+permissions: {contents: write, actions: write}
+concurrency: {group: youtube, cancel-in-progress: false}
+jobs:
+  youtube:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: "${{ github.token }}"
+      YT_CLIENT_ID: "${{ secrets.YT_CLIENT_ID }}"
+      YT_CLIENT_SECRET: "${{ secrets.YT_CLIENT_SECRET }}"
+      YT_REFRESH_TOKEN: "${{ secrets.YT_REFRESH_TOKEN }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pillow
+      - name: Run
+        env:
+          CMD: "${{ inputs.command || 'upload' }}"
+          EPISODE: "${{ inputs.episode }}"
+          VIDEO: "${{ inputs.video }}"
+          WHEN: "${{ inputs.when }}"
+        run: |
+          if [ "$CMD" = "record" ]; then
+            python scripts/youtube_upload.py record "$EPISODE" "$VIDEO" "$WHEN"
+          else
+            python scripts/youtube_upload.py "$CMD"
+          fi
+      - name: Mark premieres that have passed
+        if: always()
+        run: python scripts/youtube_upload.py link
+      - name: Save the ledger and rebuild the wiki
+        if: always()
+        run: |
+          git config user.name "pqc-youtube"
+          git config user.email "pqc-youtube@users.noreply.github.com"
+          if git diff --quiet -- wiki/data/youtube.json && ! git ls-files --others --exclude-standard | grep -q youtube.json; then
+            echo "No changes."; exit 0
+          fi
+          python -c "from pqc.pipeline.wiki import build_site; build_site()"
+          git add wiki/data/youtube.json wiki/docs
+          git commit -qm "YouTube: update uploads ledger"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done
+          gh workflow run wiki.yml

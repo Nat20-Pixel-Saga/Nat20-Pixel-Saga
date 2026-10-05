@@ -1,0 +1,209 @@
+{
+ "schema": "pqc/plan@1",
+ "episode_id": "C01-E002",
+ "title": "The Goblin Who Talked",
+ "summary": "The morning after the raid. The goblin taken alive has spent the night tied to a rain barrel outside the Crooked Kettle, with Brannoc on watch. Oriel brings bread, Brannoc stands behind her like a wall, and the goblin, Rusk, talks: goblins are paid in food to carry lantern-cores to someone in the hills. Ilsevel tries to tell whether he is lying. By the well, Ilsevel asks Tamsin about the velvet thread on her wrist. At noon Maddy Fenn offers free board to whoever brings the light back to Lantern 37, and each of the four says yes for a reason of their own.",
+ "dm_intro": {
+  "title": "The Goblin Who Talked",
+  "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+  "text": "Morning comes grey over Brindle Cross. Last night Lantern Thirty-Seven on the south road went dark, and goblins came up out of the night. Four strangers held the square together: a dwarf soldier, an elf archivist, a halfling card player and the shrine's young priestess. One goblin was taken alive. He has spent the night tied to a rain barrel outside the Crooked Kettle, and he has not said a word."
+ },
+ "scenes": [
+  {
+   "id": "s1",
+   "name": "The Night Watch Ends",
+   "location": "loc.crooked-kettle",
+   "map": "brindle_cross",
+   "time_of_day": "morning",
+   "camera": [11, 9],
+   "music": "calm_village",
+   "transition": "cut",
+   "cast": [
+    {"id": "brannoc", "at": [14, 9], "facing": "left", "name": "Brannoc"},
+    {"id": "rusk", "sprite": "rusk", "at": [12, 8], "facing": "down", "name": "Goblin"},
+    {"id": "maddy_fenn", "at": [9, 8], "facing": "down", "name": "Maddy Fenn"}
+   ],
+   "beats": [
+    "Dawn outside the Crooked Kettle. The captive goblin is tied to the rain barrel; Brannoc has sat up with him all night and is still counting things (shutters broken, arrows in the door).",
+    "Maddy Fenn comes out with a broom and the morning's grievances: who is paying for her shutters, the Eight?",
+    "Oriel arrives from the shrine with a loaf and a bowl. The goblin will not eat while anyone watches."
+   ],
+   "checks": [],
+   "encounter": null,
+   "pillars": ["talk"]
+  },
+  {
+   "id": "s2",
+   "name": "Bread and a Name",
+   "location": "loc.crooked-kettle",
+   "map": "brindle_cross",
+   "time_of_day": "morning",
+   "camera": [11, 9],
+   "music": "calm_village",
+   "transition": "continue",
+   "cast": [
+    {"id": "oriel", "at": [11, 10], "facing": "up", "name": "Oriel"},
+    {"id": "ilsevel", "at": [10, 11], "facing": "up", "name": "Ilsevel"},
+    {"id": "tamsin", "at": [14, 10], "facing": "up", "name": "Tamsin"}
+   ],
+   "beats": [
+    "Ilsevel, notebook already open, and Tamsin, yawning, come out of the inn. Brannoc wants to frighten the goblin; Oriel wants to feed him. They do both: Oriel kneels with the bread and asks his name while Brannoc stands silent behind her (c1, Brannoc helping).",
+    "The goblin talks, as much as c1 allows: goblins are paid in food to carry lantern-cores up into the hills, to a boss he will not or cannot name, who gets the food from someone else.",
+    "Ilsevel watches his face and tries to judge whether he is telling the truth or telling them what keeps him fed (c2).",
+    "Tamsin asks what a lantern-core is worth to a goblin. 'Supper,' says the goblin."
+   ],
+   "checks": [
+    {
+     "id": "c1",
+     "actor": "oriel",
+     "skill": "persuasion",
+     "dc": 15,
+     "advantage": true,
+     "reason": "Get a hostile, half-starved goblin captive to talk by kneeling with bread and asking his name, while Brannoc stands silent behind her (Help: advantage). Rusk is terrified and has every reason to say nothing.",
+     "on_success": "He gives his name, Rusk, eats, and talks freely: goblins carry lantern-cores up into the hills to their boss and are paid in sacks of food that come from somewhere else. He begs not to be sent back.",
+     "on_failure": "He snatches the bread and gives only scraps: his name, Rusk, and 'shiny stones for food'. He will not say where the stones go or who pays."
+    },
+    {
+     "id": "c2",
+     "actor": "ilsevel",
+     "skill": "insight",
+     "dc": 13,
+     "reason": "Read whether the goblin is telling the truth or only what keeps him fed. Ilsevel has studied goblins in books, never a goblin face.",
+     "on_success": "He is telling the truth, and he is more afraid of going back than of them.",
+     "on_failure": "She cannot read him at all, and says she will not trust a word that is not written down. Oriel disagrees."
+    }
+   ],
+   "encounter": null,
+   "pillars": ["talk"]
+  },
+  {
+   "id": "s3",
+   "name": "The Velvet Thread",
+   "location": "loc.brindle-cross",
+   "map": "brindle_cross",
+   "time_of_day": "day",
+   "camera": [19, 11],
+   "music": "calm_village",
+   "transition": "cut",
+   "cast": [
+    {"id": "tamsin", "at": [18, 12], "facing": "right", "name": "Tamsin"},
+    {"id": "ilsevel", "at": [20, 12], "facing": "left", "name": "Ilsevel"}
+   ],
+   "beats": [
+    "Later, by the well. Ilsevel is writing up the questioning; Tamsin reads over her shoulder and corrects her spelling of 'goblin' (wrongly). They trade barbs: 'Professor' against 'Mistress Mossfoot'.",
+    "Ilsevel notices the thin velvet thread tied round Tamsin's wrist and asks about it. Tamsin answers with the story of a lucky charm from her grandmother (c3).",
+    "Whatever the result, neither presses it. Ilsevel writes something down. Tamsin pretends not to see."
+   ],
+   "checks": [
+    {
+     "id": "c3",
+     "actor": "tamsin",
+     "skill": "deception",
+     "contest": {"actor": "ilsevel", "skill": "insight"},
+     "reason": "Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the lie.",
+     "on_success": "Ilsevel accepts the story, more or less, and lets it drop.",
+     "on_failure": "Ilsevel says plainly that she does not believe a word of it. Tamsin changes the subject and does not answer."
+    }
+   ],
+   "encounter": null,
+   "pillars": ["bond", "talk"]
+  },
+  {
+   "id": "s4",
+   "name": "Free Board",
+   "location": "loc.crooked-kettle",
+   "map": "brindle_cross",
+   "time_of_day": "day",
+   "camera": [10, 10],
+   "music": "calm_village",
+   "transition": "cut",
+   "cast": [
+    {"id": "maddy_fenn", "at": [9, 9], "facing": "down", "name": "Maddy Fenn"},
+    {"id": "wil_fenn", "at": [7, 10], "facing": "right", "name": "Wil Fenn"},
+    {"id": "brannoc", "at": [11, 10], "facing": "left", "name": "Brannoc"},
+    {"id": "oriel", "at": [10, 11], "facing": "up", "name": "Oriel"},
+    {"id": "ilsevel", "at": [8, 11], "facing": "up", "name": "Ilsevel"},
+    {"id": "tamsin", "at": [12, 9], "facing": "left", "name": "Tamsin"}
+   ],
+   "beats": [
+    "Noon outside the Kettle. Rusk has been moved to the inn's root cellar, with a blanket Oriel insisted on. Maddy gathers the four: the south road is the village's road to everywhere, and nobody in Brindle Cross can fix a lantern.",
+    "Maddy offers free board and meals at the Kettle to whoever brings the light back to Lantern 37. Wil asks to go along; Brannoc says no.",
+    "Each agrees for a reason of their own: Ilsevel because it is her job and the ledger is wrong; Oriel because it is her home and she felt the light go out; Tamsin because 'free' is her favourite word and the road is a good place to be hard to find; Brannoc last, because the road is dark and somebody has to hold it.",
+    "Last line belongs to a party member."
+   ],
+   "checks": [],
+   "encounter": null,
+   "pillars": ["bond", "talk"]
+  }
+ ],
+ "state_proposals": [
+  {
+   "type": "npc",
+   "id": "npc.rusk",
+   "status": "captive",
+   "location": "loc.crooked-kettle",
+   "name_known": true,
+   "note": "Questioned outside the Crooked Kettle (C01-E002): goblins are paid in food to carry lantern-cores up into the hills to their boss. Kept in the inn's root cellar."
+  },
+  {
+   "type": "npc",
+   "id": "npc.rusk",
+   "attitude": "indifferent",
+   "note": "Ate Oriel's bread and begged not to be sent back.",
+   "if": "c1.success"
+  },
+  {
+   "type": "flag",
+   "id": "cores_traded_for_food",
+   "value": true
+  },
+  {
+   "type": "flag",
+   "id": "rusk_afraid_to_go_back",
+   "value": true,
+   "if": "c2.success"
+  },
+  {
+   "type": "npc",
+   "id": "npc.maddy-fenn",
+   "note": "Offered free board at the Crooked Kettle to whoever relights Lantern 37."
+  },
+  {
+   "type": "quest",
+   "id": "q.relight-lantern-37",
+   "title": "Bring back the light of Lantern 37",
+   "giver": "npc.maddy-fenn",
+   "reward_cp": 0,
+   "objectives": [
+    "Find out what happened to Lantern 37",
+    "Bring the light back to the south road (reward: free board at the Crooked Kettle)"
+   ]
+  },
+  {
+   "type": "hook",
+   "id": "hook.velvet-hand-debt",
+   "status": "planted"
+  },
+  {
+   "type": "bond",
+   "a": "ilsevel",
+   "b": "tamsin",
+   "tension": 1,
+   "note": "Ilsevel did not believe Tamsin's story about the velvet thread.",
+   "if": "c3.failure"
+  },
+  {
+   "type": "bond",
+   "a": "ilsevel",
+   "b": "oriel",
+   "tension": 1,
+   "note": "Disagreed about whether a goblin's word can be trusted.",
+   "if": "c2.failure"
+  },
+  {
+   "type": "clock",
+   "time_of_day": "day"
+  }
+ ],
+ "next_time": "The long walk to Lantern Thirty-Seven."
+}

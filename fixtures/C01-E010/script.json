@@ -1,0 +1,290 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E010",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Fort Harrow, the far end of the Lantern Road. Grey walls, and one lantern burning by the gate."
+    },
+    {
+     "op": "narrate",
+     "text": "Two soldiers lean on the arch. They look as if they haven't slept in a week."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Brannoc, you've asked me how I feel nine times since Wending Mill."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Ten."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "I'm well. Truly. Father Tobin says I'm too stubborn to die.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Sunshine, you scared ten years off the Big Man, and he hasn't got that many left."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Two hundred. Give or take."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Dwarves commonly live to three hundred and fifty. He is a youth. Technically."
+    },
+    {
+     "op": "say",
+     "speaker": "dunn",
+     "text": "Eight blind, is that Bran Vow? We had you dead in a ditch, Bran!",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Dunn. Still a corporal."
+    },
+    {
+     "op": "say",
+     "speaker": "dunn",
+     "text": "Still alive, which is more than the last three sergeants managed. Who're your friends?"
+    },
+    {
+     "op": "say",
+     "speaker": "ferrick",
+     "text": "Bran Vow? Sergeant says that's not his name at all. Says he's an Ironvow. An exile, out of Aldhammer."
+    },
+    {
+     "op": "emote",
+     "actor": "dunn",
+     "emote": "angry"
+    },
+    {
+     "op": "say",
+     "speaker": "dunn",
+     "text": "Ferrick. Shut your mouth before I shut it for you."
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc says nothing at all. His thumb finds the grey paint on his shield. Everyone heard."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "So! Corporal. Is there anywhere in this fort a weary traveller can get a hot drink? Asking for the Big Man. He's shy.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "dunn",
+     "text": "Mess is by the well. Captain'll want you first, mind."
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Bran."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Captain."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Report. Short version."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Lantern Thirty-Seven's core taken by hand. Goblins carting cores east. Paid in food."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Wending Mill raided. Saved. Forty-One's dark."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "That's more words than I've had out of you in three years."
+    },
+    {
+     "op": "narrate",
+     "text": "Oriel watches the captain while she listens."
+    },
+    {
+     "op": "check",
+     "id": "c1"
+    },
+    {
+     "op": "narrate",
+     "text": "Oriel sees the grey under Rook's eyes, and the glances she keeps giving her half-empty walls."
+    },
+    {
+     "op": "narrate",
+     "text": "And the way she looks at Brannoc: like someone keeping a door shut for him."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Forty soldiers. A hundred and forty lanterns. I have written to the Crown four times. The Crown writes back."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Ten crowns a week, each of you. Ride the road. Find out who's buying those cores. Short version: I need you."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Ten? Captain, for a company of our quality I'd think twenty. Fifteen. Twelve, and you throw in a spoon."
+    },
+    {
+     "op": "check",
+     "id": "c2"
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Ten. Take it or walk."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Ten is a lovely number. I've always said so.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "We accept. Technically the Order already employs me to inspect these lanterns, but I see no conflict."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "We accept. All of us."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "And my dispatches for Lamplighters' Hall, soldier? You're three days late."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Still in my pack. Got held up."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "I am of the Hall. Technically, I can receive them."
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc hands Ilsevel a sealed packet, slightly singed at one corner."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Then they're delivered. Good. Get some food in you."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Evening. Sergeant Holt's patrol comes in through the gate with a cart, and something long under a sack."
+    },
+    {
+     "op": "say",
+     "speaker": "holt",
+     "text": "Caught this one at dusk, trying to pry open Lantern Fifty-Two. Didn't get it open. Didn't get away either."
+    },
+    {
+     "op": "narrate",
+     "text": "Around the dead goblin's neck, on a greasy cord, hangs a pendant of polished black glass."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "You're the Lamplighter. What is it?"
+    },
+    {
+     "op": "check",
+     "id": "c3"
+    },
+    {
+     "op": "narrate",
+     "text": "Ilsevel lifts it toward the lantern. The flame leans toward the glass, the way a candle leans toward an open door, and grows dim."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "It is drinking the light. And it is cold. Cold the way the dead cores were cold.",
+     "emote": "shock"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Goblins didn't make that."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "No. Somebody gave it to one."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Somebody who pays in sacks of meal, and hands out glass crowns. And now glass necklaces."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Holt. Double the watch on the lanterns tonight."
+    },
+    {
+     "op": "say",
+     "speaker": "holt",
+     "text": "With what, Captain?"
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "...With what we have."
+    },
+    {
+     "op": "say",
+     "speaker": "edda_rook",
+     "text": "Then find me that somebody."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "I have never read of anything like it. Not in any book. Not once."
+    }
+   ]
+  }
+ ],
+ "next_time": "Black glass, and a letter to Lamplighters' Hall."
+}

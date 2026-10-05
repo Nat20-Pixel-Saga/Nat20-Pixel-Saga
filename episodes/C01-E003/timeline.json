@@ -1,0 +1,771 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E003",
+  "title": "C01-E003 - The Empty Housing",
+  "fps": 30,
+  "seed": "C01-E003-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 3 - The Empty Housing"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "lantern_road",
+      "time_of_day": "day",
+      "camera": [
+        18,
+        4
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        18,
+        1
+      ],
+      "facing": "down",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        19,
+        1
+      ],
+      "facing": "down",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        18,
+        0
+      ],
+      "facing": "down",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        19,
+        0
+      ],
+      "facing": "down",
+      "name": "Oriel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "The Empty Housing",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+      "text": "The Lantern Road runs south from Brindle Cross toward Fort Harrow, one lantern to every mile. A mile out of the village, Lantern Thirty-Seven stands dark for the first time in three hundred years. Last night goblins came up this road. This afternoon four strangers walk down it: a soldier, an archivist, a card player and a priestess, promised free board at the Crooked Kettle if they can bring the light back."
+    },
+    {
+      "op": "music",
+      "track": "road",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "The Lantern Road  -  One Mile South  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          18,
+          5
+        ]
+      ],
+      "speed": 4,
+      "face": "down",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          19,
+          5
+        ]
+      ],
+      "speed": 4,
+      "face": "down",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          18,
+          4
+        ]
+      ],
+      "speed": 4,
+      "face": "left",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          19,
+          4
+        ]
+      ],
+      "speed": 4,
+      "face": "down",
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "The south road out of Brindle Cross. Four strangers, one mile, and no agreement yet on who walks in front."
+    },
+    {
+      "op": "say",
+      "text": "Mossfoot. Why's a card player walking an empty road?",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Big Man! You do talk to me. I was starting to think you only spoke to goblins and onions.",
+      "speaker": "tamsin",
+      "emote": "happy"
+    },
+    {
+      "op": "say",
+      "text": "Truth is, I once walked the whole width of the Vael for a bet. Roads are where the good stories are.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "That's not an answer.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "It's a story. Better than an answer. Lasts longer.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "emote",
+      "actor": "brannoc",
+      "emote": "dots",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "'Brindle Cross, one mile. Fort Harrow, thirty-nine.' It is thirty-eight and a half. Someone carved this in a hurry.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Thirty-nine miles. Two days' march. Less, with nobody arguing.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "face",
+      "actor": "oriel",
+      "facing": "right"
+    },
+    {
+      "op": "narrate",
+      "text": "Past the bend, the birds have stopped singing. The grass around the dark lantern is the colour of old ash."
+    },
+    {
+      "op": "say",
+      "text": "Listen. No birds past the bend. And the grass has gone grey. In daylight.",
+      "speaker": "oriel",
+      "emote": "question"
+    },
+    {
+      "op": "say",
+      "text": "Fringe Unlight. Halbrecht's Lantern Theory, the 1002 edition, says it takes days to gather. It has been one night.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Lovely. Let's go and stand in it.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "lantern_road",
+      "time_of_day": "day",
+      "camera": [
+        22,
+        12
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        21,
+        12
+      ],
+      "facing": "right",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        23,
+        12
+      ],
+      "facing": "left",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        21,
+        13
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        24,
+        14
+      ],
+      "facing": "left",
+      "name": "Brannoc"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "The Lantern Road  -  The Empty Housing  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "lantern",
+      "id": "lantern_road.037",
+      "state": "dead",
+      "flicker": 0,
+      "sfx": false,
+      "unlight": {
+        "radius": 56,
+        "grow": 1.0,
+        "strength": 0.45
+      }
+    },
+    {
+      "op": "narrate",
+      "text": "Lantern Thirty-Seven. Its glass is grey and furred with frost, though the afternoon sun is warm on everyone's back."
+    },
+    {
+      "op": "say",
+      "text": "The Order issues every inspector a housing key. It is in here. Somewhere. Between the almanac and my spare quills.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Professor, may I? It's a catch, not a riddle.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E003-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Work open a frost-stiff Lamplighter housing catch by hand while Ilsevel is still looking for the key, with three peo",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 6
+          }
+        ],
+        "rolls": [
+          6
+        ],
+        "kept": [
+          6
+        ],
+        "modifier": 7,
+        "total": 13,
+        "advantage": "none",
+        "natural": 6,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Sleight Of Hand",
+      "line": "6 + 7 = 13 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "Tamsin breathes on her fingers, slides a hairpin under the frosted catch, and leans. For a long moment, nothing. Then it gives."
+    },
+    {
+      "op": "say",
+      "text": "There. Stubborn little thing. And somebody's been in here before me.",
+      "speaker": "tamsin",
+      "emote": "exclaim"
+    },
+    {
+      "op": "say",
+      "text": "See the scratches round the catch? Fresh. Someone opened this lately, and not with a key.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "You did that in less time than it takes me to find a key. I am writing that down.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Write down that I'm charming.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "I will write down that you are practised.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "emote",
+      "actor": "tamsin",
+      "emote": "sweat",
+      "duration": 1.2
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel leans into the open housing, close enough that her breath frosts on the glass."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E003-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Read the inside of an empty lantern housing: tool marks, the cradle clasps, frost patterns. Ilsevel knows lantern-cr",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 6
+          }
+        ],
+        "rolls": [
+          6
+        ],
+        "kept": [
+          6
+        ],
+        "modifier": 5,
+        "total": 11,
+        "advantage": "none",
+        "natural": 6,
+        "dc": 14,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Investigation",
+      "line": "6 + 5 = 11 vs DC 14 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "The cradle inside is empty. No shards in the grass, no crack in the glass. Whatever burned here was lifted out whole."
+    },
+    {
+      "op": "say",
+      "text": "It was not broken. It was taken. Lifted out of its cradle like an egg from a nest.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Who did it, or how, this housing will not tell me. I have read every book on lantern-craft in the Hall. None of them covers theft.",
+      "speaker": "ilsevel",
+      "emote": "sad"
+    },
+    {
+      "op": "camera",
+      "to": [
+        22,
+        14
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Goblins. The goblin said they carry the stones.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Goblins who open a Lamplighter housing without a key. Technically possible. I do not like it.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "face",
+      "actor": "oriel",
+      "facing": "up"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel lays her palm flat against the iron post. It is cold enough to ache."
+    },
+    {
+      "op": "say",
+      "text": "Aurelan, keep the light. Keep the road. Keep...",
+      "speaker": "oriel"
+    },
+    {
+      "op": "narrate",
+      "text": "She waits for the warmth that has always answered her. It does not come. Oriel takes her hand away."
+    },
+    {
+      "op": "say",
+      "text": "Oriel?",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "It's cold. That's all. It's only cold.",
+      "speaker": "oriel",
+      "emote": "sweat"
+    },
+    {
+      "op": "time_of_day",
+      "preset": "dusk",
+      "duration": 2.0,
+      "wait": false
+    },
+    {
+      "op": "camera",
+      "to": [
+        26,
+        14
+      ],
+      "duration": 1.0,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "tension",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "The Lantern Road  -  The Trail East  -  Dusk",
+      "duration": 3.0
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          25,
+          14
+        ]
+      ],
+      "speed": 4,
+      "face": "right"
+    },
+    {
+      "op": "narrate",
+      "text": "The sun slides down behind the field. Where the dark trail leaves the road, Brannoc goes down on one knee."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0002",
+        "index": 2,
+        "seed": "C01-E003-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c3: Read a goblin trail on trampled earth in failing light: how many, how old, carrying what.",
+        "actor": "brannoc",
+        "target": null,
+        "draws": [
+          {
+            "counter": 2,
+            "sides": 20,
+            "value": 4
+          }
+        ],
+        "rolls": [
+          4
+        ],
+        "kept": [
+          4
+        ],
+        "modifier": 3,
+        "total": 7,
+        "advantage": "none",
+        "natural": 4,
+        "dc": 13,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Brannoc - Survival",
+      "line": "4 + 3 = 7 vs DC 13 FAIL"
+    },
+    {
+      "op": "narrate",
+      "text": "The earth has been trodden to mud by many feet, over and over. Brannoc reads it three ways and believes none of them."
+    },
+    {
+      "op": "say",
+      "text": "Goblins. Some. Last night, or last week. Can't tell.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Ground's been walked to soup. Could be four. Could be forty.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Forty. Lovely. My favourite number of goblins is none.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "It will be fully dark within the hour. I would like that noted before anyone decides anything.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "And goblins like the dark. Noted twice.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "That's where they went.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Then that's where the light went too. Brannoc, in front?",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Single file. Behind me.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "move",
+      "actor": "brannoc",
+      "path": [
+        [
+          28,
+          14
+        ],
+        [
+          30,
+          16
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "oriel",
+      "path": [
+        [
+          26,
+          13
+        ],
+        [
+          29,
+          16
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "tamsin",
+      "path": [
+        [
+          24,
+          12
+        ],
+        [
+          28,
+          16
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "move",
+      "actor": "ilsevel",
+      "path": [
+        [
+          21,
+          13
+        ],
+        [
+          26,
+          13
+        ],
+        [
+          28,
+          15
+        ]
+      ],
+      "speed": 4,
+      "face": "right",
+      "wait": false
+    },
+    {
+      "op": "narrate",
+      "text": "Behind them, the road still holds the last of the light. Ahead, the Thornpike Woods are already night."
+    },
+    {
+      "op": "narrate",
+      "text": "Somebody starts to hum a hymn, very quietly and not very well."
+    },
+    {
+      "op": "camera",
+      "to": [
+        29,
+        16
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Sunshine. Are you singing?",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Only when I'm nervous. Keep walking.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Night falls in the Thornpike Woods."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "One Mile South"
+    },
+    {
+      "cue": 29,
+      "title": "The Empty Housing"
+    },
+    {
+      "cue": 65,
+      "title": "The Trail East"
+    },
+    {
+      "cue": 91,
+      "title": "Next time"
+    }
+  ]
+}

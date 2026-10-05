@@ -1,0 +1,352 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E009",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "The heat hits them like a door slamming. The barn's roof is alight from end to end, and the pole across its doors is swollen fast in its brackets."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Stand back."
+    },
+    {
+     "op": "check",
+     "id": "c1"
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc gets his shoulder under the pole and heaves. It comes free at the first try, and the doors swing wide."
+    },
+    {
+     "op": "spawn",
+     "actor": "bet",
+     "sprite": "villager_c",
+     "at": [
+      36,
+      22
+     ],
+     "facing": "down",
+     "name": "Bet Hollis"
+    },
+    {
+     "op": "spawn",
+     "actor": "lad",
+     "sprite": "villager_a",
+     "at": [
+      37,
+      22
+     ],
+     "facing": "down",
+     "name": "Lad"
+    },
+    {
+     "op": "move",
+     "actor": "bet",
+     "to": [
+      34,
+      23
+     ],
+     "face": "left",
+     "wait": false
+    },
+    {
+     "op": "move",
+     "actor": "lad",
+     "to": [
+      34,
+      24
+     ],
+     "face": "left"
+    },
+    {
+     "op": "say",
+     "speaker": "bet",
+     "text": "Oh, thank the Eight. The lad... he went back for the cow. He breathed too much of it.",
+     "emote": "sweat"
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      33,
+      24
+     ],
+     "face": "right"
+    },
+    {
+     "op": "check",
+     "id": "c2"
+    },
+    {
+     "op": "narrate",
+     "text": "The lad's eyes roll back. Oriel gets him breathing, barely, but his legs will not hold him."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Tamsin, take Bet to the mill! I'll bring him!"
+    },
+    {
+     "op": "move",
+     "actor": "bet",
+     "to": [
+      24,
+      18
+     ],
+     "face": "left"
+    },
+    {
+     "op": "despawn",
+     "actor": "bet"
+    },
+    {
+     "op": "move",
+     "actor": "lad",
+     "to": [
+      31,
+      24
+     ],
+     "face": "left"
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      31,
+      23
+     ],
+     "face": "left",
+     "wait": false
+    },
+    {
+     "op": "despawn",
+     "actor": "lad"
+    },
+    {
+     "op": "narrate",
+     "text": "Oriel hauls the lad to the yard's edge, one arm across her shoulders, and lays him in the grass. She is still kneeling there when the smoke parts."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Brannoc. Whoever set this fire is still here.",
+     "emote": "alert"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Out of the smoke walks a goblin bigger than the rest, in a dented helmet with a strip of glass riveted across the brow. Two of his crew flank him."
+    },
+    {
+     "op": "narrate",
+     "text": "He looks at his dead in the mill yard. Then at the four of them. Then he says something in Goblin, quite calmly."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "He says: 'The boss pays for stones. He pays more for the ones who stop us.'",
+     "emote": "shock"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Wonderful. We've got a price on us.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Ilsevel. Anything left?"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Cantrips. Only cantrips."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Me too. I'm sorry."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Then it's steel. Get behind me.",
+     "emote": "angry"
+    },
+    {
+     "op": "encounter",
+     "id": "e1"
+    }
+   ],
+   "battle_narration": [
+    {
+     "after": 0,
+     "text": "Nobody has anything left but steel and small fire."
+    },
+    {
+     "after": 4,
+     "text": "The first goblin's scimitar bites into Brannoc's side. He sets his feet and hits back."
+    },
+    {
+     "after": 8,
+     "text": "The boss goes straight past Brannoc to Oriel, still kneeling by the fence. Two cuts. She goes down without a sound."
+    },
+    {
+     "after": 10,
+     "text": "Ilsevel's fire bolt takes the runt off its feet. Behind Brannoc, Oriel's breath catches, and falters."
+    },
+    {
+     "after": 12,
+     "text": "Brannoc ends the goblin with one stroke and turns, alone, to face the boss."
+    },
+    {
+     "after": 16,
+     "text": "On the ground, Oriel's fingers move in the dirt. Still here."
+    },
+    {
+     "after": 24,
+     "text": "Again and again the boss's blades glance off Brannoc's shield. He does not give an inch, and he does not look down."
+    },
+    {
+     "after": 26,
+     "text": "Oriel's breathing steadies. Not awake. But not slipping any more."
+    },
+    {
+     "after": 29,
+     "text": "The second blade gets through. Brannoc staggers, nearly done, and keeps his shield up anyway."
+    },
+    {
+     "after": 31,
+     "text": "A bolt of fire from behind him. The boss drops, and the dented helmet rolls across the yard."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Brannoc lets his sword fall and goes down on his knees beside Oriel."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Oriel. Oriel. Breathe. Keep breathing.",
+     "emote": "shock"
+    },
+    {
+     "op": "check",
+     "id": "a1"
+    },
+    {
+     "op": "narrate",
+     "text": "His big hands are shaking, but they know this work. He turns her on her side, clears her mouth, and holds her steady. She is breathing."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Not you. Not you as well."
+    },
+    {
+     "op": "move",
+     "actor": "tamsin",
+     "to": [
+      30,
+      24
+     ],
+     "face": "right"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Four arrows at the big one, Big Man. Not one of them hit.",
+     "emote": "sad"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "You kept it looking at you instead of at her. Technically, that counts."
+    },
+    {
+     "op": "narrate",
+     "text": "By dusk the barn is a black frame. All of Wending Mill passes buckets from the millpond, and the mill still stands."
+    },
+    {
+     "op": "spawn",
+     "actor": "miller",
+     "sprite": "miller",
+     "at": [
+      27,
+      22
+     ],
+     "facing": "right",
+     "name": "Ned Hollis"
+    },
+    {
+     "op": "move",
+     "actor": "miller",
+     "to": [
+      30,
+      22
+     ],
+     "face": "right"
+    },
+    {
+     "op": "narrate",
+     "text": "Ned Hollis comes across the yard with blankets and a loaf. Oriel sleeps on, breathing slow and even."
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc has not moved from her side."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Big Man. Sit down. You're bleeding on the bread.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "...Don't care."
+    },
+    {
+     "op": "move",
+     "actor": "ilsevel",
+     "to": [
+      32,
+      24
+     ],
+     "face": "up"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "This glass on the boss's helmet. It is lantern-glass. Riveted on like a crown."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "So somebody's handing out crowns to goblins now."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Then tomorrow we tell Rook. All of it."
+    }
+   ]
+  }
+ ],
+ "next_time": "Fort Harrow, and Captain Rook."
+}

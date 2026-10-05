@@ -1,0 +1,118 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/campaign@1",
+ "title": "Campaign beat file",
+ "description": "Campaign bible output (Fable 5.1): one beat per episode with entity tags, encounters and milestones.",
+ "type": "object",
+ "required": [
+  "schema",
+  "campaign",
+  "title",
+  "levels",
+  "episodes"
+ ],
+ "properties": {
+  "schema": {
+   "const": "pqc/campaign@1"
+  },
+  "campaign": {
+   "type": "integer"
+  },
+  "title": {
+   "type": "string"
+  },
+  "logline": {
+   "type": "string"
+  },
+  "levels": {
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "minItems": 2
+  },
+  "episodes": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "episode",
+     "title",
+     "act",
+     "beat",
+     "tags"
+    ],
+    "properties": {
+     "episode": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "title": {
+      "type": "string"
+     },
+     "act": {
+      "type": "integer"
+     },
+     "beat": {
+      "type": "string"
+     },
+     "tags": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "maps": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "encounter": {
+      "type": [
+       "object",
+       "null"
+      ]
+     },
+     "key_rolls": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "pillars": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "milestone_level": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "hooks": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "reveal": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "bond": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  }
+ }
+}

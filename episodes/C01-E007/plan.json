@@ -1,0 +1,294 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E007",
+  "title": "The Saint of the Open Hand",
+  "summary": "5 Emberfall. The party walks back into Brindle Cross with three dead lantern-cores and no lit lantern. Maddy Fenn wants to know who is paying for all this; Father Tobin wants to know whether Oriel has eaten. That evening, by the hearth of the Crooked Kettle, Tobin tells the story of Saint Wenna of the Open Hand, who founded the Lamplighters, and Ilsevel adds what the Order's own books say. Oriel lays a dead core in Tobin's hands and tries to understand why no prayer will warm it. Then, because Oriel asks, Tobin tells the story of the frost night he found a baby at the foot of Lantern No. 1. Wil Fenn bursts in: Lantern 41 has gone dark, and a rider from Fort Harrow left a letter for Brannoc.",
+  "dm_intro": {
+    "title": "The Saint of the Open Hand",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  5 Emberfall 1047 AK",
+    "text": "Two days ago Lantern Thirty-Seven went dark outside the village of Brindle Cross. Brannoc the soldier, Ilsevel the archivist, Tamsin the card player and Oriel the priestess followed a goblin trail into Thornpike Woods, fought wolves and goblins, and found the lantern's core had been stolen by hand. They are coming home with three dead cores, and more questions than they left with."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "Coming Home",
+      "location": "loc.brindle-cross",
+      "map": "brindle_cross",
+      "time_of_day": "day",
+      "camera": [
+        19,
+        12
+      ],
+      "music": "calm_village",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            19,
+            13
+          ],
+          "facing": "up",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            20,
+            13
+          ],
+          "facing": "up",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            18,
+            14
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            21,
+            14
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "maddy_fenn",
+          "at": [
+            16,
+            12
+          ],
+          "facing": "right",
+          "name": "Maddy Fenn"
+        }
+      ],
+      "beats": [
+        "Afternoon in the square. Maddy Fenn meets them: is it lit? It is not. Ilsevel explains, briefly, that the core was taken, and shows the three dead ones they found. Maddy asks who is paying for all this.",
+        "Father Tobin comes down from the shrine as fast as his cane allows, looks Oriel over for wounds and asks whether she has eaten. Oriel introduces her new friends properly.",
+        "Tobin invites everyone to supper; Maddy says supper is at her inn, thank you, and the board is free, as promised, whether the lantern is lit or not."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "bond"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "By the Hearth",
+      "location": "loc.crooked-kettle",
+      "map": "crooked_kettle_interior",
+      "time_of_day": "evening",
+      "camera": [
+        5,
+        5
+      ],
+      "music": "mystical",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "tobin_ashdown",
+          "at": [
+            3,
+            4
+          ],
+          "facing": "down",
+          "name": "Father Tobin"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            4,
+            5
+          ],
+          "facing": "left",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            6,
+            4
+          ],
+          "facing": "left",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "brannoc",
+          "at": [
+            6,
+            6
+          ],
+          "facing": "left",
+          "name": "Brannoc"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            2,
+            5
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "maddy_fenn",
+          "at": [
+            13,
+            2
+          ],
+          "facing": "down",
+          "name": "Maddy Fenn"
+        }
+      ],
+      "beats": [
+        "Evening in the Crooked Kettle's common room. Tobin, by the hearth, tells the story of Saint Wenna of the Open Hand, who walked the first dark road with a lantern in an open hand and founded the Lamplighters. He quotes the verse and admits he doesn't understand it.",
+        "Ilsevel adds what the Order's own histories say (c1).",
+        "Oriel puts one of the dead cores into Tobin's hands and asks why no prayer will warm it (c2). Tobin offers to keep the cores on the shrine altar until someone of the Order can rekindle them; Ilsevel will write to Lamplighters' Hall.",
+        "Oriel asks him to tell 'my story'. Tobin tells it: a frost night in 1022, a crying baby at the foot of Lantern No. 1, wrapped in a grey coat, a brass button. He named her Oriel, golden, for the light she was found in. His eyes rest on the button a moment too long, again."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "ilsevel",
+          "skill": "history",
+          "dc": 12,
+          "reason": "Recall what the Lamplighters' own histories say about Saint Wenna, the Order's founder, to set beside a village priest's version.",
+          "on_success": "Ilsevel adds that Wenna founded the Order in the fourth year After Kindling and that her first road ran through these very woods: the old way-markers, like the stone in the hollow, are the oldest Lamplighter work still standing.",
+          "on_failure": "Ilsevel's version is the dry one from the Hall's primer: founded the Order in the fourth year After Kindling. Tamsin likes Tobin's better, and says so."
+        },
+        {
+          "id": "c2",
+          "actor": "oriel",
+          "skill": "religion",
+          "dc": 14,
+          "reason": "Hold a dead lantern-core and pray over it, trying to understand by faith why the flame will not come back to it.",
+          "on_success": "Oriel feels it: the core is not merely burned out. It is empty, as if the flame had been poured out of it on purpose. Tobin goes quiet.",
+          "on_failure": "She feels nothing at all, not even the cold. That frightens her more than she lets Tobin see."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "talk",
+        "bond"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Forty-One",
+      "location": "loc.crooked-kettle",
+      "map": "crooked_kettle_interior",
+      "time_of_day": "evening",
+      "camera": [
+        7,
+        7
+      ],
+      "music": "tension",
+      "transition": "continue",
+      "cast": [
+        {
+          "id": "wil_fenn",
+          "at": [
+            8,
+            13
+          ],
+          "facing": "up",
+          "name": "Wil Fenn"
+        }
+      ],
+      "beats": [
+        "Wil Fenn bursts in from the night: a carter coming up from the south says Lantern 41 has gone dark.",
+        "And a rider in Fort Harrow colours came through at dusk, would not stop, and left a sealed letter for 'Bran Vow'. Tamsin notices the name. Brannoc reads it: Captain Rook writes that goblins have been seen near Wending Mill, the hamlet by the road south, and asks Brannoc to look on his way back to the fort with whatever help he can find.",
+        "The four look at each other. They will go at first light. Maddy packs food; Tobin gives Oriel his blessing.",
+        "Last line belongs to a party member."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "talk"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "location",
+      "id": "loc.crooked-kettle",
+      "map": "brindle_cross",
+      "region": "lanternmarch"
+    },
+    {
+      "type": "lantern",
+      "id": "lantern_road.041",
+      "state": "dead"
+    },
+    {
+      "type": "item",
+      "id": "dead_lantern_core",
+      "holder": "party",
+      "qty": -3
+    },
+    {
+      "type": "flag",
+      "id": "dead_cores_on_shrine_altar",
+      "value": true
+    },
+    {
+      "type": "flag",
+      "id": "cores_emptied_on_purpose",
+      "value": true,
+      "if": "c2.success"
+    },
+    {
+      "type": "npc",
+      "id": "npc.tobin-ashdown",
+      "note": "Told the story of Saint Wenna and of finding Oriel at Lantern No. 1; keeps the three dead cores on the shrine altar (C01-E007)."
+    },
+    {
+      "type": "npc",
+      "id": "npc.edda-rook",
+      "note": "Sent Brannoc ('Bran Vow') a letter by rider: goblins seen near Wending Mill; look on the way back to the fort and bring help."
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "title": "Goblins near Wending Mill",
+      "giver": "npc.edda-rook",
+      "reward_cp": 0,
+      "objectives": [
+        "Look in on Wending Mill on the road south",
+        "Report to Captain Rook at Fort Harrow"
+      ]
+    },
+    {
+      "type": "quest",
+      "id": "q.inspect-lanterns",
+      "objectives": [
+        "Find out why Lantern 41 went dark"
+      ]
+    },
+    {
+      "type": "hook",
+      "id": "hook.brass-button",
+      "status": "planted"
+    },
+    {
+      "type": "bond",
+      "a": "tamsin",
+      "b": "oriel",
+      "trust": 1,
+      "note": "Tamsin heard the story of the night Father Tobin found Oriel."
+    },
+    {
+      "type": "rest",
+      "kind": "long"
+    }
+  ],
+  "next_time": "Smoke on the road south. Wending Mill."
+}

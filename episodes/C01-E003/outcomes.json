@@ -1,0 +1,62 @@
+{
+  "episode_id": "C01-E003",
+  "seed": "C01-E003-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "tamsin",
+      "what": "Tamsin - Sleight Of Hand",
+      "dc": 13,
+      "result": "SUCCESS",
+      "margin": 0,
+      "natural": 6,
+      "note": "barely",
+      "means": "The catch springs open under Tamsin's fingers. She mentions, lightly, that it has been opened before, recently, and not with a key. Ilsevel notes how practised she is."
+    },
+    {
+      "id": "c2",
+      "scene": "s2",
+      "who": "ilsevel",
+      "what": "Ilsevel - Investigation",
+      "dc": 14,
+      "result": "FAILURE",
+      "margin": -3,
+      "natural": 6,
+      "note": "",
+      "means": "She can tell the core was lifted out rather than shattered (no shards, the cradle empty), but nothing about who or how. The housing tells her nothing more."
+    },
+    {
+      "id": "c3",
+      "scene": "s3",
+      "who": "brannoc",
+      "what": "Brannoc - Survival",
+      "dc": 13,
+      "result": "FAILURE",
+      "margin": -6,
+      "natural": 4,
+      "note": "by a lot",
+      "means": "The trail is plain enough to follow, but Brannoc cannot tell how many walked it or how long ago. They will go in not knowing what waits."
+    }
+  ],
+  "fights": [],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "8/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "10/10",
+      "conditions": []
+    }
+  }
+}

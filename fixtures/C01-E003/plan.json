@@ -1,0 +1,159 @@
+{
+ "schema": "pqc/plan@1",
+ "episode_id": "C01-E003",
+ "title": "The Empty Housing",
+ "summary": "The afternoon of 4 Emberfall. The four walk the mile south from Brindle Cross to Lantern 37; on the way Brannoc asks Tamsin why a card player wants an empty road. At the dead lantern the housing catch is stiff with a cold that should not be there in daylight; Tamsin tries it before Ilsevel can find the right key. Ilsevel examines the housing and finds the core was taken out, not broken. Oriel lays her hand on the post and feels nothing. As dusk comes, Brannoc reads the goblin trail that leaves the road at the lantern and runs east into Thornpike Woods, and the party follows it.",
+ "dm_intro": {
+  "title": "The Empty Housing",
+  "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+  "text": "The Lantern Road runs south from Brindle Cross toward Fort Harrow, one lantern to every mile. A mile out of the village, Lantern Thirty-Seven stands dark for the first time in three hundred years. Last night goblins came up this road. This afternoon four strangers walk down it: a soldier, an archivist, a card player and a priestess, promised free board at the Crooked Kettle if they can bring the light back."
+ },
+ "scenes": [
+  {
+   "id": "s1",
+   "name": "One Mile South",
+   "location": "loc.lantern-road",
+   "map": "lantern_road",
+   "time_of_day": "day",
+   "camera": [18, 4],
+   "music": "road",
+   "transition": "cut",
+   "cast": [
+    {"id": "brannoc", "at": [18, 1], "facing": "down", "name": "Brannoc"},
+    {"id": "tamsin", "at": [19, 1], "facing": "down", "name": "Tamsin"},
+    {"id": "ilsevel", "at": [18, 0], "facing": "down", "name": "Ilsevel"},
+    {"id": "oriel", "at": [19, 0], "facing": "down", "name": "Oriel"}
+   ],
+   "beats": [
+    "Afternoon on the south road. The four walk out of Brindle Cross together for the first time.",
+    "Brannoc finally asks what everyone was thinking: why would a card player walk an empty road? Tamsin answers with a tall tale and a nickname.",
+    "Ilsevel reads the milestone aloud (Brindle Cross 1 mile, Fort Harrow 39) and corrects the carving.",
+    "Ahead, near the dead lantern, no birds sing and the grass looks greyer than it should. Oriel notices first."
+   ],
+   "checks": [],
+   "encounter": null,
+   "pillars": ["explore", "bond"]
+  },
+  {
+   "id": "s2",
+   "name": "The Empty Housing",
+   "location": "loc.lantern-road",
+   "map": "lantern_road",
+   "time_of_day": "day",
+   "camera": [22, 12],
+   "music": "mystical",
+   "transition": "cut",
+   "cast": [
+    {"id": "ilsevel", "at": [21, 12], "facing": "right", "name": "Ilsevel"},
+    {"id": "tamsin", "at": [23, 12], "facing": "left", "name": "Tamsin"},
+    {"id": "oriel", "at": [21, 13], "facing": "up", "name": "Oriel"},
+    {"id": "brannoc", "at": [24, 14], "facing": "left", "name": "Brannoc"}
+   ],
+   "beats": [
+    "At Lantern 37. The glass of the housing is grey and rimed with frost in broad daylight. Ilsevel searches her satchel for the Order's housing key; the catch is stiff with cold.",
+    "Tamsin offers to try the catch with her fingers and a hairpin (c1). Ilsevel watches how she does it.",
+    "Ilsevel examines the open housing (c2): the core is gone. It was taken out, not broken: no shards, the cradle empty. What else she can read depends on the roll.",
+    "Oriel lays her hand on the cold post and prays, and feels nothing answer. She does not say so aloud at first."
+   ],
+   "checks": [
+    {
+     "id": "c1",
+     "actor": "tamsin",
+     "skill": "sleight_of_hand",
+     "dc": 13,
+     "reason": "Work open a frost-stiff Lamplighter housing catch by hand while Ilsevel is still looking for the key, with three people watching.",
+     "on_success": "The catch springs open under Tamsin's fingers. She mentions, lightly, that it has been opened before, recently, and not with a key. Ilsevel notes how practised she is.",
+     "on_failure": "The catch will not move for her. Ilsevel finds the key at last and opens it the slow, proper way, and is insufferable about it."
+    },
+    {
+     "id": "c2",
+     "actor": "ilsevel",
+     "skill": "investigation",
+     "dc": 14,
+     "reason": "Read the inside of an empty lantern housing: tool marks, the cradle clasps, frost patterns. Ilsevel knows lantern-craft from the Hall's books, but has never seen a core stolen.",
+     "on_success": "The cradle's four clasps were unscrewed one by one and screwed back: someone who knew how a Lamplighter housing works took the core out by hand, carefully, and the flame died afterwards.",
+     "on_failure": "She can tell the core was lifted out rather than shattered (no shards, the cradle empty), but nothing about who or how. The housing tells her nothing more."
+    }
+   ],
+   "encounter": null,
+   "pillars": ["explore"]
+  },
+  {
+   "id": "s3",
+   "name": "The Trail East",
+   "location": "loc.lantern-road",
+   "map": "lantern_road",
+   "time_of_day": "dusk",
+   "camera": [26, 14],
+   "music": "tension",
+   "transition": "continue",
+   "cast": [
+    {"id": "brannoc", "at": [24, 14], "facing": "right", "name": "Brannoc"}
+   ],
+   "beats": [
+    "The light goes amber. Brannoc crouches where a strip of trampled dark earth leaves the road at the lantern and runs east into Thornpike Woods, and reads it (c3).",
+    "Ilsevel points out that it will be dark within the hour. Tamsin points out that goblins like the dark. Brannoc points out that this is where they went.",
+    "They follow the trail to the edge of the trees as dusk turns to evening.",
+    "Last line belongs to a party member."
+   ],
+   "checks": [
+    {
+     "id": "c3",
+     "actor": "brannoc",
+     "skill": "survival",
+     "dc": 13,
+     "reason": "Read a goblin trail on trampled earth in failing light: how many, how old, carrying what.",
+     "on_success": "Five or six goblins, small feet, out and back more than once; the deep twin ruts of something heavy dragged east on runners or wheels. They have used this trail for weeks.",
+     "on_failure": "The trail is plain enough to follow, but Brannoc cannot tell how many walked it or how long ago. They will go in not knowing what waits."
+    }
+   ],
+   "encounter": null,
+   "pillars": ["explore"]
+  }
+ ],
+ "state_proposals": [
+  {
+   "type": "location",
+   "id": "loc.lantern-road",
+   "map": "lantern_road",
+   "region": "lanternmarch"
+  },
+  {
+   "type": "flag",
+   "id": "core_37_removed_by_hand",
+   "value": true
+  },
+  {
+   "type": "flag",
+   "id": "core_37_removed_by_someone_skilled",
+   "value": true,
+   "if": "c2.success"
+  },
+  {
+   "type": "flag",
+   "id": "goblin_trail_used_for_weeks",
+   "value": true,
+   "if": "c3.success"
+  },
+  {
+   "type": "quest",
+   "id": "q.relight-lantern-37",
+   "objectives": [
+    "Find the missing core of Lantern 37"
+   ]
+  },
+  {
+   "type": "bond",
+   "a": "ilsevel",
+   "b": "tamsin",
+   "trust": 1,
+   "note": "Tamsin opened the frozen housing catch with her bare hands while Ilsevel was still looking for the key.",
+   "if": "c1.success"
+  },
+  {
+   "type": "clock",
+   "time_of_day": "dusk"
+  }
+ ],
+ "next_time": "Night falls in the Thornpike Woods."
+}

@@ -1,0 +1,19 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E008",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s3",
+   "problem": "The cut from the yard to the barn changes the map to the burning variant; the barn was not visibly on fire during the yard fight. The miller's line and the narration explain the torch was set while the yard was busy, so it holds.",
+   "fix": "None needed."
+  },
+  {
+   "severity": "warning",
+   "where": "s2 battle_narration",
+   "problem": "The goblins won initiative right after the party's 'arrive unseen' success. The first narration line covers it ('Then one does'), but the success bought little on screen.",
+   "fix": "Acceptable: the dice gave the goblins the first move."
+  }
+ ]
+}

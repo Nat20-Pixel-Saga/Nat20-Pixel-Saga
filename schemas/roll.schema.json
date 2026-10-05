@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/roll@1",
+  "title": "Logged dice roll",
+  "description": "One entry of Dice.export_log(). Every draw can be re-verified from seed + counter.",
+  "type": "object",
+  "required": ["id", "index", "seed", "kind", "notation", "purpose", "draws", "rolls", "kept", "modifier", "total"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^r[0-9]{4,}$"},
+    "index": {"type": "integer", "minimum": 0},
+    "seed": {"type": "string", "minLength": 1},
+    "kind": {"type": "string", "enum": ["d20", "dice"]},
+    "notation": {"type": "string"},
+    "purpose": {"type": "string"},
+    "actor": {"type": ["string", "null"]},
+    "target": {"type": ["string", "null"]},
+    "draws": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["counter", "sides", "value"],
+        "additionalProperties": false,
+        "properties": {"counter": {"type": "integer", "minimum": 0}, "sides": {"type": "integer"}, "value": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "rolls": {"type": "array", "items": {"type": "integer"}},
+    "kept": {"type": "array", "items": {"type": "integer"}},
+    "modifier": {"type": "integer"},
+    "total": {"type": "integer"},
+    "advantage": {"type": "string", "enum": ["none", "advantage", "disadvantage"]},
+    "natural": {"type": ["integer", "null"]},
+    "dc": {"type": ["integer", "null"]},
+    "success": {"type": ["boolean", "null"]},
+    "critical": {"type": "boolean"},
+    "fumble": {"type": "boolean"},
+    "rerolled": {"type": "array", "items": {"type": "integer"}},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

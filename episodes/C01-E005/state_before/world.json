@@ -1,0 +1,405 @@
+{
+  "schema": "pqc/world@1",
+  "clock": {
+    "year": 1047,
+    "month": 9,
+    "day": 4,
+    "hearthday": null,
+    "time_of_day": "night"
+  },
+  "series": {
+    "campaign": 1,
+    "episode": 4,
+    "episode_in_campaign": 4,
+    "phase": "campaign",
+    "interlude": null
+  },
+  "party": {
+    "members": [
+      "brannoc",
+      "ilsevel",
+      "tamsin",
+      "oriel"
+    ],
+    "bonds": [
+      {
+        "a": "brannoc",
+        "b": "ilsevel",
+        "trust": 1,
+        "tension": 1,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "brannoc",
+        "b": "tamsin",
+        "trust": 0,
+        "tension": 2,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "brannoc",
+        "b": "oriel",
+        "trust": 3,
+        "tension": 0,
+        "romance": 0,
+        "notes": [
+          "Brannoc stopped at the shrine twice on dispatch runs and left money in the alms box.",
+          "C01-E001: Held the line together in the first fight."
+        ]
+      },
+      {
+        "a": "ilsevel",
+        "b": "tamsin",
+        "trust": 1,
+        "tension": 3,
+        "romance": 0,
+        "notes": [
+          "C01-E002: Ilsevel did not believe Tamsin's story about the velvet thread.",
+          "C01-E003: Tamsin opened the frozen housing catch with her bare hands while Ilsevel was still looking for the key."
+        ]
+      },
+      {
+        "a": "ilsevel",
+        "b": "oriel",
+        "trust": 1,
+        "tension": 1,
+        "romance": 0,
+        "notes": []
+      },
+      {
+        "a": "tamsin",
+        "b": "oriel",
+        "trust": 1,
+        "tension": 0,
+        "romance": 0,
+        "notes": []
+      }
+    ],
+    "shared_inventory": [],
+    "shared_money_cp": 0,
+    "reputation_title": null
+  },
+  "location": {
+    "id": "loc.thornpike-woods",
+    "region": "lanternmarch",
+    "map": "thornpike_woods",
+    "pos": null,
+    "unlight": "none"
+  },
+  "factions": {
+    "fac.lamplighters": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.unlit": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.conclave": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.crown-of-corvane": {
+      "reputation": 0,
+      "known_to_party": true,
+      "notes": []
+    },
+    "fac.velvet-hand": {
+      "reputation": -1,
+      "known_to_party": false,
+      "notes": [
+        "Known only to Tamsin"
+      ]
+    },
+    "fac.clan-aldhammer": {
+      "reputation": -1,
+      "known_to_party": false,
+      "notes": [
+        "Known only to Brannoc"
+      ]
+    },
+    "fac.gloaming-court": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.saffron-throne": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.wardens-of-the-green": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    },
+    "fac.sable-free-captains": {
+      "reputation": 0,
+      "known_to_party": false,
+      "notes": []
+    }
+  },
+  "npcs": {
+    "npc.maddy-fenn": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.crooked-kettle",
+      "first_seen": "C01-E001",
+      "last_seen": "C01-E002",
+      "notes": [
+        "Offered free board at the Crooked Kettle to whoever relights Lantern 37."
+      ]
+    },
+    "npc.wil-fenn": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.crooked-kettle",
+      "first_seen": "C01-E001",
+      "last_seen": "C01-E002",
+      "notes": []
+    },
+    "npc.tobin-ashdown": {
+      "status": "alive",
+      "attitude": "helpful",
+      "location": "loc.shrine-of-the-open-hand",
+      "first_seen": "C01-E001",
+      "last_seen": "C01-E001",
+      "notes": [
+        "Oriel's adoptive father",
+        "Gave Oriel his own sun-disc holy symbol at her first dusk devotion."
+      ]
+    },
+    "npc.edda-rook": {
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.fort-harrow",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Brannoc's commanding officer"
+      ]
+    },
+    "npc.rusk": {
+      "status": "captive",
+      "attitude": "indifferent",
+      "location": "loc.crooked-kettle",
+      "first_seen": "C01-E001",
+      "last_seen": "C01-E002",
+      "notes": [
+        "Taken alive after the raid on Brindle Cross (C01-E001).",
+        "Questioned outside the Crooked Kettle (C01-E002): goblins are paid in food to carry lantern-cores up into the hills to their boss. Kept in the inn's root cellar.",
+        "Ate Oriel's bread and begged not to be sent back."
+      ],
+      "name_known": true
+    },
+    "npc.skarrow": {
+      "status": "unmet",
+      "attitude": "hostile",
+      "location": "loc.goblin-warren",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.mother-fennick": {
+      "status": "unmet",
+      "attitude": "indifferent",
+      "location": "loc.thornpike-woods",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.petra-glim": {
+      "status": "unmet",
+      "attitude": "friendly",
+      "location": "loc.lantern-road",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.brother-ambrose": {
+      "status": "captive",
+      "attitude": "friendly",
+      "location": "loc.goblin-warren",
+      "first_seen": null,
+      "last_seen": null,
+      "notes": []
+    },
+    "npc.ysolde-marr": {
+      "status": "missing",
+      "attitude": "indifferent",
+      "location": null,
+      "first_seen": null,
+      "last_seen": null,
+      "notes": [
+        "Publicly: lost in the Underdeep, 1036 AK"
+      ]
+    },
+    "npc.pell": {
+      "status": "alive",
+      "attitude": "helpful",
+      "location": "loc.thornpike-woods",
+      "first_seen": "C01-E004",
+      "last_seen": "C01-E004",
+      "notes": [
+        "Summoned with Find Familiar in C1E4",
+        "First summoned by Ilsevel with Find Familiar at the fork of the goblin trail in Thornpike Woods (C01-E004)."
+      ]
+    }
+  },
+  "quests": [
+    {
+      "id": "q.deliver-dispatches",
+      "title": "Deliver the Fort Harrow dispatches",
+      "status": "active",
+      "giver": "npc.edda-rook",
+      "reward_cp": 0,
+      "objectives": [
+        "Bring the sealed dispatches to the Lamplighters"
+      ]
+    },
+    {
+      "id": "q.inspect-lanterns",
+      "title": "Inspect the failing lanterns of the Lantern Road",
+      "status": "active",
+      "giver": "fac.lamplighters",
+      "reward_cp": 2000,
+      "objectives": [
+        "Inspect lanterns 30-45",
+        "Report findings to Lamplighters' Hall",
+        "Find out why Lantern 37 went dark"
+      ]
+    },
+    {
+      "id": "q.relight-lantern-37",
+      "title": "Bring back the light of Lantern 37",
+      "status": "active",
+      "giver": "npc.maddy-fenn",
+      "reward_cp": 0,
+      "objectives": [
+        "Find out what happened to Lantern 37",
+        "Bring the light back to the south road (reward: free board at the Crooked Kettle)",
+        "Find the missing core of Lantern 37"
+      ]
+    }
+  ],
+  "lanterns": {
+    "lantern_road.001": "lit",
+    "lantern_road.036": "lit",
+    "lantern_road.037": "dead",
+    "lantern_road.038": "lit",
+    "lantern_road.041": "lit"
+  },
+  "flags": {
+    "series_started": true,
+    "ledger_unknown_warden_mark": true,
+    "cores_traded_for_food": true,
+    "rusk_afraid_to_go_back": true,
+    "core_37_removed_by_hand": true,
+    "pell_summoned": true,
+    "wolves_greyed_at_the_edges": true
+  },
+  "hooks": [
+    {
+      "id": "hook.shaft-nine-debt",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C5",
+      "summary": "Can Brannoc's name be restored to the Book of Debts?"
+    },
+    {
+      "id": "hook.hilde-lives",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C6",
+      "summary": "Hilde survived Shaft Nine and was taken into the Underdeep."
+    },
+    {
+      "id": "hook.painted-anvil",
+      "owner": "brannoc",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C5",
+      "summary": "The anvil painted over on Brannoc's shield."
+    },
+    {
+      "id": "hook.where-is-ysolde",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C4",
+      "summary": "What happened to Ilsevel's mentor?"
+    },
+    {
+      "id": "hook.engraved-button",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C9",
+      "summary": "Ilsevel recognises the engraving style on Oriel's button."
+    },
+    {
+      "id": "hook.hollowmere-vanishings",
+      "owner": "ilsevel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C4",
+      "summary": "Elves of Hollowmere vanishing into the Gloaming."
+    },
+    {
+      "id": "hook.velvet-hand-debt",
+      "owner": "tamsin",
+      "status": "planted",
+      "planted_in": "C01-E002",
+      "payoff_in": "C3",
+      "summary": "The Velvet Hand wants 2,000 gp or the key."
+    },
+    {
+      "id": "hook.gloamkey",
+      "owner": "tamsin",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C7",
+      "summary": "What is the key that sings to Tamsin?"
+    },
+    {
+      "id": "hook.pip",
+      "owner": "tamsin",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C8",
+      "summary": "Pip doesn't know who his sister really is."
+    },
+    {
+      "id": "hook.brass-button",
+      "owner": "oriel",
+      "status": "planted",
+      "planted_in": "C01-E001",
+      "payoff_in": "C9",
+      "summary": "Who left Oriel at Lantern No. 1?"
+    },
+    {
+      "id": "hook.flickering-warmth",
+      "owner": "oriel",
+      "status": "planted",
+      "planted_in": "C01-E001",
+      "payoff_in": "C9",
+      "summary": "Oriel's bond with Aurelan weakens as lanterns die."
+    },
+    {
+      "id": "hook.brindle-cross",
+      "owner": "oriel",
+      "status": "dormant",
+      "planted_in": null,
+      "payoff_in": "C8",
+      "summary": "Will Brindle Cross survive the Dimming?"
+    }
+  ],
+  "lantern_stars_dark": 0
+}

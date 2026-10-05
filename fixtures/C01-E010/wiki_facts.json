@@ -1,0 +1,72 @@
+{
+ "schema": "pqc/wiki_facts@1",
+ "episode_id": "C01-E010",
+ "summary": "On 8 Emberfall the party reached Fort Harrow, at the far end of the Lantern Road. At the gate, Corporal Dunn greeted Brannoc as 'Bran Vow' and young Ferrick repeated the sergeant's gossip that he is really an Ironvow, an exile out of Aldhammer; Tamsin changed the subject. Captain Edda Rook heard Brannoc's short report and hired all four at ten crowns a week each to ride the road and find who is buying the cores; Tamsin's haggling got nowhere. That evening Sergeant Holt's patrol brought in a goblin killed trying to open Lantern 52, wearing a black-glass pendant that dims the light around it and is cold like the dead cores.",
+ "npcs": [
+  {
+   "id": "npc.edda-rook",
+   "name": "Captain Edda Rook",
+   "description": "Commander of Fort Harrow: short grey hair, dented breastplate, clipped and dry. Has forty soldiers for a hundred and forty lanterns and no help from the Crown. Brannoc's old commanding officer, who calls him 'Bran'. Hired the party at ten crowns a week each.",
+   "want": "Enough people to hold the road.",
+   "voice": "'Report. Short version.'",
+   "status": "alive",
+   "attitude": "friendly"
+  },
+  {
+   "id": "npc.corporal-dunn",
+   "name": "Corporal Dunn",
+   "description": "A Fort Harrow corporal who served with Brannoc and was glad to see him alive. Cuffed Ferrick for gossiping.",
+   "status": "alive",
+   "attitude": "friendly"
+  },
+  {
+   "id": "npc.ferrick",
+   "name": "Ferrick",
+   "description": "A young Fort Harrow soldier who repeated the sergeant's story that 'Bran Vow' is really an Ironvow, an exile out of Aldhammer.",
+   "status": "alive",
+   "attitude": "indifferent"
+  },
+  {
+   "id": "npc.sergeant-holt",
+   "name": "Sergeant Holt",
+   "description": "Leads Fort Harrow's road patrol; brought in the goblin with the black-glass pendant.",
+   "status": "alive",
+   "attitude": "friendly"
+  }
+ ],
+ "places": [
+  {
+   "id": "loc.fort-harrow",
+   "name": "Fort Harrow",
+   "description": "The royal garrison at the south end of the Lantern Road: grey stone walls with corner watchtowers, an arched south gate with a lantern beside it, Captain Rook's brick command house, wooden barracks, a parade ground and a training yard. About forty soldiers, most of them tired."
+  }
+ ],
+ "quotes": [
+  {"speaker": "edda_rook", "text": "Report. Short version."},
+  {"speaker": "edda_rook", "text": "Ten crowns a week, each of you. Ride the road. Find out who's buying those cores. Short version: I need you."},
+  {"speaker": "tamsin", "text": "Ten is a lovely number. I've always said so."},
+  {"speaker": "ilsevel", "text": "It is drinking the light. And it is cold. Cold the way the dead cores were cold."},
+  {"speaker": "ilsevel", "text": "I have never read of anything like it. Not in any book. Not once."}
+ ],
+ "events": [
+  "Oriel, recovered, told Brannoc she was well; he had asked ten times since Wending Mill.",
+  "At Fort Harrow's gate, Ferrick said Brannoc's real name is Ironvow and that he is an exile out of Aldhammer; Brannoc said nothing and Tamsin changed the subject.",
+  "Brannoc reported to Captain Rook; Oriel read in Rook's face exhaustion, fear for her soldiers, and that she has been protecting Brannoc.",
+  "Rook hired the party at ten crowns a week each to ride the road and find who is buying the cores; Tamsin's attempt to haggle failed.",
+  "Brannoc's overdue dispatches for Lamplighters' Hall went to Ilsevel.",
+  "Sergeant Holt's patrol brought in a goblin killed while trying to open Lantern 52.",
+  "The goblin wore a black-glass pendant; Ilsevel found that it dims nearby light and is cold like the dead cores."
+ ],
+ "items": [
+  {"id": "black_glass_pendant", "name": "Black-glass pendant", "holder": "ilsevel", "note": "Taken from a goblin killed at Lantern 52. Lamplight leans toward it and dims; it is cold like the dead cores."},
+  {"id": "fort_dispatches", "name": "Fort Harrow dispatches", "holder": "ilsevel", "note": "Sealed, slightly singed; meant for Lamplighters' Hall."},
+  {"id": "pay_week_one", "name": "First week's pay", "holder": "party", "note": "Ten crowns each from Captain Rook."}
+ ],
+ "hooks_planted": ["hook.shaft-nine-debt"],
+ "character_notes": {
+  "brannoc": ["His real name is said to be Ironvow; a soldier called him an exile out of Aldhammer. He did not answer.", "Served three years under Captain Rook at Fort Harrow as 'Bran Vow'."],
+  "tamsin": ["Changed the subject when Brannoc's real name came out, instead of asking.", "Tried to haggle Rook up to twelve crowns and a spoon; failed."],
+  "oriel": ["Read Captain Rook well: tired, afraid for her soldiers, and protecting Brannoc."],
+  "ilsevel": ["Received the dispatches for Lamplighters' Hall, and the black-glass pendant to study."]
+ }
+}

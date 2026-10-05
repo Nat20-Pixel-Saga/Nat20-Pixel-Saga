@@ -1,0 +1,201 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E006",
+  "title": "First Watch",
+  "summary": "The small hours of 5 Emberfall, in a sheltered hollow south of the goblin trail's fork. The party lights its first campfire together beside an old moss-grown stone that Ilsevel identifies as a Lamplighter way-marker. When Tamsin sits down beside it, the plain iron key on the cord around her neck begins to hum, a note only she can hear. While Ilsevel rests in her elven trance, Tamsin lifts her notebook, reads what Ilsevel has written about her, and puts it back. On first watch Brannoc sits alone until Oriel, who cannot sleep, joins him; she notices the shape under the grey paint of his shield, and he notices that she is afraid of the dark. He gives her his lantern. In the morning, everyone is rested.",
+  "dm_intro": {
+    "title": "First Watch",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  5 Emberfall 1047 AK",
+    "text": "Three days ago they were strangers in a frontier inn. Tonight, after a goblin raid, a stolen lantern-core, a pack of wolves and a goblin camp, four tired people carry three dead lantern-cores into a hollow in Thornpike Woods: Brannoc the soldier, Ilsevel the archivist and her owl Pell, Tamsin the card player, and Oriel the priestess. Somebody has to keep watch."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "The Hollow",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        8,
+        22
+      ],
+      "music": "mystical",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            11,
+            21
+          ],
+          "facing": "down",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            10,
+            22
+          ],
+          "facing": "left",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            6,
+            22
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            7,
+            25
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "pell",
+          "sprite": "pell",
+          "at": [
+            4,
+            22
+          ],
+          "facing": "right",
+          "name": "Pell"
+        }
+      ],
+      "beats": [
+        "The hollow, after midnight. A fire in an old ring of stones; the three dead cores wrapped in Brannoc's cloak. Brannoc counts the ways in (two).",
+        "Ilsevel scrapes the moss from a squat old stone at the hollow's edge and reads what she can of its carving (c2): an old Lamplighter way-marker.",
+        "Tamsin sits down with her back to the stone. The plain iron key on the cord at her neck begins to hum, one low note that nobody else seems to hear. She closes her hand around it and moves to the other side of the fire, saying nothing."
+      ],
+      "checks": [
+        {
+          "id": "c2",
+          "actor": "ilsevel",
+          "skill": "history",
+          "dc": 13,
+          "reason": "Read a moss-eaten carving on a stone older than the road, by firelight, from what she remembers of the Hall's road atlases.",
+          "on_success": "A Lamplighter way-marker from the old road, the one that ran here before the Lantern Road was laid: its carving gives the old miles and the Order's sign. The road moved; the stone stayed.",
+          "on_failure": "She can read the Order's sign, so it is Lamplighter work, but the rest has weathered away. It annoys her more than it should."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "explore",
+        "bond"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Notebook",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        8,
+        23
+      ],
+      "music": "calm_village",
+      "transition": "continue",
+      "cast": [],
+      "beats": [
+        "Ilsevel sits with her notebook open on her knees and slips into the elven trance that stands in for sleep, eyes half open. Oriel is asleep; Brannoc is on watch at the edge of the hollow.",
+        "Tamsin, who cannot leave a closed book alone any more than a locked box, lifts the notebook from Ilsevel's knees (c1).",
+        "She reads the page about herself: 'T.M.: velvet thread, lies about it. Practised hands. Gave the boy a honey cake when she thought no one was looking.' She did not expect the last line.",
+        "She gives it back, one way or another."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "tamsin",
+          "skill": "sleight_of_hand",
+          "contest": {
+            "actor": "ilsevel",
+            "skill": "perception",
+            "passive": true
+          },
+          "reason": "Lift a notebook from the lap of an elf in trance, who is resting, not asleep, and still half aware of the world.",
+          "on_success": "Ilsevel never stirs. Tamsin reads the page and slides the notebook back exactly as it was, with a sprig of heather tucked into it.",
+          "on_failure": "Ilsevel's hand closes on Tamsin's wrist without her opening her eyes. 'You could have asked.' Tamsin gives it back, and asks."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "bond"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "First Watch",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        11,
+        23
+      ],
+      "music": "sad",
+      "transition": "continue",
+      "cast": [],
+      "beats": [
+        "Brannoc sits on the log at the edge of the firelight with his shield across his knees. Oriel cannot sleep and comes to sit with him.",
+        "In the firelight she sees what is under the grey paint on his shield, the faint shape of an anvil, and the way his thumb traces it. She asks. He says 'Old paint.' She lets it be, for now.",
+        "Brannoc notices that Oriel sits as close to the fire as she can and never turns her back on the dark. He doesn't need a light to see; he gives her his lantern.",
+        "Dawn greys the pines. Everyone has slept. Last line belongs to a party member."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "bond"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "hook",
+      "id": "hook.painted-anvil",
+      "status": "planted"
+    },
+    {
+      "type": "hook",
+      "id": "hook.gloamkey",
+      "status": "planted"
+    },
+    {
+      "type": "flag",
+      "id": "brannoc_knows_oriel_fears_the_dark",
+      "value": true
+    },
+    {
+      "type": "flag",
+      "id": "waymarker_old_road",
+      "value": true,
+      "if": "c2.success"
+    },
+    {
+      "type": "bond",
+      "a": "brannoc",
+      "b": "oriel",
+      "trust": 1,
+      "note": "First watch together: she saw the painted-over anvil; he saw she fears the dark and gave her his lantern."
+    },
+    {
+      "type": "bond",
+      "a": "ilsevel",
+      "b": "tamsin",
+      "trust": 1,
+      "note": "Tamsin read Ilsevel's notebook, found herself described kindly, and gave it back."
+    },
+    {
+      "type": "rest",
+      "kind": "long"
+    }
+  ],
+  "next_time": "Back to Brindle Cross, and an old priest's story."
+}

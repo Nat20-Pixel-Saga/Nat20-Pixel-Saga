@@ -1,0 +1,49 @@
+{
+  "schema": "pqc/packaging@1",
+  "episode_id": "C01-E002",
+  "title": "The Goblin Who Talked | Nat 20 Pixels C1E2",
+  "description": "One goblin survived last night's raid on Brindle Cross. He has been tied to a rain barrel all night, and he hasn't said a word.\nThis morning, someone is going to make him talk: with a loaf of bread, or with a very large dwarf.\n\nEpisode 2 of a daily pixel-art D&D 5e story. Oriel and Brannoc question their captive outside the Crooked Kettle, Ilsevel tries to read a goblin's face for the first time, and Tamsin finds out that the Professor notices more than she lets on. Every check is decided by real, seeded dice shown on screen: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.",
+  "tags": [
+    "Nat 20 Pixels",
+    "D&D 5e",
+    "Dungeons and Dragons",
+    "pixel art",
+    "actual play",
+    "fantasy story",
+    "goblin",
+    "Rusk",
+    "Brannoc",
+    "Ilsevel",
+    "Tamsin",
+    "Oriel",
+    "Maddy Fenn",
+    "Brindle Cross",
+    "Crooked Kettle"
+  ],
+  "thumbnail_text": "MAKE HIM TALK",
+  "thumbnail_moment": "s2",
+  "chapters": [
+    {
+      "time": "0:00",
+      "seconds": 0.0,
+      "title": "The Night Watch Ends"
+    },
+    {
+      "time": "1:48",
+      "seconds": 108.33,
+      "title": "Bread and a Name"
+    },
+    {
+      "time": "4:11",
+      "seconds": 250.73,
+      "title": "The Velvet Thread"
+    },
+    {
+      "time": "5:47",
+      "seconds": 346.57,
+      "title": "Free Board"
+    }
+  ],
+  "duration_s": 475.1,
+  "description_full": "One goblin survived last night's raid on Brindle Cross. He has been tied to a rain barrel all night, and he hasn't said a word.\nThis morning, someone is going to make him talk: with a loaf of bread, or with a very large dwarf.\n\nEpisode 2 of a daily pixel-art D&D 5e story. Oriel and Brannoc question their captive outside the Crooked Kettle, Ilsevel tries to read a goblin's face for the first time, and Tamsin finds out that the Professor notices more than she lets on. Every check is decided by real, seeded dice shown on screen: no rerolls, no fudging.\n\nNew episode every weekday. Characters, quotes and every roll are on the wiki.\n\nChapters\n0:00 The Night Watch Ends\n1:48 Bread and a Name\n4:11 The Velvet Thread\n5:47 Free Board\n\nEvery roll in this episode is real: seed C01-E002-1, 4 rolls, all logged and verifiable at https://nat20pixelsaga.com/dice/.\nEpisode page and lore: https://nat20pixelsaga.com/episodes/c01-e002/\n\nArt, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).\nRules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast."
+}

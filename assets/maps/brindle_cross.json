@@ -1,0 +1,419 @@
+{
+ "schema": "pqc/map@1",
+ "id": "brindle_cross",
+ "name": "Brindle Cross",
+ "region": "lanternmarch",
+ "biome": "village",
+ "size": [
+  40,
+  26
+ ],
+ "base": "grass_base",
+ "seed": 1047,
+ "layers": [
+  {
+   "terrain": "dirt",
+   "rows": [
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD......DD...........",
+    ".........DD........DD......DD...........",
+    ".........DD....DDDDDDDDDD..DD...........",
+    ".........DD....DDDDDDDDDD..DD...........",
+    "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+    "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+    "...............DDDDDDDDDD...............",
+    "...............DDDDDDDDDD...............",
+    "...........DD......DD...................",
+    "...........DD......DD...................",
+    "...........DD......DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD...................",
+    "...................DD..................."
+   ]
+  }
+ ],
+ "props": [
+  {
+   "prop": "house_orange",
+   "at": [
+    8,
+    5
+   ],
+   "id": "crooked_kettle",
+   "label": "The Crooked Kettle"
+  },
+  {
+   "prop": "house_beige",
+   "at": [
+    26,
+    4
+   ],
+   "id": "shrine_open_hand",
+   "label": "Shrine of the Open Hand"
+  },
+  {
+   "prop": "house_orange2",
+   "at": [
+    10,
+    18
+   ],
+   "id": "fenn_house"
+  },
+  {
+   "prop": "house_brick",
+   "at": [
+    29,
+    15
+   ],
+   "id": "smithy"
+  },
+  {
+   "prop": "well",
+   "at": [
+    17,
+    10
+   ]
+  },
+  {
+   "prop": "stone_lantern",
+   "at": [
+    21,
+    8
+   ],
+   "id": "lantern_road.001",
+   "light": "lit"
+  },
+  {
+   "prop": "stone_lantern",
+   "at": [
+    18,
+    17
+   ],
+   "id": "lantern_road.036",
+   "light": "lit"
+  },
+  {
+   "prop": "stone_lantern",
+   "at": [
+    21,
+    21
+   ],
+   "id": "lantern_road.037",
+   "light": "lit"
+  },
+  {
+   "prop": "stone_lantern",
+   "at": [
+    13,
+    10
+   ],
+   "id": "lantern.inn",
+   "light": "lit"
+  },
+  {
+   "prop": "sign",
+   "at": [
+    11,
+    8
+   ],
+   "id": "inn_sign"
+  },
+  {
+   "prop": "barrel",
+   "at": [
+    7,
+    7
+   ]
+  },
+  {
+   "prop": "barrel",
+   "at": [
+    12,
+    7
+   ]
+  },
+  {
+   "prop": "gravestone",
+   "at": [
+    31,
+    5
+   ]
+  },
+  {
+   "prop": "gravestone",
+   "at": [
+    32,
+    5
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    2,
+    1
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    4,
+    0
+   ]
+  },
+  {
+   "prop": "tree_oak",
+   "at": [
+    14,
+    1
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    16,
+    3
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    23,
+    1
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    33,
+    1
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    36,
+    0
+   ]
+  },
+  {
+   "prop": "tree_oak",
+   "at": [
+    38,
+    3
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    0,
+    6
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    1,
+    15
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    3,
+    19
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    0,
+    22
+   ]
+  },
+  {
+   "prop": "tree_oak",
+   "at": [
+    6,
+    23
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    14,
+    21
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    25,
+    19
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    27,
+    22
+   ]
+  },
+  {
+   "prop": "tree_oak",
+   "at": [
+    35,
+    20
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    37,
+    23
+   ]
+  },
+  {
+   "prop": "tree_pine",
+   "at": [
+    38,
+    9
+   ]
+  },
+  {
+   "prop": "tree_dead",
+   "at": [
+    35,
+    6
+   ]
+  },
+  {
+   "prop": "tree_round",
+   "at": [
+    24,
+    24
+   ]
+  },
+  {
+   "prop": "tree_oak",
+   "at": [
+    16,
+    24
+   ]
+  },
+  {
+   "prop": "bush",
+   "at": [
+    5,
+    9
+   ]
+  },
+  {
+   "prop": "bush2",
+   "at": [
+    14,
+    6
+   ]
+  },
+  {
+   "prop": "flowers",
+   "at": [
+    25,
+    9
+   ]
+  },
+  {
+   "prop": "flowers2",
+   "at": [
+    26,
+    10
+   ]
+  },
+  {
+   "prop": "bush",
+   "at": [
+    23,
+    16
+   ]
+  },
+  {
+   "prop": "flowers",
+   "at": [
+    16,
+    16
+   ]
+  },
+  {
+   "prop": "bush2",
+   "at": [
+    33,
+    10
+   ]
+  },
+  {
+   "prop": "flowers2",
+   "at": [
+    7,
+    13
+   ]
+  },
+  {
+   "prop": "bush",
+   "at": [
+    30,
+    12
+   ]
+  }
+ ],
+ "points": {
+  "inn_door": [
+   9,
+   8
+  ],
+  "shrine_door": [
+   27,
+   7
+  ],
+  "square": [
+   19,
+   11
+  ],
+  "well": [
+   17,
+   11
+  ],
+  "lantern_37": [
+   21,
+   23
+  ],
+  "south_road": [
+   19,
+   25
+  ],
+  "east_road": [
+   39,
+   11
+  ],
+  "west_road": [
+   0,
+   12
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/packaging@1",
+ "title": "YouTube packaging",
+ "type": "object",
+ "required": [
+  "schema",
+  "episode_id",
+  "title",
+  "description",
+  "tags",
+  "thumbnail_text"
+ ],
+ "properties": {
+  "schema": {
+   "const": "pqc/packaging@1"
+  },
+  "episode_id": {
+   "type": "string"
+  },
+  "title": {
+   "type": "string",
+   "maxLength": 100
+  },
+  "description": {
+   "type": "string",
+   "maxLength": 4000
+  },
+  "tags": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "maxItems": 20
+  },
+  "thumbnail_text": {
+   "type": "string",
+   "maxLength": 24
+  },
+  "thumbnail_moment": {
+   "type": "string"
+  }
+ }
+}

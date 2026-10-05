@@ -1,0 +1,371 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E008",
+  "title": "Wending Mill",
+  "summary": "6 Emberfall. Rested and fed at last, the party takes the road south toward Wending Mill to answer Captain Rook's letter. Half a mile out, Pell comes back agitated and the wind brings shouting: goblins are in the hamlet, hammering at the door of the watermill where the villagers have barricaded themselves. The four run for it. In the fenced mill yard they fight four goblins. When the last one falls, the miller shouts from the mill: his wife and the hired lad are still in the barn, and smoke is already rising from its roof.",
+  "dm_intro": {
+    "title": "Wending Mill",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  6 Emberfall 1047 AK",
+    "text": "Two lanterns are dark on the Lantern Road, and somebody is paying goblins for their cores. Last night, in Brindle Cross, a letter came from Captain Rook of Fort Harrow: goblins have been seen near Wending Mill, and she has no one to send. So this morning four people are walking south: Brannoc the soldier, Ilsevel the archivist with her owl Pell, Tamsin the card player, and Oriel the priestess."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "Smoke on the Wind",
+      "location": "loc.lantern-road",
+      "map": "wending_mill",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        4
+      ],
+      "music": "road",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            21,
+            2
+          ],
+          "facing": "down",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            22,
+            1
+          ],
+          "facing": "down",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            22,
+            3
+          ],
+          "facing": "down",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            21,
+            0
+          ],
+          "facing": "down",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "pell",
+          "sprite": "pell",
+          "at": [
+            20,
+            1
+          ],
+          "facing": "down",
+          "name": "Pell"
+        }
+      ],
+      "beats": [
+        "Late morning on the road south, everyone rested. Tamsin is in a good mood; Brannoc is counting milestones.",
+        "Pell drops out of the sky onto Ilsevel's shoulder, hooting hard. Ilsevel, eyes closed: goblins in the hamlet, at the mill door, four of them. The wind brings shouting and the thud of something heavy against wood.",
+        "No time to creep. They run the last stretch to the mill yard, Brannoc in full mail (c1)."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "brannoc",
+          "skill": "athletics",
+          "dc": 12,
+          "group": [
+            "brannoc",
+            "ilsevel",
+            "tamsin",
+            "oriel"
+          ],
+          "reason": "Sprint the last quarter mile to the mill yard, one of them in chain mail and one carrying a satchel of books, and arrive with enough breath left to fight.",
+          "on_success": "They reach the yard gate while the goblins are still hammering at the mill door, backs turned.",
+          "on_failure": "They arrive blown and gasping; a goblin hears them coming and yells, and all four turn to meet them."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "explore"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Mill Yard",
+      "location": "loc.wending-mill",
+      "map": "wending_mill",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        17
+      ],
+      "music": "battle",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            21,
+            14
+          ],
+          "facing": "down",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            22,
+            13
+          ],
+          "facing": "down",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            20,
+            13
+          ],
+          "facing": "down",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            22,
+            12
+          ],
+          "facing": "down",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "goblin-1",
+          "sprite": "goblin_warrior",
+          "at": [
+            18,
+            19
+          ],
+          "facing": "up",
+          "name": "Goblin"
+        },
+        {
+          "id": "goblin-2",
+          "sprite": "goblin_warrior",
+          "at": [
+            25,
+            19
+          ],
+          "facing": "up",
+          "name": "Goblin"
+        },
+        {
+          "id": "goblin-3",
+          "sprite": "goblin_warrior",
+          "at": [
+            22,
+            21
+          ],
+          "facing": "up",
+          "name": "Goblin"
+        },
+        {
+          "id": "goblin-4",
+          "sprite": "goblin_minion",
+          "at": [
+            16,
+            17
+          ],
+          "facing": "up",
+          "name": "Goblin Runt"
+        }
+      ],
+      "beats": [
+        "The mill yard: goblins with a log for a ram, the mill door splintered but holding, a face at the mill window.",
+        "The fight (e1). Brannoc goes through the yard gate first; Oriel at his shoulder; Tamsin goes wide; Ilsevel keeps the fence between herself and anything with teeth."
+      ],
+      "checks": [],
+      "encounter": {
+        "id": "e1",
+        "name": "The Mill Yard",
+        "enemies": [
+          {
+            "id": "goblin-1",
+            "kind": "goblin_warrior",
+            "at": [
+              18,
+              19
+            ],
+            "sprite": "goblin_warrior",
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-2",
+            "kind": "goblin_warrior",
+            "at": [
+              25,
+              19
+            ],
+            "sprite": "goblin_warrior",
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-3",
+            "kind": "goblin_warrior",
+            "at": [
+              22,
+              21
+            ],
+            "sprite": "goblin_warrior",
+            "name": "Goblin"
+          },
+          {
+            "id": "goblin-4",
+            "kind": "goblin_minion",
+            "at": [
+              16,
+              17
+            ],
+            "sprite": "goblin_minion",
+            "name": "Goblin Runt"
+          }
+        ],
+        "party_at": {
+          "brannoc": [
+            21,
+            14
+          ],
+          "oriel": [
+            22,
+            13
+          ],
+          "tamsin": [
+            20,
+            13
+          ],
+          "ilsevel": [
+            22,
+            12
+          ]
+        },
+        "objective": "Drive the goblins off the mill before they break in.",
+        "stakes": "The villagers of Wending Mill are barricaded behind a splintering door."
+      },
+      "pillars": [
+        "fight"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "The Barn",
+      "location": "loc.wending-mill",
+      "map": "wending_mill_burning",
+      "time_of_day": "day",
+      "camera": [
+        32,
+        20
+      ],
+      "music": "tension",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            31,
+            18
+          ],
+          "facing": "right",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            30,
+            19
+          ],
+          "facing": "right",
+          "name": "Oriel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            30,
+            17
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            29,
+            20
+          ],
+          "facing": "right",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "miller",
+          "sprite": "miller",
+          "at": [
+            28,
+            18
+          ],
+          "facing": "right",
+          "name": "Miller"
+        }
+      ],
+      "beats": [
+        "Whatever the fight cost them, the yard is theirs. The miller, an old man named Ned Hollis, stumbles out of the mill: thank you, thank you, but his wife Bet and the hired lad went to the barn for the cow.",
+        "Smoke is pouring from the barn roof. More goblins came round from the east side and put a torch to it; something bigger is shouting orders behind the smoke.",
+        "The party runs for the barn. Cliffhanger: the barn doors are barred from outside, and the shouting stops. Last line belongs to a party member."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "talk"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "location",
+      "id": "loc.wending-mill",
+      "map": "wending_mill",
+      "region": "lanternmarch"
+    },
+    {
+      "type": "npc",
+      "id": "npc.ned-hollis",
+      "name": "Ned Hollis",
+      "status": "alive",
+      "attitude": "friendly",
+      "location": "loc.wending-mill",
+      "note": "Old miller of Wending Mill; barricaded the villagers in the watermill when goblins attacked (C01-E008).",
+      "if": "e1.won"
+    },
+    {
+      "type": "flag",
+      "id": "wending_mill_barn_burning",
+      "value": true
+    },
+    {
+      "type": "quest",
+      "id": "q.wending-mill",
+      "objectives": [
+        "Save the people trapped in the burning barn"
+      ]
+    },
+    {
+      "type": "clock",
+      "time_of_day": "day"
+    }
+  ],
+  "next_time": "Fire, smoke, and something bigger than a goblin."
+}

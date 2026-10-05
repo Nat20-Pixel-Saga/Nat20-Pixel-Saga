@@ -1,0 +1,130 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/wiki_facts@1",
+ "title": "Wiki facts extracted from an episode",
+ "type": "object",
+ "required": [
+  "schema",
+  "episode_id",
+  "summary",
+  "npcs",
+  "places",
+  "quotes",
+  "events"
+ ],
+ "properties": {
+  "schema": {
+   "const": "pqc/wiki_facts@1"
+  },
+  "episode_id": {
+   "type": "string"
+  },
+  "summary": {
+   "type": "string",
+   "minLength": 20
+  },
+  "npcs": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "description"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^npc\\."
+     },
+     "name": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "want": {
+      "type": "string"
+     },
+     "voice": {
+      "type": "string"
+     },
+     "status": {
+      "type": "string"
+     },
+     "attitude": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "places": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "description"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^loc\\."
+     },
+     "name": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "quotes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "speaker",
+     "text"
+    ],
+    "properties": {
+     "speaker": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "events": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "items": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   }
+  },
+  "hooks_planted": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "character_notes": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

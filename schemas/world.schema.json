@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/world@1",
+  "title": "World state",
+  "description": "Everything outside the character sheets that the engine and writers must agree on.",
+  "type": "object",
+  "required": ["schema", "clock", "series", "party", "location", "factions", "npcs", "quests", "lanterns", "flags", "hooks"],
+  "additionalProperties": false,
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_.:-]+$"},
+    "bond": {
+      "type": "object",
+      "required": ["a", "b", "trust", "tension"],
+      "additionalProperties": false,
+      "properties": {
+        "a": {"type": "string"}, "b": {"type": "string"},
+        "trust": {"type": "integer", "minimum": 0, "maximum": 10},
+        "tension": {"type": "integer", "minimum": 0, "maximum": 10},
+        "romance": {"type": "integer", "minimum": 0, "maximum": 10},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "properties": {
+    "schema": {"const": "pqc/world@1"},
+    "clock": {
+      "type": "object",
+      "required": ["year", "month", "day", "time_of_day"],
+      "additionalProperties": false,
+      "properties": {
+        "year": {"type": "integer"},
+        "month": {"type": "integer", "minimum": 1, "maximum": 12},
+        "day": {"type": "integer", "minimum": 1, "maximum": 30},
+        "hearthday": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "time_of_day": {"type": "string", "enum": ["dawn", "morning", "noon", "afternoon", "dusk", "evening", "night", "midnight"]}
+      }
+    },
+    "series": {
+      "type": "object",
+      "required": ["campaign", "episode", "episode_in_campaign", "phase"],
+      "additionalProperties": false,
+      "properties": {
+        "campaign": {"type": "integer", "minimum": 1, "maximum": 10},
+        "episode": {"type": "integer", "minimum": 0},
+        "episode_in_campaign": {"type": "integer", "minimum": 0},
+        "phase": {"type": "string", "enum": ["campaign", "interlude"]},
+        "interlude": {"type": ["integer", "null"]}
+      }
+    },
+    "party": {
+      "type": "object",
+      "required": ["members", "bonds", "shared_inventory", "shared_money_cp"],
+      "additionalProperties": false,
+      "properties": {
+        "members": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "bonds": {"type": "array", "items": {"$ref": "#/$defs/bond"}},
+        "shared_inventory": {"type": "array", "items": {"type": "object"}},
+        "shared_money_cp": {"type": "integer", "minimum": 0},
+        "reputation_title": {"type": ["string", "null"]}
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": ["id", "region"],
+      "additionalProperties": false,
+      "properties": {"id": {"$ref": "#/$defs/id"}, "region": {"type": "string"}, "map": {"type": ["string", "null"]}, "pos": {"type": ["array", "null"]}, "unlight": {"type": "string", "enum": ["none", "fringe", "deep", "abyssal"]}}
+    },
+    "factions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["reputation"],
+        "properties": {"reputation": {"type": "integer", "minimum": -3, "maximum": 3}, "known_to_party": {"type": "boolean"}, "notes": {"type": "array"}}
+      }
+    },
+    "npcs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "attitude"],
+        "properties": {
+          "status": {"type": "string", "enum": ["unmet", "alive", "dead", "missing", "captive", "unknown"]},
+          "attitude": {"type": "string", "enum": ["hostile", "unfriendly", "indifferent", "friendly", "helpful"]},
+          "location": {"type": ["string", "null"]},
+          "first_seen": {"type": ["string", "null"]},
+          "last_seen": {"type": ["string", "null"]},
+          "notes": {"type": "array"}
+        }
+      }
+    },
+    "quests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"}, "title": {"type": "string"},
+          "status": {"type": "string", "enum": ["hidden", "active", "completed", "failed", "abandoned"]},
+          "giver": {"type": ["string", "null"]}, "reward_cp": {"type": "integer"}, "objectives": {"type": "array"}
+        }
+      }
+    },
+    "lanterns": {
+      "type": "object",
+      "description": "Lantern Road and other lantern states, keyed by lantern id.",
+      "additionalProperties": {"type": "string", "enum": ["lit", "flickering", "dead", "core_removed", "rekindled"]}
+    },
+    "flags": {"type": "object", "description": "Story flags, e.g. rusk_defected: true."},
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "owner", "status"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"}, "owner": {"type": "string"},
+          "status": {"type": "string", "enum": ["dormant", "planted", "open", "paid_off"]},
+          "planted_in": {"type": ["string", "null"]}, "payoff_in": {"type": ["string", "null"]}, "summary": {"type": "string"}
+        }
+      }
+    },
+    "lantern_stars_dark": {"type": "integer", "minimum": 0, "maximum": 8}
+  }
+}

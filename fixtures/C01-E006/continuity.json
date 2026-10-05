@@ -1,0 +1,19 @@
+{
+ "schema": "pqc/continuity@1",
+ "episode_id": "C01-E006",
+ "ok": true,
+ "issues": [
+  {
+   "severity": "warning",
+   "where": "s3#18",
+   "problem": "Brannoc's lantern has not been seen before and is not on his gear list; a soldier carrying a small lantern is plausible, but it is now a recurring object (he leaves it by Oriel's bedroll every night).",
+   "fix": "Add a hooded lantern to Brannoc's inventory on the wiki/sheet when convenient."
+  },
+  {
+   "severity": "warning",
+   "where": "s2#8",
+   "problem": "Ilsevel's note about the honey cake relies on her having watched Tamsin and Wil at the well in C01-E001. She said then that she watched the card game from across the square, so it holds.",
+   "fix": "None needed."
+  }
+ ]
+}

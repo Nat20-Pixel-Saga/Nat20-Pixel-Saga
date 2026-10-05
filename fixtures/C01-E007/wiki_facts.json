@@ -1,0 +1,84 @@
+{
+ "schema": "pqc/wiki_facts@1",
+ "episode_id": "C01-E007",
+ "summary": "On 5 Emberfall the party came back to Brindle Cross with three dead lantern-cores. That evening at the Crooked Kettle, Father Tobin told the story of Saint Wenna of the Open Hand and of the frost night in 1022 when he found a baby at the foot of Lantern No. 1, wrapped in a grey coat with a brass button: Oriel. Ilsevel could recall only the Hall primer's single line on Wenna, and Oriel, praying over a dead core, felt nothing at all. Then Wil brought news that Lantern 41 had gone dark, and a letter from Captain Rook asking 'Bran Vow' to look in on Wending Mill, where goblins have been seen.",
+ "npcs": [
+  {
+   "id": "npc.tobin-ashdown",
+   "name": "Father Tobin",
+   "description": "Old priest of Aurelan at the Shrine of the Open Hand, who walks with a cane and raised Oriel. Found her as a baby at the foot of Lantern No. 1 on a frost night in 1022 and named her Oriel, 'golden'. Tells the story of Saint Wenna well, admits he doesn't understand half the scripture, and fusses over whether Oriel has eaten. Keeps the party's three dead lantern-cores on the shrine altar.",
+   "want": "Oriel safe, fed and coming home.",
+   "voice": "Soft and slow, with gentle jokes: 'There's soup. There's mostly soup.'",
+   "status": "alive",
+   "attitude": "helpful"
+  },
+  {
+   "id": "npc.maddy-fenn",
+   "name": "Maddy Fenn",
+   "description": "Innkeeper of the Crooked Kettle. Kept her promise of free board even though Lantern 37 is still dark, and wants to know who will see to Lantern 41.",
+   "status": "alive",
+   "attitude": "friendly"
+  },
+  {
+   "id": "npc.wil-fenn",
+   "name": "Wil Fenn",
+   "description": "Maddy's son. Brought the news that Lantern 41 had gone dark, and a letter a Fort Harrow rider left for 'Bran Vow'.",
+   "status": "alive",
+   "attitude": "friendly"
+  },
+  {
+   "id": "npc.edda-rook",
+   "name": "Captain Rook",
+   "description": "Commander at Fort Harrow, known so far only from her letter: brief and blunt. She writes that goblins have been seen near Wending Mill and she has no one to spare.",
+   "voice": "'Bran. Goblins seen near Wending Mill. Too many. I have no one to spare.'",
+   "status": "alive",
+   "attitude": "friendly"
+  }
+ ],
+ "places": [
+  {
+   "id": "loc.crooked-kettle",
+   "name": "The Crooked Kettle",
+   "description": "Maddy Fenn's inn on the west side of the square: a wood-floored common room with a hearth, a bar with barrels behind it, long tables, stairs to the rooms, and a storeroom at the back."
+  },
+  {
+   "id": "loc.shrine-of-the-open-hand",
+   "name": "Shrine of the Open Hand",
+   "description": "Father Tobin's shrine to Aurelan. Its altar now holds the three dead lantern-cores the party brought back."
+  },
+  {
+   "id": "loc.wending-mill",
+   "name": "Wending Mill",
+   "description": "A hamlet on the road south of Brindle Cross. Captain Rook writes that goblins have been seen near it."
+  }
+ ],
+ "quotes": [
+  {"speaker": "tobin_ashdown", "text": "'The open hand holds more than the fist.' Forty years I've preached it. I still don't know if it's about lanterns or about people."},
+  {"speaker": "tamsin", "text": "I like his better."},
+  {"speaker": "tobin_ashdown", "text": "I named you Oriel. Golden. Because that lantern was the only light in the square, and you were in it."},
+  {"speaker": "oriel", "text": "Then we're the help."},
+  {"speaker": "tobin_ashdown", "text": "Then go with my blessing. And come back, all of you. That part isn't in the scripture, but it should be."}
+ ],
+ "events": [
+  "The party returned to Brindle Cross with three dead lantern-cores; Maddy kept her promise of free board anyway.",
+  "Father Tobin recognised Brannoc as the man who leaves silver in the shrine's alms box.",
+  "By the Kettle's hearth Tobin told the story of Saint Wenna, who walked the first dark road with a lantern in her open hand.",
+  "Ilsevel's attempt to add the Order's history produced only one line from the Hall's primer.",
+  "Oriel prayed over a dead core with Tobin and felt nothing at all; the cores are to be kept on the shrine altar, and Ilsevel will write to Lamplighters' Hall.",
+  "Tobin told how he found baby Oriel at the foot of Lantern No. 1 in 1022, in a grey coat with a brass button.",
+  "Wil reported that Lantern 41 has gone dark.",
+  "A Fort Harrow rider's letter from Captain Rook asked 'Bran Vow' to look in on Wending Mill; Tamsin noticed the name, and Brannoc said it was his army name.",
+  "The party agreed to set out for Wending Mill at dawn."
+ ],
+ "items": [
+  {"id": "dead_lantern_core", "name": "Dead lantern-cores (3)", "holder": "Shrine of the Open Hand", "note": "Left on Father Tobin's altar until someone of the Order can rekindle them."},
+  {"id": "rook_letter", "name": "Captain Rook's letter", "holder": "brannoc", "note": "Addressed to 'Bran Vow': goblins near Wending Mill; bring help."}
+ ],
+ "hooks_planted": ["hook.brass-button", "hook.flickering-warmth"],
+ "character_notes": {
+  "oriel": ["Was found as a baby at the foot of Lantern No. 1 in 1022, wrapped in a grey coat with a brass button; Father Tobin named her.", "Felt nothing at all when she prayed over a dead core."],
+  "brannoc": ["Captain Rook writes to him as 'Bran Vow'; he calls it his army name.", "Is the one who leaves silver in the shrine's alms box."],
+  "ilsevel": ["Could remember only one line of the Order's history of Saint Wenna; will write to Lamplighters' Hall about the dead cores."],
+  "tamsin": ["Asked Tobin for the story of Saint Wenna, and noticed Brannoc's other name."]
+ }
+}

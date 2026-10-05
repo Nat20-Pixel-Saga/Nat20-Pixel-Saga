@@ -1,0 +1,327 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E004",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Night comes early under the pines. Where the trail forks at a great dead stump, the dark is total for anyone without elven or dwarven eyes."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "I can't see my own feet. Big Man, are my feet still there?",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Both of them. Stop treading on my heels."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Which way did they go? It all looks like the inside of a sack."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Three trails. Ground's too trampled to tell."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Then we need better eyes than ours. Give me an hour."
+    },
+    {
+     "op": "move",
+     "actor": "ilsevel",
+     "to": [
+      17,
+      15
+     ],
+     "face": "right"
+    },
+    {
+     "op": "narrate",
+     "text": "Ilsevel kneels by the stump with her spellbook, a pinch of incense and a little brass dish of charcoal. The ritual takes most of an hour."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Eleven trees. Twelve. Something moving, east. Gone."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Big Man. You're counting trees."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Somebody has to."
+    },
+    {
+     "op": "sfx",
+     "id": "magic"
+    },
+    {
+     "op": "spawn",
+     "actor": "pell",
+     "sprite": "pell",
+     "at": [
+      18,
+      15
+     ],
+     "facing": "left",
+     "name": "Pell"
+    },
+    {
+     "op": "narrate",
+     "text": "The charcoal flares blue. When the light fades, a small brown owl is sitting beside the stump, blinking at her."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Hello. I have read about familiars for thirty years. You are smaller than the diagrams.",
+     "emote": "exclaim"
+    },
+    {
+     "op": "emote",
+     "actor": "pell",
+     "emote": "question"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Pell. Your name is Pell."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "He's beautiful, Ilsevel.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Hello, little feathers. Who's a handsome owl, then?",
+     "emote": "love"
+    },
+    {
+     "op": "emote",
+     "actor": "pell",
+     "emote": "angry"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Pell says you smell of cards and onions. I am paraphrasing. He was ruder."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "He loves me. I can tell.",
+     "emote": "happy"
+    },
+    {
+     "op": "narrate",
+     "text": "Ilsevel turns away to put her spellbook back in her satchel, and takes rather longer over it than she needs to."
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "The north trail opens into a clearing ringed with pale birches. Nothing moves. Nothing sings."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Too open. Too quiet. Don't like it."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Pell. Up, please. Show me."
+    },
+    {
+     "op": "move",
+     "actor": "pell",
+     "to": [
+      13,
+      4
+     ],
+     "face": "up",
+     "wait": false
+    },
+    {
+     "op": "narrate",
+     "text": "Pell lifts into the birches. Ilsevel closes her eyes and, for the first time in her life, sees through someone else's."
+    },
+    {
+     "op": "check",
+     "id": "c1"
+    },
+    {
+     "op": "narrate",
+     "text": "It is like reading a page while someone spins the book. Branches. Sky. A pale blur that turns out to be her own face."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "I see trees. Sky. Myself, upside down. I do not know which way is...",
+     "emote": "sweat"
+    },
+    {
+     "op": "despawn",
+     "actor": "pell"
+    },
+    {
+     "op": "narrate",
+     "text": "The first grey shape is already out of the birches, low and fast."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Wolves! Three of them. Get behind me!",
+     "emote": "alert"
+    },
+    {
+     "op": "encounter",
+     "id": "e1"
+    }
+   ],
+   "battle_narration": [
+    {
+     "after": 0,
+     "text": "The lead wolf is across the clearing before anyone has drawn steel."
+    },
+    {
+     "after": 2,
+     "text": "A pane of blue light snaps up in front of Ilsevel, and the wolf's teeth close on nothing."
+    },
+    {
+     "after": 9,
+     "text": "The last wolf comes in fast and low at Tamsin. She never sees it. She goes down hard and stays down."
+    },
+    {
+     "after": 11,
+     "text": "Ilsevel scrambles up out of the grass and grabs the nearest wolf by the scruff. The lightning does the rest."
+    },
+    {
+     "after": 12,
+     "text": "Brannoc's sword comes down once, hard. One wolf left."
+    },
+    {
+     "after": 13,
+     "text": "Oriel says one word, and Tamsin's eyes open."
+    },
+    {
+     "after": 18,
+     "text": "Brannoc's last swing ends it."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Then the clearing is quiet again. The right kind of quiet, this time."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Tamsin. Sit. Let me see that bite."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "It's nothing. I once lost an argument with a duke's hound. This is a scratch.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "You went down and didn't get up. Humour me."
+    },
+    {
+     "op": "face",
+     "actor": "ilsevel",
+     "facing": "up"
+    },
+    {
+     "op": "narrate",
+     "text": "Ilsevel kneels where the wolves fell. Their ribs show through their coats, and the tips of their fur have no colour in them at all."
+    },
+    {
+     "op": "check",
+     "id": "c2"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Starved, and far from wherever they belong. And look at the fur. It has gone grey at the tips. Not old. Drained."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Like the grass at Lantern Thirty-Seven. Something drove them out of the deep woods."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Then we're walking toward it."
+    },
+    {
+     "op": "spawn",
+     "actor": "pell",
+     "sprite": "pell",
+     "at": [
+      13,
+      11
+     ],
+     "facing": "left",
+     "name": "Pell"
+    },
+    {
+     "op": "narrate",
+     "text": "Wings, then a small weight beside Ilsevel. Pell has come back down from the birches."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "You came back.",
+     "emote": "smile"
+    },
+    {
+     "op": "emote",
+     "actor": "pell",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "East, then? Toward the something?"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "East. Quiet. Single file."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Pell says he will go first. He says he is the only one of us with any sense."
+    }
+   ]
+  }
+ ],
+ "next_time": "Firelight ahead, and goblin voices."
+}

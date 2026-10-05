@@ -1,0 +1,502 @@
+{
+  "_meta": {
+    "source": "SRD 5.2 (CC-BY-4.0) stat blocks, summarised for the engine; custom entries are marked custom=true",
+    "note": "verified=false means the numbers were entered from memory of the 2024 rules and MUST be checked against the SRD 5.2 text before an episode using the monster is published."
+  },
+  "monsters": {
+    "goblin_minion": {
+      "name": "Goblin Minion",
+      "size": "small",
+      "type": "fey (goblinoid)",
+      "cr": "1/8",
+      "xp": 25,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 7,
+      "hp_formula": "2d6",
+      "speed": 30,
+      "abilities": {
+        "str": 8,
+        "dex": 15,
+        "con": 10,
+        "int": 10,
+        "wis": 8,
+        "cha": 8
+      },
+      "skills": {
+        "stealth": 6
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 9
+      },
+      "traits": [
+        "nimble_escape"
+      ],
+      "attacks": [
+        {
+          "id": "dagger",
+          "name": "Dagger",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "range": [
+            20,
+            60
+          ],
+          "damage": "1d4+2",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": false,
+      "ai": "archer"
+    },
+    "goblin_warrior": {
+      "name": "Goblin Warrior",
+      "size": "small",
+      "type": "fey (goblinoid)",
+      "cr": "1/4",
+      "xp": 50,
+      "proficiency": 2,
+      "ac": 15,
+      "hp": 10,
+      "hp_formula": "3d6",
+      "speed": 30,
+      "abilities": {
+        "str": 8,
+        "dex": 15,
+        "con": 10,
+        "int": 10,
+        "wis": 8,
+        "cha": 8
+      },
+      "skills": {
+        "stealth": 6
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 9
+      },
+      "traits": [
+        "nimble_escape"
+      ],
+      "attacks": [
+        {
+          "id": "scimitar",
+          "name": "Scimitar",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "damage": "1d6+2",
+          "damage_type": "slashing",
+          "extra_damage_if_advantage": "1d4"
+        },
+        {
+          "id": "shortbow",
+          "name": "Shortbow",
+          "type": "ranged",
+          "to_hit": 4,
+          "range": [
+            80,
+            320
+          ],
+          "damage": "1d6+2",
+          "damage_type": "piercing",
+          "extra_damage_if_advantage": "1d4"
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    },
+    "goblin_boss": {
+      "name": "Goblin Boss",
+      "size": "small",
+      "type": "fey (goblinoid)",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 17,
+      "hp": 21,
+      "hp_formula": "6d6",
+      "speed": 30,
+      "abilities": {
+        "str": 10,
+        "dex": 15,
+        "con": 10,
+        "int": 10,
+        "wis": 8,
+        "cha": 10
+      },
+      "skills": {
+        "stealth": 6
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 9
+      },
+      "traits": [
+        "nimble_escape"
+      ],
+      "multiattack": [
+        "scimitar",
+        "scimitar"
+      ],
+      "attacks": [
+        {
+          "id": "scimitar",
+          "name": "Scimitar",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "damage": "1d6+2",
+          "damage_type": "slashing",
+          "extra_damage_if_advantage": "1d4"
+        },
+        {
+          "id": "shortbow",
+          "name": "Shortbow",
+          "type": "ranged",
+          "to_hit": 4,
+          "range": [
+            80,
+            320
+          ],
+          "damage": "1d6+2",
+          "damage_type": "piercing",
+          "extra_damage_if_advantage": "1d4"
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    },
+    "skarrow": {
+      "name": "Skarrow the Lantern-Eater",
+      "size": "small",
+      "type": "fey (goblinoid)",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "custom": true,
+      "base": "goblin_boss",
+      "ac": 17,
+      "hp": 38,
+      "hp_formula": "7d6+14",
+      "speed": 30,
+      "abilities": {
+        "str": 12,
+        "dex": 16,
+        "con": 14,
+        "int": 12,
+        "wis": 10,
+        "cha": 14
+      },
+      "saves": {
+        "dex": 5,
+        "wis": 2
+      },
+      "skills": {
+        "stealth": 7,
+        "intimidation": 4,
+        "deception": 4
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 10
+      },
+      "traits": [
+        "nimble_escape"
+      ],
+      "multiattack": [
+        "lantern_blade",
+        "lantern_blade"
+      ],
+      "attacks": [
+        {
+          "id": "lantern_blade",
+          "name": "Lantern-Glass Blade",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d6+3",
+          "damage_type": "slashing",
+          "extra_damage": [
+            [
+              "1d4",
+              "cold"
+            ]
+          ],
+          "extra_damage_if_advantage": "1d4"
+        },
+        {
+          "id": "shortbow",
+          "name": "Shortbow",
+          "type": "ranged",
+          "to_hit": 5,
+          "range": [
+            80,
+            320
+          ],
+          "damage": "1d6+3",
+          "damage_type": "piercing"
+        }
+      ],
+      "notes": "Wears a crown of lantern glass. The blade's cold damage comes from a dead lantern-core set in the hilt.",
+      "verified": false,
+      "ai": "brute"
+    },
+    "wolf": {
+      "name": "Wolf",
+      "size": "medium",
+      "type": "beast",
+      "cr": "1/4",
+      "xp": 50,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 11,
+      "hp_formula": "2d8+2",
+      "speed": 40,
+      "abilities": {
+        "str": 14,
+        "dex": 15,
+        "con": 12,
+        "int": 3,
+        "wis": 12,
+        "cha": 6
+      },
+      "skills": {
+        "perception": 5,
+        "stealth": 4
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 15
+      },
+      "traits": [
+        "pack_tactics"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "damage": "1d6+2",
+          "damage_type": "piercing",
+          "on_hit": {
+            "condition": "prone",
+            "max_size": "medium"
+          }
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    },
+    "worg": {
+      "name": "Worg",
+      "size": "large",
+      "type": "fey",
+      "cr": "1/2",
+      "xp": 100,
+      "proficiency": 2,
+      "ac": 13,
+      "hp": 26,
+      "hp_formula": "4d10+4",
+      "speed": 50,
+      "abilities": {
+        "str": 16,
+        "dex": 13,
+        "con": 13,
+        "int": 7,
+        "wis": 11,
+        "cha": 8
+      },
+      "skills": {
+        "perception": 4
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 14
+      },
+      "traits": [],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "2d6+3",
+          "damage_type": "piercing",
+          "on_hit": {
+            "condition": "prone",
+            "max_size": "large",
+            "save": "str",
+            "dc": 13
+          }
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    },
+    "bandit": {
+      "name": "Bandit",
+      "size": "medium",
+      "type": "humanoid",
+      "cr": "1/8",
+      "xp": 25,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 11,
+      "hp_formula": "2d8+2",
+      "speed": 30,
+      "abilities": {
+        "str": 11,
+        "dex": 12,
+        "con": 12,
+        "int": 10,
+        "wis": 10,
+        "cha": 10
+      },
+      "senses": {
+        "passive_perception": 10
+      },
+      "traits": [],
+      "attacks": [
+        {
+          "id": "scimitar",
+          "name": "Scimitar",
+          "type": "melee",
+          "to_hit": 3,
+          "reach_ft": 5,
+          "damage": "1d6+1",
+          "damage_type": "slashing"
+        },
+        {
+          "id": "light_crossbow",
+          "name": "Light Crossbow",
+          "type": "ranged",
+          "to_hit": 3,
+          "range": [
+            80,
+            320
+          ],
+          "damage": "1d8+1",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    },
+    "skeleton": {
+      "name": "Skeleton",
+      "size": "medium",
+      "type": "undead",
+      "cr": "1/4",
+      "xp": 50,
+      "proficiency": 2,
+      "ac": 14,
+      "hp": 13,
+      "hp_formula": "2d8+4",
+      "speed": 30,
+      "abilities": {
+        "str": 10,
+        "dex": 16,
+        "con": 15,
+        "int": 6,
+        "wis": 8,
+        "cha": 5
+      },
+      "vulnerabilities": [
+        "bludgeoning"
+      ],
+      "immunities": [
+        "poison"
+      ],
+      "condition_immunities": [
+        "exhaustion",
+        "poisoned"
+      ],
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 9
+      },
+      "traits": [],
+      "attacks": [
+        {
+          "id": "shortsword",
+          "name": "Shortsword",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d6+3",
+          "damage_type": "piercing"
+        },
+        {
+          "id": "shortbow",
+          "name": "Shortbow",
+          "type": "ranged",
+          "to_hit": 5,
+          "range": [
+            80,
+            320
+          ],
+          "damage": "1d6+3",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": false,
+      "ai": "archer"
+    },
+    "zombie": {
+      "name": "Zombie",
+      "size": "medium",
+      "type": "undead",
+      "cr": "1/4",
+      "xp": 50,
+      "proficiency": 2,
+      "ac": 8,
+      "hp": 15,
+      "hp_formula": "2d8+6",
+      "speed": 20,
+      "abilities": {
+        "str": 13,
+        "dex": 6,
+        "con": 16,
+        "int": 3,
+        "wis": 6,
+        "cha": 5
+      },
+      "saves": {
+        "wis": 0
+      },
+      "immunities": [
+        "poison"
+      ],
+      "condition_immunities": [
+        "exhaustion",
+        "poisoned"
+      ],
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 8
+      },
+      "traits": [
+        "undead_fortitude"
+      ],
+      "attacks": [
+        {
+          "id": "slam",
+          "name": "Slam",
+          "type": "melee",
+          "to_hit": 3,
+          "reach_ft": 5,
+          "damage": "1d8+1",
+          "damage_type": "bludgeoning"
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
+    }
+  }
+}

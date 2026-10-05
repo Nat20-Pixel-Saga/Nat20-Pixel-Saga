@@ -1,0 +1,71 @@
+{
+ "seed": "C01-E006-1",
+ "rolls": [
+  {
+   "id": "r0000",
+   "index": 0,
+   "seed": "C01-E006-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c2: Read a moss-eaten carving on a stone older than the road, by firelight, from what she remembers of the Hall's road a",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 0,
+     "sides": 20,
+     "value": 12
+    }
+   ],
+   "rolls": [
+    12
+   ],
+   "kept": [
+    12
+   ],
+   "modifier": 5,
+   "total": 17,
+   "advantage": "none",
+   "natural": 12,
+   "dc": 13,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0001",
+   "index": 1,
+   "seed": "C01-E006-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c1: Lift a notebook from the lap of an elf in trance, who is resting, not asleep, and still half aware of the world.",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 1,
+     "sides": 20,
+     "value": 11
+    }
+   ],
+   "rolls": [
+    11
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 7,
+   "total": 18,
+   "advantage": "none",
+   "natural": 11,
+   "dc": 13,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  }
+ ]
+}

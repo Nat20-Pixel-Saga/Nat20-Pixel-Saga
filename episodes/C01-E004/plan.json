@@ -1,0 +1,277 @@
+{
+  "schema": "pqc/plan@1",
+  "episode_id": "C01-E004",
+  "title": "Wolves at the Birches",
+  "summary": "Night on 4 Emberfall. The goblin trail into Thornpike Woods forks at a great stump, and in the dark only Brannoc and Ilsevel can see more than a few steps. Ilsevel decides they need better eyes: while the others keep watch she performs a ritual from her spellbook and, for the first time, calls her familiar, a small brown owl she names Pell. Through Pell's eyes she scouts the birch clearing to the north, where three wolves are already circling. The wolves attack. Afterwards Ilsevel examines the wolves and the party follows the trail on, with Pell on Ilsevel's shoulder.",
+  "dm_intro": {
+    "title": "Wolves at the Birches",
+    "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  4 Emberfall 1047 AK",
+    "text": "Someone took the core out of Lantern Thirty-Seven by hand, and a goblin trail runs from the dead lantern into Thornpike Woods. Four strangers are following it: Brannoc the soldier, Ilsevel the Lamplighter archivist, Tamsin the card player and Oriel the priestess. Night has come down fast under the pines, and the woods are no longer quiet."
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "The Fork in the Trail",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        14,
+        15
+      ],
+      "music": "dark_forest",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            15,
+            15
+          ],
+          "facing": "up",
+          "name": "Brannoc"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            16,
+            17
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            13,
+            16
+          ],
+          "facing": "right",
+          "name": "Tamsin"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            14,
+            17
+          ],
+          "facing": "up",
+          "name": "Oriel"
+        }
+      ],
+      "beats": [
+        "Night under the pines. The trail forks at a huge old stump: north toward pale trees, east and south-west into blackness. Tamsin and Oriel can barely see their own feet; Brannoc and Ilsevel see in the dark, a little.",
+        "Ilsevel decides they need better eyes. She kneels by the stump with her spellbook, a pinch of incense and a brazier of charcoal for the ritual; it takes the better part of an hour. Brannoc keeps watch and counts the trees.",
+        "The ritual ends: a small brown owl blinks at her from the stump. Ilsevel names him Pell. Her first familiar; she is more moved than she lets anyone see.",
+        "Pell hoots; Ilsevel 'translates' (he is rude about Tamsin). Tamsin is delighted with him anyway."
+      ],
+      "checks": [],
+      "encounter": null,
+      "pillars": [
+        "bond",
+        "explore"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "The Birch Clearing",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        12,
+        8
+      ],
+      "music": "tension",
+      "transition": "cut",
+      "cast": [
+        {
+          "id": "brannoc",
+          "at": [
+            12,
+            8
+          ],
+          "facing": "up",
+          "name": "Brannoc"
+        },
+        {
+          "id": "oriel",
+          "at": [
+            11,
+            9
+          ],
+          "facing": "up",
+          "name": "Oriel"
+        },
+        {
+          "id": "ilsevel",
+          "at": [
+            12,
+            11
+          ],
+          "facing": "up",
+          "name": "Ilsevel"
+        },
+        {
+          "id": "tamsin",
+          "at": [
+            14,
+            10
+          ],
+          "facing": "up",
+          "name": "Tamsin"
+        },
+        {
+          "id": "pell",
+          "sprite": "pell",
+          "at": [
+            13,
+            7
+          ],
+          "facing": "up",
+          "name": "Pell"
+        }
+      ],
+      "beats": [
+        "The north trail opens into a clearing ringed with pale birches. Too quiet. Ilsevel sends Pell up into the branches and closes her eyes to see through his (c1).",
+        "Three wolves, thin and grey at the edges, are circling the clearing. What the party knows before they come depends on c1.",
+        "The wolves come out of the birches from three sides (e1). Brannoc takes the front; Oriel stays where she can reach everyone; Pell keeps out of the fight, up in the branches."
+      ],
+      "checks": [
+        {
+          "id": "c1",
+          "actor": "ilsevel",
+          "skill": "perception",
+          "dc": 13,
+          "reason": "See through a familiar's eyes for the very first time, at night, from a branch, and make sense of what moves between the birches.",
+          "on_success": "Through Pell's eyes Ilsevel sees three wolves circling, and calls out where each one is before they break cover.",
+          "on_failure": "Owl-sight is dizzying; Ilsevel sees branches, sky and her own upturned face, and the wolves are almost on them before anyone sees them."
+        }
+      ],
+      "encounter": {
+        "id": "e1",
+        "name": "Wolves at the Birches",
+        "enemies": [
+          {
+            "id": "wolf-1",
+            "kind": "wolf",
+            "at": [
+              12,
+              3
+            ],
+            "name": "Wolf"
+          },
+          {
+            "id": "wolf-2",
+            "kind": "wolf",
+            "at": [
+              7,
+              5
+            ],
+            "name": "Wolf"
+          },
+          {
+            "id": "wolf-3",
+            "kind": "wolf",
+            "at": [
+              18,
+              6
+            ],
+            "name": "Wolf"
+          }
+        ],
+        "party_at": {
+          "brannoc": [
+            12,
+            8
+          ],
+          "oriel": [
+            11,
+            9
+          ],
+          "ilsevel": [
+            12,
+            11
+          ],
+          "tamsin": [
+            14,
+            10
+          ]
+        },
+        "objective": "Survive the pack.",
+        "stakes": "Night, three hungry wolves, and nobody to come looking for them."
+      },
+      "pillars": [
+        "fight"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "Grey at the Edges",
+      "location": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "time_of_day": "night",
+      "camera": [
+        12,
+        8
+      ],
+      "music": "dark_forest",
+      "transition": "continue",
+      "cast": [],
+      "beats": [
+        "After the fight, everyone where the fight left them. Anyone hurt is seen to.",
+        "Ilsevel kneels by the wolves (c2): they are starved, and the tips of their fur have gone colourless.",
+        "Pell drops back onto Ilsevel's shoulder. The party agrees to keep following the trail, east this time, carefully.",
+        "Last line belongs to a party member."
+      ],
+      "checks": [
+        {
+          "id": "c2",
+          "actor": "ilsevel",
+          "skill": "nature",
+          "dc": 12,
+          "reason": "Read why wolves would hunt armed people a mile from a road: their condition, their fur, their wounds.",
+          "on_success": "They were starving and far out of their range, and the tips of their fur have gone grey, colourless: something drove them out of the deeper woods. Ilsevel thinks of the grey grass at Lantern 37.",
+          "on_failure": "Starved wolves, nothing more that she can tell. Ilsevel admits that her bestiaries did not prepare her for real ones."
+        }
+      ],
+      "encounter": null,
+      "pillars": [
+        "bond",
+        "explore"
+      ]
+    }
+  ],
+  "state_proposals": [
+    {
+      "type": "location",
+      "id": "loc.thornpike-woods",
+      "map": "thornpike_woods",
+      "region": "lanternmarch"
+    },
+    {
+      "type": "npc",
+      "id": "npc.pell",
+      "status": "alive",
+      "attitude": "helpful",
+      "location": "loc.thornpike-woods",
+      "note": "First summoned by Ilsevel with Find Familiar at the fork of the goblin trail in Thornpike Woods (C01-E004)."
+    },
+    {
+      "type": "flag",
+      "id": "pell_summoned",
+      "value": true
+    },
+    {
+      "type": "flag",
+      "id": "wolves_greyed_at_the_edges",
+      "value": true,
+      "if": "c2.success"
+    },
+    {
+      "type": "clock",
+      "time_of_day": "night"
+    }
+  ],
+  "next_time": "Firelight ahead, and goblin voices."
+}

@@ -1,0 +1,291 @@
+{
+  "schema": "pqc/script@1",
+  "episode_id": "C01-E005",
+  "cold_open": [],
+  "scenes": [
+    {
+      "id": "s1",
+      "cues": [
+        {
+          "op": "narrate",
+          "text": "East of the birches the trail dips, and between the pines there is firelight. Goblin voices, arguing about something."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Three voices. A fire. They're not expecting anyone."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "I should say, before anyone is brave, that I have nothing left but cantrips. And I am bleeding. A little."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "I've used every prayer I had tonight. Until I sleep, I've only the small ones."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Then we wait for dawn."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "By dawn that cart's gone, Big Man. Wherever it's going."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Rusk told us what goblins like to hear. Stones, a boss, supper. Let me walk in there and tell them a story."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Alone."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Alone's the only way anyone believes a story. You lot creep up to the bushes and look large."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "And if it goes wrong?",
+          "emote": "question"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Then come and save me. Heroically. I'll scream, so you know when.",
+          "emote": "smile"
+        },
+        {
+          "op": "narrate",
+          "text": "They go in through the undergrowth, one careful step at a time."
+        },
+        {
+          "op": "check",
+          "id": "c1"
+        },
+        {
+          "op": "narrate",
+          "text": "Brannoc's mail whispers at every step and Ilsevel walks face-first into a branch. But Tamsin picks the path, Oriel steadies the rest, and nobody hears them."
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "cues": [
+        {
+          "op": "narrate",
+          "text": "Three goblins around a fire, a patched tent, and a cart with something grey in its straw. Tamsin walks into the light as if she owns the woods."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?",
+          "emote": "happy"
+        },
+        {
+          "op": "emote",
+          "actor": "goblin-1",
+          "emote": "question"
+        },
+        {
+          "op": "check",
+          "id": "c2"
+        },
+        {
+          "op": "narrate",
+          "text": "The lie is so cheerful, and so sure of itself, that the goblins simply swallow it. Two of them even step away from their knives."
+        },
+        {
+          "op": "say",
+          "speaker": "goblin-1",
+          "text": "Tonight? Cart goes at dawn. Always dawn. Boss counts every stone, he does."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "And now he wants them early. Lovely fire, by the way."
+        },
+        {
+          "op": "narrate",
+          "text": "Behind the goblins, a grey shield rises slowly out of the bushes."
+        },
+        {
+          "op": "say",
+          "speaker": "goblin-2",
+          "text": "Why boss send a dwarf?",
+          "emote": "alert"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Ah. That'll be my cue."
+        },
+        {
+          "op": "encounter",
+          "id": "e1"
+        }
+      ],
+      "battle_narration": [
+        {
+          "after": 0,
+          "text": "Tamsin has an arrow on the string before the goblins have finished turning round."
+        },
+        {
+          "after": 2,
+          "text": "Brannoc comes out of the bushes at a run and does not stop until the first runt is down."
+        },
+        {
+          "after": 4,
+          "text": "The leader's blade catches Tamsin across the arm. She staggers, white-faced."
+        },
+        {
+          "after": 7,
+          "text": "Tamsin bites the stopper out of a little red bottle and drinks it in one swallow."
+        },
+        {
+          "after": 9,
+          "text": "Brannoc's sword finds the goblin leader. He does not get up."
+        },
+        {
+          "after": 10,
+          "text": "Golden fire drops out of the dark onto the last runt, and the camp is theirs."
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "cues": [
+        {
+          "op": "move",
+          "actor": "oriel",
+          "to": [
+            34,
+            20
+          ],
+          "face": "right"
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Tamsin! Your arm...",
+          "emote": "shock"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Potion. Always carry one. Old habit.",
+          "emote": "sweat"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "That was a good lie."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "It was, wasn't it? I'm a little bit proud of it, Big Man.",
+          "emote": "happy"
+        },
+        {
+          "op": "move",
+          "actor": "brannoc",
+          "to": [
+            42,
+            22
+          ],
+          "face": "up",
+          "wait": false
+        },
+        {
+          "op": "move",
+          "actor": "ilsevel",
+          "to": [
+            41,
+            22
+          ],
+          "face": "up"
+        },
+        {
+          "op": "narrate",
+          "text": "In the cart's straw lie three lantern-cores. They should glow like small suns. They are cloudy, and cold as river stones."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "Three. Three lanterns somewhere along this road are dark tonight, and nobody has written it down."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "A core is always warm. This is like holding a stone from the bottom of a well."
+        },
+        {
+          "op": "move",
+          "actor": "oriel",
+          "to": [
+            39,
+            22
+          ],
+          "face": "right",
+          "wait": false
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "I can't touch them. I'm sorry. I don't know why.",
+          "emote": "sad"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Which one's Thirty-Seven, Professor?"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "I do not know. Nobody numbers the cores. Perhaps somebody should have."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "We take all three. Then we find somewhere to sleep that isn't here."
+        },
+        {
+          "op": "spawn",
+          "actor": "pell",
+          "sprite": "pell",
+          "at": [
+            40,
+            23
+          ],
+          "facing": "right",
+          "name": "Pell"
+        },
+        {
+          "op": "emote",
+          "actor": "pell",
+          "emote": "exclaim"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "Pell says there is a hollow south of the fork. Sheltered. There is an old stone in it."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Then we sleep there. I'll take first watch."
+        }
+      ]
+    }
+  ],
+  "next_time": "A campfire, a long watch, and an old stone."
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "pqc/wiki_facts@1",
+  "episode_id": "C01-E006",
+  "summary": "In the small hours of 5 Emberfall the party made its first camp together in a hollow south of the goblin trail, beside an old stone Ilsevel identified as a Lamplighter way-marker from the road that ran there before the Lantern Road. Oriel suggested trying to rekindle the dead cores at Father Tobin's altar. When Tamsin sat against the way-marker, the iron key at her throat hummed and she moved away without a word. Tamsin read Ilsevel's notebook while the elf was in trance and put it back with a sprig of heather. On first watch Oriel saw an anvil under the grey paint of Brannoc's shield, and Brannoc, seeing that she fears the dark, gave her his lantern.",
+  "npcs": [
+    {
+      "id": "npc.pell",
+      "name": "Pell",
+      "description": "Ilsevel's brown owl familiar. Kept the last watch of the night, and saw Tamsin borrow Ilsevel's notebook.",
+      "status": "alive",
+      "attitude": "helpful"
+    }
+  ],
+  "places": [
+    {
+      "id": "loc.thornpike-woods",
+      "name": "Thornpike Woods",
+      "description": "Dark pine woods east of the Lantern Road. South of the goblin trail's fork is a sheltered hollow with an old fire ring and a moss-grown Lamplighter way-marker from the old road that ran there before the Lantern Road was laid."
+    }
+  ],
+  "quotes": [
+    {
+      "speaker": "ilsevel",
+      "text": "The road moved. The stone stayed."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "It is a long way of saying I have never been allowed to try."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "...Counting."
+    },
+    {
+      "speaker": "oriel",
+      "text": "I sleep with a candle. A priestess of the Lantern-Bearer, twenty-five years old, and I sleep with a candle."
+    },
+    {
+      "speaker": "brannoc",
+      "text": "I see in the dark. You keep it."
+    },
+    {
+      "speaker": "ilsevel",
+      "text": "Pell says he was excellent at it. Pell says nothing happened at all, which is the point of a watch."
+    }
+  ],
+  "events": [
+    "The party made camp in a sheltered hollow and lit a fire in an old stone ring.",
+    "Ilsevel read the moss-covered stone in the hollow: a Lamplighter way-marker from the old road.",
+    "Ilsevel explained that dead cores are rekindled at a temple altar by a senior Lamplighter; Oriel suggested Father Tobin's altar.",
+    "When Tamsin sat against the way-marker, the plain iron key at her neck hummed; she moved away and told Oriel it was smoke in her eyes.",
+    "Tamsin lifted Ilsevel's notebook unnoticed, read Ilsevel's notes about her, and put it back with a sprig of heather.",
+    "On first watch Oriel noticed an anvil shape under the grey paint of Brannoc's shield; he said it was old paint.",
+    "Brannoc saw that Oriel fears the dark and gave her his lantern.",
+    "The party woke rested on the morning of 5 Emberfall."
+  ],
+  "items": [
+    {
+      "id": "iron_key",
+      "name": "Plain iron key",
+      "holder": "tamsin",
+      "note": "Worn on a cord at her neck. It hummed when she sat against the old way-marker."
+    },
+    {
+      "id": "brannoc_lantern",
+      "name": "Brannoc's lantern",
+      "holder": "oriel",
+      "note": "A small lantern Brannoc lit and set by Oriel's bedroll; he sees in the dark."
+    },
+    {
+      "id": "brannoc_shield",
+      "name": "Brannoc's grey shield",
+      "holder": "brannoc",
+      "note": "Painted grey over an older design; the faint outline of an anvil shows through."
+    }
+  ],
+  "hooks_planted": [
+    "hook.painted-anvil"
+  ],
+  "character_notes": {
+    "brannoc": [
+      "Counts things because 'counting helps'.",
+      "His shield is painted over an anvil design he will not talk about.",
+      "Gave Oriel his lantern and told her not to thank him."
+    ],
+    "oriel": [
+      "Sleeps with a candle; she does not like the dark.",
+      "Hums the dusk hymn to fall asleep."
+    ],
+    "tamsin": [
+      "Her iron key hummed by the way-marker; she lied that it was smoke in her eyes.",
+      "Read Ilsevel's notebook and found Ilsevel had noticed her kindness to Wil."
+    ],
+    "ilsevel": [
+      "Rests in an elven trance rather than sleeping.",
+      "Is a Lamplighter of the fourth rank; rekindling a core is second-rank work she has never been allowed to try."
+    ]
+  }
+}

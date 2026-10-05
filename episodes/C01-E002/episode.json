@@ -1,0 +1,276 @@
+{
+  "schema": "pqc/episode@1",
+  "id": "C01-E002",
+  "campaign": 1,
+  "episode": 2,
+  "title": "The Goblin Who Talked",
+  "seed": "C01-E002-1",
+  "attempt": 1,
+  "status": "scripted",
+  "in_world_date": {
+    "year": 1047,
+    "month": 9,
+    "day": 4,
+    "hearthday": null,
+    "time_of_day": "morning"
+  },
+  "checks": [
+    {
+      "id": "c1",
+      "actor": "oriel",
+      "skill": "persuasion",
+      "ability": null,
+      "dc": 15,
+      "roll": "r0000",
+      "success": true,
+      "reason": "Get a hostile, half-starved goblin captive to talk by kneeling with bread and asking his name, while Brannoc stands silent behind her (Help: advantage). Rusk is terrified and has every reason to say nothing.",
+      "offscreen": false
+    },
+    {
+      "id": "c2",
+      "actor": "ilsevel",
+      "skill": "insight",
+      "ability": null,
+      "dc": 13,
+      "roll": "r0001",
+      "success": true,
+      "reason": "Read whether the goblin is telling the truth or only what keeps him fed. Ilsevel has studied goblins in books, never a goblin face.",
+      "offscreen": false
+    },
+    {
+      "id": "c3",
+      "actor": "tamsin",
+      "skill": "deception",
+      "ability": null,
+      "dc": 17,
+      "roll": "r0002",
+      "success": false,
+      "reason": "Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the lie.",
+      "offscreen": false
+    }
+  ],
+  "encounters": [],
+  "rolls": [
+    {
+      "id": "r0000",
+      "index": 0,
+      "seed": "C01-E002-1",
+      "kind": "d20",
+      "notation": "2d20kh1",
+      "purpose": "c1: Get a hostile, half-starved goblin captive to talk by kneeling with bread and asking his name, while Brannoc stands ",
+      "actor": "oriel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 0,
+          "sides": 20,
+          "value": 17
+        },
+        {
+          "counter": 1,
+          "sides": 20,
+          "value": 12
+        }
+      ],
+      "rolls": [
+        17,
+        12
+      ],
+      "kept": [
+        17
+      ],
+      "modifier": 3,
+      "total": 20,
+      "advantage": "advantage",
+      "natural": 17,
+      "dc": 15,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0001",
+      "index": 1,
+      "seed": "C01-E002-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c2: Read whether the goblin is telling the truth or only what keeps him fed. Ilsevel has studied goblins in books, never",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 2,
+          "sides": 20,
+          "value": 13
+        }
+      ],
+      "rolls": [
+        13
+      ],
+      "kept": [
+        13
+      ],
+      "modifier": 3,
+      "total": 16,
+      "advantage": "none",
+      "natural": 13,
+      "dc": 13,
+      "success": true,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0002",
+      "index": 2,
+      "seed": "C01-E002-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c3: Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the: tamsin",
+      "actor": "tamsin",
+      "target": null,
+      "draws": [
+        {
+          "counter": 3,
+          "sides": 20,
+          "value": 11
+        }
+      ],
+      "rolls": [
+        11
+      ],
+      "kept": [
+        11
+      ],
+      "modifier": 3,
+      "total": 14,
+      "advantage": "none",
+      "natural": 11,
+      "dc": 17,
+      "success": false,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    },
+    {
+      "id": "r0003",
+      "index": 3,
+      "seed": "C01-E002-1",
+      "kind": "d20",
+      "notation": "1d20",
+      "purpose": "c3: Tamsin tells the grandmother story about the velvet thread; Ilsevel, who trusts records over people, listens for the: ilsevel",
+      "actor": "ilsevel",
+      "target": null,
+      "draws": [
+        {
+          "counter": 4,
+          "sides": 20,
+          "value": 14
+        }
+      ],
+      "rolls": [
+        14
+      ],
+      "kept": [
+        14
+      ],
+      "modifier": 3,
+      "total": 17,
+      "advantage": "none",
+      "natural": 14,
+      "dc": null,
+      "success": null,
+      "critical": false,
+      "fumble": false,
+      "rerolled": [],
+      "notes": []
+    }
+  ],
+  "state_changes": [
+    {
+      "type": "npc",
+      "id": "npc.rusk",
+      "status": "captive",
+      "location": "loc.crooked-kettle",
+      "name_known": true,
+      "note": "Questioned outside the Crooked Kettle (C01-E002): goblins are paid in food to carry lantern-cores up into the hills to their boss. Kept in the inn's root cellar.",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.rusk",
+      "attitude": "indifferent",
+      "note": "Ate Oriel's bread and begged not to be sent back.",
+      "if": "c1.success",
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "cores_traded_for_food",
+      "value": true,
+      "applied": true
+    },
+    {
+      "type": "flag",
+      "id": "rusk_afraid_to_go_back",
+      "value": true,
+      "if": "c2.success",
+      "applied": true
+    },
+    {
+      "type": "npc",
+      "id": "npc.maddy-fenn",
+      "note": "Offered free board at the Crooked Kettle to whoever relights Lantern 37.",
+      "applied": true
+    },
+    {
+      "type": "quest",
+      "id": "q.relight-lantern-37",
+      "title": "Bring back the light of Lantern 37",
+      "giver": "npc.maddy-fenn",
+      "reward_cp": 0,
+      "objectives": [
+        "Find out what happened to Lantern 37",
+        "Bring the light back to the south road (reward: free board at the Crooked Kettle)"
+      ],
+      "applied": true
+    },
+    {
+      "type": "hook",
+      "id": "hook.velvet-hand-debt",
+      "status": "planted",
+      "applied": true
+    },
+    {
+      "type": "bond",
+      "a": "ilsevel",
+      "b": "tamsin",
+      "tension": 1,
+      "note": "Ilsevel did not believe Tamsin's story about the velvet thread.",
+      "if": "c3.failure",
+      "applied": true
+    },
+    {
+      "type": "bond",
+      "a": "ilsevel",
+      "b": "oriel",
+      "tension": 1,
+      "note": "Disagreed about whether a goblin's word can be trusted.",
+      "if": "c2.failure",
+      "applied": false,
+      "why": "condition c2.failure not met (c2 was success)"
+    },
+    {
+      "type": "clock",
+      "time_of_day": "day",
+      "applied": true
+    }
+  ],
+  "xp_awarded": 0,
+  "loot": [],
+  "level_ups": []
+}

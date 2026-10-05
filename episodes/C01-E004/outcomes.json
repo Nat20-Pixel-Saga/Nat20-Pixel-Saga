@@ -1,0 +1,156 @@
+{
+  "episode_id": "C01-E004",
+  "seed": "C01-E004-1",
+  "checks": [
+    {
+      "id": "c1",
+      "scene": "s2",
+      "who": "ilsevel",
+      "what": "Ilsevel - Perception",
+      "dc": 13,
+      "result": "FAILURE",
+      "margin": -5,
+      "natural": 5,
+      "note": "",
+      "means": "Owl-sight is dizzying; Ilsevel sees branches, sky and her own upturned face, and the wolves are almost on them before anyone sees them."
+    },
+    {
+      "id": "c2",
+      "scene": "s3",
+      "who": "ilsevel",
+      "what": "Ilsevel - Nature",
+      "dc": 12,
+      "result": "SUCCESS",
+      "margin": 2,
+      "natural": 11,
+      "note": "",
+      "means": "They were starving and far out of their range, and the tips of their fur have gone grey, colourless: something drove them out of the deeper woods. Ilsevel thinks of the grey grass at Lantern 37."
+    }
+  ],
+  "fights": [
+    {
+      "id": "e1",
+      "scene": "s2",
+      "winner": "party",
+      "rounds": 3,
+      "xp": 150,
+      "actions": [
+        "Initiative: Wolf 22, Ilsevel 17, Brannoc 17, Oriel 17, Tamsin 12, Wolf 11, Wolf 4",
+        "   - Wolf moves 25 ft",
+        "1. [round 1] Ilsevel - Shield (reaction): Ilsevel shield",
+        "2. [round 1] Wolf - Bite -> Ilsevel: MISS",
+        "3. [round 1] Ilsevel - Shocking Grasp: Wolf miss",
+        "   - Brannoc moves 5 ft",
+        "4. [round 1] Brannoc - Longsword -> Wolf: HIT for 5, Wolf at 6 HP",
+        "5. [round 1] Oriel - Bless (level 1): Brannoc bless; Oriel bless; Ilsevel bless",
+        "6. [round 1] Tamsin - Shortsword -> Wolf: MISS",
+        "   - Wolf moves 25 ft",
+        "7. [round 1] Ilsevel - Shield (reaction): Ilsevel shield",
+        "8. [round 1] Wolf - Bite -> Ilsevel: MISS",
+        "   - Wolf moves 30 ft",
+        "9. [round 1] Wolf - Bite -> Tamsin: CRIT HIT for 10, Tamsin at 0 HP",
+        "   - Tamsin drops to 0 HP",
+        "10. [round 2] Wolf - Bite -> Ilsevel: HIT for 4, Ilsevel at 4 HP",
+        "   - Ilsevel: Stands up",
+        "11. [round 2] Ilsevel - Shocking Grasp: Wolf 7 dmg hit",
+        "   - Wolf falls",
+        "12. [round 2] Brannoc - Longsword -> Wolf: CRIT HIT for 12, Wolf at 0 HP",
+        "   - Wolf falls",
+        "13. [round 2] Oriel - Healing Word (level 1): Tamsin +7 HP back on their feet",
+        "14. [round 2] Oriel - Sacred Flame: Wolf 5 dmg failed save",
+        "   - Tamsin: Stands up",
+        "15. [round 2] Tamsin - Shortsword -> Wolf: MISS",
+        "16. [round 2] Wolf - Bite -> Tamsin: MISS",
+        "17. [round 3] Ilsevel - Fire Bolt: Wolf miss",
+        "   - Brannoc moves 10 ft",
+        "18. [round 3] Brannoc - Longsword -> Wolf: HIT for 10, Wolf at 0 HP",
+        "   - Wolf falls",
+        "END: victory, 150 XP"
+      ],
+      "end_state": {
+        "brannoc": {
+          "hp": 13,
+          "down": false,
+          "dead": false,
+          "pos": [
+            14,
+            9
+          ]
+        },
+        "oriel": {
+          "hp": 10,
+          "down": false,
+          "dead": false,
+          "pos": [
+            11,
+            9
+          ]
+        },
+        "ilsevel": {
+          "hp": 4,
+          "down": false,
+          "dead": false,
+          "pos": [
+            12,
+            11
+          ]
+        },
+        "tamsin": {
+          "hp": 7,
+          "down": false,
+          "dead": false,
+          "pos": [
+            14,
+            10
+          ]
+        },
+        "wolf-1": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            15,
+            9
+          ]
+        },
+        "wolf-2": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            11,
+            10
+          ]
+        },
+        "wolf-3": {
+          "hp": 0,
+          "down": true,
+          "dead": true,
+          "pos": [
+            13,
+            10
+          ]
+        }
+      }
+    }
+  ],
+  "aftermath": [],
+  "party_after": {
+    "brannoc": {
+      "hp": "13/13",
+      "conditions": []
+    },
+    "ilsevel": {
+      "hp": "4/8",
+      "conditions": []
+    },
+    "oriel": {
+      "hp": "10/10",
+      "conditions": []
+    },
+    "tamsin": {
+      "hp": "7/10",
+      "conditions": []
+    }
+  }
+}

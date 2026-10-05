@@ -1,0 +1,105 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "pqc/script@1",
+ "title": "Episode script",
+ "description": "Writer output (Sonnet 5.5, Opus 5.5 for premieres and finales). Narrative cues per scene; {op: check} and {op: encounter} mark where the engine's results are shown.",
+ "type": "object",
+ "required": [
+  "schema",
+  "episode_id",
+  "scenes",
+  "next_time"
+ ],
+ "properties": {
+  "schema": {
+   "const": "pqc/script@1"
+  },
+  "episode_id": {
+   "type": "string"
+  },
+  "cold_open": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   }
+  },
+  "scenes": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "cues"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "cues": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "object",
+       "required": [
+        "op"
+       ],
+       "properties": {
+        "op": {
+         "type": "string",
+         "enum": [
+          "say",
+          "narrate",
+          "move",
+          "face",
+          "emote",
+          "camera",
+          "wait",
+          "sfx",
+          "music",
+          "music_stop",
+          "lantern",
+          "time_of_day",
+          "location_card",
+          "spawn",
+          "despawn",
+          "check",
+          "encounter"
+         ]
+        },
+        "text": {
+         "type": "string",
+         "maxLength": 160
+        }
+       }
+      }
+     },
+     "battle_narration": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "after",
+        "text"
+       ],
+       "properties": {
+        "after": {
+         "type": "integer",
+         "minimum": 0
+        },
+        "text": {
+         "type": "string",
+         "maxLength": 160
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "next_time": {
+   "type": "string",
+   "maxLength": 80
+  }
+ }
+}

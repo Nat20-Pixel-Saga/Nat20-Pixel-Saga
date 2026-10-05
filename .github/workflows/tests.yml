@@ -1,0 +1,26 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install renderer dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install pillow numpy
+      - name: Fetch CC0 assets and fonts
+        run: scripts/fetch_assets.sh
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Phase 1 gate (full combat, replay-verified)
+        run: python scripts/demo_combat.py --quiet
+      - name: Phase 2 gate (render the test scene at 960x540)
+        run: python scripts/make_gate_scene.py --scale 2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gate-test-scene
+          path: render_out/

@@ -1,0 +1,758 @@
+{
+  "schema": "pqc/timeline@1",
+  "id": "C01-E010",
+  "title": "C01-E010 - Fort Harrow",
+  "fps": 30,
+  "seed": "C01-E010-1",
+  "tail": 0.4,
+  "cues": [
+    {
+      "op": "title",
+      "lines": [
+        "NAT 20 PIXELS",
+        "Episode 10 - Fort Harrow"
+      ],
+      "duration": 2.6
+    },
+    {
+      "op": "scene",
+      "map": "fort_harrow",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        23
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        21,
+        24
+      ],
+      "facing": "up",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        22,
+        25
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        20,
+        24
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        19,
+        25
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "spawn",
+      "actor": "dunn",
+      "sprite": "soldier",
+      "at": [
+        22,
+        22
+      ],
+      "facing": "down",
+      "name": "Corporal Dunn"
+    },
+    {
+      "op": "spawn",
+      "actor": "ferrick",
+      "sprite": "soldier_b",
+      "at": [
+        21,
+        22
+      ],
+      "facing": "down",
+      "name": "Ferrick"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "dm_intro",
+      "title": "Fort Harrow",
+      "subtitle": "Campaign 1: The Lantern Road  -  Level 1  -  8 Emberfall 1047 AK",
+      "text": "Lanterns are going dark on the Lantern Road, and somebody is paying goblins for their cores. Four strangers from Brindle Cross have fought goblins three times in four days, and two days ago they saved the hamlet of Wending Mill from a burning raid. Now they have walked to the far end of the road, to Fort Harrow, to tell Captain Rook what they found. The fort has forty soldiers and no hope of more."
+    },
+    {
+      "op": "music",
+      "track": "adventure",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Fort Harrow  -  The Gate  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "wait",
+      "seconds": 0.4
+    },
+    {
+      "op": "narrate",
+      "text": "Fort Harrow, the far end of the Lantern Road. Grey walls, and one lantern burning by the gate."
+    },
+    {
+      "op": "narrate",
+      "text": "Two soldiers lean on the arch. They look as if they haven't slept in a week."
+    },
+    {
+      "op": "camera",
+      "to": [
+        22,
+        26
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Brannoc, you've asked me how I feel nine times since Wending Mill.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "Ten.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "I'm well. Truly. Father Tobin says I'm too stubborn to die.",
+      "speaker": "oriel",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "Sunshine, you scared ten years off the Big Man, and he hasn't got that many left.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "say",
+      "text": "Two hundred. Give or take.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Dwarves commonly live to three hundred and fifty. He is a youth. Technically.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "Eight blind, is that Bran Vow? We had you dead in a ditch, Bran!",
+      "speaker": "dunn",
+      "emote": "happy"
+    },
+    {
+      "op": "say",
+      "text": "Dunn. Still a corporal.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Still alive, which is more than the last three sergeants managed. Who're your friends?",
+      "speaker": "dunn"
+    },
+    {
+      "op": "say",
+      "text": "Bran Vow? Sergeant says that's not his name at all. Says he's an Ironvow. An exile, out of Aldhammer.",
+      "speaker": "ferrick"
+    },
+    {
+      "op": "emote",
+      "actor": "dunn",
+      "emote": "angry",
+      "duration": 1.2
+    },
+    {
+      "op": "say",
+      "text": "Ferrick. Shut your mouth before I shut it for you.",
+      "speaker": "dunn"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc says nothing at all. His thumb finds the grey paint on his shield. Everyone heard."
+    },
+    {
+      "op": "say",
+      "text": "So! Corporal. Is there anywhere in this fort a weary traveller can get a hot drink? Asking for the Big Man. He's shy.",
+      "speaker": "tamsin",
+      "emote": "smile"
+    },
+    {
+      "op": "say",
+      "text": "Mess is by the well. Captain'll want you first, mind.",
+      "speaker": "dunn"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "fort_harrow",
+      "time_of_day": "day",
+      "camera": [
+        21,
+        10
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "edda_rook",
+      "sprite": "edda_rook",
+      "at": [
+        21,
+        9
+      ],
+      "facing": "down",
+      "name": "Captain Rook"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        21,
+        11
+      ],
+      "facing": "up",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        20,
+        12
+      ],
+      "facing": "up",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        22,
+        12
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        23,
+        11
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "calm_village",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Fort Harrow  -  Report. Short Version.  -  Day",
+      "duration": 3.0
+    },
+    {
+      "op": "say",
+      "text": "Bran.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Captain.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Report. Short version.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Lantern Thirty-Seven's core taken by hand. Goblins carting cores east. Paid in food.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "Wending Mill raided. Saved. Forty-One's dark.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "That's more words than I've had out of you in three years.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel watches the captain while she listens."
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0000",
+        "index": 0,
+        "seed": "C01-E010-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c1: Read a veteran officer who has spent twenty years not letting her face say anything.",
+        "actor": "oriel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 0,
+            "sides": 20,
+            "value": 12
+          }
+        ],
+        "rolls": [
+          12
+        ],
+        "kept": [
+          12
+        ],
+        "modifier": 5,
+        "total": 17,
+        "advantage": "none",
+        "natural": 12,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Oriel - Insight",
+      "line": "12 + 5 = 17 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "Oriel sees the grey under Rook's eyes, and the glances she keeps giving her half-empty walls."
+    },
+    {
+      "op": "narrate",
+      "text": "And the way she looks at Brannoc: like someone keeping a door shut for him."
+    },
+    {
+      "op": "say",
+      "text": "Forty soldiers. A hundred and forty lanterns. I have written to the Crown four times. The Crown writes back.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Ten crowns a week, each of you. Ride the road. Find out who's buying those cores. Short version: I need you.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "camera",
+      "to": [
+        22,
+        11
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Ten? Captain, for a company of our quality I'd think twenty. Fifteen. Twelve, and you throw in a spoon.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0001",
+        "index": 1,
+        "seed": "C01-E010-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c2: Haggle a frontier captain up from ten crowns a week, when her fort is short of soldiers, food and coin, and she know",
+        "actor": "tamsin",
+        "target": null,
+        "draws": [
+          {
+            "counter": 1,
+            "sides": 20,
+            "value": 3
+          }
+        ],
+        "rolls": [
+          3
+        ],
+        "kept": [
+          3
+        ],
+        "modifier": 3,
+        "total": 6,
+        "advantage": "none",
+        "natural": 3,
+        "dc": 18,
+        "success": false,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Tamsin - Persuasion",
+      "line": "3 + 3 = 6 vs DC 18 FAIL"
+    },
+    {
+      "op": "say",
+      "text": "Ten. Take it or walk.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Ten is a lovely number. I've always said so.",
+      "speaker": "tamsin",
+      "emote": "sweat"
+    },
+    {
+      "op": "say",
+      "text": "We accept. Technically the Order already employs me to inspect these lanterns, but I see no conflict.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "say",
+      "text": "We accept. All of us.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "And my dispatches for Lamplighters' Hall, soldier? You're three days late.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Still in my pack. Got held up.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "say",
+      "text": "I am of the Hall. Technically, I can receive them.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "narrate",
+      "text": "Brannoc hands Ilsevel a sealed packet, slightly singed at one corner."
+    },
+    {
+      "op": "say",
+      "text": "Then they're delivered. Good. Get some food in you.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 0.7
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 0.6,
+      "wait": false
+    },
+    {
+      "op": "scene",
+      "map": "fort_harrow",
+      "time_of_day": "evening",
+      "camera": [
+        31,
+        10
+      ]
+    },
+    {
+      "op": "spawn",
+      "actor": "edda_rook",
+      "sprite": "edda_rook",
+      "at": [
+        31,
+        9
+      ],
+      "facing": "right",
+      "name": "Captain Rook"
+    },
+    {
+      "op": "spawn",
+      "actor": "holt",
+      "sprite": "soldier_c",
+      "at": [
+        32,
+        10
+      ],
+      "facing": "left",
+      "name": "Sergeant Holt"
+    },
+    {
+      "op": "spawn",
+      "actor": "brannoc",
+      "sprite": "brannoc",
+      "at": [
+        30,
+        11
+      ],
+      "facing": "right",
+      "name": "Brannoc"
+    },
+    {
+      "op": "spawn",
+      "actor": "oriel",
+      "sprite": "oriel",
+      "at": [
+        29,
+        11
+      ],
+      "facing": "right",
+      "name": "Oriel"
+    },
+    {
+      "op": "spawn",
+      "actor": "tamsin",
+      "sprite": "tamsin",
+      "at": [
+        31,
+        12
+      ],
+      "facing": "up",
+      "name": "Tamsin"
+    },
+    {
+      "op": "spawn",
+      "actor": "ilsevel",
+      "sprite": "ilsevel",
+      "at": [
+        32,
+        11
+      ],
+      "facing": "up",
+      "name": "Ilsevel"
+    },
+    {
+      "op": "fade",
+      "from": "black",
+      "to": "clear",
+      "duration": 0.9,
+      "wait": false
+    },
+    {
+      "op": "music",
+      "track": "mystical",
+      "fade_in": 1.0,
+      "volume": 0.45
+    },
+    {
+      "op": "location_card",
+      "text": "Fort Harrow  -  Black Glass  -  Evening",
+      "duration": 3.0
+    },
+    {
+      "op": "narrate",
+      "text": "Evening. Sergeant Holt's patrol comes in through the gate with a cart, and something long under a sack."
+    },
+    {
+      "op": "say",
+      "text": "Caught this one at dusk, trying to pry open Lantern Fifty-Two. Didn't get it open. Didn't get away either.",
+      "speaker": "holt"
+    },
+    {
+      "op": "narrate",
+      "text": "Around the dead goblin's neck, on a greasy cord, hangs a pendant of polished black glass."
+    },
+    {
+      "op": "say",
+      "text": "You're the Lamplighter. What is it?",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "roll",
+      "roll": {
+        "id": "r0002",
+        "index": 2,
+        "seed": "C01-E010-1",
+        "kind": "d20",
+        "notation": "1d20",
+        "purpose": "c3: Make sense of an unknown piece of black glass by lamplight: weight, cold, how the light behaves around it.",
+        "actor": "ilsevel",
+        "target": null,
+        "draws": [
+          {
+            "counter": 2,
+            "sides": 20,
+            "value": 9
+          }
+        ],
+        "rolls": [
+          9
+        ],
+        "kept": [
+          9
+        ],
+        "modifier": 5,
+        "total": 14,
+        "advantage": "none",
+        "natural": 9,
+        "dc": 13,
+        "success": true,
+        "critical": false,
+        "fumble": false,
+        "rerolled": [],
+        "notes": []
+      },
+      "label": "Ilsevel - Arcana",
+      "line": "9 + 5 = 14 vs DC 13 SUCCESS"
+    },
+    {
+      "op": "narrate",
+      "text": "Ilsevel lifts it toward the lantern. The flame leans toward the glass, the way a candle leans toward an open door, and grows dim."
+    },
+    {
+      "op": "say",
+      "text": "It is drinking the light. And it is cold. Cold the way the dead cores were cold.",
+      "speaker": "ilsevel",
+      "emote": "shock"
+    },
+    {
+      "op": "say",
+      "text": "Goblins didn't make that.",
+      "speaker": "oriel"
+    },
+    {
+      "op": "say",
+      "text": "No. Somebody gave it to one.",
+      "speaker": "brannoc"
+    },
+    {
+      "op": "camera",
+      "to": [
+        30,
+        12
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Somebody who pays in sacks of meal, and hands out glass crowns. And now glass necklaces.",
+      "speaker": "tamsin"
+    },
+    {
+      "op": "camera",
+      "to": [
+        31,
+        11
+      ],
+      "duration": 0.9
+    },
+    {
+      "op": "say",
+      "text": "Holt. Double the watch on the lanterns tonight.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "With what, Captain?",
+      "speaker": "holt"
+    },
+    {
+      "op": "say",
+      "text": "...With what we have.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "Then find me that somebody.",
+      "speaker": "edda_rook"
+    },
+    {
+      "op": "say",
+      "text": "I have never read of anything like it. Not in any book. Not once.",
+      "speaker": "ilsevel"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
+    },
+    {
+      "op": "narrate",
+      "text": "Next time: Black glass, and a letter to Lamplighters' Hall."
+    },
+    {
+      "op": "music_stop",
+      "fade_out": 1.5,
+      "wait": false
+    },
+    {
+      "op": "fade",
+      "to": "black",
+      "duration": 1.4
+    }
+  ],
+  "chapters": [
+    {
+      "cue": 0,
+      "title": "Title"
+    },
+    {
+      "cue": 1,
+      "title": "The Gate"
+    },
+    {
+      "cue": 31,
+      "title": "Report. Short Version."
+    },
+    {
+      "cue": 66,
+      "title": "Black Glass"
+    },
+    {
+      "cue": 96,
+      "title": "Next time"
+    }
+  ]
+}

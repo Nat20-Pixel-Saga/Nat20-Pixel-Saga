@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqc/episode@1",
+  "title": "Episode resolution record",
+  "description": "Written by the engine after an episode's plan is resolved: the seed, every roll, every event and the state changes. Source for the script writer, the renderer's dice overlay and the wiki's episode log.",
+  "type": "object",
+  "required": ["schema", "id", "campaign", "episode", "seed", "attempt", "status", "checks", "encounters", "rolls", "state_changes"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "pqc/episode@1"},
+    "id": {"type": "string", "pattern": "^C[0-9]{2}-E[0-9]{3}$"},
+    "campaign": {"type": "integer", "minimum": 1, "maximum": 10},
+    "episode": {"type": "integer", "minimum": 1},
+    "title": {"type": "string"},
+    "seed": {"type": "string", "pattern": "^C[0-9]{2}-E[0-9]{3}-[0-9]+$"},
+    "attempt": {"type": "integer", "minimum": 1},
+    "attempt_reasons": {"type": "array", "items": {"type": "string"}},
+    "status": {"type": "string", "enum": ["planned", "resolved", "scripted", "rendered", "published"]},
+    "in_world_date": {"type": "object"},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "actor", "roll", "success"],
+        "properties": {
+          "id": {"type": "string"}, "actor": {"type": "string"}, "skill": {"type": ["string", "null"]},
+          "ability": {"type": ["string", "null"]}, "dc": {"type": ["integer", "null"]}, "roll": {"type": "string"},
+          "success": {"type": ["boolean", "null"]}, "reason": {"type": "string"}, "offscreen": {"type": "boolean"}
+        }
+      }
+    },
+    "encounters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "winner", "rounds", "events"],
+        "properties": {
+          "name": {"type": "string"}, "winner": {"type": ["string", "null"]}, "rounds": {"type": "integer"},
+          "xp": {"type": "integer"}, "events": {"type": "array", "items": {"type": "object"}}, "combatants": {"type": "array"}
+        }
+      }
+    },
+    "rolls": {"type": "array", "items": {"type": "object"}},
+    "state_changes": {"type": "array", "items": {"type": "object"}},
+    "xp_awarded": {"type": "integer", "minimum": 0},
+    "loot": {"type": "array", "items": {"type": "object"}},
+    "level_ups": {"type": "array", "items": {"type": "object"}}
+  }
+}

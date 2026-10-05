@@ -1,0 +1,415 @@
+{
+  "schema": "pqc/script@1",
+  "episode_id": "C01-E002",
+  "cold_open": [],
+  "scenes": [
+    {
+      "id": "s1",
+      "cues": [
+        {
+          "op": "narrate",
+          "text": "Dawn at the Crooked Kettle. Brannoc has not slept. The goblin tied to the rain barrel has not either."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Four shutters broken. Two arrows in the door. One goblin. Still one goblin."
+        },
+        {
+          "op": "emote",
+          "actor": "rusk",
+          "emote": "angry"
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "Four shutters! And who's going to pay for those, the Eight? Him?",
+          "emote": "angry"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "He's got no purse. I checked. Twice."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "Did you sit out here all night with that? There's a bed upstairs, you stubborn dwarf. I aired it myself."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Somebody had to watch him."
+        },
+        {
+          "op": "spawn",
+          "actor": "oriel",
+          "sprite": "oriel",
+          "at": [
+            19,
+            10
+          ],
+          "facing": "left",
+          "name": "Oriel"
+        },
+        {
+          "op": "move",
+          "actor": "oriel",
+          "to": [
+            12,
+            9
+          ],
+          "face": "up",
+          "wait": false
+        },
+        {
+          "op": "narrate",
+          "text": "Oriel comes across the square from the shrine with a loaf under one arm and a bowl held in both hands."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Morning, Mistress Fenn. Brannoc. Have either of you eaten? No. I can see you haven't."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "Is that shrine bread? For a goblin? And what does Father Tobin say about that?"
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "He packed it.",
+          "emote": "smile"
+        },
+        {
+          "op": "narrate",
+          "text": "Oriel holds out the bowl. The goblin looks at it, then at the dwarf, and does not move."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "Well. Shout if he bites."
+        },
+        {
+          "op": "despawn",
+          "actor": "maddy_fenn"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "cues": [
+        {
+          "op": "move",
+          "actor": "ilsevel",
+          "to": [
+            10,
+            10
+          ],
+          "face": "up",
+          "wait": false
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Is this breakfast or an interrogation? I can't do both before noon.",
+          "emote": "sweat"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "It is both, Mistress Mossfoot. I have prepared seven questions, in order of importance."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "One question. Who sent you. Then I stop being patient.",
+          "emote": "angry"
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Brannoc. Stand behind me, please. Just stand. You're very good at standing."
+        },
+        {
+          "op": "emote",
+          "actor": "brannoc",
+          "emote": "dots"
+        },
+        {
+          "op": "move",
+          "actor": "brannoc",
+          "to": [
+            13,
+            9
+          ],
+          "face": "up"
+        },
+        {
+          "op": "narrate",
+          "text": "Oriel kneels in the dirt so her eyes are level with the goblin's. Behind her, Brannoc folds his arms and becomes a wall."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "I'm Oriel. That bread is yours, whatever you say. What's your name? Your real one."
+        },
+        {
+          "op": "check",
+          "id": "c1"
+        },
+        {
+          "op": "narrate",
+          "text": "The goblin looks at the bread, then at the wall behind her. Then he eats, fast, as if someone might take it back."
+        },
+        {
+          "op": "say",
+          "speaker": "rusk",
+          "text": "Rusk. Name is Rusk."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Thank you, Rusk. Why do goblins come down to our road at night?"
+        },
+        {
+          "op": "say",
+          "speaker": "rusk",
+          "text": "Shiny stones. From the tall lights. Goblins carry them up into the hills. To the boss."
+        },
+        {
+          "op": "say",
+          "speaker": "rusk",
+          "text": "Boss gives food. Sacks of meal. Boss gets the food from somewhere else. Rusk not asks. Asking gets you hit."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "And what's one of those stones worth to a goblin, roughly?"
+        },
+        {
+          "op": "say",
+          "speaker": "rusk",
+          "text": "Supper."
+        },
+        {
+          "op": "emote",
+          "actor": "tamsin",
+          "emote": "dots"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "A lantern-core holds a living mote of divine flame. And someone is paying for them in porridge."
+        },
+        {
+          "op": "narrate",
+          "text": "Ilsevel studies the goblin's face the way she studies a damaged page: slowly, and without blinking."
+        },
+        {
+          "op": "check",
+          "id": "c2"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "He is telling the truth. Look at his hands. He is not afraid of us. He is afraid of going back."
+        },
+        {
+          "op": "say",
+          "speaker": "rusk",
+          "text": "No sending Rusk back. Please. Boss counts the goblins who come home with no stones.",
+          "emote": "sad"
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Nobody's sending you anywhere today, Rusk. Eat.",
+          "emote": "smile"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "He's still tied up."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "He can be tied up and fed. Those aren't opposites."
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "cues": [
+        {
+          "op": "narrate",
+          "text": "By the well, Ilsevel writes up the morning. Tamsin reads over her shoulder, which Ilsevel has asked her twice not to do."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "You've spelled goblin wrong, Professor. There's a second B."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "There is not. I have read four bestiaries, including Orrin's Lesser Folk of the Vael, 1019 edition. Not one has a second B."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Then four books are wrong. Happens to the best of us.",
+          "emote": "happy"
+        },
+        {
+          "op": "narrate",
+          "text": "Ilsevel's eyes drop to Tamsin's wrist. A thin velvet thread is tied there, worn soft with age."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "That thread. Velvet, knotted twice. You touch it whenever someone looks at you for too long."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "This? Lucky charm. My grandmother tied it on when I was small. Kept me out of trouble ever since."
+        },
+        {
+          "op": "check",
+          "id": "c3"
+        },
+        {
+          "op": "narrate",
+          "text": "It is a good story, and well told. Ilsevel listens to all of it and believes none of it."
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "I do not believe a word of that. Technically, you have been in trouble since the moment I met you."
+        },
+        {
+          "op": "emote",
+          "actor": "tamsin",
+          "emote": "sweat"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Ooh, look. There's your second B. Right there. Look closer."
+        },
+        {
+          "op": "narrate",
+          "text": "Ilsevel does not look at the page. She writes one more line in the margin. Tamsin pretends not to see it."
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "cues": [
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "Right. All four of you, here, where I can see you. Is that goblin in my cellar fed?"
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "Fed, and he has a blanket. He's asleep on your onions."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "On my onions. Of course he is.",
+          "emote": "sweat"
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "In fairness, Mistress Fenn, they're very comfortable onions. I tried them first.",
+          "emote": "smile"
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "That south road is how flour, letters and doctors get to us. And not a soul in Brindle Cross knows how to light a lantern."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "So. Free board and hot meals at the Kettle, for as long as it takes, to whoever brings that light back."
+        },
+        {
+          "op": "say",
+          "speaker": "wil_fenn",
+          "text": "I'll go! I know the south road better than anyone. I've walked it a hundred times!",
+          "emote": "exclaim"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "No."
+        },
+        {
+          "op": "say",
+          "speaker": "wil_fenn",
+          "text": "But I can..."
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "No, lad. Somebody stays and holds the village. That's you."
+        },
+        {
+          "op": "emote",
+          "actor": "wil_fenn",
+          "emote": "happy"
+        },
+        {
+          "op": "say",
+          "speaker": "ilsevel",
+          "text": "I will go. Inspecting those lanterns is the task the Order gave me, and the ledger for Thirty-Seven is wrong. I intend to know why."
+        },
+        {
+          "op": "say",
+          "speaker": "oriel",
+          "text": "I'll go too. It's my road. I felt that light go out. Someone should be there when it comes back."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Free board, you said? Free is my favourite word, Mistress Fenn. Count me in.",
+          "emote": "happy"
+        },
+        {
+          "op": "narrate",
+          "text": "Nobody asks why a card player would want to walk an empty road out of town. Brannoc looks as if he might."
+        },
+        {
+          "op": "say",
+          "speaker": "maddy_fenn",
+          "text": "And you, soldier? Haven't you got letters to carry?"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Letters can wait. Road's dark. Somebody has to hold it."
+        },
+        {
+          "op": "say",
+          "speaker": "tamsin",
+          "text": "Big Man, was that a speech? I think that was a speech.",
+          "emote": "smile"
+        },
+        {
+          "op": "say",
+          "speaker": "brannoc",
+          "text": "Ten words. Don't get used to it."
+        }
+      ]
+    }
+  ],
+  "next_time": "The long walk to Lantern Thirty-Seven."
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "pqc/continuity@1",
+  "episode_id": "C01-E002",
+  "ok": true,
+  "issues": [
+    {
+      "severity": "warning",
+      "where": "s1#0",
+      "problem": "The plan has Maddy come out with a broom; nothing on screen shows it, so the detail is lost. Harmless.",
+      "fix": "Optional: a narrator half-line ('Maddy Fenn comes out with a broom and a list of complaints')."
+    },
+    {
+      "severity": "warning",
+      "where": "s2#24",
+      "problem": "Brannoc's only reaction to Rusk's plea is 'He's still tied up.' It is in voice, but his protective streak toward the frightened is not shown yet.",
+      "fix": "Fine as it stands; his softer side is earned later in the act."
+    }
+  ]
+}

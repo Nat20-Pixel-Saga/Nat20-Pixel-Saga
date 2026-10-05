@@ -1,0 +1,554 @@
+{
+ "schema": "pqc/script@1",
+ "episode_id": "C01-E001",
+ "cold_open": [],
+ "scenes": [
+  {
+   "id": "s1",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "Again. Double or nothing, Mistress Mossfoot."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Tam, please. 'Mistress' makes me sound like I own a boot shop.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "I've watched your hands the whole time. You can't cheat if I'm watching.",
+     "emote": "angry"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Cheat? Me? I once beat a river captain using nothing but my honest face."
+    },
+    {
+     "op": "check",
+     "id": "c1"
+    },
+    {
+     "op": "narrate",
+     "text": "The Crown card leaves Tamsin's sleeve and arrives in her hand. Wil, watching very closely, sees nothing at all."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Lantern and Crown. That's the hand, I'm afraid.",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "Eight blind! That was my honey-cake money.",
+     "emote": "sad"
+    },
+    {
+     "op": "emote",
+     "actor": "tamsin",
+     "emote": "dots",
+     "duration": 1.2
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "...Here. Have a honey cake. Don't tell anyone I'm soft."
+    },
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "A soldier's riding through tonight. Fort Harrow colours. I'm going to ask him to take me with him."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "A soldier. Lovely. I'll be sure to be somewhere else.",
+     "emote": "sweat"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "maddy_fenn",
+     "text": "Two candles already, and the night's barely started. Who's paying for those, the Eight?"
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "The Order of Lamplighters, Mistress Fenn. I will sign for them. I always sign for things."
+    },
+    {
+     "op": "check",
+     "id": "c2"
+    },
+    {
+     "op": "emote",
+     "actor": "ilsevel",
+     "emote": "exclaim",
+     "duration": 1.0
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "Here. Lantern thirty-seven, trimmed on the twenty-second of Harvestmoon. And again on the first of Emberfall."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "A lantern is trimmed once a year. And that mark is no warden's I know. I know all of them."
+    },
+    {
+     "op": "say",
+     "speaker": "maddy_fenn",
+     "text": "Is that bad? You've got the face my Wil makes before he tells me he's broken something."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "It is... irregular. I wrote it down."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Hold the light. Hold the road. Hold on to each other."
+    },
+    {
+     "op": "say",
+     "speaker": "tobin_ashdown",
+     "text": "Very good. Better than me; I always rush the middle part. Here, child. Hold out your hand.",
+     "emote": "smile"
+    },
+    {
+     "op": "emote",
+     "actor": "oriel",
+     "emote": "exclaim",
+     "duration": 1.0
+    },
+    {
+     "op": "say",
+     "speaker": "tobin_ashdown",
+     "text": "My sun-disc. Forty years round my neck. It's done more praying than I have."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Father, I can't take this. It's yours."
+    },
+    {
+     "op": "say",
+     "speaker": "tobin_ashdown",
+     "text": "The open hand holds more than the fist. Take it. My knees have earned the rest."
+    },
+    {
+     "op": "spawn",
+     "actor": "brannoc",
+     "sprite": "brannoc",
+     "at": [
+      40,
+      10
+     ],
+     "facing": "left",
+     "name": "Brannoc"
+    },
+    {
+     "op": "move",
+     "actor": "brannoc",
+     "to": [
+      30,
+      9
+     ],
+     "face": "left"
+    },
+    {
+     "op": "narrate",
+     "text": "A dwarf in a soldier's coat comes up the east road. He stops at the alms box, drops a coin, and says nothing."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "You're the one who leaves silver and never stays for the hymn."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Didn't think anyone noticed.",
+     "emote": "sweat"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "I count the box every night. Silver doesn't come often. What's your name?"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Brannoc. Dispatches for Fort Harrow. Gone by morning."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Oriel. Light on your road, Brannoc.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "And on yours."
+    },
+    {
+     "op": "narrate",
+     "text": "The brass button on Oriel's collar catches the last of the sun. Father Tobin looks at it a moment too long."
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "cues": [
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "Sir! You're from Fort Harrow? I can carry a pike. I've practised with a broom.",
+     "emote": "exclaim"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Go home, lad. Your mother's looking for you."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Listen to the Big Man, Sprout. He's got a face like a locked door.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "And you are?"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Tam Mossfoot. Card player, storyteller, honest woman."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "She won every hand the boy played at the well. Every one. Statistically, that is remarkable."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Professor! You were counting my cards from across the square? I'm flattered.",
+     "emote": "happy"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Everyone's welcome in the square. Even card players. What's your name? Your real one?"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "That was my real one, Sunshine. Cross my heart.",
+     "emote": "sweat"
+    },
+    {
+     "op": "camera",
+     "to": [
+      20,
+      19
+     ],
+     "duration": 1.4
+    },
+    {
+     "op": "music_stop",
+     "fade_out": 1.5
+    },
+    {
+     "op": "lantern",
+     "id": "lantern_road.037",
+     "state": "dead",
+     "flicker": 1.8,
+     "unlight": {
+      "radius": 70,
+      "grow": 3.0,
+      "strength": 0.6
+     }
+    },
+    {
+     "op": "time_of_day",
+     "preset": "evening",
+     "duration": 2.5,
+     "wait": false
+    },
+    {
+     "op": "narrate",
+     "text": "On the south road, Lantern Thirty-Seven gutters once. Then the road is dark."
+    },
+    {
+     "op": "emote",
+     "actor": "oriel",
+     "emote": "shock",
+     "duration": 1.2
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Did you feel that? Like a candle going out in my chest."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "A lantern cannot simply go out. That one has burned for three hundred years.",
+     "emote": "exclaim"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Quiet. Something on the road."
+    },
+    {
+     "op": "check",
+     "id": "c3"
+    },
+    {
+     "op": "narrate",
+     "text": "Brannoc stares into the dark and sees only dark. By the time the shapes have edges, they are already running."
+    },
+    {
+     "op": "emote",
+     "actor": "wil_fenn",
+     "emote": "alert",
+     "duration": 0.8,
+     "sfx": "alert"
+    },
+    {
+     "op": "say",
+     "speaker": "wil_fenn",
+     "text": "Goblins! Mam! MAM!"
+    },
+    {
+     "op": "move",
+     "actor": "wil_fenn",
+     "to": [
+      9,
+      8
+     ],
+     "speed": 6
+    },
+    {
+     "op": "despawn",
+     "actor": "wil_fenn"
+    },
+    {
+     "op": "music",
+     "track": "tension",
+     "fade_in": 0.3,
+     "volume": 0.5
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "Four goblins. One road. One of me. Fine. Get behind the shield.",
+     "emote": "angry"
+    },
+    {
+     "op": "encounter",
+     "id": "e1"
+    }
+   ],
+   "battle_narration": [
+    {
+     "after": 0,
+     "text": "The goblins are fast and they are hungry, and they have already picked the one in the robes."
+    },
+    {
+     "after": 5,
+     "text": "Brannoc's first swing ends the first goblin. He does not look at it twice."
+    },
+    {
+     "after": 17,
+     "text": "The second dagger finds its mark. Ilsevel folds into the dust without a sound."
+    },
+    {
+     "after": 19,
+     "text": "Tamsin's arrow takes the last runt in the shoulder. He drops, still breathing."
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "cues": [
+    {
+     "op": "narrate",
+     "text": "Then it is quiet. Three goblins will not get up. The fourth is breathing. So, barely, is Ilsevel."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Ilsevel! Stay with me. Aurelan, if you're listening, now would be good.",
+     "emote": "shock"
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      20,
+      12
+     ],
+     "face": "left",
+     "speed": 6
+    },
+    {
+     "op": "check",
+     "id": "a1"
+    },
+    {
+     "op": "narrate",
+     "text": "Warm light runs from Oriel's hands into Ilsevel like water into dry ground. Ilsevel's eyes open."
+    },
+    {
+     "op": "say",
+     "speaker": "ilsevel",
+     "text": "I am... technically fine. I would like it recorded that I was stabbed. Twice."
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Recorded, Professor. Very brave. Mostly with your face.",
+     "emote": "smile"
+    },
+    {
+     "op": "move",
+     "actor": "brannoc",
+     "to": [
+      21,
+      19
+     ],
+     "face": "right"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "This one's alive. Small. Tie him up. Someone will want to ask him questions."
+    },
+    {
+     "op": "move",
+     "actor": "tamsin",
+     "to": [
+      23,
+      19
+     ],
+     "face": "left",
+     "wait": false
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Do goblins carry coin? Asking for the village. Purely civic interest."
+    },
+    {
+     "op": "move",
+     "actor": "oriel",
+     "to": [
+      22,
+      19
+     ],
+     "face": "down"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "He's bleeding. Hold the lamp closer, Brannoc. Nobody dies in my square tonight."
+    },
+    {
+     "op": "check",
+     "id": "c4"
+    },
+    {
+     "op": "narrate",
+     "text": "Oriel's hands are shaking, and the bandage slips twice. The goblin lives, but only just. He won't be talking before morning."
+    },
+    {
+     "op": "spawn",
+     "actor": "maddy_fenn",
+     "sprite": "maddy_fenn",
+     "at": [
+      9,
+      9
+     ],
+     "facing": "down",
+     "name": "Maddy Fenn"
+    },
+    {
+     "op": "move",
+     "actor": "maddy_fenn",
+     "to": [
+      19,
+      18
+     ],
+     "face": "right",
+     "speed": 5
+    },
+    {
+     "op": "say",
+     "speaker": "maddy_fenn",
+     "text": "Is it over? Who's hurt? Inside, the lot of you. There's stew on, and nobody argues with me tonight."
+    },
+    {
+     "op": "face",
+     "actor": "brannoc",
+     "facing": "right"
+    },
+    {
+     "op": "face",
+     "actor": "oriel",
+     "facing": "left"
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "You stood in front of all of us. You didn't even know our names."
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "You kept them standing behind me. That's holding the line."
+    },
+    {
+     "op": "say",
+     "speaker": "oriel",
+     "text": "Then we held it together.",
+     "emote": "smile"
+    },
+    {
+     "op": "say",
+     "speaker": "brannoc",
+     "text": "...Aye.",
+     "emote": "dots"
+    },
+    {
+     "op": "say",
+     "speaker": "tamsin",
+     "text": "Free stew, then? Lovely. I'll bring the cards.",
+     "emote": "happy"
+    }
+   ]
+  }
+ ],
+ "next_time": "The goblin who talked."
+}
