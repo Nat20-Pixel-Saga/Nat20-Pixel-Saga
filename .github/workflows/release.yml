@@ -37,4 +37,4 @@ jobs:
       - name: Hand new releases to the YouTube uploader
         if: steps.plan.outputs.render != '0'
         env: {GH_TOKEN: "${{ github.token }}"}
-        run: gh workflow run youtube.yml
+        run: gh workflow run youtube.yml -f command=upload
