@@ -246,6 +246,15 @@ def pending(ledger: dict, released: list[str]) -> list[str]:
 def schedule_for(cfg: dict, ledger: dict, eids: list[str], now: dt.datetime) -> dict[str, dt.datetime | None]:
     if not cfg.get("schedule"):
         return {e: None for e in eids}
+    if cfg.get("follow_release_schedule"):
+        # The shared premiere schedule (production/schedule.json): YouTube, wiki and release together.
+        sys.path.insert(0, str(ROOT))
+        from pqc import schedule
+        lead = dt.timedelta(hours=cfg["schedule"].get("min_lead_hours", 2))
+        fixed = {e: schedule.premiere(e) for e in eids}
+        if all(t is not None and t > now + lead for t in fixed.values()):
+            return fixed
+        # A premiere already passed (or too close): fall back to the next free slots below.
     lead = dt.timedelta(hours=cfg["schedule"].get("min_lead_hours", 2))
     after = now + lead
     last = [parse_iso(v["publish_at"]) for v in ledger.values() if v.get("publish_at")]

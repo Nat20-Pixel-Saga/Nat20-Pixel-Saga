@@ -7,8 +7,8 @@
  "playlist_id": null,
  "max_per_run": 5,
  "schedule": {
-  "timezone": "America/New_York",
-  "time": "15:00",
+  "timezone": "Europe/Paris",
+  "time": "21:00",
   "weekdays": [
    0,
    1,
@@ -18,5 +18,6 @@
   ],
   "min_lead_hours": 2
  },
- "notes": "enabled: turn on once the secrets are set and the API project has passed YouTube's audit (production/YOUTUBE.md). category 20 = Gaming (24 = Entertainment, 1 = Film & Animation). schedule: null publishes immediately with 'privacy' instead of scheduling. weekdays: 0 = Monday."
+ "notes": "enabled: turn on once the secrets are set and the API project has passed YouTube's audit (production/YOUTUBE.md). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday.",
+ "follow_release_schedule": true
 }

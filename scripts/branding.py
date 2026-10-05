@@ -14,8 +14,9 @@ Writes:
   intro_16x9.mp4 / intro_9x16.mp4    4.2 s: the die drops, lands on a 20, the name appears
   outro_16x9.mp4 / outro_9x16.mp4    3.0 s: logo and "New episode every weekday."
 
-The videos use the renderer's own codec settings, so they can be joined to an
-episode with ffmpeg's concat demuxer without re-encoding.
+scripts/release_episodes.py puts the intro and outro on every episode video (one
+encode, see pqc.render.video.render's `pre`/`post`); the chapter times in each
+episode's packaging already allow for the intro.
 """
 from __future__ import annotations
 
@@ -48,7 +49,7 @@ def ease_in(p: float) -> float:
 
 
 # ------------------------------------------------------------------ intro
-def intro_frames(assets: Assets, size: tuple[int, int], dur: float = 4.2):
+def intro_frames(assets: Assets, size: tuple[int, int], dur: float = brand.INTRO_S):
     W, H = size
     rnd = random.Random(20)
     faces = {n: brand.d20_mark(assets, 2, face=str(n)) for n in range(1, 21)}
@@ -119,14 +120,14 @@ def intro_frames(assets: Assets, size: tuple[int, int], dur: float = 4.2):
 
 
 def intro_audio() -> list[dict]:
-    return [{"type": "sfx", "id": "dice_roll", "t": 0.25, "volume": 0.9},
-            {"type": "sfx", "id": "dice_land", "t": 1.05, "volume": 0.9},
-            {"type": "sfx", "id": "nat20", "t": 1.5, "volume": 0.9},
-            {"type": "music", "id": "theme", "t": 1.55, "fade_in": 0.2, "volume": 0.5}]
+    return [{"type": "sfx", "id": "dice_roll", "t": 0.25, "volume": 0.7},
+            {"type": "sfx", "id": "dice_land", "t": 1.05, "volume": 0.7},
+            {"type": "sfx", "id": "nat20", "t": 1.5, "volume": 0.6},
+            {"type": "music", "id": "theme", "t": 1.55, "fade_in": 0.2, "volume": 0.32}]
 
 
 # ------------------------------------------------------------------ outro
-def outro_frames(assets: Assets, size: tuple[int, int], dur: float = 3.0):
+def outro_frames(assets: Assets, size: tuple[int, int], dur: float = brand.OUTRO_S):
     W, H = size
     logo = brand.lockup(assets, stacked=True, scale=2, tagline="New episode every weekday.")
     f = assets.font("small")
@@ -155,8 +156,13 @@ def outro_frames(assets: Assets, size: tuple[int, int], dur: float = 3.0):
         yield img
 
 
+def bumpers(assets: Assets, size: tuple[int, int] = (480, 270)):
+    """(intro, outro) as (frames, audio events) pairs, for pqc.render.video.render(pre=, post=)."""
+    return ((list(intro_frames(assets, size)), intro_audio()), (list(outro_frames(assets, size)), outro_audio()))
+
+
 def outro_audio() -> list[dict]:
-    return [{"type": "music", "id": "theme", "t": 0.0, "fade_in": 0.3, "volume": 0.45}]
+    return [{"type": "music", "id": "theme", "t": 0.0, "fade_in": 0.3, "volume": 0.35}]
 
 
 # ------------------------------------------------------------------ files

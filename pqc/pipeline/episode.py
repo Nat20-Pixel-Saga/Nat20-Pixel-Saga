@@ -227,12 +227,13 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
     # 5. Measure, render ----------------------------------------------------
     from ..render.assets import Assets
     from ..render.timeline import Runner
-    from .packaging import chapters, full_description, render_thumbnail, thumbnail_spec, thumbnail_time
+    from .packaging import chapters, full_description, render_thumbnail, thumbnail_spec, thumbnail_time, with_bumpers
     assets = Assets()
     runner = Runner(tl, assets)
     duration = runner.duration()
-    chap = chapters(tl, runner.cue_times, duration)
-    save_json(out / "chapters.json", chap)
+    from ..render.brand import INTRO_S, OUTRO_S
+    chap, video_s = with_bumpers(chapters(tl, runner.cue_times, duration), INTRO_S, OUTRO_S, duration)
+    save_json(out / "chapters.json", chap)      # times in the published video (intro included)
     log(f"  timeline: {len(tl['cues'])} cues, {duration / 60:.1f} min")
     if not 300 <= duration <= 600:
         log(f"  WARNING: {duration / 60:.1f} min is outside the 5-10 minute target")
@@ -291,7 +292,7 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
     if (out / "packaging.json").exists():  # keep links added by scripts/publish_video.py
         prev = load_json(out / "packaging.json")
         published = {k: prev[k] for k in ("video_url", "release_url") if k in prev}
-    pk_full = {**pk, **published, "chapters": chap, "duration_s": round(duration, 1),
+    pk_full = {**pk, **published, "chapters": chap, "duration_s": round(video_s, 1),
                "description_full": full_description(pk, record, chap, cfg.wiki_url)}
     save_json(out / "packaging.json", pk_full)
     t_thumb = thumbnail_time(pk.get("thumbnail_moment"), tl, runner.cue_times, plan)

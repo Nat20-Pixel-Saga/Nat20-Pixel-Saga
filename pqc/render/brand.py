@@ -20,6 +20,9 @@ DEEP = (150, 104, 40, 255)
 BG = (12, 16, 18, 255)
 SUB = (195, 192, 214, 255)
 
+INTRO_S = 4.2      # the common intro at the start of every episode (scripts/branding.py)
+OUTRO_S = 3.0      # and the outro at the end
+
 # Hexagon (face-on d20) on the 48 grid.
 TOP, UR, LR, BOT, LL, UL = (24, 1), (46, 13), (46, 35), (24, 47), (2, 35), (2, 13)
 M_TOP, M_R, M_L = (24, 13), (35, 30), (13, 30)        # midpoints of the big inverted triangle

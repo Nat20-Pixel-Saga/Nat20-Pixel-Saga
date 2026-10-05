@@ -1,9 +1,13 @@
-# Build the MkDocs wiki from wiki/docs and publish it to GitHub Pages.
+# Build the MkDocs wiki and publish it to GitHub Pages. The pages are regenerated
+# at build time from the episodes that have premiered (production/schedule.json),
+# so each evening's run after 21:00 Paris adds that day's episode.
 name: wiki
 on:
   push:
     branches: [main]
-    paths: ["wiki/**"]
+    paths: ["wiki/**", "episodes/**", "production/schedule.json", "pqc/pipeline/wiki.py", "assets/brand/**"]
+  schedule:
+    - cron: "9 19,20 * * *"      # just after the 21:00 Paris premiere (summer and winter time)
   workflow_run:                   # pushes made by the episode job don't trigger "push"
     workflows: [episode]
     types: [completed]
@@ -17,7 +21,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material pillow
+      - name: Regenerate the pages from the episodes that have premiered
+        run: python -c "from pqc.pipeline.wiki import build_site; build_site()"
       - run: cd wiki && mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3
         with: {path: site}

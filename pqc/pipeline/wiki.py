@@ -134,8 +134,29 @@ def _roll_rows(record: dict, shown: set[str], names: dict[str, str]) -> list[str
 
 
 # ------------------------------------------------------------------- pages
-def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoilers: bool = True) -> list[Path]:
+def public_cut(now=None) -> tuple[list[dict], Path, tuple[str, object] | None]:
+    """What the public wiki may show right now: the episodes whose premiere has passed
+    (production/schedule.json), the state after the last of them, and the next premiere."""
+    from .. import schedule
+    from ..state import GENESIS_DIR
     archive = load_archive()
+    shown = [e for e in archive if schedule.is_public(e["id"], now)]
+    state_dir = (EPISODES / shown[-1]["id"] / "state_after") if shown else GENESIS_DIR
+    nxt = next((e for e in archive if not schedule.is_public(e["id"], now)), None)
+    upcoming = (nxt["id"], schedule.premiere(nxt["id"])) if nxt else None
+    return shown, state_dir, upcoming
+
+
+def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoilers: bool = True,
+               public_only: bool | None = None, now=None) -> list[Path]:
+    """Write the wiki pages. The public site (the default `docs`) only shows episodes that have
+    premiered, and the world as it stood after the last of them; previews show everything."""
+    if public_only is None:
+        public_only = Path(docs) == DOCS
+    archive = load_archive()
+    upcoming = None
+    if public_only:
+        archive, state_dir, upcoming = public_cut(now)
     canon = build_canon(archive)
     world = load_json(state_dir / "world.json")
     sheets = {p.stem: load_json(p) for p in sorted((state_dir / "party").glob("*.json"))}
@@ -146,12 +167,21 @@ def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoile
     # Home
     latest = archive[-1] if archive else None
     site = load_json(WIKI / "data" / "site.json") if (WIKI / "data" / "site.json").exists() else {}
-    home = ["# Nat 20 Pixels", "",
+    home = ["# Nat 20 Pixels Saga", "",
             "A pixel-art fantasy story played by 5e rules, one episode every weekday. Four strangers, one road of "
             "lanterns, level 1 to level 20. **Every roll you see on screen is real**: the dice are seeded and logged, "
             "and you can check any of them on the [Dice](dice.md) page.", ""]
     if site.get("youtube"):
         home += [f"**Watch on YouTube: [{site.get('youtube_handle', 'the channel')}]({site['youtube']})**", ""]
+    if upcoming:
+        from .. import schedule
+        uid, when = upcoming
+        n = int(uid[-3:])
+        label = schedule.local_label(when)
+        home += [f"!!! info \"{'First episode' if not latest else 'Next episode'}\"",
+                 f"    **Episode {n}** premieres on YouTube on **{label}**." +
+                 (f" Watch it on [{site.get('youtube_handle', 'YouTube')}]({site['youtube']})." if site.get("youtube") else ""),
+                 ""]
     if latest:
         home += [f"## Latest episode: [{_ep_title(latest)}](episodes/{latest['id'].lower()}.md)", "",
                  latest["facts"]["summary"] if latest.get("facts") else "", ""]
@@ -244,6 +274,17 @@ def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoile
     pages["dice.md"] = "\n".join(dice)
 
     pages["about.md"] = _about()
+
+    # Names as known on screen: a sheet's full name (often a secret) is replaced everywhere.
+    shown_ids = {e["id"] for e in archive}
+    for cid, pub in public.items():
+        full = sheets.get(cid, {}).get("name")
+        known = pub.get("name") or (full or cid).split()[0]
+        for rv in pub.get("revealed", []):
+            if rv["episode"] in shown_ids:
+                known = rv["name"]
+        if full and full != known:
+            pages = {k: v.replace(full, known) for k, v in pages.items()}
 
     # Leak check, then write.
     if check_spoilers:
@@ -382,7 +423,7 @@ def _about() -> str:
     footer = credits.split("## Suggested description footer", 1)[-1].strip()
     return "\n".join([
         "# About", "",
-        "Nat 20 Pixels is an automated show: a rules engine rolls every die, Claude plans and writes "
+        "Nat 20 Pixels Saga is an automated show: a rules engine rolls every die, Claude plans and writes "
         "each episode within a fixed series bible, and a pixel-art renderer turns the result into video. "
         "This wiki is rebuilt after every episode from what was shown on screen.", "",
         "## Credits", "", footer.replace("> ", ""), "",

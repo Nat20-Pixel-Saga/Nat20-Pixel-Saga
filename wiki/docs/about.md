@@ -1,6 +1,6 @@
 # About
 
-Nat 20 Pixels is an automated show: a rules engine rolls every die, Claude plans and writes each episode within a fixed series bible, and a pixel-art renderer turns the result into video. This wiki is rebuilt after every episode from what was shown on screen.
+Nat 20 Pixels Saga is an automated show: a rules engine rolls every die, Claude plans and writes each episode within a fixed series bible, and a pixel-art renderer turns the result into video. This wiki is rebuilt after every episode from what was shown on screen.
 
 ## Credits
 

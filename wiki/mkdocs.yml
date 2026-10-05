@@ -1,5 +1,5 @@
-site_name: Nat 20 Pixels - Wiki
-site_description: Lore, characters and every dice roll of Nat 20 Pixels, a daily pixel-art fantasy story played by 5e rules.
+site_name: Nat 20 Pixels Saga - Wiki
+site_description: Lore, characters and every dice roll of Nat 20 Pixels Saga, a daily pixel-art fantasy story played by 5e rules.
 site_url: https://nat20pixelsaga.com/
 repo_url: https://github.com/Nat20-Pixel-Saga/Nat20-Pixel-Saga
 repo_name: Nat20-Pixel-Saga/Nat20-Pixel-Saga
@@ -44,7 +44,7 @@ extra:
   social:
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/@Nat20px
-      name: Nat 20 Pixels on YouTube
+      name: Nat 20 Pixels Saga on YouTube
     - icon: fontawesome/brands/github
       link: https://github.com/Nat20-Pixel-Saga/Nat20-Pixel-Saga
       name: Source and episode videos

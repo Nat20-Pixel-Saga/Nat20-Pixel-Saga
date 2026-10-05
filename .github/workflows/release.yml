@@ -1,26 +1,40 @@
-# Render each newly committed episode on the runner (the renderer is deterministic)
-# and publish it as a GitHub release: <episode id>.mp4 + thumbnail + description.
+# Render committed episodes on the runner (the renderer is deterministic), with the
+# common intro and outro, and publish each as a GitHub release on its premiere
+# (production/schedule.json): a draft until then, public from then on.
 name: release
 on:
   push:
     branches: [main]
-    paths: ["state/world.json", ".github/workflows/release.yml", "scripts/release_episodes.py"]
+    paths: ["state/world.json", "episodes/*/timeline.json", "episodes/*/thumbnail.png",
+            "production/schedule.json", "scripts/release_episodes.py", "scripts/branding.py",
+            "pqc/render/**", ".github/workflows/release.yml"]
+  schedule:
+    - cron: "7 19,20 * * *"      # just after the 21:00 Paris premiere (summer and winter time)
   workflow_dispatch:
 permissions: {contents: write, actions: write}
 concurrency: {group: release, cancel-in-progress: false}
 jobs:
   release:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: sudo apt-get update && sudo apt-get install -y ffmpeg && pip install pillow numpy
-      - run: scripts/fetch_assets.sh
-      - name: Render and release committed episodes
+      - name: Publish today's premiere; see what needs rendering
+        id: plan
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: python scripts/release_episodes.py --plan
+      - name: Install the renderer
+        if: steps.plan.outputs.render != '0'
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg && pip install pillow numpy
+          scripts/fetch_assets.sh
+      - name: Render and release
+        if: steps.plan.outputs.render != '0'
         env: {GH_TOKEN: "${{ github.token }}"}
         run: python scripts/release_episodes.py
       - name: Hand new releases to the YouTube uploader
+        if: steps.plan.outputs.render != '0'
         env: {GH_TOKEN: "${{ github.token }}"}
         run: gh workflow run youtube.yml

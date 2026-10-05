@@ -505,6 +505,7 @@ class TestYouTube(unittest.TestCase):
         spec.loader.exec_module(cls.yt)
         cls.cfg = load_json(ROOT / "production" / "youtube.json")
         cls.cfg["schedule"].update(timezone="Europe/Madrid", time="17:00", weekdays=[0, 1, 2, 3, 4])
+        cls.cfg["follow_release_schedule"] = False
 
     def test_config_starts_disabled(self):
         self.assertFalse(self.cfg["enabled"])
@@ -659,3 +660,44 @@ class TestYouTubeRecord(unittest.TestCase):
             self.assertFalse(got["C01-E003"]["linked"])
             self.assertTrue(got["C01-E001"]["linked"])
             self.assertEqual(yt.pending(got, ["C01-E001", "C01-E002", "C01-E003"]), ["C01-E002"])
+
+
+class TestPremiereSchedule(unittest.TestCase):
+    CFG = {"timezone": "Europe/Paris", "time": "21:00", "first_episode": "C01-E001", "first_date": "2026-10-12",
+           "weekdays": [0, 1, 2, 3, 4], "skip_dates": ["2026-10-14"], "overrides": {"C01-E009": "2026-10-31 18:00"}}
+
+    def test_one_per_weekday_with_skips_and_overrides(self):
+        import datetime as dt
+        from pqc import schedule
+        p = lambda e: schedule.premiere(e, self.CFG).strftime("%a %d %H:%M")  # noqa: E731
+        self.assertEqual(p("C01-E001"), "Mon 12 19:00")          # 21:00 Paris (CEST) = 19:00 UTC
+        self.assertEqual(p("C01-E002"), "Tue 13 19:00")
+        self.assertEqual(p("C01-E003"), "Thu 15 19:00")          # Wednesday 14 skipped
+        self.assertEqual(p("C01-E005"), "Mon 19 19:00")          # weekend skipped
+        self.assertEqual(p("C01-E010"), "Mon 26 20:00")          # after the clock change: still 21:00 Paris
+        self.assertEqual(p("C01-E009"), "Sat 31 17:00")          # pinned
+        self.assertEqual(schedule.ordinal("C02-E001"), 40)
+        before = dt.datetime(2026, 10, 12, 18, 59, tzinfo=dt.timezone.utc)
+        self.assertFalse(schedule.is_public("C01-E001", before, self.CFG))
+        self.assertTrue(schedule.is_public("C01-E001", before + dt.timedelta(minutes=1), self.CFG))
+
+    def test_public_wiki_hides_unreleased_episodes(self):
+        import datetime as dt
+        from pqc.pipeline import wiki
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch("pqc.schedule.config", return_value=self.CFG):
+                wiki.build_site(Path(tmp), public_only=True, now=dt.datetime(2026, 10, 13, 20, tzinfo=dt.timezone.utc))
+            eps = sorted(p.name for p in (Path(tmp) / "episodes").glob("c01-*.md"))
+            self.assertEqual(eps, ["c01-e001.md", "c01-e002.md"])
+            home = (Path(tmp) / "index.md").read_text()
+            self.assertIn("**Episode 3** premieres", home)
+            text = "".join(p.read_text() for p in Path(tmp).rglob("*.md"))
+            self.assertNotIn("Ironvow", text)                     # revealed only in Episode 10
+            self.assertNotIn("Underbough", text)                  # never said on screen
+
+    def test_chapters_allow_for_the_intro(self):
+        from pqc.pipeline.packaging import with_bumpers
+        chap = [{"time": "0:00", "seconds": 0.0, "title": "A"}, {"time": "1:58", "seconds": 118.2, "title": "B"}]
+        out, total = with_bumpers(chap, 4.2, 3.0, 366.6)
+        self.assertEqual([c["time"] for c in out], ["0:00", "2:02"])
+        self.assertAlmostEqual(total, 373.8)

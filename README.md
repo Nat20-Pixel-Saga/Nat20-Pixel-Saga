@@ -1,4 +1,4 @@
-# Nat 20 Pixels
+# Nat 20 Pixels Saga
 
 An AI-run, fifth-edition-compatible actual-play series told as a 16-bit pixel-art RPG: one 5–10 minute episode every weekday, one party of four, level 1 to level 20.
 
@@ -34,6 +34,7 @@ This repository holds **Phase 1 — Foundations** (canon, party, state format, r
 | `scripts/run_episode.py` | Produce an episode (offline replay, live, or record). |
 | `scripts/contact_sheet.py`, `scripts/cost_report.py` | Review sheet of an episode; cost projection from its ledger. |
 | `scripts/youtube_upload.py`, `production/youtube.json` | Uploads released episodes to YouTube and schedules their premieres (`.github/workflows/youtube.yml`; setup in `production/YOUTUBE.md`). |
+| `production/schedule.json`, `pqc/schedule.py` | The premiere schedule: one episode per weekday at 21:00 Paris from 12 October 2026. The wiki, the GitHub releases and the YouTube uploader all follow it, so an episode appears everywhere at once. |
 | `scripts/trailer.py`, `assets/timelines/trailer_c01.json` | Cuts a trailer from the episodes' timelines in 16:9 and 9:16 (Shorts) at once. |
 | `scripts/branding.py`, `pqc/render/brand.py`, `assets/brand/` | The channel logo (an original pixel d20), avatar, banner, watermark, and the common intro and outro in 16:9 and 9:16. |
 

@@ -43,6 +43,16 @@ def chapters(timeline: dict, cue_times: list[float], duration: float) -> list[di
     return [{"time": fmt_time(m["t"]), "seconds": round(m["t"], 2), "title": m["title"]} for m in out]
 
 
+def with_bumpers(chap: list[dict], intro: float, outro: float, duration: float) -> tuple[list[dict], float]:
+    """Chapter times and length of the published video, which starts with the common intro and
+    ends with the outro (scripts/release_episodes.py). The first chapter still starts at 0:00."""
+    out = []
+    for i, c in enumerate(chap):
+        t = 0.0 if i == 0 else c["seconds"] + intro
+        out.append({"time": fmt_time(t), "seconds": round(t, 2), "title": c["title"]})
+    return out, duration + intro + outro
+
+
 def credits_footer() -> str:
     text = (ROOT / "assets" / "CREDITS.md").read_text(encoding="utf-8")
     return text.split("## Suggested description footer", 1)[-1].replace("> ", "").strip()

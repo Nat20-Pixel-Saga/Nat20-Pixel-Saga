@@ -148,7 +148,8 @@ def assemble(plan: dict, script: dict, res: Resolution, check_cues: dict[str, li
             for part in split_box(c.get("text", "")):
                 cues.append({"op": "narrate", "text": part})
     chapters.append({"cue": len(cues), "title": "Title"})
-    cues.append({"op": "title", "lines": ["NAT 20 PIXELS", f"Episode {n} - {plan['title']}"], "duration": 2.6})
+    camp = int(plan["episode_id"][1:3])     # the show's name is in the common intro just before this card
+    cues.append({"op": "title", "lines": [plan["title"], f"Campaign {camp}  -  Episode {n}"], "duration": 2.6})
 
     cur_map, cur_tod, cur_music = None, None, None
     framer = Framer(plan["scenes"][0]["map"])

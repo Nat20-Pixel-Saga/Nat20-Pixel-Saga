@@ -3,5 +3,5 @@
  "site_url": "https://nat20pixelsaga.com",
  "youtube": "https://www.youtube.com/@Nat20px",
  "youtube_handle": "@Nat20px",
- "releases": "Each committed episode's video is rendered and attached to a GitHub release tagged with its id by .github/workflows/release.yml."
+ "releases": "Each committed episode's video (with the common intro and outro) is rendered and attached to a GitHub release tagged with its id by .github/workflows/release.yml: a draft until its premiere (production/schedule.json), public from then on."
 }

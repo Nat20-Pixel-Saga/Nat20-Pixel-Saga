@@ -20,8 +20,13 @@ from .ui import H, W
 
 def render(timeline: dict, out_path: str | Path, assets: Assets | None = None, scale: int = 4,
            crf: int = 18, preset: str = "medium", stills: list[float] | None = None,
-           stills_dir: str | Path | None = None, log=print) -> dict:
+           stills_dir: str | Path | None = None, log=print,
+           pre: tuple[list, list[dict]] | None = None, post: tuple[list, list[dict]] | None = None) -> dict:
+    """`pre` / `post`: (frames, audio events) of an intro and outro at the canvas size, encoded in
+    the same pass so the result is one clean file. Episode times (stills) stay episode-relative."""
     assets = assets or Assets()
+    pre_frames, pre_audio = pre or ([], [])
+    post_frames, post_audio = post or ([], [])
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     runner = Runner(timeline, assets)
@@ -38,14 +43,24 @@ def render(timeline: dict, out_path: str | Path, assets: Assets | None = None, s
     still_frames = {int(round(s * fps)) for s in (stills or [])}
     saved = []
     n = 0
+    m = 0                                   # episode frames only (for stills)
     try:
+        for f in pre_frames:
+            proc.stdin.write(f.convert("RGB").tobytes())
+            n += 1
+        offset = n / fps
         for frame in runner.frames():
             proc.stdin.write(frame.tobytes())
-            if n in still_frames and stills_dir:
-                p = Path(stills_dir) / f"{out_path.stem}_{n / fps:06.2f}s.png"
+            if m in still_frames and stills_dir:
+                p = Path(stills_dir) / f"{out_path.stem}_{m / fps:06.2f}s.png"
                 p.parent.mkdir(parents=True, exist_ok=True)
                 frame.resize((W * 2, H * 2), 0).save(p)
                 saved.append(str(p))
+            n += 1
+            m += 1
+        main_end = n / fps
+        for f in post_frames:
+            proc.stdin.write(f.convert("RGB").tobytes())
             n += 1
     finally:
         proc.stdin.close()
@@ -53,7 +68,12 @@ def render(timeline: dict, out_path: str | Path, assets: Assets | None = None, s
     if proc.returncode != 0:
         raise RuntimeError("ffmpeg video encode failed")
     duration = n / fps
-    samples = mix(runner.stage.audio, duration, assets)
+    events = [{**e, "t": e["t"] + offset} for e in runner.stage.audio]
+    if pre_frames:
+        events += list(pre_audio) + [{"type": "music_stop", "t": offset, "fade_out": 0.4}]
+    if post_frames:
+        events += [{**e, "t": e["t"] + main_end} for e in post_audio]
+    samples = mix(events, duration, assets)
     wav = tmp / "audio.wav"
     write_wav(wav, samples)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(video_tmp), "-i", str(wav), "-c:v", "copy",

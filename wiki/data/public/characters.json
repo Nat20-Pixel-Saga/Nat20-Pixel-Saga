@@ -3,20 +3,31 @@
  "description": "Spoiler-free introductions for the wiki's character pages, approved by a human. Everything else on those pages is built from what has been shown on screen (wiki facts) and from the public parts of the character sheets.",
  "characters": {
   "brannoc": {
+   "name": "Brannoc",
+   "revealed": [
+    {
+     "episode": "C01-E010",
+     "name": "Brannoc Ironvow"
+    }
+   ],
    "title": "The Shield",
    "intro": "A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few words, a heavy shield, and a habit of standing in front of other people."
   },
   "ilsevel": {
+   "name": "Ilsevel",
    "title": "The Archivist",
    "intro": "An elf scholar of the Order of Lamplighters, sent to inspect the failing lanterns between thirty and forty-five. She writes everything down."
   },
   "tamsin": {
+   "name": "Tamsin",
    "title": "The Card Player",
    "intro": "A halfling with quick hands and quicker jokes, met playing cards in Brindle Cross under the name Tam Mossfoot. Has a nickname for everyone."
   },
   "oriel": {
+   "name": "Oriel",
    "title": "The Acolyte",
    "intro": "The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Father Tobin Ashdown. Asks everyone their real name, and remembers it."
   }
- }
+ },
+ "notes": "`name` is how the character is known on screen; a sheet's full name never appears on the wiki. `revealed` upgrades the name once the episode that reveals it has premiered."
 }
