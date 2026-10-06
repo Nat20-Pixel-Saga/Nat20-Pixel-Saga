@@ -24,6 +24,9 @@ SKILLS = {
     "survival": "wis",
 }
 
+# Flanking (optional rule, bible 10 §4) is used once the whole party is above level 2.
+FLANKING_FROM_LEVEL = 3
+
 SIZES = ("tiny", "small", "medium", "large", "huge", "gargantuan")
 
 DAMAGE_TYPES = (

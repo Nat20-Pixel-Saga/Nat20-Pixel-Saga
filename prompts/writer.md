@@ -33,7 +33,7 @@ Each scene is `{ "id": "s1", "cues": [...], "battle_narration": [...] }` with th
 
 Each plan check appears exactly once, in its scene. The encounter appears exactly once. Aftermath rolls (`a1`, `a2`: the engine's healing of anyone left dying after a won fight, see `10_rules_of_play.md` §5) are placed like checks, in the scene the outcomes name. Offscreen checks (`offscreen: true`) are not shown; mention their result in a line if it matters.
 
-`battle_narration` puts Storyteller lines into the fight: `{ "after": N, "text": ... }` plays after action N of the action log (0 = right after initiative). Use 3-6 of them for the moments that matter (first blood, a character going down, a clever move, the last blow). They must agree with the log: who hit whom, who fell, who stood up.
+`battle_narration` puts Storyteller lines into the fight: `{ "after": N, "text": ... }` plays after action N of the action log (0 = right after initiative). Use 3-6 of them for the moments that matter (first blood, a character going down, a clever move, the last blow). They must agree with the log: who hit whom, who fell, who stood up. Where the log says why a roll had advantage or disadvantage (flanking, pack tactics, long range), that is often the line: two of them closing in from both sides, a shot from too far.
 
 ## Writing rules (from `08_voice_and_style.md`, all binding)
 

@@ -24,7 +24,7 @@ from ..checks import ability_check, contest, group_check, saving_throw
 from ..combat import Encounter
 from ..dice import Dice
 from ..render.director import _line, battle_cues
-from ..rules import ABILITIES, SKILLS
+from ..rules import ABILITIES, FLANKING_FROM_LEVEL, SKILLS
 from ..schema import validate_named
 from ..state import ROOT, character_from_sheet, load_json, monster_from_data, sheet_from_character
 
@@ -226,11 +226,7 @@ def resolve(plan: dict, sheets: dict, world: dict, seed: str, attempt: int = 1) 
                 "means": ch.get("on_success") if success else ch.get("on_failure"), **extra})
         enc = sc.get("encounter")
         if enc:
-            if features.enabled("tactics_v2", plan["episode_id"]):
-                enc = {**enc, "options": {"tactics": 2, **(enc.get("options") or {})}}
-            if enc.get("surprise") and features.enabled("camps", plan["episode_id"]):
-                enc = {**enc, "options": {**(enc.get("options") or {}),
-                                          "surprised": _surprised(enc, results, party)}}
+            enc = encounter_options(enc, plan["episode_id"], sheets, results, party)
             b = _fight(enc, sc["map"], party, sheets, dice)
             battles[enc["id"]] = b
             r = b["result"]
@@ -290,6 +286,22 @@ def resolve(plan: dict, sheets: dict, world: dict, seed: str, attempt: int = 1) 
         outcomes["level_ups"] = [{"who": r["id"], "level": r["to"], "new": r["new"], "hp_max": r["hp_max"],
                                   "still_to_choose": r["pending_choices"]} for r in level_ups]
     return Resolution(record, outcomes, battles, sheets_after, world_after, check_rolls)
+
+
+def encounter_options(enc: dict, eid: str, sheets: dict, results: dict, party: dict) -> dict:
+    """The rules a fight runs under, by episode (production/features.json): tactics 2, flanking once the
+    whole party is above level 2 (bible 10 §4), and surprise from a watch check. The plan's own
+    ``options`` win (e.g. ``"flanking": false`` for a fight that must not use it)."""
+    opts = {}
+    if features.enabled("tactics_v2", eid):
+        opts["tactics"] = 2
+    if features.enabled("flanking", eid) and sheets and min(s["level"] for s in sheets.values()) >= FLANKING_FROM_LEVEL:
+        opts["flanking"] = True
+    if enc.get("surprise") and features.enabled("camps", eid):
+        opts["surprised"] = _surprised(enc, results, party)
+    if not opts:
+        return enc
+    return {**enc, "options": {**opts, **(enc.get("options") or {})}}
 
 
 def _surprised(enc: dict, results: dict, party: dict) -> list[str]:
@@ -440,13 +452,15 @@ def _fight(enc: dict, map_id: str, party: dict, sheets: dict, dice: Dice) -> dic
     for eid in nonlethal:
         if end_state[eid]["down"]:
             end_state[eid]["note"] = "knocked out, alive (nonlethal)"
-    return {"result": result, "cues": cues, "actions": action_log(cues, names), "end_state": end_state,
+    reasons = (enc.get("options") or {}).get("tactics", 1) >= 2
+    return {"result": result, "cues": cues, "actions": action_log(cues, names, reasons), "end_state": end_state,
             "names": names, "kinds": kinds}
 
 
-def action_log(cues: list[dict], names: dict) -> list[str]:
+def action_log(cues: list[dict], names: dict, reasons: bool = False) -> list[str]:
     """Numbered actions (attacks, spells, healing) with the in-between moments
-    unnumbered, so the writer can place narration "after action N"."""
+    unnumbered, so the writer can place narration "after action N". ``reasons`` (tactics 2) also says
+    why a roll had advantage or disadvantage (flanking, pack tactics, long range...)."""
     out, n, rnd = [], 0, 1
 
     def nm(x):
@@ -464,6 +478,11 @@ def action_log(cues: list[dict], names: dict) -> list[str]:
                 res = ("CRIT " if c.get("critical") else "") + (f"HIT for {c['damage']}" if c["hit"] else "MISS")
                 if c.get("sneak_attack"):
                     res += " (sneak attack)"
+                roll = c.get("roll") or {}
+                if reasons and roll.get("advantage") in ("advantage", "disadvantage"):
+                    sign = "+" if roll["advantage"] == "advantage" else "-"
+                    why = [n[1:] for n in roll.get("notes", []) if n.startswith(sign)]
+                    res += f" ({roll['advantage']}" + (f": {', '.join(why)})" if why else ")")
                 hp = f", {nm(c['target'])} at {c['hp_after']} HP" if c["hit"] else ""
                 out.append(f"{n}. [round {rnd}] {c['label']} -> {nm(c['target'])}: {res}{hp}")
             else:

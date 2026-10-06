@@ -861,7 +861,7 @@ class TestUpdatesForNewEpisodes(unittest.TestCase):
 
     def test_switches_by_episode(self):
         from pqc import features
-        for name in ("tactics_v2", "level_ups", "progress_card", "memories", "camps", "xp_banner"):
+        for name in ("tactics_v2", "level_ups", "progress_card", "memories", "camps", "xp_banner", "flanking"):
             self.assertFalse(features.enabled(name, "C01-E010"), name)
             self.assertTrue(features.enabled(name, "C01-E011"), name)
             self.assertTrue(features.enabled(name, "C02-E001"), name)
@@ -935,6 +935,19 @@ class TestUpdatesForNewEpisodes(unittest.TestCase):
         self.assertEqual(res.world_after["location"]["id"], "loc.waystation-nine")
         self.assertEqual(res.world_after["clock"]["day"], (self.world["clock"]["day"] + 3 - 1) % 30 + 1)
         self.assertEqual(short["kind"], "short")
+
+    def test_flanking_once_the_party_is_above_level_2(self):
+        from pqc.pipeline.resolve import encounter_options
+        enc = {"id": "e1", "party_at": {}, "enemies": []}
+        lvl = lambda n: {c: dict(s, level=n) for c, s in self.sheets.items()}
+        self.assertNotIn("flanking", encounter_options(enc, "C01-E030", lvl(2), {}, {})["options"])
+        self.assertTrue(encounter_options(enc, "C02-E001", lvl(3), {}, {})["options"]["flanking"])
+        mixed = lvl(3)
+        mixed["tamsin"]["level"] = 2
+        self.assertNotIn("flanking", encounter_options(enc, "C02-E001", mixed, {}, {})["options"])
+        off = dict(enc, options={"flanking": False})
+        self.assertFalse(encounter_options(off, "C02-E001", lvl(3), {}, {})["options"]["flanking"])
+        self.assertIs(encounter_options(enc, "C01-E010", lvl(3), {}, {}), enc)     # episodes already made: as they were
 
     def test_surprise_from_the_watch(self):
         from pqc.combat import Encounter

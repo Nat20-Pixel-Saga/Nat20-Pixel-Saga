@@ -51,7 +51,7 @@ The show uses the **System Reference Document 5.2 (SRD 5.2)**, released by Wizar
 - **Monster tactics** (the engine's policy, from C1E11): goblins use Nimble Escape, slipping past a well-armoured defender to reach a softer target and, once hurt, hitting and Disengaging out of reach to shoot; shooters step in to normal range rather than throw or shoot with disadvantage.
 - **Reactions** used automatically by the engine when the outcome is unambiguous: *Shield* (only if +5 AC turns a hit into a miss), opportunity attacks. Other reactions require an explicit intent.
 - **Monsters at 0 HP** die unless the plan marks them `nonlethal` (knock-out). **Party members at 0 HP** fall unconscious and make Death Saving Throws.
-- **Flanking** is not used (optional rule, off).
+- **Flanking** (optional rule) is used once the whole party is above level 2 (level 3+; from C1E11, so in practice from the first episode after the level-3 milestone at C1E40): a creature making a melee attack has advantage when an ally of it stands directly on the opposite side of the target. It works for both sides; goblins who hit harder with advantage become much more dangerous. Below level 3 it is off.
 - **Cover:** half (+2) and three-quarters (+5) are applied when the plan's map marks it; total cover blocks targeting.
 - **Weapon Mastery:** Vex, Sap, Slow, Graze, Topple and Push are automated. Cleave and Nick are resolved as explicit extra-attack intents when added (Phase 2).
 

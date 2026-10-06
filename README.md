@@ -106,6 +106,7 @@ Switched on per episode in `production/features.json`, so Episodes 1-10 replay e
 | `progress_card` | Before the outro: each character's level, an XP bar that fills from where the episode started, XP to the next level, and LEVEL UP with what's new. Shown when anyone gained XP or a level, and at least every 3rd episode (`production/show.json`) | `pqc/pipeline/assemble.progress_cue`, `pqc/render/ui.py` |
 | `memories` | The planner and writer get what each character lived through (their notes, bond moments, lines, fights, natural 20s and 1s, levels) and must use it for one or two callbacks an episode; a character who grows gets a line about it | `pqc/pipeline/memories.py`, `prompts/writer.md` |
 | `camps` | Nights in the open (watches, a ration each, the Unlight save without a lit lantern), travel over days, short rests that spend Hit Dice, and surprise from a failed watch check | `pqc/pipeline/resolve.py` (`_apply_camp`), `prompts/planner.md` §12 |
+| `flanking` | Flanking (advantage for a melee attacker with an ally directly opposite the target) once the whole party is level 3 or higher (`pqc.rules.FLANKING_FROM_LEVEL`); the planner can still switch it off for one fight with `"options": {"flanking": false}` | `pqc/pipeline/resolve.encounter_options` |
 | `xp_banner` | "Victory! +37 XP each" in the text font (the small font's X reads as an H, so Episodes 1-10 show "+150 HP") | `pqc/render/ui.py` |
 
 ### Tactical model hook
