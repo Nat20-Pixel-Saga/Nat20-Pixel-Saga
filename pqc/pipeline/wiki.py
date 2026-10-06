@@ -274,6 +274,8 @@ def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoile
     pages["dice.md"] = "\n".join(dice)
 
     pages["about.md"] = _about()
+    for static in sorted((WIKI / "data" / "pages").glob("*.md")):     # privacy policy, terms of service
+        pages[static.name] = static.read_text(encoding="utf-8")
 
     # Names as known on screen: a sheet's full name (often a secret) is replaced everywhere.
     shown_ids = {e["id"] for e in archive}

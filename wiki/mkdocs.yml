@@ -33,6 +33,8 @@ nav:
   - Quests: quests.md
   - Dice: dice.md
   - About: about.md
+  - Privacy: privacy.md
+  - Terms: terms.md
 markdown_extensions:
   - tables
   - md_in_html
