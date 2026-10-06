@@ -73,6 +73,16 @@ class PropInstance:
     light_spec: dict | None = None
     label: str | None = None
     hidden: bool = False
+    frames: list[Image.Image] | None = None     # animated props (Assets.prop_frames)
+    fps: float = 8.0
+    dead_image: Image.Image | None = None       # what a lantern looks like once its light is "dead"
+
+    def frame(self, t: float) -> Image.Image:
+        if self.dead_image is not None and (self.light == "dead" or (self.light == "flicker" and int(t * 9) % 3 == 0)):
+            return self.dead_image
+        if not self.frames:
+            return self.image
+        return self.frames[int(t * self.fps) % len(self.frames)]
 
     @property
     def sort_y(self) -> int:
@@ -112,9 +122,11 @@ class TileMap:
         props = []
         for pd in d.get("props", []):
             spec = assets.prop_spec(pd["prop"])
+            anim = assets.prop_frames(pd["prop"])
             props.append(PropInstance(pd["prop"], pd["at"][0], pd["at"][1], pd.get("id"), assets.prop(pd["prop"]),
                                       pd.get("light", "lit" if "light" in spec else None), spec.get("light"),
-                                      pd.get("label")))
+                                      pd.get("label"), frames=anim[0] if anim else None, fps=anim[1] if anim else 8.0,
+                                      dead_image=assets.prop(spec["dead"]) if spec.get("dead") else None))
         m = cls(d["id"], d.get("name", d["id"]), w, h, d.get("base", "grass_base"), d.get("layers", []), props,
                 d.get("points", {}), d.get("seed", 0), d)
         for layer in m.layers:

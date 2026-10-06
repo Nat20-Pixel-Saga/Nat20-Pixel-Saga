@@ -1256,6 +1256,486 @@
    ],
    "solid": "none",
    "note": "Black-glass pendant (pack gem recoloured)"
+  },
+  "lantern_post": {
+   "sheet": "assets/sprites/lantern_post.png",
+   "rect": [
+    0,
+    0,
+    1,
+    2
+   ],
+   "solid": "base",
+   "light": {
+    "radius": 36,
+    "offset": [
+     8,
+     8
+    ]
+   },
+   "note": "Iron-and-glass lantern post of the Lantern Road (drawn for the show); shows lantern_post_dead once a lantern cue puts it out",
+   "dead": "lantern_post_dead"
+  },
+  "lantern_post_dead": {
+   "sheet": "assets/sprites/lantern_post_dead.png",
+   "rect": [
+    0,
+    0,
+    1,
+    2
+   ],
+   "solid": "base",
+   "note": "The same post with its core gone dark"
+  },
+  "campfire_lit": {
+   "sheet": "Backgrounds/Tilesets/tileset_camp.png",
+   "rect": [
+    12,
+    5,
+    2,
+    2
+   ],
+   "solid": "all",
+   "light": {
+    "radius": 72,
+    "offset": [
+     16,
+     16
+    ]
+   },
+   "anim": {
+    "fps": 10,
+    "fx": "fire_small",
+    "at": [
+     [
+      10,
+      3
+     ]
+    ]
+   },
+   "note": "The pack's fire ring with an animated DCSS flame"
+  },
+  "barn_ablaze": {
+   "sheet": "Backgrounds/Tilesets/TilesetHouse.png",
+   "rect": [
+    25,
+    7,
+    4,
+    7
+   ],
+   "solid": "all",
+   "light": {
+    "radius": 110,
+    "offset": [
+     32,
+     60
+    ]
+   },
+   "anim": {
+    "fps": 10,
+    "layers": [
+     {
+      "fx": "fire_tall",
+      "at": [
+       [
+        21,
+        0
+       ],
+       [
+        3,
+        20
+       ],
+       [
+        39,
+        26
+       ],
+       [
+        12,
+        44
+       ],
+       [
+        33,
+        50
+       ]
+      ],
+      "phase": 3
+     },
+     {
+      "fx": "fire_small",
+      "at": [
+       [
+        2,
+        60
+       ],
+       [
+        50,
+        64
+       ],
+       [
+        26,
+        34
+       ]
+      ],
+      "phase": 5
+     }
+    ]
+   },
+   "note": "The pack barn with animated DCSS flames on its roof"
+  },
+  "wall_torch": {
+   "rect": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "solid": "none",
+   "light": {
+    "radius": 30,
+    "offset": [
+     8,
+     4
+    ]
+   },
+   "anim": {
+    "fps": 8,
+    "fx": "torch_flame",
+    "at": [
+     [
+      0,
+      0
+     ]
+    ]
+   },
+   "note": "DCSS iron wall torch, animated; place on a wall tile"
+  },
+  "royal_banner": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    50,
+    0,
+    1,
+    3
+   ],
+   "outline": true,
+   "solid": "none",
+   "note": "Royal banner, orange with a sword (Fort Harrow)"
+  },
+  "royal_banner_blue": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    50,
+    3,
+    1,
+    3
+   ],
+   "outline": true,
+   "solid": "none"
+  },
+  "royal_banner_green": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    50,
+    6,
+    1,
+    3
+   ],
+   "outline": true,
+   "solid": "none"
+  },
+  "pennant": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    53,
+    0,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "none"
+  },
+  "army_tent": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    46,
+    10,
+    2,
+    2
+   ],
+   "outline": true,
+   "solid": "all",
+   "note": "Soldiers' or travellers' tent"
+  },
+  "army_tent_cream": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    48,
+    10,
+    2,
+    2
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "fireplace": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    54,
+    8,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all",
+   "light": {
+    "radius": 40,
+    "offset": [
+     8,
+     10
+    ]
+   },
+   "note": "Inn or hall fireplace"
+  },
+  "fireplace_tall": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    54,
+    9,
+    1,
+    2
+   ],
+   "outline": true,
+   "solid": "all",
+   "light": {
+    "radius": 48,
+    "offset": [
+     8,
+     22
+    ]
+   }
+  },
+  "campfire_small": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    14,
+    8,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all",
+   "light": {
+    "radius": 44,
+    "offset": [
+     8,
+     9
+    ]
+   },
+   "anim": {
+    "fps": 6,
+    "rects": [
+     [
+      14,
+      8,
+      1,
+      1
+     ],
+     [
+      15,
+      8,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  "standing_torch": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    17,
+    8,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "none",
+   "light": {
+    "radius": 30,
+    "offset": [
+     8,
+     3
+    ]
+   },
+   "anim": {
+    "fps": 6,
+    "rects": [
+     [
+      17,
+      8,
+      1,
+      1
+     ],
+     [
+      18,
+      8,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  "candelabra": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    20,
+    8,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all",
+   "light": {
+    "radius": 26,
+    "offset": [
+     8,
+     4
+    ]
+   }
+  },
+  "portcullis": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    34,
+    3,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all",
+   "note": "Iron gate grille"
+  },
+  "gateway_open": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    32,
+    8,
+    2,
+    1
+   ],
+   "outline": true,
+   "solid": "none",
+   "note": "Open double doorway (gatehouse, hall)"
+  },
+  "double_door": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    32,
+    5,
+    2,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "knight_statue": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    50,
+    10,
+    1,
+    2
+   ],
+   "outline": true,
+   "solid": "base"
+  },
+  "grave_cross": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    52,
+    10,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "grave_cross_wood": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    53,
+    9,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "market_stall": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    10,
+    2,
+    2,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "anvil": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    15,
+    0,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "signpost": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    19,
+    0,
+    1,
+    1
+   ],
+   "outline": true,
+   "solid": "all"
+  },
+  "wall_banner": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    51,
+    0,
+    1,
+    2
+   ],
+   "outline": true,
+   "solid": "none",
+   "note": "Short royal banner to hang on a wall face (2 tiles)"
+  },
+  "wall_banner_blue": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    51,
+    3,
+    1,
+    2
+   ],
+   "outline": true,
+   "solid": "none"
+  },
+  "wall_banner_green": {
+   "sheet": "assets/thirdparty/kenney_roguelike/roguelike_16.png",
+   "rect": [
+    51,
+    6,
+    1,
+    2
+   ],
+   "outline": true,
+   "solid": "none"
   }
  },
  "fx": {
@@ -1338,6 +1818,26 @@
   "proj_arrow": {
    "src": "FX/Projectile/Arrow.png",
    "frame_w": 13
+  },
+  "fire_tall": {
+   "src": "assets/thirdparty/dcss/fire_tall.png",
+   "frame_w": 22,
+   "note": "DCSS altar flame, 8 frames, outlined (CC0)"
+  },
+  "fire_small": {
+   "src": "assets/thirdparty/dcss/fire_small.png",
+   "frame_w": 11,
+   "note": "The same flame at half size, for campfires"
+  },
+  "fire_ground": {
+   "src": "assets/thirdparty/dcss/fire_ground.png",
+   "frame_w": 32,
+   "note": "DCSS burning-ground cloud, 3 intensities"
+  },
+  "torch_flame": {
+   "src": "assets/thirdparty/dcss/torch.png",
+   "frame_w": 16,
+   "note": "DCSS wall torch on its iron bracket, 4 frames"
   }
  },
  "spell_fx": {
@@ -1584,5 +2084,10 @@
    "angry": 29,
    "plus": 30
   }
+ },
+ "art": {
+  "item": "assets/thirdparty/dcss/items",
+  "creature": "assets/thirdparty/dcss/creatures",
+  "spell": "assets/thirdparty/painterly/spell_icons"
  }
 }

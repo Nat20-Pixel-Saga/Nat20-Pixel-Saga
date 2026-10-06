@@ -7,6 +7,7 @@ Images are cached; recolours swap exact palette colours.
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
@@ -50,6 +51,23 @@ def tint(img: Image.Image, color: str, strength: float = 0.65) -> Image.Image:
     return Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), "RGBA")
 
 
+INK = (20, 27, 27)   # Ninja Adventure's outline colour
+
+
+def outline(img: Image.Image) -> Image.Image:
+    """Give flat art (e.g. Kenney's) the pack's 1-px dark outline: transparent pixels next to the sprite
+    become ink, and so do sprite pixels on the crop's border (where there's no room outside)."""
+    a = np.array(img.convert("RGBA"))
+    op = a[:, :, 3] >= 128
+    pad = np.pad(op, 1, constant_values=False)
+    ring = ~op & (pad[:-2, 1:-1] | pad[2:, 1:-1] | pad[1:-1, :-2] | pad[1:-1, 2:])
+    border = np.zeros_like(op)
+    border[[0, -1], :] = op[[0, -1], :]
+    border[:, [0, -1]] |= op[:, [0, -1]]
+    a[ring | border] = (*INK, 255)
+    return Image.fromarray(a, "RGBA")
+
+
 @dataclass
 class ActorSprites:
     """Frames for one actor. ``walk[dir]`` has 4 frames; other poses one per dir."""
@@ -91,6 +109,8 @@ class Assets:
         self._actors: dict[str, ActorSprites] = {}
         self._fx: dict[str, list[Image.Image]] = {}
         self._props: dict[str, Image.Image] = {}
+        self._prop_frames: dict[str, tuple[list[Image.Image], float]] = {}
+        self._art_index: dict[str, dict] = {}
 
     # ------------------------------------------------------------ paths
     def path(self, rel: str) -> Path:
@@ -157,14 +177,53 @@ class Assets:
         return sprites
 
     # ----------------------------------------------------------- props
+    def _crop(self, sheet: str | None, rect: list[int], outlined: bool) -> Image.Image:
+        x, y, w, h = rect
+        if sheet is None:                              # an animation-only prop (see prop_frames)
+            return Image.new("RGBA", (w * 16, h * 16), (0, 0, 0, 0))
+        img = self.image(sheet).crop((x * 16, y * 16, (x + w) * 16, (y + h) * 16))
+        return outline(img) if outlined else img
+
     def prop(self, prop_id: str) -> Image.Image:
+        """The prop's still image. "outline": true adds the pack's dark outline (for flat third-party art)."""
         if prop_id not in self._props:
             spec = self.manifest["props"].get(prop_id)
             if spec is None:
                 raise AssetError(f"Unknown prop {prop_id!r}")
-            x, y, w, h = spec["rect"]
-            self._props[prop_id] = self.image(spec["sheet"]).crop((x * 16, y * 16, (x + w) * 16, (y + h) * 16))
+            self._props[prop_id] = self._crop(spec.get("sheet"), spec["rect"], spec.get("outline", False))
         return self._props[prop_id]
+
+    def prop_frames(self, prop_id: str) -> tuple[list[Image.Image], float] | None:
+        """Animation frames and fps for props with an "anim" block, else None. Two kinds, combinable:
+        "rects": other cells of the same sheet to cycle through (a two-frame torch), and
+        "fx" + "at" (or several such "layers"): an effect strip drawn over the still image at pixel
+        offsets (flames on a barn roof), each placement "phase" frames out of step with the one before
+        so they don't flicker in unison. Overlays are clipped to the prop's rect."""
+        spec = self.manifest["props"][prop_id]
+        anim = spec.get("anim")
+        if not anim:
+            return None
+        if prop_id not in self._prop_frames:
+            outlined = spec.get("outline", False)
+            bases = [self._crop(spec.get("sheet"), r, outlined) for r in anim.get("rects", [])] or [self.prop(prop_id)]
+            layers = anim.get("layers") or ([{"fx": anim["fx"], "at": anim.get("at", [[0, 0]]),
+                                              "phase": anim.get("phase", 3)}] if anim.get("fx") else [])
+            strips = [self.fx(layer["fx"]) for layer in layers]
+            n = len(bases)
+            for st in strips:
+                n = math.lcm(n, len(st))
+            frames = []
+            for k in range(n):
+                img = bases[k % len(bases)].copy()
+                for layer, st in zip(layers, strips):
+                    for i, (ox, oy) in enumerate(layer["at"]):
+                        f = st[(k + i * layer.get("phase", 3)) % len(st)]
+                        over = Image.new("RGBA", img.size, (0, 0, 0, 0))
+                        over.paste(f, (ox, oy))
+                        img.alpha_composite(over)
+                frames.append(img)
+            self._prop_frames[prop_id] = (frames, float(anim.get("fps", 8)))
+        return self._prop_frames[prop_id]
 
     def prop_spec(self, prop_id: str) -> dict:
         return self.manifest["props"][prop_id]
@@ -194,6 +253,30 @@ class Assets:
     def spell_fx(self, spell_id: str) -> dict:
         sf = self.manifest["spell_fx"]
         return sf.get(spell_id, sf["_default"])
+
+    # ------------------------------------------------------------- art
+    def art(self, art_id: str) -> Image.Image:
+        """Close-up and card art by "<kind>:<id>", e.g. "item:lantern_lit", "creature:goblin",
+        "spell:fire_bolt". Kinds map to sheets in the manifest's "art"; each sheet has a JSON index."""
+        kind, _, key = art_id.partition(":")
+        base = self.manifest.get("art", {}).get(kind)
+        if base is None:
+            raise AssetError(f"Unknown art kind {kind!r}")
+        if kind not in self._art_index:
+            self._art_index[kind] = json.loads(self.path(base + ".json").read_text())
+        idx = self._art_index[kind]
+        if key not in idx["ids"]:
+            raise AssetError(f"No {kind} art {key!r}")
+        i, c, cols = idx["ids"].index(key), idx["cell"], idx["cols"]
+        return self.image(base + ".png").crop(((i % cols) * c, (i // cols) * c, (i % cols + 1) * c, (i // cols + 1) * c))
+
+    def art_ids(self, kind: str) -> list[str]:
+        base = self.manifest.get("art", {}).get(kind)
+        return json.loads(self.path(base + ".json").read_text())["ids"] if base else []
+
+    def spell_icon(self, spell_id: str) -> Image.Image:
+        """The spell's painted icon (64 px), or the generic one."""
+        return self.art(f"spell:{spell_id}" if spell_id in self.art_ids("spell") else "spell:_default")
 
     # ------------------------------------------------------------ audio
     def music_path(self, music_id: str) -> Path:
@@ -225,11 +308,12 @@ class Assets:
             paths.append(f"{a['src']}/Faceset.png")
             paths.append(f"{a['src']}/{a.get('sheet', 'SpriteSheet.png')}")
         paths += [t["sheet"] for k, t in m["terrain"].items() if not k.startswith("_")]
-        paths += [p["sheet"] for p in m["props"].values()]
+        paths += [p["sheet"] for p in m["props"].values() if p.get("sheet")]
         paths += [f["src"] for f in m["fx"].values()]
         paths += list(m["music"].values()) + list(m["sfx"].values())
         paths += [f["file"] for f in m["fonts"].values()]
         paths += [m["ui"]["dialog_face"], m["ui"]["dialog_plain"], m["ui"]["arrow"]]
+        paths += [b + ext for b in m.get("art", {}).values() for ext in (".png", ".json")]
         return [p for p in paths if not self.path(p).exists()]
 
 

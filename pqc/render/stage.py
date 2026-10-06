@@ -315,7 +315,7 @@ class Stage:
                 px, py = p.x * T - cam_x, p.y * T - cam_y
                 if px > VIEW_W or py > VIEW_H or px + p.image.width < 0 or py + p.image.height < 0:
                     continue
-                items.append((p.sort_y, 0, p.image, px, py))
+                items.append((p.sort_y, 0, p.frame(t), px, py))
             for a in self.actors.values():
                 if not a.visible:
                     continue

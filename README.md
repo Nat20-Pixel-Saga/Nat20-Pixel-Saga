@@ -115,15 +115,29 @@ The pack covers everything structurally; these would raise quality and are the b
 | --- | --- | --- |
 | Bespoke party sprites (dwarf, elf, halfling, human) | Recoloured pack characters don't read as their species | Monk, SorcererOrange, Villager5, Woman |
 | Emotion portraits (6 per party member + key NPCs) | The bible's portrait emotions; now shown with emote bubbles | One portrait each |
-| Goblins, wolves, Skarrow | No goblins or wolves in the pack | GreenPig, DemonGreen, Beast2 |
-| European-style buildings and an iron-and-glass lantern post | The pack's houses and stone lanterns look Japanese | Pack houses, stone lantern |
+| Top-down goblins, wolves, Skarrow with walk cycles | No goblins or wolves in the pack | GreenPig, DemonGreen, Beast2 (close-up art now exists, see below) |
+| European-style houses | The pack's houses look Japanese | Pack houses; Kenney's gabled roofs, walls, doors and windows are in `assets/thirdparty/kenney_roguelike/` ready to be composed |
 | Battle backdrops per biome | Arena is tiled from the map tileset | Tiled grass/dirt arena |
-| An old Lamplighter way-marker stone (C1E6) | Should read as a Lamplighter road marker, not a gravestone | TilesetElement carved stele (`waymarker`) |
-| Pell's single white feather, an animated campfire | Too small to show at 16 px; the pack has no animated fire tile | Recoloured pack owl (`pell`); stone fire ring with a flickering light (`campfire`) |
-| Faceted lantern-core crystal | Cores are "faceted crystals" in the bible | Pack gem recoloured grey (`assets/sprites/core_dead.png`) |
-| A proper watermill and an animated burning barn (C1E8-9) | Composites of pack art; the fire does not move | `watermill`, `barn_burning` (assets/sprites) |
-| Fort Harrow curtain wall, gatehouse and royal soldiers (C1E10) | The pack has no curtain wall or gatehouse; soldiers are pack knights/fighters | `fort_wall`, `fort_gate` (TilesetHouse), `soldier`, `soldier_b`, `soldier_c` |
-| Black-glass pendant | Should look like black glass that drinks light | Pack gem recoloured near-black (`assets/sprites/pendant_black.png`) |
+| An old Lamplighter way-marker stone (C1E6) | Should read as a Lamplighter road marker, not a gravestone | TilesetElement carved stele (`waymarker`); `item:rune_stone` for a close-up |
+| Pell's single white feather | Too small to show at 16 px | Recoloured pack owl (`pell`) |
+| A proper watermill (C1E8-9) | Composite of pack art | `watermill` (assets/sprites) |
+| Royal soldiers (C1E10) | Soldiers are pack knights/fighters | `soldier`, `soldier_b`, `soldier_c` |
+
+#### Covered by the packs added in October 2026
+
+Kenney Roguelike (CC0), Dungeon Crawl Stone Soup tiles (CC0) and J. W. Bjerk's Painterly Spell Icons
+(CC-BY 3.0), imported by `scripts/import_art.py` into `assets/thirdparty/` (see its README). New ids, so
+the released episodes are unchanged:
+
+| Need | Now available |
+| --- | --- |
+| Iron-and-glass lantern post | `lantern_post` (drawn for the show; switches to `lantern_post_dead` when a `lantern` cue puts it out) |
+| Animated campfire | `campfire_lit` (pack fire ring + animated flame), `campfire_small` |
+| Animated burning barn (C1E9) | `barn_ablaze` (pack barn + animated flames); fx `fire_tall`, `fire_small`, `fire_ground` |
+| Fort Harrow dressing (C1E10) | `wall_banner`, `royal_banner` (+ blue, green), `wall_torch`, `standing_torch`, `army_tent`, `portcullis`, `gateway_open`, `double_door` |
+| Interiors | `fireplace`, `fireplace_tall`, `candelabra`, `knight_statue`, `anvil`, `market_stall`, `signpost`, grave crosses, and everything else on the Kenney sheet |
+| Faceted crystal, black-glass pendant | Close-up art `item:crystal_pendant`, `item:black_glass_pendant` (32 px, for cards) |
+| Creature and item close-ups, spell icons | `Assets.art("creature:goblin")` (44 creatures), `art("item:lantern_lit")` (36 items), `spell_icon("fire_bolt")` (64 spells) |
 
 #### Free sources checked (October 2026)
 
@@ -142,7 +156,7 @@ and commit the files you use under `assets/` with a line in `assets/CREDITS.md`.
 | Animated campfire | [crad Campfire Animation](https://opengameart.org/content/campfire-animation) | CC0 | 8 frames |
 | Burning barn | [Reactorcore Fire & Smoke](https://opengameart.org/content/fire-smoke-animations) over the barn | CC0 | Animated overlay |
 | Crystal, pendant | [AntumDeluge jewelry icons](https://opengameart.org/node/120756) | CC0 | 16/24/32 px gems and amulets to recolour |
-| Not found free | Lantern post, way-marker stone, watermill, white feather, battle backdrops | | Draw, or commission |
+| Not found free | Way-marker stone, watermill, white feather, battle backdrops | | Draw, or commission |
 
 Rejected: haggisbytes and thepixelgame goblin packs ("no redistribution"), jeresikstus characters (no licence),
 cobgoblin portraits (CC-BY-SA: share-alike), Kenney Tiny Town (CC0 but flat, unoutlined style).

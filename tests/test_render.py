@@ -108,6 +108,73 @@ class TestAssets(unittest.TestCase):
 
 
 @unittest.skipUnless(HAVE_PACK, "asset pack not fetched")
+class TestThirdPartyArt(unittest.TestCase):
+    """Kenney, Dungeon Crawl and Painterly art imported by scripts/import_art.py."""
+
+    @classmethod
+    def setUpClass(cls):
+        from pqc.render.assets import Assets
+        cls.a = Assets()
+
+    def test_licences_sit_beside_the_art(self):
+        tp = ROOT / "assets" / "thirdparty"
+        self.assertIn("Creative Commons Zero", (tp / "kenney_roguelike" / "License.txt").read_text())
+        self.assertIn("CC0", (tp / "dcss" / "LICENSE.txt").read_text())
+        self.assertIn("CC-BY 3.0", (tp / "painterly" / "README.txt").read_text())
+        self.assertIn("J. W. Bjerk", (ROOT / "assets" / "CREDITS.md").read_text())
+
+    def test_outline_matches_the_pack(self):
+        from pqc.render.assets import INK, outline
+        from PIL import Image
+        img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+        img.paste((200, 100, 50, 255), (5, 5, 11, 11))
+        out = outline(img)
+        self.assertEqual(out.getpixel((4, 7))[:3], INK)          # ring outside the shape
+        self.assertEqual(out.getpixel((7, 7))[:3], (200, 100, 50))  # inside untouched
+        self.assertEqual(out.getpixel((0, 0))[3], 0)
+        k = self.a.prop("royal_banner")
+        self.assertEqual(k.size, (16, 48))
+        raw = self.a.image(self.a.prop_spec("royal_banner")["sheet"]).crop((50 * 16, 0, 51 * 16, 48))
+        self.assertNotEqual(k.tobytes(), raw.tobytes())
+
+    def test_animated_props(self):
+        for pid, n in (("campfire_lit", 8), ("barn_ablaze", 8), ("wall_torch", 4), ("standing_torch", 2)):
+            frames, fps = self.a.prop_frames(pid)
+            self.assertEqual(len(frames), n, pid)
+            self.assertTrue(fps > 0)
+            self.assertEqual(frames[0].size, self.a.prop(pid).size, pid)
+            self.assertGreater(len({f.tobytes() for f in frames}), 1, pid)
+        for pid in ("campfire", "barn_burning", "stone_lantern"):   # the props released episodes use are still
+            self.assertIsNone(self.a.prop_frames(pid), pid)
+
+    def test_prop_instance_frames_and_dead_lanterns(self):
+        from pqc.render.tilemap import TileMap
+        d = {"id": "t", "size": [6, 4], "props": [{"prop": "campfire_lit", "at": [0, 0]},
+                                                   {"prop": "lantern_post", "at": [3, 0], "id": "l"},
+                                                   {"prop": "barrel", "at": [5, 0]}]}
+        tm = TileMap.from_dict(d, self.a)
+        fire, post, barrel = tm.props
+        self.assertNotEqual(fire.frame(0.0).tobytes(), fire.frame(0.1).tobytes())
+        self.assertIs(barrel.frame(3.0), barrel.image)
+        self.assertEqual(post.light, "lit")
+        lit = post.frame(1.0)
+        post.light = "dead"
+        self.assertEqual(post.frame(1.0).tobytes(), self.a.prop("lantern_post_dead").tobytes())
+        self.assertNotEqual(lit.tobytes(), post.frame(1.0).tobytes())
+
+    def test_card_art(self):
+        for aid in ("item:lantern_lit", "item:lantern_dead", "item:black_glass_pendant", "item:crystal_pendant",
+                    "creature:goblin", "creature:wolf", "creature:worg", "creature:zombie", "spell:fire_bolt"):
+            img = self.a.art(aid)
+            self.assertIsNotNone(img.getbbox(), aid)
+        self.assertEqual(self.a.spell_icon("cure_wounds").size, (64, 64))
+        self.assertEqual(self.a.spell_icon("no_such_spell").tobytes(), self.a.art("spell:_default").tobytes())
+        for spell in self.a.manifest["spell_fx"]:                 # every spell the show animates has an icon
+            if not spell.startswith("_"):
+                self.assertIn(spell, self.a.art_ids("spell"), spell)
+
+
+@unittest.skipUnless(HAVE_PACK, "asset pack not fetched")
 class TestTimeline(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

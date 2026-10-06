@@ -130,6 +130,18 @@ it. A sprite you draw yourself goes under `assets/sprites/` (manifest paths that
 start with `assets/` load from the repository; keep each PNG under 24 KB). Pack
 and upload.
 
+Before calling something missing, also look in `assets/thirdparty/` (see its
+README): the whole Kenney Roguelike sheet (`kenney_roguelike/roguelike_16.png`,
+16 px grid: houses with gabled roofs, doors, windows, furniture, banners, tents,
+market stalls; always set `"outline": true` on Kenney props), Dungeon Crawl
+flames and torches (`fx`: `fire_tall`, `fire_small`, `fire_ground`,
+`torch_flame`), and close-up art for items, creatures and spells
+(`Assets.art`). A prop can animate: `"anim": {"rects": [...]}` cycles sheet
+cells, `"anim": {"fx": id, "at": [[x, y], ...]}` (or several `"layers"`)
+draws an effect strip over it; `"dead": <prop id>` is the image a lantern shows
+once it goes out. Spell icons need the CC-BY credit in `assets/CREDITS.md` in
+the video description of any episode that shows one.
+
 ## 4. Episode tasks (`episode:<n>`)
 
 The pipeline runs in **agent mode**: whenever it needs a Claude step, it writes

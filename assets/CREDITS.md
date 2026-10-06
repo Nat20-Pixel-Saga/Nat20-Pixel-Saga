@@ -12,6 +12,22 @@ Used for: tilesets, props, characters and face portraits (some recoloured), mons
 UI dialog boxes and emotes, music and sound effects. Fetched by `scripts/fetch_assets.sh` from a public
 GitHub copy of the complete pack (pinned commit); the bundled `LICENSE.txt` is checked on fetch.
 
+## Additional art (`assets/thirdparty/`)
+
+Imported by `scripts/import_art.py`; each folder keeps the pack's own licence file.
+
+- **Roguelike pack** by Kenney Vleugels for [Kenney](https://www.kenney.nl) — **CC0 1.0**. Credit is not
+  required; as a courtesy: "Kenney.nl". Used for: banners, tents, torches, fireplaces, doors, gates and other
+  props (outlined by the renderer to match the Ninja Adventure style).
+- **Dungeon Crawl Stone Soup tiles** by the Crawl Stone Soup artists — **CC0 1.0**. Attribution is not
+  required; as a courtesy: <https://opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental> and
+  <https://github.com/crawl/tiles>. Used for: animated flames and torches, item and creature close-up art.
+- **Painterly Spell Icons** (parts 1-4) by **J. W. Bjerk (eleazzaar)** — <https://www.jwbjerk.com/art> — find
+  this and other open art at <http://opengameart.org>. Released under GPL 2.0/3.0, CC-BY 3.0 and CC-BY-SA 3.0;
+  this project uses them under **CC-BY 3.0**, which **requires this attribution wherever they appear** (video
+  descriptions and the wiki footer, once an episode or page shows a spell icon). The icons are resized to 64 px
+  and reduced to a 256-colour palette.
+
 ## Fonts
 
 - **Pixelify Sans** — © 2021 The Pixelify Sans Project Authors (https://github.com/eifetx/Pixelify-Sans) — SIL Open Font License 1.1
@@ -22,7 +38,8 @@ redistribution; the fonts may not be sold on their own. Licence texts are copied
 
 ## Original to this project
 
-The d20 dice icon, text blips, lighting/Unlight effects, maps, recolour palettes, timelines and all code.
+The d20 dice icon, text blips, lighting/Unlight effects, maps, recolour palettes, timelines and all code; the
+iron-and-glass lantern post (`assets/sprites/lantern_post*.png`).
 
 ## Rules content
 
@@ -33,3 +50,9 @@ licensed under CC-BY-4.0 (see the main README).
 
 > Art, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).
 > Rules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast.
+
+Once an episode uses the extra art, add the line that applies (the last one is required as soon as a spell
+icon appears; the other two are courtesy):
+
+> Extra art: Kenney.nl (CC0); Dungeon Crawl Stone Soup tiles (CC0, opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental).
+> Spell icons: J. W. Bjerk (eleazzaar), www.jwbjerk.com/art, CC-BY 3.0, via opengameart.org.
