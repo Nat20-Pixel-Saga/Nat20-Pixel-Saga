@@ -25,6 +25,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -52,16 +53,58 @@ def gh_api(path: str, method: str = "GET", fields: dict | None = None):
     return json.loads(out) if out.strip() else None
 
 
-def all_releases(r: str) -> dict[str, dict]:
-    """tag -> release, drafts included (needs push access)."""
-    out, page = {}, 1
+EID_RE = re.compile(r"^C\d\d-E\d\d\d$")
+
+
+def episode_of(rel: dict) -> str | None:
+    """The episode a release belongs to. Drafts lose their tag name ("untagged-..."), so the
+    video asset's name (C01-E003.mp4) identifies them too."""
+    if EID_RE.match(rel.get("tag_name", "")):
+        return rel["tag_name"]
+    for a in rel.get("assets", []):
+        name = a["name"].removesuffix(".mp4")
+        if a["name"].endswith(".mp4") and EID_RE.match(name):
+            return name
+    return None
+
+
+def all_releases(r: str, prune: bool = True) -> dict[str, dict]:
+    """episode id -> its release, drafts included (needs push access). If a run ever left two
+    releases for one episode, the extra ones are deleted (keeping the one tagged with the id)."""
+    found: dict[str, list[dict]] = {}
+    page = 1
     while True:
         batch = gh_api(f"repos/{r}/releases?per_page=100&page={page}")
         if not batch:
-            return out
+            break
         for rel in batch:
-            out.setdefault(rel["tag_name"], rel)
+            eid = episode_of(rel)
+            if eid:
+                found.setdefault(eid, []).append(rel)
         page += 1
+    out = {}
+    for eid, rels in found.items():
+        rels.sort(key=lambda x: (x["tag_name"] != eid, -x["id"]))
+        out[eid] = rels[0]
+        for extra in rels[1:]:
+            if prune:
+                gh_api(f"repos/{r}/releases/{extra['id']}", "DELETE")
+                print(f"{eid}: removed a duplicate release ({extra['tag_name']})", flush=True)
+    return out
+
+
+def upload_asset(r: str, release_id: int, path: Path, ctype: str) -> None:
+    """Attach a file to a release by id (drafts included; `gh release upload` finds releases by tag,
+    which drafts may not have)."""
+    import urllib.request
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    req = urllib.request.Request(
+        f"https://uploads.github.com/repos/{r}/releases/{release_id}/assets?name={path.name}",
+        data=path.read_bytes(), method="POST",
+        headers={"Authorization": f"Bearer {token}", "Content-Type": ctype, "Accept": "application/vnd.github+json"})
+    with urllib.request.urlopen(req, timeout=600) as resp:
+        if resp.status >= 300:
+            raise RuntimeError(f"upload of {path.name} failed: {resp.status}")
 
 
 def committed_episodes() -> list[Path]:
@@ -105,7 +148,7 @@ def sync_visibility(r: str, rels: dict[str, dict], now: dt.datetime) -> None:
             continue
         public = schedule.is_public(tag, now)
         if rel["draft"] and public:
-            gh_api(f"repos/{r}/releases/{rel['id']}", "PATCH", {"draft": False})
+            gh_api(f"repos/{r}/releases/{rel['id']}", "PATCH", {"draft": False, "tag_name": tag})
             print(f"{tag}: premiered, release published", flush=True)
         elif not rel["draft"] and not public:
             gh_api(f"repos/{r}/releases/{rel['id']}", "PATCH", {"draft": True})
@@ -166,9 +209,13 @@ def main() -> int:
                 cmd.append("--draft")
             subprocess.run(cmd, check=True)
         else:
-            subprocess.run(["gh", "release", "upload", eid, str(video), str(thumb), "--clobber"], check=True)
+            for a in rel.get("assets", []):            # replace the old files (works for drafts too)
+                if a["name"] in (video.name, thumb.name):
+                    gh_api(f"repos/{r}/releases/assets/{a['id']}", "DELETE")
+            for f, ctype in ((video, "video/mp4"), (thumb, "image/png")):
+                upload_asset(r, rel["id"], f, ctype)
             gh_api(f"repos/{r}/releases/{rel['id']}", "PATCH",
-                   {"name": pk["title"], "body": notes_file.read_text(), "draft": not public})
+                   {"name": pk["title"], "body": notes_file.read_text(), "draft": not public, "tag_name": eid})
         for f in (video, thumb, notes_file):
             f.unlink()
         print(f"{eid}: {'released' if public else 'ready as a draft until ' + schedule.premiere(eid).isoformat()}",

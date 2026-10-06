@@ -701,3 +701,25 @@ class TestPremiereSchedule(unittest.TestCase):
         out, total = with_bumpers(chap, 4.2, 3.0, 366.6)
         self.assertEqual([c["time"] for c in out], ["0:00", "2:02"])
         self.assertAlmostEqual(total, 373.8)
+
+
+class TestReleaseIdentity(unittest.TestCase):
+    def test_drafts_are_found_by_their_video_and_duplicates_pruned(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("release_episodes", ROOT / "scripts" / "release_episodes.py")
+        rel = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(rel)
+        a = {"id": 1, "tag_name": "untagged-abc", "draft": True, "assets": [{"name": "C01-E003.mp4"}]}
+        b = {"id": 2, "tag_name": "C01-E003", "draft": True, "assets": [{"name": "C01-E003.mp4"}]}
+        c = {"id": 3, "tag_name": "untagged-def", "draft": True, "assets": [{"name": "notes.txt"}]}
+        self.assertEqual(rel.episode_of(a), "C01-E003")
+        self.assertIsNone(rel.episode_of(c))
+        calls = []
+
+        def fake(path, method="GET", fields=None):
+            calls.append((method, path))
+            return [a, b, c] if path.endswith("&page=1") else []
+        with mock.patch.object(rel, "gh_api", side_effect=fake):
+            got = rel.all_releases("o/r")
+        self.assertEqual(got["C01-E003"]["id"], 2)                 # the one tagged with the id is kept
+        self.assertIn(("DELETE", "repos/o/r/releases/1"), calls)    # the stray draft is removed
