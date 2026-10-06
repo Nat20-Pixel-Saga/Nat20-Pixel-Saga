@@ -166,7 +166,8 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
     for i in range(retries + 1):
         req = prompts.build_request("plan", prompts.model_for("plan"), ctx.dm_core, episode_id=eid, seed=seed,
                                     campaign_view=ctx.campaign_view(), state_view=ctx.state_view(),
-                                    recap=ctx.recap(), stage_view=ctx.stage_view(), feedback=feedback)
+                                    recap=ctx.recap(), stage_view=ctx.stage_view(), memories=ctx.memories(),
+                                    feedback=feedback)
         plan = _call(client, req, batch)
         errors = validate_plan(plan, sheets, world)
         if not errors:
@@ -193,7 +194,7 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
         req = prompts.build_request("script", prompts.model_for("script", ctx.entry, premiere), ctx.dm_core,
                                     episode_id=eid, plan=json.dumps(plan, ensure_ascii=False, indent=1),
                                     outcomes=res.outcomes_text(), state_view=ctx.state_view(), recap=ctx.recap(),
-                                    feedback=feedback)
+                                    memories=ctx.memories(), feedback=feedback)
         script = _call(client, req, batch)
         mech = mechanical(plan, script, res, check_cues, sheets)
         review = None

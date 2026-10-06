@@ -64,6 +64,7 @@ def all_tools() -> list[dict]:
 def build_request(step: str, model: str, core: str, **values) -> Request:
     template, schema, tool, _, max_tokens = STEPS[step]
     values.setdefault("feedback", "")
+    values.setdefault("memories", "")
     return Request(
         step=step, model=model,
         system=[{"text": core, "cache": True}],

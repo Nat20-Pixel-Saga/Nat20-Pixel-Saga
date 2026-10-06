@@ -169,8 +169,16 @@ Step notes:
 * **plan**: honour the campaign beat and key rolls. Use only points/squares on
   the maps; check positions with `python3 scripts/map_preview.py <map> /tmp/m.png
   --points --blocked`. Validation problems come back in the next pending prompt.
+* **plan** (from Episode 11): long trips are `travel` proposals and at least one
+  night of them is a scene; nights in the open are long rests with a `camp`
+  (watch pairs, `lantern_lit`); a night attack needs the watch keeper's check
+  and the encounter's `surprise`. On a milestone episode, leave the last scene
+  room for the level-up. See `prompts/planner.md` §12-13.
 * **script**: write *after* reading the outcomes in the prompt (the dice are
-  final; a failure is a failure). 35-55 boxes, the run prints the runtime: aim
+  final; a failure is a failure). From Episode 11 the prompt also has
+  **Memories**: one or two callbacks to things that really happened (never
+  invented), a line for anyone in `level_ups`, and the night (`nights`) staged
+  watch by watch. 35-55 boxes, the run prints the runtime: aim
   for 6-9 minutes, never outside 5-10 (rewrite if it is). Every voice per its
   dossier; the last box is a party member's; no numbers in narration after a roll.
 * **continuity**: be the honest editor of your own script: re-read it against

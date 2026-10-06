@@ -15,6 +15,11 @@ Roles
 * support (clerics)     — revives and heals, Blesses early, stays near the line but out of reach.
 * brute (most monsters) — closes on the softest reachable target and keeps attacking.
 * archer (ranged foes)  — shoots, and Disengages away from melee when it can.
+
+Tactics 2 (encounter option ``tactics``, on from the episode in production/features.json):
+brutes with Nimble Escape slip past an armoured defender to a softer target and, once
+bloodied, hit and Disengage out of reach; shooters step in to normal range rather than
+shoot with disadvantage from long range.
 """
 from __future__ import annotations
 
@@ -82,6 +87,66 @@ def _ally_engaging(enc, c, target):
 
 def _can_act(enc):
     return enc.turn.actions > 0 or enc.turn.attacks_left > 0
+
+
+def _v2(enc):
+    """Tactics 2 (production/features.json "tactics_v2"): goblins use Nimble Escape, shooters close in."""
+    return enc.options.get("tactics", 1) >= 2
+
+
+def _close_in(enc, c, menu, shots):
+    """Tactics 2: if the shot we'd take is at long range (disadvantage), step to normal range first,
+    as long as the step provokes nobody."""
+    if not shots or enc.turn.movement <= 0 or enc.turn.disengaged:
+        return None
+    pick = max(shots, key=lambda o: _score_target(enc, c, o))
+    if "-long range" not in pick.get("notes", []):
+        return None
+    moves = [o for o in _moves(menu, "close_range") if not o["provokes"]]
+    same = [o for o in moves if o.get("target") == pick["intent"]["target"]]
+    choice = same or moves
+    return choice[0]["intent"] if choice else None
+
+
+def _nimble(enc, c, menu):
+    """Tactics 2, for creatures with Nimble Escape (goblins): slip past a well-armoured defender to
+    reach a softer target (AC 3+ lower), and, once bloodied, hit, Disengage out of reach (once a
+    fight) and keep shooting from there."""
+    adjacent = _adjacent_enemies(enc, c)
+    ts = enc.turn
+    memo = enc.ai_memo.setdefault(c.id, {})
+    bloodied = c.hp <= c.max_hp // 2
+    if ts.disengaged and ts.movement > 0 and _can_act(enc):
+        here = min((e.ac for e in adjacent), default=99)
+        soft = [o for o in _moves(menu, "engage") if _engage_target(enc, o) and _engage_target(enc, o).ac <= here - 3]
+        if soft:
+            return min(soft, key=lambda o: (_engage_target(enc, o).ac, int(o["cost"].split()[0])))["intent"]
+        return None
+    if ts.disengaged and ts.movement > 0 and not _can_act(enc) and adjacent and bloodied and not memo.get("ran"):
+        memo["ran"] = True                                  # once a fight: no endless chase around the map
+        return _retreat_if_threatened(enc, c, menu, safe_only=False)
+    if bloodied and not adjacent and _can_act(enc):
+        # Hurt and out of reach: keep the distance and shoot rather than walk back in.
+        shots = [o for o in _attacks(enc, c, menu, "ranged") if not any(n.startswith("-hostile") for n in o.get("notes", []))]
+        if shots:
+            return _close_in(enc, c, menu, shots) or _best(enc, c, shots)
+        return None
+    if not adjacent or not ts.bonus_action or ts.movement <= 0:
+        return None
+    if _can_act(enc):
+        here = min(e.ac for e in adjacent)
+        soft = [o for o in _moves(menu, "engage") if o["provokes"] and _engage_target(enc, o)
+                and _engage_target(enc, o).ac <= here - 3]
+        if soft:
+            return _first(menu, "disengage", bonus=True)
+        return None
+    if bloodied and not memo.get("ran") and any(a.type == "ranged" for a in c.attacks):
+        return _first(menu, "disengage", bonus=True)       # hit, then slip out of reach to shoot
+    return None
+
+
+def _engage_target(enc, o):
+    return enc.creatures.get(o.get("target", ""))
 
 
 def _score_target(enc, c, o, prefer_squishy=True):
@@ -260,6 +325,10 @@ def support(enc, c, menu):
 
 
 def brute(enc, c, menu):
+    if _v2(enc) and "nimble_escape" in c.traits:
+        it = _nimble(enc, c, menu)
+        if it:
+            return it
     if _can_act(enc):
         melee = _attacks(enc, c, menu, "melee")
         if melee:
@@ -277,6 +346,10 @@ def brute(enc, c, menu):
                 return adv[0]["intent"]
         ranged = _attacks(enc, c, menu, "ranged")
         if ranged:
+            if _v2(enc):
+                it = _close_in(enc, c, menu, ranged)
+                if it:
+                    return it
             return _best(enc, c, ranged)
     return None
 
@@ -293,6 +366,10 @@ def archer(enc, c, menu):
     if _can_act(enc):
         ranged = [o for o in _attacks(enc, c, menu, "ranged") if not any(n.startswith("-hostile") for n in o.get("notes", []))]
         if ranged:
+            if _v2(enc):
+                it = _close_in(enc, c, menu, ranged)
+                if it:
+                    return it
             return _best(enc, c, ranged)
         melee = _attacks(enc, c, menu, "melee")
         if melee:

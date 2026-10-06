@@ -19,6 +19,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from .. import features
 from ..rules import SKILLS
 from ..state import ROOT, load_json
 
@@ -109,8 +110,9 @@ def dossier_text(public: bool) -> str:
 
 
 # ------------------------------------------------------------- compact state
-def party_brief(sheets: dict[str, dict]) -> str:
-    """One compact block per character: what a planner needs to set fair DCs."""
+def party_brief(sheets: dict[str, dict], progress: bool = False, supplies: bool = False) -> str:
+    """One compact block per character: what a planner needs to set fair DCs.
+    ``progress``: XP and XP to the next level; ``supplies``: rations and Exhaustion (production/features.json)."""
     from ..state import character_from_sheet
     lines = []
     for cid, s in sheets.items():
@@ -128,8 +130,22 @@ def party_brief(sheets: dict[str, dict]) -> str:
             + f" | best skills: " + ", ".join(f"{k} {v:+d}" for k, v in best)
             + (f" | slots {slots} spells: {', '.join(spells)}" if sc else "")
             + (f" | conditions {s['conditions']}" if s.get("conditions") else "")
+            + (_progress_note(s) if progress else "")
+            + (_supplies_note(s) if supplies else "")
         )
     return "\n".join(lines)
+
+
+def _progress_note(s: dict) -> str:
+    from ..progression import xp_to_next
+    togo = xp_to_next(s)
+    return f" | XP {s.get('xp', 0)}" + (f" ({togo} to level {s['level'] + 1})" if togo is not None else "")
+
+
+def _supplies_note(s: dict) -> str:
+    rations = sum(i["qty"] for i in s.get("inventory", []) if i["id"] == "rations")
+    ex = s.get("exhaustion", 0)
+    return f" | rations {rations}" + (f" | Exhaustion {ex}" if ex else "")
 
 
 def world_brief(world: dict, public: bool = False) -> str:
@@ -229,7 +245,21 @@ class ContextPack:
                                                if e["episode"] != n]}, ensure_ascii=False, indent=1)
 
     def state_view(self, public: bool = False) -> str:
-        return "## Party\n" + party_brief(self.sheets) + "\n\n## World\n" + world_brief(self.world, public)
+        camps = features.enabled("camps", self.episode_id)
+        party = party_brief(self.sheets, progress=features.enabled("level_ups", self.episode_id), supplies=camps)
+        if camps:
+            shared = sum(i["qty"] for i in self.world["party"].get("shared_inventory", []) if i["id"] == "rations")
+            party += f"\n- shared packs: {shared} rations"
+        return "## Party\n" + party + "\n\n## World\n" + world_brief(self.world, public)
+
+    def memories(self) -> str:
+        """What each party member has lived through (pqc/pipeline/memories.py), for callbacks."""
+        if not features.enabled("memories", self.episode_id):
+            return ""
+        from . import memories
+        from .wiki import load_archive
+        names = {cid: s["name"].split()[0] for cid, s in self.sheets.items()}
+        return memories.as_text(memories.collect(load_archive(), self.world, before=self.episode_id), names)
 
     def recap(self) -> str:
         prev = previous_summaries(3, before=self.episode_id)

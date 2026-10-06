@@ -1,0 +1,10 @@
+{
+ "description": "On-screen show settings for new episodes (switched on per episode in production/features.json).",
+ "progress_card": {
+  "description": "The party's levels and XP, right before the outro: whenever anyone gained XP or a level, and at least every N episodes.",
+  "every": 3,
+  "on_change": true,
+  "seconds": 5.5,
+  "seconds_level_up": 7.5
+ }
+}

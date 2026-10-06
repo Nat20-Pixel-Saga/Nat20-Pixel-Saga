@@ -67,7 +67,7 @@ class TestPrompts(unittest.TestCase):
     def test_every_template_fills(self):
         values = dict(episode_id="C01-E001", seed="s", campaign_view="x", state_view="x", recap="x", stage_view="x",
                       plan="x", outcomes="x", mechanical="x", script="x", title="x", summary="x", actions="x",
-                      arc="x", monsters="x", maps="x", short_moment="x")
+                      arc="x", monsters="x", maps="x", short_moment="x", memories="x")
         for step, (template, *_rest) in prompts.STEPS.items():
             text = prompts.render(template, **values, feedback="")
             self.assertNotIn("{{", text, step)
@@ -324,6 +324,31 @@ class TestEndToEnd(unittest.TestCase):
             self.assertIn("C01-E001-1", pk["description_full"])
         # The real state was not touched.
         self.assertEqual((ROOT / "state" / "world.json").read_text(), live_before)
+
+    def test_episodes_already_made_replay_unchanged(self):
+        """Engine and pipeline updates are switched on per episode (production/features.json): replaying
+        every committed episode from its archived state and fixtures must give back what was made."""
+        from pqc.pipeline import episode as ep
+        from pqc.pipeline import wiki
+        known = {("C01-E009", "outcomes.json"), ("C01-E009", "state_after/party/oriel.json")}  # prone carried over by hand
+        made = sorted(p.name for p in (ROOT / "episodes").glob("C01-E0*") if (p / "state_before").exists())
+        with tempfile.TemporaryDirectory() as d:
+            eps = Path(d) / "episodes"
+            for eid in made:
+                with mock.patch.object(ep, "EPISODES", eps), mock.patch.object(wiki, "EPISODES", eps):
+                    out = ep.run_episode(ep.EpisodeConfig(1, int(eid[-3:]),
+                                                          state_dir=ROOT / "episodes" / eid / "state_before"),
+                                         log=lambda *_: None)["dir"]
+                for f in ("plan.json", "script.json", "outcomes.json", "timeline.json", "chapters.json",
+                          "state_after/world.json", *(f"state_after/party/{c}.json" for c in
+                                                     ("brannoc", "ilsevel", "oriel", "tamsin"))):
+                    if (eid, f) in known:
+                        continue
+                    self.assertEqual((out / f).read_text(), (ROOT / "episodes" / eid / f).read_text(), f"{eid} {f}")
+                a = json.loads((out / "episode.json").read_text())
+                b = json.loads((ROOT / "episodes" / eid / "episode.json").read_text())
+                a.pop("status"), b.pop("status")
+                self.assertEqual(a, b, eid)
 
     def test_wiki_refuses_spoilers(self):
         from pqc.pipeline import wiki
@@ -818,3 +843,121 @@ class TestShorts(unittest.TestCase):
             got = json.loads(ledger.read_text())
             self.assertEqual(list(got), ["C01-E001-short"])
             self.assertEqual(got["C01-E001-short"]["publish_at"], "2026-10-13T11:00:00Z")
+
+
+class TestUpdatesForNewEpisodes(unittest.TestCase):
+    """production/features.json: level-ups, the progress card, camps, memories (from C01-E011)."""
+
+    def setUp(self):
+        from pqc.state import load_json
+        self.sheets = {p.stem: load_json(p) for p in (ROOT / "episodes" / "C01-E010" / "state_after" / "party").glob("*.json")}
+        self.world = load_json(ROOT / "episodes" / "C01-E010" / "state_after" / "world.json")
+
+    def plan(self, src, eid, **changes):
+        p = json.loads((ROOT / "episodes" / src / "plan.json").read_text())
+        p["episode_id"] = eid
+        p.update(changes)
+        return p
+
+    def test_switches_by_episode(self):
+        from pqc import features
+        for name in ("tactics_v2", "level_ups", "progress_card", "memories", "camps", "xp_banner"):
+            self.assertFalse(features.enabled(name, "C01-E010"), name)
+            self.assertTrue(features.enabled(name, "C01-E011"), name)
+            self.assertTrue(features.enabled(name, "C02-E001"), name)
+
+    def test_milestone_levels_the_party_with_what_is_new(self):
+        from pqc.pipeline.resolve import resolve
+        res = resolve(self.plan("C01-E009", "C01-E015"), self.sheets, self.world, "C01-E015-1")
+        ups = {r["id"]: r for r in res.episode["level_ups"]}
+        self.assertEqual(sorted(ups), ["brannoc", "ilsevel", "oriel", "tamsin"])
+        self.assertIn("Action Surge", ups["brannoc"]["new"])
+        self.assertIn("Cunning Action", ups["tamsin"]["new"])
+        self.assertIn("fog_cloud", res.sheets_after["ilsevel"]["spellcasting"]["spellbook"])
+        self.assertIn("shield_of_faith", res.sheets_after["oriel"]["spellcasting"]["prepared"])
+        self.assertIn("arcana", res.sheets_after["ilsevel"]["expertise"])
+        self.assertEqual(res.sheets_after["brannoc"]["level"], 2)
+        self.assertEqual(res.episode["progress"]["brannoc"]["xp_to_next"], 600)
+        self.assertEqual(res.outcomes["level_ups"][0]["level"], 2)
+        self.assertTrue(any(c.get("source", "").startswith("milestone") for c in res.episode["state_changes"]))
+        from pqc.schema import validate_named
+        self.assertEqual(validate_named(res.episode, "episode"), [])
+        banner = next(c for c in res.battles["e1"]["cues"] if c["op"] == "battle_end")
+        self.assertTrue(banner["banner"].endswith("XP each"))
+
+    def test_no_level_up_without_the_xp(self):
+        from pqc.pipeline.resolve import resolve
+        res = resolve(self.plan("C01-E006", "C01-E012"), self.sheets, self.world, "C01-E012-1")
+        self.assertEqual(res.episode["level_ups"], [])
+        self.assertEqual(res.outcomes["party_after"]["oriel"]["xp_to_next"], 90)
+
+    def test_progress_card_cue(self):
+        from pqc.pipeline.assemble import progress_cue
+        from pqc.pipeline.resolve import resolve
+        res = resolve(self.plan("C01-E009", "C01-E015"), self.sheets, self.world, "C01-E015-1")
+        cue = progress_cue("C01-E015", res, self.sheets)
+        self.assertEqual(cue["op"], "progress")
+        self.assertEqual([m["id"] for m in cue["party"]], ["brannoc", "ilsevel", "tamsin", "oriel"])
+        b = cue["party"][0]
+        self.assertEqual((b["level_before"], b["level"], b["xp"], b["next_at"]), (1, 2, 300, 900))
+        self.assertGreater(cue["duration"], 6)
+        quiet = resolve(self.plan("C01-E006", "C01-E013"), self.sheets, self.world, "C01-E013-1")
+        self.assertIsNone(progress_cue("C01-E013", quiet, self.sheets))          # nothing changed, not a 3rd episode
+        self.assertIsNotNone(progress_cue("C01-E012", quiet, self.sheets))      # every 3rd episode anyway
+        self.assertIsNone(progress_cue("C01-E009", res, self.sheets))           # never in the episodes already made
+
+    def test_camp_night_food_watches_and_unlight(self):
+        from pqc.pipeline.resolve import resolve
+        world = copy.deepcopy(self.world)
+        world["location"]["unlight"] = "deep"
+        p = self.plan("C01-E006", "C01-E016")
+        rest = next(x for x in p["state_proposals"] if x["type"] == "rest")
+        rest["camp"] = {"site": "wild", "watches": [["brannoc"], ["tamsin", "oriel"], ["ilsevel"]], "lantern_lit": False}
+        res = resolve(p, self.sheets, world, "C01-E016-1")
+        night = res.outcomes["nights"][0]
+        self.assertEqual(night["watches"][1], ["tamsin", "oriel"])
+        self.assertEqual(len(night["unlight"]), 4)                              # everyone saves; some may fail
+        self.assertEqual(night["food"]["meals_each"], 1)
+        rations = lambda sh: sum(i["qty"] for s in sh.values() for i in s.get("inventory", []) if i["id"] == "rations")
+        self.assertEqual(rations(res.sheets_after), max(0, rations(self.sheets) - 4))
+        saves = [r for r in res.episode["rolls"] if "Unlight" in r.get("purpose", "")]
+        self.assertEqual(len(saves), 4)                                           # in the episode's public dice log
+
+    def test_travel_and_short_rest(self):
+        from pqc.pipeline.resolve import resolve
+        p = self.plan("C01-E006", "C01-E017", state_proposals=[
+            {"type": "travel", "days": 3, "to": "loc.waystation-nine"}, {"type": "rest", "kind": "short"}])
+        sheets = copy.deepcopy(self.sheets)
+        sheets["tamsin"]["hp"]["current"] = 2
+        res = resolve(p, sheets, self.world, "C01-E017-1")
+        trip, short = res.outcomes["nights"]
+        self.assertEqual(trip["days"], 3)
+        self.assertEqual(res.world_after["location"]["id"], "loc.waystation-nine")
+        self.assertEqual(res.world_after["clock"]["day"], (self.world["clock"]["day"] + 3 - 1) % 30 + 1)
+        self.assertEqual(short["kind"], "short")
+
+    def test_surprise_from_the_watch(self):
+        from pqc.combat import Encounter
+        from pqc.dice import Dice
+        from pqc.pipeline.resolve import _surprised
+        enc = {"party_at": {"brannoc": [0, 0]}, "enemies": [{"id": "wolf-1"}], "surprise": {"party": "c1.failure",
+                                                                                         "enemies": "c1.success"}}
+        self.assertEqual(_surprised(enc, {"c1": "failure"}, {}), ["brannoc"])
+        self.assertEqual(_surprised(enc, {"c1": "success"}, {}), ["wolf-1"])
+        from helpers import mon, pc
+        b, w = pc("brannoc"), mon("wolf", "wolf-1", pos=(5, 5))
+        e = Encounter([b, w], Dice("SURPRISE"), options={"surprised": ["brannoc"]})
+        e.start()
+        roll = next(r for r in e.dice.export_log() if r["actor"] == "brannoc")
+        self.assertIn("surprised", roll["purpose"])
+        self.assertEqual(roll.get("advantage"), "disadvantage")
+
+    def test_memories_from_the_archive(self):
+        from pqc.pipeline import memories, wiki
+        mem = memories.collect(wiki.load_archive(), self.world, before="C01-E011")
+        text = "\n".join(mem["brannoc"])
+        self.assertIn("C01-E009", text)
+        self.assertTrue(any("went down" in x for x in mem["tamsin"]))
+        self.assertTrue(all(x[:8] <= "C01-E010" for items in mem.values() for x in items))
+        self.assertEqual(memories.collect(wiki.load_archive(), self.world, before="C01-E001"),
+                         {c: [] for c in memories.PARTY})

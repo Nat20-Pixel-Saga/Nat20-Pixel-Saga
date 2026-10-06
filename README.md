@@ -91,8 +91,22 @@ enc.end_turn()
 - Weapon Mastery: Vex, Sap, Slow, Graze, Topple, Push (Nick and Cleave are listed but not automated yet).
 - Features: Sneak Attack (advantage or adjacent ally), Savage Attacker, Second Wind, Action Surge, Cunning Action, Nimble Escape, Pack Tactics, multiattack, Undead Fortitude, Potent Cantrip, Disciple of Life, Arcane Recovery.
 - Spells: attack, save (half / none), auto-hit, healing, buffs and utility, cantrip scaling, upcasting, the one-slot-spell-per-turn bonus-action rule, concentration (DC max(10, half damage), capped at 30), reactions (*Shield* when it turns a hit into a miss, including vs *Magic Missile*), free casts from Magic Initiate.
-- Rests (short, long, Arcane Recovery), milestone levelling 1→20 with fixed HP, ASIs (with retroactive Con HP), spell-slot progression, subclass gates at level 3.
+- Rests (short, long, Arcane Recovery), levelling 1→20 with fixed HP, ASIs (with retroactive Con HP), spell-slot progression, subclass gates at level 3.
 - The original **Unlight** rest rule (bible `10_rules_of_play.md` §6).
+
+### Updates from Episode 11
+
+Switched on per episode in `production/features.json`, so Episodes 1-10 replay exactly as they were made
+(a test replays all ten and compares every file):
+
+| Update | What changes | Where |
+| --- | --- | --- |
+| `tactics_v2` | Goblins use Nimble Escape (slip past an armoured defender to a softer target; once hurt, hit, Disengage and shoot from range, once a fight); shooters step in to normal range instead of throwing with disadvantage; Sneak Attack and Savage Attacker work on opportunity attacks | `pqc/ai.py`, `pqc/combat.py` |
+| `level_ups` | XP levels the party up at the end of an episode; milestone episodes top XP up so the planned level lands; the choices come from the dossiers' level plans (`data/level_plans.json`); the writer gets what's new | `pqc/progression.advance`, `pqc/pipeline/resolve.py` |
+| `progress_card` | Before the outro: each character's level, an XP bar that fills from where the episode started, XP to the next level, and LEVEL UP with what's new. Shown when anyone gained XP or a level, and at least every 3rd episode (`production/show.json`) | `pqc/pipeline/assemble.progress_cue`, `pqc/render/ui.py` |
+| `memories` | The planner and writer get what each character lived through (their notes, bond moments, lines, fights, natural 20s and 1s, levels) and must use it for one or two callbacks an episode; a character who grows gets a line about it | `pqc/pipeline/memories.py`, `prompts/writer.md` |
+| `camps` | Nights in the open (watches, a ration each, the Unlight save without a lit lantern), travel over days, short rests that spend Hit Dice, and surprise from a failed watch check | `pqc/pipeline/resolve.py` (`_apply_camp`), `prompts/planner.md` §12 |
+| `xp_banner` | "Victory! +37 XP each" in the text font (the small font's X reads as an H, so Episodes 1-10 show "+150 HP") | `pqc/render/ui.py` |
 
 ### Tactical model hook
 

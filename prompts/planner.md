@@ -13,10 +13,12 @@ Call `submit_plan` exactly once.
 5. **Encounters** use only monster ids from the list, at the positions you give. Put the party where the story leaves them and the enemies where they arrive from; typically 5-10 squares apart, never adjacent at the start. Every conscious party member needs a `party_at` square. Use `nonlethal: true` for anyone who must survive (e.g. a captive). An enemy may carry a `sprite` (a named NPC sprite) and a `name`. Enemy `id`s appear in the public dice log, so use neutral ids (`goblin-4`, `wolf-2`), never a name the viewers have not heard yet; an NPC met before their name is known gets `"name_known": false` in their `npc` proposal.
 6. **Positions** are map tiles `[x, y]` inside the map size, on free squares (not on props such as houses, trees, wells or lanterns; their `at` is the top-left tile of the prop and buildings cover several tiles). Use the map's named points as anchors. Each scene's `cast` lists who is on screen at its start, with sprite ids from the sprite list.
 7. **Scenes:** 3-6 per episode, each with a location, map, time of day, cast and 2-5 beats (one line each). `transition: "continue"` keeps the camera rolling on the same map (use it right after a fight: you can't know where everyone ends up, so the writer moves them); the default `cut` fades and re-stages the cast on their marks. The total should play in 5-10 minutes: about 35-55 dialogue boxes plus at most one fight.
-8. **State proposals** record what changes if the episode goes as planned: met NPCs, quest updates, lanterns, hooks planted, bond shifts (trust/tension by at most 1), flags, rests (`{"type": "rest", "kind": "long"}` restores HP and spell slots and moves the clock to the next morning; `short` spends no Hit Dice) and the clock. Anything that depends on a roll gets `"if": "<check or encounter id>.<success|failure|won|lost>"`. The engine applies only valid proposals.
+8. **State proposals** record what changes if the episode goes as planned: met NPCs, quest updates, lanterns, hooks planted, bond shifts (trust/tension by at most 1), flags, rests (`{"type": "rest", "kind": "long"}` restores HP and spell slots and moves the clock to the next morning; `short` is an hour's rest in which anyone below half HP spends Hit Dice), travel (see 12) and the clock. Anything that depends on a roll gets `"if": "<check or encounter id>.<success|failure|won|lost>"`. The engine applies only valid proposals.
 9. **DM intro** (`dm_intro`): what the Storyteller says over the first shot. `title` is the episode title; `subtitle` is "Campaign N: <name>  -  Level L  -  <in-world date>"; `text` is 250-480 characters, present tense, sets the scene for a viewer who missed everything before. No secrets, no outcomes.
 10. **next_time:** a teaser of at most 60 characters that does not spoil the next twist.
 11. Nothing in a `> SECRET` block may happen or be said on screen before its reveal episode. You may foreshadow (a look, an object, a half-line).
+12. **Roads, nights and rests.** Time passes on screen. When the party travels for days, add `{"type": "travel", "days": N, "to": "<location id>"}` (moves the clock, a ration a day each, they arrive rested) and give at least one of those nights a scene. A night in the open is a long rest with a camp: `{"type": "rest", "kind": "long", "camp": {"site": "wild", "watches": [["brannoc"], ["tamsin", "oriel"], ["ilsevel"]], "lantern_lit": true}}`; everyone eats a ration, and where the location is deep or abyssal Unlight and no lantern burns at the camp, everyone makes the Unlight save (`10_rules_of_play.md` §6). Watches are where bonds grow: pick pairs that have something to say to each other. Something may come in the night: put the watch keeper's Perception check (DC from the creatures' Stealth) in the night scene and give the encounter `"surprise": {"party": "<check id>.failure", "enemies": "<check id>.success"}`: whoever wasn't ready rolls Initiative with disadvantage. Keep an eye on rations in the state: running low is a story. Don't make every night eventful; a quiet night that shows the people is worth as much as an ambush.
+13. **Growth and memories.** When `this_episode.milestone_level` is set, the party reaches that level at the end of the episode (the engine applies it after the dice, from the dossiers' level plans): leave room in the last scene for it to show. **Memories** lists what each character has lived through; a beat that pays one off (a rematch, a place revisited, a trick reused, an old line answered) is welcome. Use only what's there.
 
 ## This episode
 
@@ -31,6 +33,9 @@ Seed: {{seed}} (for reference only - you cannot see the rolls)
 
 ### Story so far
 {{recap}}
+
+### Memories
+{{memories}}
 
 ### Stage: maps, sprites, monsters, skills
 {{stage_view}}

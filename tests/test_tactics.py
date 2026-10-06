@@ -164,3 +164,72 @@ class TestRoles(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTacticsV2(unittest.TestCase):
+    """Tactics 2 (production/features.json "tactics_v2"): only for new episodes."""
+
+    def run_turn(self, enc, limit=8):
+        c = enc.current
+        for _ in range(limit):
+            it = simple_policy(enc, c)
+            if it.get("type") == "end_turn":
+                break
+            enc.act(it)
+        return [e for e in enc.events if e.get("actor") == c.id and e["t"] in ("disengage", "move", "attack")]
+
+    def goblin_between(self, tactics):
+        b, i = pc("brannoc"), pc("ilsevel")
+        b.pos, i.pos = (0, 0), (3, 2)
+        g = mon("goblin_warrior", "g", pos=(1, 0))
+        enc = Encounter([b, i, g], Dice("V2-SLIP"), options={"tactics": tactics})
+        enc.start(order=["g", "brannoc", "ilsevel"])
+        return enc
+
+    def test_goblin_slips_past_the_fighter_to_the_wizard(self):
+        ev = self.run_turn(self.goblin_between(2))
+        self.assertEqual(ev[0]["t"], "disengage")              # Nimble Escape (bonus action)
+        self.assertEqual([e["target"] for e in ev if e["t"] == "attack"], ["ilsevel"])
+        self.assertFalse(any(e.get("opportunity") for e in ev))
+
+    def test_tactics_1_goblin_just_hits_the_fighter(self):
+        ev = self.run_turn(self.goblin_between(1))
+        self.assertNotIn("disengage", [e["t"] for e in ev])
+        self.assertEqual([e["target"] for e in ev if e["t"] == "attack"], ["brannoc"])
+
+    def thrower(self, tactics):
+        i = pc("ilsevel")
+        i.pos = (8, 0)                                        # 40 ft: long range for a thrown dagger (20/60)
+        g = mon("goblin_minion", "g", pos=(0, 0))
+        enc = Encounter([i, g], Dice("V2-RANGE"), options={"tactics": tactics})
+        enc.start(order=["g", "ilsevel"])
+        return enc
+
+    def test_shooter_steps_in_to_normal_range(self):
+        enc = self.thrower(2)
+        ev = self.run_turn(enc)
+        self.assertEqual(ev[0]["t"], "move")
+        atk = next(e for e in ev if e["t"] == "attack")
+        self.assertNotEqual(atk["advantage"], "disadvantage")
+        self.assertLessEqual(enc.dist(enc.get("g"), enc.get("ilsevel")), 20)
+
+    def test_tactics_1_shooter_throws_from_long_range(self):
+        enc = self.thrower(1)
+        ev = self.run_turn(enc)
+        self.assertEqual(ev[0]["t"], "attack")
+        self.assertEqual(ev[0]["advantage"], "disadvantage")
+        self.assertFalse(any("close_range" in o.get("tags", []) for o in enc.legal_actions()))
+
+    def opportunity(self, tactics, faces):
+        t, b = pc("tamsin"), pc("brannoc")
+        g = mon("goblin_warrior", "g", pos=(1, 0))
+        t.pos, b.pos = (0, 0), (2, 0)                        # Brannoc is next to the goblin too
+        enc = Encounter([t, b, g], ScriptedDice(faces), options={"tactics": tactics})
+        enc.start(order=["g", "tamsin", "brannoc"])
+        enc.reactions["brannoc"] = False
+        enc.act({"type": "move", "to": [1, 3], "path": [[1, 1], [1, 2], [1, 3]]})
+        return next(e for e in enc.events if e["t"] == "attack" and e.get("opportunity"))
+
+    def test_sneak_attack_on_an_opportunity_attack(self):
+        self.assertTrue(self.opportunity(2, [15, 3, 4]).get("sneak_attack"))   # d20, shortsword d6, Sneak Attack d6
+        self.assertFalse(self.opportunity(1, [15, 3]).get("sneak_attack"))

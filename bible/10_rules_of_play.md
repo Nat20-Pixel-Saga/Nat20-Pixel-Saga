@@ -46,7 +46,9 @@ The show uses the **System Reference Document 5.2 (SRD 5.2)**, released by Wizar
 - **Initiative:** d20 + Dex modifier (+ bonuses such as Alert); ties broken by higher Dex, then a seeded roll-off.
 - **Critical hits:** natural 20 (or the attacker's expanded range, e.g. Champion 19–20); double the damage dice, not modifiers.
 - **Natural 1** on an attack always misses. Natural 1/20 have no special effect on checks or saves except Death Saves.
-- **Opportunity attacks** are automatic for creatures with a reaction when an enemy leaves their reach without Disengage.
+- **Opportunity attacks** are automatic for creatures with a reaction when an enemy leaves their reach without Disengage. Moving *into* reach never provokes. Sneak Attack and Savage Attacker can apply to them ("once per turn", which includes other creatures' turns; from C1E11).
+- **Surprise:** a creature caught unready (the night watch failed its check, an ambush the party didn't spot) rolls Initiative with disadvantage (SRD 5.2). The plan says who: `"surprise": {"party": "c3.failure", "enemies": "c3.success"}`.
+- **Monster tactics** (the engine's policy, from C1E11): goblins use Nimble Escape, slipping past a well-armoured defender to reach a softer target and, once hurt, hitting and Disengaging out of reach to shoot; shooters step in to normal range rather than throw or shoot with disadvantage.
 - **Reactions** used automatically by the engine when the outcome is unambiguous: *Shield* (only if +5 AC turns a hit into a miss), opportunity attacks. Other reactions require an explicit intent.
 - **Monsters at 0 HP** die unless the plan marks them `nonlethal` (knock-out). **Party members at 0 HP** fall unconscious and make Death Saving Throws.
 - **Flanking** is not used (optional rule, off).
@@ -55,8 +57,10 @@ The show uses the **System Reference Document 5.2 (SRD 5.2)**, released by Wizar
 
 ## 5. Rest, recovery and resources
 
-- **Short rest:** 1 hour; spend Hit Point Dice; class features recover as SRD 5.2.
-- **Long rest:** 8 hours; regain all HP, all Hit Point Dice, all spell slots; reduce Exhaustion by 1. A long rest can be interrupted (plan marks interruption).
+- **Short rest:** 1 hour; anyone below half HP spends Hit Point Dice until back to half (rolled in the episode's dice log, from C1E11); class features recover as SRD 5.2.
+- **Long rest:** 8 hours; regain all HP, all Hit Point Dice, all spell slots; reduce Exhaustion by 1. It needs at least 1 HP. A night attack is staged as a fight in the night scene, with the rest proposal after it.
+- **Camps** (from C1E11): a night in the open is a long rest with a camp (`site`, `watches`, `lantern_lit`). Everyone eats a ration (their own, then the shared packs, then a friend's); anyone without one goes hungry, which the writer shows. The watch order goes to the writer: who sits up with whom is where bonds grow. The Unlight rule (§6) applies at the camp.
+- **Travel** (from C1E11): `{"type": "travel", "days": N, "to": "<location>"}` moves the clock N days, costs a ration a day each and ends with the party rested. At least one of those nights gets a scene.
 - **Heroic Inspiration:** humans gain it from each long rest (Resourceful). The showrunner may award it once per week. A creature with Heroic Inspiration may reroll one die and must use the new roll.
 - **Encumbrance:** tracked only for absurd cases; carrying capacity is Str × 15 lb.
 - **Ammunition:** tracked; half is recovered after a fight.
@@ -71,11 +75,15 @@ The show uses the **System Reference Document 5.2 (SRD 5.2)**, released by Wizar
 | **Deep Unlight** | A creature that finishes a long rest here gains 1 Exhaustion level unless it succeeds on a DC 12 Wisdom save. Lantern light (any lit lantern within 60 ft) prevents this. |
 | **Abyssal Unlight** (Underdeep depths, C6+) | As deep; plus at the start of each hour, DC 15 Wisdom save or forget one minor memory (narrative, recorded on the wiki). |
 
+From C1E11 the engine rolls these saves at every camp rest in deep or abyssal Unlight with no lantern lit at the camp; they go in the public dice log.
+
 Undead and fiends are uneasy inside a lantern ward: they have disadvantage on Charisma checks there (narrative tell). Hollowed and gloams use SRD undead stat blocks re-skinned (see `06_recurring_npcs.md`).
 
 ## 7. Levelling
 
-- **Milestone** levelling at the beats in `07_campaign_arcs.md`. XP is still recorded for the wiki (encounter XP from SRD stat blocks).
+- **XP with milestones** (from C1E11). Encounter XP (SRD stat blocks, shared equally) and story XP build towards the next level on the SRD table; a character levels up at the end of the episode in which they reach it. The milestone episodes in `07_campaign_arcs.md` (`milestone_level` in the campaign file) top everyone's XP up to that level's threshold, so the planned beats always land. Before C1E11 levels were by milestone only and XP was flavour.
+- **What a level brings** is applied from the dossiers' level plans (`data/level_plans.json`): subclass, expertise, spells added to the book or prepared, ability increases. Anything the plan doesn't cover (or a spell the engine doesn't have yet) is reported as still to choose.
+- **On screen:** the end card before the outro shows each character's level, XP and XP to the next level, whenever anyone gained XP or a level and at least every third episode; a level-up gets its own beat in the last scene (`prompts/writer.md`).
 - **Hit points on level-up:** fixed average (SRD option). This keeps the show fair and predictable.
 - **Ability Score Improvements / feats** at levels 4, 8, 12, 16, 19 follow the plan in each dossier unless the story suggests otherwise; any change requires a dossier update.
 - **Multiclassing:** not used.

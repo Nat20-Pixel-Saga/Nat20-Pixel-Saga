@@ -251,3 +251,26 @@ class TestTimeline(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(HAVE_PACK, "asset pack not fetched")
+class TestProgressCard(unittest.TestCase):
+    def test_card_draws_and_levels_up(self):
+        from pqc.render.assets import Assets
+        from pqc.render.timeline import Runner
+        from pqc.schema import validate_named
+        m = {"id": "brannoc", "name": "Brannoc", "title": "Dwarf Fighter", "level_before": 1, "level": 2,
+             "xp_before": 278, "xp": 300, "from_start": 0, "from_next": 300, "level_start": 300, "next_at": 900,
+             "new": ["Action Surge", "Tactical Mind"]}
+        card = {"op": "progress", "title": "The party", "subtitle": "After Episode 15", "party": [m], "duration": 3.0}
+        tl = {"schema": "pqc/timeline@1", "id": "t", "title": "t", "fps": 30, "seed": "s", "tail": 0.1,
+              "cues": [{"op": "scene", "map": "brindle_cross", "time_of_day": "day", "camera": [19, 11]},
+                       {"op": "wait", "seconds": 0.3}, card]}
+        self.assertEqual(validate_named(tl, "timeline"), [])
+        frames = list(Runner(tl, Assets()).frames())
+        before, during = frames[3], frames[int(0.3 * 30) + 75]
+        self.assertGreater(sum(abs(a - b) for a, b in zip(before.convert("L").getdata(), during.convert("L").getdata())),
+                           100000)
+        r = Runner(tl, Assets())
+        list(r.frames())
+        self.assertTrue(any(e.get("id") == "level_up" for e in r.stage.audio))

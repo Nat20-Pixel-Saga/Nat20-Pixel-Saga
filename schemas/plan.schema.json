@@ -367,8 +367,7 @@
        "gold",
        "location",
        "clock",
-       "rest"
-      ]
+       "rest", "travel"]
      },
      "if": {
       "type": "string",

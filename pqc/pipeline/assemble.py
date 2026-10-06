@@ -12,7 +12,8 @@ from __future__ import annotations
 import heapq
 from dataclasses import dataclass, field
 
-from ..state import load_json
+from .. import features
+from ..state import ROOT, load_json
 from .resolve import MANIFEST, Resolution, blocked_squares, load_map
 
 MAX_BOX = 140
@@ -338,11 +339,58 @@ def assemble(plan: dict, script: dict, res: Resolution, check_cues: dict[str, li
     cues.append({"op": "wait", "seconds": 0.6})
     chapters.append({"cue": len(cues), "title": "Next time"})
     cues.append({"op": "narrate", "text": f"Next time: {script.get('next_time') or plan['next_time']}"})
+    card = progress_cue(plan["episode_id"], res, sheets)
+    if card:
+        cues.append(card)
     cues.append({"op": "music_stop", "fade_out": 1.5, "wait": False})
     cues.append({"op": "fade", "to": "black", "duration": 1.4})
     timeline = {"schema": "pqc/timeline@1", "id": plan["episode_id"], "title": f"{plan['episode_id']} - {plan['title']}",
                 "fps": 30, "seed": res.episode["seed"], "tail": 0.4, "cues": cues, "chapters": chapters}
     return Assembly(timeline, problems, placed)
+
+
+def progress_cue(eid: str, res: Resolution, sheets: dict) -> dict | None:
+    """The party's levels and XP before the outro (production/show.json "progress_card"): shown when
+    anyone gained XP or a level, and at least every N episodes. Only from the episode in
+    production/features.json, and only if the resolver recorded progress."""
+    prog = res.episode.get("progress")
+    if not prog or not features.enabled("progress_card", eid):
+        return None
+    cfg = load_json(ROOT / "production" / "show.json")["progress_card"]
+    changed = any(p["xp"] != p["xp_before"] or p["level"] != p["level_before"] for p in prog.values())
+    if not ((cfg.get("on_change", True) and changed) or int(eid[-3:]) % cfg.get("every", 3) == 0):
+        return None
+    from .. import progression
+    new = {r["id"]: r for r in res.episode.get("level_ups", [])}
+    party = []
+    for cid in PARTY_ORDER:
+        if cid not in prog:
+            continue
+        p, s = prog[cid], res.sheets_after[cid]
+        party.append({
+            "id": cid, "name": s["name"].split()[0], "title": f"{s['species'].replace('_', ' ').title()} "
+                                                             f"{s['class'].title()}",
+            "level_before": p["level_before"], "level": p["level"], "xp_before": p["xp_before"], "xp": p["xp"],
+            "from_start": progression.xp_for_level(p["level_before"]),
+            "from_next": progression.xp_for_level(p["level_before"] + 1),
+            "level_start": p["level_start"], "next_at": p["next_at"],
+            "new": list(dict.fromkeys(_short(g) for g in (new.get(cid) or {}).get("new", [])))})
+    up = any(m["level"] > m["level_before"] for m in party)
+    return {"op": "progress", "title": "The party", "subtitle": f"After Episode {int(eid[-3:])}",
+            "party": party, "duration": cfg.get("seconds_level_up" if up else "seconds", 7.5 if up else 5.5)}
+
+
+PARTY_ORDER = ("brannoc", "ilsevel", "tamsin", "oriel")
+
+
+def _short(gain: str) -> str:
+    """A level-up gain as the card shows it: "New spell in the book: Fog Cloud" -> "Fog Cloud"."""
+    for prefix in ("New spell in the book: ", "Prepares ", "New cantrip: ", "Subclass: ", "Ability Score Improvement: "):
+        if gain.startswith(prefix):
+            return gain[len(prefix):]
+    if gain.startswith("Expertise in "):
+        return gain[len("Expertise in "):] + " Expertise"
+    return gain
 
 
 def _path_len(move: dict) -> float:

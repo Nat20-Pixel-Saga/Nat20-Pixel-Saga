@@ -243,6 +243,29 @@ class TitleTask(Task):
         return self.elapsed(st) >= self.cue.get("duration", 3.0)
 
 
+class ProgressTask(Task):
+    """The party's levels and XP before the outro (pqc/pipeline/assemble.progress_cue)."""
+
+    def start(self, st):
+        super().start(st)
+        c = self.cue
+        up = any(m["level"] > m["level_before"] for m in c["party"])
+        self.dur = c.get("duration", 7.5 if up else 5.5)
+        faces = {}
+        for m in c["party"]:
+            try:
+                faces[m["id"]] = st.a.actor(m["id"]).faceset
+            except Exception:
+                faces[m["id"]] = None
+        st.ui.progress = {**c, "t0": st.t, "dur": self.dur, "faces": faces}
+        st.ui.dialog = None
+        if up:
+            st.sfx("level_up", st.t + 2.0)
+
+    def update(self, st):
+        return self.elapsed(st) >= self.dur
+
+
 class LanternTask(Task):
     """Change a lantern's light. ``dead`` lanterns can spawn an Unlight zone."""
 
@@ -431,7 +454,7 @@ class BattleEndTask(Task):
             st.audio.append({"type": "music_stop", "t": st.t, "fade_out": 0.3})
             st.sfx("victory")
             st.ui.banner = {"text": self.cue.get("banner", f"Victory!  +{self.cue.get('xp', 0)} XP"), "t0": st.t,
-                            "dur": self.cue.get("hold", 2.4)}
+                            "dur": self.cue.get("hold", 2.4), "font": self.cue.get("banner_font")}
         if st.battle:
             st.battle.active = None
             st.battle.grid_target = 0.0
@@ -736,7 +759,7 @@ class RollTask(Task):
 TASKS = {
     "scene": SceneTask, "spawn": SpawnTask, "despawn": DespawnTask, "face": FaceTask, "move": MoveTask,
     "camera": CameraTask, "say": SayTask, "narrate": SayTask, "emote": EmoteTask, "wait": WaitTask,
-    "location_card": LocationCardTask, "title": TitleTask, "lantern": LanternTask, "time_of_day": TimeOfDayTask,
+    "location_card": LocationCardTask, "title": TitleTask, "progress": ProgressTask, "lantern": LanternTask, "time_of_day": TimeOfDayTask,
     "music": MusicTask, "music_stop": MusicTask, "sfx": SfxTask, "fade": FadeTask,
     "battle_start": BattleStartTask, "battle_end": BattleEndTask, "battle_attack": BattleAttackTask,
     "battle_cast": BattleCastTask, "battle_faint": BattleFaintTask, "battle_revive": BattleReviveTask,

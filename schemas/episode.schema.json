@@ -44,6 +44,8 @@
     "state_changes": {"type": "array", "items": {"type": "object"}},
     "xp_awarded": {"type": "integer", "minimum": 0},
     "loot": {"type": "array", "items": {"type": "object"}},
-    "level_ups": {"type": "array", "items": {"type": "object"}}
+    "level_ups": {"type": "array", "items": {"type": "object"}},
+    "progress": {"type": "object", "description": "Per party member (from the episode level_ups is on): level and XP before and after, XP to the next level; drives the end card",
+                 "additionalProperties": {"type": "object"}}
   }
 }

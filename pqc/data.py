@@ -69,3 +69,8 @@ def column(table: dict, level: int, default=0):
         if int(lvl) <= level:
             value = table[lvl]
     return value
+
+
+def level_plans() -> dict:
+    """Planned level-up choices per party member (from the dossiers)."""
+    return {k: v for k, v in _load("level_plans").items() if not k.startswith("_")}

@@ -77,7 +77,9 @@ class Encounter:
         self.auto_reactions = auto_reactions
         self.blocked = set(occupied_extra or ())
         self.difficult = set(difficult or ())
-        self.options = {"flanking": False, **(options or {})}
+        self.options = {"flanking": False, "tactics": 1, **(options or {})}
+        self._once: dict[tuple[str, str], tuple[int, int]] = {}   # (feature, creature) -> turn it was used
+        self.ai_memo: dict[str, dict] = {}      # what the tactical policy remembers per creature, this fight
         self.started = False
         self.finished = False
 
@@ -106,6 +108,14 @@ class Encounter:
 
     def dist(self, a: Creature, b: Creature) -> int:
         return distance_ft(a.pos, b.pos)
+
+    def _once_per_turn(self, feature: str, c: Creature) -> bool:
+        """Tactics 2: features usable "once per turn" (Sneak Attack, Savage Attacker) also work on a
+        reaction during someone else's turn (SRD 5.2), once in each turn."""
+        return self._once.get((feature, c.id)) != (self.round, self.turn_index)
+
+    def _use_once(self, feature: str, c: Creature) -> None:
+        self._once[(feature, c.id)] = (self.round, self.turn_index)
 
     def occupied(self, exclude: str | None = None) -> set[tuple[int, int]]:
         occ = {c.pos for c in self.creatures.values() if not c.dead and c.id != exclude}
@@ -161,9 +171,14 @@ class Encounter:
     # ======================================================== initiative
     def roll_initiative(self) -> None:
         scores = {}
+        surprised = set(self.options.get("surprised") or ())
         for c in self.creatures.values():
-            rec = self.dice.d20(modifier=c.initiative_bonus, purpose="initiative", actor=c.id,
-                                reroll_ones="luck" in c.traits)
+            if c.id in surprised:    # SRD 5.2 Surprise: disadvantage on the Initiative roll
+                rec = self.dice.d20(modifier=c.initiative_bonus, purpose="initiative (surprised)", actor=c.id,
+                                    reroll_ones="luck" in c.traits, disadvantage=True)
+            else:
+                rec = self.dice.d20(modifier=c.initiative_bonus, purpose="initiative", actor=c.id,
+                                    reroll_ones="luck" in c.traits)
             scores[c.id] = (rec.total, c.abilities["dex"])
             self.initiative[c.id] = rec.total
             self.emit("initiative", actor=c.id, roll=rec.id, total=rec.total)
@@ -560,10 +575,16 @@ class Encounter:
             return ev
 
         parts: dict[str, int] = {}
-        savage = "savage_attacker" in attacker.feats and atk.is_weapon and not self.turn.savage_attacker_used \
-            and attacker.id == self.current.id
-        if savage:
-            self.turn.savage_attacker_used = True
+        v2 = self.options.get("tactics", 1) >= 2
+        if v2:
+            savage = "savage_attacker" in attacker.feats and atk.is_weapon and self._once_per_turn("savage", attacker)
+            if savage:
+                self._use_once("savage", attacker)
+        else:
+            savage = "savage_attacker" in attacker.feats and atk.is_weapon and not self.turn.savage_attacker_used \
+                and attacker.id == self.current.id
+            if savage:
+                self.turn.savage_attacker_used = True
         amount, ids = self._roll_damage(atk.damage, crit, f"damage: {atk.name}", attacker.id, target.id, savage)
         parts[atk.damage_type] = parts.get(atk.damage_type, 0) + amount
         ev["damage_rolls"] += ids
@@ -577,10 +598,13 @@ class Encounter:
             parts[atk.damage_type] += amt
             ev["damage_rolls"] += ids
         # Sneak Attack.
-        if attacker.sneak_attack_dice and not self.turn.sneak_attack_used and atk.finesse_or_ranged \
-                and attacker.id == self.current.id and rec.advantage != "disadvantage":
+        sneak_free = self._once_per_turn("sneak", attacker) if v2 else (
+            not self.turn.sneak_attack_used and attacker.id == self.current.id)
+        if attacker.sneak_attack_dice and sneak_free and atk.finesse_or_ranged and rec.advantage != "disadvantage":
             ally_adjacent = any(self.dist(al, target) <= 5 and not al.incapacitated for al in self.allies_of(attacker))
             if rec.advantage == "advantage" or ally_adjacent:
+                if v2:
+                    self._use_once("sneak", attacker)
                 self.turn.sneak_attack_used = True
                 amt, ids = self._roll_damage(f"{attacker.sneak_attack_dice}d6", crit, "damage: Sneak Attack",
                                              attacker.id, target.id)
@@ -1149,12 +1173,31 @@ class Encounter:
                 tags.append("flank")
             if c.sneak_attack_dice and (flank(best) or any(distance_ft(al.pos, e.pos) <= 5 for al in allies)):
                 tags.append("sneak_attack")
-            out.append(opt(best, f"Move to engage {e.name} ({e.id}) at {list(best)}", tags))
+            o = opt(best, f"Move to engage {e.name} ({e.id}) at {list(best)}", tags)
+            o["target"] = e.id
+            out.append(o)
         if enemies and all(self.dist(c, e) > reach for e in enemies) and not out:
             near = min(enemies, key=lambda e: (self.dist(c, e), e.id))
             best = min(ends, key=lambda sq: (distance_ft(sq, near.pos), tree[sq][0], sq))
             if distance_ft(best, near.pos) < self.dist(c, near):
                 out.append(opt(best, f"Advance toward {near.name} ({near.id}) to {list(best)}", ["advance"]))
+        ranged = [a for a in c.attacks if a.type == "ranged" and a.range]
+        if self.options.get("tactics", 1) >= 2 and ranged and enemies:
+            # Tactics 2: a shooter beyond normal range can step in rather than shoot with disadvantage.
+            normal = max(a.range[0] for a in ranged)
+
+            def keep_off(sq):
+                return min(distance_ft(sq, x.pos) for x in enemies)
+            for e in enemies:
+                if self.dist(c, e) <= normal:
+                    continue
+                cands = [sq for sq in ends if distance_ft(sq, e.pos) <= normal]
+                if not cands:
+                    continue
+                best = min(cands, key=lambda sq: (len(prov(sq)), keep_off(sq) <= 5, -keep_off(sq), tree[sq][0], sq))
+                o = opt(best, f"Close to {normal} ft of {e.name} ({e.id}) at {list(best)}", ["close_range"])
+                o["target"] = e.id
+                out.append(o)
         if enemies:
             def safety(sq):
                 return min(distance_ft(sq, e.pos) for e in enemies)
@@ -1170,7 +1213,9 @@ class Encounter:
                 cands = [sq for sq in ends if distance_ft(sq, al.pos) <= 5 and distance_ft(sq, t.pos) <= reach]
                 if cands:
                     best = min(cands, key=lambda sq: (len(prov(sq)), tree[sq][0], sq))
-                    out.append(opt(best, f"Step in to guard {al.name} and engage {t.id}", ["guard", "engage"]))
+                    o = opt(best, f"Step in to guard {al.name} and engage {t.id}", ["guard", "engage"])
+                    o["target"] = t.id
+                    out.append(o)
         return out
 
     def legal_actions(self) -> list[dict]:

@@ -18,7 +18,7 @@ import copy
 import json
 from dataclasses import dataclass, field
 
-from .. import data
+from .. import data, features, progression
 from ..ai import simple_policy
 from ..checks import ability_check, contest, group_check, saving_throw
 from ..combat import Encounter
@@ -149,6 +149,11 @@ def validate_plan(plan: dict, sheets: dict, world: dict) -> list[str]:
                 if why:
                     errors.append(f"{enc['id']}: {pid} at {why}")
                 taken.add(tuple(xy[:2]))
+            for side, cond in (enc.get("surprise") or {}).items():
+                ref, _, want = str(cond).partition(".")
+                if side not in ("party", "enemies") or ref not in seen_ids or want not in ("success", "failure"):
+                    errors.append(f"{enc['id']}: surprise needs {{'party'|'enemies': '<earlier check id>.success|failure'}}, "
+                                  f"got {side!r}: {cond!r}")
             gaps = [max(abs(a[0] - e["at"][0]), abs(a[1] - e["at"][1]))
                     for a in enc["party_at"].values() for e in enc["enemies"]]
             if gaps and min(gaps) <= 1:
@@ -159,6 +164,14 @@ def validate_plan(plan: dict, sheets: dict, world: dict) -> list[str]:
             ref, _, want = cond.partition(".")
             if ref not in seen_ids or want not in ("success", "failure", "won", "lost"):
                 errors.append(f"state_proposals[{i}]: bad condition {cond!r}")
+        if p["type"] == "travel" and not (isinstance(p.get("days"), int) and 1 <= p["days"] <= 30):
+            errors.append(f"state_proposals[{i}]: travel needs 'days' from 1 to 30")
+        camp = p.get("camp") if p["type"] == "rest" else None
+        if camp is not None:
+            for w in camp.get("watches", []):
+                for who in (w if isinstance(w, list) else [w]):
+                    if who not in sheets:
+                        errors.append(f"state_proposals[{i}]: watch keeper {who!r} is not a party member")
     return errors
 
 
@@ -213,14 +226,26 @@ def resolve(plan: dict, sheets: dict, world: dict, seed: str, attempt: int = 1) 
                 "means": ch.get("on_success") if success else ch.get("on_failure"), **extra})
         enc = sc.get("encounter")
         if enc:
+            if features.enabled("tactics_v2", plan["episode_id"]):
+                enc = {**enc, "options": {"tactics": 2, **(enc.get("options") or {})}}
+            if enc.get("surprise") and features.enabled("camps", plan["episode_id"]):
+                enc = {**enc, "options": {**(enc.get("options") or {}),
+                                          "surprised": _surprised(enc, results, party)}}
             b = _fight(enc, sc["map"], party, sheets, dice)
             battles[enc["id"]] = b
             r = b["result"]
+            if features.enabled("xp_banner", plan["episode_id"]) and r["winner"] == "party":
+                for cue in b["cues"]:          # what each character gets, in a font whose X doesn't read as H
+                    if cue["op"] == "battle_end":
+                        cue["banner"] = f"Victory!  +{r['xp'] // max(1, len(party))} XP each"
+                        cue["banner_font"] = "text"
             results[enc["id"]] = "won" if r["winner"] == "party" else "lost"
             encounters_out.append({"name": enc["name"], "winner": r["winner"], "rounds": r["rounds"], "xp": r["xp"],
                                    "events": r["events"], "combatants": r["combatants"]})
             outcome_fights.append({"id": enc["id"], "scene": sc["id"], "winner": r["winner"], "rounds": r["rounds"],
                                    "xp": r["xp"], "actions": b["actions"], "end_state": b["end_state"]})
+            if (enc.get("options") or {}).get("surprised"):
+                outcome_fights[-1]["surprised"] = enc["options"]["surprised"]
             if r["winner"] == "party":
                 for a in triage(party, dice, n0=len(aftermath)):
                     a["scene"] = next((s2["id"] for s2 in plan["scenes"][plan["scenes"].index(sc) + 1:]), sc["id"])
@@ -230,28 +255,75 @@ def resolve(plan: dict, sheets: dict, world: dict, seed: str, attempt: int = 1) 
 
     sheets_after = {cid: sheet_from_character(c) for cid, c in party.items()}
     world_after = copy.deepcopy(world)
-    changes = apply_proposals(plan, results, sheets_after, world_after)
+    night: list[dict] = []
+    changes = apply_proposals(plan, results, sheets_after, world_after, dice=dice, night=night)
     xp_total = sum(e["xp"] for e in encounters_out if e["winner"] == "party")
     per = xp_total // max(1, len(sheets_after))
     for s in sheets_after.values():
         s["xp"] = s.get("xp", 0) + per
     if per:
         changes.append({"type": "xp", "amount_each": per, "source": "encounters", "applied": True})
+    camp, ep = int(plan["episode_id"][1:3]), int(plan["episode_id"][-3:])
+    level_ups, progress = [], None
+    if features.enabled("level_ups", plan["episode_id"]):
+        level_ups, progress = _level_ups(camp, ep, sheets, sheets_after, changes)
     _advance_series(plan, world_after)
 
-    camp, ep = int(plan["episode_id"][1:3]), int(plan["episode_id"][-3:])
     record = {
         "schema": "pqc/episode@1", "id": plan["episode_id"], "campaign": camp, "episode": ep,
         "title": plan["title"], "seed": seed, "attempt": attempt, "status": "resolved",
         "in_world_date": dict(world["clock"]),
         "checks": checks_out, "encounters": encounters_out, "rolls": dice.export_log(),
-        "state_changes": changes, "xp_awarded": per, "loot": [], "level_ups": [],
+        "state_changes": changes, "xp_awarded": per, "loot": [], "level_ups": level_ups,
     }
+    if progress is not None:
+        record["progress"] = progress
     outcomes = {"episode_id": plan["episode_id"], "seed": seed, "checks": outcome_checks, "fights": outcome_fights,
                 "aftermath": aftermath,
                 "party_after": {cid: {"hp": f"{s['hp']['current']}/{s['hp']['max']}",
                                       "conditions": sorted(s.get("conditions", {}))} for cid, s in sheets_after.items()}}
+    if night:
+        outcomes["nights"] = night
+    if progress is not None:
+        for cid, pr in progress.items():
+            outcomes["party_after"][cid].update(level=pr["level"], xp=pr["xp"], xp_to_next=pr["xp_to_next"])
+        outcomes["level_ups"] = [{"who": r["id"], "level": r["to"], "new": r["new"], "hp_max": r["hp_max"],
+                                  "still_to_choose": r["pending_choices"]} for r in level_ups]
     return Resolution(record, outcomes, battles, sheets_after, world_after, check_rolls)
+
+
+def _surprised(enc: dict, results: dict, party: dict) -> list[str]:
+    """``"surprise": {"party": "c3.failure", "enemies": "c3.success"}``: whoever the condition names is
+    surprised (disadvantage on Initiative), e.g. when the watch did or didn't hear them coming."""
+    out = []
+    for side, cond in (enc.get("surprise") or {}).items():
+        ref, _, want = cond.partition(".")
+        if results.get(ref) == want:
+            out += list(enc["party_at"]) if side == "party" else [e["id"] for e in enc["enemies"]]
+    return out
+
+
+def _level_ups(camp: int, ep: int, before: dict, sheets_after: dict, changes: list) -> tuple[list, dict]:
+    """Level-ups at the end of the episode (bible 10 §7): by XP, with the campaign's milestone episodes
+    topping XP up so their level always lands. Also the per-character progress for the end card."""
+    from .context import campaign_entry
+    try:
+        milestone = campaign_entry(camp, ep)[1].get("milestone_level")
+    except (FileNotFoundError, StopIteration):
+        milestone = None
+    reports = []
+    for cid, s in sheets_after.items():
+        reps, mxp = progression.advance(s, milestone)
+        if mxp:
+            changes.append({"type": "xp", "who": cid, "amount": mxp, "source": f"milestone (level {milestone})",
+                            "applied": True})
+        reports += reps
+    progress = {cid: {"level_before": before[cid]["level"], "level": s["level"], "xp_before": before[cid].get("xp", 0),
+                      "xp": s.get("xp", 0), "xp_to_next": progression.xp_to_next(s),
+                      "next_at": progression.xp_for_level(s["level"] + 1) if s["level"] < 20 else None,
+                      "level_start": progression.xp_for_level(s["level"])}
+                for cid, s in sheets_after.items()}
+    return reports, progress
 
 
 def triage(party: dict, dice: Dice, n0: int = 0) -> list[dict]:
@@ -468,8 +540,12 @@ LANTERN_STATES = ("lit", "flicker", "dead")
 HOOK_STATES = ("dormant", "planted", "active", "resolved")
 
 
-def apply_proposals(plan: dict, results: dict, sheets: dict, world: dict) -> list[dict]:
+def apply_proposals(plan: dict, results: dict, sheets: dict, world: dict, dice: Dice | None = None,
+                    night: list | None = None) -> list[dict]:
+    """``dice`` and ``night`` serve camps and travel (production/features.json "camps"): their rolls go in
+    the episode's log and what happened overnight goes to the writer as ``outcomes.nights``."""
     eid = plan["episode_id"]
+    camps = features.enabled("camps", eid) and dice is not None
     log = []
     for p in plan.get("state_proposals", []):
         entry = dict(p)
@@ -481,7 +557,12 @@ def apply_proposals(plan: dict, results: dict, sheets: dict, world: dict) -> lis
                 log.append(entry)
                 continue
         try:
-            _apply_one(p, eid, sheets, world)
+            if camps and p["type"] in ("rest", "travel"):
+                rep = _apply_camp(p, eid, sheets, world, dice)
+                if night is not None and rep:
+                    night.append(rep)
+            else:
+                _apply_one(p, eid, sheets, world)
             entry["applied"] = True
         except (KeyError, ValueError, TypeError) as exc:
             entry.update(applied=False, why=f"rejected: {exc}")
@@ -613,6 +694,109 @@ def _apply_one(p: dict, eid: str, sheets: dict, world: dict) -> None:
             s["xp"] = s.get("xp", 0) + amount
     else:
         raise ValueError(f"unsupported proposal type {t!r}")
+
+
+def _eat(sheets: dict, world: dict, meals: int) -> dict:
+    """Each party member eats ``meals`` rations: their own first, then the shared packs, then a friend's."""
+    def stock(inv):
+        return next((i for i in inv if i["id"] == "rations"), None)
+    shared = world["party"].setdefault("shared_inventory", [])
+    hungry = []
+    for cid, s in sheets.items():
+        if s["hp"]["current"] <= 0 and s.get("dead"):
+            continue
+        for _ in range(meals):
+            for inv in [s.setdefault("inventory", []), shared] + [o.setdefault("inventory", []) for o in sheets.values()]:
+                it = stock(inv)
+                if it and it["qty"] > 0:
+                    it["qty"] -= 1
+                    break
+            else:
+                hungry.append(cid)
+    for inv in [shared] + [s.get("inventory", []) for s in sheets.values()]:
+        inv[:] = [i for i in inv if not (i["id"] == "rations" and i["qty"] <= 0)]
+    left = sum(i["qty"] for inv in [shared] + [s.get("inventory", []) for s in sheets.values()]
+               for i in inv if i["id"] == "rations")
+    return {"meals_each": meals, "hungry": sorted(set(hungry)), "rations_left": left}
+
+
+def _apply_camp(p: dict, eid: str, sheets: dict, world: dict, dice: Dice) -> dict | None:
+    """Rests and travel from the episode where "camps" is on (bible 10 §5-6):
+
+    * ``{"type": "rest", "kind": "long", "camp": {"site": "wild", "watches": [["brannoc"], ["tamsin", "oriel"]],
+      "lantern_lit": true}}`` - a night in the open: everyone eats a ration, the Unlight rule applies where
+      the location is deep or abyssal Unlight and no lantern burns at the camp (DC 12 Wisdom save or a level
+      of Exhaustion), and the watch order goes to the writer. A long rest needs at least 1 HP.
+    * ``{"type": "rest", "kind": "short"}`` - an hour's rest: anyone below half HP spends Hit Dice
+      (rolled here, in the episode's log) until they are at half or out of dice.
+    * ``{"type": "travel", "days": 3, "to": "loc.waystation-nine"}`` - days on the road: the clock moves,
+      a ration a day each, and the party arrives rested (one long rest) unless ``"rest": false``.
+    """
+    from ..progression import long_rest, short_rest, unlight_rest_check
+    from ..state import character_from_sheet, sheet_from_character
+    t = p["type"]
+    rep: dict = {"type": t}
+    if t == "travel":
+        days = int(p.get("days", 1))
+        if not 1 <= days <= 30:
+            raise ValueError("travel is 1-30 days")
+        _advance_days(world["clock"], days)
+        world["clock"]["time_of_day"] = clock_time(p.get("arrive", "evening"))
+        if p.get("to"):
+            world["location"]["id"] = p["to"]
+        rep.update(days=days, to=p.get("to"), food=_eat(sheets, world, days))
+        if p.get("rest", True):
+            for cid in list(sheets):
+                c = character_from_sheet(sheets[cid])
+                if c.hp > 0:
+                    long_rest(c)
+                sheets[cid] = sheet_from_character(c)
+        return rep
+    kind = p.get("kind", "long")
+    if kind == "short":
+        healed = {}
+        for cid in list(sheets):
+            c = character_from_sheet(sheets[cid])
+            hd = (c.sheet or {}).get("hit_dice", {})
+            need = 0
+            if c.hp > 0 and c.hp < c.max_hp // 2:
+                avg = hd.get("die", 8) // 2 + 1 + c.mod("con")
+                need = max(1, -(-(c.max_hp // 2 - c.hp) // max(1, avg)))
+            r = short_rest(c, dice, hit_dice_to_spend=need)
+            if r["healed"]:
+                healed[cid] = {"hp": f"{c.hp}/{c.max_hp}", "hit_dice_spent": r["hit_dice_spent"]}
+            sheets[cid] = sheet_from_character(c)
+        rep.update(kind="short", healed=healed)
+        return rep
+    if kind != "long":
+        raise ValueError(f"rest kind {kind!r}")
+    camp = p.get("camp")
+    zone = world.get("location", {}).get("unlight", "none")
+    lantern = bool((camp or {}).get("lantern_lit", False))
+    rested, unlight = [], []
+    for cid in list(sheets):
+        c = character_from_sheet(sheets[cid])
+        if c.hp > 0:                         # SRD 5.2: a long rest needs at least 1 HP
+            long_rest(c)
+            rested.append(cid)
+            if camp is not None:
+                u = unlight_rest_check(c, dice, zone, lantern)
+                if u.get("roll"):
+                    unlight.append({"who": cid, "exhaustion_gained": u["exhaustion_gained"],
+                                    "exhaustion": u["exhaustion"]})
+        sheets[cid] = sheet_from_character(c)
+    if p.get("overnight", True):
+        _advance_days(world["clock"], 1)
+        world["clock"]["time_of_day"] = clock_time(p.get("wake", "morning"))
+    rep.update(kind="long", rested=rested)
+    if camp is not None:
+        rep.update(site=camp.get("site", "wild"), watches=camp.get("watches", []), lantern_lit=lantern,
+                   unlight_zone=zone)
+        if camp.get("site", "wild") not in ("inn", "town", "fort"):
+            rep["food"] = _eat(sheets, world, 1)
+        if unlight:
+            rep["unlight"] = unlight
+    return rep
 
 
 CLOCK_TIMES = ("dawn", "morning", "noon", "afternoon", "dusk", "evening", "night", "midnight")  # world schema

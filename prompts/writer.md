@@ -7,7 +7,8 @@ Call `submit_script` exactly once.
 ## What you get
 
 * The **plan** (scenes, cast, beats, checks, the encounter).
-* The **outcomes**: every check's result (success or failure, by how much) and the fight, as a numbered action log. These are final. Never contradict them.
+* The **outcomes**: every check's result (success or failure, by how much) and the fight, as a numbered action log. These are final. Never contradict them. They may also hold `level_ups` (who grew stronger at the end of this episode, and what they gained), `nights` (camps, watches, food, the Unlight's toll on a rest) and, in a fight, `surprised` (who was caught unready).
+* **Memories**: what each party member has lived through on screen so far: their moments, lines, bonds, fights and growth. Material for callbacks.
 * The bible, the dossiers with voice sheets, and the style guide (system prompt).
 
 ## Cue reference
@@ -48,6 +49,14 @@ Each plan check appears exactly once, in its scene. The encounter appears exactl
 * After a fight everyone stays where it left them (`end_state.pos` in the outcomes); anyone at 0 HP lies there and cannot speak or walk until healed. A `continue` scene starts from those positions.
 * Use only actors who are on stage (the scene's cast, plus anyone you `spawn`). The fight's enemies are spawned for you if they are not already on screen.
 
+## Callbacks, growth and nights
+
+* **Callbacks.** At least once an episode, someone remembers something that really happened to them, from **Memories**: a trick that worked, a close call, a fight that went wrong, a line someone said. It lands best when the moment rhymes with an old one, by the fire, after a fight, or in teasing and comfort. Say it the way people do ("like the wolves at the Birches", "you said that at the mill as well"), never with an episode number. Use only what is listed: never invent a past event or quote a line that isn't there. One or two per episode; a forced callback is worse than none.
+* **Strategy.** When the party plans, or a fight starts, someone may bring up what worked or failed before (guarding the wizard, waiting for dawn, the stone that stopped the pursuit). Same rule: only from Memories.
+* **Growth.** If the outcomes list `level_ups`, those characters grow at the end of this episode (the end card shows the numbers). In the last scene, give each of them one short line, in their own voice, about what's different: how it feels, what they can do now, what it cost to get there. No game words: never "level", "XP" or a rule's name, unless it's a word they would say anyway (a wizard names her spells).
+* **Using something new.** If Memories says someone grew stronger recently and the action log shows them using it (a second wind, a burst of speed, a new spell), someone notices, once, the first time.
+* **Nights.** If the outcomes have `nights`, stage them: who keeps which watch (the order is given), the fire, what they talk about when the others sleep. That is where bond moments live. Anyone `hungry` is hungry on screen; an Unlight save lost means a bad night and a heavy morning (Exhaustion). If the party was `surprised` in a fight, the first lines show it (scrambling up, half-dressed, weapons out of reach).
+
 ## This episode
 
 Episode id: {{episode_id}}
@@ -63,4 +72,7 @@ Episode id: {{episode_id}}
 
 ### Story so far
 {{recap}}
+
+### Memories
+{{memories}}
 {{feedback}}

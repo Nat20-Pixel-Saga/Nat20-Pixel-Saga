@@ -1,0 +1,34 @@
+{
+ "_meta": {
+  "source": "The 'Level plan' tables in dossiers/*.md, in the form the engine applies at level-up (pqc.progression.advance).",
+  "fields": "subclass: chosen at the class's subclass level. levels.<n>: expertise (skills), spellbook (wizard spells added), prepare (spells added to the prepared list, up to the class limit), cantrips (added), asi ({ability: +n}). Spells must exist in data/spells.json to be prepared; others are reported as still to add."
+ },
+ "brannoc": {
+  "subclass": "champion",
+  "levels": {"2": {}, "3": {}, "4": {"asi": {"str": 2}}, "5": {}, "6": {"asi": {"str": 1, "con": 1}}}
+ },
+ "ilsevel": {
+  "subclass": "evoker",
+  "levels": {
+   "2": {"expertise": ["arcana"], "spellbook": ["fog_cloud", "feather_fall"], "prepare": ["fog_cloud"]},
+   "3": {"spellbook": ["scorching_ray", "web"], "prepare": ["scorching_ray"]},
+   "4": {"asi": {"int": 2}, "prepare": ["web"]},
+   "5": {"spellbook": ["fireball", "counterspell"], "prepare": ["fireball", "counterspell"]},
+   "6": {}
+  }
+ },
+ "oriel": {
+  "subclass": "life",
+  "levels": {
+   "2": {"prepare": ["shield_of_faith"]},
+   "3": {"prepare": ["aid", "lesser_restoration", "spiritual_weapon"]},
+   "4": {"asi": {"wis": 2}},
+   "5": {"prepare": ["spirit_guardians", "revivify"]},
+   "6": {}
+  }
+ },
+ "tamsin": {
+  "subclass": "thief",
+  "levels": {"2": {}, "3": {}, "4": {"asi": {"dex": 2}}, "5": {}, "6": {"expertise": ["deception", "perception"]}}
+ }
+}

@@ -93,6 +93,7 @@ class UI:
         self.banner: dict | None = None
         self.initiative: dict | None = None
         self.dm: dict | None = None
+        self.progress: dict | None = None
 
     # ---------------------------------------------------------- dialog
     def text_width(self, kind: str) -> int:
@@ -179,10 +180,12 @@ class UI:
             return
         d = ImageDraw.Draw(canvas)
         text = b["text"]
-        tw = self.f_small.getlength(text)
+        f = self.f_text if b.get("font") == "text" else self.f_small
+        tw = f.getlength(text)
         x, y = 8, 8
-        d.rectangle((x, y, x + tw + 12, y + 14), fill=(20, 27, 27, 230))
-        draw_text(d, (x + 6, y + 2), text, self.f_small, GOLD)
+        h = 16 if f is self.f_text else 14
+        d.rectangle((x, y, x + tw + 12, y + h), fill=(20, 27, 27, 230))
+        draw_text(d, (x + 6, y + (1 if f is self.f_text else 2)), text, f, GOLD)
 
     # ------------------------------------------------------------- dice
     def draw_dice(self, canvas: Image.Image, t: float):
@@ -275,6 +278,82 @@ class UI:
         _fade(layer, alpha, keep_bg=True)
         canvas.alpha_composite(layer)
 
+    def draw_progress(self, canvas: Image.Image, t: float):
+        """The party's levels and XP (end of episode): portraits, level, an XP bar that fills from
+        where the episode started, what each one gained, and LEVEL UP when it happens."""
+        pr = self.progress
+        if not pr or not (pr["t0"] <= t <= pr["t0"] + pr["dur"]):
+            return
+        age = t - pr["t0"]
+        alpha = min(1.0, age / 0.35, (pr["t0"] + pr["dur"] - t) / 0.45)
+        layer = Image.new("RGBA", canvas.size, (8, 10, 14, int(215 * alpha)))
+        d = ImageDraw.Draw(layer)
+        tw = self.f_title.getlength(pr["title"].upper())
+        draw_text(d, ((W - tw) / 2, 8), pr["title"].upper(), self.f_title, GOLD, shadow=(0, 0, 0, 255))
+        sub = pr.get("subtitle", "")
+        sw = self.f_small.getlength(sub)
+        draw_text(d, ((W - sw) / 2, 32), sub, self.f_small, GREY)
+        fill_p = min(1.0, max(0.0, (age - 0.7) / 1.3))          # the bars fill between 0.7 s and 2.0 s
+        for i, m in enumerate(pr["party"]):
+            x0, y0 = 22, 48 + i * 54
+            x1, y1 = W - 22, y0 + 48
+            shown = age >= 0.15 + 0.12 * i
+            if not shown:
+                continue
+            up = m["level"] > m["level_before"]
+            done = up and fill_p >= 1.0
+            d.rounded_rectangle((x0, y0, x1, y1), radius=4, fill=(20, 27, 27, 240),
+                                outline=GOLD if done else GREY, width=2 if done else 1)
+            face = pr.get("faces", {}).get(m["id"])
+            if face is not None:
+                layer.alpha_composite(face, (x0 + 5, y0 + 5))
+            tx = x0 + 50
+            draw_text(d, (tx, y0 + 4), m["name"], self.f_text, WHITE)
+            draw_text(d, (tx + self.f_text.getlength(m["name"]) + 6, y0 + 6), m["title"], self.f_small, GREY)
+            # Level, right-aligned.
+            lvl = m["level"] if done else m["level_before"]
+            label = f"LEVEL {lvl}"
+            lw = self.f_text.getlength(label)
+            draw_text(d, (x1 - 8 - lw, y0 + 4), label, self.f_text, GOLD if done else WHITE)
+            # XP bar.
+            bx0, by0, bw = tx, y0 + 21, x1 - 8 - tx - 92
+            if done:
+                lo, hi, start, end = m["level_start"], m["next_at"], m["level_start"], m["xp"]
+            else:
+                lo, hi = m["from_start"], m["from_next"]
+                start, end = m["xp_before"], m["xp"] if not up else m["from_next"]
+            span = max(1, (hi or lo + 1) - lo)
+            cur = start + (end - start) * fill_p if not done else end
+            frac_old = max(0.0, min(1.0, (start - lo) / span))
+            frac = max(0.0, min(1.0, (cur - lo) / span))
+            d.rectangle((bx0, by0, bx0 + bw, by0 + 6), fill=(59, 54, 67, 255))
+            d.rectangle((bx0, by0, bx0 + int(bw * frac), by0 + 6), fill=(116, 163, 52, 255))
+            d.rectangle((bx0, by0, bx0 + int(bw * frac_old), by0 + 6), fill=(242, 201, 76, 255))
+            d.rectangle((bx0, by0, bx0 + bw, by0 + 6), outline=(20, 27, 27, 255))
+            gained = m["xp"] - m["xp_before"]
+            if gained and age >= 0.7:                       # (the small font's X reads as an H: use the text font)
+                draw_text(d, (bx0 + bw + 6, by0 - 4), f"+{gained} XP", self.f_text, (166, 214, 92, 255))
+            # Under the bar: XP to go, or what's new.
+            if done:
+                if int(age * 4) % 2 == 0 or age > pr["dur"] - 3.0:
+                    draw_text(d, (tx, y0 + 31), "LEVEL UP!", self.f_text, GOLD)
+                room, items = x1 - 8 - (tx + 64), []
+                for g in m.get("new", []):
+                    trial = ", ".join(items + [g])
+                    more = len(m["new"]) - len(items) - 1
+                    if self.f_text.getlength(trial + (f" +{more} more" if more else "")) > room:
+                        break
+                    items.append(g)
+                rest = len(m.get("new", [])) - len(items)
+                draw_text(d, (tx + 64, y0 + 31), ", ".join(items) + (f" +{rest} more" if rest else ""), self.f_text, WHITE)
+            elif m.get("next_at") is not None:
+                xp_now = int(round(cur))
+                nxt = m["level_before"] + 1
+                togo = (m["from_next"] if up else m["next_at"]) - xp_now
+                draw_text(d, (tx, y0 + 31), f"{xp_now} XP  -  {max(0, togo)} to level {nxt}", self.f_text, GREY)
+        _fade(layer, alpha, keep_bg=True)
+        canvas.alpha_composite(layer)
+
     def draw(self, canvas: Image.Image, t: float, hud_members: list[dict] | None = None):
         if hud_members:
             self.draw_hud(canvas, t, hud_members)
@@ -286,6 +365,7 @@ class UI:
         self.draw_dialog(canvas, t)
         self.draw_dm(canvas, t)
         self.draw_title(canvas, t)
+        self.draw_progress(canvas, t)
 
 
 def _fade(layer: Image.Image, alpha: float, keep_bg: bool = False):

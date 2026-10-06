@@ -1,0 +1,9 @@
+{
+ "description": "Show updates and the first episode each applies to. Episodes before it replay exactly as they were made (pqc/features.py).",
+ "tactics_v2": "C01-E011",
+ "level_ups": "C01-E011",
+ "progress_card": "C01-E011",
+ "memories": "C01-E011",
+ "camps": "C01-E011",
+ "xp_banner": "C01-E011"
+}
