@@ -4,6 +4,10 @@ Channel: [@Nat20px](https://www.youtube.com/@Nat20px) · wiki: <https://nat20pix
 
 ## Uploading by hand (until the automation is on)
 
+Every episode's GitHub release also carries its **Short** (`C01-E00N-short.mp4`, a cover and a .txt with the
+title and description); `production/youtube_c01_shorts.md` lists them all with their publish times. Register a
+Short the same way as an episode, with `Ns` as the episode (for example `3s`).
+
 After you upload and schedule an episode in YouTube Studio, register it so the wiki
 links it once it goes public (and so the automatic uploader never uploads it again):
 **Actions → youtube → Run workflow**, command **record**, the episode number, the

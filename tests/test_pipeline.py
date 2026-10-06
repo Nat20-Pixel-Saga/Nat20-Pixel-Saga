@@ -67,7 +67,7 @@ class TestPrompts(unittest.TestCase):
     def test_every_template_fills(self):
         values = dict(episode_id="C01-E001", seed="s", campaign_view="x", state_view="x", recap="x", stage_view="x",
                       plan="x", outcomes="x", mechanical="x", script="x", title="x", summary="x", actions="x",
-                      arc="x", monsters="x", maps="x")
+                      arc="x", monsters="x", maps="x", short_moment="x")
         for step, (template, *_rest) in prompts.STEPS.items():
             text = prompts.render(template, **values, feedback="")
             self.assertNotIn("{{", text, step)
@@ -753,3 +753,48 @@ class TestYouTubeRefresh(unittest.TestCase):
                 with self.assertRaises(SystemExit):
                     yt.cmd_refresh(now)
             self.assertEqual(list(json.loads(ledger.read_text())), ["C01-E001"])   # nothing deleted on error
+
+
+class TestShorts(unittest.TestCase):
+    def test_highlight_windows_fit_a_short(self):
+        from pqc.pipeline import highlight
+        for n in range(1, 11):
+            eid = f"C01-E{n:03d}"
+            w = load_json(ROOT / "episodes" / eid / "short.json")
+            tl = load_json(ROOT / "episodes" / eid / "timeline.json")
+            self.assertLess(w["start_cue"], w["end_cue"])
+            self.assertLessEqual(w["end_cue"], len(tl["cues"]))
+            self.assertTrue(20 <= w["duration_s"] <= 60, (eid, w["duration_s"]))
+            self.assertTrue(w["start_cue"] <= w["anchor_cue"] < w["end_cue"], eid)
+            pk = load_json(ROOT / "episodes" / eid / "packaging.json")
+            self.assertLessEqual(len(pk["short"]["hook"]), 32)
+            self.assertIn("nat20pixelsaga.com/episodes/", pk["short"]["description_full"])
+            self.assertIn("#shorts", pk["short"]["description_full"])
+        # scoring: a natural 20 beats an ordinary roll, a party member going down beats a goblin
+        hit = {"op": "battle_attack", "roll": {"natural": 20, "critical": True}, "label": "x"}
+        plain = {"op": "roll", "roll": {"natural": 11}, "label": "Tamsin - Stealth"}
+        self.assertGreater(highlight.score_cue(hit)[0], highlight.score_cue(plain)[0])
+        self.assertEqual(highlight.score_cue({"op": "battle_faint", "actor": "oriel", "pc": True})[1], "down")
+        self.assertEqual(highlight.score_cue({"op": "battle_faint", "actor": "goblin-2"})[1], "kill")
+
+    def test_short_goes_up_the_next_day_at_lunchtime(self):
+        from pqc import schedule
+        cfg = {"timezone": "Europe/Paris", "time": "21:00", "first_episode": "C01-E001", "first_date": "2026-10-12",
+               "weekdays": [0, 1, 2, 3, 4], "short_time": "13:00", "short_delay_days": 1}
+        self.assertEqual(schedule.short_premiere("C01-E001", cfg).strftime("%a %d %H:%M"), "Tue 13 11:00")
+        self.assertEqual(schedule.short_premiere("C01-E005", cfg).strftime("%a %d %H:%M"), "Sat 17 11:00")
+
+    def test_record_a_short_by_hand(self):
+        import datetime as dt
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("youtube_upload4", ROOT / "scripts" / "youtube_upload.py")
+        yt = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(yt)
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "youtube.json"
+            with mock.patch.object(yt, "LEDGER", ledger):
+                yt.cmd_record("1s", "https://youtube.com/shorts/abcDEF12345", "2026-10-13 13:00",
+                              now=dt.datetime(2026, 10, 7, tzinfo=dt.timezone.utc))
+            got = json.loads(ledger.read_text())
+            self.assertEqual(list(got), ["C01-E001-short"])
+            self.assertEqual(got["C01-E001-short"]["publish_at"], "2026-10-13T11:00:00Z")

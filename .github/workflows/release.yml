@@ -1,12 +1,13 @@
 # Render committed episodes on the runner (the renderer is deterministic), with the
-# common intro and outro, and publish each as a GitHub release on its premiere
+# common intro and outro, plus its YouTube Short, and publish each as a GitHub release on its premiere
 # (production/schedule.json): a draft until then, public from then on.
 name: release
 on:
   push:
     branches: [main]
-    paths: ["state/world.json", "episodes/*/timeline.json", "episodes/*/thumbnail.png",
+    paths: ["state/world.json", "episodes/*/timeline.json", "episodes/*/thumbnail.png", "episodes/*/packaging.json",
             "production/schedule.json", "scripts/release_episodes.py", "scripts/branding.py",
+            "scripts/shorts.py", "scripts/trailer.py", "assets/shorts/**", "pqc/pipeline/highlight.py",
             "pqc/render/**", ".github/workflows/release.yml"]
   schedule:
     - cron: "7 19,20 * * *"      # just after the 21:00 Paris premiere (summer and winter time)

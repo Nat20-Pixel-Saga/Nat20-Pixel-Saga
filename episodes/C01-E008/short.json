@@ -1,0 +1,18 @@
+{
+  "start_cue": 75,
+  "end_cue": 104,
+  "duration_s": 53.0,
+  "anchor_cue": 81,
+  "kind": "kill",
+  "speakers": [
+    "brannoc",
+    "tamsin",
+    "ilsevel",
+    "oriel"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

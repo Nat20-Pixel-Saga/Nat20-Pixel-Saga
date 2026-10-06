@@ -1,0 +1,18 @@
+{
+  "start_cue": 153,
+  "end_cue": 177,
+  "duration_s": 48.53,
+  "anchor_cue": 169,
+  "kind": "death_save",
+  "speakers": [
+    "ilsevel",
+    "brannoc",
+    "tamsin",
+    "oriel"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

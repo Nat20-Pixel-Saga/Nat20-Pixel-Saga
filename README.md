@@ -36,6 +36,7 @@ This repository holds **Phase 1 — Foundations** (canon, party, state format, r
 | `scripts/youtube_upload.py`, `production/youtube.json` | Uploads released episodes to YouTube and schedules their premieres (`.github/workflows/youtube.yml`; setup in `production/YOUTUBE.md`). |
 | `production/schedule.json`, `pqc/schedule.py` | The premiere schedule: one episode per weekday at 21:00 Paris from 12 October 2026. The wiki, the GitHub releases and the YouTube uploader all follow it, so an episode appears everywhere at once. |
 | `scripts/trailer.py`, `assets/timelines/trailer_c01.json` | Cuts a trailer from the episodes' timelines in 16:9 and 9:16 (Shorts) at once. |
+| `scripts/shorts.py`, `pqc/pipeline/highlight.py`, `assets/shorts/` | One YouTube Short per episode: the highlight is picked automatically (natural 20s and 1s, death saves, a hero going down, decisive checks) or hand-tuned, rendered vertical with a hook line and an end card, plus a cover; title and description come from the packaging step. Released with the episode, public the next day at 13:00 Paris. |
 | `scripts/branding.py`, `pqc/render/brand.py`, `assets/brand/` | The channel logo (an original pixel d20), avatar, banner, watermark, and the common intro and outro in 16:9 and 9:16. |
 
 ## Quick start

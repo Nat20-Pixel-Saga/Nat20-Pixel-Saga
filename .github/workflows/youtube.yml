@@ -14,7 +14,7 @@ on:
         type: choice
         options: [record, upload, plan, check]
       episode:
-        description: "record: episode number (e.g. 3)"
+        description: "record: episode number (e.g. 3), or 3s for its Short"
         required: false
       video:
         description: "record: the video's link (e.g. https://youtu.be/abc123)"

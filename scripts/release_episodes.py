@@ -125,20 +125,49 @@ def digest(d: Path) -> str:
     return h.hexdigest()
 
 
-def rendered_digest(rel: dict) -> str:
+SHORT_MARK = "short sha256: "
+SHORT_SOURCES = [ROOT / "scripts" / "shorts.py", ROOT / "scripts" / "trailer.py", ROOT / "pqc" / "pipeline" / "highlight.py",
+                 ROOT / "pqc" / "render" / "brand.py"]
+
+
+def short_digest(d: Path) -> str:
+    """Changes when the Short's moment, text or renderer changes (not when only the episode's thumbnail does)."""
+    from pqc.pipeline.highlight import short_spec
+    h = hashlib.sha256()
+    h.update((d / "timeline.json").read_bytes())
+    pk = json.loads((d / "packaging.json").read_text())
+    h.update(json.dumps([pk.get("short"), short_spec(d.name)], sort_keys=True).encode())
+    for p in SHORT_SOURCES:
+        h.update(p.read_bytes())
+    return h.hexdigest()
+
+
+def rendered_digest(rel: dict, mark: str = MARK) -> str:
     for line in (rel.get("body") or "").splitlines():
-        if MARK in line:
-            return line.split(MARK, 1)[1].split()[0]
+        if mark in line:
+            return line.split(mark, 1)[1].split()[0]
     return ""
 
 
-def notes(d: Path, dig: str) -> str:
+def short_text(d: Path) -> str:
+    """Title, publish time and description of the episode's Short (also attached as a .txt)."""
+    pk = json.loads((d / "packaging.json").read_text())
+    sh = pk.get("short") or {}
+    t = schedule.short_premiere(d.name)
+    return "\n".join([f"Title: {sh.get('title', '')}",
+                      f"Public: {schedule.local_label(t)}" if t else "Public: with the episode", "",
+                      sh.get("description_full", sh.get("description", ""))]) + "\n"
+
+
+def notes(d: Path, dig: str, sdig: str = "") -> str:
     pk = json.loads((d / "packaging.json").read_text())
     body = pk.get("description_full", pk["description"])
     t = schedule.premiere(d.name)
     if t:
         body = f"Premiere: {schedule.local_label(t)}\n\n" + body
-    return body + f"\n\n<!-- {MARK}{dig} -->\n"
+    if pk.get("short"):
+        body += f"\n\n---\n\n**YouTube Short** (`{d.name}-short.mp4`, cover `{d.name}-short-cover.png`)\n\n" + short_text(d)
+    return body + f"\n\n<!-- {MARK}{dig} -->\n" + (f"<!-- {SHORT_MARK}{sdig} -->\n" if sdig else "")
 
 
 def sync_visibility(r: str, rels: dict[str, dict], now: dt.datetime) -> None:
@@ -155,9 +184,16 @@ def sync_visibility(r: str, rels: dict[str, dict], now: dt.datetime) -> None:
             print(f"{tag}: premieres {schedule.premiere(tag).isoformat()}, release hidden until then", flush=True)
 
 
-def to_render(rels: dict[str, dict]) -> list[Path]:
-    return [d for d in committed_episodes()
-            if d.name not in rels or rendered_digest(rels[d.name]) != digest(d)]
+def to_render(rels: dict[str, dict]) -> list[tuple[Path, bool, bool]]:
+    """(episode dir, needs the episode video, needs the Short) for everything out of date."""
+    out = []
+    for d in committed_episodes():
+        rel = rels.get(d.name)
+        need_video = rel is None or rendered_digest(rel) != digest(d)
+        need_short = rel is None or rendered_digest(rel, SHORT_MARK) != short_digest(d)
+        if need_video or need_short:
+            out.append((d, need_video, need_short))
+    return out
 
 
 def main() -> int:
@@ -170,7 +206,7 @@ def main() -> int:
     todo = to_render(rels)
     if a.plan:
         sync_visibility(r, rels, now)
-        print(f"render={len(todo)}: {' '.join(d.name for d in todo) or '-'}")
+        print(f"render={len(todo)}: " + (" ".join(f"{d.name}{'' if v else '(short)'}" for d, v, _ in todo) or "-"))
         if os.environ.get("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
                 fh.write(f"render={len(todo)}\n")
@@ -187,40 +223,54 @@ def main() -> int:
     branding = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(branding)
     intro, outro = branding.bumpers(assets)
+    spec = importlib.util.spec_from_file_location("shorts", ROOT / "scripts" / "shorts.py")
+    shorts = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(shorts)
 
-    for d in todo:
+    for d, need_video, need_short in todo:
         eid = d.name
-        tl = json.loads((d / "timeline.json").read_text())
         pk = json.loads((d / "packaging.json").read_text())
-        dig = digest(d)
-        video = d / f"{eid}.mp4"
-        thumb = d / f"{eid}-thumbnail.png"
+        files: list[tuple[Path, str]] = []
+        if need_video:
+            tl = json.loads((d / "timeline.json").read_text())
+            video, thumb = d / f"{eid}.mp4", d / f"{eid}-thumbnail.png"
+            print(f"rendering {eid} ...", flush=True)
+            render(tl, video, assets, scale=4, preset="medium", pre=intro, post=outro, log=lambda *_: None)
+            thumb.write_bytes((d / "thumbnail.png").read_bytes())
+            files += [(video, "video/mp4"), (thumb, "image/png")]
+        if need_short:
+            print(f"rendering {eid} Short ...", flush=True)
+            info = shorts.render_short(eid, d, assets)
+            (d / f"{eid}-short-frame.png").unlink(missing_ok=True)
+            txt = d / f"{eid}-short.txt"
+            txt.write_text(short_text(d))
+            files += [(d / f"{eid}-short.mp4", "video/mp4"), (Path(info["cover"]), "image/png"), (txt, "text/plain")]
         notes_file = d / "release_notes.md"
-        print(f"rendering {eid} ...", flush=True)
-        render(tl, video, assets, scale=4, preset="medium", pre=intro, post=outro, log=lambda *_: None)
-        thumb.write_bytes((d / "thumbnail.png").read_bytes())
-        notes_file.write_text(notes(d, dig))
+        notes_file.write_text(notes(d, digest(d), short_digest(d)))
         public = schedule.is_public(eid)
         rel = rels.get(eid)
         if rel is None:
-            cmd = ["gh", "release", "create", eid, str(video), str(thumb), "--title", pk["title"],
+            cmd = ["gh", "release", "create", eid, *[str(f) for f, _ in files], "--title", pk["title"],
                    "--notes-file", str(notes_file)]
             if not public:
                 cmd.append("--draft")
             subprocess.run(cmd, check=True)
         else:
+            names = {f.name for f, _ in files}
             for a in rel.get("assets", []):            # replace the old files (works for drafts too)
-                if a["name"] in (video.name, thumb.name):
+                if a["name"] in names:
                     gh_api(f"repos/{r}/releases/assets/{a['id']}", "DELETE")
-            for f, ctype in ((video, "video/mp4"), (thumb, "image/png")):
+            for f, ctype in files:
                 upload_asset(r, rel["id"], f, ctype)
             gh_api(f"repos/{r}/releases/{rel['id']}", "PATCH",
                    {"name": pk["title"], "body": notes_file.read_text(), "draft": not public, "tag_name": eid})
-        for f in (video, thumb, notes_file):
-            f.unlink()
-        print(f"{eid}: {'released' if public else 'ready as a draft until ' + schedule.premiere(eid).isoformat()}",
+        for f, _ in files:
+            f.unlink(missing_ok=True)
+        notes_file.unlink(missing_ok=True)
+        what = " and ".join(x for x, need in (("video", need_video), ("Short", need_short)) if need)
+        print(f"{eid}: {what} {'released' if public else 'ready (draft until ' + schedule.premiere(eid).isoformat() + ')'}",
               flush=True)
-    print(f"{len(todo)} episode(s) rendered")
+    print(f"{len(todo)} episode(s) updated")
     return 0
 
 

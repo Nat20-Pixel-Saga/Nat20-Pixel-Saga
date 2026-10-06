@@ -227,7 +227,8 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
     # 5. Measure, render ----------------------------------------------------
     from ..render.assets import Assets
     from ..render.timeline import Runner
-    from .packaging import chapters, full_description, render_thumbnail, thumbnail_spec, thumbnail_time, with_bumpers
+    from .packaging import (chapters, full_description, render_thumbnail, short_description, thumbnail_spec,
+                            thumbnail_time, with_bumpers)
     assets = Assets()
     runner = Runner(tl, assets)
     duration = runner.duration()
@@ -275,12 +276,16 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
     save_json(out / "wiki_facts.json", facts)
 
     # 7. Packaging --------------------------------------------------------------
+    from . import highlight
+    short_window = highlight.highlight(eid, tl, assets)          # the YouTube Short's moment
+    save_json(out / "short.json", short_window)
     actions = "\n".join(a for f in res.outcomes["fights"] for a in f["actions"])
     feedback = ""
     for i in range(retries + 1):
         req = prompts.build_request("packaging", prompts.model_for("packaging"), ctx.public_core, episode_id=eid,
                                     title=plan["title"], summary=facts["summary"],
-                                    script=json.dumps(script, ensure_ascii=False), actions=actions, feedback=feedback)
+                                    script=json.dumps(script, ensure_ascii=False), actions=actions,
+                                    short_moment=highlight.transcript(tl, short_window), feedback=feedback)
         pk = _call(client, req, batch)
         errs = validate_named(pk, "packaging") + \
             [f"spoiler {h['phrase']!r}" for h in spoiler_hits(json.dumps(pk), cfg.campaign)]
@@ -294,6 +299,8 @@ def run_episode(cfg: EpisodeConfig, log=print) -> dict:
         published = {k: prev[k] for k in ("video_url", "release_url") if k in prev}
     pk_full = {**pk, **published, "chapters": chap, "duration_s": round(video_s, 1),
                "description_full": full_description(pk, record, chap, cfg.wiki_url)}
+    if pk.get("short"):
+        pk_full["short"] = {**pk["short"], "description_full": short_description(pk, record, cfg.wiki_url)}
     save_json(out / "packaging.json", pk_full)
     t_thumb = thumbnail_time(pk.get("thumbnail_moment"), tl, runner.cue_times, plan)
     render_thumbnail(tl, t_thumb, pk["thumbnail_text"], f"CAMPAIGN {cfg.campaign}  -  EPISODE {cfg.episode}", out / "thumbnail.png",

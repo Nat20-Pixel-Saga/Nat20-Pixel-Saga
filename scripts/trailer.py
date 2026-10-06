@@ -122,7 +122,9 @@ class ClipRunner(Runner):
         target = W_W / 2
         who = w.shot.get("focus")
         if not who:
-            cue = self.timeline["cues"][w.cue]
+            # "follow": track whoever the current cue is about (Shorts); otherwise the window's first cue
+            idx = (len(self.cue_times) - 1) if w.shot.get("follow") else w.cue
+            cue = self.timeline["cues"][max(0, min(idx, len(self.timeline["cues"]) - 1))]
             who = cue.get("speaker") or cue.get("attacker") or cue.get("caster") or cue.get("actor")
             if st.mode == "battle" and st.battle and st.battle.active in st.actors:
                 who = st.battle.active if cue["op"].startswith("battle") else who
@@ -195,10 +197,13 @@ class Composer:
         img.alpha_composite(scene, (0, V_TOP))
         if "dice" in panels:
             img.alpha_composite(panels["dice"], ((V_W - 216) // 2, V_TOP))
+        safe = getattr(self, "shorts_safe", False)   # Shorts: keep clear of YouTube's right-hand buttons
         if "hud" in panels:
-            img.alpha_composite(panels["hud"], (V_W - 4 - panels["hud"].width, V_TOP + V_SCENE - 6 - panels["hud"].height))
+            hx = 4 if safe else V_W - 4 - panels["hud"].width
+            img.alpha_composite(panels["hud"], (hx, V_TOP + V_SCENE - 6 - panels["hud"].height))
         if "initiative" in panels:
-            img.alpha_composite(panels["initiative"], (4, V_TOP + V_SCENE - 6 - panels["initiative"].height))
+            iy = V_TOP + 4 if safe else V_TOP + V_SCENE - 6 - panels["initiative"].height
+            img.alpha_composite(panels["initiative"], (4, iy))
         d.line([(0, V_TOP), (V_W, V_TOP)], fill=BOX_EDGE)
         d.line([(0, V_TOP + V_SCENE), (V_W, V_TOP + V_SCENE)], fill=BOX_EDGE)
         # Dialogue, re-flowed for the narrow box
@@ -219,7 +224,10 @@ class Composer:
         max_lines = 9
         lines = lines[:max_lines]
         bh = max(58, 20 + 12 * len(lines) + (0 if not ds.name else 4))
-        y0 = V_TOP + V_SCENE + (V_H - V_TOP - V_SCENE - bh) // 2        # centred in the lower band
+        if getattr(self, "shorts_safe", False):
+            y0 = V_TOP + V_SCENE + 6         # right under the scene, above YouTube's caption area
+        else:
+            y0 = V_TOP + V_SCENE + (V_H - V_TOP - V_SCENE - bh) // 2        # centred in the lower band
         d.rounded_rectangle((x0, y0, x0 + bw, y0 + bh), radius=5, fill=BOX_FILL, outline=BOX_EDGE, width=2)
         d.rounded_rectangle((x0 + 2, y0 + 2, x0 + bw - 2, y0 + bh - 2), radius=4, outline=BOX_EDGE2)
         ty = y0 + 8

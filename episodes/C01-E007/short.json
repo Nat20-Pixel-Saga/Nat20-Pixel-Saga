@@ -1,0 +1,21 @@
+{
+  "start_cue": 73,
+  "end_cue": 91,
+  "duration_s": 52.77,
+  "anchor_cue": 73,
+  "kind": "story",
+  "speakers": [
+    "wil_fenn",
+    "maddy_fenn",
+    "tamsin",
+    "brannoc",
+    "ilsevel",
+    "oriel",
+    "tobin_ashdown"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

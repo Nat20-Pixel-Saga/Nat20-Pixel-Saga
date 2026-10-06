@@ -1,0 +1,16 @@
+{
+  "start_cue": 42,
+  "end_cue": 55,
+  "duration_s": 48.93,
+  "anchor_cue": 45,
+  "kind": "story",
+  "speakers": [
+    "tamsin",
+    "ilsevel"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

@@ -295,8 +295,11 @@ def cmd_upload(cfg: dict) -> int:
         print("YouTube uploads are disabled (production/youtube.json: enabled = false).")
         return 0
     ledger = load_ledger()
-    todo = pending(ledger, released_episodes())[: cfg.get("max_per_run", 5)]
-    if not todo:
+    released = released_episodes()
+    cap = cfg.get("max_per_run", 5)
+    todo = pending(ledger, released)[:cap]
+    shorts_todo = [e for e in released if e in ledger and f"{e}-short" not in ledger]
+    if not todo and not shorts_todo:
         print("Nothing to upload.")
         return 0
     token = access_token()
@@ -316,7 +319,43 @@ def cmd_upload(cfg: dict) -> int:
                        "linked": slots[eid] is None}
         save_ledger(ledger)                         # saved after each video: a failure loses nothing
         print(f"{eid}: https://youtu.be/{vid}", flush=True)
+    # Shorts: each one after its episode is on YouTube, so its description can link to it.
+    shorts_todo = [e for e in released if e in ledger and f"{e}-short" not in ledger][: max(0, cap - len(todo))]
+    for eid in shorts_todo:
+        upload_short(token, cfg, ledger, eid)
     return 0
+
+
+def upload_short(token: str, cfg: dict, ledger: dict, eid: str) -> None:
+    sys.path.insert(0, str(ROOT))
+    from pqc import schedule
+    from pqc.pipeline.packaging import short_description
+    pk = json.loads((EPISODES / eid / "packaging.json").read_text())
+    if not pk.get("short"):
+        return
+    with tempfile.TemporaryDirectory() as tmp:
+        got = subprocess.run(["gh", "release", "download", eid, "-p", f"{eid}-short.mp4", "-D", tmp])
+        path = Path(tmp) / f"{eid}-short.mp4"
+        if got.returncode != 0 or not path.exists():
+            print(f"{eid}: no Short in the release yet", flush=True)
+            return
+        site = json.loads((ROOT / "wiki" / "data" / "site.json").read_text())
+        record = {"id": eid}
+        desc = short_description(pk, record, site.get("site_url"), ledger[eid]["url"])
+        now = dt.datetime.now(dt.timezone.utc)
+        when = schedule.short_premiere(eid)
+        lead = dt.timedelta(hours=cfg.get("schedule", {}).get("min_lead_hours", 2))
+        slot = when if when and when > now + lead else None
+        body = video_body({"title": pk["short"]["title"], "description_full": desc,
+                           "tags": pk.get("tags", []) + ["shorts"]}, cfg, slot)
+        print(f"{eid}: uploading the Short ({iso(slot) if slot else 'publish now'})", flush=True)
+        vid = upload_video(token, path, body)
+    if cfg.get("shorts_playlist_id"):
+        add_to_playlist(token, cfg["shorts_playlist_id"], vid)
+    ledger[f"{eid}-short"] = {"video_id": vid, "url": f"https://www.youtube.com/shorts/{vid}",
+                              "publish_at": iso(slot or now), "linked": slot is None}
+    save_ledger(ledger)
+    print(f"{eid}: Short https://youtube.com/shorts/{vid}", flush=True)
 
 
 def cmd_link(now: dt.datetime | None = None) -> int:
@@ -385,7 +424,9 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
                now: dt.datetime | None = None) -> int:
     """Register a video uploaded by hand: the wiki links it once `when` has passed, and the
     uploader treats the episode as done."""
-    eid = f"C01-E{int(episode):03d}" if episode.isdigit() else episode
+    short = episode.lower().endswith(("s", "-short"))       # "3s" or "C01-E003-short": the episode's Short
+    base = episode[:-6] if episode.lower().endswith("-short") else (episode[:-1] if short else episode)
+    eid = f"C01-E{int(base):03d}" if base.isdigit() else base
     if not (EPISODES / eid / "packaging.json").exists():
         raise SystemExit(f"No such episode: {eid}")
     vid = video_id(video)
@@ -396,10 +437,11 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
     else:
         at = now
     ledger = load_ledger()
-    ledger[eid] = {"video_id": vid, "url": f"https://www.youtube.com/watch?v={vid}", "publish_at": iso(at),
-                   "linked": at <= now, "uploaded": "by hand"}
+    key = f"{eid}-short" if short else eid
+    url = f"https://www.youtube.com/shorts/{vid}" if short else f"https://www.youtube.com/watch?v={vid}"
+    ledger[key] = {"video_id": vid, "url": url, "publish_at": iso(at), "linked": at <= now, "uploaded": "by hand"}
     save_ledger(ledger)
-    print(f"{eid}: {ledger[eid]['url']} (public from {iso(at)})")
+    print(f"{key}: {url} (public from {iso(at)})")
     return 0
 
 

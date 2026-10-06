@@ -1,0 +1,75 @@
+{
+ "notes": "Hand-tuned Short windows: cues [start_cue, end_cue) of the episode's timeline (pqc/pipeline/highlight.py picks automatically when an episode has no entry). anchor_cue: the frame used for the cover; faces: portraits on the cover.",
+ "C01-E001": {
+  "start_cue": 153,
+  "end_cue": 177,
+  "anchor_cue": 169,
+  "faces": [
+   "ilsevel",
+   "oriel"
+  ]
+ },
+ "C01-E002": {
+  "faces": [
+   "oriel",
+   "rusk"
+  ]
+ },
+ "C01-E003": {
+  "start_cue": 42,
+  "end_cue": 55,
+  "anchor_cue": 45,
+  "faces": [
+   "tamsin",
+   "ilsevel"
+  ]
+ },
+ "C01-E004": {
+  "faces": [
+   "tamsin",
+   "wolf"
+  ]
+ },
+ "C01-E005": {
+  "start_cue": 44,
+  "end_cue": 58,
+  "anchor_cue": 50,
+  "faces": [
+   "tamsin",
+   "goblin_boss"
+  ]
+ },
+ "C01-E006": {
+  "faces": [
+   "brannoc",
+   "oriel"
+  ]
+ },
+ "C01-E007": {
+  "faces": [
+   "brannoc",
+   "tamsin"
+  ]
+ },
+ "C01-E008": {
+  "faces": [
+   "tamsin",
+   "brannoc"
+  ]
+ },
+ "C01-E009": {
+  "start_cue": 125,
+  "end_cue": 150,
+  "anchor_cue": 146,
+  "faces": [
+   "brannoc",
+   "oriel"
+  ]
+ },
+ "C01-E010": {
+  "faces": [
+   "edda_rook",
+   "brannoc"
+  ]
+ }
+}

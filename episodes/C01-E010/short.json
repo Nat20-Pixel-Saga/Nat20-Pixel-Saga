@@ -1,0 +1,17 @@
+{
+  "start_cue": 42,
+  "end_cue": 58,
+  "duration_s": 52.97,
+  "anchor_cue": 49,
+  "kind": "social",
+  "speakers": [
+    "edda_rook",
+    "brannoc",
+    "tamsin"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

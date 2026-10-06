@@ -76,3 +76,15 @@ def local_label(t: dt.datetime, cfg: dict | None = None) -> str:
     loc = t.astimezone(ZoneInfo(tz))
     city = tz.split("/")[-1].replace("_", " ")
     return f"{loc.strftime('%A')} {loc.day} {loc.strftime('%B %Y')}, {loc.strftime('%H:%M')} ({city} time)"
+
+
+def short_premiere(eid: str, cfg: dict | None = None) -> dt.datetime | None:
+    """When the episode's YouTube Short goes public: the day after the episode, at `short_time`."""
+    cfg = cfg or config()
+    ep = premiere(eid, cfg)
+    if ep is None:
+        return None
+    tz = ZoneInfo(cfg["timezone"])
+    day = ep.astimezone(tz).date() + dt.timedelta(days=cfg.get("short_delay_days", 1))
+    hh, mm = (int(x) for x in cfg.get("short_time", "13:00").split(":"))
+    return dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=tz).astimezone(dt.timezone.utc)

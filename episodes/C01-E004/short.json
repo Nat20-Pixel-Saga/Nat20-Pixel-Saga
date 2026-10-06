@@ -1,0 +1,18 @@
+{
+  "start_cue": 71,
+  "end_cue": 102,
+  "duration_s": 51.1,
+  "anchor_cue": 87,
+  "kind": "nat20",
+  "speakers": [
+    "ilsevel",
+    "brannoc",
+    "oriel",
+    "tamsin"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "start_cue": 62,
+  "end_cue": 81,
+  "duration_s": 52.63,
+  "anchor_cue": 62,
+  "kind": "story",
+  "speakers": [
+    "oriel",
+    "brannoc"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

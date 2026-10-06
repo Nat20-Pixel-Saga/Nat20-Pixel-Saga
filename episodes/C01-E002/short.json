@@ -1,0 +1,18 @@
+{
+  "start_cue": 38,
+  "end_cue": 52,
+  "duration_s": 52.53,
+  "anchor_cue": 39,
+  "kind": "social",
+  "speakers": [
+    "oriel",
+    "rusk",
+    "tamsin",
+    "ilsevel"
+  ],
+  "reading": {
+    "cps": 34.0,
+    "hold_base": 0.9,
+    "hold_per_char": 0.018
+  }
+}

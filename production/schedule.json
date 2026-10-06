@@ -3,8 +3,16 @@
  "time": "21:00",
  "first_episode": "C01-E001",
  "first_date": "2026-10-12",
- "weekdays": [0, 1, 2, 3, 4],
+ "weekdays": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
  "skip_dates": [],
  "overrides": {},
- "notes": "When each episode goes public: on YouTube, on the wiki and as a GitHub release. Episodes premiere in order, one per weekday (0 = Monday) at `time` local time, starting with `first_episode` on `first_date`. Dates in `skip_dates` (YYYY-MM-DD) are skipped and push later episodes back a day. `overrides` pins one episode to a moment: {\"C01-E005\": \"2026-10-17 18:00\"}."
+ "notes": "When each episode goes public: on YouTube, on the wiki and as a GitHub release. Episodes premiere in order, one per weekday (0 = Monday) at `time` local time, starting with `first_episode` on `first_date`. Dates in `skip_dates` (YYYY-MM-DD) are skipped and push later episodes back a day. `overrides` pins one episode to a moment: {\"C01-E005\": \"2026-10-17 18:00\"}. Each episode's YouTube Short goes public `short_delay_days` after the episode, at `short_time` local time.",
+ "short_time": "13:00",
+ "short_delay_days": 1
 }

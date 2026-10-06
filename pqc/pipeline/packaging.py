@@ -53,6 +53,20 @@ def with_bumpers(chap: list[dict], intro: float, outro: float, duration: float) 
     return out, duration + intro + outro
 
 
+def short_description(pk: dict, record: dict, wiki_url: str | None, episode_url: str | None = None) -> str:
+    """The Short's YouTube description: its own line, then where to watch the full episode."""
+    n = int(record["id"][-3:])
+    title = pk["title"].split("|")[0].strip()
+    parts = [pk["short"]["description"], "",
+             f"Full episode {n}, {title}: " + (episode_url or "on the channel"),
+             "Every roll is real: seeded dice, shown on screen."]
+    if wiki_url:
+        parts.append(f"Characters and every roll: {wiki_url}/episodes/{record['id'].lower()}/")
+    parts += ["", "Art: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Rules: SRD 5.2 by Wizards of the Coast, "
+                  "CC BY 4.0. Not affiliated with Wizards of the Coast.", "", "#shorts #ttrpg #pixelart"]
+    return "\n".join(parts)[:5000]
+
+
 def credits_footer() -> str:
     text = (ROOT / "assets" / "CREDITS.md").read_text(encoding="utf-8")
     return text.split("## Suggested description footer", 1)[-1].replace("> ", "").strip()
