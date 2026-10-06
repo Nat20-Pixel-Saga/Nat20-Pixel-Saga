@@ -86,7 +86,7 @@
    ]
   },
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     21,
     8
@@ -95,7 +95,7 @@
    "light": "lit"
   },
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     18,
     17
@@ -104,7 +104,7 @@
    "light": "lit"
   },
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     21,
     21
@@ -113,7 +113,7 @@
    "light": "lit"
   },
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     13,
     10

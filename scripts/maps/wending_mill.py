@@ -76,7 +76,7 @@ def build(burning: bool) -> dict:
     add("house_orange2", 25, 3, 4, 3, id="cottage_north")
     add("house_wood", 30, 6, 3, 3, id="cottage_east")
     add("house_beige", 36, 8, 4, 3, id="cottage_far")
-    add("barn_burning" if burning else "barn", 35, 15, 4, 7, id="barn", label="The barn",
+    add("barn_ablaze" if burning else "barn", 35, 15, 4, 7, id="barn", label="The barn",
         **({"light": "flicker"} if burning else {}))
     add("well", 24, 10, id="well")
     for x, y in [(33, 16), (40, 18), (41, 20)]:

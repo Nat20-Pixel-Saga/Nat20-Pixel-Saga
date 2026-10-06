@@ -704,6 +704,26 @@ class TestPremiereSchedule(unittest.TestCase):
 
 
 class TestReleaseIdentity(unittest.TestCase):
+    def test_changing_a_map_or_its_art_re_renders_the_episode(self):
+        import importlib.util
+        import tempfile
+        spec = importlib.util.spec_from_file_location("release_episodes", ROOT / "scripts" / "release_episodes.py")
+        rel = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(rel)
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            m = tmp / "m.json"
+            m.write_text(json.dumps({"id": "m", "props": [{"prop": "stone_lantern", "at": [1, 1]}]}))
+            ep = tmp / "C09-E001"
+            ep.mkdir()
+            (ep / "timeline.json").write_text(json.dumps({"cues": [{"op": "scene", "map": str(m)}]}))
+            first = rel.scene_digest(ep)
+            self.assertEqual(first, rel.scene_digest(ep))
+            m.write_text(json.dumps({"id": "m", "props": [{"prop": "lantern_post", "at": [1, 1]}]}))
+            self.assertNotEqual(first, rel.scene_digest(ep))
+        for n in range(1, 11):                                   # every committed episode can be digested
+            self.assertEqual(len(rel.scene_digest(ROOT / "episodes" / f"C01-E{n:03d}")), 64)
+
     def test_drafts_are_found_by_their_video_and_duplicates_pruned(self):
         import importlib.util
         spec = importlib.util.spec_from_file_location("release_episodes", ROOT / "scripts" / "release_episodes.py")

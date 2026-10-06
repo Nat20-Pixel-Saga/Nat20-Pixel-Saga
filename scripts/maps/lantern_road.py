@@ -48,8 +48,8 @@ def add(prop, x, y, **kw):
 
 
 # Lanterns: 37 by the trail, 38 far south. (36 stands in the village, off the top edge.)
-add("stone_lantern", 22, 11, id="lantern_road.037", light="dead", label="Lantern 37")
-add("stone_lantern", 23, 23, id="lantern_road.038", light="lit", label="Lantern 38")
+add("lantern_post", 22, 11, id="lantern_road.037", light="dead", label="Lantern 37")
+add("lantern_post", 23, 23, id="lantern_road.038", light="lit", label="Lantern 38")
 add("sign", 17, 4, id="milestone", label="Brindle Cross 1 mile - Fort Harrow 39 miles")
 # Farm by the field.
 add("haystack", 14, 4)

@@ -5,6 +5,8 @@ Runs in GitHub Actions (.github/workflows/release.yml) after each push and
 twice every evening. The renderer is deterministic, so the MP4 is rebuilt on
 the runner from the committed timeline instead of being stored in git; the
 common intro and outro (scripts/branding.py) are added in the same encode.
+A video and its Short are re-rendered whenever their timeline, thumbnail, the
+intro/outro, or the maps and prop art they show change (scene_digest).
 
 Every episode follows the premiere schedule (production/schedule.json, see
 pqc/schedule.py): until its premiere the release is a *draft* (visible only to
@@ -118,10 +120,38 @@ def committed_episodes() -> list[Path]:
     return out
 
 
+def scene_digest(d: Path) -> str:
+    """What the episode's places look like: every map its timeline visits, the manifest entries of
+    the props on them (and the effects and dark variants those use), and the art files in this
+    repository behind them. Changing a map or a prop's art re-renders the episodes that show it.
+    Pack files (vendor/) are pinned by scripts/fetch_assets.sh, so they are left out."""
+    tl = json.loads((d / "timeline.json").read_text())
+    man = json.loads((ROOT / "assets" / "manifest.json").read_text())
+    h = hashlib.sha256()
+    for mid in sorted({c["map"] for c in tl["cues"] if c.get("op") == "scene" and c.get("map")}):
+        path = Path(mid) if Path(mid).suffix else ROOT / "assets" / "maps" / f"{mid}.json"
+        h.update(path.read_bytes())
+        ids = sorted({pr["prop"] for pr in json.loads(path.read_text()).get("props", [])})
+        props = {i: man["props"].get(i) for i in ids}
+        for spec in list(props.values()):
+            if spec and spec.get("dead"):
+                props[spec["dead"]] = man["props"].get(spec["dead"])
+        fx = sorted({layer["fx"] for spec in props.values() if spec and spec.get("anim")
+                     for layer in (spec["anim"].get("layers") or [spec["anim"]]) if layer.get("fx")})
+        fxs = {f: man["fx"].get(f) for f in fx}
+        h.update(json.dumps([props, fxs], sort_keys=True).encode())
+        files = {spec["sheet"] for spec in props.values() if spec and spec.get("sheet", "").startswith("assets/")}
+        files |= {spec["src"] for spec in fxs.values() if spec and spec["src"].startswith("assets/")}
+        for f in sorted(files):
+            h.update((ROOT / f).read_bytes())
+    return h.hexdigest()
+
+
 def digest(d: Path) -> str:
     h = hashlib.sha256()
     for p in [d / "timeline.json", d / "thumbnail.png", *BUMPER_SOURCES]:
         h.update(p.read_bytes())
+    h.update(scene_digest(d).encode())
     return h.hexdigest()
 
 
@@ -139,6 +169,7 @@ def short_digest(d: Path) -> str:
     h.update(json.dumps([pk.get("short"), short_spec(d.name)], sort_keys=True).encode())
     for p in SHORT_SOURCES:
         h.update(p.read_bytes())
+    h.update(scene_digest(d).encode())
     return h.hexdigest()
 
 

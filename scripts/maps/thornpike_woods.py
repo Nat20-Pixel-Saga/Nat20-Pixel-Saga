@@ -95,7 +95,7 @@ add("stump_big", 18, 13, 2, 2)
 add("twigs", 15, 14, solid=False)
 # --- Scout camp (E5).
 add("tent_ragged", 40, 16, 3, 3, label="Goblin tent")
-add("campfire", 37, 20, 2, 2, id="camp_fire", label="Fire ring")
+add("campfire_lit", 37, 20, 2, 2, id="camp_fire", label="Fire ring")
 add("cart_cores", 43, 20, 2, 2, id="core_cart", label="Cart with three dead cores")
 add("log_bench", 35, 23, 3, 1)
 add("barrel", 44, 18)
@@ -106,7 +106,7 @@ for x, y in [(30, 18), (31, 22), (29, 20)]:
     add("bush" if x % 2 else "bush2", x, y, solid=False)    # cover on the approach
 # --- Campsite hollow (E6).
 add("waymarker", 5, 21, id="waymarker", label="Old Lamplighter way-marker")
-add("campfire", 8, 23, 2, 2, id="hollow_fire", label="Campfire")
+add("campfire_lit", 8, 23, 2, 2, id="hollow_fire", label="Campfire")
 add("log_bench", 10, 26, 3, 1)
 add("stump", 3, 24, 2, 2)
 add("flowers", 12, 21, solid=False)

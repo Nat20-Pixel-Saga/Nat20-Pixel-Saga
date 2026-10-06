@@ -107,7 +107,7 @@
  ],
  "props": [
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     22,
     11
@@ -117,7 +117,7 @@
    "label": "Lantern 37"
   },
   {
-   "prop": "stone_lantern",
+   "prop": "lantern_post",
    "at": [
     23,
     23

@@ -292,7 +292,7 @@
   {"prop": "house_orange2", "at": [25, 3], "id": "cottage_north"},
   {"prop": "house_wood", "at": [30, 6], "id": "cottage_east"},
   {"prop": "house_beige", "at": [36, 8], "id": "cottage_far"},
-  {"prop": "barn_burning", "at": [35, 15], "id": "barn", "label": "The barn", "light": "flicker"},
+  {"prop": "barn_ablaze", "at": [35, 15], "id": "barn", "label": "The barn", "light": "flicker"},
   {"prop": "well", "at": [24, 10], "id": "well"},
   {"prop": "haystack", "at": [33, 16]},
   {"prop": "haystack", "at": [40, 18]},

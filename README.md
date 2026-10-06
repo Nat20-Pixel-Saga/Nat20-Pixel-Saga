@@ -126,8 +126,9 @@ The pack covers everything structurally; these would raise quality and are the b
 #### Covered by the packs added in October 2026
 
 Kenney Roguelike (CC0), Dungeon Crawl Stone Soup tiles (CC0) and J. W. Bjerk's Painterly Spell Icons
-(CC-BY 3.0), imported by `scripts/import_art.py` into `assets/thirdparty/` (see its README). New ids, so
-the released episodes are unchanged:
+(CC-BY 3.0), imported by `scripts/import_art.py` into `assets/thirdparty/` (see its README). Campaign 1
+was re-rendered with them on 6 October 2026 (lantern posts in Brindle Cross, the Lantern Road and Fort Harrow;
+the animated campfires in Thornpike Woods; the burning barn; banners, torches and tents at Fort Harrow):
 
 | Need | Now available |
 | --- | --- |

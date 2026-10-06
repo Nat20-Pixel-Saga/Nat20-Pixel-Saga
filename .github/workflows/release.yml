@@ -8,7 +8,8 @@ on:
     paths: ["state/world.json", "episodes/*/timeline.json", "episodes/*/thumbnail.png", "episodes/*/packaging.json",
             "production/schedule.json", "scripts/release_episodes.py", "scripts/branding.py",
             "scripts/shorts.py", "scripts/trailer.py", "assets/shorts/**", "pqc/pipeline/highlight.py",
-            "pqc/render/**", ".github/workflows/release.yml"]
+            "pqc/render/**", "assets/maps/**", "assets/manifest.json", "assets/sprites/**", "assets/thirdparty/**",
+            ".github/workflows/release.yml"]
   schedule:
     - cron: "7 19,20 * * *"      # just after the 21:00 Paris premiere (summer and winter time)
   workflow_dispatch:

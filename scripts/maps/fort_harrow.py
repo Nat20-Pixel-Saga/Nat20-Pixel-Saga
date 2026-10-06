@@ -53,12 +53,17 @@ for x in range(X0 + 2, X1):
     if x not in (21, 22):
         add("fort_wall", x, YS, 1, 2)
 add("fort_gate", 21, YS, 2, 2, solid=False, id="gate", label="The south gate")
+# Royal banners and torches on the face of the south wall, either side of the gate.
+for x in (17, 26):
+    add("wall_banner", x, YS, 1, 2, solid=False)
+for x in (19, 24):
+    add("wall_torch", x, YS + 1, solid=False)
 for y in range(YN + 2, YS, 2):
     add("fort_wall_post", X0, y, 1, 2)
     add("fort_wall_post", X1, y, 1, 2)
 for x, y in [(X0 - 1, YN - 1), (X1, YN - 1), (X0 - 1, YS), (X1, YS)]:
     add("watchtower", x, y, 2, 2)
-add("stone_lantern", 23, 23, 1, 2, id="lantern.fort_gate", label="Gate lantern")
+add("lantern_post", 23, 23, 1, 2, id="lantern.fort_gate", label="Gate lantern")
 add("banner", 20, 23, id="banner_gate")
 # Inside: command house, barracks, mess, yard.
 add("house_brick", 19, 4, 4, 3, id="command_house", label="Captain Rook's command house")
@@ -77,6 +82,8 @@ for x, y in [(28, 13), (31, 13), (34, 13)]:
     add("haystack", x, y, 1, 2)               # straw targets
 for x, y in [(27, 18), (33, 18)]:
     add("barrel", x, y)
+add("army_tent", 35, 10, 2, 2)                # soldiers billeted in the yard
+add("army_tent_cream", 25, 13, 2, 2)
 # Outside the walls: fields, trees, the road south.
 margin = {(x + dx, y + dy) for (x, y) in open_ for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
 inside = {(x, y) for x in range(X0, X1 + 2) for y in range(YN - 1, YS + 2)}
