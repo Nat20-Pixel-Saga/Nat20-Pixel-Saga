@@ -50,6 +50,9 @@ jobs:
           else
             python scripts/youtube_upload.py "$CMD"
           fi
+      - name: Refresh stored video IDs (YouTube API policy, 30-day rule)
+        if: always()
+        run: python scripts/youtube_upload.py refresh
       - name: Mark premieres that have passed
         if: always()
         run: python scripts/youtube_upload.py link

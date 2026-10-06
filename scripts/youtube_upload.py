@@ -14,6 +14,7 @@ YouTube".
     python scripts/youtube_upload.py plan        # show what would be uploaded and when (no upload)
     python scripts/youtube_upload.py upload      # upload and schedule
     python scripts/youtube_upload.py link        # mark videos whose slot has passed as live
+    python scripts/youtube_upload.py refresh     # re-check stored video IDs (YouTube's 30-day rule)
     python scripts/youtube_upload.py record 3 https://youtu.be/abc123 "2026-10-08 21:00"
                                                  # register a video uploaded by hand (Paris time)
 
@@ -333,6 +334,41 @@ def cmd_link(now: dt.datetime | None = None) -> int:
     return 0
 
 
+def have_credentials() -> bool:
+    return all(os.environ.get(k) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"))
+
+
+def cmd_refresh(now: dt.datetime | None = None) -> int:
+    """YouTube API Services policy III.E.4: stored API data must be refreshed or deleted within
+    30 days. Runs daily: re-checks every stored video ID with videos.list, stamps `refreshed_at`,
+    and deletes the entry of any video that no longer exists."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    ledger = load_ledger()
+    if not ledger:
+        print("Nothing stored.")
+        return 0
+    if not have_credentials():
+        print("No YouTube credentials yet: nothing was fetched from the API, nothing to refresh.")
+        return 0
+    token = access_token()
+    ids = sorted({v["video_id"] for v in ledger.values()})
+    found: set[str] = set()
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        st, _, body = _request("GET", f"{API}/videos?part=id&maxResults=50&id={','.join(chunk)}", token)
+        data = _json(st, body, "Refreshing stored videos")        # stops before deleting anything on error
+        found |= {it["id"] for it in data.get("items", [])}
+    for eid in list(ledger):
+        if ledger[eid]["video_id"] in found:
+            ledger[eid]["refreshed_at"] = iso(now)
+        else:
+            print(f"{eid}: video {ledger[eid]['video_id']} no longer exists; entry deleted")
+            del ledger[eid]
+    save_ledger(ledger)
+    print(f"{len(found)} stored video(s) refreshed")
+    return 0
+
+
 def video_id(text: str) -> str:
     """The 11-character id from a YouTube URL (watch, youtu.be, shorts, studio) or a bare id."""
     import re
@@ -369,7 +405,7 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record"])
+    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh"])
     ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]")
     a = ap.parse_args()
     cfg = load_config()
@@ -378,7 +414,7 @@ def main() -> int:
             raise SystemExit("record needs: <episode> <video link> [\"YYYY-MM-DD HH:MM\"]")
         return cmd_record(a.args[0], a.args[1], " ".join(a.args[2:]) or None)
     return {"check": cmd_check, "plan": lambda: cmd_plan(cfg), "upload": lambda: cmd_upload(cfg),
-            "link": cmd_link}[a.command]()
+            "link": cmd_link, "refresh": cmd_refresh}[a.command]()
 
 
 if __name__ == "__main__":

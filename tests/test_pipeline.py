@@ -723,3 +723,33 @@ class TestReleaseIdentity(unittest.TestCase):
             got = rel.all_releases("o/r")
         self.assertEqual(got["C01-E003"]["id"], 2)                 # the one tagged with the id is kept
         self.assertIn(("DELETE", "repos/o/r/releases/1"), calls)    # the stray draft is removed
+
+
+class TestYouTubeRefresh(unittest.TestCase):
+    def test_refresh_stamps_existing_and_deletes_missing(self):
+        import datetime as dt
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("youtube_upload3", ROOT / "scripts" / "youtube_upload.py")
+        yt = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(yt)
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "youtube.json"
+            ledger.write_text(json.dumps({
+                "C01-E001": {"video_id": "aaaaaaaaaaa", "publish_at": "2026-10-12T19:00:00Z", "linked": True},
+                "C01-E002": {"video_id": "bbbbbbbbbbb", "publish_at": "2026-10-13T19:00:00Z", "linked": False}}))
+            env = {"YT_CLIENT_ID": "x", "YT_CLIENT_SECRET": "y", "YT_REFRESH_TOKEN": "z"}
+            body = json.dumps({"items": [{"id": "aaaaaaaaaaa"}]}).encode()
+            now = dt.datetime(2026, 11, 1, tzinfo=dt.timezone.utc)
+            with mock.patch.object(yt, "LEDGER", ledger), mock.patch.dict("os.environ", env), \
+                    mock.patch.object(yt, "access_token", return_value="t"), \
+                    mock.patch.object(yt, "_request", return_value=(200, {}, body)):
+                yt.cmd_refresh(now)
+            got = json.loads(ledger.read_text())
+            self.assertEqual(list(got), ["C01-E001"])
+            self.assertEqual(got["C01-E001"]["refreshed_at"], "2026-11-01T00:00:00Z")
+            with mock.patch.object(yt, "LEDGER", ledger), mock.patch.dict("os.environ", env), \
+                    mock.patch.object(yt, "access_token", return_value="t"), \
+                    mock.patch.object(yt, "_request", return_value=(500, {}, b"boom")):
+                with self.assertRaises(SystemExit):
+                    yt.cmd_refresh(now)
+            self.assertEqual(list(json.loads(ledger.read_text())), ["C01-E001"])   # nothing deleted on error

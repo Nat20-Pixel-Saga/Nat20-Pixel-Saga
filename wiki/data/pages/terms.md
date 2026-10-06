@@ -7,7 +7,7 @@ publishing its episodes on YouTube.
 
 - **The wiki** is provided free of charge, as is, without warranty of any kind. Its content is
   a companion to the series and may change at any time.
-- **The uploader** uses YouTube API Services and is operated only by the project, for the
+- **The [uploader](uploader.md)** uses YouTube API Services and is operated only by the project, for the
   project's own YouTube channel. By using it, the operator agrees to be bound by the
   [YouTube Terms of Service](https://www.youtube.com/t/terms); its handling of data is described
   in the [privacy policy](privacy.md) and is also subject to the
