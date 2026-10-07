@@ -19,6 +19,19 @@ kept, so every roll in the trailer is the real one from the episode.
 The vertical cut shows the same frames re-composed: a header with the show's
 name and the episode, the middle 270 px of the scene (following the speaker),
 and the dialogue re-flowed in a narrower box underneath.
+
+Other shot kinds and options:
+
+* ``{"intro": "<party id>", "name", "title", "line", "color": [r, g, b]}``: a character card
+  (portrait sliding in, name, title and one line).
+* ``{"stats": [{"n": 246, "label": "DICE ROLLS"}, ...], "title", "footer"}``: numbers counting up
+  under a tumbling d20.
+* Cards: ``"accent": [line indexes]`` draws those lines in gold, ``"tag"`` adds a small line at the foot.
+* Windows: ``"caption"`` puts big text over the clip, ``"flash"`` cuts in through a white flash,
+  ``"reading"`` (on the first shot of an episode group) sets that episode's reading pace.
+* Any shot: ``"sfx": [{"id": "dice_roll", "t": 0.2}]`` plays sounds at the shot's start + t.
+* Music: ``{"shot": i, "offset": s, ...}`` starts a track with shot i, in both cuts.
+* ``"shorts_safe": true`` lays the vertical cut out for Shorts (panels and dialogue clear of YouTube's buttons).
 """
 from __future__ import annotations
 
@@ -43,6 +56,13 @@ from pqc.render.stage import _draw_wipe, _enemy_bars  # noqa: E402
 from pqc.render.timeline import Runner  # noqa: E402
 from pqc.render.ui import GOLD, INK, WHITE, d20_icon, draw_text, wrap  # noqa: E402
 from pqc.render.ui import H as W_H, W as W_W  # noqa: E402
+
+CARD_KINDS = ("card", "intro", "stats")
+
+
+def is_card(shot: dict) -> bool:
+    return any(k in shot for k in CARD_KINDS)
+
 
 V_W, V_H = 270, 480            # vertical canvas (scaled 4x to 1080x1920)
 V_TOP, V_SCENE = 52, 270       # header height; the scene is a 270x270 crop
@@ -166,6 +186,7 @@ class Composer:
             nw = self.f_text.getlength(n)
             draw_text(ld, ((W - nw) / 2, y + 13), n, self.f_text, INK)
             y += 56
+        accent = set(shot.get("accent", [0]))
         for i, (line, (f, h)) in enumerate(zip(lines, heights)):
             if f.getlength(line) > W - 16:          # vertical cut: wrap long lines
                 parts = wrap(line, f, W - 16)
@@ -173,12 +194,176 @@ class Composer:
                 parts = [line]
             for part in parts:
                 lw = f.getlength(part)
-                draw_text(ld, ((W - lw) / 2, y), part, f, GOLD if i == 0 else WHITE, shadow=(0, 0, 0, 255))
+                draw_text(ld, ((W - lw) / 2, y), part, f, GOLD if i in accent else WHITE, shadow=(0, 0, 0, 255))
                 y += h
+        if shot.get("tag"):
+            tw = self.f_text.getlength(shot["tag"])
+            draw_text(ld, ((W - tw) / 2, H - 26), shot["tag"], self.f_text, (195, 192, 214, 255), shadow=(0, 0, 0, 255))
         if alpha < 1:
             layer.putalpha(layer.getchannel("A").point(lambda v: int(v * max(0.0, alpha))))
         img.alpha_composite(layer)
         return img.convert("RGB")
+
+    def frame_for(self, size: tuple[int, int], shot: dict, p: float) -> Image.Image:
+        if "intro" in shot:
+            return self.intro(size, shot, p)
+        if "stats" in shot:
+            return self.stats(size, shot, p)
+        return self.card(size, shot, p)
+
+    def intro(self, size: tuple[int, int], shot: dict, p: float) -> Image.Image:
+        """Meet a party member: the portrait slides in, then the name, the title and one line."""
+        W, H = size
+        vertical = H > W
+        accent = tuple(shot.get("color", GOLD[:3])) + (255,)
+        img = Image.new("RGBA", size, (12, 16, 18, 255))
+        layer = Image.new("RGBA", size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(layer)
+        alpha = min(1.0, p / 0.1, (1 - p) / 0.12)
+        slide = 1 - (1 - min(1.0, p / 0.2)) ** 3                 # ease-out
+        text_in = min(1.0, max(0.0, (p - 0.12) / 0.15))
+        face = self.a.actor(shot["intro"]).faceset
+        fs = 4
+        big = face.resize((face.width * fs, face.height * fs), Image.NEAREST)
+        card = Image.new("RGBA", (big.width + 12, big.height + 12), (20, 27, 27, 255))
+        ImageDraw.Draw(card).rectangle((0, 0, card.width - 1, card.height - 1), outline=accent, width=3)
+        card.alpha_composite(big, (6, 6))
+        f_name = self.a.font_at("title", 40)                     # whole multiples of the pixel font stay crisp
+        name = shot.get("name", shot["intro"].title()).upper()
+        if vertical:
+            band_y = 70 + card.height // 2
+            d.rectangle((0, band_y - 34, W, band_y + 34), fill=accent[:3] + (60,))
+            cx = (W - card.width) // 2
+            cy = 70 - int((1 - slide) * 60)
+            layer.alpha_composite(card, (cx, cy))
+            y = 70 + card.height + 22
+            rows = ([(shot["kicker"].upper(), self.f_small, (195, 192, 214, 255), 14)] if shot.get("kicker") else [])
+            rows += [(name, f_name, accent, 44)]
+            if shot.get("title"):
+                rows.append((shot["title"].upper(), self.f_title, WHITE, 26))
+            for line in wrap(shot.get("line", ""), self.f_text, W - 28):
+                rows.append((line, self.f_text, (195, 192, 214, 255), 15))
+            for text, f, col, h in rows:
+                tw = f.getlength(text)
+                draw_text(d, ((W - tw) / 2 + (1 - text_in) * 30, y), text, f, col,
+                          shadow=None if f is f_name else (0, 0, 0, 255))
+                y += h
+        else:
+            d.rectangle((0, H // 2 - 50, W, H // 2 + 50), fill=accent[:3] + (50,))
+            cx = 52 - int((1 - slide) * 200)
+            cy = (H - card.height) // 2
+            layer.alpha_composite(card, (cx, cy))
+            tx = 52 + card.width + 30 + int((1 - text_in) * 30)
+            y = H // 2 - 46
+            if shot.get("kicker"):
+                draw_text(d, (tx, y - 14), shot["kicker"].upper(), self.f_small, (195, 192, 214, 255))
+            draw_text(d, (tx, y - 6), name, f_name, accent)
+            y += 40
+            if shot.get("title"):
+                draw_text(d, (tx, y), shot["title"].upper(), self.f_title, WHITE, shadow=(0, 0, 0, 255))
+                y += 28
+            for line in wrap(shot.get("line", ""), self.f_text, W - tx - 24):
+                draw_text(d, (tx, y), line, self.f_text, (195, 192, 214, 255), shadow=(0, 0, 0, 255))
+                y += 14
+        if alpha < 1:
+            layer.putalpha(layer.getchannel("A").point(lambda v: int(v * max(0.0, alpha))))
+        img.alpha_composite(layer)
+        return img.convert("RGB")
+
+    def stats(self, size: tuple[int, int], shot: dict, p: float) -> Image.Image:
+        """Big numbers counting up under a tumbling d20 (the d20 lands on 20 when they stop)."""
+        W, H = size
+        vertical = H > W
+        img = Image.new("RGBA", size, (12, 16, 18, 255))
+        layer = Image.new("RGBA", size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(layer)
+        alpha = min(1.0, p / 0.1, (1 - p) / 0.12)
+        k = min(1.0, p / 0.55)
+        k = 1 - (1 - k) ** 3
+        frame_no = int(p * 1000)
+        face = 20 if k >= 1 else (frame_no * 7) % 20 + 1
+        icon = d20_icon(44, face)
+        bump = 0 if k < 1 else int(4 * max(0.0, 1 - (p - 0.55) / 0.08))
+        ix = (W - 44) // 2
+        iy = (26 if not vertical else 70) - bump
+        layer.alpha_composite(icon, (ix, iy))
+        n = str(face)
+        nw = self.f_text.getlength(n)
+        draw_text(d, (ix + (44 - nw) / 2, iy + 15), n, self.f_text, INK)
+        title = shot.get("title", "EVERY ROLL IS REAL.")
+        tw = self.f_title.getlength(title)
+        y = iy + 54 + bump
+        draw_text(d, ((W - tw) / 2, y), title, self.f_title, GOLD, shadow=(0, 0, 0, 255))
+        rows = shot["stats"]
+        f_num = self.a.font_at("title", 40)
+        if vertical:
+            y += 44
+            for r in rows:
+                v = f"{int(round(r['n'] * k)):,}"
+                vw = f_num.getlength(v)
+                draw_text(d, ((W - vw) / 2, y), v, f_num, WHITE)
+                lw = self.f_text.getlength(r["label"])
+                draw_text(d, ((W - lw) / 2, y + 44), r["label"], self.f_text, (195, 192, 214, 255))
+                y += 80
+        else:
+            y += 40
+            col = W / len(rows)
+            for i, r in enumerate(rows):
+                v = f"{int(round(r['n'] * k)):,}"
+                vw = f_num.getlength(v)
+                cx = col * (i + 0.5)
+                draw_text(d, (cx - vw / 2, y), v, f_num, WHITE)
+                lw = self.f_text.getlength(r["label"])
+                draw_text(d, (cx - lw / 2, y + 46), r["label"], self.f_text, (195, 192, 214, 255))
+        if shot.get("footer") and p > 0.5:
+            for i, line in enumerate(wrap(shot["footer"], self.f_text, W - 24)[:3]):
+                fw = self.f_text.getlength(line)
+                draw_text(d, ((W - fw) / 2, H - (60 if vertical else 30) + 14 * i), line, self.f_text,
+                          (138, 134, 163, 255))
+        if alpha < 1:
+            layer.putalpha(layer.getchannel("A").point(lambda v: int(v * max(0.0, alpha))))
+        img.alpha_composite(layer)
+        return img.convert("RGB")
+
+    def caption(self, frame: Image.Image, text: str, age: float, dur: float) -> Image.Image:
+        """Big outlined text over a clip (top of the scene), fading in and out."""
+        W, H = frame.size
+        vertical = H > W
+        a = min(1.0, age / 0.15, max(0.0, dur - age) / 0.2)
+        if a <= 0:
+            return frame
+        f = self.a.font_at("title", 20)
+        lines = wrap(text.upper(), f, W - 24)[:2 if vertical else 3]
+        layer = Image.new("RGBA", frame.size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(layer)
+        if vertical:       # over the header band, clear of the dice tray at the top of the scene
+            d.rectangle((0, 0, W, V_TOP - 1), fill=(12, 16, 18, 255))
+            y = (V_TOP - 24 * len(lines)) // 2 + 2
+        else:              # just above the dialogue box, clear of the dice tray and the HP panel
+            y = 178 - 24 * (len(lines) - 1)
+        for line in lines:
+            lw = f.getlength(line)
+            x = (W - lw) / 2
+            d.fontmode = "1"
+            for dx in (-2, -1, 0, 1, 2):
+                for dy in (-2, -1, 0, 1, 2):
+                    if dx or dy:
+                        d.text((x + dx, y + dy), line, font=f, fill=(12, 16, 18, 255))
+            d.text((x, y), line, font=f, fill=GOLD)
+            y += 24
+        if a < 1:
+            layer.putalpha(layer.getchannel("A").point(lambda v: int(v * a)))
+        out = frame.convert("RGBA")
+        out.alpha_composite(layer)
+        return out.convert("RGB")
+
+    @staticmethod
+    def flash(frame: Image.Image, i: int) -> Image.Image:
+        """Cut in through white: the first frames of a window are washed out, then clear."""
+        k = (0.85, 0.55, 0.3, 0.12)
+        if i >= len(k):
+            return frame
+        return Image.blend(frame.convert("RGB"), Image.new("RGB", frame.size, (255, 248, 230)), k[i])
 
     # Vertical frame ----------------------------------------------------
     def vertical(self, world, overlay, panels, dialog, t, fade, focus, header: str) -> Image.Image:
@@ -288,6 +473,7 @@ def contact_sheet(stills: list[Image.Image], path: Path, cols: int):
 def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print) -> dict:
     assets = Assets()
     comp = Composer(assets)
+    comp.shorts_safe = bool(spec.get("shorts_safe"))      # vertical cut laid out clear of YouTube's Shorts buttons
     fps = 30
     scale, preset, crf = (2, "ultrafast", 28) if preview else (4, "medium", 18)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -307,7 +493,7 @@ def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print)
         for k in formats_for:
             enc = formats[k]
             for i in range(n):
-                enc.write(comp.card(enc.size, shot, (i + 0.5) / n), still_every)
+                enc.write(comp.frame_for(enc.size, shot, (i + 0.5) / n), still_every)
             t_out[k] += n / fps
 
     # Group episode windows by episode, in shot order (episodes are in order in the spec).
@@ -315,7 +501,7 @@ def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print)
     i = 0
     while i < len(shots):
         shot = shots[i]
-        if "card" in shot:
+        if is_card(shot):
             card(shot, [k for k in formats if not (k == "vertical" and shot.get("wide_only"))])
             i += 1
             continue
@@ -331,21 +517,28 @@ def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print)
         header = f"Episode {ep} - {pk['title'].split('|')[0].strip()}"
         windows = [Window(s, i + k) for k, s in enumerate(group)]
         log(f"{eid}: {len(windows)} shot(s)")
-        runner = ClipRunner(tl, assets, windows, spec.get("reading", {}))
-        current, start_ep, start_out = None, 0.0, {}
+        reading = {**spec.get("reading", {}), **group[0].get("reading", {})}
+        runner = ClipRunner(tl, assets, windows, reading)
+        current, start_ep, start_out, n_in = None, 0.0, {}, 0
         for w, t, (wide, world, overlay, panels, dialog, fade, focus) in runner.clips():
             if w is not current:
                 # Carry over this window's sound effects when it ends (see below).
-                current, start_ep = w, w.t0
+                current, start_ep, n_in = w, w.t0, 0
                 start_out = dict(t_out)
             fmts = [k for k in formats if not (k == "vertical" and w.shot.get("wide_only"))]
             for k in fmts:
                 enc = formats[k]
                 if k == "wide":
-                    enc.write(wide, still_every)
+                    frame = wide
                 else:
-                    enc.write(comp.vertical(world, overlay, panels, dialog, t, fade, focus, header), still_every)
+                    frame = comp.vertical(world, overlay, panels, dialog, t, fade, focus, header)
+                if w.shot.get("caption"):
+                    frame = comp.caption(frame, w.shot["caption"], t - w.t0, w.dur)
+                if w.shot.get("flash"):
+                    frame = comp.flash(frame, n_in)
+                enc.write(frame, still_every)
                 t_out[k] += 1 / fps
+            n_in += 1
         # Sound effects and blips inside each window, shifted to trailer time.
         for w in windows:
             if w.t0 is None:
@@ -361,14 +554,24 @@ def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print)
                         audio[k].append({**e, "t": p + (e["t"] - w.t0)})
         i = j
 
-    # Music from the spec.
+    # Music and per-shot sounds from the spec.
     results = {}
     for k, enc in formats.items():
         enc.close()
         duration = enc.n / fps
         events = list(audio[k])
+        starts = shot_starts(k, shots, fps)
+        for idx, sh in enumerate(shots):
+            for fx in sh.get("sfx", []):
+                if starts[idx] is not None:
+                    events.append({"type": "sfx", "id": fx["id"], "t": starts[idx] + fx.get("t", 0.0),
+                                   **({"volume": fx["volume"]} if "volume" in fx else {})})
         for m in spec.get("music", []):
-            t = m["t"] if m["t"] >= 0 else duration + m["t"]
+            if "shot" in m:
+                nxt = next((starts[j] for j in range(m["shot"], len(shots)) if starts[j] is not None), duration)
+                t = nxt + m.get("offset", 0.0)
+            else:
+                t = m["t"] if m["t"] >= 0 else duration + m["t"]
             events.append({"type": "music", "id": m["track"], "t": t, "fade_in": m.get("fade_in", 0.5),
                            "volume": m.get("volume", 0.55)})
         samples = mix(events, duration, assets)
@@ -390,14 +593,18 @@ def build(spec: dict, out_dir: Path, only: str | None, preview: bool, log=print)
 
 def start_pos(fmt: str, shots: list[dict], formats, fps: int, group: list[dict], first: int) -> list[float | None]:
     """Trailer-time start of each shot in `group` for a format (None if the shot is skipped)."""
+    return shot_starts(fmt, shots, fps)[first:first + len(group)]
+
+
+def shot_starts(fmt: str, shots: list[dict], fps: int) -> list[float | None]:
+    """Trailer-time start of every shot in a format (None where the shot is left out of that cut)."""
     t = 0.0
     out = []
-    for idx, s in enumerate(shots):
+    for s in shots:
         skip = fmt == "vertical" and s.get("wide_only")
-        if first <= idx < first + len(group):
-            out.append(None if skip else t)
+        out.append(None if skip else t)
         if not skip:
-            t += round(s["dur"] * fps) / fps if "card" in s else s["dur"]
+            t += round(s["dur"] * fps) / fps if is_card(s) else s["dur"]
     return out
 
 

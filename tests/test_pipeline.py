@@ -729,6 +729,14 @@ class TestPremiereSchedule(unittest.TestCase):
 
 
 class TestReleaseIdentity(unittest.TestCase):
+    def test_credits_footer_is_only_the_footer(self):
+        from pqc.pipeline.packaging import credits_footer
+        text = credits_footer()
+        self.assertIn("Ninja Adventure", text)
+        self.assertIn("SRD 5.2", text)
+        self.assertNotIn("add this line", text)          # instructions in CREDITS.md stay out of descriptions
+        self.assertLessEqual(len(text.splitlines()), 3)
+
     def test_changing_a_map_or_its_art_re_renders_the_episode(self):
         import importlib.util
         import tempfile

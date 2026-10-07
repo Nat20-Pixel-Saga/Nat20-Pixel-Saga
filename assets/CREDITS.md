@@ -46,13 +46,14 @@ iron-and-glass lantern post (`assets/sprites/lantern_post*.png`).
 This work includes material from the System Reference Document 5.2 ("SRD 5.2") by Wizards of the Coast LLC,
 licensed under CC-BY-4.0 (see the main README).
 
+## Spell icons (when they appear on screen)
+
+No episode shows a spell icon yet. The first one that does must add this line to its description and the
+wiki footer (CC-BY 3.0 requires it):
+
+> Spell icons: J. W. Bjerk (eleazzaar), www.jwbjerk.com/art, CC-BY 3.0, via opengameart.org.
+
 ## Suggested description footer
 
-> Art, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).
+> Art, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0); extra art from Kenney.nl and the Dungeon Crawl Stone Soup tiles (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).
 > Rules: SRD 5.2 by Wizards of the Coast, CC-BY-4.0. Not affiliated with Wizards of the Coast.
-
-Once an episode uses the extra art, add the line that applies (the last one is required as soon as a spell
-icon appears; the other two are courtesy):
-
-> Extra art: Kenney.nl (CC0); Dungeon Crawl Stone Soup tiles (CC0, opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental).
-> Spell icons: J. W. Bjerk (eleazzaar), www.jwbjerk.com/art, CC-BY 3.0, via opengameart.org.

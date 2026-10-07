@@ -1,0 +1,359 @@
+{
+  "schema": "pqc/trailer@1",
+  "id": "trailer_c01_party",
+  "title": "Nat 20 Pixels - Meet the party (Campaign 1, before the premiere)",
+  "shorts_safe": true,
+  "thumbnail": {
+    "ep": 6,
+    "cue": 14,
+    "offset": 1.0,
+    "focus": "oriel",
+    "text": "MEET THE PARTY",
+    "label": "12 OCTOBER"
+  },
+  "reading": {
+    "cps": 75,
+    "hold_base": 0.5,
+    "hold_per_char": 0.008
+  },
+  "music": [
+    {
+      "shot": 0,
+      "track": "tension",
+      "volume": 0.5,
+      "fade_in": 0.2
+    },
+    {
+      "shot": 5,
+      "track": "adventure",
+      "volume": 0.5,
+      "fade_in": 0.3
+    },
+    {
+      "shot": 14,
+      "track": "battle_boss",
+      "volume": 0.55,
+      "fade_in": 0.2
+    },
+    {
+      "shot": 19,
+      "track": "sad",
+      "volume": 0.5,
+      "fade_in": 0.8
+    },
+    {
+      "shot": 22,
+      "track": "mystical",
+      "volume": 0.5,
+      "fade_in": 0.4
+    },
+    {
+      "shot": 23,
+      "track": "theme",
+      "volume": 0.55,
+      "fade_in": 0.3
+    }
+  ],
+  "shots": [
+    {
+      "ep": 4,
+      "cue": 99,
+      "dur": 2.8,
+      "caption": "Natural 20.",
+      "flash": true
+    },
+    {
+      "ep": 9,
+      "cue": 95,
+      "dur": 2.1,
+      "caption": "Natural 1.",
+      "flash": true,
+      "wide_only": true
+    },
+    {
+      "ep": 9,
+      "cue": 103,
+      "dur": 2.5,
+      "caption": "Death save.",
+      "flash": true
+    },
+    {
+      "ep": 3,
+      "cue": 54,
+      "dur": 3.5,
+      "caption": "Someone is stealing the light.",
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "card": [
+        "THE LANTERN ROAD NEEDS HEROES.",
+        "It got these four."
+      ],
+      "dur": 2.0,
+      "sfx": [
+        {
+          "id": "transition"
+        }
+      ]
+    },
+    {
+      "intro": "brannoc",
+      "name": "Brannoc",
+      "kicker": "Dwarf fighter",
+      "title": "The Shield",
+      "line": "Few words, a heavy shield, and a habit of standing in front of people.",
+      "color": [
+        214,
+        112,
+        72
+      ],
+      "dur": 1.7,
+      "sfx": [
+        {
+          "id": "transition"
+        }
+      ]
+    },
+    {
+      "ep": 4,
+      "cue": 20,
+      "dur": 6.0,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "intro": "ilsevel",
+      "name": "Ilsevel",
+      "kicker": "Elf wizard",
+      "title": "The Archivist",
+      "line": "A Lamplighter scholar sent to find out why the lanterns are failing. Writes everything down.",
+      "color": [
+        120,
+        172,
+        240
+      ],
+      "dur": 1.7,
+      "sfx": [
+        {
+          "id": "transition"
+        }
+      ]
+    },
+    {
+      "ep": 1,
+      "cue": 175,
+      "dur": 6.1,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "intro": "tamsin",
+      "name": "Tamsin",
+      "kicker": "Halfling rogue",
+      "title": "The Card Player",
+      "line": "Quick hands, quicker jokes, and a nickname for everyone.",
+      "color": [
+        184,
+        124,
+        232
+      ],
+      "dur": 1.7,
+      "sfx": [
+        {
+          "id": "transition"
+        }
+      ]
+    },
+    {
+      "ep": 1,
+      "cue": 12,
+      "dur": 5.4,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "intro": "oriel",
+      "name": "Oriel",
+      "kicker": "Human cleric",
+      "title": "The Acolyte",
+      "line": "The shrine's young acolyte. Asks everyone their real name, and remembers it.",
+      "color": [
+        242,
+        201,
+        76
+      ],
+      "dur": 1.7,
+      "sfx": [
+        {
+          "id": "transition"
+        }
+      ]
+    },
+    {
+      "ep": 4,
+      "cue": 127,
+      "dur": 5.7,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "card": [
+        "FOUR STRANGERS. ONE DARK ROAD.",
+        "Goblins, wolves, and something worse."
+      ],
+      "dur": 2.0,
+      "wide_only": true
+    },
+    {
+      "stats": [
+        {
+          "n": 246,
+          "label": "DICE ROLLS"
+        },
+        {
+          "n": 11,
+          "label": "NATURAL 20s"
+        },
+        {
+          "n": 0,
+          "label": "REROLLS"
+        }
+      ],
+      "title": "EVERY ROLL IS REAL.",
+      "footer": "Ten episodes. Seeded dice, every roll logged on the wiki.",
+      "dur": 3.2,
+      "sfx": [
+        {
+          "id": "dice_roll",
+          "t": 0.1
+        },
+        {
+          "id": "nat20",
+          "t": 1.75
+        }
+      ]
+    },
+    {
+      "ep": 8,
+      "cue": 119,
+      "dur": 2.9,
+      "flash": true,
+      "wide_only": true,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "ep": 9,
+      "cue": 14,
+      "dur": 2.6,
+      "flash": true
+    },
+    {
+      "ep": 9,
+      "cue": 67,
+      "dur": 2.1,
+      "flash": true,
+      "caption": "Crit."
+    },
+    {
+      "ep": 9,
+      "cue": 138,
+      "dur": 2.9,
+      "flash": true,
+      "wide_only": true
+    },
+    {
+      "ep": 6,
+      "cue": 76,
+      "dur": 8.4,
+      "wide_only": true,
+      "reading": {
+        "cps": 75,
+        "hold_base": 0.7,
+        "hold_per_char": 0.01
+      }
+    },
+    {
+      "ep": 9,
+      "cue": 146,
+      "dur": 4.1,
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      },
+      "wide_only": true
+    },
+    {
+      "ep": 9,
+      "cue": 149,
+      "dur": 2.2
+    },
+    {
+      "ep": 10,
+      "cue": 94,
+      "dur": 3.0,
+      "caption": "What is drinking the light?",
+      "reading": {
+        "cps": 60,
+        "hold_base": 0.9,
+        "hold_per_char": 0.015
+      }
+    },
+    {
+      "card": [
+        "NAT 20 PIXELS",
+        "A pixel-art fantasy, played by real 5e rules."
+      ],
+      "dur": 2.4,
+      "logo": true,
+      "wide_only": true
+    },
+    {
+      "ep": 10,
+      "cue": 55,
+      "dur": 8.9,
+      "wide_only": true,
+      "reading": {
+        "cps": 70,
+        "hold_base": 0.8,
+        "hold_per_char": 0.012
+      }
+    },
+    {
+      "card": [
+        "NAT 20 PIXELS",
+        "EPISODE 1 PREMIERES",
+        "MONDAY 12 OCTOBER",
+        "21:00 PARIS  -  3 PM NEW YORK",
+        "Then a new episode every weekday."
+      ],
+      "dur": 4.2,
+      "logo": true,
+      "accent": [
+        0,
+        2
+      ],
+      "tag": "youtube.com/@Nat20px"
+    }
+  ]
+}
