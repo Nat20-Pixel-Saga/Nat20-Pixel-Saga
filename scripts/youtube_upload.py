@@ -274,7 +274,45 @@ def cmd_check() -> int:
               f"long uploads: {ch.get('status', {}).get('longUploadsStatus', '?')}")
     if not data.get("items"):
         print("Authorised, but this Google account has no YouTube channel yet.")
+    ledger = load_ledger()
+    ids = sorted({v["video_id"] for v in ledger.values()})
+    items = {}
+    for i in range(0, len(ids), 50):                # read-only: videos.list, 1 unit per call
+        st, _, body = _request("GET", f"{API}/videos?part=status,liveStreamingDetails&maxResults=50"
+                                      f"&id={','.join(ids[i:i + 50])}", token)
+        items.update({it["id"]: it for it in _json(st, body, "Reading the stored videos").get("items", [])})
+    for key in sorted(ledger):
+        line = describe_status(key, ledger[key], items.get(ledger[key]["video_id"]))
+        print(line)
+        if os.environ.get("GITHUB_ACTIONS"):            # also shown on the run's summary page
+            print(f"::notice title=YouTube {key}::{line}")
     return 0
+
+
+def describe_status(key: str, entry: dict, item: dict | None, now: dt.datetime | None = None) -> str:
+    """One line on what viewers can see of a stored video right now, and whether it matches the plan."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    vid = entry["video_id"]
+    if item is None:
+        return f"{key} {vid}: not found (deleted, or not on this channel)"
+    st = item.get("status", {})
+    privacy, publish_at = st.get("privacyStatus"), st.get("publishAt")
+    premiere = (item.get("liveStreamingDetails") or {}).get("scheduledStartTime")
+    planned = entry.get("publish_at")
+
+    def paris(t):
+        return dt.datetime.fromisoformat(t.replace("Z", "+00:00")).astimezone(ZoneInfo("Europe/Paris")).strftime(
+            "%a %d %b %H:%M Paris")
+    if privacy == "private" and publish_at:
+        ok = planned is None or publish_at[:16] == planned[:16]
+        return (f"{key} {vid}: SCHEDULED - private until {paris(publish_at)}"
+                + ("" if ok else f" (the ledger says {paris(planned)})"))
+    if privacy == "public" and premiere:
+        return f"{key} {vid}: PREMIERE - listed now, plays from {paris(premiere)} (viewers see a countdown)"
+    if privacy == "public":
+        early = planned and dt.datetime.fromisoformat(planned.replace("Z", "+00:00")) > now
+        return f"{key} {vid}: PUBLIC now" + (f" - planned for {paris(planned)}: check YouTube Studio!" if early else "")
+    return f"{key} {vid}: {privacy}" + (f", no publish time set (planned {paris(planned)})" if planned else "")
 
 
 def cmd_plan(cfg: dict) -> int:

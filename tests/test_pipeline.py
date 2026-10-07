@@ -662,6 +662,23 @@ class TestThumbnailSpec(unittest.TestCase):
                 self.assertIn(who, manifest, who)
 
 
+class TestYouTubeStatus(unittest.TestCase):
+    def test_what_viewers_see(self):
+        import datetime as dt
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("youtube_upload", ROOT / "scripts" / "youtube_upload.py")
+        yt = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(yt)
+        now = dt.datetime(2026, 10, 7, 10, 0, tzinfo=dt.timezone.utc)
+        e = {"video_id": "EydixnOzEqc", "publish_at": "2026-10-12T19:00:00Z"}
+        sched = {"status": {"privacyStatus": "private", "publishAt": "2026-10-12T19:00:00Z"}}
+        self.assertIn("SCHEDULED - private until Mon 12 Oct 21:00 Paris", yt.describe_status("C01-E001", e, sched, now))
+        prem = {"status": {"privacyStatus": "public"}, "liveStreamingDetails": {"scheduledStartTime": "2026-10-12T19:00:00Z"}}
+        self.assertIn("PREMIERE", yt.describe_status("C01-E001", e, prem, now))
+        self.assertIn("check YouTube Studio", yt.describe_status("C01-E001", e, {"status": {"privacyStatus": "public"}}, now))
+        self.assertIn("not found", yt.describe_status("C01-E001", e, None, now))
+
+
 class TestYouTubeRecord(unittest.TestCase):
     def test_record_by_hand(self):
         import datetime as dt

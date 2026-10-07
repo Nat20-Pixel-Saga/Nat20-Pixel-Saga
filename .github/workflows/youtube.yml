@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "record = register a video you uploaded by hand; check = test the credentials; plan = dry run; upload = upload and schedule"
+        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run; upload = upload and schedule"
         default: record
         type: choice
         options: [record, upload, plan, check]
