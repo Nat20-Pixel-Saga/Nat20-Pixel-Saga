@@ -1,18 +1,10 @@
 {
  "C01-E001": {
-  "video_id": "EydixnOzEqc",
-  "url": "https://www.youtube.com/watch?v=EydixnOzEqc",
+  "video_id": "xbiIpTKRX_c",
+  "url": "https://www.youtube.com/watch?v=xbiIpTKRX_c",
   "publish_at": "2026-10-12T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-07T10:34:50Z"
- },
- "C01-E002": {
-  "video_id": "M7EbeikRyCI",
-  "url": "https://www.youtube.com/watch?v=M7EbeikRyCI",
-  "publish_at": "2026-10-13T19:00:00Z",
-  "linked": false,
-  "uploaded": "by hand",
-  "refreshed_at": "2026-10-07T10:34:50Z"
+  "refreshed_at": "2026-10-07T16:00:08Z"
  }
 }
