@@ -274,3 +274,80 @@ class TestProgressCard(unittest.TestCase):
         r = Runner(tl, Assets())
         list(r.frames())
         self.assertTrue(any(e.get("id") == "level_up" for e in r.stage.audio))
+
+
+@unittest.skipUnless(HAVE_PACK, "asset pack not fetched")
+class TestDialogPages(unittest.TestCase):
+    """A line too long for the dialog box (3 lines with a portrait, 4 without) goes on to a second
+    page within the same time on screen, instead of losing its last words."""
+
+    LONG = ("I will go. Inspecting those lanterns is the task the Order gave me, and the ledger for "
+            "Thirty-Seven is wrong. I intend to know why.")
+
+    @classmethod
+    def setUpClass(cls):
+        from pqc.render.assets import Assets
+        from pqc.render.ui import UI
+        cls.a = Assets()
+        cls.ui = UI(cls.a)
+
+    @staticmethod
+    def _boxes(tl, assets):
+        """Every dialog box of a timeline as the renderer lays it out: {start: DialogState}."""
+        from pqc.render.timeline import Runner
+        r, boxes = Runner(tl, assets), {}
+        for _ in r.frames(render=False):
+            ds = r.stage.ui.dialog
+            if ds is not None:
+                boxes.setdefault(ds.t0, ds)
+        return r, boxes
+
+    def test_pages_keep_every_word_and_fit_the_box(self):
+        from pqc.render.ui import paginate, wrap
+        texts = [c["text"] for p in sorted((ROOT / "episodes").glob("C??-E???/timeline.json"))
+                 for c in json.loads(p.read_text())["cues"] if c["op"] in ("say", "narrate")]
+        texts += [self.LONG, "Short.", "word " * 120, "No. " + "a very long sentence without a stop " * 6]
+        for text in texts:
+            for width, max_lines in ((236, 3), (448, 4)):
+                pages = paginate(text, self.ui.f_text, width, max_lines)
+                self.assertEqual(" ".join(w for p in pages for l in p for w in l.split()), " ".join(text.split()))
+                self.assertTrue(all(0 < len(p) <= max_lines for p in pages), (text, pages))
+                if len(wrap(text, self.ui.f_text, width)) <= max_lines:
+                    self.assertEqual(pages, [wrap(text, self.ui.f_text, width)])   # boxes that fit are unchanged
+
+    def test_long_line_turns_the_page_at_a_sentence(self):
+        face = self.a.actor("ilsevel").faceset
+        ds = self.ui.make_dialog("say", "ilsevel", "Ilsevel", self.LONG, 0.0, 22.0, face)
+        self.assertEqual(len(ds.pages), 2)
+        self.assertTrue(ds.pages[0][-1].endswith("is wrong."))
+        self.assertEqual(ds.pages[1], ["I intend to know why."])
+
+    def test_paged_box_keeps_its_time_and_shows_the_end(self):
+        from pqc.render.timeline import HOLD_BASE, HOLD_PER_CHAR, TYPE_CPS
+        tl = {"schema": "pqc/timeline@1", "id": "t", "title": "t", "fps": 30, "seed": "s", "tail": 0.0,
+              "cues": [{"op": "scene", "map": "brindle_cross", "time_of_day": "day", "camera": [19, 11]},
+                       {"op": "say", "speaker": "ilsevel", "text": self.LONG}]}
+        r, boxes = self._boxes(tl, self.a)
+        (ds,) = boxes.values()
+        n = ds.total_chars
+        self.assertEqual(n, sum(len(l) for l in ds.lines))           # timing from the unpaged wrap
+        dur = n / TYPE_CPS + HOLD_BASE + HOLD_PER_CHAR * n
+        self.assertAlmostEqual(r.stage.t - r.cue_times[1], dur, delta=1.5 / 30)
+        first, last = ds.page_starts[1] - ds.page_chars()[0] / TYPE_CPS, dur - ds.page_starts[1] - ds.page_chars()[1] / TYPE_CPS
+        self.assertGreater(first, 1.5)                                   # page 1 stays up to be read
+        self.assertGreater(last, HOLD_BASE)                              # and so does the end of the line
+        self.assertEqual(ds.page_at(ds.t0 + dur - 0.05), (1, ds.page_chars()[1]))
+        blips = [e for e in r.stage.audio if e.get("type") == "blip"]
+        self.assertEqual(len(blips), sum((k + 1) // 2 for k in ds.page_chars()))
+
+    def test_episodes_made_before_pages_are_re_rendered_where_they_change(self):
+        """Episodes rendered before dialog pages existed carry a render revision (so the release run
+        re-renders them) exactly where one of their boxes now turns a page."""
+        revs = json.loads((ROOT / "production" / "render_revisions.json").read_text())["episodes"]
+        for p in sorted((ROOT / "episodes").glob("C01-E0*/timeline.json")):
+            eid = p.parent.name
+            if eid > "C01-E010":
+                continue
+            _, boxes = self._boxes(json.loads(p.read_text()), self.a)
+            paged = any(len(ds.pages) > 1 for ds in boxes.values())
+            self.assertEqual("dialog-pages" in revs.get(eid, []), paged, eid)

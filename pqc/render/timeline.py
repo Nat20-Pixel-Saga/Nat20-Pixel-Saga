@@ -161,13 +161,15 @@ class SayTask(Task):
         ds = st.ui.make_dialog(kind, speaker, name, c["text"], st.t, cps, face if kind == "say" else None)
         st.ui.dialog = ds
         self.type_time = ds.total_chars / ds.cps
-        self.dur = c.get("duration", self.type_time + pace.get("hold_base", HOLD_BASE)
-                         + pace.get("hold_per_char", HOLD_PER_CHAR) * ds.total_chars)
+        hold_base, hold_per_char = pace.get("hold_base", HOLD_BASE), pace.get("hold_per_char", HOLD_PER_CHAR)
+        self.dur = c.get("duration", self.type_time + hold_base + hold_per_char * ds.total_chars)
+        # A line too long for the box goes on to a second page within the same time on screen.
+        ds.schedule(self.dur, hold_base, hold_per_char)
         # Typewriter blips: one every 2 visible characters (silent for narration).
         if kind == "say":
-            n = ds.total_chars
-            for k in range(0, n, 2):
-                st.audio.append({"type": "blip", "t": st.t + k / ds.cps, "pitch": pitch})
+            for start, n in zip(ds.page_starts, ds.page_chars()):
+                for k in range(0, n, 2):
+                    st.audio.append({"type": "blip", "t": st.t + start + k / ds.cps, "pitch": pitch})
         if speaker and c.get("emote") and speaker in st.actors:
             a = st.actors[speaker]
             a.emote = st.a.emote(c["emote"])

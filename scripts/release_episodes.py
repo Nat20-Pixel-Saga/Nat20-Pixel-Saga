@@ -147,11 +147,20 @@ def scene_digest(d: Path) -> str:
     return h.hexdigest()
 
 
+def render_revisions(d: Path) -> list[str]:
+    """Renderer fixes that change this already-made episode (production/render_revisions.json)."""
+    f = ROOT / "production" / "render_revisions.json"
+    return json.loads(f.read_text()).get("episodes", {}).get(d.name, []) if f.exists() else []
+
+
 def digest(d: Path) -> str:
     h = hashlib.sha256()
     for p in [d / "timeline.json", d / "thumbnail.png", *BUMPER_SOURCES]:
         h.update(p.read_bytes())
     h.update(scene_digest(d).encode())
+    revs = render_revisions(d)
+    if revs:                        # only when listed, so other episodes keep their digest
+        h.update(json.dumps(revs).encode())
     return h.hexdigest()
 
 

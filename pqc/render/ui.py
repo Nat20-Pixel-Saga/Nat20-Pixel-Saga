@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import math
+import re
 from dataclasses import dataclass, field
 
 from PIL import Image, ImageDraw, ImageFont
@@ -34,6 +35,34 @@ def wrap(text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
     return lines
 
 
+# Where a long box may turn the page: after a sentence (closing quotes and brackets go with it),
+# else after a clause.
+_SENTENCE_END = re.compile(r"(?:[.!?]|\.\.\.|…)[\"'’”)]*(?= )")
+_CLAUSE_END = re.compile(r"(?:[,;:]|\s[-–—])(?= )")
+
+
+def paginate(text: str, font: ImageFont.FreeTypeFont, width: int, max_lines: int) -> list[list[str]]:
+    """Wrapped lines in pages of at most ``max_lines``. Text that fits stays one page (exactly
+    ``wrap``); longer text turns the page at the latest sentence end that still fills most of the
+    page, else at a clause, else after the last line that fits. No word is ever dropped."""
+    lines = wrap(text, font, width)
+    if len(lines) <= max_lines:
+        return [lines]
+    best = None
+    for pattern in (_SENTENCE_END, _CLAUSE_END):
+        for m in pattern.finditer(text):
+            n = len(wrap(text[:m.end()], font, width))
+            if max(1, max_lines - 1) <= n <= max_lines:
+                best = m.end()
+        if best:
+            break
+    if best is None:                        # mid-sentence: after the last whole line that fits
+        n_words = len(" ".join(lines[:max_lines]).split())
+        best = [m.end() for m in re.finditer(r"\S+", text)][n_words - 1]
+    head, tail = text[:best].rstrip(), text[best:].strip()
+    return [wrap(head, font, width)] + (paginate(tail, font, width, max_lines) if tail else [])
+
+
 def draw_text(d: ImageDraw.ImageDraw, xy, text, font, fill, shadow=None):
     d.fontmode = "1"
     if shadow:
@@ -62,13 +91,49 @@ class DialogState:
     t0: float
     cps: float
     faceset: Image.Image | None = None
-    total_chars: int = 0
+    total_chars: int = 0        # characters of the unpaged wrap: what the box's time on screen is based on
+    pages: list[list[str]] = field(default_factory=list)
+    page_starts: list[float] = field(default_factory=lambda: [0.0])   # seconds after t0 each page starts typing
 
+    # Continuous typing over the whole text (the vertical trailer and Shorts box shows it all at once).
     def visible_chars(self, t: float) -> int:
         return min(self.total_chars, int(max(0.0, t - self.t0) * self.cps))
 
     def done_typing(self, t: float) -> bool:
         return self.visible_chars(t) >= self.total_chars
+
+    # Paged typing in the episode's dialog box.
+    def page_chars(self) -> list[int]:
+        return [sum(len(l) for l in p) for p in self.pages]
+
+    def schedule(self, dur: float, hold_base: float, hold_per_char: float):
+        """Start times of the pages within the box's ``dur``: each page types, then is held for its
+        share of the box's hold (its reading time per character; the last page also gets the base
+        hold, so the end of the line, often the point of it, is not rushed). A one-page box is
+        unchanged; a paged box stays up exactly as long as before."""
+        n = self.page_chars()
+        if len(n) < 2:
+            self.page_starts = [0.0]
+            return
+        hold = max(0.0, dur - sum(n) / self.cps)
+        weights = [hold_per_char * k for k in n]
+        weights[-1] += hold_base
+        if not sum(weights):
+            weights = [1.0] * len(n)
+        starts, s = [0.0], 0.0
+        for k, w in zip(n[:-1], weights[:-1]):
+            s += k / self.cps + hold * w / sum(weights)
+            starts.append(s)
+        self.page_starts = starts
+
+    def page_at(self, t: float) -> tuple[int, int]:
+        """(page shown at ``t``, characters typed on it)."""
+        e = max(0.0, t - self.t0)
+        k = 0
+        while k + 1 < len(self.page_starts) and e >= self.page_starts[k + 1]:
+            k += 1
+        n = self.page_chars()[k] if self.pages else self.total_chars
+        return k, min(n, int((e - self.page_starts[k]) * self.cps))
 
 
 class UI:
@@ -99,10 +164,16 @@ class UI:
     def text_width(self, kind: str) -> int:
         return 236 if kind == "say" else self.BOX_W - 24
 
+    @staticmethod
+    def max_lines(kind: str, faceset) -> int:
+        return 3 if kind == "say" and faceset is not None else 4
+
     def make_dialog(self, kind, speaker, name, text, t0, cps, faceset) -> DialogState:
-        lines = wrap(text, self.f_text, self.text_width(kind) if (kind == "narrate" or faceset is not None) else self.BOX_W - 24)
+        width = self.text_width(kind) if (kind == "narrate" or faceset is not None) else self.BOX_W - 24
+        lines = wrap(text, self.f_text, width)
         ds = DialogState(kind, speaker, name, text, lines, t0, cps, faceset)
         ds.total_chars = sum(len(l) for l in lines)
+        ds.pages = paginate(text, self.f_text, width, self.max_lines(kind, faceset))
         return ds
 
     def draw_dialog(self, canvas: Image.Image, t: float):
@@ -123,15 +194,17 @@ class UI:
             tx, ty = x0 + 12, y0 + 8
             if ds.kind == "say" and ds.name:
                 pass
-        remaining = ds.visible_chars(t)
+        page, typed = ds.page_at(t)
+        lines = ds.pages[page] if ds.pages else ds.lines
         color = INK if ds.kind == "say" else (60, 54, 67, 255)
-        max_lines = 3 if has_face else 4
-        for i, line in enumerate(ds.lines[:max_lines]):
+        remaining = typed
+        for i, line in enumerate(lines):
             if remaining <= 0:
                 break
             draw_text(d, (tx, ty + i * 12), line[:remaining], self.f_text, color)
             remaining -= len(line)
-        if ds.done_typing(t) and int(t * 2.5) % 2 == 0:
+        # The arrow blinks once a page is typed: more to come, or the end of the line.
+        if typed >= sum(len(l) for l in lines) and int(t * 2.5) % 2 == 0:
             canvas.alpha_composite(self.arrow, (x0 + self.BOX_W - 20, y0 + 42))
 
     # ------------------------------------------------------------ cards

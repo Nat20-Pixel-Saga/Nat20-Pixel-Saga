@@ -37,7 +37,7 @@ Each plan check appears exactly once, in its scene. The encounter appears exactl
 
 ## Writing rules (from `08_voice_and_style.md`, all binding)
 
-* At most **140 characters per box**. Split longer thoughts into two boxes or two speakers.
+* At most **140 characters per box**. Split longer thoughts into two boxes or two speakers. A spoken line over about 110 characters shows as two pages of the same box, turning at a sentence end.
 * At most 2 boxes in a row from one speaker. Break speeches with action or another voice.
 * The narrator never states a die number - the overlay already shows it. Describe the result.
 * Each character sounds like their voice sheet. Nicknames, rhythm and "never says" rules are binding.

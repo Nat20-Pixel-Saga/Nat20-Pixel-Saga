@@ -210,6 +210,10 @@ result is identical), commits it, rebuilds the wiki, and
 `.github/workflows/release.yml` renders the 1080p video and publishes it as a
 release tagged with the episode id. Sessions cannot create releases; don't try.
 
+The renderer's code is not part of a release's digest, so a renderer change does not re-render the
+episodes already made. When one should (a fix that changes how a made episode looks or sounds), list
+those episodes in `production/render_revisions.json`; the next release run re-renders just them.
+
 `--commit` advances `state/` and rebuilds `wiki/docs/`; it refuses to run if the
 state is not exactly at the previous episode, which protects the order. Never
 re-roll: if an episode's dice give a bad night for the party, that is the story.

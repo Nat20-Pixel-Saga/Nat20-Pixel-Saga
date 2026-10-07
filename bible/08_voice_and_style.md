@@ -14,7 +14,7 @@ status: canon
 
 - **Person and tense:** third person, present tense in scenes ("Brannoc raises his shield."), past tense in recaps.
 - **Register:** plain, warm, specific. Short sentences. One vivid detail per beat, not three.
-- **Length per text box:** ≤ 140 characters (fits two lines of the narrator window at 480×270). Split longer lines.
+- **Length per text box:** ≤ 140 characters. The narrator window shows four lines (about 170 characters); a box with a portrait shows three (about 110). A longer line is not cut: it goes on to a second page of the same box, turning at a sentence end, so a final short sentence lands on its own (a punchline can use this). Split longer thoughts into two boxes.
 - **Dice lines:** the narrator never states the number — the overlay does. The narrator describes the result: "The blade finds the gap in the goblin's shield."
 - **Humour:** dry and observational. The narrator may be gently amused by the party; never mocks them.
 

@@ -1,0 +1,12 @@
+{
+  "about": "Renderer fixes that change how an episode that is already made looks or sounds, listed per episode. The renderer is not part of the release digest (so a renderer change does not re-render every episode); an entry here is, so adding one re-renders that episode's video on the next release run (scripts/release_episodes.py digest). tests/test_render.py checks that every episode the fix changes is listed.",
+  "episodes": {
+    "C01-E002": ["dialog-pages"],
+    "C01-E003": ["dialog-pages"],
+    "C01-E006": ["dialog-pages"],
+    "C01-E007": ["dialog-pages"]
+  },
+  "revisions": {
+    "dialog-pages": "A line too long for the dialog box (3 lines with a portrait, 4 without) goes on to a second page instead of losing its last words. Same time on screen, so video length and chapters do not change."
+  }
+}
