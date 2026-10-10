@@ -5,7 +5,7 @@
   "publish_at": "2026-10-12T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-09T00:35:32Z"
+  "refreshed_at": "2026-10-10T00:17:06Z"
  },
  "C01-E001-short": {
   "video_id": "gLK9cBTj-yw",
@@ -13,7 +13,7 @@
   "publish_at": "2026-10-13T11:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-09T00:35:32Z"
+  "refreshed_at": "2026-10-10T00:17:06Z"
  },
  "C01-E002": {
   "video_id": "o3ljT2s_Ir4",
@@ -21,7 +21,7 @@
   "publish_at": "2026-10-13T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-09T00:35:32Z"
+  "refreshed_at": "2026-10-10T00:17:06Z"
  },
  "C01-E002-short": {
   "video_id": "4DHeoWjRbcw",
@@ -29,6 +29,6 @@
   "publish_at": "2026-10-14T11:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-09T00:35:32Z"
+  "refreshed_at": "2026-10-10T00:17:06Z"
  }
 }
