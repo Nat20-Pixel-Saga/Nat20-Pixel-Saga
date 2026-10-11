@@ -33,9 +33,13 @@ fi
 
 if [ ! -f "$VENDOR/fonts/PixelifySans.ttf" ] || [ ! -f "$VENDOR/fonts/Tiny5-Regular.ttf" ]; then
   echo "Fetching Pixelify Sans and Tiny5 (OFL 1.1)…"
-  git clone -q --depth 1 --filter=blob:none --no-checkout "$FONTS_REPO" "$TMP/gf"
+  # Fetch exactly FONTS_COMMIT (a plain shallow clone would take whatever HEAD is today, and
+  # upstream renames files: Tiny5-Regular.ttf became a variable font in October 2026).
+  git init -q "$TMP/gf"
+  git -C "$TMP/gf" remote add origin "$FONTS_REPO"
   git -C "$TMP/gf" sparse-checkout set --no-cone "ofl/pixelifysans/*" "ofl/tiny5/*"
-  git -C "$TMP/gf" checkout -q HEAD
+  git -C "$TMP/gf" fetch -q --depth 1 --filter=blob:none origin "$FONTS_COMMIT"
+  git -C "$TMP/gf" checkout -q FETCH_HEAD
   mkdir -p "$VENDOR/fonts"
   cp "$TMP/gf/ofl/pixelifysans/PixelifySans[wght].ttf" "$VENDOR/fonts/PixelifySans.ttf"
   cp "$TMP/gf/ofl/pixelifysans/OFL.txt" "$VENDOR/fonts/PixelifySans-OFL.txt"
