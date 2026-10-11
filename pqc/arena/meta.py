@@ -1,0 +1,279 @@
+"""The Pit, Season 1: YouTube titles, descriptions, pinned comments and the release calendar.
+
+    python scripts/arena_season.py meta      # after the renders: writes the files below into the output folder
+                                            # and production/arena/
+
+* ``s1_calendar.json`` / ``.csv``: every upload in order (videos, trailer Shorts, highlight Shorts).
+* ``s1_youtube.md``: what to paste for each upload, in calendar order.
+"""
+from __future__ import annotations
+
+import csv
+import datetime as dt
+import json
+from pathlib import Path
+
+from . import season as SE
+
+ROOT = Path(__file__).resolve().parents[2]
+CREDITS = ("Art, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0). Fonts: Pixelify Sans, Tiny5 (OFL).\n"
+           "This work includes material from the System Reference Document 5.2.1 by Wizards of the Coast LLC, "
+           "licensed under CC BY 4.0. Not affiliated with Wizards of the Coast.")
+PLAYLIST = "The Pit, Season 1: The Bronze Crown"
+SCHEDULE = "New fights every Wednesday and Saturday at 18:00 (Paris time)."
+STORY = ("From the makers of Nat 20 Pixels, the daily pixel-art fantasy story played by the same dice engine: "
+         "https://www.youtube.com/@Nat20px")
+TAGS = ["dnd", "dnd 5e", "d&d", "who would win", "pixel art", "versus", "battle simulation", "dice", "ttrpg",
+        "the pit", "nat 20 pixels"]
+
+
+def _d(iso: str) -> dt.date:
+    return dt.date.fromisoformat(iso)
+
+
+def long_date(d: dt.date) -> str:
+    return f"{SE.DAYS[d.weekday()].title()} {d.day} {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][d.month - 1]} {d.year}"
+
+
+def names_of(seg: dict) -> tuple[str, str]:
+    return seg["a"][0]["name"], seg["b"][0]["name"]
+
+
+def titles(season: dict, ep: dict, res: dict) -> dict:
+    n, kind = ep["n"], ep["kind"]
+    tag = f"The Pit #{n}" if not ep.get("bonus") else "The Pit Bonus"
+    seg = res["segments"][0]
+    if kind == "duel":
+        a, b = names_of(seg)
+        t = f"{a} vs {b}: Who Wins? (Real D&D Dice, Best of {ep['best_of']}) | {tag}"
+        q = f"{a} or {b}?"
+    elif kind == "how_many":
+        t = f"{ep['title']} (Real D&D Dice) | {tag}"
+        q = ep["title"]
+    elif kind == "rumble":
+        t = f"{ep['title']} | {tag}"
+        q = "Who's the last one standing?"
+    elif kind == "crown_semis":
+        (a1, b1), (a2, b2) = names_of(res["segments"][0]), names_of(res["segments"][1])
+        t = f"{a1} vs {b1}, {a2} vs {b2}: Bronze Crown Semifinals | {tag}"
+        q = "Who reaches the final?"
+    else:
+        a, b = names_of(seg)
+        t = f"{a} vs {b}: The Bronze Crown Final (Best of 7) | {tag}"
+        q = f"{a} or {b}: who wears the first Bronze Crown?"
+    return {"title": t[:100], "question": q}
+
+
+def odds_line(ep: dict, res: dict) -> str:
+    seg = res["segments"][0]
+    k = ep["kind"]
+    if k in ("duel", "crown_final"):
+        m = seg["match"]
+        a, b = names_of(seg)
+        fav, p = (a, m["p_match"]) if m["p_match"] >= 0.5 else (b, 1 - m["p_match"])
+        return (f"Before a single real roll, we ran the fight {m['prior_n']:,} times: {fav} takes a best of "
+                f"{m['best_of']} {round(p * 100)}% of the time. Then the real dice decide.")
+    if k == "crown_semis":
+        return "Two best-of-5 semifinals. The winners meet on Saturday in a best of 7."
+    if k == "how_many":
+        star = seg["star"]["name"]
+        pts = ", ".join(f"{c} {ep['plural'].lower()}: {round(seg['ramp'].get(c, 0) * 100)}%" for c in seg["counts"])
+        return f"The {star}'s chance to survive each round, from {seg.get('prior_n', 1000):,} simulated fights per round: {pts}."
+    if k == "rumble":
+        fav = max(seg["fighters"], key=lambda f: seg["prior"].get(f["team"], 0))
+        return (f"{len(seg['fighters'])} fighters, everyone against everyone. From {seg.get('prior_n', 1000):,} simulated "
+                f"rumbles, the favourite is {fav['name']} at {round(seg['prior'].get(fav['team'], 0) * 100)}%.")
+    return ""
+
+
+def intro(ep: dict, res: dict) -> str:
+    k = ep["kind"]
+    seg = res["segments"][0]
+    if k == "duel":
+        a, b = names_of(seg)
+        q = "Episode " + str(ep["n"]) + (" decides a place in the Bronze Crown." if ep.get("qualifier") else
+                                         " is a heavyweight special: a taste of Season 2.")
+        return f"{a} vs {b}, played by the official 5th-edition stat blocks with real, seeded dice. {q}"
+    if k == "how_many":
+        return (f"One {seg['star']['name']} against {ep['plural'].lower()}: {seg['counts'][0]} of them, then more, round "
+                f"after round, until the {seg['star']['name']} falls. Every roll is real.")
+    if k == "rumble":
+        return f"{ep['title']}. Everyone against everyone, last one standing. Every roll is real."
+    if k == "crown_semis":
+        return "The Bronze Crown semifinals: four qualifiers, two best-of-5 matches, every roll real."
+    return "The Bronze Crown final: best of 7, real dice, one crown."
+
+
+def description(season: dict, ep: dict, res: dict, chapters: list) -> str:
+    t = titles(season, ep, res)
+    parts = [intro(ep, res), odds_line(ep, res), f"{t['question']} Call it in the comments before you watch."]
+    road = []
+    if not ep.get("bonus"):
+        road.append("Road to the Bronze Crown: four places, one crown. Semifinals Wednesday 18 November, final "
+                    "Saturday 21 November.")
+        road.append(SCHEDULE)
+        unlock = season.get("unlock")
+        if unlock:
+            road.append(f"{unlock['subscribers']} subscribers unlocks a bonus fight: how many goblins does it take to beat a T-Rex?")
+    else:
+        road.append("Thank you for 100 subscribers. Season 2, the Silver Crown, is next.")
+    ch = "Chapters\n" + "\n".join(f"{_fmt(tm)} {label}" for tm, label in chapters) if chapters else ""
+    how = (f"How it works: a rules engine plays the SRD 5.2.1 stat blocks. Every roll is seeded and logged "
+           f"(this episode's seed: {ep['seed']}), so any fight can be replayed exactly. The win chance on screen "
+           f"is a fresh simulation from that exact moment of the fight, replayed hundreds of times.")
+    tags = "#dnd #whowouldwin #pixelart"
+    return "\n\n".join(p for p in [" ".join(parts), "\n".join(road), ch, how, STORY, CREDITS, tags] if p)
+
+
+def _fmt(t: float) -> str:
+    t = int(t)
+    return f"{t // 60}:{t % 60:02d}"
+
+
+def pinned(season: dict, ep: dict, res: dict, nxt: dict | None, nres: dict | None) -> str:
+    seg = res["segments"][0]
+    k = ep["kind"]
+    if k in ("duel", "crown_final"):
+        a, b = names_of(seg)
+        first = f"Who did you pick before the dice rolled: {a} or {b}? Reply and be honest."
+    elif k == "how_many":
+        first = f"What was your guess? Reply with the number of {ep['plural'].lower()} you thought it would take."
+    elif k == "rumble":
+        first = "Who was your pick? Reply with the name."
+    else:
+        first = "Who did you have in the final?"
+    if nxt:
+        nt = nxt["title"] if nxt["kind"] not in ("crown_semis", "crown_final") else titles(season, nxt, nres)["title"].split(" | ")[0]
+        second = f"Next in the Pit, {SE.DAYS[_d(nxt['date']).weekday()].title()}: {nt}. Subscribe so you don't miss it."
+    elif ep.get("bonus"):
+        second = "Season 2: the Silver Crown. Nominate a fighter below; the most-liked nominations get in."
+    else:
+        second = ("Season 2: the Silver Crown, CR 2 and 3. Nominate a fighter below; the most-liked nominations get in. "
+                  f"And at {season['unlock']['subscribers']} subscribers the T-Rex bonus goes up.")
+    return f"{first}\n\n{second}"
+
+
+def short_texts(season: dict, ep: dict, res: dict, which: str, info: dict | None) -> tuple[str, str]:
+    t = titles(season, ep, res)
+    base = t["title"].split(" | ")[0].split(":")[0]
+    if ep["kind"] in ("crown_semis", "crown_final"):
+        base = "The Bronze Crown " + ("semifinals" if ep["kind"] == "crown_semis" else "final")
+    if which == "trailer":
+        title = f"{base}: who wins? Full fight tomorrow | The Pit"
+        if ep["kind"] == "how_many":
+            title = f"{ep['title']} Full fight tomorrow | The Pit"
+        desc = (f"{t['question']} Comment your pick now: the full fight premieres tomorrow at 18:00 (Paris time).\n\n"
+                "Real D&D 5e stat blocks, real seeded dice, no rerolls.\n\n" + CREDITS)
+    else:
+        hook = (info or {}).get("hook") or "Every roll is real"
+        title = f"{hook.capitalize()} | {base}"
+        desc = (f"{base}: the full fight is on the channel (tap the link above).\n"
+                "Real D&D 5e stat blocks, real seeded dice, no rerolls.\n\n" + CREDITS)
+    return title[:100], desc
+
+
+def calendar(season: dict) -> list[dict]:
+    out = []
+    vt = season["video_time"]
+    for ep in season["episodes"]:
+        if ep.get("bonus"):
+            continue
+        d = _d(ep["date"])
+        stem = f"pit-s1e{ep['n']:02d}"
+        out.append({"when": f"{d - dt.timedelta(days=1)} {season['short_time']}", "kind": "trailer short", "episode": ep["n"],
+                    "file": f"{stem}-trailer-short.mp4"})
+        out.append({"when": f"{d} {vt}", "kind": "video", "episode": ep["n"], "file": f"{stem}.mp4",
+                    "thumbnail": f"{stem}-thumbnail.png"})
+        out.append({"when": f"{d + dt.timedelta(days=1)} 18:00", "kind": "highlight short A", "episode": ep["n"],
+                    "file": f"{stem}-short-a.mp4"})
+        b_time = "11:00" if d.weekday() == 2 else "18:00"     # Wed videos: Friday morning, before Saturday's trailer
+        out.append({"when": f"{d + dt.timedelta(days=2)} {b_time}", "kind": "highlight short B", "episode": ep["n"],
+                    "file": f"{stem}-short-b.mp4"})
+    out.sort(key=lambda r: r["when"])
+    return out
+
+
+def write_all(season: dict, out_root: Path, assets, arena) -> list[Path]:
+    res = {e["n"]: SE.resolve(season, e["n"], arena, out_root, full=False) for e in season["episodes"]}
+    full = {}
+    for e in season["episodes"]:
+        p = out_root / f"E{e['n']:02d}" / "result.json"
+        full[e["n"]] = SE.load_result(p) if p.exists() else res[e["n"]]
+    eps = {e["n"]: e for e in season["episodes"]}
+    shorts_info = {}
+    for e in season["episodes"]:
+        p = out_root / f"E{e['n']:02d}" / "shorts.json"
+        shorts_info[e["n"]] = json.loads(p.read_text()) if p.exists() else {}
+    cal = calendar(season)
+    lines = ["# The Pit, Season 1: upload plan", "",
+             f"Channel: {season['channel']}. Playlist: **{PLAYLIST}** (create it once, add every video).",
+             "All times are Paris time. Every file is in the GitHub release `pit-s1`.", "",
+             "**For each video:** upload the MP4, set the thumbnail, paste title and description, add to the playlist, "
+             "schedule it as a premiere at the time below. End screen (last 16 s, the frames are drawn for it): left box = "
+             "the previous Pit episode or the playlist, right circle = Subscribe. After it goes public, pin the comment below.",
+             "",
+             "**For each Short:** upload the MP4, paste title and description, schedule it, and set **Related video** to "
+             "its full episode. A trailer goes out the day before its episode: if YouTube doesn't offer the scheduled "
+             "premiere yet, link the previous Pit episode and switch the link once the episode is live.", ""]
+    for row in cal:
+        n = row["episode"]
+        ep = eps[n]
+        r = full[n]
+        nxt = eps.get(n + 1) if n + 1 in eps and not eps[n + 1].get("bonus") else None
+        when = row["when"]
+        dd = _d(when.split()[0])
+        head = f"{long_date(dd)}, {when.split()[1]}"
+        if row["kind"] == "video":
+            marks_p = out_root / f"E{n:02d}" / f"pit-s1e{n:02d}.marks.json"
+            ch = json.loads(marks_p.read_text())["chapters"] if marks_p.exists() else []
+            t = titles(season, ep, r)
+            lines += [f"## {head}: Episode {n} (video)", "",
+                      f"**File:** `{row['file']}`  **Thumbnail:** `{row['thumbnail']}`  "
+                      f"**Length:** {_fmt(json.loads(marks_p.read_text())['duration_s']) if marks_p.exists() else '?'}", "",
+                      "**Title**", "", "```", t["title"], "```", "", "**Description**", "", "```",
+                      description(season, ep, r, ch), "```", "",
+                      "**Tags**", "", "```", ", ".join(TAGS + [x.lower() for x in t["title"].split(" | ")[0].replace(":", "").split(" vs ")[:2]]), "```", "",
+                      "**Pinned comment** (once it's public)", "", "```", pinned(season, ep, r, nxt, full.get(n + 1)), "```", ""]
+        else:
+            which = {"trailer short": "trailer", "highlight short A": "a", "highlight short B": "b"}[row["kind"]]
+            info = shorts_info.get(n, {}).get(which)
+            title, desc = short_texts(season, ep, r, which, info)
+            lines += [f"## {head}: Episode {n} {row['kind']}", "",
+                      f"**File:** `{row['file']}`  **Related video:** Episode {n}" +
+                      (f"  **Length:** {round(info['duration_s'])} s" if info else ""), "",
+                      "**Title**", "", "```", title, "```", "", "**Description**", "", "```", desc, "```", ""]
+    b = next((e for e in season["episodes"] if e.get("bonus")), None)
+    if b:
+        r = full[b["n"]]
+        marks_p = out_root / f"E{b['n']:02d}" / f"pit-s1e{b['n']:02d}.marks.json"
+        ch = json.loads(marks_p.read_text())["chapters"] if marks_p.exists() else []
+        t = titles(season, b, r)
+        lines += [f"## Bonus: when the channel reaches {b['unlock_subscribers']} subscribers", "",
+                  "Ready to go: publish the trailer Short the day you cross the line (\"We hit 100. Tomorrow: ...\"), the "
+                  "video the next day at 18:00, and the two highlight Shorts on the following days.", "",
+                  f"**Files:** `pit-s1e{b['n']:02d}.mp4`, `pit-s1e{b['n']:02d}-thumbnail.png`, "
+                  f"`pit-s1e{b['n']:02d}-trailer-short.mp4`, `-short-a.mp4`, `-short-b.mp4`", "",
+                  "**Title**", "", "```", t["title"], "```", "", "**Description**", "", "```",
+                  description(season, b, r, ch), "```", ""]
+        for which in ("trailer", "a", "b"):
+            title, desc = short_texts(season, b, r, which, shorts_info.get(b["n"], {}).get(which))
+            lines += [f"**Short ({which})**", "", "```", title, "```", "", "```", desc, "```", ""]
+    out_root.mkdir(parents=True, exist_ok=True)
+    md = out_root / "s1_youtube.md"
+    md.write_text("\n".join(lines))
+    cj = out_root / "s1_calendar.json"
+    for row in cal:
+        n = row["episode"]
+        row["title"] = titles(season, eps[n], full[n])["title"] if row["kind"] == "video" else \
+            short_texts(season, eps[n], full[n], {"trailer short": "trailer", "highlight short A": "a",
+                                                 "highlight short B": "b"}[row["kind"]],
+                        shorts_info.get(n, {}).get({"trailer short": "trailer", "highlight short A": "a",
+                                                    "highlight short B": "b"}[row["kind"]]))[0]
+    cj.write_text(json.dumps(cal, indent=1, ensure_ascii=False))
+    cc = out_root / "s1_calendar.csv"
+    with cc.open("w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["when (Paris)", "kind", "episode", "file", "title"])
+        for row in cal:
+            w.writerow([row["when"], row["kind"], row["episode"], row["file"], row["title"]])
+    return [md, cj, cc]

@@ -1,0 +1,367 @@
+{
+ "schema": "pqc/arena-season@1",
+ "id": "s1",
+ "show": "THE PIT",
+ "title": "The Pit, Season 1: The Bronze Crown",
+ "channel": "@Nat20px",
+ "timezone": "Europe/Paris",
+ "notes": "Every seed below was written before anything was simulated. Line-ups of episodes 8-10 come from earlier results. Videos premiere at video_time on their date; each video's trailer Short goes out the day before at short_time, and its two highlight Shorts on the following days (see production/arena/s1_calendar.json).",
+ "video_time": "18:00",
+ "short_time": "18:00",
+ "quality": {
+  "samples": 300,
+  "samples_multi": 120,
+  "prior": 3000,
+  "prior_multi": 1000,
+  "crown_n": 1000
+ },
+ "end_foot": "NEW FIGHTS EVERY WEDNESDAY AND SATURDAY",
+ "crown": {
+  "slots": [
+   {
+    "from": 1,
+    "pending": "EPISODE 1",
+    "note": "LION V BEAR",
+    "note_won": "WON EPISODE 1"
+   },
+   {
+    "from": 3,
+    "pending": "EPISODE 3",
+    "note": "GHOUL V GOBLIN",
+    "note_won": "WON EPISODE 3"
+   },
+   {
+    "from": 5,
+    "pending": "EPISODE 5",
+    "note": "SPIDER V HYENA",
+    "note_won": "WON EPISODE 5"
+   },
+   {
+    "from": 8,
+    "pending": "WILDCARD",
+    "note": "LAST CHANCE RUMBLE",
+    "note_won": "WILDCARD"
+   }
+  ],
+  "pairs": [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "need": [
+   3,
+   4
+  ],
+  "pair_line": "SEMIFINALS WED 18 NOV   /   FINAL SAT 21 NOV"
+ },
+ "season2": {
+  "title": "SEASON 2: THE SILVER CROWN",
+  "lines": [
+   "THE HEAVYWEIGHTS: CR 2 AND 3",
+   "KNIGHT, POLAR BEAR, ALLOSAURUS, BANDIT CAPTAIN...",
+   "NOMINATE A FIGHTER IN THE COMMENTS",
+   "THE MOST-LIKED NOMINATIONS GET IN"
+  ]
+ },
+ "finale_next_title": "SEASON 2: THE SILVER CROWN",
+ "finale_next_when": "NOMINATE A FIGHTER IN THE COMMENTS",
+ "episodes": [
+  {
+   "n": 1,
+   "date": "2026-10-21",
+   "kind": "duel",
+   "a": "lion",
+   "b": "brown_bear",
+   "best_of": 5,
+   "qualifier": true,
+   "title": "Lion vs Brown Bear",
+   "hook": [
+    "LION",
+    "VS",
+    "BROWN BEAR"
+   ],
+   "seed": "PIT-S1E01-lion-vs-brown_bear",
+   "road_line": "THREE MORE PLACES TO WIN"
+  },
+  {
+   "n": 2,
+   "date": "2026-10-24",
+   "kind": "how_many",
+   "star": "knight",
+   "minion": "goblin_warrior",
+   "counts": [
+    4,
+    6,
+    8,
+    10,
+    12
+   ],
+   "plural": "Goblins",
+   "music": "battle",
+   "title": "How Many Goblins Does It Take to Beat a Knight?",
+   "hook": [
+    "HOW MANY GOBLINS",
+    "TO BEAT",
+    "A KNIGHT?"
+   ],
+   "seed": "PIT-S1E02-knight-vs-goblins",
+   "road_line": "NEXT QUALIFIER: GHOUL VS GOBLIN BOSS",
+   "short_title": "GOBLINS VS KNIGHT"
+  },
+  {
+   "n": 3,
+   "date": "2026-10-28",
+   "kind": "duel",
+   "a": "ghoul",
+   "b": "goblin_boss",
+   "best_of": 5,
+   "qualifier": true,
+   "title": "Ghoul vs Goblin Boss",
+   "hook": [
+    "GHOUL",
+    "VS",
+    "GOBLIN BOSS"
+   ],
+   "seed": "PIT-S1E03-ghoul-vs-goblin_boss",
+   "road_line": "TWO MORE PLACES TO WIN"
+  },
+  {
+   "n": 4,
+   "date": "2026-10-31",
+   "kind": "rumble",
+   "fighters": [
+    "skeleton",
+    "skeleton",
+    "skeleton",
+    "zombie",
+    "zombie",
+    "zombie",
+    "ghoul",
+    "ghoul"
+   ],
+   "names": {
+    "0": "Rattlebones",
+    "1": "Old Grin",
+    "2": "Marrow",
+    "3": "Groan",
+    "4": "Shambles",
+    "5": "Mort",
+    "6": "Gnasher",
+    "7": "Pale Mags"
+   },
+   "title": "Halloween Rumble: 8 Undead, 1 Survivor",
+   "hook": [
+    "8 UNDEAD",
+    "ONE",
+    "SURVIVOR"
+   ],
+   "tag": "HALLOWEEN SPECIAL  /  REAL DICE  /  NO REROLLS",
+   "time_of_day": "evening",
+   "music": "dark_forest",
+   "hook_music": "tension",
+   "board_title": "HALLOWEEN RUMBLE",
+   "bout_title": "THE UNDEAD RUMBLE",
+   "label": "RUMBLE",
+   "field_title": "TONIGHT'S UNDEAD",
+   "result_line": "The last undead standing on Halloween.",
+   "seed": "PIT-S1E04-halloween-rumble",
+   "road_line": "NEXT QUALIFIER: GIANT SPIDER VS GIANT HYENA",
+   "thumb_a": "skeleton",
+   "thumb_b": "ghoul",
+   "short_title": "HALLOWEEN RUMBLE"
+  },
+  {
+   "n": 5,
+   "date": "2026-11-04",
+   "kind": "duel",
+   "a": "giant_spider",
+   "b": "giant_hyena",
+   "best_of": 5,
+   "qualifier": true,
+   "title": "Giant Spider vs Giant Hyena",
+   "hook": [
+    "GIANT SPIDER",
+    "VS",
+    "GIANT HYENA"
+   ],
+   "seed": "PIT-S1E05-giant_spider-vs-giant_hyena",
+   "road_line": "ONE PLACE LEFT: THE LAST CHANCE RUMBLE"
+  },
+  {
+   "n": 6,
+   "date": "2026-11-07",
+   "kind": "how_many",
+   "star": "allosaurus",
+   "minion": "wolf",
+   "counts": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "plural": "Wolves",
+   "music": "battle",
+   "title": "How Many Wolves Does It Take to Beat an Allosaurus?",
+   "hook": [
+    "HOW MANY WOLVES",
+    "TO BEAT",
+    "AN ALLOSAURUS?"
+   ],
+   "seed": "PIT-S1E06-allosaurus-vs-wolves",
+   "road_line": "THE LAST CHANCE RUMBLE IS COMING",
+   "short_title": "WOLVES VS ALLOSAURUS",
+   "minion_sprite": "pit_wolf"
+  },
+  {
+   "n": 7,
+   "date": "2026-11-11",
+   "kind": "duel",
+   "a": "polar_bear",
+   "b": "bandit_captain",
+   "best_of": 5,
+   "qualifier": false,
+   "title": "Polar Bear vs Bandit Captain",
+   "hook": [
+    "POLAR BEAR",
+    "VS",
+    "BANDIT CAPTAIN"
+   ],
+   "tag": "HEAVYWEIGHT SPECIAL  /  REAL DICE  /  NO REROLLS",
+   "seed": "PIT-S1E07-polar_bear-vs-bandit_captain",
+   "result_foot": "A TASTE OF SEASON 2: THE SILVER CROWN",
+   "road_line": "NEXT: THE LAST CHANCE RUMBLE"
+  },
+  {
+   "n": 8,
+   "date": "2026-11-14",
+   "kind": "rumble",
+   "losers_of": [
+    1,
+    3,
+    5
+   ],
+   "fighters": [
+    "dire_wolf",
+    "ape"
+   ],
+   "depends": [
+    1,
+    3,
+    5
+   ],
+   "qualifier": true,
+   "title": "Last Chance Rumble: 5 Fighters, 1 Wildcard",
+   "hook": [
+    "LAST CHANCE",
+    "5 FIGHTERS",
+    "ONE WILDCARD"
+   ],
+   "music": "battle_boss",
+   "board_title": "LAST CHANCE RUMBLE",
+   "bout_title": "LAST CHANCE RUMBLE",
+   "label": "RUMBLE",
+   "field_title": "SECOND CHANCES",
+   "win_what": "THE WILDCARD",
+   "win_sub": "On to the Bronze Crown semifinals.",
+   "result_line": "Three losers and two newcomers. One place in the Crown.",
+   "seed": "PIT-S1E08-last-chance-rumble",
+   "road_line": "THE BRONZE CROWN STARTS WEDNESDAY",
+   "thumb_a": "dire_wolf",
+   "thumb_b": "ape",
+   "short_title": "LAST CHANCE RUMBLE"
+  },
+  {
+   "n": 9,
+   "date": "2026-11-18",
+   "kind": "crown_semis",
+   "best_of": 5,
+   "depends": [
+    1,
+    3,
+    5,
+    8
+   ],
+   "title": "The Bronze Crown: Semifinals",
+   "hook": [
+    "THE BRONZE CROWN",
+    "SEMIFINALS",
+    "4 FIGHTERS. 1 CROWN."
+   ],
+   "seed": "PIT-S1E09-crown-semifinals",
+   "road": false,
+   "bracket_sub": "SEMIFINALS: BEST OF 5",
+   "bracket_line": "TWO SEMIFINALS TONIGHT",
+   "bracket_end_line": "THE FINAL: SATURDAY, BEST OF 7",
+   "final_label": "FINAL: SAT 21 NOV",
+   "short_title": "CROWN SEMIFINALS"
+  },
+  {
+   "n": 10,
+   "date": "2026-11-21",
+   "kind": "crown_final",
+   "best_of": 7,
+   "depends": [
+    1,
+    3,
+    5,
+    8,
+    9
+   ],
+   "title": "The Bronze Crown: The Final",
+   "hook": [
+    "THE BRONZE CROWN",
+    "THE FINAL",
+    "BEST OF 7"
+   ],
+   "seed": "PIT-S1E10-crown-final",
+   "road": false,
+   "bracket_sub": "THE FINAL: BEST OF 7",
+   "bracket_line": "ONE CROWN",
+   "end_s": 16.0,
+   "short_title": "THE CROWN FINAL"
+  },
+  {
+   "n": 11,
+   "date": null,
+   "bonus": true,
+   "unlock_subscribers": 100,
+   "kind": "how_many",
+   "star": "tyrannosaurus_rex",
+   "minion": "goblin_warrior",
+   "counts": [
+    6,
+    8,
+    10,
+    12,
+    14
+   ],
+   "plural": "Goblins",
+   "music": "battle_boss",
+   "title": "How Many Goblins Does It Take to Beat a T-Rex?",
+   "hook": [
+    "HOW MANY GOBLINS",
+    "TO BEAT",
+    "A T-REX?"
+   ],
+   "short_title": "GOBLINS VS T-REX",
+   "tag": "100-SUBSCRIBER BONUS  /  REAL DICE  /  NO REROLLS",
+   "seed": "PIT-S1B01-trex-vs-goblins",
+   "road": false,
+   "end_s": 16.0,
+   "result_foot": "THANK YOU FOR 100 SUBSCRIBERS",
+   "star_name": "T-Rex"
+  }
+ ],
+ "unlock": {
+  "subscribers": 100,
+  "episode": 11,
+  "line": "100 SUBSCRIBERS UNLOCKS A BONUS: GOBLINS VS T-REX",
+  "note": "Episode 11 is rendered and waiting. Publish it (and its Shorts) the week the channel passes 100 subscribers."
+ }
+}

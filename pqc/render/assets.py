@@ -171,8 +171,52 @@ class Assets:
             poses = {"dead": walk["down"][0], "item": walk["down"][0], "special1": walk["down"][1],
                      "special2": walk["down"][2]}
             size = (fw, fh)
+        elif spec["type"] == "animal":
+            # The pack's animals: a side strip facing right (``side``, ``frames`` wide) and, for some,
+            # a front strip (``front``). Every frame is padded onto one canvas, feet on the bottom row.
+            n = spec.get("frames", 2)
+
+            def strip(name):
+                sh = recolor(self.image(f"{base}/{name}"), rc)
+                fw = sh.width // n
+                return [sh.crop((i * fw, 0, i * fw + fw, sh.height)) for i in range(n)]
+
+            side = strip(spec["side"])
+            front = strip(spec["front"]) if spec.get("front") else None
+            cw = max(f.width for f in side + (front or []))
+            ch = max(f.height for f in side + (front or []))
+
+            def pad(f, flip=False):
+                if flip:
+                    f = f.transpose(Image.FLIP_LEFT_RIGHT)
+                c = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
+                c.alpha_composite(f, ((cw - f.width) // 2, ch - f.height))
+                return c
+
+            right = [pad(f) for f in side]
+            left = [pad(f, True) for f in side]
+            vert = [pad(front[0])] * n if front else right
+            walk = {"down": vert, "up": vert, "left": left, "right": right}
+            walk = {d: walk[d] for d in DIRECTIONS}
+            idle = {d: walk[d][0] for d in DIRECTIONS}
+            attack = {d: walk[d][-1] for d in DIRECTIONS}
+            jump = dict(attack)
+            poses = {"dead": right[0], "item": right[0], "special1": right[-1], "special2": right[0]}
+            size = (cw, ch)
         else:
             raise AssetError(f"Unsupported actor type {spec['type']!r}")
+        if spec.get("scale", 1) != 1:          # Huge creatures: drawn at a whole-number multiple
+            k = int(spec["scale"])
+
+            def up(img):
+                return img.resize((img.width * k, img.height * k), Image.NEAREST)
+
+            walk = {d: [up(f) for f in fs] for d, fs in walk.items()}
+            idle = {d: up(f) for d, f in idle.items()}
+            attack = {d: up(f) for d, f in attack.items()}
+            jump = {d: up(f) for d, f in jump.items()}
+            poses = {k_: up(f) for k_, f in poses.items()}
+            size = (size[0] * k, size[1] * k)
         sprites = ActorSprites(actor_id, walk, idle, attack, jump, poses, face,
                                voice_pitch=spec.get("voice", {}).get("pitch", 260), size=size, meta=spec)
         self._actors[actor_id] = sprites
@@ -307,8 +351,11 @@ class Assets:
         m = self.manifest
         paths = []
         for a in m["actors"].values():
-            paths.append(f"{a['src']}/Faceset.png")
-            paths.append(f"{a['src']}/{a.get('sheet', 'SpriteSheet.png')}")
+            paths.append(a["faceset"] if a.get("faceset") else f"{a['src']}/Faceset.png")
+            if a["type"] == "animal":
+                paths += [f"{a['src']}/{a['side']}"] + ([f"{a['src']}/{a['front']}"] if a.get("front") else [])
+            else:
+                paths.append(f"{a['src']}/{a.get('sheet', 'SpriteSheet.png')}")
         paths += [t["sheet"] for k, t in m["terrain"].items() if not k.startswith("_")]
         paths += [p["sheet"] for p in m["props"].values() if p.get("sheet")]
         paths += [f["src"] for f in m["fx"].values()]

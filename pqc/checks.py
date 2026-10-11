@@ -98,6 +98,8 @@ def saving_throw(
         disadvantage = True
     if "dwarven_resilience" in c.traits and "poisoned" in against:
         advantage = True
+    if "bloodied_frenzy" in c.traits and 0 < c.hp and c.hp * 2 <= c.max_hp:
+        advantage = True
     if "brave" in c.traits and "frightened" in against:
         advantage = True
     if "fey_ancestry" in c.traits and "charmed" in against:

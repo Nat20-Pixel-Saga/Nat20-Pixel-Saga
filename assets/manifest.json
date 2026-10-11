@@ -300,15 +300,178 @@
    }
   },
   "dire_wolf": {
-   "src": "Actor/Monster/Beast2",
+   "src": "Actor/Monster/Beast",
    "type": "monster",
-   "sheet": "Beast2.png",
+   "sheet": "Beast.png",
    "faceset": "Actor/Animal/Hyena/Faceset.png",
    "stand_in": true,
    "voice": {
     "pitch": 140
    },
-   "note": "Dire wolf stand-in: the wolf's body sheet with the pack's hyena portrait"
+   "note": "Dire wolf stand-in: the pack's big beast with the hyena portrait"
+  },
+  "lion": {
+   "src": "Actor/Animal/Lion",
+   "type": "animal",
+   "side": "SpriteSheetOrangeSide.png",
+   "front": "SpriteSheetOrange.png",
+   "frames": 2,
+   "faceset": "Actor/Animal/Lion/FacesetOrange.png",
+   "voice": {
+    "pitch": 120
+   }
+  },
+  "polar_bear": {
+   "src": "Actor/Monster/Bear",
+   "type": "monster",
+   "sheet": "SpriteSheet.png",
+   "recolor": {
+    "#8f3e56": "#8d9ab3",
+    "#d14b34": "#e6ecf4",
+    "#f2ad7d": "#bfc9d9",
+    "#fce2ca": "#ffffff"
+   },
+   "voice": {
+    "pitch": 100
+   },
+   "note": "The pack's bear, recoloured white"
+  },
+  "hyena": {
+   "src": "Actor/Animal/Hyena",
+   "type": "animal",
+   "side": "SpriteSheet.png",
+   "frames": 2,
+   "voice": {
+    "pitch": 300
+   }
+  },
+  "giant_hyena": {
+   "src": "Actor/Animal/Hyena",
+   "type": "animal",
+   "side": "SpriteSheetBrown.png",
+   "frames": 2,
+   "scale": 2,
+   "faceset": "Actor/Animal/Hyena/FacesetBrown.png",
+   "voice": {
+    "pitch": 220
+   },
+   "note": "The pack's hyena, drawn at 2x for a Large creature"
+  },
+  "giant_spider": {
+   "src": "Actor/Monster/SpiderRed",
+   "type": "monster",
+   "sheet": "SpriteSheet.png",
+   "voice": {
+    "pitch": 400
+   }
+  },
+  "ghoul": {
+   "src": "Actor/Character/Vampire",
+   "type": "character",
+   "voice": {
+    "pitch": 200
+   },
+   "stand_in": true,
+   "note": "Ghoul stand-in: the pack's pale vampire"
+  },
+  "knight": {
+   "src": "Actor/Character/Knight",
+   "type": "character",
+   "voice": {
+    "pitch": 170
+   }
+  },
+  "berserker": {
+   "src": "Actor/Character/KnightGold",
+   "type": "character",
+   "voice": {
+    "pitch": 160
+   },
+   "stand_in": true,
+   "note": "Berserker stand-in: the horned gold warrior"
+  },
+  "warrior_veteran": {
+   "src": "Actor/Character/RedGladiator",
+   "type": "character",
+   "voice": {
+    "pitch": 150
+   }
+  },
+  "bandit_captain": {
+   "src": "Actor/Character/Hunter",
+   "type": "character",
+   "voice": {
+    "pitch": 190
+   },
+   "stand_in": true,
+   "note": "Bandit Captain stand-in: the red-bandana hunter"
+  },
+  "allosaurus": {
+   "src": "Actor/Monster/Grey Trex",
+   "type": "monster",
+   "sheet": "SpriteSheet.png",
+   "voice": {
+    "pitch": 90
+   }
+  },
+  "giant_boar": {
+   "src": "Actor/Animal/WildBoar",
+   "type": "animal",
+   "side": "SpriteSheet.png",
+   "frames": 2,
+   "scale": 2,
+   "voice": {
+    "pitch": 110
+   }
+  },
+  "boar": {
+   "src": "Actor/Animal/WildBoar",
+   "type": "animal",
+   "side": "SpriteSheetGray.png",
+   "frames": 2,
+   "faceset": "Actor/Animal/WildBoar/FacesetGray.png",
+   "voice": {
+    "pitch": 140
+   }
+  },
+  "ape": {
+   "src": "Actor/Animal/Monkey",
+   "type": "animal",
+   "side": "SpriteSheetBrown.png",
+   "frames": 2,
+   "faceset": "Actor/Animal/Monkey/FacesetBrown.png",
+   "voice": {
+    "pitch": 260
+   }
+  },
+  "animated_armor": {
+   "src": "Actor/Character/Statue",
+   "type": "character",
+   "voice": {
+    "pitch": 90
+   },
+   "stand_in": true
+  },
+  "tyrannosaurus_rex": {
+   "src": "Actor/Monster/TRex",
+   "type": "monster",
+   "sheet": "SpriteSheet.png",
+   "scale": 2,
+   "voice": {
+    "pitch": 70
+   },
+   "note": "Drawn at 2x for a Huge creature"
+  },
+  "pit_wolf": {
+   "src": "Actor/Monster/Beast2",
+   "type": "monster",
+   "sheet": "Beast2.png",
+   "faceset": "Actor/Animal/Hyena/FacesetBrown.png",
+   "stand_in": true,
+   "voice": {
+    "pitch": 180
+   },
+   "note": "Arena wolf: the pack's wolf body with the brown hyena portrait"
   }
  },
  "terrain": {

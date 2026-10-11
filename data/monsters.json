@@ -602,7 +602,872 @@
           }
         }
       ],
-      "verified": false,
+      "verified": true,
+      "ai": "brute",
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026"
+    },
+    "lion": {
+      "name": "Lion",
+      "size": "large",
+      "type": "beast",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 22,
+      "hp_formula": "4d10",
+      "speed": 50,
+      "abilities": {
+        "str": 17,
+        "dex": 15,
+        "con": 11,
+        "int": 3,
+        "wis": 12,
+        "cha": 8
+      },
+      "skills": {
+        "perception": 3,
+        "stealth": 4
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 13
+      },
+      "traits": [
+        "pack_tactics"
+      ],
+      "multiattack": [
+        "rend",
+        "rend"
+      ],
+      "attacks": [
+        {
+          "id": "rend",
+          "name": "Rend",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d8+3",
+          "damage_type": "slashing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "engine_notes": "Roar (optional replacement for one Rend) and Running Leap are not used by the arena AI.",
+      "ai": "brute"
+    },
+    "polar_bear": {
+      "name": "Polar Bear",
+      "size": "large",
+      "type": "beast",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 42,
+      "hp_formula": "5d10+15",
+      "speed": 40,
+      "abilities": {
+        "str": 20,
+        "dex": 14,
+        "con": 16,
+        "int": 2,
+        "wis": 13,
+        "cha": 7
+      },
+      "skills": {
+        "perception": 5,
+        "stealth": 4
+      },
+      "resistances": [
+        "cold"
+      ],
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 15
+      },
+      "traits": [],
+      "multiattack": [
+        "rend",
+        "rend"
+      ],
+      "attacks": [
+        {
+          "id": "rend",
+          "name": "Rend",
+          "type": "melee",
+          "to_hit": 7,
+          "reach_ft": 5,
+          "damage": "1d8+5",
+          "damage_type": "slashing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "hyena": {
+      "name": "Hyena",
+      "size": "medium",
+      "type": "beast",
+      "cr": "0",
+      "xp": 10,
+      "proficiency": 2,
+      "ac": 11,
+      "hp": 5,
+      "hp_formula": "1d8+1",
+      "speed": 50,
+      "abilities": {
+        "str": 11,
+        "dex": 13,
+        "con": 12,
+        "int": 2,
+        "wis": 12,
+        "cha": 5
+      },
+      "skills": {
+        "perception": 3
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 13
+      },
+      "traits": [
+        "pack_tactics"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 2,
+          "reach_ft": 5,
+          "damage": "1d6",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "giant_spider": {
+      "name": "Giant Spider",
+      "size": "large",
+      "type": "beast",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 14,
+      "hp": 26,
+      "hp_formula": "4d10+4",
+      "speed": 30,
+      "abilities": {
+        "str": 14,
+        "dex": 16,
+        "con": 12,
+        "int": 2,
+        "wis": 11,
+        "cha": 4
+      },
+      "skills": {
+        "perception": 4,
+        "stealth": 7
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 14
+      },
+      "traits": [],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d8+3",
+          "damage_type": "piercing",
+          "extra_damage": [
+            [
+              "2d6",
+              "poison"
+            ]
+          ]
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "engine_notes": "Web (an alternative action) is not used by the arena AI; Spider Climb and Web Walker don't matter on open sand.",
+      "ai": "brute"
+    },
+    "ghoul": {
+      "name": "Ghoul",
+      "size": "medium",
+      "type": "undead",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 22,
+      "hp_formula": "5d8",
+      "speed": 30,
+      "abilities": {
+        "str": 13,
+        "dex": 15,
+        "con": 10,
+        "int": 7,
+        "wis": 10,
+        "cha": 6
+      },
+      "immunities": [
+        "poison"
+      ],
+      "condition_immunities": [
+        "charmed",
+        "exhaustion",
+        "poisoned"
+      ],
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 10
+      },
+      "traits": [],
+      "multiattack": [
+        "bite",
+        "bite"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "damage": "1d6+2",
+          "damage_type": "piercing",
+          "extra_damage": [
+            [
+              "1d6",
+              "necrotic"
+            ]
+          ]
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "engine_notes": "Claw (an alternative to Multiattack) is not used by the arena AI.",
+      "ai": "brute"
+    },
+    "knight": {
+      "name": "Knight",
+      "size": "medium",
+      "type": "humanoid",
+      "cr": "3",
+      "xp": 700,
+      "proficiency": 2,
+      "ac": 18,
+      "hp": 52,
+      "hp_formula": "8d8+16",
+      "speed": 30,
+      "abilities": {
+        "str": 16,
+        "dex": 11,
+        "con": 14,
+        "int": 11,
+        "wis": 11,
+        "cha": 15
+      },
+      "saves": {
+        "con": 4,
+        "wis": 2
+      },
+      "condition_immunities": [
+        "frightened"
+      ],
+      "senses": {
+        "passive_perception": 10
+      },
+      "traits": [
+        "parry:2"
+      ],
+      "multiattack": [
+        "greatsword",
+        "greatsword"
+      ],
+      "multiattack_any": true,
+      "attacks": [
+        {
+          "id": "greatsword",
+          "name": "Greatsword",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "2d6+3",
+          "damage_type": "slashing",
+          "extra_damage": [
+            [
+              "1d8",
+              "radiant"
+            ]
+          ]
+        },
+        {
+          "id": "heavy_crossbow",
+          "name": "Heavy Crossbow",
+          "type": "ranged",
+          "to_hit": 2,
+          "range": [
+            100,
+            400
+          ],
+          "damage": "2d10",
+          "damage_type": "piercing",
+          "extra_damage": [
+            [
+              "1d8",
+              "radiant"
+            ]
+          ]
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "berserker": {
+      "name": "Berserker",
+      "size": "medium",
+      "type": "humanoid",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "ac": 13,
+      "hp": 67,
+      "hp_formula": "9d8+27",
+      "speed": 30,
+      "abilities": {
+        "str": 16,
+        "dex": 12,
+        "con": 17,
+        "int": 9,
+        "wis": 11,
+        "cha": 9
+      },
+      "senses": {
+        "passive_perception": 10
+      },
+      "traits": [
+        "bloodied_frenzy"
+      ],
+      "attacks": [
+        {
+          "id": "greataxe",
+          "name": "Greataxe",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d12+3",
+          "damage_type": "slashing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "warrior_veteran": {
+      "name": "Warrior Veteran",
+      "size": "medium",
+      "type": "humanoid",
+      "cr": "3",
+      "xp": 700,
+      "proficiency": 2,
+      "ac": 17,
+      "hp": 65,
+      "hp_formula": "10d8+20",
+      "speed": 30,
+      "abilities": {
+        "str": 16,
+        "dex": 13,
+        "con": 14,
+        "int": 10,
+        "wis": 11,
+        "cha": 10
+      },
+      "skills": {
+        "athletics": 5,
+        "perception": 2
+      },
+      "senses": {
+        "passive_perception": 12
+      },
+      "traits": [
+        "parry:2"
+      ],
+      "multiattack": [
+        "greatsword",
+        "greatsword"
+      ],
+      "multiattack_any": true,
+      "attacks": [
+        {
+          "id": "greatsword",
+          "name": "Greatsword",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "2d6+3",
+          "damage_type": "slashing"
+        },
+        {
+          "id": "heavy_crossbow",
+          "name": "Heavy Crossbow",
+          "type": "ranged",
+          "to_hit": 3,
+          "range": [
+            100,
+            400
+          ],
+          "damage": "2d10+1",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "bandit_captain": {
+      "name": "Bandit Captain",
+      "size": "medium",
+      "type": "humanoid",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "ac": 15,
+      "hp": 52,
+      "hp_formula": "8d8+16",
+      "speed": 30,
+      "abilities": {
+        "str": 15,
+        "dex": 16,
+        "con": 14,
+        "int": 14,
+        "wis": 11,
+        "cha": 14
+      },
+      "saves": {
+        "str": 4,
+        "dex": 5,
+        "wis": 2
+      },
+      "skills": {
+        "athletics": 4,
+        "deception": 4
+      },
+      "senses": {
+        "passive_perception": 10
+      },
+      "traits": [
+        "parry:2"
+      ],
+      "multiattack": [
+        "scimitar",
+        "scimitar"
+      ],
+      "multiattack_any": true,
+      "attacks": [
+        {
+          "id": "scimitar",
+          "name": "Scimitar",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d6+3",
+          "damage_type": "slashing"
+        },
+        {
+          "id": "pistol",
+          "name": "Pistol",
+          "type": "ranged",
+          "to_hit": 5,
+          "range": [
+            30,
+            90
+          ],
+          "damage": "1d10+3",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "allosaurus": {
+      "name": "Allosaurus",
+      "size": "large",
+      "type": "beast",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "ac": 13,
+      "hp": 51,
+      "hp_formula": "6d10+18",
+      "speed": 60,
+      "abilities": {
+        "str": 19,
+        "dex": 13,
+        "con": 17,
+        "int": 2,
+        "wis": 12,
+        "cha": 5
+      },
+      "skills": {
+        "perception": 5
+      },
+      "senses": {
+        "passive_perception": 15
+      },
+      "traits": [],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 6,
+          "reach_ft": 5,
+          "damage": "2d10+4",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "engine_notes": "Claws (with its charging pounce) is not modelled; the arena AI always uses Bite, the stronger attack.",
+      "ai": "brute"
+    },
+    "giant_boar": {
+      "name": "Giant Boar",
+      "size": "large",
+      "type": "beast",
+      "cr": "2",
+      "xp": 450,
+      "proficiency": 2,
+      "ac": 13,
+      "hp": 42,
+      "hp_formula": "5d10+15",
+      "speed": 40,
+      "abilities": {
+        "str": 17,
+        "dex": 10,
+        "con": 16,
+        "int": 2,
+        "wis": 7,
+        "cha": 5
+      },
+      "saves": {
+        "str": 5
+      },
+      "senses": {
+        "passive_perception": 8
+      },
+      "traits": [
+        "bloodied_fury_melee"
+      ],
+      "attacks": [
+        {
+          "id": "gore",
+          "name": "Gore",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "2d6+3",
+          "damage_type": "piercing",
+          "on_hit": {
+            "charge": {
+              "ft": 20,
+              "max_size": "large",
+              "extra": "2d6",
+              "condition": "prone"
+            }
+          }
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "boar": {
+      "name": "Boar",
+      "size": "medium",
+      "type": "beast",
+      "cr": "1/4",
+      "xp": 50,
+      "proficiency": 2,
+      "ac": 11,
+      "hp": 13,
+      "hp_formula": "2d8+4",
+      "speed": 40,
+      "abilities": {
+        "str": 13,
+        "dex": 11,
+        "con": 14,
+        "int": 2,
+        "wis": 9,
+        "cha": 5
+      },
+      "senses": {
+        "passive_perception": 9
+      },
+      "traits": [
+        "bloodied_fury"
+      ],
+      "attacks": [
+        {
+          "id": "gore",
+          "name": "Gore",
+          "type": "melee",
+          "to_hit": 3,
+          "reach_ft": 5,
+          "damage": "1d6+1",
+          "damage_type": "piercing",
+          "on_hit": {
+            "charge": {
+              "ft": 20,
+              "max_size": "medium",
+              "extra": "1d6",
+              "condition": "prone"
+            }
+          }
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "ape": {
+      "name": "Ape",
+      "size": "medium",
+      "type": "beast",
+      "cr": "1/2",
+      "xp": 100,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 19,
+      "hp_formula": "3d8+6",
+      "speed": 30,
+      "abilities": {
+        "str": 16,
+        "dex": 14,
+        "con": 14,
+        "int": 6,
+        "wis": 12,
+        "cha": 7
+      },
+      "skills": {
+        "athletics": 5,
+        "perception": 3
+      },
+      "senses": {
+        "passive_perception": 13
+      },
+      "traits": [],
+      "multiattack": [
+        "fist",
+        "fist"
+      ],
+      "attacks": [
+        {
+          "id": "fist",
+          "name": "Fist",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d4+3",
+          "damage_type": "bludgeoning"
+        },
+        {
+          "id": "rock",
+          "name": "Rock",
+          "type": "ranged",
+          "to_hit": 5,
+          "range": [
+            25,
+            50
+          ],
+          "damage": "2d6+3",
+          "damage_type": "bludgeoning"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "animated_armor": {
+      "name": "Animated Armor",
+      "size": "medium",
+      "type": "construct",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 18,
+      "hp": 33,
+      "hp_formula": "6d8+6",
+      "speed": 25,
+      "abilities": {
+        "str": 14,
+        "dex": 11,
+        "con": 13,
+        "int": 1,
+        "wis": 3,
+        "cha": 1
+      },
+      "immunities": [
+        "poison",
+        "psychic"
+      ],
+      "condition_immunities": [
+        "charmed",
+        "deafened",
+        "exhaustion",
+        "frightened",
+        "paralyzed",
+        "petrified",
+        "poisoned"
+      ],
+      "senses": {
+        "blindsight": 60,
+        "passive_perception": 6
+      },
+      "traits": [],
+      "multiattack": [
+        "slam",
+        "slam"
+      ],
+      "attacks": [
+        {
+          "id": "slam",
+          "name": "Slam",
+          "type": "melee",
+          "to_hit": 4,
+          "reach_ft": 5,
+          "damage": "1d6+2",
+          "damage_type": "bludgeoning"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "giant_hyena": {
+      "name": "Giant Hyena",
+      "size": "large",
+      "type": "beast",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 12,
+      "hp": 45,
+      "hp_formula": "6d10+12",
+      "speed": 50,
+      "abilities": {
+        "str": 16,
+        "dex": 14,
+        "con": 14,
+        "int": 2,
+        "wis": 12,
+        "cha": 7
+      },
+      "skills": {
+        "perception": 3
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 13
+      },
+      "traits": [
+        "rampage"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "2d6+3",
+          "damage_type": "piercing"
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "ai": "brute"
+    },
+    "tyrannosaurus_rex": {
+      "name": "Tyrannosaurus Rex",
+      "size": "huge",
+      "type": "beast",
+      "cr": "8",
+      "xp": 3900,
+      "proficiency": 3,
+      "ac": 13,
+      "hp": 136,
+      "hp_formula": "13d12+52",
+      "speed": 50,
+      "abilities": {
+        "str": 25,
+        "dex": 10,
+        "con": 19,
+        "int": 2,
+        "wis": 12,
+        "cha": 9
+      },
+      "saves": {
+        "str": 10,
+        "wis": 4
+      },
+      "skills": {
+        "perception": 4
+      },
+      "senses": {
+        "passive_perception": 14
+      },
+      "traits": [],
+      "multiattack": [
+        "bite",
+        "tail"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 10,
+          "reach_ft": 10,
+          "damage": "4d12+7",
+          "damage_type": "piercing",
+          "on_hit": {
+            "condition": "grappled",
+            "max_size": "large",
+            "escape_dc": 17,
+            "restrained": true
+          }
+        },
+        {
+          "id": "tail",
+          "name": "Tail",
+          "type": "melee",
+          "to_hit": 10,
+          "reach_ft": 15,
+          "damage": "4d8+7",
+          "damage_type": "bludgeoning",
+          "on_hit": {
+            "condition": "prone",
+            "max_size": "huge"
+          },
+          "not_vs_held": true
+        }
+      ],
+      "verified": true,
+      "verified_source": "SRD 5.2.1 (CC-BY-4.0); cross-checked against 5e-bits/5e-database src/2024 @a6212be on 11 Oct 2026",
+      "engine_notes": "Grappled creatures don't try to escape (they attack instead, at Disadvantage while Restrained).",
       "ai": "brute"
     }
   }

@@ -1,0 +1,83 @@
+# The Pit (arena episodes): render the season on the runners and put every file in one
+# draft GitHub release, `pit-s1`. The renderer is deterministic, so these are the same files
+# a local `python scripts/arena_season.py all all` makes. Nothing is published to YouTube.
+name: arena
+on:
+  push:
+    branches: [claude/arena-duel]
+    paths: ["production/arena/**", "pqc/arena/**", "pqc/combat.py", "pqc/checks.py", "data/monsters.json",
+            "assets/manifest.json", "assets/maps/arena_pit.json", "pqc/render/**", "scripts/arena_season.py",
+            ".github/workflows/arena.yml"]
+  workflow_dispatch:
+permissions: {contents: write}
+concurrency: {group: arena, cancel-in-progress: true}
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        episode: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install the renderer
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install pillow numpy
+          scripts/fetch_assets.sh
+      - name: Simulate and render the episode, its three Shorts and its thumbnail
+        run: python scripts/arena_season.py all ${{ matrix.episode }} --out out/s1
+      - name: Check the files
+        run: |
+          n=$(printf "%02d" ${{ matrix.episode }})
+          d=out/s1/E$n
+          for f in pit-s1e$n.mp4 pit-s1e$n-trailer-short.mp4 pit-s1e$n-short-a.mp4 pit-s1e$n-short-b.mp4 pit-s1e$n-thumbnail.png pit-s1e$n.rolls.json; do
+            test -s "$d/$f" || { echo "missing $f"; exit 1; }
+          done
+          for f in $d/*.mp4; do ffprobe -v error -show_entries format=duration -of csv=p=0 "$f"; done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: episode-${{ matrix.episode }}
+          path: |
+            out/s1/E*/pit-s1e*.mp4
+            out/s1/E*/pit-s1e*.png
+            out/s1/E*/pit-s1e*.json
+            out/s1/E*/pit-s1e*.txt
+            out/s1/E*/result.json
+            out/s1/E*/quick.json
+            out/s1/E*/shorts.json
+          retention-days: 30
+
+  release:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install
+        run: |
+          pip install pillow numpy
+          scripts/fetch_assets.sh
+      - uses: actions/download-artifact@v4
+        with: {path: out/s1, pattern: "episode-*", merge-multiple: true}
+      - name: Upload plan and calendar
+        run: python scripts/arena_season.py meta --out out/s1
+      - name: Draft release pit-s1
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          files=$(ls out/s1/E*/pit-s1e*.mp4 out/s1/E*/pit-s1e*-thumbnail.png out/s1/E*/pit-s1e*.cover.png \
+                     out/s1/E*/pit-s1e*.rolls.json out/s1/E*/pit-s1e*.chapters.txt \
+                     out/s1/s1_youtube.md out/s1/s1_calendar.csv out/s1/s1_calendar.json)
+          echo "$files" | wc -l
+          notes="The Pit, Season 1: The Bronze Crown. 10 episodes (Wed and Sat, 21 Oct - 21 Nov 2026), a 100-subscriber bonus, a trailer Short and two highlight Shorts per episode. Start with s1_youtube.md (what to paste for every upload, in calendar order). Built from ${GITHUB_SHA::7}."
+          if gh release view pit-s1 >/dev/null 2>&1; then
+            gh release edit pit-s1 --notes "$notes"
+            gh release upload pit-s1 $files --clobber
+          else
+            gh release create pit-s1 --draft --target "$GITHUB_REF_NAME" --title "The Pit, Season 1" --notes "$notes" $files
+          fi

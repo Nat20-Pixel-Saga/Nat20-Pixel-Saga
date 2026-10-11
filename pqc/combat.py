@@ -251,6 +251,17 @@ class Encounter:
             if not still:
                 src.concentration = None
 
+    def _release_grapples(self, grappler_id: str) -> None:
+        """A grappler that drops or is incapacitated lets go (and the Restrained that came with the grip ends)."""
+        for c in self.creatures.values():
+            g = c.conditions.get("grappled")
+            if g and g.get("source") == grappler_id:
+                c.remove_condition("grappled")
+                r = c.conditions.get("restrained")
+                if r and r.get("grapple") and r.get("source") == grappler_id:
+                    c.remove_condition("restrained")
+                self.emit("grapple_end", actor=c.id, source=grappler_id)
+
     def _start_turn(self) -> None:
         c = self.current
         self._expire("start", c.id)
@@ -386,6 +397,8 @@ class Encounter:
                 self.emit("down", actor=target.id)
         if total_taken and target.effect("sanctuary") and source:
             pass  # Taking damage doesn't end Sanctuary; dealing it does.
+        if not target.standing or target.incapacitated:
+            self._release_grapples(target.id)
         if target.concentration:
             if not target.standing:
                 self.end_concentration(target, "dropped to 0 HP")
@@ -435,6 +448,10 @@ class Encounter:
             ox, oy = 2 * target.pos[0] - attacker.pos[0], 2 * target.pos[1] - attacker.pos[1]
             if any(al.pos == (ox, oy) and not al.incapacitated for al in self.allies_of(attacker)):
                 a("flanking")
+        if attacker.hp > 0 and attacker.hp * 2 <= attacker.max_hp and (
+                "bloodied_fury" in attacker.traits or "bloodied_frenzy" in attacker.traits
+                or ("bloodied_fury_melee" in attacker.traits and not ranged)):
+            a("bloodied")
         if "pack_tactics" in attacker.traits and any(
                 self.dist(ally, target) <= 5 and not ally.incapacitated for ally in self.allies_of(attacker)):
             a("pack tactics")
@@ -487,6 +504,19 @@ class Encounter:
         self.emit("reaction", actor=target.id, reaction="shield", slot=slot, ac=target.ac)
         return True
 
+    def _try_parry(self, target: Creature, attack_total: int, natural: int, crit_range: int) -> int:
+        """Monster Parry (reaction, "parry:N" trait): +N AC against one melee attack roll that hit,
+        used only when it turns the hit into a miss. Returns the bonus used, or 0."""
+        bonus = next((int(t.split(":")[1]) for t in target.traits if t.startswith("parry:")), 0)
+        if not bonus or not self.auto_reactions or not self.reactions.get(target.id) or not target.conscious \
+                or target.incapacitated or natural >= crit_range:
+            return 0
+        if not (target.ac <= attack_total < target.ac + bonus):
+            return 0
+        self.reactions[target.id] = False
+        self.emit("reaction", actor=target.id, reaction="parry", ac=target.ac + bonus)
+        return bonus
+
     def _attack_roll(self, attacker: Creature, target: Creature, to_hit: int, ranged: bool, long_range: bool,
                      label: str, crit_range: int = 20) -> tuple[RollRecord, bool, bool, list[str]]:
         adv, dis, why = self._attack_modifiers(attacker, target, ranged, long_range)
@@ -507,6 +537,14 @@ class Encounter:
             hit = rec.critical or rec.total >= target.ac
             rec.success = hit
             rec.notes.append("target cast Shield")
+        parried = 0
+        if hit and not ranged:
+            parried = self._try_parry(target, rec.total, rec.natural, crit_range)
+            if parried:
+                rec.dc = target.ac + parried
+                hit = False
+                rec.success = False
+                rec.notes.append(f"target parried (+{parried} AC)")
         crit = hit and rec.critical
         if hit and not crit and self.dist(attacker, target) <= 5 and not ranged and \
                 (target.has_condition("paralyzed") or target.has_condition("unconscious")):
@@ -515,7 +553,7 @@ class Encounter:
             rec.notes.append("automatic critical (helpless target within 5 ft)")
         had_adv = rec.advantage == "advantage"
         self._consume_attack_markers(attacker, target)
-        return rec, hit, crit, why + (["had_advantage"] if had_adv else [])
+        return rec, hit, crit, why + (["had_advantage"] if had_adv else []) + (["parried"] if parried else [])
 
     def _check_target(self, attacker: Creature, target: Creature) -> None:
         if target.dead:
@@ -566,6 +604,8 @@ class Encounter:
         ev = self.emit("attack", actor=attacker.id, target=target.id, attack=atk.id, roll=rec.id, hit=hit,
                        critical=crit, total=rec.total, ac=rec.dc, advantage=rec.advantage,
                        overlay=rec.overlay_text(), opportunity=opportunity, damage_rolls=[])
+        if "parried" in why:
+            ev["parried"] = True
         mastery = atk.mastery if atk.weapon_id and atk.weapon_id in attacker.weapon_masteries else None
         if not hit:
             if mastery == "graze":
@@ -611,12 +651,47 @@ class Encounter:
                 parts[atk.damage_type] += amt
                 ev["damage_rolls"] += ids
                 ev["sneak_attack"] = True
+        charge = (atk.on_hit or {}).get("charge")
+        charged = bool(charge) and size_index(target.size) <= size_index(charge.get("max_size", "huge")) \
+            and self._charged(attacker, target, charge["ft"], ev["seq"])
+        if charged:
+            amt, ids = self._roll_damage(charge["extra"], crit, f"damage: {atk.name} (charge)", attacker.id, target.id)
+            parts[atk.damage_type] += amt
+            ev["damage_rolls"] += ids
+            ev["charge"] = True
+        was_bloodied = 0 < target.hp and target.hp * 2 <= target.max_hp
         ev["damage"] = self.apply_damage(target, parts, critical=crit, source=attacker.id)
+        if charged and charge.get("condition") and target.standing and target.add_condition(charge["condition"],
+                                                                                          source=attacker.id):
+            ev["condition_applied"] = charge["condition"]
         dealt = ev["damage"]["total"] > 0
         self._apply_mastery(attacker, target, atk, mastery, dealt, ev)
         if atk.on_hit and target.standing:
             self._apply_on_hit(attacker, target, atk.on_hit, ev)
+        # Rampage (bonus action): right after damaging a creature that was already Bloodied, one more
+        # attack with the same weapon. (The half-Speed move is only taken when needed, which it never
+        # is here: the target is still within reach.)
+        if "rampage" in attacker.traits and was_bloodied and ev["damage"]["total"] > 0 and target.standing \
+                and not opportunity and attacker.id == self.current.id and self.turn.bonus_action:
+            self.turn.bonus_action = False
+            self.emit("trait", actor=attacker.id, trait="rampage", target=target.id)
+            self.resolve_weapon_attack(attacker, target, atk)
         return ev
+
+    def _charged(self, attacker: Creature, target: Creature, feet: int, attack_seq: int) -> bool:
+        """True if the attacker's last act before this attack was a move of ``feet``+ feet in which
+        every step brought it closer to the target ("moved N+ feet straight toward it")."""
+        for e in reversed(self.events):
+            if e["seq"] >= attack_seq or e.get("actor") != attacker.id:
+                continue
+            if e["t"] != "move":
+                return False
+            path = [tuple(p) for p in e["path"]]
+            if (len(path) - 1) * 5 < feet:
+                return False
+            dists = [grid.chebyshev(p, target.pos) for p in path]
+            return all(b < a for a, b in zip(dists, dists[1:]))
+        return False
 
     def _apply_mastery(self, attacker: Creature, target: Creature, atk: Attack, mastery: str | None,
                        dealt: bool, ev: dict) -> None:
@@ -665,8 +740,13 @@ class Encounter:
             ev["on_hit_save"] = {"roll": rec.id, "success": rec.success}
             if rec.success:
                 return
-        if target.add_condition(cond, source=attacker.id):
+        info = {"escape_dc": on_hit["escape_dc"]} if "escape_dc" in on_hit else {}
+        if target.add_condition(cond, source=attacker.id, **info):
             ev["condition_applied"] = cond
+            # "While Grappled, the target has the Restrained condition" (Tyrannosaurus Rex, Crocodile).
+            if cond == "grappled" and on_hit.get("restrained") and target.add_condition("restrained", source=attacker.id,
+                                                                                       grapple=True):
+                ev["restrained"] = True
 
     # ============================================================ spells
     def _spend_slot(self, c: Creature, level: int) -> None:
