@@ -193,7 +193,8 @@ def calendar(season: dict) -> list[dict]:
     return out
 
 
-def write_all(season: dict, out_root: Path, assets, arena) -> list[Path]:
+def plan(season: dict, out_root: Path, arena) -> list[dict]:
+    """Every upload with everything to paste: the data behind s1_youtube.md and the control-room page."""
     res = {e["n"]: SE.resolve(season, e["n"], arena, out_root, full=False) for e in season["episodes"]}
     full = {}
     for e in season["episodes"]:
@@ -201,10 +202,48 @@ def write_all(season: dict, out_root: Path, assets, arena) -> list[Path]:
         full[e["n"]] = SE.load_result(p) if p.exists() else res[e["n"]]
     eps = {e["n"]: e for e in season["episodes"]}
     shorts_info = {}
+    marks = {}
     for e in season["episodes"]:
-        p = out_root / f"E{e['n']:02d}" / "shorts.json"
+        d = out_root / f"E{e['n']:02d}"
+        p = d / "shorts.json"
         shorts_info[e["n"]] = json.loads(p.read_text()) if p.exists() else {}
+        mp = d / f"pit-s1e{e['n']:02d}.marks.json"
+        marks[e["n"]] = json.loads(mp.read_text()) if mp.exists() else {"chapters": [], "duration_s": None}
+    fmt = {"duel": "duel", "how_many": "how many", "rumble": "rumble", "crown_semis": "crown", "crown_final": "crown"}
+    rows = []
     cal = calendar(season)
+    b = next((e for e in season["episodes"] if e.get("bonus")), None)
+    if b:
+        stem = f"pit-s1e{b['n']:02d}"
+        cal += [{"when": None, "kind": k, "episode": b["n"], "file": f, **({"thumbnail": f"{stem}-thumbnail.png"} if k == "video" else {})}
+                for k, f in (("trailer short", f"{stem}-trailer-short.mp4"), ("video", f"{stem}.mp4"),
+                             ("highlight short A", f"{stem}-short-a.mp4"), ("highlight short B", f"{stem}-short-b.mp4"))]
+    for row in cal:
+        n = row["episode"]
+        ep, r = eps[n], full[n]
+        nxt = eps.get(n + 1) if n + 1 in eps and not eps[n + 1].get("bonus") else None
+        out = {"id": f"e{n:02d}-" + {"video": "video", "trailer short": "trailer", "highlight short A": "a",
+                                       "highlight short B": "b"}[row["kind"]],
+               "when": row["when"], "kind": row["kind"], "episode": n, "file": row["file"],
+               "format": "bonus" if ep.get("bonus") else fmt[ep["kind"]], "bonus": bool(ep.get("bonus"))}
+        if row["kind"] == "video":
+            t = titles(season, ep, r)
+            out.update(title=t["title"], description=description(season, ep, r, marks[n]["chapters"]),
+                       tags=", ".join(TAGS + [x.strip().lower() for x in t["title"].split(" | ")[0].split(":")[0].split(" vs ")[:2]]),
+                       pinned=pinned(season, ep, r, nxt, full.get(n + 1)), thumbnail=row.get("thumbnail"),
+                       duration=marks[n]["duration_s"])
+        else:
+            which = {"trailer short": "trailer", "highlight short A": "a", "highlight short B": "b"}[row["kind"]]
+            info = shorts_info.get(n, {}).get(which)
+            title, desc = short_texts(season, ep, r, which, info)
+            out.update(title=title, description=desc, related=f"Episode {n}" if not ep.get("bonus") else "the bonus video",
+                       duration=(info or {}).get("duration_s"))
+        rows.append(out)
+    return rows
+
+
+def write_all(season: dict, out_root: Path, assets, arena) -> list[Path]:
+    rows = plan(season, out_root, arena)
     lines = ["# The Pit, Season 1: upload plan", "",
              f"Channel: {season['channel']}. Playlist: **{PLAYLIST}** (create it once, add every video).",
              "All times are Paris time. Every file is in the GitHub release `pit-s1`.", "",
@@ -215,65 +254,41 @@ def write_all(season: dict, out_root: Path, assets, arena) -> list[Path]:
              "**For each Short:** upload the MP4, paste title and description, schedule it, and set **Related video** to "
              "its full episode. A trailer goes out the day before its episode: if YouTube doesn't offer the scheduled "
              "premiere yet, link the previous Pit episode and switch the link once the episode is live.", ""]
-    for row in cal:
-        n = row["episode"]
-        ep = eps[n]
-        r = full[n]
-        nxt = eps.get(n + 1) if n + 1 in eps and not eps[n + 1].get("bonus") else None
-        when = row["when"]
-        dd = _d(when.split()[0])
-        head = f"{long_date(dd)}, {when.split()[1]}"
-        if row["kind"] == "video":
-            marks_p = out_root / f"E{n:02d}" / f"pit-s1e{n:02d}.marks.json"
-            ch = json.loads(marks_p.read_text())["chapters"] if marks_p.exists() else []
-            t = titles(season, ep, r)
-            lines += [f"## {head}: Episode {n} (video)", "",
-                      f"**File:** `{row['file']}`  **Thumbnail:** `{row['thumbnail']}`  "
-                      f"**Length:** {_fmt(json.loads(marks_p.read_text())['duration_s']) if marks_p.exists() else '?'}", "",
-                      "**Title**", "", "```", t["title"], "```", "", "**Description**", "", "```",
-                      description(season, ep, r, ch), "```", "",
-                      "**Tags**", "", "```", ", ".join(TAGS + [x.lower() for x in t["title"].split(" | ")[0].replace(":", "").split(" vs ")[:2]]), "```", "",
-                      "**Pinned comment** (once it's public)", "", "```", pinned(season, ep, r, nxt, full.get(n + 1)), "```", ""]
+    bonus_head = False
+    for r in rows:
+        if r["when"]:
+            dd = _d(r["when"].split()[0])
+            head = f"{long_date(dd)}, {r['when'].split()[1]}"
         else:
-            which = {"trailer short": "trailer", "highlight short A": "a", "highlight short B": "b"}[row["kind"]]
-            info = shorts_info.get(n, {}).get(which)
-            title, desc = short_texts(season, ep, r, which, info)
-            lines += [f"## {head}: Episode {n} {row['kind']}", "",
-                      f"**File:** `{row['file']}`  **Related video:** Episode {n}" +
-                      (f"  **Length:** {round(info['duration_s'])} s" if info else ""), "",
-                      "**Title**", "", "```", title, "```", "", "**Description**", "", "```", desc, "```", ""]
-    b = next((e for e in season["episodes"] if e.get("bonus")), None)
-    if b:
-        r = full[b["n"]]
-        marks_p = out_root / f"E{b['n']:02d}" / f"pit-s1e{b['n']:02d}.marks.json"
-        ch = json.loads(marks_p.read_text())["chapters"] if marks_p.exists() else []
-        t = titles(season, b, r)
-        lines += [f"## Bonus: when the channel reaches {b['unlock_subscribers']} subscribers", "",
-                  "Ready to go: publish the trailer Short the day you cross the line (\"We hit 100. Tomorrow: ...\"), the "
-                  "video the next day at 18:00, and the two highlight Shorts on the following days.", "",
-                  f"**Files:** `pit-s1e{b['n']:02d}.mp4`, `pit-s1e{b['n']:02d}-thumbnail.png`, "
-                  f"`pit-s1e{b['n']:02d}-trailer-short.mp4`, `-short-a.mp4`, `-short-b.mp4`", "",
-                  "**Title**", "", "```", t["title"], "```", "", "**Description**", "", "```",
-                  description(season, b, r, ch), "```", ""]
-        for which in ("trailer", "a", "b"):
-            title, desc = short_texts(season, b, r, which, shorts_info.get(b["n"], {}).get(which))
-            lines += [f"**Short ({which})**", "", "```", title, "```", "", "```", desc, "```", ""]
+            if not bonus_head:
+                lines += [f"## Bonus: when the channel reaches {season['unlock']['subscribers']} subscribers", "",
+                          "Ready to go: the trailer Short the day you cross the line, the video the next day at 18:00, "
+                          "the two highlight Shorts on the following days.", ""]
+                bonus_head = True
+            head = "Bonus"
+        length = f"  **Length:** {_fmt(r['duration'])}" if r.get("duration") else ""
+        if r["kind"] == "video":
+            lines += [f"## {head}: Episode {r['episode']} (video)" if r["when"] else "### Bonus video", "",
+                      f"**File:** `{r['file']}`  **Thumbnail:** `{r['thumbnail']}`{length}", "",
+                      "**Title**", "", "```", r["title"], "```", "", "**Description**", "", "```", r["description"], "```", "",
+                      "**Tags**", "", "```", r["tags"], "```", "", "**Pinned comment** (once it's public)", "", "```",
+                      r["pinned"], "```", ""]
+        else:
+            lines += [f"## {head}: Episode {r['episode']} {r['kind']}" if r["when"] else f"### Bonus {r['kind']}", "",
+                      f"**File:** `{r['file']}`  **Related video:** {r['related']}{length}", "",
+                      "**Title**", "", "```", r["title"], "```", "", "**Description**", "", "```", r["description"], "```", ""]
     out_root.mkdir(parents=True, exist_ok=True)
     md = out_root / "s1_youtube.md"
     md.write_text("\n".join(lines))
+    pj = out_root / "s1_plan.json"
+    pj.write_text(json.dumps(rows, indent=1, ensure_ascii=False))
     cj = out_root / "s1_calendar.json"
-    for row in cal:
-        n = row["episode"]
-        row["title"] = titles(season, eps[n], full[n])["title"] if row["kind"] == "video" else \
-            short_texts(season, eps[n], full[n], {"trailer short": "trailer", "highlight short A": "a",
-                                                 "highlight short B": "b"}[row["kind"]],
-                        shorts_info.get(n, {}).get({"trailer short": "trailer", "highlight short A": "a",
-                                                    "highlight short B": "b"}[row["kind"]]))[0]
+    cal = [{k: r[k] for k in ("when", "kind", "episode", "file", "title")} for r in rows]
     cj.write_text(json.dumps(cal, indent=1, ensure_ascii=False))
     cc = out_root / "s1_calendar.csv"
     with cc.open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["when (Paris)", "kind", "episode", "file", "title"])
-        for row in cal:
-            w.writerow([row["when"], row["kind"], row["episode"], row["file"], row["title"]])
-    return [md, cj, cc]
+        for r in cal:
+            w.writerow([r["when"] or "at 100 subscribers", r["kind"], r["episode"], r["file"], r["title"]])
+    return [md, pj, cj, cc]

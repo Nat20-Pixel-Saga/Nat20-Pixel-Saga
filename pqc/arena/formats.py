@@ -24,6 +24,7 @@ from .. import data
 from ..ai import simple_policy
 from ..combat import Encounter, EngineError
 from ..dice import Dice
+from ..rules import size_index
 from ..state import monster_from_data
 
 MAX_ROUNDS = 30
@@ -69,6 +70,12 @@ def policy(enc: Encounter, c):
 
     want = intent["attack"].split(":")[0]
     order = ([want] if want in remaining else []) + [a for a in remaining if a != want]
+    # Knock it down first: an owed attack that leaves the target Prone gives the rest Advantage.
+    if tgt is not None and not tgt.has_condition("prone"):
+        def topples(aid):
+            oh = (c.attack_by_id(aid).on_hit or {}) if c.attack_by_id(aid) else {}
+            return oh.get("condition") == "prone" and size_index(tgt.size) <= size_index(oh.get("max_size", "huge"))
+        order = [a for a in order if topples(a)] + [a for a in order if not topples(a)]
     for aid in order:
         if ok(aid, tgt):
             return {**intent, "attack": aid}

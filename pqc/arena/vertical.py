@@ -434,10 +434,12 @@ def trailer(season, n, res, timeline, times, out: Path, assets: Assets, preview=
 
 
 def _end_after(season, ep):
-    nxt = next((e for e in season["episodes"] if e["n"] == ep["n"] + 1), None)
+    nxt = next((e for e in season["episodes"] if e["n"] == ep["n"] + 1 and e.get("date")), None)
     lines = ["FULL FIGHT", "ON THE CHANNEL", "TAP THE LINK ABOVE"]
     if nxt:
         lines.append(f"NEXT: {SE.short_date(nxt['date'])}")
+    elif ep["kind"] == "crown_final":
+        lines.append("SEASON 2 IS NEXT")
     return {"lines": lines}
 
 
