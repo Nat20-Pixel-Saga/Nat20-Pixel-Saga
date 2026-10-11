@@ -233,20 +233,24 @@ def card_frame(st, kind: str, c: dict, age: float, title: str) -> Image.Image:
         fb = S.fit(st, bot, VW - 12, (48, 32, 24, 16))
         x1 = -200 + (VW / 2 + 200) * S.ease(age / 0.3)
         x2 = VW + 200 - (VW / 2 + 200) * S.ease((age - 0.2) / 0.3)
-        S.center(d, x1, 120, top, ft, ca)
+        y_top = 84
+        y_mid = y_top + ft.size + 12
+        y_bot = y_mid + 24 + 12
+        y_face = y_bot + fb.size + 14
+        S.center(d, x1, y_top, top, ft, ca)
         if age > 0.45:
-            S.slam(st, d, VW / 2, 120 + ft.size + 18, mid, 24, GOLD, age - 0.45)
+            S.slam(st, d, VW / 2, y_mid, mid, 24, GOLD, age - 0.45)
         if age > 0.2:
-            S.center(d, x2, 120 + ft.size + 60, bot, fb, cb)
+            S.center(d, x2, y_bot, bot, fb, cb)
         if age > 1.0 and c.get("sprites"):
             fa = S.face(st, c["sprites"][0], 2)
-            img.alpha_composite(fa, (VW // 2 - fa.width - 6, 260))
+            img.alpha_composite(fa, (VW // 2 - fa.width - 6, y_face))
             if len(c["sprites"]) > 1:
                 fb2 = S.face(st, c["sprites"][1], 2, flip=True)
-                img.alpha_composite(fb2, (VW // 2 + 6, 260))
+                img.alpha_composite(fb2, (VW // 2 + 6, y_face))
         if age > 1.2:
-            S.center(d, VW / 2, 352, c.get("tag", "WHO WINS?"), _font(st, 24), WHITE)
-            S.center(d, VW / 2, 384, c.get("tag2", "REAL DICE. NO REROLLS."), _font(st, 8), GREY)
+            S.center(d, VW / 2, y_face + 88, c.get("tag", "WHO WINS?"), _font(st, 24), WHITE)
+            S.center(d, VW / 2, y_face + 118, c.get("tag2", "REAL DICE. NO REROLLS."), _font(st, 8), GREY)
     elif kind == "tape":
         img.alpha_composite(S.face(st, c["a"]["sprite"], 2), (16, y))
         img.alpha_composite(S.face(st, c["b"]["sprite"], 2, flip=True), (VW - 16 - 76, y))
@@ -465,7 +469,9 @@ def highlight(season, n, res, timeline, times, out: Path, assets: Assets, which:
         elif kind == "crown_final":
             hook = "THE CROWN-WINNING BLOW"
         else:
-            hook = ep.get("hook_a", "THE DECIDING BLOW")
+            line = c_ko.get("line", "")
+            who = line.split(" GOES TO ")[-1] if " GOES TO " in line else ""
+            hook = ep.get("hook_a") or (f"{who} FINISHES IT" if who and len(who) <= 16 else "THE DECIDING BLOW")
     else:
         lo_a = final_ko[0] - 16
         cands = []
@@ -485,11 +491,20 @@ def highlight(season, n, res, timeline, times, out: Path, assets: Assets, which:
                 sw = abs(now[lead] - prev.get(lead, 0))
                 desc = None
             cands.append((sw + (0.25 if c.get("critical") else 0), t, c, desc))
+        best = max(cands, key=lambda x: x[0]) if cands else None
+        early_kos = [(t, c) for t, c in kos if t < final_ko[0] - 16]
+        if best and best[0] < 0.12 and early_kos:
+            cands = []                         # nothing dramatic: an earlier knockout instead
+            t_k, c_k = early_kos[0]
+            start_b = max(tb for tb, _ in bouts if tb < t_k)
+            t0, t1 = max(start_b + 1.3, t_k - 12.0), t_k + 2.6
+            hook = c_k.get("line", "KNOCKOUT")
         if cands:
             sw, t, c, desc = max(cands, key=lambda x: x[0])
             t0, t1 = max(t - 7.5, max(tb for tb, _ in bouts if tb <= t) + 1.3), t + 4.0
             if c.get("critical"):
-                hook = "NATURAL 20!"
+                who = (c.get("label") or "").split(" - ")[0].upper()
+                hook = f"{who} ROLLS A 20" if who and len(who) <= 16 else "NATURAL 20!"
             elif desc:
                 p0, p1 = desc
                 if (p0 - 0.5) * (p1 - 0.5) < 0:
@@ -498,8 +513,9 @@ def highlight(season, n, res, timeline, times, out: Path, assets: Assets, which:
                     f0, f1 = max(p0, 1 - p0), (p1 if p0 >= 0.5 else 1 - p1)
                     hook = f"{S.pct(f0)} FAVOURITE IN TROUBLE" if f1 < f0 else f"FROM {S.pct(1 - f0)} TO {S.pct(1 - f1)}"
             else:
-                hook = "THE TURNING POINT"
-        else:
+                lead = max(c["odds"], key=c["odds"].get)
+                hook = f"{timeline_fighter_name(tc, lead).upper()} TAKES OVER"
+        elif hook is None:
             t, c = attacks[len(attacks) // 2]
             t0, t1 = t - 6, t + 4
             hook = "EVERY ROLL IS REAL"
@@ -514,6 +530,15 @@ def highlight(season, n, res, timeline, times, out: Path, assets: Assets, which:
     info = P.encode(allf, (VW, VH), out, audio, assets, FPS, scale, crf, preset)
     allf[min(len(allf) - 1, int(1.0 * FPS))].resize((VW * 4, VH * 4), Image.NEAREST).save(out.with_suffix(".cover.png"))
     return {**info, "kind": f"highlight-{which}", "hook": hook, "clip": [round(t0, 2), round(t1, 2)]}
+
+
+def timeline_fighter_name(tc, team):
+    for _, c in tc:
+        if c["op"] == "show_setup":
+            for f in c["static"].get("fighters_static", {}).values():
+                if f.get("team") == team:
+                    return f["name"]
+    return team
 
 
 def timeline_side_name(tc, side):

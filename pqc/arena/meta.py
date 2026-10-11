@@ -144,7 +144,8 @@ def pinned(season: dict, ep: dict, res: dict, nxt: dict | None, nres: dict | Non
         first = "Who did you have in the final?"
     if nxt:
         nt = nxt["title"] if nxt["kind"] not in ("crown_semis", "crown_final") else titles(season, nxt, nres)["title"].split(" | ")[0]
-        second = f"Next in the Pit, {SE.DAYS[_d(nxt['date']).weekday()].title()}: {nt}. Subscribe so you don't miss it."
+        stop = "" if nt.endswith(("?", "!", ".")) else "."
+        second = f"Next in the Pit, {SE.DAYS[_d(nxt['date']).weekday()].title()}: {nt}{stop} Subscribe so you don't miss it."
     elif ep.get("bonus"):
         second = "Season 2: the Silver Crown. Nominate a fighter below; the most-liked nominations get in."
     else:

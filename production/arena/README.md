@@ -87,6 +87,8 @@ if highlights beat trailers, post them earlier.
 
 New engine rules for the arena roster, each covered by `tests/test_arena.py`: Parry (+N AC against a melee hit,
 used only when it turns the hit into a miss), Bloodied Fury/Frenzy, charges ("moved 20+ feet straight toward
-it"), Rampage, and grapples that restrain. A few optional actions are never chosen by the AI (Lion's Roar,
+it"), Rampage, and grapples that restrain. Fighters play by the engine's tactical policy (`pqc/ai.py`) with one arena rule
+on top: a fixed Multiattack takes its owed attacks in the best order (the one that knocks Prone first) and
+never wastes one on a target out of reach. A few optional actions are never chosen by the AI (Lion's Roar,
 Giant Spider's Web, Ghoul's Claw, Allosaurus's Claws); the stat block notes in `data/monsters.json` say which.
 Animal and some character sprites are stand-ins from the Ninja Adventure pack (noted in `assets/manifest.json`).
