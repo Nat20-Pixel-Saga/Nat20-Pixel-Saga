@@ -290,6 +290,25 @@
    },
    "stand_in": true,
    "note": "Fort Harrow veteran (pack samurai as stand-in)"
+  },
+  "brown_bear": {
+   "src": "Actor/Monster/Bear",
+   "type": "monster",
+   "sheet": "SpriteSheet.png",
+   "voice": {
+    "pitch": 110
+   }
+  },
+  "dire_wolf": {
+   "src": "Actor/Monster/Beast2",
+   "type": "monster",
+   "sheet": "Beast2.png",
+   "faceset": "Actor/Animal/Hyena/Faceset.png",
+   "stand_in": true,
+   "voice": {
+    "pitch": 140
+   },
+   "note": "Dire wolf stand-in: the wolf's body sheet with the pack's hyena portrait"
   }
  },
  "terrain": {

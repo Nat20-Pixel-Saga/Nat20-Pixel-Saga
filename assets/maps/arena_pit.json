@@ -1,0 +1,673 @@
+{
+ "schema": "pqc/map@1",
+ "id": "arena_pit",
+ "name": "The Pit",
+ "region": "arena",
+ "biome": "arena",
+ "size": [
+  21,
+  16
+ ],
+ "base": "grass_base",
+ "seed": 20,
+ "layers": [
+  {
+   "terrain": "sand",
+   "rows": [
+    ".....................",
+    ".....................",
+    ".....................",
+    ".....................",
+    ".....................",
+    "....SSSSSSSSSSSSS....",
+    "....SSSSSSSSSSSSS....",
+    "....SSSSSSSSSSSSS....",
+    "....SSSSSSSSSSSSS....",
+    "....SSSSSSSSSSSSS....",
+    "....SSSSSSSSSSSSS....",
+    ".....................",
+    ".....................",
+    ".....................",
+    ".....................",
+    "....................."
+   ]
+  }
+ ],
+ "points": {
+  "bear_start": [
+   6,
+   7
+  ],
+  "wolf_start": [
+   14,
+   8
+  ],
+  "center": [
+   10,
+   7
+  ],
+  "crowd_0": [
+   4,
+   3
+  ],
+  "crowd_1": [
+   5,
+   3
+  ],
+  "crowd_2": [
+   7,
+   3
+  ],
+  "crowd_3": [
+   8,
+   3
+  ],
+  "crowd_4": [
+   9,
+   3
+  ],
+  "crowd_5": [
+   11,
+   3
+  ],
+  "crowd_6": [
+   12,
+   3
+  ],
+  "crowd_7": [
+   13,
+   3
+  ],
+  "crowd_8": [
+   15,
+   3
+  ],
+  "crowd_9": [
+   16,
+   3
+  ],
+  "crowd_10": [
+   4,
+   12
+  ],
+  "crowd_11": [
+   6,
+   12
+  ],
+  "crowd_12": [
+   7,
+   12
+  ],
+  "crowd_13": [
+   9,
+   12
+  ],
+  "crowd_14": [
+   10,
+   12
+  ],
+  "crowd_15": [
+   11,
+   12
+  ],
+  "crowd_16": [
+   13,
+   12
+  ],
+  "crowd_17": [
+   14,
+   12
+  ],
+  "crowd_18": [
+   16,
+   12
+  ],
+  "crowd_19": [
+   2,
+   6
+  ],
+  "crowd_20": [
+   2,
+   8
+  ],
+  "crowd_21": [
+   2,
+   9
+  ],
+  "crowd_22": [
+   18,
+   5
+  ],
+  "crowd_23": [
+   18,
+   7
+  ],
+  "crowd_24": [
+   18,
+   9
+  ]
+ },
+ "crowd_facing": {
+  "crowd_0": "down",
+  "crowd_1": "down",
+  "crowd_2": "down",
+  "crowd_3": "down",
+  "crowd_4": "down",
+  "crowd_5": "down",
+  "crowd_6": "down",
+  "crowd_7": "down",
+  "crowd_8": "down",
+  "crowd_9": "down",
+  "crowd_10": "up",
+  "crowd_11": "up",
+  "crowd_12": "up",
+  "crowd_13": "up",
+  "crowd_14": "up",
+  "crowd_15": "up",
+  "crowd_16": "up",
+  "crowd_17": "up",
+  "crowd_18": "up",
+  "crowd_19": "right",
+  "crowd_20": "right",
+  "crowd_21": "right",
+  "crowd_22": "left",
+  "crowd_23": "left",
+  "crowd_24": "left"
+ },
+ "props": [
+  {
+   "prop": "fort_wall",
+   "at": [
+    1,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    2,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    3,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    4,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    5,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    6,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    7,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    8,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    9,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    10,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    11,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    12,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    13,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    14,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    15,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    16,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    17,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    18,
+    0
+   ]
+  },
+  {
+   "prop": "fort_wall",
+   "at": [
+    19,
+    0
+   ]
+  },
+  {
+   "prop": "wall_banner",
+   "at": [
+    3,
+    0
+   ]
+  },
+  {
+   "prop": "wall_banner",
+   "at": [
+    10,
+    0
+   ]
+  },
+  {
+   "prop": "wall_banner",
+   "at": [
+    17,
+    0
+   ]
+  },
+  {
+   "prop": "wall_torch",
+   "at": [
+    6,
+    1
+   ]
+  },
+  {
+   "prop": "wall_torch",
+   "at": [
+    14,
+    1
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    4,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    4,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    5,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    5,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    6,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    6,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    7,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    7,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    8,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    8,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    9,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    9,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    10,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    10,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    11,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    11,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    12,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    12,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    13,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    13,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    14,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    14,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    15,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    15,
+    11
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    16,
+    4
+   ]
+  },
+  {
+   "prop": "fence_h",
+   "at": [
+    16,
+    11
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    5
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    5
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    6
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    6
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    7
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    7
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    8
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    8
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    9
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    9
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    3,
+    10
+   ]
+  },
+  {
+   "prop": "fence_v",
+   "at": [
+    17,
+    10
+   ]
+  },
+  {
+   "prop": "brazier",
+   "at": [
+    3,
+    4
+   ],
+   "light": "lit"
+  },
+  {
+   "prop": "brazier",
+   "at": [
+    17,
+    4
+   ],
+   "light": "lit"
+  },
+  {
+   "prop": "brazier",
+   "at": [
+    3,
+    11
+   ],
+   "light": "lit"
+  },
+  {
+   "prop": "brazier",
+   "at": [
+    17,
+    11
+   ],
+   "light": "lit"
+  },
+  {
+   "prop": "barrel",
+   "at": [
+    1,
+    13
+   ]
+  },
+  {
+   "prop": "barrel",
+   "at": [
+    19,
+    13
+   ]
+  },
+  {
+   "prop": "bone",
+   "at": [
+    9,
+    9
+   ]
+  },
+  {
+   "prop": "skull",
+   "at": [
+    13,
+    6
+   ]
+  }
+ ]
+}

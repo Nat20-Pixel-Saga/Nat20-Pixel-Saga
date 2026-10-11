@@ -497,6 +497,113 @@
       ],
       "verified": false,
       "ai": "brute"
+    },
+    "brown_bear": {
+      "name": "Brown Bear",
+      "size": "large",
+      "type": "beast",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 11,
+      "hp": 22,
+      "hp_formula": "3d10+6",
+      "speed": 40,
+      "abilities": {
+        "str": 17,
+        "dex": 12,
+        "con": 15,
+        "int": 2,
+        "wis": 13,
+        "cha": 7
+      },
+      "skills": {
+        "perception": 3
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 13
+      },
+      "traits": [],
+      "multiattack": [
+        "claw",
+        "bite"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d8+3",
+          "damage_type": "piercing"
+        },
+        {
+          "id": "claw",
+          "name": "Claw",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d4+3",
+          "damage_type": "slashing",
+          "on_hit": {
+            "condition": "prone",
+            "max_size": "large"
+          }
+        }
+      ],
+      "verified": true,
+      "verified_note": "Checked against the 2024 stat block on D&D Beyond, 10 Oct 2026",
+      "ai": "brute"
+    },
+    "dire_wolf": {
+      "name": "Dire Wolf",
+      "size": "large",
+      "type": "beast",
+      "cr": "1",
+      "xp": 200,
+      "proficiency": 2,
+      "ac": 14,
+      "hp": 22,
+      "hp_formula": "3d10+6",
+      "speed": 50,
+      "abilities": {
+        "str": 17,
+        "dex": 15,
+        "con": 15,
+        "int": 3,
+        "wis": 12,
+        "cha": 7
+      },
+      "skills": {
+        "perception": 5,
+        "stealth": 4
+      },
+      "senses": {
+        "darkvision": 60,
+        "passive_perception": 15
+      },
+      "traits": [
+        "pack_tactics"
+      ],
+      "attacks": [
+        {
+          "id": "bite",
+          "name": "Bite",
+          "type": "melee",
+          "to_hit": 5,
+          "reach_ft": 5,
+          "damage": "1d10+3",
+          "damage_type": "piercing",
+          "on_hit": {
+            "condition": "prone",
+            "max_size": "large"
+          }
+        }
+      ],
+      "verified": false,
+      "ai": "brute"
     }
   }
 }

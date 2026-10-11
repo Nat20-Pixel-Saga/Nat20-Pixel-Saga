@@ -137,7 +137,9 @@ class Assets:
         rc = spec.get("recolor")
         base = spec["src"]
         face = None
-        if self.path(f"{base}/Faceset.png").exists():
+        if spec.get("faceset"):          # portrait from another folder (pack-relative path)
+            face = self.image(spec["faceset"])
+        elif self.path(f"{base}/Faceset.png").exists():
             face = recolor(self.image(f"{base}/Faceset.png"), rc)
         if spec["type"] == "character":
             sheet = recolor(self.image(f"{base}/SpriteSheet.png"), rc)
