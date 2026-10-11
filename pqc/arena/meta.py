@@ -167,7 +167,11 @@ def short_texts(season: dict, ep: dict, res: dict, which: str, info: dict | None
                 "Real D&D 5e stat blocks, real seeded dice, no rerolls.\n\n" + CREDITS)
     else:
         hook = (info or {}).get("hook") or "Every roll is real"
-        title = f"{hook.capitalize()} | {base}"
+        small = {"a", "to", "of", "the", "in", "on", "vs", "it"}
+        words = hook.lower().split()
+        nice = " ".join(w if (i and w in small and i != len(words) - 1) else w[:1].upper() + w[1:]
+                        for i, w in enumerate(words))
+        title = f"{nice} | {base}"
         desc = (f"{base}: the full fight is on the channel (tap the link above).\n"
                 "Real D&D 5e stat blocks, real seeded dice, no rerolls.\n\n" + CREDITS)
     return title[:100], desc
