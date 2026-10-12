@@ -119,16 +119,41 @@ later run, once its episode is up. An episode must go up at least two hours befo
 its premiere in `production/schedule.json`; if that moment has passed, it and the
 ones after it take the next free weekday slots instead.
 
+## What goes up, and when
+
+One queue holds everything released and not on YouTube yet, in order of publish time: the
+story's episodes (each at its premiere in `production/schedule.json`) and their Shorts (the
+day after, 13:00), and every upload of **The Pit** (its trailer Short, video and two highlight
+Shorts per episode, with the times, titles, descriptions and tags of `s1_plan.json` in the
+`pit-s1` release). Each nightly run uploads the next `max_per_run` (2), so everything is
+scheduled days ahead of going public. **Run workflow → plan** shows the whole queue, run by run.
+
+Every run first checks that the playlists exist (and stops before uploading if one doesn't),
+then adds any recorded video missing from its playlist: story episodes to `playlist_id`,
+every Pit upload to the Pit's playlist.
+
+The Pit's 100-subscriber bonus (`e11-trailer`, `e11-video`, `e11-a`, `e11-b`) has no time in
+its plan, so it waits. To release it, give each a time (Paris) in the series' `times`, e.g.
+`{"e11-trailer": "2026-11-25 18:00", "e11-video": "2026-11-26 18:00", "e11-a": "2026-11-27 18:00", "e11-b": "2026-11-28 18:00"}`,
+and commit: the next runs upload them. An upload whose time is less than two hours away is
+never published late: the run log warns, and a new time in `times` puts it back in the queue.
+
+What the API cannot do, so it stays in YouTube Studio: a Short's **Related video** (the
+highlight Shorts' "tap the link above" points to it), **pinned comments** (the text is in
+`s1_youtube.md` and the Pit Control Room), and **end screens**.
+
 ## Settings (`production/youtube.json`)
 
 | Key | Meaning |
 | --- | --- |
 | `enabled` | Uploads happen only when true. |
+| `max_per_run` | Uploads per run (2): the nightly run, and the run after each new story release. |
+| `playlist_id` / `shorts_playlist_id` | The story's episodes / Shorts playlists (Shorts: none). |
+| `series` | Other shows uploaded from their GitHub release's plan file (`key`, `release`, `plan`, `timezone`, `playlist_id`, `times`). |
 | `schedule` | `timezone`, `time`, `weekdays` (0 = Monday), `min_lead_hours`. `null` publishes at once with `privacy`. |
 | `category_id` | 20 Gaming (default), 24 Entertainment, 1 Film & Animation. |
 | `made_for_kids` | false: the show has combat and peril; YouTube asks every channel to declare this. |
 | `contains_synthetic_media` | YouTube's "altered or synthetic content" label is for realistic footage that could mislead; a pixel-art fantasy cartoon doesn't need it. Set true if you prefer to label anyway. |
-| `max_per_run` | Upload cap per run. |
 
 Quota: each project gets 100 `videos.insert` calls a day in their own bucket, plus
 10,000 units for everything else (`thumbnails.set` costs 50). A daily show uses a

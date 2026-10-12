@@ -539,6 +539,80 @@ class TestYouTube(unittest.TestCase):
         self.assertFalse(cfg["made_for_kids"])
         self.assertGreaterEqual(cfg["schedule"]["min_lead_hours"], 1)
 
+    def test_config_uploads_a_couple_per_night_into_playlists(self):
+        cfg = load_json(ROOT / "production" / "youtube.json")
+        self.assertLessEqual(cfg["max_per_run"], 3)                # well inside YouTube's daily limits
+        self.assertTrue(cfg["playlist_id"])
+        pit = {s["key"]: s for s in cfg["series"]}["pit-s1"]
+        self.assertEqual((pit["release"], pit["plan"]), ("pit-s1", "s1_plan.json"))
+        self.assertTrue(pit["playlist_id"])
+
+    def _queue_fixture(self):
+        """Fake releases for the story (E1-E10, with Shorts) and The Pit, and a Pit plan: an upload
+        tomorrow, one two weeks out, a held bonus (no time) and one whose time has passed."""
+        def rel(tag, names):
+            return {"tag_name": tag, "assets": [{"id": i, "name": n} for i, n in enumerate(names)]}
+        rels = [rel(f"C01-E{n:03d}", [f"C01-E{n:03d}.mp4", f"C01-E{n:03d}-short.mp4", f"C01-E{n:03d}-thumbnail.png"])
+                for n in range(1, 11)]
+        rels.append(rel("untagged-1234", ["C01-E011.mp4"]))       # a draft that lost its tag: still its release
+        plan = [{"id": "e01-trailer", "when": "2026-10-20 18:00", "kind": "trailer short", "file": "pit-s1e01-trailer-short.mp4",
+                 "title": "Lion vs Bear? | The Pit", "description": "d"},
+                {"id": "e01-video", "when": "2026-10-21 18:00", "kind": "video", "file": "pit-s1e01.mp4",
+                 "thumbnail": "pit-s1e01-thumbnail.png", "title": "Lion vs Bear | The Pit #1", "description": "d",
+                 "tags": "dnd, the pit, lion"},
+                {"id": "e00-past", "when": "2026-10-01 18:00", "kind": "video", "file": "x.mp4", "title": "t", "description": "d"},
+                {"id": "e11-video", "when": None, "kind": "video", "file": "pit-s1e11.mp4", "title": "t", "description": "d"}]
+        pit_rel = rel("pit-s1", ["pit-s1e01-trailer-short.mp4", "pit-s1e01-trailer-short.cover.png", "pit-s1e01.mp4",
+                                 "pit-s1e01-thumbnail.png"])
+        ledger = {f"C01-E{n:03d}{s}": {"video_id": f"v{n}{s}", "publish_at": f"2026-10-{11 + n:02d}T19:00:00Z"}
+                  for n in range(1, 7) for s in ("", "-short")}
+        cfg = load_json(ROOT / "production" / "youtube.json")
+        return cfg, rels, {"pit-s1": (pit_rel, plan)}, ledger
+
+    def test_queue_runs_in_publish_order_a_couple_per_run(self):
+        import datetime as dt
+        cfg, rels, plans, ledger = self._queue_fixture()
+        now, notes = dt.datetime(2026, 10, 12, 10, tzinfo=dt.timezone.utc), []
+        queue = self.yt.build_queue(cfg, ledger, rels, now, notes, plans)
+        keys = [it["key"] for it in queue]
+        self.assertEqual(keys[:4], ["pit-s1-e01-trailer", "C01-E007", "C01-E007-short", "pit-s1-e01-video"])
+        self.assertNotIn("pit-s1-e11-video", keys)                 # the bonus waits for a time
+        self.assertNotIn("pit-s1-e00-past", keys)                  # never published late
+        self.assertTrue(any("e11-video: held" in n for n in notes) and any("e00-past" in n for n in notes))
+        whens = [it["when"] for it in queue]
+        self.assertEqual(whens, sorted(whens))
+        self.assertEqual([it["key"] for it in self.yt.this_run(queue, ledger, 2)], ["pit-s1-e01-trailer", "C01-E007"])
+        # A Short never goes up before its episode, even when its turn comes first.
+        story = [it for it in queue if it["key"].startswith("C01-E007")]
+        self.assertEqual([it["key"] for it in self.yt.this_run(story[::-1], ledger, 2)], ["C01-E007"])
+        # A time set in the config releases the bonus.
+        cfg["series"][0]["times"] = {"e11-video": "2026-11-25 18:00"}
+        self.assertIn("pit-s1-e11-video", [it["key"] for it in self.yt.build_queue(cfg, ledger, rels, now, [], plans)])
+
+    def test_series_uploads_carry_their_plan(self):
+        import datetime as dt
+        cfg, rels, plans, ledger = self._queue_fixture()
+        queue = self.yt.build_queue(cfg, ledger, rels, dt.datetime(2026, 10, 12, 10, tzinfo=dt.timezone.utc), [], plans)
+        by = {it["key"]: it for it in queue}
+        video, trailer, ep = by["pit-s1-e01-video"], by["pit-s1-e01-trailer"], by["C01-E007"]
+        self.assertEqual(video["meta"](ledger)["tags"], ["dnd", "the pit", "lion"])
+        self.assertEqual((video["thumbnail"], trailer["thumbnail"]), ("pit-s1e01-thumbnail.png", "pit-s1e01-trailer-short.cover.png"))
+        self.assertEqual(video["playlist"], cfg["series"][0]["playlist_id"])
+        self.assertEqual(ep["playlist"], cfg["playlist_id"])
+        self.assertEqual(self.yt.iso(trailer["when"]), "2026-10-20T16:00:00Z")      # 18:00 Paris (summer time)
+        body = self.yt.video_body(video["meta"](ledger), cfg, video["when"])
+        self.assertEqual((body["status"]["privacyStatus"], body["snippet"]["title"]), ("private", "Lion vs Bear | The Pit #1"))
+        self.assertEqual(self.yt.story_release(rels, "C01-E011")["tag_name"], "untagged-1234")   # found by its MP4
+        self.assertEqual(self.yt.released_episodes(rels)[-1], "C01-E010")
+
+    def test_playlists_hold_their_videos_in_order(self):
+        cfg, _, _, ledger = self._queue_fixture()
+        ledger["pit-s1-e01-video"] = {"video_id": "p2", "publish_at": "2026-10-21T16:00:00Z"}
+        ledger["pit-s1-e01-trailer"] = {"video_id": "p1", "publish_at": "2026-10-20T16:00:00Z"}
+        got = self.yt.playlist_members(cfg, ledger)
+        self.assertEqual(got[cfg["playlist_id"]], ["v1", "v2", "v3", "v4", "v5", "v6"])     # episodes, not Shorts
+        self.assertEqual(got[cfg["series"][0]["playlist_id"]], ["p1", "p2"])
+
     def test_slots_are_weekdays_at_local_time(self):
         import datetime as dt
         from zoneinfo import ZoneInfo

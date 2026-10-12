@@ -4,8 +4,8 @@
  "language": "en",
  "made_for_kids": false,
  "contains_synthetic_media": false,
- "playlist_id": null,
- "max_per_run": 5,
+ "playlist_id": "PLBj9AG5nPm0Q",
+ "max_per_run": 2,
  "schedule": {
   "timezone": "Europe/Paris",
   "time": "21:00",
@@ -18,6 +18,17 @@
   ],
   "min_lead_hours": 2
  },
- "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday.",
- "follow_release_schedule": true
+ "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday. max_per_run: uploads per run (the nightly run, and the run after each new story release); the queue goes in order of publish time across the story and every series. playlist_id: the story's episodes (shorts_playlist_id: its Shorts, if set). series: other shows whose uploads (times, titles, descriptions, tags) come from a plan file in their GitHub release; every upload goes to the series' playlist. An upload without a time in the plan (The Pit's 100-subscriber bonus, ids e11-trailer, e11-video, e11-a, e11-b) waits until `times` gives it one, e.g. {\"e11-trailer\": \"2026-11-25 18:00\"} (local time).",
+ "follow_release_schedule": true,
+ "series": [
+  {
+   "key": "pit-s1",
+   "name": "The Pit, Season 1: The Bronze Crown",
+   "release": "pit-s1",
+   "plan": "s1_plan.json",
+   "timezone": "Europe/Paris",
+   "playlist_id": "PLbziVo4Ic8Lc",
+   "times": {}
+  }
+ ]
 }
