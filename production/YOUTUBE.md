@@ -28,8 +28,7 @@ Episodes premiere **in order, one per weekday at 15:00 New York time** (21:00 in
 `production/youtube.json`). A backlog is spread over the following weekdays, so
 the ten episodes already released fill two weeks.
 
-Everything below is done once. Steps 1-6 take about 30 minutes; step 7 (Google's
-audit) can take a few weeks, and uploads stay locked as private until it passes.
+Everything below is done once and takes about 30 minutes.
 
 ## 1. Create the channel
 
@@ -87,11 +86,16 @@ Repository **Settings → Secrets and variables → Actions → New repository s
 channel's name. Then run it with **plan**: it lists the episodes it would upload
 and the premiere time of each, without uploading anything.
 
-## 7. Pass Google's audit (needed for public videos)
+## 7. Google's audit: no longer needed
 
-Videos uploaded through the API by a project that hasn't been audited are locked
-as private. Apply with the **YouTube API Services – Audit and Quota Extension
-Form**: <https://support.google.com/youtube/contact/yt_api_form>. What to say:
+Google used to lock videos uploaded through the API by an unaudited project as private.
+It no longer does: the `videos.insert` reference now says *"Videos uploaded from unverified
+API projects are not restricted to private viewing mode"*, and YouTube's API compliance team
+confirmed it when they closed this project's request (October 2026). Scheduled videos
+(`privacyStatus: private` with `publishAt`) go public on time.
+
+Only if a quota increase is ever needed, use the **YouTube API Services – Audit and Quota
+Extension Form**: <https://support.google.com/youtube/contact/yt_api_form>. What to say:
 
 * It's an internal tool that uploads videos **to its owner's own channel only**;
   no other users sign in.
@@ -101,16 +105,19 @@ Form**: <https://support.google.com/youtube/contact/yt_api_form>. What to say:
 * API calls: `videos.insert`, `thumbnails.set`, `playlistItems.insert`,
   `channels.list`, a handful a day.
 
-Until it's approved, publish by hand if you want to start: download the MP4 and
-thumbnail from the episode's GitHub release, upload in YouTube Studio, paste the
-release text as the description, and schedule it.
+To publish an episode by hand instead, download the MP4 and thumbnail from its
+GitHub release, upload in YouTube Studio, paste the release text as the
+description, schedule it, and **record** it (top of this page) so the uploader skips it.
 
 ## 8. Switch it on
 
 Edit `production/youtube.json`: `"enabled": true`, and `"playlist_id": "PL…"`
-from step 1. Commit. The next run (after the next release, every day at 20:37
+from step 1 (optional). Commit. The next run (after the next release, every day at 20:37
 UTC, or **Run workflow → upload**) uploads everything released and not yet on
-YouTube, up to five per run.
+YouTube, in episode order, up to five per run; each episode's Short follows on a
+later run, once its episode is up. An episode must go up at least two hours before
+its premiere in `production/schedule.json`; if that moment has passed, it and the
+ones after it take the next free weekday slots instead.
 
 ## Settings (`production/youtube.json`)
 

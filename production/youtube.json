@@ -1,5 +1,5 @@
 {
- "enabled": false,
+ "enabled": true,
  "category_id": "20",
  "language": "en",
  "made_for_kids": false,
@@ -18,6 +18,6 @@
   ],
   "min_lead_hours": 2
  },
- "notes": "enabled: turn on once the secrets are set and the API project has passed YouTube's audit (production/YOUTUBE.md). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday.",
+ "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday.",
  "follow_release_schedule": true
 }

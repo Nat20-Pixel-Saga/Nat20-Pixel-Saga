@@ -532,8 +532,12 @@ class TestYouTube(unittest.TestCase):
         cls.cfg["schedule"].update(timezone="Europe/Madrid", time="17:00", weekdays=[0, 1, 2, 3, 4])
         cls.cfg["follow_release_schedule"] = False
 
-    def test_config_starts_disabled(self):
-        self.assertFalse(self.cfg["enabled"])
+    def test_config_is_complete(self):
+        cfg = load_json(ROOT / "production" / "youtube.json")
+        self.assertIsInstance(cfg["enabled"], bool)
+        self.assertTrue(cfg["follow_release_schedule"])          # YouTube, wiki and release go public together
+        self.assertFalse(cfg["made_for_kids"])
+        self.assertGreaterEqual(cfg["schedule"]["min_lead_hours"], 1)
 
     def test_slots_are_weekdays_at_local_time(self):
         import datetime as dt
