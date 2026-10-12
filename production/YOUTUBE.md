@@ -129,7 +129,7 @@ Shorts per episode, with the times, titles, descriptions and tags of `s1_plan.js
 scheduled days ahead of going public. **Run workflow → plan** shows the whole queue, run by run.
 
 Every run first checks that the playlists exist (and stops before uploading if one doesn't),
-then adds any recorded video missing from its playlist: story episodes to `playlist_id`,
+then adds any recorded video missing from its playlist: story episodes and Shorts to *Campaign 1*,
 every Pit upload to the Pit's playlist.
 
 The Pit's 100-subscriber bonus (`e11-trailer`, `e11-video`, `e11-a`, `e11-b`) has no time in
@@ -148,7 +148,7 @@ highlight Shorts' "tap the link above" points to it), **pinned comments** (the t
 | --- | --- |
 | `enabled` | Uploads happen only when true. |
 | `max_per_run` | Uploads per run (2): the nightly run, and the run after each new story release. |
-| `playlist_id` / `shorts_playlist_id` | The story's episodes / Shorts playlists (Shorts: none). |
+| `playlist_id` / `shorts_playlist_id` | The story's episodes / Shorts playlists (both *Campaign 1*). |
 | `series` | Other shows uploaded from their GitHub release's plan file (`key`, `release`, `plan`, `timezone`, `playlist_id`, `times`). |
 | `schedule` | `timezone`, `time`, `weekdays` (0 = Monday), `min_lead_hours`. `null` publishes at once with `privacy`. |
 | `category_id` | 20 Gaming (default), 24 Entertainment, 1 Film & Animation. |

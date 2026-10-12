@@ -609,9 +609,12 @@ class TestYouTube(unittest.TestCase):
         cfg, _, _, ledger = self._queue_fixture()
         ledger["pit-s1-e01-video"] = {"video_id": "p2", "publish_at": "2026-10-21T16:00:00Z"}
         ledger["pit-s1-e01-trailer"] = {"video_id": "p1", "publish_at": "2026-10-20T16:00:00Z"}
+        cfg["shorts_playlist_id"] = None
         got = self.yt.playlist_members(cfg, ledger)
-        self.assertEqual(got[cfg["playlist_id"]], ["v1", "v2", "v3", "v4", "v5", "v6"])     # episodes, not Shorts
+        self.assertEqual(got[cfg["playlist_id"]], ["v1", "v2", "v3", "v4", "v5", "v6"])     # episodes only
         self.assertEqual(got[cfg["series"][0]["playlist_id"]], ["p1", "p2"])
+        cfg["shorts_playlist_id"] = cfg["playlist_id"]                                       # Campaign 1 holds both
+        self.assertEqual(self.yt.playlist_members(cfg, ledger)[cfg["playlist_id"]][:4], ["v1", "v1-short", "v2", "v2-short"])
 
     def test_slots_are_weekdays_at_local_time(self):
         import datetime as dt
