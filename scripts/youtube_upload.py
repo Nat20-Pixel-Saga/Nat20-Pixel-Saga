@@ -332,10 +332,18 @@ def cmd_check(cfg: dict | None = None) -> int:
               f"long uploads: {ch.get('status', {}).get('longUploadsStatus', '?')}")
     if not data.get("items"):
         print("Authorised, but this Google account has no YouTube channel yet.")
-    for pid, pl in check_playlists(token, cfg).items():
-        notice(f"Playlist {pid}: {pl['snippet']['title']!r} ({pl['status']['privacyStatus']}, "
-               f"{pl['contentDetails']['itemCount']} videos)")
     ledger = load_ledger()
+    for pid, pl in check_playlists(token, cfg).items():
+        have = playlist_videos(token, pid)
+        want = set(playlist_members(cfg, ledger).get(pid, []))
+        kinds = {}
+        for key, v in ledger.items():
+            if v["video_id"] in have:
+                kinds.setdefault("Shorts" if key.endswith(("-short", "-trailer", "-a", "-b")) else "videos", []).append(key)
+        notice(f"Playlist {pid}: {pl['snippet']['title']!r} ({pl['status']['privacyStatus']}, {len(have)} items): "
+               f"{len(want & have)} of the {len(want)} it should hold; recorded Shorts in it: "
+               f"{', '.join(sorted(kinds.get('Shorts', []))) or 'none'}; "
+               f"{len(have - {v['video_id'] for v in ledger.values()})} not in the ledger")
     ids = sorted({v["video_id"] for v in ledger.values()})
     items = {}
     for i in range(0, len(ids), 50):                # read-only: videos.list, 1 unit per call
@@ -512,7 +520,7 @@ def cmd_upload(cfg: dict) -> int:
     ledger, now, notes = load_ledger(), dt.datetime.now(dt.timezone.utc), []
     queue = build_queue(cfg, ledger, all_releases(), now, notes)
     for n in notes:
-        notice(n, "warning")
+        print(n, flush=True) if ": held" in n else notice(n, "warning")
     batch = this_run(queue, ledger, cfg.get("max_per_run", 2))
     token = access_token()
     check_playlists(token, cfg)                     # stops here, before uploading, if one is wrong
@@ -578,19 +586,23 @@ def check_playlists(token: str, cfg: dict) -> dict[str, dict]:
     return found
 
 
+def playlist_videos(token: str, pl: str) -> set[str]:
+    have, page = set(), ""
+    while True:
+        st, _, body = _request("GET", f"{API}/playlistItems?part=contentDetails&maxResults=50&playlistId={pl}"
+                                      + (f"&pageToken={page}" if page else ""), token)
+        data = _json(st, body, "Reading a playlist")
+        have |= {it["contentDetails"]["videoId"] for it in data.get("items", [])}
+        page = data.get("nextPageToken")
+        if not page:
+            return have
+
+
 def sync_playlists(token: str, cfg: dict, ledger: dict) -> None:
     """Add any recorded video missing from its playlist (videos uploaded by hand, or an earlier add
     that failed), in order, before new uploads are appended."""
     for pl, want in playlist_members(cfg, ledger).items():
-        have, page = set(), ""
-        while True:
-            st, _, body = _request("GET", f"{API}/playlistItems?part=contentDetails&maxResults=50&playlistId={pl}"
-                                          + (f"&pageToken={page}" if page else ""), token)
-            data = _json(st, body, "Reading a playlist")
-            have |= {it["contentDetails"]["videoId"] for it in data.get("items", [])}
-            page = data.get("nextPageToken")
-            if not page:
-                break
+        have = playlist_videos(token, pl)
         for vid in want:
             if vid not in have:
                 add_to_playlist(token, pl, vid)
