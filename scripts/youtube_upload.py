@@ -62,11 +62,13 @@ def save_ledger(ledger: dict) -> None:
     LEDGER.write_text(json.dumps(dict(sorted(ledger.items())), indent=1, ensure_ascii=False) + "\n")
 
 
-def notice(line: str, level: str = "notice") -> None:
-    """Print a line; in GitHub Actions also show it on the run's summary page."""
+def notice(line: str, level: str = "notice", title: str = "YouTube") -> None:
+    """Print a line (or several); in GitHub Actions also show it on the run's summary page
+    (one annotation, so a long report is not cut by the 10-per-step limit)."""
     print(line, flush=True)
     if os.environ.get("GITHUB_ACTIONS"):
-        print(f"::{level} title=YouTube::{line}", flush=True)
+        esc = line.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print(f"::{level} title={title}::{esc}", flush=True)
 
 
 # ---------------------------------------------------------------- schedule
@@ -216,7 +218,7 @@ def set_thumbnail(token: str, video_id: str, png: Path) -> None:
                            {"Content-Type": ctype})
     if st >= 400:
         # Custom thumbnails need a phone-verified channel; the upload itself is fine.
-        print(f"  thumbnail not set ({st}): {resp.decode(errors='replace')[:300]}", flush=True)
+        notice(f"{video_id}: thumbnail not set ({st}): {resp.decode(errors='replace')[:300]}", "warning")
 
 
 def add_to_playlist(token: str, playlist_id: str, video_id: str) -> None:
@@ -224,7 +226,7 @@ def add_to_playlist(token: str, playlist_id: str, video_id: str) -> None:
     st, _, resp = _request("POST", f"{API}/playlistItems?part=snippet", token, json.dumps(body).encode(),
                            {"Content-Type": "application/json"})
     if st >= 400:
-        print(f"  not added to playlist ({st}): {resp.decode(errors='replace')[:300]}", flush=True)
+        notice(f"{video_id}: not added to playlist {playlist_id} ({st}): {resp.decode(errors='replace')[:300]}", "warning")
 
 
 # ---------------------------------------------------------------- releases
@@ -332,18 +334,15 @@ def cmd_check(cfg: dict | None = None) -> int:
               f"long uploads: {ch.get('status', {}).get('longUploadsStatus', '?')}")
     if not data.get("items"):
         print("Authorised, but this Google account has no YouTube channel yet.")
-    ledger = load_ledger()
+    ledger, report = load_ledger(), []
     for pid, pl in check_playlists(token, cfg).items():
         have = playlist_videos(token, pid)
         want = set(playlist_members(cfg, ledger).get(pid, []))
-        kinds = {}
-        for key, v in ledger.items():
-            if v["video_id"] in have:
-                kinds.setdefault("Shorts" if key.endswith(("-short", "-trailer", "-a", "-b")) else "videos", []).append(key)
-        notice(f"Playlist {pid}: {pl['snippet']['title']!r} ({pl['status']['privacyStatus']}, {len(have)} items): "
-               f"{len(want & have)} of the {len(want)} it should hold; recorded Shorts in it: "
-               f"{', '.join(sorted(kinds.get('Shorts', []))) or 'none'}; "
-               f"{len(have - {v['video_id'] for v in ledger.values()})} not in the ledger")
+        missing = [k for k in sorted(ledger) if ledger[k]["video_id"] in want - have]
+        report.append(f"Playlist {pid}: {pl['snippet']['title']!r} ({pl['status']['privacyStatus']}, {len(have)} items): "
+                      f"holds {len(want & have)} of the {len(want)} recorded videos that belong in it"
+                      + (f" (missing: {', '.join(missing)}; the next upload run adds them)" if missing else "")
+                      + f"; {len(have - {v['video_id'] for v in ledger.values()})} other videos")
     ids = sorted({v["video_id"] for v in ledger.values()})
     items = {}
     for i in range(0, len(ids), 50):                # read-only: videos.list, 1 unit per call
@@ -351,7 +350,8 @@ def cmd_check(cfg: dict | None = None) -> int:
                                       f"&id={','.join(ids[i:i + 50])}", token)
         items.update({it["id"]: it for it in _json(st, body, "Reading the stored videos").get("items", [])})
     for key in sorted(ledger):
-        notice(describe_status(key, ledger[key], items.get(ledger[key]["video_id"])))
+        report.append(describe_status(key, ledger[key], items.get(ledger[key]["video_id"])))
+    notice("\n".join(report), title="YouTube status")
     return 0
 
 
