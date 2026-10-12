@@ -5,7 +5,7 @@
   "publish_at": "2026-10-12T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E001-short": {
   "video_id": "gLK9cBTj-yw",
@@ -13,7 +13,7 @@
   "publish_at": "2026-10-13T11:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E002": {
   "video_id": "o3ljT2s_Ir4",
@@ -21,7 +21,7 @@
   "publish_at": "2026-10-13T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E002-short": {
   "video_id": "4DHeoWjRbcw",
@@ -29,7 +29,7 @@
   "publish_at": "2026-10-14T11:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E003": {
   "video_id": "tEvGY4dRIV0",
@@ -37,7 +37,15 @@
   "publish_at": "2026-10-14T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
+ },
+ "C01-E003-short": {
+  "video_id": "zS2LGKn75gc",
+  "url": "https://www.youtube.com/shorts/zS2LGKn75gc",
+  "publish_at": "2026-10-15T11:00:00Z",
+  "linked": false,
+  "uploaded": "by hand",
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E004": {
   "video_id": "6xicfizROx8",
@@ -45,7 +53,7 @@
   "publish_at": "2026-10-15T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E005": {
   "video_id": "9HFYEocvHZY",
@@ -53,7 +61,7 @@
   "publish_at": "2026-10-16T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  },
  "C01-E006": {
   "video_id": "NFKLstF8qkE",
@@ -61,6 +69,6 @@
   "publish_at": "2026-10-19T19:00:00Z",
   "linked": false,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-12T10:11:15Z"
+  "refreshed_at": "2026-10-12T10:12:27Z"
  }
 }
