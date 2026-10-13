@@ -12,3 +12,4 @@
 
 - Inspect lanterns 30-45
 - Report findings to Lamplighters' Hall
+- Find out why Lantern 37 went dark
