@@ -13,3 +13,10 @@
 - Inspect lanterns 30-45
 - Report findings to Lamplighters' Hall
 - Find out why Lantern 37 went dark
+
+## Bring back the light of Lantern 37
+
+*Status: active*
+
+- Find out what happened to Lantern 37
+- Bring the light back to the south road (reward: free board at the Crooked Kettle)

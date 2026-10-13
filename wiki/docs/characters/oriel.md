@@ -16,6 +16,8 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Led the dusk devotion for the first time. *(C01-E001)*
 - Felt Lantern 37 go dark before anyone else knew. *(C01-E001)*
 - Healed Ilsevel, then knelt to bandage the goblin who had attacked them. *(C01-E001)*
+- Chose to feed the goblin rather than frighten him, and asked his real name. *(C01-E002)*
+- Agreed to go because it is her road and she felt the light go out. *(C01-E002)*
 
 ## Bonds
 
@@ -33,6 +35,12 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 > Then we held it together.  
 > - *C01-E001*
 
+> Brannoc. Stand behind me, please. Just stand. You're very good at standing.  
+> - *C01-E002*
+
+> He can be tied up and fed. Those aren't opposites.  
+> - *C01-E002*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md)

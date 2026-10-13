@@ -10,3 +10,4 @@ Dice.verify_log(seed, rolls)   # True if every roll matches
 | Episode | Seed | Attempt | Rolls | Log |
 | --- | --- | --- | --- | --- |
 | [C1E1 - Lantern Thirty-Seven](episodes/c01-e001.md) | `C01-E001-1` | 1 | 48 | [JSON](rolls/c01-e001.json) |
+| [C1E2 - The Goblin Who Talked](episodes/c01-e002.md) | `C01-E002-1` | 1 | 4 | [JSON](rolls/c01-e002.json) |

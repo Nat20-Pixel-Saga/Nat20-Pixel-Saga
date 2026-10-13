@@ -16,13 +16,15 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Goes by Tam Mossfoot; insists it is her real name. *(C01-E001)*
 - Nicknames: Big Man (Brannoc), Professor (Ilsevel), Sunshine (Oriel), Sprout (Wil). *(C01-E001)*
 - Gave back a honey cake, but not the coin. *(C01-E001)*
+- Wears a thin velvet thread on her wrist that she touches when people look at her too long; claims it is from her grandmother. *(C01-E002)*
+- Agreed to go because 'free' is her favourite word. *(C01-E002)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
 | [Brannoc](brannoc.md) | - | ●● |
-| [Ilsevel](ilsevel.md) | - | ●● |
+| [Ilsevel](ilsevel.md) | - | ●●● |
 | [Oriel](oriel.md) | ● | - |
 
 ## In their own words
@@ -32,4 +34,4 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md)
