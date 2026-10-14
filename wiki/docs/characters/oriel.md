@@ -18,6 +18,8 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Healed Ilsevel, then knelt to bandage the goblin who had attacked them. *(C01-E001)*
 - Chose to feed the goblin rather than frighten him, and asked his real name. *(C01-E002)*
 - Agreed to go because it is her road and she felt the light go out. *(C01-E002)*
+- Prayed at the dead lantern and, by her face, felt nothing answer; she said it was only cold. *(C01-E003)*
+- Hums hymns, badly, when she is nervous. *(C01-E003)*
 
 ## Bonds
 
@@ -41,6 +43,12 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 > He can be tied up and fed. Those aren't opposites.  
 > - *C01-E002*
 
+> It's cold. That's all. It's only cold.  
+> - *C01-E003*
+
+> Only when I'm nervous. Keep walking.  
+> - *C01-E003*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)

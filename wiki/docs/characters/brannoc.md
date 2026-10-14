@@ -18,6 +18,7 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Counts enemies before a fight and stands in front of everyone. *(C01-E001)*
 - Sat up all night watching the captive and counts things: shutters, arrows, goblins. *(C01-E002)*
 - Agreed to the job because 'Road's dark. Somebody has to hold it.' and put his letters off to do it. *(C01-E002)*
+- Leads from the front: 'Single file. Behind me.' *(C01-E003)*
 
 ## Bonds
 
@@ -38,6 +39,9 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > Ten words. Don't get used to it.  
 > - *C01-E002*
 
+> Ground's been walked to soup. Could be four. Could be forty.  
+> - *C01-E003*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)

@@ -37,3 +37,21 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Ten words. Don't get used to it.  
 > - **Brannoc**, [C1E2 - The Goblin Who Talked](episodes/c01-e002.md)
+
+> It's a story. Better than an answer. Lasts longer.  
+> - **Tamsin**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> I will write down that you are practised.  
+> - **Ilsevel**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> It was not broken. It was taken. Lifted out of its cradle like an egg from a nest.  
+> - **Ilsevel**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> It's cold. That's all. It's only cold.  
+> - **Oriel**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> Ground's been walked to soup. Could be four. Could be forty.  
+> - **Brannoc**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> Only when I'm nervous. Keep walking.  
+> - **Oriel**, [C1E3 - The Empty Housing](episodes/c01-e003.md)

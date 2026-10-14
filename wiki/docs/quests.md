@@ -20,3 +20,4 @@
 
 - Find out what happened to Lantern 37
 - Bring the light back to the south road (reward: free board at the Crooked Kettle)
+- Find the missing core of Lantern 37
