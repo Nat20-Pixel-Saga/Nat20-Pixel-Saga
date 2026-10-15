@@ -19,6 +19,8 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Sat up all night watching the captive and counts things: shutters, arrows, goblins. *(C01-E002)*
 - Agreed to the job because 'Road's dark. Somebody has to hold it.' and put his letters off to do it. *(C01-E002)*
 - Leads from the front: 'Single file. Behind me.' *(C01-E003)*
+- Counts things on watch: trees, movements. *(C01-E004)*
+- Killed two of the three wolves. *(C01-E004)*
 
 ## Bonds
 
@@ -42,6 +44,9 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > Ground's been walked to soup. Could be four. Could be forty.  
 > - *C01-E003*
 
+> Somebody has to.  
+> - *C01-E004*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)

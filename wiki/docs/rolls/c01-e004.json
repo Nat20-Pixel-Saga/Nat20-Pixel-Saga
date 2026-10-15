@@ -1,0 +1,1323 @@
+{
+ "seed": "C01-E004-1",
+ "rolls": [
+  {
+   "id": "r0000",
+   "index": 0,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c1: See through a familiar's eyes for the very first time, at night, from a branch, and make sense of what moves between",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 0,
+     "sides": 20,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 3,
+   "total": 8,
+   "advantage": "none",
+   "natural": 5,
+   "dc": 13,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0001",
+   "index": 1,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "brannoc",
+   "target": null,
+   "draws": [
+    {
+     "counter": 1,
+     "sides": 20,
+     "value": 16
+    }
+   ],
+   "rolls": [
+    16
+   ],
+   "kept": [
+    16
+   ],
+   "modifier": 1,
+   "total": 17,
+   "advantage": "none",
+   "natural": 16,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0002",
+   "index": 2,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 2,
+     "sides": 20,
+     "value": 17
+    }
+   ],
+   "rolls": [
+    17
+   ],
+   "kept": [
+    17
+   ],
+   "modifier": 0,
+   "total": 17,
+   "advantage": "none",
+   "natural": 17,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0003",
+   "index": 3,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 3,
+     "sides": 20,
+     "value": 15
+    }
+   ],
+   "rolls": [
+    15
+   ],
+   "kept": [
+    15
+   ],
+   "modifier": 2,
+   "total": 17,
+   "advantage": "none",
+   "natural": 15,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0004",
+   "index": 4,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "tamsin",
+   "target": null,
+   "draws": [
+    {
+     "counter": 4,
+     "sides": 20,
+     "value": 7
+    }
+   ],
+   "rolls": [
+    7
+   ],
+   "kept": [
+    7
+   ],
+   "modifier": 5,
+   "total": 12,
+   "advantage": "none",
+   "natural": 7,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0005",
+   "index": 5,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "wolf-1",
+   "target": null,
+   "draws": [
+    {
+     "counter": 5,
+     "sides": 20,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 2,
+   "total": 4,
+   "advantage": "none",
+   "natural": 2,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0006",
+   "index": 6,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "wolf-2",
+   "target": null,
+   "draws": [
+    {
+     "counter": 6,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 2,
+   "total": 11,
+   "advantage": "none",
+   "natural": 9,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0007",
+   "index": 7,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "initiative",
+   "actor": "wolf-3",
+   "target": null,
+   "draws": [
+    {
+     "counter": 7,
+     "sides": 20,
+     "value": 20
+    }
+   ],
+   "rolls": [
+    20
+   ],
+   "kept": [
+    20
+   ],
+   "modifier": 2,
+   "total": 22,
+   "advantage": "none",
+   "natural": 20,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0008",
+   "index": 8,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Bite",
+   "actor": "wolf-3",
+   "target": "ilsevel",
+   "draws": [
+    {
+     "counter": 8,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 4,
+   "total": 13,
+   "advantage": "none",
+   "natural": 9,
+   "dc": 17,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "target cast Shield"
+   ]
+  },
+  {
+   "id": "r0009",
+   "index": 9,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "spell attack: Shocking Grasp",
+   "actor": "ilsevel",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 9,
+     "sides": 20,
+     "value": 1
+    }
+   ],
+   "rolls": [
+    1
+   ],
+   "kept": [
+    1
+   ],
+   "modifier": 5,
+   "total": 6,
+   "advantage": "none",
+   "natural": 1,
+   "dc": 12,
+   "success": false,
+   "critical": false,
+   "fumble": true,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0010",
+   "index": 10,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 10,
+     "sides": 20,
+     "value": 14
+    }
+   ],
+   "rolls": [
+    14
+   ],
+   "kept": [
+    14
+   ],
+   "modifier": 5,
+   "total": 19,
+   "advantage": "none",
+   "natural": 14,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0011",
+   "index": 11,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 11,
+     "sides": 8,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 3,
+   "total": 5,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "kept (Savage Attacker)"
+   ]
+  },
+  {
+   "id": "r0012",
+   "index": 12,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword (Savage Attacker)",
+   "actor": "brannoc",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 12,
+     "sides": 8,
+     "value": 1
+    }
+   ],
+   "rolls": [
+    1
+   ],
+   "kept": [
+    1
+   ],
+   "modifier": 3,
+   "total": 4,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0013",
+   "index": 13,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Shortsword",
+   "actor": "tamsin",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 13,
+     "sides": 20,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 5,
+   "total": 8,
+   "advantage": "none",
+   "natural": 3,
+   "dc": 12,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0014",
+   "index": 14,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "2d20kh1",
+   "purpose": "attack: Bite",
+   "actor": "wolf-2",
+   "target": "ilsevel",
+   "draws": [
+    {
+     "counter": 14,
+     "sides": 20,
+     "value": 3
+    },
+    {
+     "counter": 15,
+     "sides": 20,
+     "value": 9
+    }
+   ],
+   "rolls": [
+    3,
+    9
+   ],
+   "kept": [
+    9
+   ],
+   "modifier": 4,
+   "total": 13,
+   "advantage": "advantage",
+   "natural": 9,
+   "dc": 17,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "+pack tactics",
+    "target cast Shield"
+   ]
+  },
+  {
+   "id": "r0015",
+   "index": 15,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "2d20kh1",
+   "purpose": "attack: Bite",
+   "actor": "wolf-1",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 16,
+     "sides": 20,
+     "value": 6
+    },
+    {
+     "counter": 17,
+     "sides": 20,
+     "value": 20
+    }
+   ],
+   "rolls": [
+    6,
+    20
+   ],
+   "kept": [
+    20
+   ],
+   "modifier": 4,
+   "total": 24,
+   "advantage": "advantage",
+   "natural": 20,
+   "dc": 14,
+   "success": true,
+   "critical": true,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "+pack tactics"
+   ]
+  },
+  {
+   "id": "r0016",
+   "index": 16,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "2d6+2",
+   "purpose": "damage: Bite",
+   "actor": "wolf-1",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 18,
+     "sides": 6,
+     "value": 5
+    },
+    {
+     "counter": 19,
+     "sides": 6,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    5,
+    3
+   ],
+   "kept": [
+    5,
+    3
+   ],
+   "modifier": 2,
+   "total": 10,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0017",
+   "index": 17,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Bite",
+   "actor": "wolf-3",
+   "target": "ilsevel",
+   "draws": [
+    {
+     "counter": 20,
+     "sides": 20,
+     "value": 14
+    }
+   ],
+   "rolls": [
+    14
+   ],
+   "kept": [
+    14
+   ],
+   "modifier": 4,
+   "total": 18,
+   "advantage": "none",
+   "natural": 14,
+   "dc": 17,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "+pack tactics",
+    "-sapped"
+   ]
+  },
+  {
+   "id": "r0018",
+   "index": 18,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d6+2",
+   "purpose": "damage: Bite",
+   "actor": "wolf-3",
+   "target": "ilsevel",
+   "draws": [
+    {
+     "counter": 21,
+     "sides": 6,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 2,
+   "total": 4,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0019",
+   "index": 19,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "spell attack: Shocking Grasp",
+   "actor": "ilsevel",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 22,
+     "sides": 20,
+     "value": 13
+    }
+   ],
+   "rolls": [
+    13
+   ],
+   "kept": [
+    13
+   ],
+   "modifier": 7,
+   "total": 20,
+   "advantage": "none",
+   "natural": 13,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "bless +2 (r0020)"
+   ]
+  },
+  {
+   "id": "r0020",
+   "index": 20,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d4",
+   "purpose": "bless",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 23,
+     "sides": 4,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 0,
+   "total": 2,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0021",
+   "index": 21,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8",
+   "purpose": "damage: Shocking Grasp",
+   "actor": "ilsevel",
+   "target": "wolf-3",
+   "draws": [
+    {
+     "counter": 24,
+     "sides": 8,
+     "value": 7
+    }
+   ],
+   "rolls": [
+    7
+   ],
+   "kept": [
+    7
+   ],
+   "modifier": 0,
+   "total": 7,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0022",
+   "index": 22,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-2",
+   "draws": [
+    {
+     "counter": 25,
+     "sides": 20,
+     "value": 20
+    }
+   ],
+   "rolls": [
+    20
+   ],
+   "kept": [
+    20
+   ],
+   "modifier": 9,
+   "total": 29,
+   "advantage": "none",
+   "natural": 20,
+   "dc": 12,
+   "success": true,
+   "critical": true,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "bless +4 (r0023)"
+   ]
+  },
+  {
+   "id": "r0023",
+   "index": 23,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d4",
+   "purpose": "bless",
+   "actor": "brannoc",
+   "target": null,
+   "draws": [
+    {
+     "counter": 26,
+     "sides": 4,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    4
+   ],
+   "kept": [
+    4
+   ],
+   "modifier": 0,
+   "total": 4,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0024",
+   "index": 24,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "2d8+3",
+   "purpose": "damage: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-2",
+   "draws": [
+    {
+     "counter": 27,
+     "sides": 8,
+     "value": 7
+    },
+    {
+     "counter": 28,
+     "sides": 8,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    7,
+    2
+   ],
+   "kept": [
+    7,
+    2
+   ],
+   "modifier": 3,
+   "total": 12,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "kept (Savage Attacker)"
+   ]
+  },
+  {
+   "id": "r0025",
+   "index": 25,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "2d8+3",
+   "purpose": "damage: Longsword (Savage Attacker)",
+   "actor": "brannoc",
+   "target": "wolf-2",
+   "draws": [
+    {
+     "counter": 29,
+     "sides": 8,
+     "value": 5
+    },
+    {
+     "counter": 30,
+     "sides": 8,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    5,
+    4
+   ],
+   "kept": [
+    5,
+    4
+   ],
+   "modifier": 3,
+   "total": 12,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0026",
+   "index": 26,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "2d4",
+   "purpose": "healing: Healing Word",
+   "actor": "oriel",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 31,
+     "sides": 4,
+     "value": 1
+    },
+    {
+     "counter": 32,
+     "sides": 4,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    1,
+    3
+   ],
+   "kept": [
+    1,
+    3
+   ],
+   "modifier": 3,
+   "total": 7,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0027",
+   "index": 27,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8",
+   "purpose": "damage: Sacred Flame",
+   "actor": "oriel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 33,
+     "sides": 8,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 0,
+   "total": 5,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0028",
+   "index": 28,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "Sacred Flame save",
+   "actor": "wolf-1",
+   "target": "oriel",
+   "draws": [
+    {
+     "counter": 34,
+     "sides": 20,
+     "value": 10
+    }
+   ],
+   "rolls": [
+    10
+   ],
+   "kept": [
+    10
+   ],
+   "modifier": 2,
+   "total": 12,
+   "advantage": "none",
+   "natural": 10,
+   "dc": 13,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0029",
+   "index": 29,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Shortsword",
+   "actor": "tamsin",
+   "target": "wolf-1",
+   "draws": [
+    {
+     "counter": 35,
+     "sides": 20,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 5,
+   "total": 7,
+   "advantage": "none",
+   "natural": 2,
+   "dc": 12,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0030",
+   "index": 30,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Bite",
+   "actor": "wolf-1",
+   "target": "tamsin",
+   "draws": [
+    {
+     "counter": 36,
+     "sides": 20,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 4,
+   "total": 6,
+   "advantage": "none",
+   "natural": 2,
+   "dc": 14,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0031",
+   "index": 31,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "spell attack: Fire Bolt",
+   "actor": "ilsevel",
+   "target": "wolf-1",
+   "draws": [
+    {
+     "counter": 37,
+     "sides": 20,
+     "value": 2
+    }
+   ],
+   "rolls": [
+    2
+   ],
+   "kept": [
+    2
+   ],
+   "modifier": 8,
+   "total": 10,
+   "advantage": "none",
+   "natural": 2,
+   "dc": 12,
+   "success": false,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "bless +3 (r0032)"
+   ]
+  },
+  {
+   "id": "r0032",
+   "index": 32,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d4",
+   "purpose": "bless",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 38,
+     "sides": 4,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 0,
+   "total": 3,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0033",
+   "index": 33,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "attack: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-1",
+   "draws": [
+    {
+     "counter": 39,
+     "sides": 20,
+     "value": 4
+    }
+   ],
+   "rolls": [
+    4
+   ],
+   "kept": [
+    4
+   ],
+   "modifier": 8,
+   "total": 12,
+   "advantage": "none",
+   "natural": 4,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "bless +3 (r0034)"
+   ]
+  },
+  {
+   "id": "r0034",
+   "index": 34,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d4",
+   "purpose": "bless",
+   "actor": "brannoc",
+   "target": null,
+   "draws": [
+    {
+     "counter": 40,
+     "sides": 4,
+     "value": 3
+    }
+   ],
+   "rolls": [
+    3
+   ],
+   "kept": [
+    3
+   ],
+   "modifier": 0,
+   "total": 3,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0035",
+   "index": 35,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword",
+   "actor": "brannoc",
+   "target": "wolf-1",
+   "draws": [
+    {
+     "counter": 41,
+     "sides": 8,
+     "value": 5
+    }
+   ],
+   "rolls": [
+    5
+   ],
+   "kept": [
+    5
+   ],
+   "modifier": 3,
+   "total": 8,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  },
+  {
+   "id": "r0036",
+   "index": 36,
+   "seed": "C01-E004-1",
+   "kind": "dice",
+   "notation": "1d8+3",
+   "purpose": "damage: Longsword (Savage Attacker)",
+   "actor": "brannoc",
+   "target": "wolf-1",
+   "draws": [
+    {
+     "counter": 42,
+     "sides": 8,
+     "value": 7
+    }
+   ],
+   "rolls": [
+    7
+   ],
+   "kept": [
+    7
+   ],
+   "modifier": 3,
+   "total": 10,
+   "advantage": "none",
+   "natural": null,
+   "dc": null,
+   "success": null,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": [
+    "kept (Savage Attacker)"
+   ]
+  },
+  {
+   "id": "r0037",
+   "index": 37,
+   "seed": "C01-E004-1",
+   "kind": "d20",
+   "notation": "1d20",
+   "purpose": "c2: Read why wolves would hunt armed people a mile from a road: their condition, their fur, their wounds.",
+   "actor": "ilsevel",
+   "target": null,
+   "draws": [
+    {
+     "counter": 43,
+     "sides": 20,
+     "value": 11
+    }
+   ],
+   "rolls": [
+    11
+   ],
+   "kept": [
+    11
+   ],
+   "modifier": 3,
+   "total": 14,
+   "advantage": "none",
+   "natural": 11,
+   "dc": 12,
+   "success": true,
+   "critical": false,
+   "fumble": false,
+   "rerolled": [],
+   "notes": []
+  }
+ ]
+}

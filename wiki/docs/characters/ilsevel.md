@@ -8,7 +8,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 | --- | --- |
 | **Species / class** | Elf Wizard |
 | **Level** | 1 |
-| **Hit points** | 8 / 8 |
+| **Hit points** | 4 / 8 |
 | **Armour class** | 12 |
 
 ## What we know
@@ -20,6 +20,8 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Going because inspecting the lanterns is the task her Order gave her and the ledger for Lantern 37 is wrong. *(C01-E002)*
 - Cites Halbrecht's Lantern Theory, the 1002 edition. *(C01-E003)*
 - Noted that Tamsin is 'practised'. *(C01-E003)*
+- Called her familiar Pell for the first time, and was more moved by it than she let anyone see. *(C01-E004)*
+- Seeing through Pell's eyes does not come easily to her yet. *(C01-E004)*
 
 ## Bonds
 
@@ -43,6 +45,15 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 > It was not broken. It was taken. Lifted out of its cradle like an egg from a nest.  
 > - *C01-E003*
 
+> Hello. I have read about familiars for thirty years. You are smaller than the diagrams.  
+> - *C01-E004*
+
+> Pell says you smell of cards and onions. I am paraphrasing. He was ruder.  
+> - *C01-E004*
+
+> Pell says he will go first. He says he is the only one of us with any sense.  
+> - *C01-E004*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)

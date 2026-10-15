@@ -55,3 +55,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Only when I'm nervous. Keep walking.  
 > - **Oriel**, [C1E3 - The Empty Housing](episodes/c01-e003.md)
+
+> Somebody has to.  
+> - **Brannoc**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)
+
+> Hello. I have read about familiars for thirty years. You are smaller than the diagrams.  
+> - **Ilsevel**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)
+
+> Pell says you smell of cards and onions. I am paraphrasing. He was ruder.  
+> - **Ilsevel**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)
+
+> You went down and didn't get up. Humour me.  
+> - **Oriel**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)
+
+> Pell says he will go first. He says he is the only one of us with any sense.  
+> - **Ilsevel**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)

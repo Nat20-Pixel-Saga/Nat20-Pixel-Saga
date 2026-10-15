@@ -8,7 +8,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 | --- | --- |
 | **Species / class** | Halfling Rogue |
 | **Level** | 1 |
-| **Hit points** | 10 / 10 |
+| **Hit points** | 7 / 10 |
 | **Armour class** | 14 |
 
 ## What we know
@@ -20,6 +20,8 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Agreed to go because 'free' is her favourite word. *(C01-E002)*
 - Can open a frozen lock with a hairpin, and reads lock scratches like handwriting. *(C01-E003)*
 - Answers personal questions with tall tales: she claims to have walked the width of the Vael for a bet. *(C01-E003)*
+- Was knocked out by a wolf's bite and brought back by Oriel; claims she once lost an argument with a duke's hound. *(C01-E004)*
+- Adores Pell, who does not return the feeling. *(C01-E004)*
 
 ## Bonds
 
@@ -39,4 +41,4 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)

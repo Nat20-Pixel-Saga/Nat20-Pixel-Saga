@@ -20,6 +20,7 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Agreed to go because it is her road and she felt the light go out. *(C01-E002)*
 - Prayed at the dead lantern and, by her face, felt nothing answer; she said it was only cold. *(C01-E003)*
 - Hums hymns, badly, when she is nervous. *(C01-E003)*
+- Blessed the party and brought Tamsin back with Healing Word in the wolf fight. *(C01-E004)*
 
 ## Bonds
 
@@ -49,6 +50,9 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 > Only when I'm nervous. Keep walking.  
 > - *C01-E003*
 
+> You went down and didn't get up. Humour me.  
+> - *C01-E004*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)

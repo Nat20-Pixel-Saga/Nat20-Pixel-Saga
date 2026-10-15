@@ -4,4 +4,4 @@
 - **[Shrine of the Open Hand](shrine-of-the-open-hand.md)** - Shrine to Aurelan on the north-east of the square, kept by Father Tobin. Holds a dusk devotion every evening.
 - **[The Crooked Kettle](crooked-kettle.md)** - Maddy Fenn's inn on the west side of the square. Four shutters were broken in the raid. Its cellar now holds Rusk, the captured goblin.
 - **[The Lantern Road](lantern-road.md)** - The old road south from Brindle Cross toward Fort Harrow, one lantern to every mile. A milestone a mile out reads 'Brindle Cross 1 mile, Fort Harrow 39'. Around dead Lantern 37 no birds sing and the grass has turned grey.
-- **[Thornpike Woods](thornpike-woods.md)** - Dark pine woods east of the Lantern Road. A trampled goblin trail leaves the road at Lantern 37 and runs into the trees.
+- **[Thornpike Woods](thornpike-woods.md)** - Dark pine woods east of the Lantern Road. The goblin trail forks at a great dead stump: north to a clearing ringed with pale birches, and on east and south-west. Starving wolves hunt there.
