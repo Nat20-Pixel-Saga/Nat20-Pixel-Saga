@@ -21,6 +21,8 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Leads from the front: 'Single file. Behind me.' *(C01-E003)*
 - Counts things on watch: trees, movements. *(C01-E004)*
 - Killed two of the three wolves. *(C01-E004)*
+- Wanted to wait for dawn, then went along with Tamsin's plan; killed two of the three goblins. *(C01-E005)*
+- Takes first watch without being asked. *(C01-E005)*
 
 ## Bonds
 
@@ -47,6 +49,9 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > Somebody has to.  
 > - *C01-E004*
 
+> Then we sleep there. I'll take first watch.  
+> - *C01-E005*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)

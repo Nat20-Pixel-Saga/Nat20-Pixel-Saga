@@ -13,3 +13,4 @@ Dice.verify_log(seed, rolls)   # True if every roll matches
 | [C1E2 - The Goblin Who Talked](episodes/c01-e002.md) | `C01-E002-1` | 1 | 4 | [JSON](rolls/c01-e002.json) |
 | [C1E3 - The Empty Housing](episodes/c01-e003.md) | `C01-E003-1` | 1 | 3 | [JSON](rolls/c01-e003.json) |
 | [C1E4 - Wolves at the Birches](episodes/c01-e004.md) | `C01-E004-1` | 1 | 38 | [JSON](rolls/c01-e004.json) |
+| [C1E5 - The Scout Camp](episodes/c01-e005.md) | `C01-E005-1` | 1 | 32 | [JSON](rolls/c01-e005.json) |

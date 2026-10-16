@@ -13,6 +13,7 @@
 - Inspect lanterns 30-45
 - Report findings to Lamplighters' Hall
 - Find out why Lantern 37 went dark
+- Find out where the stolen lantern-cores are taken
 
 ## Bring back the light of Lantern 37
 

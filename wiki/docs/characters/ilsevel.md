@@ -22,6 +22,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Noted that Tamsin is 'practised'. *(C01-E003)*
 - Called her familiar Pell for the first time, and was more moved by it than she let anyone see. *(C01-E004)*
 - Seeing through Pell's eyes does not come easily to her yet. *(C01-E004)*
+- Counts what nobody else has written down: three lanterns dark that no ledger records. *(C01-E005)*
 
 ## Bonds
 
@@ -54,6 +55,9 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 > Pell says he will go first. He says he is the only one of us with any sense.  
 > - *C01-E004*
 
+> A core is always warm. This is like holding a stone from the bottom of a well.  
+> - *C01-E005*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)

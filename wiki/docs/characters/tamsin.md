@@ -8,7 +8,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 | --- | --- |
 | **Species / class** | Halfling Rogue |
 | **Level** | 1 |
-| **Hit points** | 7 / 10 |
+| **Hit points** | 9 / 10 |
 | **Armour class** | 14 |
 
 ## What we know
@@ -22,6 +22,8 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Answers personal questions with tall tales: she claims to have walked the width of the Vael for a bet. *(C01-E003)*
 - Was knocked out by a wolf's bite and brought back by Oriel; claims she once lost an argument with a duke's hound. *(C01-E004)*
 - Adores Pell, who does not return the feeling. *(C01-E004)*
+- Talked her way into a goblin camp alone; admits she is 'a little bit proud' of the lie. *(C01-E005)*
+- Always carries a healing potion: 'old habit'. *(C01-E005)*
 
 ## Bonds
 
@@ -39,6 +41,12 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 > It's a story. Better than an answer. Lasts longer.  
 > - *C01-E003*
 
+> Alone's the only way anyone believes a story. You lot creep up to the bushes and look large.  
+> - *C01-E005*
+
+> Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?  
+> - *C01-E005*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)

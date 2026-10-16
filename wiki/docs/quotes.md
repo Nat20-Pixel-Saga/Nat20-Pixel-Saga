@@ -70,3 +70,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Pell says he will go first. He says he is the only one of us with any sense.  
 > - **Ilsevel**, [C1E4 - Wolves at the Birches](episodes/c01-e004.md)
+
+> Alone's the only way anyone believes a story. You lot creep up to the bushes and look large.  
+> - **Tamsin**, [C1E5 - The Scout Camp](episodes/c01-e005.md)
+
+> Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?  
+> - **Tamsin**, [C1E5 - The Scout Camp](episodes/c01-e005.md)
+
+> Why boss send a dwarf?  
+> - **Goblin-2**, [C1E5 - The Scout Camp](episodes/c01-e005.md)
+
+> A core is always warm. This is like holding a stone from the bottom of a well.  
+> - **Ilsevel**, [C1E5 - The Scout Camp](episodes/c01-e005.md)
+
+> Then we sleep there. I'll take first watch.  
+> - **Brannoc**, [C1E5 - The Scout Camp](episodes/c01-e005.md)

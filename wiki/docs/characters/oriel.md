@@ -21,6 +21,7 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Prayed at the dead lantern and, by her face, felt nothing answer; she said it was only cold. *(C01-E003)*
 - Hums hymns, badly, when she is nervous. *(C01-E003)*
 - Blessed the party and brought Tamsin back with Healing Word in the wolf fight. *(C01-E004)*
+- Could not bring herself to touch the dead cores. *(C01-E005)*
 
 ## Bonds
 
@@ -55,4 +56,4 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)
