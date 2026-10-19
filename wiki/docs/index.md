@@ -5,11 +5,11 @@ A pixel-art fantasy story played by 5e rules, one episode every weekday. Four st
 **Watch on YouTube: [@Nat20px](https://www.youtube.com/@Nat20px)**
 
 !!! info "Next episode"
-    **Episode 6** premieres on YouTube on **Monday 19 October 2026, 21:00 (Paris time)**. Watch it on [@Nat20px](https://www.youtube.com/@Nat20px).
+    **Episode 7** premieres on YouTube on **Tuesday 20 October 2026, 21:00 (Paris time)**. Watch it on [@Nat20px](https://www.youtube.com/@Nat20px).
 
-## Latest episode: [C1E5 - The Scout Camp](episodes/c01-e005.md)
+## Latest episode: [C1E6 - First Watch](episodes/c01-e006.md)
 
-Later on the night of 4 Emberfall the party found a goblin scout camp east along the trail. With Ilsevel hurt and no spells or prayers left but cantrips, Tamsin walked into the firelight alone and claimed the boss had sent her to collect the stones early; the goblins believed her long enough to let slip that the cart leaves at dawn and the boss counts every stone. When a goblin spotted Brannoc, the party took the camp in two rounds. The cart held three lantern-cores, all dead and cold, and the party took them to look for a safer place to sleep.
+In the small hours of 5 Emberfall the party made its first camp together in a hollow south of the goblin trail, beside an old stone Ilsevel identified as a Lamplighter way-marker from the road that ran there before the Lantern Road. Oriel suggested trying to rekindle the dead cores at Father Tobin's altar. When Tamsin sat against the way-marker, the iron key at her throat hummed and she moved away without a word. Tamsin read Ilsevel's notebook while the elf was in trance and put it back with a sprig of heather. On first watch Oriel saw an anvil under the grey paint of Brannoc's shield, and Brannoc, seeing that she fears the dark, gave her his lantern.
 
 ## The party
 
@@ -18,4 +18,4 @@ Later on the night of 4 Emberfall the party found a goblin scout camp east along
 - **[Tamsin](characters/tamsin.md)** - The Card Player. Level 1 halfling rogue.
 - **[Oriel](characters/oriel.md)** - The Acolyte. Level 1 human cleric.
 
-*In-world date: 4 Emberfall 1047 AK. Episodes so far: 5.*
+*In-world date: 5 Emberfall 1047 AK. Episodes so far: 6.*

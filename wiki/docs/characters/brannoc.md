@@ -23,6 +23,9 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Killed two of the three wolves. *(C01-E004)*
 - Wanted to wait for dawn, then went along with Tamsin's plan; killed two of the three goblins. *(C01-E005)*
 - Takes first watch without being asked. *(C01-E005)*
+- Counts things because 'counting helps'. *(C01-E006)*
+- His shield is painted over an anvil design he will not talk about. *(C01-E006)*
+- Gave Oriel his lantern and told her not to thank him. *(C01-E006)*
 
 ## Bonds
 
@@ -30,7 +33,7 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 | --- | --- | --- |
 | [Ilsevel](ilsevel.md) | ● | ● |
 | [Tamsin](tamsin.md) | - | ●● |
-| [Oriel](oriel.md) | ●●● | - |
+| [Oriel](oriel.md) | ●●●● | - |
 
 ## In their own words
 
@@ -52,6 +55,12 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > Then we sleep there. I'll take first watch.  
 > - *C01-E005*
 
+> ...Counting.  
+> - *C01-E006*
+
+> I see in the dark. You keep it.  
+> - *C01-E006*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)

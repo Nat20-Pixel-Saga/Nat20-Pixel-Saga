@@ -8,7 +8,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 | --- | --- |
 | **Species / class** | Elf Wizard |
 | **Level** | 1 |
-| **Hit points** | 4 / 8 |
+| **Hit points** | 8 / 8 |
 | **Armour class** | 12 |
 
 ## What we know
@@ -23,25 +23,18 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Called her familiar Pell for the first time, and was more moved by it than she let anyone see. *(C01-E004)*
 - Seeing through Pell's eyes does not come easily to her yet. *(C01-E004)*
 - Counts what nobody else has written down: three lanterns dark that no ledger records. *(C01-E005)*
+- Rests in an elven trance rather than sleeping. *(C01-E006)*
+- Is a Lamplighter of the fourth rank; rekindling a core is second-rank work she has never been allowed to try. *(C01-E006)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
 | [Brannoc](brannoc.md) | ● | ● |
-| [Tamsin](tamsin.md) | ● | ●●● |
+| [Tamsin](tamsin.md) | ●● | ●●● |
 | [Oriel](oriel.md) | ● | ● |
 
 ## In their own words
-
-> I am... technically fine. I would like it recorded that I was stabbed. Twice.  
-> - *C01-E001*
-
-> I do not believe a word of that. Technically, you have been in trouble since the moment I met you.  
-> - *C01-E002*
-
-> I will write down that you are practised.  
-> - *C01-E003*
 
 > It was not broken. It was taken. Lifted out of its cradle like an egg from a nest.  
 > - *C01-E003*
@@ -58,6 +51,15 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 > A core is always warm. This is like holding a stone from the bottom of a well.  
 > - *C01-E005*
 
+> The road moved. The stone stayed.  
+> - *C01-E006*
+
+> It is a long way of saying I have never been allowed to try.  
+> - *C01-E006*
+
+> Pell says he was excellent at it. Pell says nothing happened at all, which is the point of a watch.  
+> - *C01-E006*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)

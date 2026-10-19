@@ -8,7 +8,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 | --- | --- |
 | **Species / class** | Halfling Rogue |
 | **Level** | 1 |
-| **Hit points** | 9 / 10 |
+| **Hit points** | 10 / 10 |
 | **Armour class** | 14 |
 
 ## What we know
@@ -24,13 +24,15 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Adores Pell, who does not return the feeling. *(C01-E004)*
 - Talked her way into a goblin camp alone; admits she is 'a little bit proud' of the lie. *(C01-E005)*
 - Always carries a healing potion: 'old habit'. *(C01-E005)*
+- Her iron key hummed by the way-marker; she lied that it was smoke in her eyes. *(C01-E006)*
+- Read Ilsevel's notebook and found Ilsevel had noticed her kindness to Wil. *(C01-E006)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
 | [Brannoc](brannoc.md) | - | ●● |
-| [Ilsevel](ilsevel.md) | ● | ●●● |
+| [Ilsevel](ilsevel.md) | ●● | ●●● |
 | [Oriel](oriel.md) | ● | - |
 
 ## In their own words
@@ -49,4 +51,4 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)

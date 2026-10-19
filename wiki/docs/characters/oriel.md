@@ -22,12 +22,14 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Hums hymns, badly, when she is nervous. *(C01-E003)*
 - Blessed the party and brought Tamsin back with Healing Word in the wolf fight. *(C01-E004)*
 - Could not bring herself to touch the dead cores. *(C01-E005)*
+- Sleeps with a candle; she does not like the dark. *(C01-E006)*
+- Hums the dusk hymn to fall asleep. *(C01-E006)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
-| [Brannoc](brannoc.md) | ●●● | - |
+| [Brannoc](brannoc.md) | ●●●● | - |
 | [Ilsevel](ilsevel.md) | ● | ● |
 | [Tamsin](tamsin.md) | ● | - |
 
@@ -54,6 +56,9 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 > You went down and didn't get up. Humour me.  
 > - *C01-E004*
 
+> I sleep with a candle. A priestess of the Lantern-Bearer, twenty-five years old, and I sleep with a candle.  
+> - *C01-E006*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)

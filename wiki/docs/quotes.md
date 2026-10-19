@@ -85,3 +85,21 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Then we sleep there. I'll take first watch.  
 > - **Brannoc**, [C1E5 - The Scout Camp](episodes/c01-e005.md)
+
+> The road moved. The stone stayed.  
+> - **Ilsevel**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> It is a long way of saying I have never been allowed to try.  
+> - **Ilsevel**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> ...Counting.  
+> - **Brannoc**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> I sleep with a candle. A priestess of the Lantern-Bearer, twenty-five years old, and I sleep with a candle.  
+> - **Oriel**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> I see in the dark. You keep it.  
+> - **Brannoc**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> Pell says he was excellent at it. Pell says nothing happened at all, which is the point of a watch.  
+> - **Ilsevel**, [C1E6 - First Watch](episodes/c01-e006.md)
