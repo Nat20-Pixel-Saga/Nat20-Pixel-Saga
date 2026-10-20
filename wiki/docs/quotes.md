@@ -103,3 +103,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Pell says he was excellent at it. Pell says nothing happened at all, which is the point of a watch.  
 > - **Ilsevel**, [C1E6 - First Watch](episodes/c01-e006.md)
+
+> 'The open hand holds more than the fist.' Forty years I've preached it. I still don't know if it's about lanterns or about people.  
+> - **Father Tobin**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)
+
+> I like his better.  
+> - **Tamsin**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)
+
+> I named you Oriel. Golden. Because that lantern was the only light in the square, and you were in it.  
+> - **Father Tobin**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)
+
+> Then we're the help.  
+> - **Oriel**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)
+
+> Then go with my blessing. And come back, all of you. That part isn't in the scripture, but it should be.  
+> - **Father Tobin**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)

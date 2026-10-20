@@ -26,6 +26,8 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Counts things because 'counting helps'. *(C01-E006)*
 - His shield is painted over an anvil design he will not talk about. *(C01-E006)*
 - Gave Oriel his lantern and told her not to thank him. *(C01-E006)*
+- Captain Rook writes to him as 'Bran Vow'; he calls it his army name. *(C01-E007)*
+- Is the one who leaves silver in the shrine's alms box. *(C01-E007)*
 
 ## Bonds
 
@@ -63,4 +65,4 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)

@@ -25,6 +25,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Counts what nobody else has written down: three lanterns dark that no ledger records. *(C01-E005)*
 - Rests in an elven trance rather than sleeping. *(C01-E006)*
 - Is a Lamplighter of the fourth rank; rekindling a core is second-rank work she has never been allowed to try. *(C01-E006)*
+- Could remember only one line of the Order's history of Saint Wenna; will write to Lamplighters' Hall about the dead cores. *(C01-E007)*
 
 ## Bonds
 
@@ -62,4 +63,4 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)

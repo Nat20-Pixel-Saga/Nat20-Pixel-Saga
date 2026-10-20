@@ -24,6 +24,8 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Could not bring herself to touch the dead cores. *(C01-E005)*
 - Sleeps with a candle; she does not like the dark. *(C01-E006)*
 - Hums the dusk hymn to fall asleep. *(C01-E006)*
+- Was found as a baby at the foot of Lantern No. 1 in 1022, wrapped in a grey coat with a brass button; Father Tobin named her. *(C01-E007)*
+- Felt nothing at all when she prayed over a dead core. *(C01-E007)*
 
 ## Bonds
 
@@ -31,12 +33,9 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 | --- | --- | --- |
 | [Brannoc](brannoc.md) | ●●●● | - |
 | [Ilsevel](ilsevel.md) | ● | ● |
-| [Tamsin](tamsin.md) | ● | - |
+| [Tamsin](tamsin.md) | ●● | - |
 
 ## In their own words
-
-> Hold the light. Hold the road. Hold on to each other.  
-> - *C01-E001*
 
 > Then we held it together.  
 > - *C01-E001*
@@ -59,6 +58,9 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 > I sleep with a candle. A priestess of the Lantern-Bearer, twenty-five years old, and I sleep with a candle.  
 > - *C01-E006*
 
+> Then we're the help.  
+> - *C01-E007*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)

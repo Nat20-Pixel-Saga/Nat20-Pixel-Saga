@@ -26,6 +26,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Always carries a healing potion: 'old habit'. *(C01-E005)*
 - Her iron key hummed by the way-marker; she lied that it was smoke in her eyes. *(C01-E006)*
 - Read Ilsevel's notebook and found Ilsevel had noticed her kindness to Wil. *(C01-E006)*
+- Asked Tobin for the story of Saint Wenna, and noticed Brannoc's other name. *(C01-E007)*
 
 ## Bonds
 
@@ -33,7 +34,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 | --- | --- | --- |
 | [Brannoc](brannoc.md) | - | ●● |
 | [Ilsevel](ilsevel.md) | ●● | ●●● |
-| [Oriel](oriel.md) | ● | - |
+| [Oriel](oriel.md) | ●● | - |
 
 ## In their own words
 
@@ -49,6 +50,9 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 > Evening, lads! Boss sent me. Change of plan: the stones go tonight. And where's my supper?  
 > - *C01-E005*
 
+> I like his better.  
+> - *C01-E007*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)
