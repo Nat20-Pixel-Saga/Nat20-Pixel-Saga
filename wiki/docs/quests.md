@@ -30,3 +30,4 @@
 
 - Look in on Wending Mill on the road south
 - Report to Captain Rook at Fort Harrow
+- Save the people trapped in the burning barn

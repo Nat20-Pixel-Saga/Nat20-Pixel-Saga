@@ -16,3 +16,4 @@ Dice.verify_log(seed, rolls)   # True if every roll matches
 | [C1E5 - The Scout Camp](episodes/c01-e005.md) | `C01-E005-1` | 1 | 32 | [JSON](rolls/c01-e005.json) |
 | [C1E6 - First Watch](episodes/c01-e006.md) | `C01-E006-1` | 1 | 2 | [JSON](rolls/c01-e006.json) |
 | [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md) | `C01-E007-1` | 1 | 2 | [JSON](rolls/c01-e007.json) |
+| [C1E8 - Wending Mill](episodes/c01-e008.md) | `C01-E008-1` | 1 | 51 | [JSON](rolls/c01-e008.json) |

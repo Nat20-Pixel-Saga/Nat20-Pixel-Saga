@@ -28,6 +28,8 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Gave Oriel his lantern and told her not to thank him. *(C01-E006)*
 - Captain Rook writes to him as 'Bran Vow'; he calls it his army name. *(C01-E007)*
 - Is the one who leaves silver in the shrine's alms box. *(C01-E007)*
+- Counts milestones on the road ('Most things'). *(C01-E008)*
+- Took the first cuts in the mill yard and kept standing. *(C01-E008)*
 
 ## Bonds
 
@@ -38,15 +40,6 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 | [Oriel](oriel.md) | ●●●● | - |
 
 ## In their own words
-
-> Four goblins. One road. One of me. Fine. Get behind the shield.  
-> - *C01-E001*
-
-> Four shutters broken. Two arrows in the door. One goblin. Still one goblin.  
-> - *C01-E002*
-
-> Ten words. Don't get used to it.  
-> - *C01-E002*
 
 > Ground's been walked to soup. Could be four. Could be forty.  
 > - *C01-E003*
@@ -63,6 +56,15 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > I see in the dark. You keep it.  
 > - *C01-E006*
 
+> Most things.  
+> - *C01-E008*
+
+> No time to creep. Run.  
+> - *C01-E008*
+
+> Get those doors open. I'll watch the smoke.  
+> - *C01-E008*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md)

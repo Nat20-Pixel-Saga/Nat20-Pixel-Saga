@@ -118,3 +118,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Then go with my blessing. And come back, all of you. That part isn't in the scripture, but it should be.  
 > - **Father Tobin**, [C1E7 - The Saint of the Open Hand](episodes/c01-e007.md)
+
+> Most things.  
+> - **Brannoc**, [C1E8 - Wending Mill](episodes/c01-e008.md)
+
+> No time to creep. Run.  
+> - **Brannoc**, [C1E8 - Wending Mill](episodes/c01-e008.md)
+
+> Still mostly on the inside, Sunshine. Mostly.  
+> - **Tamsin**, [C1E8 - Wending Mill](episodes/c01-e008.md)
+
+> Magic Missile. It never misses. That is rather the point of it.  
+> - **Ilsevel**, [C1E8 - Wending Mill](episodes/c01-e008.md)
+
+> Get those doors open. I'll watch the smoke.  
+> - **Brannoc**, [C1E8 - Wending Mill](episodes/c01-e008.md)

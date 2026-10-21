@@ -8,7 +8,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 | --- | --- |
 | **Species / class** | Halfling Rogue |
 | **Level** | 1 |
-| **Hit points** | 10 / 10 |
+| **Hit points** | 6 / 10 |
 | **Armour class** | 14 |
 
 ## What we know
@@ -27,6 +27,7 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Her iron key hummed by the way-marker; she lied that it was smoke in her eyes. *(C01-E006)*
 - Read Ilsevel's notebook and found Ilsevel had noticed her kindness to Wil. *(C01-E006)*
 - Asked Tobin for the story of Saint Wenna, and noticed Brannoc's other name. *(C01-E007)*
+- Killed two goblins with sneak attacks after being badly hurt. *(C01-E008)*
 
 ## Bonds
 
@@ -53,6 +54,9 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 > I like his better.  
 > - *C01-E007*
 
+> Still mostly on the inside, Sunshine. Mostly.  
+> - *C01-E008*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md)

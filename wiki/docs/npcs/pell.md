@@ -1,6 +1,6 @@
 # Pell
 
-Ilsevel's brown owl familiar. Kept the last watch of the night, and saw Tamsin borrow Ilsevel's notebook.
+Ilsevel's brown owl familiar. Scouted ahead on the road south and spotted the goblins at the mill.
 
 | | |
 | --- | --- |
@@ -14,3 +14,4 @@ Ilsevel's brown owl familiar. Kept the last watch of the night, and saw Tamsin b
 
 - *C01-E004*: Ilsevel's familiar: a small brown owl she called with a ritual at the fork of the goblin trail. He does not speak; Ilsevel 'translates' his hoots, usually as insults.
 - *C01-E006*: Ilsevel's brown owl familiar. Kept the last watch of the night, and saw Tamsin borrow Ilsevel's notebook.
+- *C01-E008*: Ilsevel's brown owl familiar. Scouted ahead on the road south and spotted the goblins at the mill.
