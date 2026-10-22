@@ -27,6 +27,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Is a Lamplighter of the fourth rank; rekindling a core is second-rank work she has never been allowed to try. *(C01-E006)*
 - Could remember only one line of the Order's history of Saint Wenna; will write to Lamplighters' Hall about the dead cores. *(C01-E007)*
 - Kept pace on the run to the mill, to everyone's surprise; finished the fight with Magic Missile. *(C01-E008)*
+- Translated the goblin boss's words; her fire bolt ended the fight. *(C01-E009)*
 
 ## Bonds
 
@@ -37,9 +38,6 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 | [Oriel](oriel.md) | ● | ● |
 
 ## In their own words
-
-> Hello. I have read about familiars for thirty years. You are smaller than the diagrams.  
-> - *C01-E004*
 
 > Pell says you smell of cards and onions. I am paraphrasing. He was ruder.  
 > - *C01-E004*
@@ -62,6 +60,9 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 > Magic Missile. It never misses. That is rather the point of it.  
 > - *C01-E008*
 
+> He says: 'The boss pays for stones. He pays more for the ones who stop us.'  
+> - *C01-E009*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)

@@ -5,7 +5,7 @@
   "publish_at": "2026-10-12T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E001-short": {
   "video_id": "gLK9cBTj-yw",
@@ -13,7 +13,7 @@
   "publish_at": "2026-10-13T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E002": {
   "video_id": "o3ljT2s_Ir4",
@@ -21,7 +21,7 @@
   "publish_at": "2026-10-13T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E002-short": {
   "video_id": "4DHeoWjRbcw",
@@ -29,7 +29,7 @@
   "publish_at": "2026-10-14T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E003": {
   "video_id": "tEvGY4dRIV0",
@@ -37,7 +37,7 @@
   "publish_at": "2026-10-14T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E003-short": {
   "video_id": "zS2LGKn75gc",
@@ -45,7 +45,7 @@
   "publish_at": "2026-10-15T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E004": {
   "video_id": "6xicfizROx8",
@@ -53,7 +53,7 @@
   "publish_at": "2026-10-15T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E004-short": {
   "video_id": "zlLWMuSkShU",
@@ -61,7 +61,7 @@
   "publish_at": "2026-10-16T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E005": {
   "video_id": "9HFYEocvHZY",
@@ -69,7 +69,7 @@
   "publish_at": "2026-10-16T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E005-short": {
   "video_id": "sEdY_jklBL0",
@@ -77,7 +77,7 @@
   "publish_at": "2026-10-17T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E006": {
   "video_id": "NFKLstF8qkE",
@@ -85,7 +85,7 @@
   "publish_at": "2026-10-19T19:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E006-short": {
   "video_id": "pBysjosAB8Q",
@@ -93,160 +93,174 @@
   "publish_at": "2026-10-20T11:00:00Z",
   "linked": true,
   "uploaded": "by hand",
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E007": {
   "video_id": "OWOcG8_tls8",
   "url": "https://www.youtube.com/watch?v=OWOcG8_tls8",
   "publish_at": "2026-10-20T19:00:00Z",
   "linked": true,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E007-short": {
   "video_id": "5TyVYwBsVpY",
   "url": "https://www.youtube.com/shorts/5TyVYwBsVpY",
   "publish_at": "2026-10-21T11:00:00Z",
   "linked": true,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E008": {
   "video_id": "SAC1o7V9AvM",
   "url": "https://www.youtube.com/watch?v=SAC1o7V9AvM",
   "publish_at": "2026-10-21T19:00:00Z",
   "linked": true,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E008-short": {
   "video_id": "7cop1eTC3n8",
   "url": "https://www.youtube.com/shorts/7cop1eTC3n8",
   "publish_at": "2026-10-22T11:00:00Z",
-  "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "linked": true,
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E009": {
   "video_id": "09lbiiLgJtM",
   "url": "https://www.youtube.com/watch?v=09lbiiLgJtM",
   "publish_at": "2026-10-22T19:00:00Z",
-  "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "linked": true,
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E009-short": {
   "video_id": "AwPHIJket8I",
   "url": "https://www.youtube.com/shorts/AwPHIJket8I",
   "publish_at": "2026-10-23T11:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E010": {
   "video_id": "UZ_MFfeOjsU",
   "url": "https://www.youtube.com/watch?v=UZ_MFfeOjsU",
   "publish_at": "2026-10-23T19:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "C01-E010-short": {
   "video_id": "98y9i6qPIps",
   "url": "https://www.youtube.com/shorts/98y9i6qPIps",
   "publish_at": "2026-10-24T11:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e01-a": {
   "video_id": "H5bz5UEbaOo",
   "url": "https://www.youtube.com/shorts/H5bz5UEbaOo",
   "publish_at": "2026-10-22T16:00:00Z",
-  "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "linked": true,
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e01-b": {
   "video_id": "9lQi7CoUmI4",
   "url": "https://www.youtube.com/shorts/9lQi7CoUmI4",
   "publish_at": "2026-10-23T09:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e01-trailer": {
   "video_id": "gMZr9TWELcI",
   "url": "https://www.youtube.com/shorts/gMZr9TWELcI",
   "publish_at": "2026-10-20T16:00:00Z",
   "linked": true,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e01-video": {
   "video_id": "40fHZr3aAK0",
   "url": "https://www.youtube.com/watch?v=40fHZr3aAK0",
   "publish_at": "2026-10-21T16:00:00Z",
   "linked": true,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e02-a": {
   "video_id": "ruLheTX6JpE",
   "url": "https://www.youtube.com/shorts/ruLheTX6JpE",
   "publish_at": "2026-10-25T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e02-b": {
   "video_id": "uKk7NkRHBfA",
   "url": "https://www.youtube.com/shorts/uKk7NkRHBfA",
   "publish_at": "2026-10-26T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e02-trailer": {
   "video_id": "snw4wJRmVwY",
   "url": "https://www.youtube.com/shorts/snw4wJRmVwY",
   "publish_at": "2026-10-23T16:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e02-video": {
   "video_id": "RUcTY6SlXog",
   "url": "https://www.youtube.com/watch?v=RUcTY6SlXog",
   "publish_at": "2026-10-24T16:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e03-a": {
   "video_id": "IZoXIo5P7xU",
   "url": "https://www.youtube.com/shorts/IZoXIo5P7xU",
   "publish_at": "2026-10-29T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e03-b": {
   "video_id": "wcYhlndAFCE",
   "url": "https://www.youtube.com/shorts/wcYhlndAFCE",
   "publish_at": "2026-10-30T10:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e03-trailer": {
   "video_id": "j7jgVPRJWrA",
   "url": "https://www.youtube.com/shorts/j7jgVPRJWrA",
   "publish_at": "2026-10-27T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e03-video": {
   "video_id": "msOEmeHvtjA",
   "url": "https://www.youtube.com/watch?v=msOEmeHvtjA",
   "publish_at": "2026-10-28T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
+ },
+ "pit-s1-e04-a": {
+  "video_id": "3yqpgM3QXCE",
+  "url": "https://www.youtube.com/shorts/3yqpgM3QXCE",
+  "publish_at": "2026-11-01T17:00:00Z",
+  "linked": false,
+  "refreshed_at": "2026-10-22T23:31:58Z"
+ },
+ "pit-s1-e04-b": {
+  "video_id": "mmVim7b8Imo",
+  "url": "https://www.youtube.com/shorts/mmVim7b8Imo",
+  "publish_at": "2026-11-02T17:00:00Z",
+  "linked": false,
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e04-trailer": {
   "video_id": "3CZ9IEypMm0",
   "url": "https://www.youtube.com/shorts/3CZ9IEypMm0",
   "publish_at": "2026-10-30T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  },
  "pit-s1-e04-video": {
   "video_id": "7naPxvj0sKA",
   "url": "https://www.youtube.com/watch?v=7naPxvj0sKA",
   "publish_at": "2026-10-31T17:00:00Z",
   "linked": false,
-  "refreshed_at": "2026-10-21T23:34:02Z"
+  "refreshed_at": "2026-10-22T23:31:58Z"
  }
 }

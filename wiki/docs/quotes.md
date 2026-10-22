@@ -133,3 +133,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Get those doors open. I'll watch the smoke.  
 > - **Brannoc**, [C1E8 - Wending Mill](episodes/c01-e008.md)
+
+> He says: 'The boss pays for stones. He pays more for the ones who stop us.'  
+> - **Ilsevel**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)
+
+> Then it's steel. Get behind me.  
+> - **Brannoc**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)
+
+> Not you. Not you as well.  
+> - **Brannoc**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)
+
+> Big Man. Sit down. You're bleeding on the bread.  
+> - **Tamsin**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)
+
+> Then tomorrow we tell Rook. All of it.  
+> - **Brannoc**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)

@@ -30,6 +30,8 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Is the one who leaves silver in the shrine's alms box. *(C01-E007)*
 - Counts milestones on the road ('Most things'). *(C01-E008)*
 - Took the first cuts in the mill yard and kept standing. *(C01-E008)*
+- Held the goblin boss alone while Oriel lay dying, and would not look away from the fight. *(C01-E009)*
+- Tended Oriel with shaking hands: 'Not you. Not you as well.' *(C01-E009)*
 
 ## Bonds
 
@@ -40,15 +42,6 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 | [Oriel](oriel.md) | ●●●● | - |
 
 ## In their own words
-
-> Ground's been walked to soup. Could be four. Could be forty.  
-> - *C01-E003*
-
-> Somebody has to.  
-> - *C01-E004*
-
-> Then we sleep there. I'll take first watch.  
-> - *C01-E005*
 
 > ...Counting.  
 > - *C01-E006*
@@ -65,6 +58,15 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 > Get those doors open. I'll watch the smoke.  
 > - *C01-E008*
 
+> Then it's steel. Get behind me.  
+> - *C01-E009*
+
+> Not you. Not you as well.  
+> - *C01-E009*
+
+> Then tomorrow we tell Rook. All of it.  
+> - *C01-E009*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)
