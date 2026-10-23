@@ -148,3 +148,18 @@ Memorable lines, by episode. The writers reuse them as callbacks.
 
 > Then tomorrow we tell Rook. All of it.  
 > - **Brannoc**, [C1E9 - Smoke Over the Millpond](episodes/c01-e009.md)
+
+> Report. Short version.  
+> - **Captain Edda Rook**, [C1E10 - Fort Harrow](episodes/c01-e010.md)
+
+> Ten crowns a week, each of you. Ride the road. Find out who's buying those cores. Short version: I need you.  
+> - **Captain Edda Rook**, [C1E10 - Fort Harrow](episodes/c01-e010.md)
+
+> Ten is a lovely number. I've always said so.  
+> - **Tamsin**, [C1E10 - Fort Harrow](episodes/c01-e010.md)
+
+> It is drinking the light. And it is cold. Cold the way the dead cores were cold.  
+> - **Ilsevel**, [C1E10 - Fort Harrow](episodes/c01-e010.md)
+
+> I have never read of anything like it. Not in any book. Not once.  
+> - **Ilsevel**, [C1E10 - Fort Harrow](episodes/c01-e010.md)

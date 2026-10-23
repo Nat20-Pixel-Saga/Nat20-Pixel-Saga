@@ -29,12 +29,14 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 - Asked Tobin for the story of Saint Wenna, and noticed Brannoc's other name. *(C01-E007)*
 - Killed two goblins with sneak attacks after being badly hurt. *(C01-E008)*
 - Missed the goblin boss with every arrow, and took it hard. *(C01-E009)*
+- Changed the subject when Brannoc's real name came out, instead of asking. *(C01-E010)*
+- Tried to haggle Rook up to twelve crowns and a spoon; failed. *(C01-E010)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
-| [Brannoc](brannoc.md) | - | ●● |
+| [Brannoc](brannoc.md) | ● | ●● |
 | [Ilsevel](ilsevel.md) | ●● | ●●● |
 | [Oriel](oriel.md) | ●● | - |
 
@@ -61,6 +63,9 @@ A halfling with quick hands and quicker jokes, met playing cards in Brindle Cros
 > Big Man. Sit down. You're bleeding on the bread.  
 > - *C01-E009*
 
+> Ten is a lovely number. I've always said so.  
+> - *C01-E010*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md), [C01-E010](../episodes/c01-e010.md)

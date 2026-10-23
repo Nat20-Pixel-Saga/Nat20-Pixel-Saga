@@ -28,6 +28,7 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 - Could remember only one line of the Order's history of Saint Wenna; will write to Lamplighters' Hall about the dead cores. *(C01-E007)*
 - Kept pace on the run to the mill, to everyone's surprise; finished the fight with Magic Missile. *(C01-E008)*
 - Translated the goblin boss's words; her fire bolt ended the fight. *(C01-E009)*
+- Received the dispatches for Lamplighters' Hall, and the black-glass pendant to study. *(C01-E010)*
 
 ## Bonds
 
@@ -38,12 +39,6 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 | [Oriel](oriel.md) | ● | ● |
 
 ## In their own words
-
-> Pell says you smell of cards and onions. I am paraphrasing. He was ruder.  
-> - *C01-E004*
-
-> Pell says he will go first. He says he is the only one of us with any sense.  
-> - *C01-E004*
 
 > A core is always warm. This is like holding a stone from the bottom of a well.  
 > - *C01-E005*
@@ -63,6 +58,12 @@ An elf scholar of the Order of Lamplighters, sent to inspect the failing lantern
 > He says: 'The boss pays for stones. He pays more for the ones who stop us.'  
 > - *C01-E009*
 
+> It is drinking the light. And it is cold. Cold the way the dead cores were cold.  
+> - *C01-E010*
+
+> I have never read of anything like it. Not in any book. Not once.  
+> - *C01-E010*
+
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md), [C01-E010](../episodes/c01-e010.md)

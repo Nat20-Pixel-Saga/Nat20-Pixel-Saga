@@ -2,7 +2,7 @@
 
 ## Deliver the Fort Harrow dispatches
 
-*Status: active*
+*Status: completed*
 
 - Bring the sealed dispatches to the Lamplighters
 
@@ -26,8 +26,15 @@
 
 ## Goblins near Wending Mill
 
-*Status: active*
+*Status: completed*
 
 - Look in on Wending Mill on the road south
 - Report to Captain Rook at Fort Harrow
 - Save the people trapped in the burning barn
+
+## Ride the Lantern Road for Captain Rook
+
+*Status: active*
+
+- Patrol the Lantern Road (ten crowns a week each)
+- Find out who is buying the stolen lantern-cores

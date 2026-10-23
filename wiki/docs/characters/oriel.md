@@ -28,6 +28,7 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 - Felt nothing at all when she prayed over a dead core. *(C01-E007)*
 - Blessed the party and healed Tamsin mid-fight. *(C01-E008)*
 - Was cut down by the goblin boss while caring for the hurt lad, and pulled through on her own, unconscious until night. *(C01-E009)*
+- Read Captain Rook well: tired, afraid for her soldiers, and protecting Brannoc. *(C01-E010)*
 
 ## Bonds
 
@@ -65,4 +66,4 @@ The young acolyte of the Shrine of the Open Hand in Brindle Cross, raised by Fat
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md), [C01-E010](../episodes/c01-e010.md)

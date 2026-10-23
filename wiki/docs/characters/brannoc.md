@@ -1,4 +1,4 @@
-# Brannoc
+# Brannoc Ironvow
 
 *The Shield*
 
@@ -32,13 +32,15 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 - Took the first cuts in the mill yard and kept standing. *(C01-E008)*
 - Held the goblin boss alone while Oriel lay dying, and would not look away from the fight. *(C01-E009)*
 - Tended Oriel with shaking hands: 'Not you. Not you as well.' *(C01-E009)*
+- His real name is said to be Ironvow; a soldier called him an exile out of Aldhammer. He did not answer. *(C01-E010)*
+- Served three years under Captain Rook at Fort Harrow as 'Bran Vow'. *(C01-E010)*
 
 ## Bonds
 
 | With | Trust | Tension |
 | --- | --- | --- |
 | [Ilsevel](ilsevel.md) | ● | ● |
-| [Tamsin](tamsin.md) | - | ●● |
+| [Tamsin](tamsin.md) | ● | ●● |
 | [Oriel](oriel.md) | ●●●● | - |
 
 ## In their own words
@@ -69,4 +71,4 @@ A dwarf soldier of Fort Harrow carrying dispatches up the Lantern Road. Few word
 
 ## Episodes
 
-[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md)
+[C01-E001](../episodes/c01-e001.md), [C01-E002](../episodes/c01-e002.md), [C01-E003](../episodes/c01-e003.md), [C01-E004](../episodes/c01-e004.md), [C01-E005](../episodes/c01-e005.md), [C01-E006](../episodes/c01-e006.md), [C01-E007](../episodes/c01-e007.md), [C01-E008](../episodes/c01-e008.md), [C01-E009](../episodes/c01-e009.md), [C01-E010](../episodes/c01-e010.md)
