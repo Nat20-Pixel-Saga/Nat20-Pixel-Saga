@@ -168,7 +168,8 @@ def build_site(docs: Path = DOCS, state_dir: Path = ROOT / "state", check_spoile
     latest = archive[-1] if archive else None
     site = load_json(WIKI / "data" / "site.json") if (WIKI / "data" / "site.json").exists() else {}
     home = ["# Nat 20 Pixels Saga", "",
-            "A pixel-art fantasy story played by 5e rules, one episode every weekday. Four strangers, one road of "
+            "A pixel-art fantasy story played by 5e rules. Act 1 (episodes 1-10) is complete; the story is taking a "
+            "break before Act 2. Four strangers, one road of "
             "lanterns, level 1 to level 20. **Every roll you see on screen is real**: the dice are seeded and logged, "
             "and you can check any of them on the [Dice](dice.md) page.", ""]
     if site.get("youtube"):

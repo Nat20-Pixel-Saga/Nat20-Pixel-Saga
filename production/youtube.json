@@ -19,7 +19,7 @@
   ],
   "min_lead_hours": 2
  },
- "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday. max_per_run: uploads per run (the nightly run, and the run after each new story release); the queue goes in order of publish time across the story and every series. playlist_id: the story's episodes (shorts_playlist_id: its Shorts, if set). series: other shows whose uploads (times, titles, descriptions, tags) come from a plan file in their GitHub release; every upload goes to the series' playlist. An upload without a time in the plan (The Pit's 100-subscriber bonus, ids e11-trailer, e11-video, e11-a, e11-b) waits until `times` gives it one, e.g. {\"e11-trailer\": \"2026-11-25 18:00\"} (local time).",
+ "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday. max_per_run: uploads per run (the nightly run, and the run after each new story release); the queue goes in order of publish time across the story and every series. playlist_id: the story's episodes (shorts_playlist_id: its Shorts, if set). series: other shows whose uploads (times, titles, descriptions, tags) come from a plan file in their GitHub release; every upload goes to the series' playlist. An upload without a time in the plan waits until `times` gives it one, e.g. {\"e11-trailer\": \"2026-11-24 18:00\"} (local time); `times` also overrides a plan time. retext: find/replace rules applied to every description, at upload and (each run, after its command) to the videos already on YouTube; a rule that no longer matches costs nothing. Added 25 Oct 2026: Act 1 of the story ended with Episode 10 (no more weekday episodes for now) and the Pit's T-Rex bonus got a date (Wed 25 Nov, from the pit-s1 plan) instead of the 100-subscriber unlock.",
  "follow_release_schedule": true,
  "series": [
   {
@@ -30,6 +30,24 @@
    "timezone": "Europe/Paris",
    "playlist_id": "PLbziVo4Ic8Lc",
    "times": {}
+  }
+ ],
+ "retext": [
+  {
+   "find": "New episode every weekday.",
+   "replace": "Act 1 ends with Episode 10. The story is taking a break before Act 2."
+  },
+  {
+   "find": "of a daily pixel-art D&D 5e story",
+   "replace": "of a pixel-art D&D 5e story"
+  },
+  {
+   "find": "the daily pixel-art fantasy story played by the same dice engine",
+   "replace": "the pixel-art fantasy story played by the same dice engine"
+  },
+  {
+   "find": "100 subscribers unlocks a bonus fight: how many goblins does it take to beat a T-Rex?",
+   "replace": "Bonus fight after the final, Wednesday 25 November: how many goblins does it take to beat a T-Rex?"
   }
  ]
 }

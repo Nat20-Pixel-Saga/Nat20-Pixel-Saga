@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run)"
+        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run); retext = apply the retext rules to uploaded descriptions now (every run does it after its command)"
         default: record
         type: choice
-        options: [record, upload, plan, check]
+        options: [record, upload, plan, check, retext]
       episode:
         description: "record: episode number (e.g. 3), or 3s for its Short"
         required: false
@@ -50,6 +50,9 @@ jobs:
           else
             python scripts/youtube_upload.py "$CMD"
           fi
+      - name: Apply text changes to uploaded descriptions (retext rules in production/youtube.json)
+        if: always() && (inputs.command || 'upload') != 'retext'
+        run: python scripts/youtube_upload.py retext
       - name: Refresh stored video IDs (YouTube API policy, 30-day rule)
         if: always()
         run: python scripts/youtube_upload.py refresh

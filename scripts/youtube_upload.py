@@ -117,6 +117,14 @@ def clean_tags(tags: list[str], limit: int = 480) -> list[str]:
     return out
 
 
+def retext(text: str, cfg: dict) -> str:
+    """Apply the config's `retext` rules ({"find", "replace"}) to a description: sentences that stopped being
+    true after upload (the story's weekday promise once Act 1 ended, the Pit's 100-subscriber unlock)."""
+    for rule in cfg.get("retext", []):
+        text = text.replace(rule["find"], rule["replace"])
+    return text
+
+
 def video_body(pk: dict, cfg: dict, publish_at: dt.datetime | None) -> dict:
     status = {"selfDeclaredMadeForKids": bool(cfg.get("made_for_kids", False)),
               "containsSyntheticMedia": bool(cfg.get("contains_synthetic_media", False)),
@@ -126,7 +134,7 @@ def video_body(pk: dict, cfg: dict, publish_at: dt.datetime | None) -> dict:
     else:
         status["privacyStatus"] = cfg.get("privacy", "public")
     snippet = {"title": clean_text(pk["title"], 100),
-               "description": clean_text(pk.get("description_full") or pk["description"], 5000),
+               "description": clean_text(retext(pk.get("description_full") or pk["description"], cfg), 5000),
                "tags": clean_tags(pk.get("tags", [])),
                "categoryId": str(cfg.get("category_id", "24")),
                "defaultLanguage": cfg.get("language", "en"),
@@ -659,6 +667,47 @@ def cmd_refresh(now: dt.datetime | None = None) -> int:
     return 0
 
 
+def cmd_retext(cfg: dict) -> int:
+    """Apply the `retext` rules to the descriptions of videos already on YouTube (every video in the ledger,
+    public or scheduled). Idempotent: a description the rules no longer change is left alone. Quota: 1 unit per 50
+    videos read, 50 per video changed."""
+    rules = cfg.get("retext", [])
+    ledger = load_ledger()
+    if not rules or not ledger:
+        print("No retext rules, or nothing stored.")
+        return 0
+    if not have_credentials():
+        print("No YouTube credentials: nothing changed.")
+        return 0
+    token = access_token()
+    keys = {v["video_id"]: k for k, v in ledger.items()}
+    ids = sorted(keys)
+    changed = failed = 0
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        st, _, body = _request("GET", f"{API}/videos?part=snippet&maxResults=50&id={','.join(chunk)}", token)
+        for item in _json(st, body, "Reading descriptions").get("items", []):
+            sn = item["snippet"]
+            new = clean_text(retext(sn.get("description", ""), cfg), 5000)
+            if new == sn.get("description", ""):
+                continue
+            snippet = {k: sn[k] for k in ("title", "tags", "categoryId", "defaultLanguage", "defaultAudioLanguage")
+                       if k in sn}
+            snippet["description"] = new
+            st2, _, resp = _request("PUT", f"{API}/videos?part=snippet", token,
+                                    json.dumps({"id": item["id"], "snippet": snippet}).encode(),
+                                    {"Content-Type": "application/json"})
+            if st2 >= 400:
+                failed += 1
+                notice(f"{keys[item['id']]}: description not updated ({st2}): {resp.decode(errors='replace')[:300]}",
+                       "warning")
+            else:
+                changed += 1
+                print(f"{keys[item['id']]}: description updated", flush=True)
+    notice(f"retext: {changed} description(s) updated" + (f", {failed} failed" if failed else ""))
+    return 0
+
+
 def video_id(text: str) -> str:
     """The 11-character id from a YouTube URL (watch, youtu.be, shorts, studio) or a bare id."""
     import re
@@ -698,7 +747,7 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh"])
+    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext"])
     ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]")
     a = ap.parse_args()
     cfg = load_config()
@@ -707,7 +756,7 @@ def main() -> int:
             raise SystemExit("record needs: <episode> <video link> [\"YYYY-MM-DD HH:MM\"]")
         return cmd_record(a.args[0], a.args[1], " ".join(a.args[2:]) or None)
     return {"check": lambda: cmd_check(cfg), "plan": lambda: cmd_plan(cfg), "upload": lambda: cmd_upload(cfg),
-            "link": cmd_link, "refresh": cmd_refresh}[a.command]()
+            "link": cmd_link, "refresh": cmd_refresh, "retext": lambda: cmd_retext(cfg)}[a.command]()
 
 
 if __name__ == "__main__":
