@@ -74,7 +74,7 @@ jobs:
                      out/s1/E*/pit-s1e*.rolls.json out/s1/E*/pit-s1e*.chapters.txt \
                      out/s1/s1_youtube.md out/s1/s1_plan.json out/s1/s1_calendar.csv out/s1/s1_calendar.json)
           echo "$files" | wc -l
-          notes="The Pit, Season 1: The Bronze Crown. 10 episodes (Wed and Sat, 21 Oct - 21 Nov 2026), a 100-subscriber bonus, a trailer Short and two highlight Shorts per episode. Start with s1_youtube.md (what to paste for every upload, in calendar order). Built from ${GITHUB_SHA::7}."
+          notes="The Pit, Season 1: The Bronze Crown. 10 episodes (Wed and Sat, 21 Oct - 21 Nov 2026), a bonus fight on Wed 25 Nov (Goblins vs a T-Rex), a trailer Short and two highlight Shorts per episode. Start with s1_youtube.md (what to paste for every upload, in calendar order). Built from ${GITHUB_SHA::7}."
           if gh release view pit-s1 >/dev/null 2>&1; then
             gh release edit pit-s1 --notes "$notes"
             gh release upload pit-s1 $files --clobber

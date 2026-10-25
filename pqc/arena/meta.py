@@ -21,7 +21,7 @@ CREDITS = ("Art, music & SFX: Ninja Adventure Asset Pack by Pixel-boy & AAA (CC0
            "licensed under CC BY 4.0. Not affiliated with Wizards of the Coast.")
 PLAYLIST = "The Pit, Season 1: The Bronze Crown"
 SCHEDULE = "New fights every Wednesday and Saturday at 18:00 (Paris time)."
-STORY = ("From the makers of Nat 20 Pixels, the daily pixel-art fantasy story played by the same dice engine: "
+STORY = ("From the makers of Nat 20 Pixels, the pixel-art fantasy story played by the same dice engine: "
          "https://www.youtube.com/@Nat20px")
 TAGS = ["dnd", "dnd 5e", "d&d", "who would win", "pixel art", "versus", "battle simulation", "dice", "ttrpg",
         "the pit", "nat 20 pixels"]
@@ -112,11 +112,15 @@ def description(season: dict, ep: dict, res: dict, chapters: list) -> str:
         road.append("Road to the Bronze Crown: four places, one crown. Semifinals Wednesday 18 November, final "
                     "Saturday 21 November.")
         road.append(SCHEDULE)
-        unlock = season.get("unlock")
-        if unlock:
-            road.append(f"{unlock['subscribers']} subscribers unlocks a bonus fight: how many goblins does it take to beat a T-Rex?")
+        bonus = _bonus(season)
+        if bonus and bonus.get("date"):
+            road.append(f"Bonus fight after the final, {long_date(_d(bonus['date'])).rsplit(' ', 1)[0]}: how many "
+                        "goblins does it take to beat a T-Rex?")
+        elif season.get("unlock"):
+            road.append(f"{season['unlock']['subscribers']} subscribers unlocks a bonus fight: how many goblins does it "
+                        "take to beat a T-Rex?")
     else:
-        road.append("Thank you for 100 subscribers. Season 2, the Silver Crown, is next.")
+        road.append("A bonus fight to close Season 1. Season 2, the Silver Crown, is next.")
     ch = "Chapters\n" + "\n".join(f"{_fmt(tm)} {label}" for tm, label in chapters) if chapters else ""
     how = (f"How it works: a rules engine plays the SRD 5.2.1 stat blocks. Every roll is seeded and logged "
            f"(this episode's seed: {ep['seed']}), so any fight can be replayed exactly. The win chance on screen "
@@ -154,6 +158,10 @@ def pinned(season: dict, ep: dict, res: dict, nxt: dict | None, nres: dict | Non
     return f"{first}\n\n{second}"
 
 
+def _bonus(season: dict) -> dict | None:
+    return next((e for e in season["episodes"] if e.get("bonus")), None)
+
+
 def short_texts(season: dict, ep: dict, res: dict, which: str, info: dict | None) -> tuple[str, str]:
     t = titles(season, ep, res)
     base = t["title"].split(" | ")[0].split(":")[0]
@@ -181,8 +189,8 @@ def calendar(season: dict) -> list[dict]:
     out = []
     vt = season["video_time"]
     for ep in season["episodes"]:
-        if ep.get("bonus"):
-            continue
+        if ep.get("bonus") and not ep.get("date"):
+            continue                    # an undated bonus waits (plan() lists it without times)
         d = _d(ep["date"])
         stem = f"pit-s1e{ep['n']:02d}"
         out.append({"when": f"{d - dt.timedelta(days=1)} {season['short_time']}", "kind": "trailer short", "episode": ep["n"],
@@ -218,7 +226,7 @@ def plan(season: dict, out_root: Path, arena) -> list[dict]:
     rows = []
     cal = calendar(season)
     b = next((e for e in season["episodes"] if e.get("bonus")), None)
-    if b:
+    if b and not b.get("date"):
         stem = f"pit-s1e{b['n']:02d}"
         cal += [{"when": None, "kind": k, "episode": b["n"], "file": f, **({"thumbnail": f"{stem}-thumbnail.png"} if k == "video" else {})}
                 for k, f in (("trailer short", f"{stem}-trailer-short.mp4"), ("video", f"{stem}.mp4"),
@@ -226,7 +234,7 @@ def plan(season: dict, out_root: Path, arena) -> list[dict]:
     for row in cal:
         n = row["episode"]
         ep, r = eps[n], full[n]
-        nxt = eps.get(n + 1) if n + 1 in eps and not eps[n + 1].get("bonus") else None
+        nxt = eps.get(n + 1) if n + 1 in eps and (not eps[n + 1].get("bonus") or eps[n + 1].get("date")) else None
         out = {"id": f"e{n:02d}-" + {"video": "video", "trailer short": "trailer", "highlight short A": "a",
                                        "highlight short B": "b"}[row["kind"]],
                "when": row["when"], "kind": row["kind"], "episode": n, "file": row["file"],

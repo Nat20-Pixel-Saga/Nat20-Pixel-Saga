@@ -328,7 +328,7 @@
   },
   {
    "n": 11,
-   "date": null,
+   "date": "2026-11-25",
    "bonus": true,
    "unlock_subscribers": 100,
    "kind": "how_many",
@@ -350,18 +350,18 @@
     "A T-REX?"
    ],
    "short_title": "GOBLINS VS T-REX",
-   "tag": "100-SUBSCRIBER BONUS  /  REAL DICE  /  NO REROLLS",
+   "tag": "SEASON 1 BONUS  /  REAL DICE  /  NO REROLLS",
    "seed": "PIT-S1B01-trex-vs-goblins",
    "road": false,
    "end_s": 16.0,
-   "result_foot": "THANK YOU FOR 100 SUBSCRIBERS",
+   "result_foot": "THANKS FOR WATCHING SEASON 1",
    "star_name": "T-Rex"
   }
  ],
  "unlock": {
   "subscribers": 100,
   "episode": 11,
-  "line": "100 SUBSCRIBERS UNLOCKS A BONUS: GOBLINS VS T-REX",
-  "note": "Episode 11 is rendered and waiting. Publish it (and its Shorts) the week the channel passes 100 subscribers."
+  "line": "BONUS FIGHT WED 25 NOV: GOBLINS VS T-REX",
+  "note": "25 Oct 2026: the channel was nowhere near 100 subscribers, so the bonus got a date instead: Wednesday 25 November, after the final (trailer Tue 24, highlights Thu 26 and Fri 27). 'subscribers' is kept for reference only."
  }
 }

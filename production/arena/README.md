@@ -3,7 +3,7 @@
 Arena fights on @Nat20px, decided by the same rules engine and seeded dice as the story: SRD 5.2.1 stat
 blocks, every roll logged, a live win chance computed from the exact state of the fight. Season 1, **The
 Bronze Crown**, is ten episodes on Wednesdays and Saturdays at 18:00 (Paris time), 21 October to 21
-November 2026, plus a bonus that unlocks at 100 subscribers.
+November 2026, plus a bonus fight on Wednesday 25 November (it was to unlock at 100 subscribers; on 25 Oct, with 2 subscribers, it got a date instead).
 
 ## Season 1
 
@@ -19,7 +19,7 @@ November 2026, plus a bonus that unlocks at 100 subscribers.
 | 8 | Sat 14 Nov | Rumble (5) | Last Chance: the three losers + Dire Wolf + Ape | Wildcard place |
 | 9 | Wed 18 Nov | Two duels, best of 5 | Bronze Crown semifinals | |
 | 10 | Sat 21 Nov | Duel, best of 7 | Bronze Crown final | Season champion |
-| Bonus | at 100 subscribers | How many? | Goblins vs a T-Rex (6-14) | Thank-you episode |
+| Bonus | Wed 25 Nov | How many? | Goblins vs a T-Rex (6-14) | Season closer |
 
 The fighters were chosen with simulations so each duel is a real contest (every CR 1 pairing was run
 200-400 times; see `scripts/arena_season.py` and `pqc/arena/formats.py`). **Every seed is written in
@@ -62,9 +62,10 @@ The aim of the season is subscribers, so every piece is built to turn a viewer i
 4. **Asks timed to the moment.** A subscribe lower-third slides in right after the first initiative roll
    (the viewer has just committed to a side), the Road board carries a subscribe button, and the end card
    another. Never at the very start, never more than three per video.
-5. **A milestone with a reward.** Every end card, description and pinned comment says it: 100 subscribers
-   unlocks *How many goblins does it take to beat a T-Rex?*. It is already rendered; publish it the week the
-   channel crosses the line, and say so in its trailer Short.
+5. **A milestone with a reward.** Episodes 1-5 (uploaded before 25 Oct) say 100 subscribers unlocks *How many
+   goblins does it take to beat a T-Rex?*. With 2 subscribers after two weeks the line was out of reach, so from
+   Episode 6 the end cards, descriptions and pinned comments give it a date instead: Wednesday 25 November,
+   after the final.
 6. **Viewers build Season 2.** The final asks for nominations for the Silver Crown (CR 2 and 3: Knight,
    Polar Bear, Allosaurus, Bandit Captain and whoever the comments want). The most-liked nominations get in,
    so the people who nominated have a reason to be subscribed when it starts.

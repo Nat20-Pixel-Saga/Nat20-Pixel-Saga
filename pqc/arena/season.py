@@ -699,7 +699,7 @@ def episode_timeline(season: dict, n: int, results: dict[int, dict], assets: Ass
     res = results[n]
     arena = Arena(assets)
     music = ep.get("music", "battle_boss")
-    nxt = next((e for e in season["episodes"] if e["n"] == n + 1 and not e.get("bonus")), None)
+    nxt = next((e for e in season["episodes"] if e["n"] == n + 1 and (not e.get("bonus") or e.get("date"))), None)
     cta = ep.get("cta", "CALL YOUR WINNER  +  SUBSCRIBE")
     cues: list[dict] = [
         {"op": "scene", "map": MAP, "time_of_day": ep.get("time_of_day", "day"), "camera": arena.center},
