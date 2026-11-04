@@ -3,7 +3,7 @@
     python scripts/arena_season.py meta      # after the renders: writes the files below into the output folder
                                             # and production/arena/
 
-* ``s1_calendar.json`` / ``.csv``: every upload in order (videos, trailer Shorts, highlight Shorts).
+* ``s1_calendar.json`` / ``.csv``: every upload in order (videos, trailer Shorts, full-fight Shorts, highlight Shorts).
 * ``s1_youtube.md``: what to paste for each upload, in calendar order.
 """
 from __future__ import annotations
@@ -167,6 +167,8 @@ def short_texts(season: dict, ep: dict, res: dict, which: str, info: dict | None
     base = t["title"].split(" | ")[0].split(":")[0]
     if ep["kind"] in ("crown_semis", "crown_final"):
         base = "The Bronze Crown " + ("semifinals" if ep["kind"] == "crown_semis" else "final")
+    if which == "full":
+        return full_texts(season, ep, res, info)
     if which == "trailer":
         title = f"{base}: who wins? Full fight tomorrow | The Pit"
         if ep["kind"] == "how_many":
@@ -185,6 +187,46 @@ def short_texts(season: dict, ep: dict, res: dict, which: str, info: dict | None
     return title[:100], desc
 
 
+def full_texts(season: dict, ep: dict, res: dict, info: dict | None) -> tuple[str, str]:
+    """Title and description of the full-fight Short (the whole fight, vertical, 3 minutes at most)."""
+    n, kind = ep["n"], ep["kind"]
+    tag = f"The Pit #{n}" if not ep.get("bonus") else "The Pit Bonus"
+    cut = bool((info or {}).get("condensed"))
+    t = titles(season, ep, res)
+    if kind == "duel":
+        a, b = names_of(res["segments"][0])
+        title = f"{a} vs {b}: Full Fight, Best of {ep['best_of']} | {tag}"
+    elif kind == "how_many":
+        title = f"{ep['title']} " + ("The Whole Fight in 3 Minutes" if cut else "The Full Fight") + f" | {tag}"
+    elif kind == "rumble":
+        title = f"{ep['title']} (Full Fight) | {tag}"
+    elif kind == "crown_semis":
+        (a1, b1), (a2, b2) = names_of(res["segments"][0]), names_of(res["segments"][1])
+        title = f"Bronze Crown Semifinals: {a1} vs {b1}, {a2} vs {b2} " + ("in 3 Minutes" if cut else "(Full Fights)") + f" | {tag}"
+    else:
+        a, b = names_of(res["segments"][0])
+        title = f"{a} vs {b}: The Bronze Crown Final, Full Fight | {tag}"
+    whole = ("Every bout and every knockout, condensed to under 3 minutes (the middle of the longer bouts is "
+             "fast-forwarded); the uncut fight is on the channel." if cut else
+             "The whole fight, start to finish: every roll, every knockout, the live win chance.")
+    desc = (f"{t['question']} {whole}\n"
+            "Real D&D 5e stat blocks, real seeded dice, no rerolls. Did you call it? Tell us in the comments.\n\n"
+            + (SCHEDULE + "\n\n" if not ep.get("bonus") else "") + CREDITS)
+    return title[:100], desc
+
+
+def _fighter_tags(ep: dict, res: dict) -> list[str]:
+    out = []
+    for seg in res["segments"]:
+        if seg.get("kind") == "how_many":
+            out += [seg["star"]["name"].lower(), ep.get("plural", seg.get("minion_name", "")).lower(), "how many"]
+        elif seg.get("a") and seg.get("b"):
+            out += [x.lower() for x in names_of(seg)]
+    if ep["kind"] == "rumble":
+        out += ["rumble", "battle royale"]
+    return list(dict.fromkeys(x for x in out if x))
+
+
 def calendar(season: dict) -> list[dict]:
     out = []
     vt = season["video_time"]
@@ -199,6 +241,10 @@ def calendar(season: dict) -> list[dict]:
                     "thumbnail": f"{stem}-thumbnail.png"})
         out.append({"when": f"{d + dt.timedelta(days=1)} 18:00", "kind": "highlight short A", "episode": ep["n"],
                     "file": f"{stem}-short-a.mp4"})
+        fs = season.get("full_shorts")
+        if fs and ep["n"] >= fs.get("from", 1):
+            out.append({"when": f"{d} {fs.get('time', vt)}", "kind": "full fight short", "episode": ep["n"],
+                        "file": f"{stem}-full-short.mp4"})
         b_time = "11:00" if d.weekday() == 2 else "18:00"     # Wed videos: Friday morning, before Saturday's trailer
         out.append({"when": f"{d + dt.timedelta(days=2)} {b_time}", "kind": "highlight short B", "episode": ep["n"],
                     "file": f"{stem}-short-b.mp4"})
@@ -236,7 +282,7 @@ def plan(season: dict, out_root: Path, arena) -> list[dict]:
         ep, r = eps[n], full[n]
         nxt = eps.get(n + 1) if n + 1 in eps and (not eps[n + 1].get("bonus") or eps[n + 1].get("date")) else None
         out = {"id": f"e{n:02d}-" + {"video": "video", "trailer short": "trailer", "highlight short A": "a",
-                                       "highlight short B": "b"}[row["kind"]],
+                                       "highlight short B": "b", "full fight short": "full"}[row["kind"]],
                "when": row["when"], "kind": row["kind"], "episode": n, "file": row["file"],
                "format": "bonus" if ep.get("bonus") else fmt[ep["kind"]], "bonus": bool(ep.get("bonus"))}
         if row["kind"] == "video":
@@ -246,11 +292,14 @@ def plan(season: dict, out_root: Path, arena) -> list[dict]:
                        pinned=pinned(season, ep, r, nxt, full.get(n + 1)), thumbnail=row.get("thumbnail"),
                        duration=marks[n]["duration_s"])
         else:
-            which = {"trailer short": "trailer", "highlight short A": "a", "highlight short B": "b"}[row["kind"]]
+            which = {"trailer short": "trailer", "highlight short A": "a", "highlight short B": "b",
+                     "full fight short": "full"}[row["kind"]]
             info = shorts_info.get(n, {}).get(which)
             title, desc = short_texts(season, ep, r, which, info)
             out.update(title=title, description=desc, related=f"Episode {n}" if not ep.get("bonus") else "the bonus video",
                        duration=(info or {}).get("duration_s"))
+            if which == "full":
+                out.update(tags=", ".join(TAGS + ["shorts", "full fight"] + _fighter_tags(ep, r)))
         rows.append(out)
     return rows
 

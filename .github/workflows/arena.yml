@@ -28,16 +28,21 @@ jobs:
           sudo apt-get update && sudo apt-get install -y ffmpeg
           pip install pillow numpy
           scripts/fetch_assets.sh
-      - name: Simulate and render the episode, its three Shorts and its thumbnail
+      - name: Simulate and render the episode, its four Shorts and its thumbnail
         run: python scripts/arena_season.py all ${{ matrix.episode }} --out out/s1
       - name: Check the files
         run: |
           n=$(printf "%02d" ${{ matrix.episode }})
           d=out/s1/E$n
-          for f in pit-s1e$n.mp4 pit-s1e$n-trailer-short.mp4 pit-s1e$n-short-a.mp4 pit-s1e$n-short-b.mp4 pit-s1e$n-thumbnail.png pit-s1e$n.rolls.json; do
+          for f in pit-s1e$n.mp4 pit-s1e$n-trailer-short.mp4 pit-s1e$n-short-a.mp4 pit-s1e$n-short-b.mp4 pit-s1e$n-full-short.mp4 pit-s1e$n-full-short.cover.png pit-s1e$n-thumbnail.png pit-s1e$n.rolls.json; do
             test -s "$d/$f" || { echo "missing $f"; exit 1; }
           done
-          for f in $d/*.mp4; do ffprobe -v error -show_entries format=duration -of csv=p=0 "$f"; done
+          for f in $d/*.mp4; do echo "$(basename $f) $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")"; done
+          # A Short must stay within YouTube's 3 minutes
+          for f in $d/*-short*.mp4; do
+            s=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
+            awk -v s="$s" 'BEGIN { exit !(s < 179.5) }' || { echo "$(basename $f) is ${s}s: over 3 minutes"; exit 1; }
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: episode-${{ matrix.episode }}
@@ -74,7 +79,7 @@ jobs:
                      out/s1/E*/pit-s1e*.rolls.json out/s1/E*/pit-s1e*.chapters.txt \
                      out/s1/s1_youtube.md out/s1/s1_plan.json out/s1/s1_calendar.csv out/s1/s1_calendar.json)
           echo "$files" | wc -l
-          notes="The Pit, Season 1: The Bronze Crown. 10 episodes (Wed and Sat, 21 Oct - 21 Nov 2026), a bonus fight on Wed 25 Nov (Goblins vs a T-Rex), a trailer Short and two highlight Shorts per episode. Start with s1_youtube.md (what to paste for every upload, in calendar order). Built from ${GITHUB_SHA::7}."
+          notes="The Pit, Season 1: The Bronze Crown. 10 episodes (Wed and Sat, 21 Oct - 21 Nov 2026), a bonus fight on Wed 25 Nov (Goblins vs a T-Rex), a trailer Short and two highlight Shorts per episode, and from Episode 5 the whole fight as a vertical Short (3 minutes at most) on its premiere day. Start with s1_youtube.md (what to paste for every upload, in calendar order). Built from ${GITHUB_SHA::7}."
           if gh release view pit-s1 >/dev/null 2>&1; then
             gh release edit pit-s1 --notes "$notes"
             gh release upload pit-s1 $files --clobber

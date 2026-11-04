@@ -1,4 +1,5 @@
-"""The Pit's Shorts (1080x1920): a trailer the day before each episode and two highlights after it.
+"""The Pit's Shorts (1080x1920): a trailer the day before each episode, the whole fight on the day, and two
+highlights after it.
 
 Every clip is the episode itself, replayed from its timeline and re-composed for
 9:16: the episode's title on top, both fighters' panels, a 270x270 window on the
@@ -10,6 +11,9 @@ bottom 12% is left clear for YouTube's title and buttons.
 * Highlight A (day after): the decisive finish, through the K.O.
 * Highlight B (two days after): the biggest swing of the win chance, or a
   natural 20; failing both, the odds against the result.
+* Full fight (premiere day, from episode 5; added 4 Nov 2026): every bout from
+  its card to its K.O., at most 3 minutes so it runs in the Shorts feed. Longer
+  fights lose whole turns from the middle of their bouts (marked FAST FORWARD).
 """
 from __future__ import annotations
 
@@ -548,9 +552,255 @@ def timeline_side_name(tc, side):
     return side
 
 
+# ============================================================ full fight
+class _WindowRunner(S.ShowRunner):
+    """Ticks the whole show but draws only inside the given (start, end) windows."""
+    windows: tuple = ()
+
+    def _frame(self, render: bool):
+        t = self.stage.t
+        if render and not any(a - 1e-6 <= t < b for a, b in self.windows):
+            render = False
+        return super()._frame(render)
+
+
+def _bouts(tc) -> list[dict]:
+    """Every bout of the episode: its start (the bout card), its K.O., where it ends (the next reset or card),
+    the start of each turn, and the attacks worth keeping (crits, big swings)."""
+    out = []
+    for t, c in tc:
+        if c["op"] != "show_bout":
+            continue
+        ko = next(((tk, ck) for tk, ck in tc if ck["op"] == "show_ko" and tk > t), None)
+        if ko is None:
+            continue
+        t_ko, c_ko = ko
+        t1 = next((tt for tt, cc in tc if tt > t_ko + 0.01 and cc["op"] in ("show_reset", "show_bout", "show_card")),
+                  t_ko + 2.8)
+        turns = [tt for tt, cc in tc if cc["op"] == "show_turn" and t < tt < t_ko]
+        big = [tt for tt, cc in tc if cc["op"] == "show_attack" and t < tt <= t_ko
+               and (cc.get("critical") or (cc.get("meta") or {}).get("crit") or (cc.get("meta") or {}).get("swing"))]
+        out.append({"t0": t, "ko": t_ko, "t1": t1, "seg": (c.get("meta") or {}).get("seg", 0), "turns": turns,
+                    "big": big, "final": bool((c_ko.get("meta") or {}).get("final")), "line": c_ko.get("line", "")})
+    return out
+
+
+def _cut_for(b: dict, target: float) -> tuple[float, float] | None:
+    """The run of whole turns in the middle of a bout whose length is closest to `target` (rather more than
+    less), keeping the first turn and the last two before the K.O., and sparing crits and big swings."""
+    pts = b["turns"][1:-1]
+    if len(pts) < 2 or target <= 0.5:
+        return None
+    best, best_cost = None, None
+    for i in range(len(pts)):
+        for j in range(i + 1, len(pts)):
+            rem = pts[j] - pts[i]
+            cost = (target - rem) * 1.5 if rem < target else rem - target
+            cost += 2.0 * sum(1 for x in b["big"] if pts[i] - 0.3 <= x < pts[j])
+            mid = (pts[i] + pts[j]) / 2 - (b["t0"] + b["ko"]) / 2
+            cost += 0.02 * abs(mid)
+            if best_cost is None or cost < best_cost:
+                best, best_cost = (pts[i], pts[j]), cost
+    return best
+
+
+def _windows(bouts: list[dict], budget: float) -> tuple[list[dict], float]:
+    """Which stretches of the episode the full-fight Short shows. Every bout is in it from its card to its
+    K.O.; if that runs over `budget` seconds, whole turns come out of the middle of the bouts (in proportion
+    to their length, less from the last bout) until it fits. Returns the windows and the seconds cut."""
+    over = sum(b["t1"] - b["t0"] for b in bouts) - budget
+    cuts = [None] * len(bouts)
+    if over > 0:
+        caps = [(b["turns"][-2] - b["turns"][1]) if len(b["turns"]) >= 4 else 0.0 for b in bouts]
+        w = [c * (0.6 if b["final"] else 1.0) for c, b in zip(caps, bouts)]
+        targets = [over * x / sum(w) if sum(w) else 0.0 for x in w]
+        for _ in range(6):
+            cuts = [_cut_for(b, min(t, cap)) for b, t, cap in zip(bouts, targets, caps)]
+            short = over - sum((c[1] - c[0]) if c else 0.0 for c in cuts)
+            if short <= 0:
+                break
+            room = [cap - t for cap, t in zip(caps, targets)]
+            tr = sum(r for r in room if r > 0)
+            if tr <= 0:
+                break
+            targets = [t + (short * r / tr if r > 0 else 0.0) for t, r in zip(targets, room)]
+    wins = []
+    for b, c in zip(bouts, cuts):
+        parts = [(b["t0"], c[0], None), (c[1], b["t1"], "mid")] if c else [(b["t0"], b["t1"], None)]
+        for a, e, kind in parts:
+            if wins and kind is None and abs(wins[-1]["b"] - a) < 1e-3:
+                wins[-1]["b"] = e                      # the next bout follows straight on
+                continue
+            if wins and kind is None:
+                kind = "seg" if b["seg"] != wins[-1]["seg"] else "mid"
+            wins.append({"a": a, "b": e, "kind": kind, "seg": b["seg"]})
+    removed = sum((c[1] - c[0]) for c in cuts if c)
+    return wins, removed
+
+
+def _full_hook(ep: dict, condensed: bool) -> str:
+    k = ep["kind"]
+    if ep.get("full_hook"):
+        return ep["full_hook"]
+    if k == "how_many":
+        return " ".join(ep["hook"])
+    if k == "duel":
+        return f"FULL FIGHT: BEST OF {ep['best_of']}"
+    if k == "rumble":
+        return " ".join(ep["hook"][1:])
+    if k == "crown_semis":
+        return "BOTH SEMIFINALS IN 3 MINUTES" if condensed else "BOTH SEMIFINALS, EVERY ROLL"
+    return f"THE FINAL: BEST OF {ep.get('best_of', 7)}"
+
+
+def _end_full(season: dict, ep: dict, final_line: str) -> dict:
+    nxt = next((e for e in season["episodes"] if e["n"] == ep["n"] + 1 and e.get("date")), None)
+    who = final_line.split(" GOES TO ")[-1] if " GOES TO " in final_line else ""
+    top = f"{who}: CHAMPION" if ep["kind"] == "crown_final" and who and len(who) <= 14 else "DID YOU CALL IT?"
+    lines = [top, "TELL US IN THE COMMENTS"]
+    if nxt:
+        lines.append(("BONUS FIGHT: " if nxt.get("bonus") else "NEXT FIGHT: ") + SE.short_date(nxt["date"]))
+    c = {"lines": lines}
+    if not nxt:
+        lines.append("SEASON 2 IS COMING")
+        c["foot"] = ep.get("result_foot", "THANKS FOR WATCHING")
+    return c
+
+
+def _skip_tag(img: Image.Image, st, age: float) -> None:
+    if age > 1.1:
+        return
+    d = ImageDraw.Draw(img)
+    f = _font(st, 8)
+    txt = "FAST FORWARD"
+    w = f.getlength(txt)
+    x1, y0 = VW - 6, Y_SCENE + 6
+    d.rounded_rectangle((x1 - w - 12, y0, x1, y0 + 14), radius=3, fill=S.DARK, outline=GOLD)
+    S.left(d, x1 - w - 6, y0 + 2, txt, f, GOLD)
+
+
+def _darken(img: Image.Image, a: float) -> Image.Image:
+    img = img.copy()
+    img.alpha_composite(Image.new("RGBA", img.size, (0, 0, 0, int(255 * a))))
+    return img
+
+
+def full(season, n, res, timeline, times, out: Path, assets: Assets, preview=False) -> dict:
+    """The whole fight as one Short (YouTube takes Shorts up to 3 minutes): every bout from its card to its
+    K.O. in the 9:16 layout, a hook over the first seconds, and an end card. A fight longer than the limit
+    loses whole turns from the middle of its bouts (each cut is marked FAST FORWARD); the K.O.s, the first
+    turn of each bout and the crits stay."""
+    ep = SE.episode(season, n)
+    cfg = season.get("full_shorts", {})
+    max_s = float(cfg.get("max_s", 175.0))
+    end_d, card_d = 3.0, 2.6
+    title = ep.get("short_title", _title(season, ep))
+    tc = _times(timeline, times)
+    bouts = _bouts(tc)
+    n_segs = len({b["seg"] for b in bouts})
+    fight_s = sum(b["t1"] - b["t0"] for b in bouts)
+    wins, removed = _windows(bouts, max_s - end_d - card_d * (n_segs - 1))
+    wins[0]["a"] += 0.3                    # open on the bout card already landed, not mid-slam
+    hook = _full_hook(ep, removed > 0)
+    tapes = [(t, c) for t, c in tc if c["op"] == "show_card" and c["kind"] == "tape"]
+    S.install()
+    r = _WindowRunner(timeline, assets)
+    r.layout = "tall"
+    r.windows = tuple((w["a"], w["b"]) for w in wins)
+    keep = {"cover": None, "offsets": [], "cards": [], "end_at": 0.0}
+
+    def frames():
+        buf, k, pushed = [], -1, 0
+        st = None
+        for f in r.frames():
+            if f is None:
+                continue
+            st = r.stage
+            t = st.t
+            if t >= wins[-1]["b"]:
+                break
+            new = False
+            while k + 1 < len(wins) and t >= wins[k + 1]["a"] - 1e-6:
+                k, new = k + 1, True
+            w = wins[k] if k >= 0 else None
+            if w is None or not (w["a"] - 1e-6 <= t < w["b"]):
+                continue
+            if new:
+                if w["kind"] == "seg":
+                    tape = next((c for tt, c in reversed(tapes) if tt <= w["a"]), None)
+                    if tape:
+                        keep["cards"].append(pushed / FPS)
+                        rows = [x for x in tape["rows"] if x[0] in ("HIT POINTS", "ARMOR CLASS", "DAMAGE / TURN")]
+                        for img in still_card(st, "tape", {**tape, "rows": rows}, card_d, title):
+                            buf.append(img)
+                            pushed += 1
+                if w["kind"] == "mid" and buf:
+                    buf[-2:] = [_darken(x, a) for x, a in zip(buf[-2:], (0.35, 0.7)[-len(buf[-2:]):])]
+                keep["offsets"].append(pushed / FPS)
+            age = t - w["a"]
+            img = compose(st, f, title, hook if k == 0 else None, age)
+            if w["kind"] == "mid":
+                _skip_tag(img, st, age)
+                fi = int(round(age * FPS))
+                if fi < 3:
+                    img = _darken(img, (0.6, 0.35, 0.15)[fi])
+            buf.append(img)
+            pushed += 1
+            if pushed == FPS and keep["cover"] is None:
+                keep["cover"] = img.copy()
+            while len(buf) > 2:
+                yield buf.pop(0)
+        keep["end_at"] = pushed / FPS
+        for img in still_card(st, "end", _end_full(season, ep, bouts[-1]["line"]), end_d, title):
+            buf.append(img)
+        yield from buf
+
+    def audio():
+        evs = sorted(r.stage.audio, key=lambda e: e["t"])
+        out_ev, cur = [], None
+        for t in keep["cards"]:
+            out_ev.append({"type": "sfx", "id": "transition", "t": t, "volume": 0.9})
+        for w, o in zip(wins, keep["offsets"]):
+            run = None
+            for e in evs:
+                if e["t"] >= w["a"]:
+                    break
+                if e["type"] == "music":
+                    run = e
+                elif e["type"] == "music_stop":
+                    run = None
+            if run and (cur is None or cur.get("id") != run.get("id")):
+                out_ev.append({**run, "t": o, "fade_in": 0.2})
+                cur = run
+            elif run is None and cur is not None:
+                out_ev.append({"type": "music_stop", "t": o, "fade_out": 0.2})
+                cur = None
+            if w["kind"] == "mid":
+                out_ev.append({"type": "sfx", "id": "transition", "t": max(0.0, o - 0.05), "volume": 0.5})
+            for e in evs:
+                if w["a"] <= e["t"] < w["b"]:
+                    out_ev.append({**e, "t": o + e["t"] - w["a"]})
+                    if e["type"] == "music":
+                        cur = e
+                    elif e["type"] == "music_stop":
+                        cur = None
+        t_end = keep["end_at"]
+        out_ev += [{"type": "music_stop", "t": t_end, "fade_out": 0.3},
+                   {"type": "music", "id": "theme", "t": t_end, "fade_in": 0.2, "volume": 0.45}]
+        return out_ev
+
+    scale, preset, crf = (2, "veryfast", 24) if preview else (4, "medium", 20)
+    info = P.encode(frames(), (VW, VH), out, audio, assets, FPS, scale, crf, preset)
+    if keep["cover"] is not None:
+        keep["cover"].resize((VW * 4, VH * 4), Image.NEAREST).save(out.with_suffix(".cover.png"))
+    return {**info, "kind": "full", "hook": hook, "fight_s": round(fight_s, 2), "cut_s": round(removed, 2),
+            "condensed": removed > 0, "windows": [[round(w["a"], 2), round(w["b"], 2), w["kind"]] for w in wins]}
+
+
 def render_shorts(season, n, res, timeline, times, out_dir: Path, assets: Assets, preview=False) -> list[dict]:
     stem = f"pit-s1e{n:02d}"
     out = [trailer(season, n, res, timeline, times, out_dir / f"{stem}-trailer-short.mp4", assets, preview),
            highlight(season, n, res, timeline, times, out_dir / f"{stem}-short-a.mp4", assets, "a", preview),
-           highlight(season, n, res, timeline, times, out_dir / f"{stem}-short-b.mp4", assets, "b", preview)]
+           highlight(season, n, res, timeline, times, out_dir / f"{stem}-short-b.mp4", assets, "b", preview),
+           full(season, n, res, timeline, times, out_dir / f"{stem}-full-short.mp4", assets, preview)]
     return out

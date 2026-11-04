@@ -29,7 +29,7 @@ so the season is one deterministic chain: rendering it again gives the same figh
 ## Making the files
 
 ```
-python scripts/arena_season.py all 1          # episode 1: video, 3 Shorts, thumbnail, roll log
+python scripts/arena_season.py all 1          # episode 1: video, 4 Shorts, thumbnail, roll log
 python scripts/arena_season.py all all        # the whole season (about 1-2 hours on 2 cores)
 python scripts/arena_season.py video 4 --preview   # quick 960x540 check, fewer simulations
 python scripts/arena_season.py meta           # s1_youtube.md + calendar (after the renders)
@@ -40,7 +40,7 @@ own runner and everything lands in the draft release **`pit-s1`**, with `s1_yout
 each upload, in calendar order) and `s1_calendar.csv`.
 
 Per episode: `pit-s1eNN.mp4` (1920x1080), `pit-s1eNN-thumbnail.png` (1280x720), `pit-s1eNN-trailer-short.mp4`,
-`pit-s1eNN-short-a.mp4`, `pit-s1eNN-short-b.mp4` (1080x1920, with `.cover.png` frames), `pit-s1eNN.rolls.json`
+`pit-s1eNN-full-short.mp4`, `pit-s1eNN-short-a.mp4`, `pit-s1eNN-short-b.mp4` (1080x1920, with `.cover.png` frames), `pit-s1eNN.rolls.json`
 (every roll and event; `pqc.dice.Dice.verify_log(seed, rolls)` replays them) and `pit-s1eNN.chapters.txt`.
 
 ## The subscriber system
@@ -55,8 +55,11 @@ The aim of the season is subscribers, so every piece is built to turn a viewer i
    opens with the tale of the tape and the simulated odds and asks again; the pinned comment asks "did you
    call it?". Comments and replies are the strongest signal YouTube reads, and a viewer who picked a side
    comes back to see it settled.
-3. **One loop per episode: Short, video, Short, Short.** Trailer (day before), premiere, then two highlights
-   (the finish, and the biggest swing of the win chance or a natural 20) on the next days. Every Short's
+3. **One loop per episode: Short, video + full-fight Short, Short, Short.** Trailer (day before), premiere,
+   then two highlights (the finish, and the biggest swing of the win chance or a natural 20) on the next days.
+   From Episode 5 (4 Nov) the whole fight also goes out as a vertical Short at the premiere time, 3 minutes at
+   most (`full_shorts` in `s1.json`; longer fights, the semifinals and the T-Rex bonus, lose whole turns from
+   the middle of their bouts, marked FAST FORWARD on screen). Every Short's
    *Related video* is its episode; every video's end screen (the last 16 s are drawn with the two frames)
    holds the previous episode or the playlist and the Subscribe button.
 4. **Asks timed to the moment.** A subscribe lower-third slides in right after the first initiative roll
@@ -83,6 +86,17 @@ The aim of the season is subscribers, so every piece is built to turn a viewer i
 Compare formats after episode 6 (two of each kind out): whichever of duel, how-many or rumble brings the most
 subscribers per 1,000 views gets more slots in Season 2. If trailers beat highlights, cut the third Short;
 if highlights beat trailers, post them earlier.
+
+### What the first three weeks showed (Studio export of 1 Nov) and the rules for Season 2
+
+- Shorts carry the channel; the full horizontal fights got 2-7 views each, so almost nobody goes from a Short
+  to the long video. Hence the full-fight Short from Episode 5 (above).
+- "How many X does it take to beat Y?" is the only format that travels: its Shorts drew 2,199 views, against
+  171 and 429 for the Shorts of the two duels so far.
+- **Season 2 rules:** more "How many?" episodes than duels (at least half the season), and every fight
+  published whole as a vertical Short of 3 minutes or less on its premiere day, built in from the start
+  (pick counts and bout lengths so the fight fits without fast-forwarding). The horizontal video stays, for
+  search and the end screens, but it is no longer the main upload.
 
 ## Rules notes
 

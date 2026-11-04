@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The Pit: simulate and render a season of arena episodes, their Shorts and thumbnails.
 
-    python scripts/arena_season.py all 1                  # episode 1: video, Shorts, thumbnail, log
+    python scripts/arena_season.py all 1                  # episode 1: video, four Shorts, thumbnail, log
     python scripts/arena_season.py all 1-10               # the whole season
     python scripts/arena_season.py video 3 --preview      # quick 960x540 check with fewer simulations
     python scripts/arena_season.py meta                   # titles, descriptions, calendar (production/arena/)
@@ -99,7 +99,7 @@ def main() -> int:
             infos = vertical.render_shorts(season, n, res, tl, times, d, assets, preview=args.preview)
             for info in infos:
                 print(json.dumps(info), flush=True)
-            (d / "shorts.json").write_text(json.dumps(dict(zip(("trailer", "a", "b"), infos))))
+            (d / "shorts.json").write_text(json.dumps(dict(zip(("trailer", "a", "b", "full"), infos))))
         if args.what in ("thumb", "all"):
             from pqc.arena import thumbs
             print(thumbs.render(season, n, res, d / f"{stem}-thumbnail.png", assets), flush=True)
