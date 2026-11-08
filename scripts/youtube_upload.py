@@ -43,6 +43,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "production" / "youtube.json"
 LEDGER = ROOT / "wiki" / "data" / "youtube.json"
+REPLACED = ROOT / "wiki" / "data" / "youtube-replaced.json"     # uploads swapped out by `requeue`
 EPISODES = ROOT / "episodes"
 API = "https://www.googleapis.com/youtube/v3"
 UPLOAD = "https://www.googleapis.com/upload/youtube/v3"
@@ -708,6 +709,55 @@ def cmd_retext(cfg: dict) -> int:
     return 0
 
 
+STATUS_KEEP = ("license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia")
+
+
+def cmd_requeue(keys: list[str], now: dt.datetime | None = None) -> int:
+    """Swap out scheduled uploads so the next upload run uploads them again from the current release (after a
+    re-render). Each old upload is made private with no publish time, so it never goes public, and its title
+    gets "[old cut] " in front so it is easy to find and delete in Studio; its ledger entry moves to
+    wiki/data/youtube-replaced.json. Refuses anything already public. Quota: 1 unit to read, 50 per video."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    if not keys:
+        raise SystemExit("requeue needs one or more ledger keys, e.g. pit-s1-e07-full")
+    ledger = load_ledger()
+    unknown = [k for k in keys if k not in ledger]
+    if unknown:
+        raise SystemExit(f"Not in the ledger: {', '.join(unknown)}")
+    public = [k for k in keys if parse_iso(ledger[k]["publish_at"]) <= now + dt.timedelta(minutes=30)]
+    if public:
+        raise SystemExit(f"Already public (or about to be), left alone: {', '.join(public)}")
+    if not have_credentials():
+        raise SystemExit("No YouTube credentials: nothing changed.")
+    token = access_token()
+    ids = {ledger[k]["video_id"]: k for k in keys}
+    st, _, body = _request("GET", f"{API}/videos?part=snippet,status&id={','.join(ids)}", token)
+    found = {it["id"]: it for it in _json(st, body, "Reading the uploads").get("items", [])}
+    replaced = json.loads(REPLACED.read_text()) if REPLACED.exists() else {}
+    for vid, key in ids.items():
+        it = found.get(vid)
+        if it:
+            sn, stt = it["snippet"], it["status"]
+            snippet = {k: sn[k] for k in ("title", "description", "tags", "categoryId", "defaultLanguage",
+                                          "defaultAudioLanguage") if k in sn}
+            if not snippet["title"].startswith("[old cut] "):
+                snippet["title"] = ("[old cut] " + snippet["title"])[:100]
+            status = {k: stt[k] for k in STATUS_KEEP if k in stt}
+            status["privacyStatus"] = "private"            # no publishAt: it stays private
+            st2, _, resp = _request("PUT", f"{API}/videos?part=snippet,status", token,
+                                    json.dumps({"id": vid, "snippet": snippet, "status": status}).encode(),
+                                    {"Content-Type": "application/json"})
+            _json(st2, resp, f"{key}: unscheduling {vid}")
+            print(f"{key}: {vid} is now private, unscheduled, titled '{snippet['title']}'", flush=True)
+        else:
+            print(f"{key}: {vid} no longer exists on YouTube", flush=True)
+        replaced.setdefault(key, []).append({**ledger.pop(key), "replaced_at": iso(now)})
+    save_ledger(ledger)
+    REPLACED.write_text(json.dumps(dict(sorted(replaced.items())), indent=1, ensure_ascii=False) + "\n")
+    notice(f"requeue: {len(ids)} upload(s) swapped out; the next upload run uploads them again")
+    return 0
+
+
 def video_id(text: str) -> str:
     """The 11-character id from a YouTube URL (watch, youtu.be, shorts, studio) or a bare id."""
     import re
@@ -747,14 +797,17 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext"])
-    ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]")
+    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext", "requeue"])
+    ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]; "
+                                             "requeue: <ledger key> ...")
     a = ap.parse_args()
     cfg = load_config()
     if a.command == "record":
         if len(a.args) < 2:
             raise SystemExit("record needs: <episode> <video link> [\"YYYY-MM-DD HH:MM\"]")
         return cmd_record(a.args[0], a.args[1], " ".join(a.args[2:]) or None)
+    if a.command == "requeue":
+        return cmd_requeue([k for arg in a.args for k in arg.replace(",", " ").split()])
     return {"check": lambda: cmd_check(cfg), "plan": lambda: cmd_plan(cfg), "upload": lambda: cmd_upload(cfg),
             "link": cmd_link, "refresh": cmd_refresh, "retext": lambda: cmd_retext(cfg)}[a.command]()
 

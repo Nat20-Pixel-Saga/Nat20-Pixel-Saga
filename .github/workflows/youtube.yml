@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run); retext = apply the retext rules to uploaded descriptions now (every run does it after its command)"
+        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run); retext = apply the retext rules to uploaded descriptions now (every run does it after its command); requeue = swap out scheduled uploads (keys below) so the next upload run uploads them again from the current release"
         default: record
         type: choice
-        options: [record, upload, plan, check, retext]
+        options: [record, upload, plan, check, retext, requeue]
       episode:
         description: "record: episode number (e.g. 3), or 3s for its Short"
         required: false
@@ -21,6 +21,9 @@ on:
         required: false
       when:
         description: "record: when it goes public, Paris time (e.g. 2026-10-08 21:00); empty = already public"
+        required: false
+      keys:
+        description: "requeue: ledger keys, space-separated (e.g. pit-s1-e07-full pit-s1-e08-full)"
         required: false
 permissions: {contents: write, actions: write}
 concurrency: {group: youtube, cancel-in-progress: false}
@@ -44,9 +47,12 @@ jobs:
           EPISODE: "${{ inputs.episode }}"
           VIDEO: "${{ inputs.video }}"
           WHEN: "${{ inputs.when }}"
+          KEYS: "${{ inputs.keys }}"
         run: |
           if [ "$CMD" = "record" ]; then
             python scripts/youtube_upload.py record "$EPISODE" "$VIDEO" "$WHEN"
+          elif [ "$CMD" = "requeue" ]; then
+            python scripts/youtube_upload.py requeue $KEYS
           else
             python scripts/youtube_upload.py "$CMD"
           fi
@@ -64,11 +70,11 @@ jobs:
         run: |
           git config user.name "pqc-youtube"
           git config user.email "pqc-youtube@users.noreply.github.com"
-          if git diff --quiet -- wiki/data/youtube.json && ! git ls-files --others --exclude-standard | grep -q youtube.json; then
+          if git diff --quiet -- wiki/data && [ -z "$(git ls-files --others --exclude-standard wiki/data)" ]; then
             echo "No changes."; exit 0
           fi
           python -c "from pqc.pipeline.wiki import build_site; build_site()"
-          git add wiki/data/youtube.json wiki/docs
+          git add wiki/data wiki/docs
           git commit -qm "YouTube: update uploads ledger"
           for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done
           gh workflow run wiki.yml
