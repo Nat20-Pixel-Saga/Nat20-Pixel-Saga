@@ -8,7 +8,7 @@
  "notes": "Every seed below was written before anything was simulated. Line-ups of episodes 8-10 come from earlier results. Videos premiere at video_time on their date; each video's trailer Short goes out the day before at short_time, and its two highlight Shorts on the following days (see production/arena/s1_calendar.json).",
  "video_time": "18:00",
  "short_time": "18:00",
- "full_shorts": {"from": 5, "time": "18:00", "max_s": 175, "note": "4 Nov 2026: the full horizontal fights got 2-7 views each while the Shorts got hundreds, so from episode 5 every fight also goes out whole as a vertical Short (3 minutes at most) on its premiere day, at the same time as the video. Longer fights lose whole turns from the middle of their bouts."},
+ "full_shorts": {"from": 5, "time": "18:00", "max_s": 178, "cold_open": true, "note": "8 Nov 2026: Episode 5's full-fight Short (opening on Bout 1) got 6 views at 0.6 s each, so from Episode 7 they open cold on the last seconds before the deciding blow, frozen on HOW DID IT GET HERE?, then rewind to Bout 1; Episodes 7-11 were re-uploaded with it. 4 Nov 2026: the full horizontal fights got 2-7 views each while the Shorts got hundreds, so from episode 5 every fight also goes out whole as a vertical Short (3 minutes at most) on its premiere day, at the same time as the video. Longer fights lose whole turns from the middle of their bouts."},
  "quality": {
   "samples": 300,
   "samples_multi": 120,

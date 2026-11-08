@@ -93,10 +93,17 @@ if highlights beat trailers, post them earlier.
   to the long video. Hence the full-fight Short from Episode 5 (above).
 - "How many X does it take to beat Y?" is the only format that travels: its Shorts drew 2,199 views, against
   171 and 429 for the Shorts of the two duels so far.
-- **Season 2 rules:** more "How many?" episodes than duels (at least half the season), and every fight
-  published whole as a vertical Short of 3 minutes or less on its premiere day, built in from the start
-  (pick counts and bout lengths so the fight fits without fast-forwarding). The horizontal video stays, for
-  search and the end screens, but it is no longer the main upload.
+- Week four (export of 8 Nov) tempered that: the second "How many?" trailer (wolves vs an Allosaurus) got 4
+  views in its first 30 hours against 824 for the first, while the Halloween Rumble's finish got 439. Of the
+  three Pit Shorts that found an audience, two were finishes (highlight A). Episode 5's full-fight Short,
+  which opened on Bout 1, got 6 views at 0.6 s each; from Episode 7 the full-fight Shorts open cold on the
+  last seconds before the deciding blow (`_tease` in `pqc/arena/vertical.py`).
+- **Season 2 rules:** "How many?" stays a regular format but is not a sure thing on its own, so at least as
+  many "How many?" episodes as duels, not a majority by default. Every fight published whole as a vertical
+  Short of 3 minutes or less on its premiere day, built in from the start (pick counts and bout lengths so
+  the fight fits without fast-forwarding), and every Short opens on its most decisive moment: the finish or
+  the seconds before it, never a title card or Bout 1. The horizontal video stays, for search and the end
+  screens, but it is no longer the main upload.
 
 ## Rules notes
 

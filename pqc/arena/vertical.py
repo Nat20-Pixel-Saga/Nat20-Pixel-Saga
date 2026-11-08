@@ -14,6 +14,8 @@ bottom 12% is left clear for YouTube's title and buttons.
 * Full fight (premiere day, from episode 5; added 4 Nov 2026): every bout from
   its card to its K.O., at most 3 minutes so it runs in the Shorts feed. Longer
   fights lose whole turns from the middle of their bouts (marked FAST FORWARD).
+  Since 8 Nov it opens cold on the last seconds before the deciding blow, frozen
+  on HOW DID IT GET HERE? while the d20 spins, then rewinds to Bout 1.
 """
 from __future__ import annotations
 
@@ -667,12 +669,41 @@ def _end_full(season: dict, ep: dict, final_line: str) -> dict:
     return c
 
 
-def _skip_tag(img: Image.Image, st, age: float) -> None:
+def _tease(tc, bouts: list[dict], ep: dict) -> tuple[float, float, str] | None:
+    """The cold open of the full-fight Short: the last seconds before the blow that ends the fight, cut while
+    the d20 is still spinning (before it lands, so the winner stays unknown)."""
+    t_ko = bouts[-1]["ko"]
+    atk = [(t, c) for t, c in tc if c["op"] == "show_attack" and bouts[-1]["t0"] < t < t_ko]
+    if not atk:
+        return None
+    hits = [(t, c) for t, c in atk if c.get("hit") and c.get("hp_after", 1) <= 0]
+    t_att, c_att = (hits or atk)[-1]
+    t1 = t_att + 0.55 * c_att.get("tempo", 1.0)
+    t0 = max(bouts[-1]["t0"] + 1.3, t1 - 3.6)
+    hook = ep.get("tease_hook") or ("THE LAST TWO STANDING" if ep["kind"] == "rumble" else "THE DECIDING ROLL")
+    return t0, t1, hook
+
+
+def _freeze_lines(frame: Image.Image, st, lines: tuple[str, ...], dur: float) -> list[Image.Image]:
+    """Like freeze(), with two or three shorter lines (the win-chance bar already says who is about to win,
+    so the question is how it got there, not who wins)."""
+    out = []
+    for i in range(int(round(dur * FPS))):
+        img = frame.copy()
+        img.alpha_composite(Image.new("RGBA", img.size, (12, 16, 18, int(150 * min(1.0, (i + 1) / 6)))))
+        d = ImageDraw.Draw(img)
+        y0 = Y_SCENE + 100 - 15 * (len(lines) - 1)
+        for j, line in enumerate(lines):
+            S.slam(st, d, VW / 2, y0 + 30 * j, line, 24, GOLD, max(0.0, i / FPS - 0.12 * j))
+        out.append(img)
+    return out
+
+
+def _skip_tag(img: Image.Image, st, age: float, txt: str = "FAST FORWARD") -> None:
     if age > 1.1:
         return
     d = ImageDraw.Draw(img)
     f = _font(st, 8)
-    txt = "FAST FORWARD"
     w = f.getlength(txt)
     x1, y0 = VW - 6, Y_SCENE + 6
     d.rounded_rectangle((x1 - w - 12, y0, x1, y0 + 14), radius=3, fill=S.DARK, outline=GOLD)
@@ -686,10 +717,12 @@ def _darken(img: Image.Image, a: float) -> Image.Image:
 
 
 def full(season, n, res, timeline, times, out: Path, assets: Assets, preview=False) -> dict:
-    """The whole fight as one Short (YouTube takes Shorts up to 3 minutes): every bout from its card to its
-    K.O. in the 9:16 layout, a hook over the first seconds, and an end card. A fight longer than the limit
-    loses whole turns from the middle of its bouts (each cut is marked FAST FORWARD); the K.O.s, the first
-    turn of each bout and the crits stay."""
+    """The whole fight as one Short (YouTube takes Shorts up to 3 minutes): a cold open on the last seconds
+    before the deciding blow, frozen on HOW DID IT GET HERE? while the d20 spins, a rewind, then every bout from its card
+    to its K.O. in the 9:16 layout and an end card. A fight longer than the limit loses whole turns from the
+    middle of its bouts (each cut is marked FAST FORWARD); the K.O.s, the first turn of each bout and the
+    crits stay. (The cold open was added on 8 Nov 2026: Episode 5's version, which opened on Bout 1, was
+    swiped away after 0.6 s on average.)"""
     ep = SE.episode(season, n)
     cfg = season.get("full_shorts", {})
     max_s = float(cfg.get("max_s", 175.0))
@@ -699,18 +732,37 @@ def full(season, n, res, timeline, times, out: Path, assets: Assets, preview=Fal
     bouts = _bouts(tc)
     n_segs = len({b["seg"] for b in bouts})
     fight_s = sum(b["t1"] - b["t0"] for b in bouts)
-    wins, removed = _windows(bouts, max_s - end_d - card_d * (n_segs - 1))
+    tease = _tease(tc, bouts, ep) if cfg.get("cold_open", True) else None
+    freeze_d, rew_n = 1.0, 12
+    tease_s = (tease[1] - tease[0] + freeze_d + rew_n / FPS) if tease else 0.0
+    wins, removed = _windows(bouts, max_s - end_d - card_d * (n_segs - 1) - tease_s)
     wins[0]["a"] += 0.3                    # open on the bout card already landed, not mid-slam
     hook = _full_hook(ep, removed > 0)
+    intro, intro_ev = [], []
+    if tease:
+        tf, tev, tst = clip(timeline, assets, tease[0], tease[1], title, tease[2])
+        fr = _freeze_lines(tf[-1], tst, ("HOW DID IT", "GET HERE?"), freeze_d)
+        rw = []
+        for x in tf[::-3][:rew_n]:
+            x = _darken(x, 0.3)
+            _skip_tag(x, tst, 0.0, "REWIND")
+            rw.append(x)
+        t_fr, t_rw = len(tf) / FPS, (len(tf) + len(fr)) / FPS
+        intro = tf + fr + rw
+        intro_ev = [e for e in tev if e["t"] < t_fr and e["type"] != "music_stop"] + [
+            {"type": "music_stop", "t": t_fr, "fade_out": 0.15}, {"type": "sfx", "id": "alert", "t": t_fr, "volume": 1.0},
+            {"type": "sfx", "id": "transition", "t": t_rw, "volume": 1.0}]
     tapes = [(t, c) for t, c in tc if c["op"] == "show_card" and c["kind"] == "tape"]
     S.install()
     r = _WindowRunner(timeline, assets)
     r.layout = "tall"
     r.windows = tuple((w["a"], w["b"]) for w in wins)
-    keep = {"cover": None, "offsets": [], "cards": [], "end_at": 0.0}
+    keep = {"cover": intro[len(intro) - rew_n - int(freeze_d * FPS) + 12].copy() if intro else None,
+            "offsets": [], "cards": [], "end_at": 0.0}
 
     def frames():
-        buf, k, pushed = [], -1, 0
+        buf, k, pushed = [], -1, len(intro)
+        yield from intro
         st = None
         for f in r.frames():
             if f is None:
@@ -757,7 +809,7 @@ def full(season, n, res, timeline, times, out: Path, assets: Assets, preview=Fal
 
     def audio():
         evs = sorted(r.stage.audio, key=lambda e: e["t"])
-        out_ev, cur = [], None
+        out_ev, cur = list(intro_ev), None
         for t in keep["cards"]:
             out_ev.append({"type": "sfx", "id": "transition", "t": t, "volume": 0.9})
         for w, o in zip(wins, keep["offsets"]):
@@ -794,6 +846,7 @@ def full(season, n, res, timeline, times, out: Path, assets: Assets, preview=Fal
     if keep["cover"] is not None:
         keep["cover"].resize((VW * 4, VH * 4), Image.NEAREST).save(out.with_suffix(".cover.png"))
     return {**info, "kind": "full", "hook": hook, "fight_s": round(fight_s, 2), "cut_s": round(removed, 2),
+            "cold_open": [round(tease[0], 2), round(tease[1], 2), tease[2]] if tease else None,
             "condensed": removed > 0, "windows": [[round(w["a"], 2), round(w["b"], 2), w["kind"]] for w in wins]}
 
 
