@@ -1001,7 +1001,10 @@ def main() -> int:
                                         "unschedule"])
     ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]; "
                                              "requeue: <ledger key> ...; unschedule: <ledger key> ... or --series=KEY")
-    a = ap.parse_args()
+    a, extra = ap.parse_known_args()
+    if extra and a.command not in ("requeue", "unschedule"):
+        ap.error(f"unrecognized arguments: {' '.join(extra)}")
+    a.args += extra                                 # e.g. unschedule --series=pit-s1
     global QUOTA_TRACK
     QUOTA_TRACK = True
     cfg = load_config()
