@@ -1,12 +1,14 @@
 {
  "enabled": true,
+ "story": false,
  "category_id": "20",
  "language": "en",
  "made_for_kids": false,
  "contains_synthetic_media": false,
  "playlist_id": "PLBj9AG5nPm0Q",
  "shorts_playlist_id": "PLBj9AG5nPm0Q",
- "max_per_run": 2,
+ "max_per_run": 3,
+ "daily_quota_budget": 9000,
  "schedule": {
   "timezone": "Europe/Paris",
   "time": "21:00",
@@ -19,7 +21,7 @@
   ],
   "min_lead_hours": 2
  },
- "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday. max_per_run: uploads per run (the nightly run, and the run after each new story release); the queue goes in order of publish time across the story and every series. playlist_id: the story's episodes (shorts_playlist_id: its Shorts, if set). series: other shows whose uploads (times, titles, descriptions, tags) come from a plan file in their GitHub release; every upload goes to the series' playlist. An upload without a time in the plan waits until `times` gives it one, e.g. {\"e11-trailer\": \"2026-11-24 18:00\"} (local time); `times` also overrides a plan time. retext: find/replace rules applied to every description, at upload and (each run, after its command) to the videos already on YouTube; a rule that no longer matches costs nothing. Added 25 Oct 2026: Act 1 of the story ended with Episode 10 (no more weekday episodes for now) and the Pit's T-Rex bonus got a date (Wed 25 Nov, from the pit-s1 plan) instead of the 100-subscriber unlock.",
+ "notes": "enabled: uploads happen only when true (on since the secrets were set; Google no longer locks API uploads of unaudited projects as private, so no audit is needed: production/YOUTUBE.md, step 7). follow_release_schedule: premiere each episode at its slot in production/schedule.json (the same moment the wiki and the GitHub release go public); `schedule` is only the fallback for a slot that has already passed. category 20 = Gaming. weekdays: 0 = Monday. max_per_run: uploads per run (the nightly run, and the run after each new story release); the queue goes in order of publish time across the story and every series. playlist_id: the story's episodes (shorts_playlist_id: its Shorts, if set). series: other shows whose uploads (times, titles, descriptions, tags) come from a plan file in their GitHub release; every upload goes to the series' playlist. An upload without a time in the plan waits until `times` gives it one, e.g. {\"e11-trailer\": \"2026-11-24 18:00\"} (local time); `times` also overrides a plan time. retext: find/replace rules applied to every description, at upload and (each run, after its command) to the videos already on YouTube; a rule that no longer matches costs nothing. Added 25 Oct 2026: Act 1 of the story ended with Episode 10 (no more weekday episodes for now) and the Pit's T-Rex bonus got a date (Wed 25 Nov, from the pit-s1 plan) instead of the 100-subscriber unlock. Changed 15 Nov 2026: the channel was renamed Timeslip Ramen (@TimeslipRamenShop). story: false turns the story's uploads off; The Pit (enabled: false) gets no more uploads, and its uploads that were still scheduled were unscheduled (private, no publish time; `unschedule --series=pit-s1`). Series tsr-s1 uploads Timeslip Ramen Season 1 from Nat20-Pixel-Saga/TimeSlipRamen: plan = docs/upload-schedule.json on its main branch, videos and thumbnails from its releases (week-1 ... week-4, channel-kit), category 1 = Film & Animation, its playlists created on the channel the first time they are needed (ids kept in wiki/data/youtube-playlists.json). Shorts get no custom thumbnail (YouTube allows it only for Partner Program channels). The trailer's 14 Nov slot had passed, so `times` moves it to Mon 16 Nov 12:00. daily_quota_budget: units of YouTube's shared 10,000-a-day pool the runs may spend per Pacific day (thumbnails, playlists, updates: 50 each), counted in wiki/data/youtube-quota.json; a run stops before an upload that would pass it. Uploads themselves have had their own bucket since June 2026 (100 a day). max_per_run 3 from 15 Nov: Timeslip Ramen needs about 1.5 uploads a day, so the queue gets ahead.",
  "follow_release_schedule": true,
  "series": [
   {
@@ -29,7 +31,55 @@
    "plan": "s1_plan.json",
    "timezone": "Europe/Paris",
    "playlist_id": "PLbziVo4Ic8Lc",
-   "times": {}
+   "times": {},
+   "enabled": false
+  },
+  {
+   "key": "tsr-s1",
+   "name": "Timeslip Ramen, Season 1: Rainy Nights",
+   "enabled": true,
+   "repo": "Nat20-Pixel-Saga/TimeSlipRamen",
+   "plan_path": "docs/upload-schedule.json",
+   "timezone": "Europe/Berlin",
+   "category_id": "1",
+   "language": "en",
+   "short_thumbnails": false,
+   "tags": [
+    "timeslip ramen",
+    "pixel art",
+    "pixel ramen shop",
+    "cozy",
+    "lofi",
+    "rain sounds",
+    "japanese history",
+    "japanese folklore",
+    "yokai",
+    "japan culture",
+    "learn japanese words",
+    "ramen",
+    "haiku",
+    "samurai",
+    "kitsune",
+    "cozy animation",
+    "study with me",
+    "relaxing",
+    "rainy night"
+   ],
+   "playlists": {
+    "Season 1 · Rainy Nights (full episodes)": null,
+    "Shorts · one visitor a day": null,
+    "Folklore & yōkai": null,
+    "People from history": null
+   },
+   "playlist_descriptions": {
+    "Season 1 · Rainy Nights (full episodes)": "Twelve rainy (and two snowy) nights at a ramen shop whose door opens onto any century.",
+    "Shorts · one visitor a day": "One visitor from Japanese history or folklore every day, straight from the counter.",
+    "Folklore & yōkai": "Kappa, tanuki, a hundred-year-old umbrella, the thunder god, the snow woman and a dream eater.",
+    "People from history": "Poets, painters, samurai, scientists and writers, each with sourced facts on screen."
+   },
+   "times": {
+    "trailer": "2026-11-16 12:00"
+   }
   }
  ],
  "retext": [

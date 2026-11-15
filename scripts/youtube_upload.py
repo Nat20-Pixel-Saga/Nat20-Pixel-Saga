@@ -4,13 +4,22 @@
 Runs in GitHub Actions (.github/workflows/youtube.yml). One queue, in order of
 publish time, holds everything released and not yet in the ledger
 (wiki/data/youtube.json): the story's episodes (in episode order, each at its
-premiere in production/schedule.json) and their Shorts, and every upload of the
-other series in production/youtube.json `series` (The Pit: the times, titles and
-descriptions come from the plan file in its GitHub release). Each run uploads the
-first `max_per_run` of them: it downloads the MP4 and thumbnail from the release
-(REST API, so drafts are found too), uploads and schedules the video, sets the
-thumbnail and adds it to its playlist. Once a video's time has passed, `link`
-marks it live so the wiki shows "Watch on YouTube".
+premiere in production/schedule.json) and their Shorts (unless `story` is false),
+and every upload of the enabled series in production/youtube.json `series` (the
+times, titles and descriptions come from a plan: a file in the series' GitHub
+release, or, with `repo` and `plan_path`, a file in another repository, whose
+releases then hold the videos). Each run uploads the first `max_per_run` of them:
+it downloads the MP4 and thumbnail from the release (REST API, so drafts are found
+too), uploads and schedules the video, sets the thumbnail and adds it to its
+playlists (created on the channel the first time they are needed). Once a video's
+time has passed, `link` marks it live so the wiki shows "Watch on YouTube".
+
+Since 15 Nov 2026 the channel is Timeslip Ramen (@TimeslipRamenShop, formerly
+@Nat20px): the story and The Pit are off, and series `tsr-s1` uploads Timeslip
+Ramen's Season 1 from Nat20-Pixel-Saga/TimeSlipRamen. Every run keeps to a daily
+quota budget (`daily_quota_budget`: units of YouTube's shared 10,000-a-day pool,
+counted per Pacific day in wiki/data/youtube-quota.json; uploads have their own
+bucket of 100 a day) and stops early rather than run out mid-way.
 
     python scripts/youtube_upload.py check       # verify the credentials (prints the channel)
     python scripts/youtube_upload.py plan        # the whole queue, night by night (no upload, no credentials)
@@ -19,6 +28,8 @@ marks it live so the wiki shows "Watch on YouTube".
     python scripts/youtube_upload.py refresh     # re-check stored video IDs (YouTube's 30-day rule)
     python scripts/youtube_upload.py record 3 https://youtu.be/abc123 "2026-10-08 21:00"
                                                  # register a video uploaded by hand (Paris time)
+    python scripts/youtube_upload.py unschedule --series=pit-s1
+                                                 # keep scheduled uploads from going public
 
 Credentials come from the environment: YT_CLIENT_ID, YT_CLIENT_SECRET and
 YT_REFRESH_TOKEN (see production/YOUTUBE.md). Uses only the standard library
@@ -44,6 +55,10 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "production" / "youtube.json"
 LEDGER = ROOT / "wiki" / "data" / "youtube.json"
 REPLACED = ROOT / "wiki" / "data" / "youtube-replaced.json"     # uploads swapped out by `requeue`
+PLAYLISTS = ROOT / "wiki" / "data" / "youtube-playlists.json"   # series playlists created by the uploader
+QUOTA = ROOT / "wiki" / "data" / "youtube-quota.json"           # API units spent today (Pacific day)
+PACIFIC = ZoneInfo("America/Los_Angeles")                       # YouTube's quota resets at midnight Pacific
+QUOTA_TRACK = False                                             # main() turns it on (tests stay side-effect free)
 EPISODES = ROOT / "episodes"
 API = "https://www.googleapis.com/youtube/v3"
 UPLOAD = "https://www.googleapis.com/upload/youtube/v3"
@@ -144,8 +159,34 @@ def video_body(pk: dict, cfg: dict, publish_at: dt.datetime | None) -> dict:
 
 
 # -------------------------------------------------------------------- HTTP
+def _quota_cost(method: str, url: str) -> int:
+    """Units this call takes from the shared 10,000-a-day pool: 50 for a write (thumbnail, playlist, update).
+    Uploads (videos.insert) have had their own bucket since June 2026, 100 a day at 1 unit each, so they cost
+    nothing here; reads (1 unit each) are left out too, so a run that only reads changes nothing on disk, and
+    the budget's margin below 10,000 covers them."""
+    if not url.startswith(("https://www.googleapis.com/youtube/", "https://www.googleapis.com/upload/youtube/")):
+        return 0
+    if method == "GET" or url.startswith(f"{UPLOAD}/videos"):
+        return 0
+    return 50
+
+
+def quota_today(now: dt.datetime | None = None) -> int:
+    day = (now or dt.datetime.now(dt.timezone.utc)).astimezone(PACIFIC).date().isoformat()
+    q = json.loads(QUOTA.read_text()) if QUOTA.exists() else {}
+    return q.get("units", 0) if q.get("day") == day else 0
+
+
+def spend(units: int, now: dt.datetime | None = None) -> None:
+    if not units or not QUOTA_TRACK:
+        return
+    day = (now or dt.datetime.now(dt.timezone.utc)).astimezone(PACIFIC).date().isoformat()
+    QUOTA.write_text(json.dumps({"day": day, "units": quota_today(now) + units}) + "\n")
+
+
 def _request(method: str, url: str, token: str | None = None, data: bytes | None = None,
              headers: dict | None = None) -> tuple[int, dict, bytes]:
+    spend(_quota_cost(method, url))
     h = dict(headers or {})
     if token:
         h["Authorization"] = f"Bearer {token}"
@@ -230,6 +271,49 @@ def set_thumbnail(token: str, video_id: str, png: Path) -> None:
         notice(f"{video_id}: thumbnail not set ({st}): {resp.decode(errors='replace')[:300]}", "warning")
 
 
+def ensure_playlists(token: str, cfg: dict) -> dict[str, dict[str, str]]:
+    """series key -> {playlist name: id} for the enabled series' named playlists (`playlists` in a series'
+    config: name -> id, or null to have the uploader find the playlist by its title on the channel or create
+    it, public, with the description given in `playlist_descriptions`). Ids are kept in
+    wiki/data/youtube-playlists.json. Quota: 1 unit per 50 playlists read, 50 per playlist created."""
+    stored = json.loads(PLAYLISTS.read_text()) if PLAYLISTS.exists() else {}
+    mine: dict[str, str] | None = None
+    changed = False
+    for scfg in active_series(cfg):
+        want = scfg.get("playlists") or {}
+        have = stored.setdefault(scfg["key"], {})
+        for name, pid in want.items():
+            if pid and have.get(name) != pid:
+                have[name], changed = pid, True
+        for name in [n for n in want if not have.get(n)]:
+            if mine is None:
+                mine, page = {}, ""
+                while True:
+                    st, _, body = _request("GET", f"{API}/playlists?part=snippet&mine=true&maxResults=50"
+                                                  + (f"&pageToken={page}" if page else ""), token)
+                    data = _json(st, body, "Reading the channel's playlists")
+                    for it in data.get("items", []):
+                        mine.setdefault(it["snippet"]["title"], it["id"])
+                    page = data.get("nextPageToken")
+                    if not page:
+                        break
+            if name in mine:
+                have[name] = mine[name]
+            else:
+                body = {"snippet": {"title": clean_text(name, 150),
+                                    "description": clean_text((scfg.get("playlist_descriptions") or {}).get(name, ""), 5000),
+                                    "defaultLanguage": scfg.get("language", cfg.get("language", "en"))},
+                        "status": {"privacyStatus": "public"}}
+                st, _, resp = _request("POST", f"{API}/playlists?part=snippet,status", token,
+                                       json.dumps(body).encode(), {"Content-Type": "application/json"})
+                have[name] = _json(st, resp, f"Creating the playlist {name!r}")["id"]
+                notice(f"created playlist {name!r}: {have[name]}")
+            changed = True
+    if changed:
+        PLAYLISTS.write_text(json.dumps(stored, indent=1, ensure_ascii=False) + "\n")
+    return stored
+
+
 def add_to_playlist(token: str, playlist_id: str, video_id: str) -> None:
     body = {"snippet": {"playlistId": playlist_id, "resourceId": {"kind": "youtube#video", "videoId": video_id}}}
     st, _, resp = _request("POST", f"{API}/playlistItems?part=snippet", token, json.dumps(body).encode(),
@@ -250,12 +334,12 @@ def gh_api(path: str):
     return json.loads(out) if out.strip() else None
 
 
-def all_releases() -> list[dict]:
-    """Every release, drafts included (they need push access: the workflow's token has it).
-    The REST API is used rather than `gh release view`, which cannot always find a draft."""
+def all_releases(r: str | None = None) -> list[dict]:
+    """Every release of this repository (or of `r`), drafts included (they need push access: the workflow's
+    token has it). The REST API is used rather than `gh release view`, which cannot always find a draft."""
     out, page = [], 1
     while True:
-        batch = gh_api(f"repos/{repo()}/releases?per_page=100&page={page}")
+        batch = gh_api(f"repos/{r or repo()}/releases?per_page=100&page={page}")
         if not batch:
             return out
         out += batch
@@ -278,9 +362,10 @@ def asset(rel: dict, name: str) -> dict | None:
 
 
 def download(a: dict, dest: Path) -> Path:
+    url = a.get("url", "")
+    path = url.split("api.github.com/", 1)[1] if "api.github.com/" in url else f"repos/{repo()}/releases/assets/{a['id']}"
     with dest.open("wb") as fh:
-        subprocess.run(["gh", "api", "-H", "Accept: application/octet-stream",
-                        f"repos/{repo()}/releases/assets/{a['id']}"], stdout=fh, check=True)
+        subprocess.run(["gh", "api", "-H", "Accept: application/octet-stream", path], stdout=fh, check=True)
     return dest
 
 
@@ -431,18 +516,29 @@ def story_short_meta(eid: str, pk: dict, ledger: dict) -> dict:
     return {"title": pk["short"]["title"], "description_full": desc, "tags": pk.get("tags", []) + ["shorts"]}
 
 
-def series_items(scfg: dict, plan: list[dict], rel: dict, ledger: dict, now: dt.datetime, lead: dt.timedelta,
+BODY_KEYS = ("category_id", "language", "made_for_kids", "contains_synthetic_media")
+
+
+def series_items(scfg: dict, plan: list[dict], rels, ledger: dict, now: dt.datetime, lead: dt.timedelta,
                  notes: list[str] | None = None) -> list[dict]:
-    """Uploads of another series (The Pit) from its release's plan file: each at its own time.
-    One without a time (the subscriber-unlock bonus) waits until `times` in the config gives it
-    one; one whose time is already too close is left out and reported, never published early or late."""
+    """Uploads of a series from its plan: each at its own time (`when`, or `date` and `time`), from its
+    release (`release` in the item, else the series'). One without a time (the subscriber-unlock bonus)
+    waits until `times` in the config gives it one; one whose time is already too close is left out and
+    reported, never published early or late. Thumbnail: `thumbnail` or `thumb_a` (or a Short's `thumb`,
+    unless `short_thumbnails` is false); playlists: the series' `playlist_id` and the item's `playlists`
+    (names); tags: the item's, its `visitors`, then the series' `tags`."""
     tz = scfg.get("timezone", "Europe/Paris")
+    if isinstance(rels, dict) or rels is None:
+        rels = [rels] if rels else []
+    by_tag = {r.get("tag_name"): r for r in rels}
+    body = {k: scfg[k] for k in BODY_KEYS if k in scfg}
     items = []
     for x in plan:
         key = f"{scfg['key']}-{x['id']}"
         if key in ledger:
             continue
-        when_s = (scfg.get("times") or {}).get(x["id"], x.get("when"))
+        own = x.get("when") or (f"{x['date']} {x['time']}" if x.get("date") and x.get("time") else None)
+        when_s = (scfg.get("times") or {}).get(x["id"], own)
         if not when_s:
             if notes is not None:
                 notes.append(f"{key}: held (no time yet; set it in production/youtube.json series times)")
@@ -453,36 +549,62 @@ def series_items(scfg: dict, plan: list[dict], rel: dict, ledger: dict, now: dt.
                 notes.append(f"{key}: its time ({when_s}) is too close or past, so it was not uploaded; "
                              f"set a new time in production/youtube.json series times")
             continue
+        tag = x.get("release") or scfg.get("release")
+        rel = by_tag.get(tag) or (rels[0] if len(rels) == 1 and not x.get("release") else None)
+        if rel is None:
+            if notes is not None:
+                notes.append(f"{key}: release {tag!r} not found, so it was not uploaded")
+            continue
         short = "short" in x.get("kind", "")
         tags = x.get("tags") or []
         if isinstance(tags, str):
             tags = [t.strip() for t in tags.split(",") if t.strip()]
-        thumb = x.get("thumbnail") or (x["file"].removesuffix(".mp4") + ".cover.png" if short else None)
+        tags = list(tags) + list(x.get("visitors") or []) + list(scfg.get("tags") or [])
+        if short and scfg.get("tags"):
+            tags.append("shorts")
+        if short and scfg.get("short_thumbnails") is False:
+            thumb = None
+        else:
+            thumb = (x.get("thumbnail") or x.get("thumb_a") or x.get("thumb")
+                     or (x["file"].removesuffix(".mp4") + ".cover.png" if short else None))
         meta = {"title": x["title"], "description_full": x["description"], "tags": tags}
         items.append({"key": key, "when": when, "file": x["file"], "release": rel, "short": short,
-                      "thumbnail": thumb, "playlist": scfg.get("playlist_id"), "meta": lambda led, m=meta: m})
+                      "thumbnail": thumb, "playlist": scfg.get("playlist_id"), "playlists": list(x.get("playlists") or []),
+                      "series": scfg["key"], "body": body, "meta": lambda led, m=meta: m})
     return items
 
 
-def series_plan(scfg: dict, rels: list[dict]) -> tuple[dict | None, list[dict]]:
-    rel = next((r for r in rels if r.get("tag_name") == scfg["release"]), None)
+def active_series(cfg: dict) -> list[dict]:
+    return [s for s in cfg.get("series", []) if s.get("enabled", True)]
+
+
+def series_plan(scfg: dict, rels: list[dict]) -> tuple[list[dict], list[dict]]:
+    """The series' releases and its plan: the plan file in its release, or (`repo` + `plan_path`) a file on
+    the default branch of the series' own repository, whose releases then hold the videos."""
+    srels = all_releases(scfg["repo"]) if scfg.get("repo") else rels
+    if scfg.get("repo") and scfg.get("plan_path"):
+        raw = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
+                              f"repos/{scfg['repo']}/contents/{scfg['plan_path']}"],
+                             capture_output=True, text=True, check=True).stdout
+        return srels, json.loads(raw)
+    rel = next((r for r in srels if r.get("tag_name") == scfg["release"]), None)
     a = rel and asset(rel, scfg.get("plan", "plan.json"))
     if not a:
-        return rel, []
+        return ([rel] if rel else []), []
     with tempfile.TemporaryDirectory() as tmp:
-        return rel, json.loads(download(a, Path(tmp) / "plan.json").read_text())
+        return [rel], json.loads(download(a, Path(tmp) / "plan.json").read_text())
 
 
 def build_queue(cfg: dict, ledger: dict, rels: list[dict], now: dt.datetime,
                 notes: list[str] | None = None, plans: dict | None = None) -> list[dict]:
     """Everything still to upload, in order of publish time (\"publish now\" first)."""
     lead = dt.timedelta(hours=cfg.get("schedule", {}).get("min_lead_hours", 2))
-    items = story_items(cfg, ledger, rels, released_episodes(rels), now)
-    for scfg in cfg.get("series", []):
-        rel, plan = (plans or {}).get(scfg["key"]) or series_plan(scfg, rels)
-        if rel is None and notes is not None:
-            notes.append(f"{scfg['key']}: no release {scfg['release']!r} found")
-        items += series_items(scfg, plan, rel, ledger, now, lead, notes)
+    items = story_items(cfg, ledger, rels, released_episodes(rels), now) if cfg.get("story", True) else []
+    for scfg in active_series(cfg):
+        srels, plan = (plans or {}).get(scfg["key"]) or series_plan(scfg, rels)
+        if not srels and notes is not None:
+            notes.append(f"{scfg['key']}: no release {scfg.get('release') or scfg.get('repo')!r} found")
+        items += series_items(scfg, plan, srels, ledger, now, lead, notes)
     order = {id(it): i for i, it in enumerate(items)}
     return sorted(items, key=lambda it: (it["when"] or now, order[id(it)]))
 
@@ -530,32 +652,49 @@ def cmd_upload(cfg: dict) -> int:
     queue = build_queue(cfg, ledger, all_releases(), now, notes)
     for n in notes:
         print(n, flush=True) if ": held" in n else notice(n, "warning")
-    batch = this_run(queue, ledger, cfg.get("max_per_run", 2))
+    cap = int(os.environ.get("MAX_PER_RUN") or cfg.get("max_per_run", 2))
+    batch = this_run(queue, ledger, cap)
     token = access_token()
     check_playlists(token, cfg)                     # stops here, before uploading, if one is wrong
+    plmaps = ensure_playlists(token, cfg)
     sync_playlists(token, cfg, ledger)
     if not batch:
         print("Nothing to upload.")
         return 0
+    budget, done = int(cfg.get("daily_quota_budget", 9000)), 0
     for it in batch:
-        upload_item(token, cfg, ledger, it, now)
-    notice(f"{len(queue) - len(batch)} upload(s) left in the queue.")
+        cost = (50 if it.get("thumbnail") else 0) + 50 * (len(it.get("playlists", [])) + bool(it.get("playlist")))
+        if QUOTA_TRACK and quota_today() + cost > budget:
+            notice(f"Stopped before {it['key']}: today's YouTube quota budget ({budget} units, {quota_today()} spent) "
+                   "would run out; the next run carries on.", "warning")
+            break
+        upload_item(token, cfg, ledger, it, now, plmaps.get(it.get("series"), {}))
+        done += 1
+    notice(f"{len(queue) - done} upload(s) left in the queue.")
     return 0
 
 
-def upload_item(token: str, cfg: dict, ledger: dict, it: dict, now: dt.datetime) -> None:
-    body = video_body(it["meta"](ledger), cfg, it["when"])
+def upload_item(token: str, cfg: dict, ledger: dict, it: dict, now: dt.datetime,
+                plmap: dict[str, str] | None = None) -> None:
+    body = video_body(it["meta"](ledger), {**cfg, **(it.get("body") or {})}, it["when"])
     with tempfile.TemporaryDirectory() as tmp:
         print(f"{it['key']}: uploading ({iso(it['when']) if it['when'] else 'publish now'})", flush=True)
         vid = upload_video(token, download(asset(it["release"], it["file"]), Path(tmp) / it["file"]), body)
         thumb = it.get("thumbnail") and asset(it["release"], it["thumbnail"])
         if thumb:
             set_thumbnail(token, vid, download(thumb, Path(tmp) / thumb["name"]))
-    if it.get("playlist"):
-        add_to_playlist(token, it["playlist"], vid)
+    named = [(plmap or {}).get(n) for n in it.get("playlists", [])]
+    for n, pid in zip(it.get("playlists", []), named):
+        if not pid:
+            notice(f"{it['key']}: playlist {n!r} has no id, so the video was not added to it", "warning")
+    pls = ([it["playlist"]] if it.get("playlist") else []) + [p for p in named if p]
+    for pid in pls:
+        add_to_playlist(token, pid, vid)
     url = f"https://www.youtube.com/shorts/{vid}" if it["short"] else f"https://www.youtube.com/watch?v={vid}"
     ledger[it["key"]] = {"video_id": vid, "url": url, "publish_at": iso(it["when"] or now),
                          "linked": it["when"] is None}
+    if it.get("playlists"):
+        ledger[it["key"]]["playlists"] = [p for p in named if p]
     save_ledger(ledger)                             # saved after each video: a failure loses nothing
     notice(f"{it['key']}: {url} (public {iso(it['when']) if it['when'] else 'now'})")
 
@@ -565,19 +704,24 @@ def playlist_members(cfg: dict, ledger: dict) -> dict[str, list[str]]:
     """playlist id -> the ledger's video ids that belong in it, in order: story episodes (and
     Shorts, if `shorts_playlist_id` is set) by episode, each series' uploads by publish time."""
     out: dict[str, list[str]] = {}
-    for key in sorted(k for k in ledger if k.startswith("C")):
+    for key in sorted(k for k in ledger if k.startswith("C") and cfg.get("story", True)):
         pl = cfg.get("shorts_playlist_id") if key.endswith("-short") else cfg.get("playlist_id")
         if pl:
             out.setdefault(pl, []).append(ledger[key]["video_id"])
-    for scfg in cfg.get("series", []):
-        keys = sorted((k for k in ledger if k.startswith(scfg["key"] + "-")), key=lambda k: (ledger[k]["publish_at"], k))
+    for scfg in active_series(cfg):
+        keys = sorted((k for k in ledger if k.startswith(scfg["key"] + "-") and not ledger[k].get("unscheduled")),
+                      key=lambda k: (ledger[k]["publish_at"], k))
         if scfg.get("playlist_id") and keys:
             out.setdefault(scfg["playlist_id"], []).extend(ledger[k]["video_id"] for k in keys)
+        for k in keys:
+            for pid in ledger[k].get("playlists", []):
+                out.setdefault(pid, []).append(ledger[k]["video_id"])
     return out
 
 
 def configured_playlists(cfg: dict) -> list[str]:
-    ids = [cfg.get("playlist_id"), cfg.get("shorts_playlist_id")] + [s.get("playlist_id") for s in cfg.get("series", [])]
+    ids = ([cfg.get("playlist_id"), cfg.get("shorts_playlist_id")] if cfg.get("story", True) else []) + \
+          [s.get("playlist_id") for s in active_series(cfg)]
     return list(dict.fromkeys(i for i in ids if i))
 
 
@@ -624,7 +768,7 @@ def cmd_link(now: dt.datetime | None = None) -> int:
     ledger = load_ledger()
     changed = 0
     for v in ledger.values():
-        if not v.get("linked") and parse_iso(v["publish_at"]) <= now:
+        if not v.get("linked") and not v.get("unscheduled") and parse_iso(v["publish_at"]) <= now:
             v["linked"] = True
             changed += 1
     if changed:
@@ -758,6 +902,62 @@ def cmd_requeue(keys: list[str], now: dt.datetime | None = None) -> int:
     return 0
 
 
+def cmd_unschedule(args: list[str], now: dt.datetime | None = None) -> int:
+    """Keep scheduled uploads from going public (a series dropped, the channel changed): each becomes private
+    with no publish time; its ledger entry stays, marked `unscheduled`, so it is never uploaded again.
+    `--series=KEY` takes every upload of that series that is not public yet. Undo in Studio (give it a time
+    or make it public). Quota: 1 unit per 50 videos read, 50 per video changed."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    ledger = load_ledger()
+    keys: list[str] = []
+    for a in args:
+        if a.startswith("--series="):
+            keys += sorted(k for k in ledger if k.startswith(a.split("=", 1)[1] + "-"))
+        else:
+            keys.append(a)
+    keys = list(dict.fromkeys(keys))
+    if not keys:
+        raise SystemExit("unschedule needs ledger keys or --series=KEY")
+    unknown = [k for k in keys if k not in ledger]
+    if unknown:
+        raise SystemExit(f"Not in the ledger: {', '.join(unknown)}")
+    soon = now + dt.timedelta(minutes=30)
+    todo = [k for k in keys if not ledger[k].get("unscheduled") and parse_iso(ledger[k]["publish_at"]) > soon]
+    left = [k for k in keys if k not in todo and not ledger[k].get("unscheduled")]
+    if left:
+        print(f"Already public (or about to be), left alone: {', '.join(left)}")
+    if not todo:
+        print("Nothing to unschedule.")
+        return 0
+    if not have_credentials():
+        raise SystemExit("No YouTube credentials: nothing changed.")
+    token = access_token()
+    ids = {ledger[k]["video_id"]: k for k in todo}
+    found: dict[str, dict] = {}
+    vids = list(ids)
+    for i in range(0, len(vids), 50):
+        st, _, body = _request("GET", f"{API}/videos?part=status&id={','.join(vids[i:i + 50])}", token)
+        found |= {it["id"]: it for it in _json(st, body, "Reading the uploads").get("items", [])}
+    done = 0
+    for vid, key in ids.items():
+        it = found.get(vid)
+        if it:
+            status = {k: it["status"][k] for k in STATUS_KEEP if k in it["status"]}
+            status["privacyStatus"] = "private"            # no publishAt: it stays private
+            st2, _, resp = _request("PUT", f"{API}/videos?part=status", token,
+                                    json.dumps({"id": vid, "status": status}).encode(),
+                                    {"Content-Type": "application/json"})
+            _json(st2, resp, f"{key}: unscheduling {vid}")
+            print(f"{key}: {vid} is now private, with no publish time", flush=True)
+        else:
+            print(f"{key}: {vid} no longer exists on YouTube", flush=True)
+        ledger[key].update(unscheduled=iso(now), linked=False)
+        save_ledger(ledger)
+        done += 1
+    notice(f"unschedule: {done} upload(s) will not go public")
+    return 0
+
+
 def video_id(text: str) -> str:
     """The 11-character id from a YouTube URL (watch, youtu.be, shorts, studio) or a bare id."""
     import re
@@ -797,10 +997,13 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext", "requeue"])
+    ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext", "requeue",
+                                        "unschedule"])
     ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]; "
-                                             "requeue: <ledger key> ...")
+                                             "requeue: <ledger key> ...; unschedule: <ledger key> ... or --series=KEY")
     a = ap.parse_args()
+    global QUOTA_TRACK
+    QUOTA_TRACK = True
     cfg = load_config()
     if a.command == "record":
         if len(a.args) < 2:
@@ -808,6 +1011,8 @@ def main() -> int:
         return cmd_record(a.args[0], a.args[1], " ".join(a.args[2:]) or None)
     if a.command == "requeue":
         return cmd_requeue([k for arg in a.args for k in arg.replace(",", " ").split()])
+    if a.command == "unschedule":
+        return cmd_unschedule([k for arg in a.args for k in arg.replace(",", " ").split()])
     return {"check": lambda: cmd_check(cfg), "plan": lambda: cmd_plan(cfg), "upload": lambda: cmd_upload(cfg),
             "link": cmd_link, "refresh": cmd_refresh, "retext": lambda: cmd_retext(cfg)}[a.command]()
 

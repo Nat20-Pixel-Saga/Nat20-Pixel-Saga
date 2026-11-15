@@ -1,6 +1,25 @@
 # Publishing to YouTube automatically
 
-Channel: [@Nat20px](https://www.youtube.com/@Nat20px) · wiki: <https://nat20pixelsaga.com>
+Channel: [@TimeslipRamenShop](https://www.youtube.com/@TimeslipRamenShop) (until 15 Nov 2026 @Nat20px) · wiki: <https://nat20pixelsaga.com>
+
+## Since 15 Nov 2026: the channel is Timeslip Ramen
+
+The channel was renamed **Timeslip Ramen** (@TimeslipRamenShop), and this uploader now publishes
+Timeslip Ramen's Season 1: series `tsr-s1` in `production/youtube.json` reads the plan
+`docs/upload-schedule.json` from the main branch of **Nat20-Pixel-Saga/TimeSlipRamen** and downloads
+each video and thumbnail from that repository's releases (`channel-kit`, `week-1` … `week-4`). The
+trailer, 12 episodes (Mon/Wed/Fri 17:00 Berlin) and 28 Shorts (daily 19:00) are scheduled at their
+times, 3 a night, days ahead; the trailer's 14 Nov slot had passed, so `times` puts it on Mon 16 Nov
+12:00. Its four playlists are created on the channel the first time they are needed (ids in
+`wiki/data/youtube-playlists.json`). To change a title, a description or a time, change the plan in the
+TimeSlipRamen repository (for an upload not yet made) or the video in Studio (once it is up).
+
+The story (`story`: false) and The Pit (`enabled`: false) upload nothing more. The Pit's uploads that were
+still scheduled were made private with no publish time (`unschedule --series=pit-s1`); the old public
+videos are still on the channel until they are hidden in Studio.
+
+Still by hand in Studio: the channel trailer for new visitors, each Short's Related video (its episode),
+pinned comments, and the A/B tests (titles `title_b`, thumbnails `*-thumb-B.png` in the plan and releases).
 
 ## Uploading by hand (until the automation is on)
 
@@ -149,7 +168,9 @@ highlight Shorts' "tap the link above" points to it), **pinned comments** (the t
 | `enabled` | Uploads happen only when true. |
 | `max_per_run` | Uploads per run (2): the nightly run, and the run after each new story release. |
 | `playlist_id` / `shorts_playlist_id` | The story's episodes / Shorts playlists (both *Campaign 1*). |
-| `series` | Other shows uploaded from their GitHub release's plan file (`key`, `release`, `plan`, `timezone`, `playlist_id`, `times`). |
+| `story` | false: the story's episodes and Shorts are not uploaded (since 15 Nov 2026). |
+| `series` | Other shows uploaded from a plan: `key`, `enabled`, `release` + `plan` (a file in that release) or `repo` + `plan_path` (a file in another repository, whose releases hold the videos), `timezone`, `playlist_id` or `playlists` (name → id, or null to find or create it, with `playlist_descriptions`), `category_id`, `language`, `tags`, `short_thumbnails`, `times`. |
+| `daily_quota_budget` | Units of the shared 10,000-a-day pool a day's runs may spend (thumbnails, playlists, updates: 50 each); uploads have their own bucket of 100 a day. |
 | `schedule` | `timezone`, `time`, `weekdays` (0 = Monday), `min_lead_hours`. `null` publishes at once with `privacy`. |
 | `category_id` | 20 Gaming (default), 24 Entertainment, 1 Film & Animation. |
 | `made_for_kids` | false: the show has combat and peril; YouTube asks every channel to declare this. |
@@ -157,7 +178,12 @@ highlight Shorts' "tap the link above" points to it), **pinned comments** (the t
 
 Quota: each project gets 100 `videos.insert` calls a day in their own bucket, plus
 10,000 units for everything else (`thumbnails.set` costs 50). A daily show uses a
-tiny fraction.
+tiny fraction. The runs count what they spend in `wiki/data/youtube-quota.json` and stop
+before passing `daily_quota_budget`.
+
+To keep scheduled uploads from going public (a series dropped): **Run workflow → unschedule**
+with keys, or `--series=KEY`. They become private with no publish time and are never uploaded
+again; undo in Studio.
 
 ## If something goes wrong
 

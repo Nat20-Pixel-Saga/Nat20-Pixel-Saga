@@ -567,7 +567,33 @@ class TestYouTube(unittest.TestCase):
         ledger = {f"C01-E{n:03d}{s}": {"video_id": f"v{n}{s}", "publish_at": f"2026-10-{11 + n:02d}T19:00:00Z"}
                   for n in range(1, 7) for s in ("", "-short")}
         cfg = load_json(ROOT / "production" / "youtube.json")
+        cfg["story"] = True                                        # the fixture tests the story and the Pit,
+        cfg["series"] = [dict(cfg["series"][0], enabled=True)]     # both switched off since 15 Nov
         return cfg, rels, {"pit-s1": (pit_rel, plan)}, ledger
+
+    def _tsr_fixture(self):
+        """Timeslip Ramen as it is configured: plan items with date + time and their own release."""
+        cfg = load_json(ROOT / "production" / "youtube.json")
+        tsr = {s["key"]: s for s in cfg["series"]}["tsr-s1"]
+        def rel(tag, names):
+            return {"tag_name": tag, "assets": [{"id": i, "name": n, "url": f"https://api.github.com/repos/{tsr['repo']}/releases/assets/{i}"}
+                                                for i, n in enumerate(names)]}
+        rels = [rel("channel-kit", ["timeslip-ramen-trailer.mp4", "timeslip-ramen-trailer-thumb-A.png"]),
+                rel("week-1", ["timeslip-ramen-ep01.mp4", "timeslip-ramen-ep01-thumb-A.png", "timeslip-ramen-short01.mp4",
+                               "timeslip-ramen-short01-thumb.png"])]
+        plan = [{"id": "trailer", "kind": "trailer", "date": "2026-11-14", "time": "17:00", "release": "channel-kit",
+                 "file": "timeslip-ramen-trailer.mp4", "thumb_a": "timeslip-ramen-trailer-thumb-A.png", "title": "T",
+                 "description": "d", "playlists": []},
+                {"id": "ep01", "kind": "episode", "date": "2026-11-16", "time": "17:00", "release": "week-1",
+                 "file": "timeslip-ramen-ep01.mp4", "thumb_a": "timeslip-ramen-ep01-thumb-A.png", "title": "Ep 1",
+                 "description": "d", "visitors": ["Matsuo Bashō", "Kappa"],
+                 "playlists": ["Season 1 · Rainy Nights (full episodes)", "Folklore & yōkai", "People from history"]},
+                {"id": "short01", "kind": "short", "date": "2026-11-16", "time": "19:00", "release": "week-1",
+                 "file": "timeslip-ramen-short01.mp4", "thumb": "timeslip-ramen-short01-thumb.png", "title": "S1",
+                 "description": "d", "visitors": ["Matsuo Bashō"], "playlists": ["Shorts · one visitor a day"]},
+                {"id": "ep02", "kind": "episode", "date": "2026-11-18", "time": "17:00", "release": "week-2",
+                 "file": "timeslip-ramen-ep02.mp4", "title": "Ep 2", "description": "d"}]
+        return cfg, tsr, rels, plan
 
     def test_queue_runs_in_publish_order_a_couple_per_run(self):
         import datetime as dt
@@ -615,6 +641,113 @@ class TestYouTube(unittest.TestCase):
         self.assertEqual(got[cfg["series"][0]["playlist_id"]], ["p1", "p2"])
         cfg["shorts_playlist_id"] = cfg["playlist_id"]                                       # Campaign 1 holds both
         self.assertEqual(self.yt.playlist_members(cfg, ledger)[cfg["playlist_id"]][:4], ["v1", "v1-short", "v2", "v2-short"])
+
+    def test_channel_is_timeslip_ramen_since_15_nov(self):
+        cfg = load_json(ROOT / "production" / "youtube.json")
+        self.assertFalse(cfg["story"])
+        on = [s["key"] for s in cfg["series"] if s.get("enabled", True)]
+        self.assertEqual(on, ["tsr-s1"])
+        tsr = {s["key"]: s for s in cfg["series"]}["tsr-s1"]
+        self.assertEqual((tsr["repo"], tsr["plan_path"], tsr["category_id"]),
+                         ("Nat20-Pixel-Saga/TimeSlipRamen", "docs/upload-schedule.json", "1"))
+        self.assertLess(cfg["daily_quota_budget"], 10000)
+
+    def test_timeslip_items_from_date_time_and_their_releases(self):
+        import datetime as dt
+        cfg, tsr, rels, plan = self._tsr_fixture()
+        now, notes = dt.datetime(2026, 11, 15, 21, tzinfo=dt.timezone.utc), []
+        queue = self.yt.build_queue(cfg, {}, [], now, notes, {"tsr-s1": (rels, plan)})
+        by = {it["key"]: it for it in queue}
+        self.assertEqual(list(by), ["tsr-s1-trailer", "tsr-s1-ep01", "tsr-s1-short01"])   # ep02: no week-2 release
+        self.assertTrue(any("tsr-s1-ep02" in n and "week-2" in n for n in notes))
+        self.assertEqual(self.yt.iso(by["tsr-s1-trailer"]["when"]), "2026-11-16T11:00:00Z")   # moved by `times`
+        ep, short = by["tsr-s1-ep01"], by["tsr-s1-short01"]
+        self.assertEqual(self.yt.iso(ep["when"]), "2026-11-16T16:00:00Z")                    # 17:00 Berlin
+        self.assertEqual((ep["release"]["tag_name"], ep["thumbnail"], short["thumbnail"]),
+                         ("week-1", "timeslip-ramen-ep01-thumb-A.png", None))                # no Shorts thumbnails
+        self.assertEqual(ep["playlists"], plan[1]["playlists"])
+        self.assertIsNone(ep["playlist"])
+        tags = ep["meta"]({})["tags"]
+        self.assertEqual(tags[:3], ["Matsuo Bashō", "Kappa", "timeslip ramen"])
+        self.assertIn("shorts", short["meta"]({})["tags"])
+        body = self.yt.video_body(ep["meta"]({}), {**cfg, **ep["body"]}, ep["when"])
+        self.assertEqual((body["snippet"]["categoryId"], body["status"]["selfDeclaredMadeForKids"]), ("1", False))
+        self.assertLessEqual(len(",".join(self.yt.clean_tags(tags))), 500)
+        # Story and Pit are off: nothing of theirs is queued, and their playlists are not checked.
+        self.assertEqual(self.yt.configured_playlists(cfg), [])
+
+    def test_timeslip_plan_in_its_repo_fits_youtube(self):
+        """The real plan (TimeSlipRamen docs/upload-schedule.json), if a checkout sits next to this one."""
+        import datetime as dt
+        path = ROOT.parent / "timeslipramen" / "docs" / "upload-schedule.json"
+        if not path.exists():
+            self.skipTest("no TimeSlipRamen checkout next to this repository")
+        cfg, tsr, _, _ = self._tsr_fixture()
+        plan = load_json(path)
+        rels = [{"tag_name": t, "assets": [{"id": 1, "name": x["file"]} for x in plan if x["release"] == t]}
+                for t in {x["release"] for x in plan}]
+        now = dt.datetime(2026, 11, 15, 21, tzinfo=dt.timezone.utc)
+        queue = self.yt.build_queue(cfg, {}, [], now, [], {"tsr-s1": (rels, plan)})
+        self.assertEqual(len(queue), 41)
+        names = set(tsr["playlists"])
+        for it in queue:
+            body = self.yt.video_body(it["meta"]({}), {**cfg, **it["body"]}, it["when"])
+            self.assertLessEqual(len(body["snippet"]["title"]), 100)
+            self.assertLessEqual(len(body["snippet"]["description"]), 5000)
+            self.assertLessEqual(set(it["playlists"]), names)
+            self.assertGreater(it["when"], now)
+
+    def test_timeslip_playlists_hold_their_videos(self):
+        cfg, _, _, _ = self._tsr_fixture()
+        ledger = {"tsr-s1-ep02": {"video_id": "e2", "publish_at": "2026-11-18T16:00:00Z", "playlists": ["PLs", "PLf"]},
+                  "tsr-s1-ep01": {"video_id": "e1", "publish_at": "2026-11-16T16:00:00Z", "playlists": ["PLs"]},
+                  "pit-s1-e09-video": {"video_id": "p9", "publish_at": "2026-11-18T17:00:00Z", "unscheduled": "x"}}
+        got = self.yt.playlist_members(cfg, ledger)
+        self.assertEqual(got, {"PLs": ["e1", "e2"], "PLf": ["e2"]})
+
+    def test_quota_budget_and_unschedule(self):
+        import datetime as dt, tempfile
+        yt = self.yt
+        self.assertEqual((yt._quota_cost("POST", f"{yt.UPLOAD}/videos?uploadType=resumable&part=snippet"),
+                          yt._quota_cost("PUT", f"{yt.UPLOAD}/videos?uploadType=resumable&upload_id=x"),
+                          yt._quota_cost("GET", f"{yt.API}/videos?id=a"),
+                          yt._quota_cost("PUT", f"{yt.API}/videos?part=status"),
+                          yt._quota_cost("POST", "https://oauth2.googleapis.com/token")), (0, 0, 0, 50, 0))
+        old = (yt.QUOTA, yt.LEDGER, yt.QUOTA_TRACK, yt._request, yt.access_token, yt.have_credentials)
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                yt.QUOTA, yt.LEDGER, yt.QUOTA_TRACK = Path(tmp) / "q.json", Path(tmp) / "l.json", True
+                now = dt.datetime(2026, 11, 16, 1, tzinfo=dt.timezone.utc)          # still 15 Nov in California
+                yt.spend(1650, now)
+                yt.spend(50, now)
+                self.assertEqual(yt.quota_today(now), 1700)
+                self.assertEqual(yt.quota_today(now + dt.timedelta(hours=8)), 0)     # 16 Nov in California
+                yt.LEDGER.write_text(json.dumps({
+                    "pit-s1-e08-a": {"video_id": "past", "publish_at": "2026-11-15T17:00:00Z"},
+                    "pit-s1-e09-video": {"video_id": "v9", "publish_at": "2026-11-18T17:00:00Z"},
+                    "tsr-s1-ep01": {"video_id": "t1", "publish_at": "2026-11-16T16:00:00Z"}}))
+                sent = []
+                def fake(method, url, token=None, data=None, headers=None):
+                    sent.append((method, url, json.loads(data) if data else None))
+                    if method == "GET":
+                        return 200, {}, json.dumps({"items": [{"id": "v9", "status": {
+                            "privacyStatus": "private", "publishAt": "2026-11-18T17:00:00Z", "license": "youtube",
+                            "embeddable": True, "selfDeclaredMadeForKids": False, "madeForKids": False}}]}).encode()
+                    return 200, {}, b"{}"
+                yt._request, yt.access_token, yt.have_credentials = fake, (lambda: "tok"), (lambda: True)
+                yt.cmd_unschedule(["--series=pit-s1"], now)
+                led = json.loads(yt.LEDGER.read_text())
+                self.assertIn("unscheduled", led["pit-s1-e09-video"])
+                self.assertNotIn("unscheduled", led["pit-s1-e08-a"])                 # already public: left alone
+                self.assertNotIn("unscheduled", led["tsr-s1-ep01"])
+                put = [x for x in sent if x[0] == "PUT"]
+                self.assertEqual(len(put), 1)
+                self.assertEqual(put[0][2]["status"], {"license": "youtube", "embeddable": True,
+                                                       "selfDeclaredMadeForKids": False, "privacyStatus": "private"})
+                yt.cmd_link(dt.datetime(2026, 11, 20, tzinfo=dt.timezone.utc))      # never "linked" once unscheduled
+                self.assertFalse(json.loads(yt.LEDGER.read_text())["pit-s1-e09-video"]["linked"])
+            finally:
+                yt.QUOTA, yt.LEDGER, yt.QUOTA_TRACK, yt._request, yt.access_token, yt.have_credentials = old
 
     def test_slots_are_weekdays_at_local_time(self):
         import datetime as dt
