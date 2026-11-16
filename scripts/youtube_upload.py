@@ -30,6 +30,8 @@ bucket of 100 a day) and stops early rather than run out mid-way.
                                                  # register a video uploaded by hand (Paris time)
     python scripts/youtube_upload.py unschedule --series=pit-s1
                                                  # keep scheduled uploads from going public
+    python scripts/youtube_upload.py hide [--dry-run]
+                                                 # make private every video and playlist that is not the current show's
 
 Credentials come from the environment: YT_CLIENT_ID, YT_CLIENT_SECRET and
 YT_REFRESH_TOKEN (see production/YOUTUBE.md). Uses only the standard library
@@ -57,6 +59,7 @@ LEDGER = ROOT / "wiki" / "data" / "youtube.json"
 REPLACED = ROOT / "wiki" / "data" / "youtube-replaced.json"     # uploads swapped out by `requeue`
 PLAYLISTS = ROOT / "wiki" / "data" / "youtube-playlists.json"   # series playlists created by the uploader
 QUOTA = ROOT / "wiki" / "data" / "youtube-quota.json"           # API units spent today (Pacific day)
+HIDDEN = ROOT / "wiki" / "data" / "youtube-hidden.json"         # videos and playlists made private by `hide`
 PACIFIC = ZoneInfo("America/Los_Angeles")                       # YouTube's quota resets at midnight Pacific
 QUOTA_TRACK = False                                             # main() turns it on (tests stay side-effect free)
 EPISODES = ROOT / "episodes"
@@ -768,7 +771,7 @@ def cmd_link(now: dt.datetime | None = None) -> int:
     ledger = load_ledger()
     changed = 0
     for v in ledger.values():
-        if not v.get("linked") and not v.get("unscheduled") and parse_iso(v["publish_at"]) <= now:
+        if not v.get("linked") and not v.get("unscheduled") and not v.get("hidden") and parse_iso(v["publish_at"]) <= now:
             v["linked"] = True
             changed += 1
     if changed:
@@ -958,6 +961,93 @@ def cmd_unschedule(args: list[str], now: dt.datetime | None = None) -> int:
     return 0
 
 
+def _paged(token: str, url: str, what: str) -> list[dict]:
+    out, page = [], ""
+    while True:
+        st, _, body = _request("GET", url + (f"&pageToken={page}" if page else ""), token)
+        data = _json(st, body, what)
+        out += data.get("items", [])
+        page = data.get("nextPageToken")
+        if not page:
+            return out
+
+
+def cmd_hide(args: list[str], now: dt.datetime | None = None) -> int:
+    """Make private every video and playlist on the channel that is not the current show's: everything except
+    the uploads of the enabled series (their ledger entries) and their playlists. For when a channel changes
+    hands (15 Nov 2026: Nat20 Pixels Saga became Timeslip Ramen). Videos already private are left alone. Each
+    one changed is listed, with its earlier visibility, in wiki/data/youtube-hidden.json, so it can be undone in
+    Studio; its ledger entry (if any) is marked `hidden` and loses its wiki link. `--dry-run` only lists.
+    Quota: a few units to read, 50 per video or playlist changed."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    dry = "--dry-run" in args
+    cfg, ledger = load_config(), load_ledger()
+    if not have_credentials():
+        raise SystemExit("No YouTube credentials: nothing changed.")
+    token = access_token()
+    keep_keys = {k for s in active_series(cfg) for k in ledger if k.startswith(s["key"] + "-")}
+    keep = {ledger[k]["video_id"] for k in keep_keys}
+    stored = json.loads(PLAYLISTS.read_text()) if PLAYLISTS.exists() else {}
+    keep_pl = {pid for s in active_series(cfg) for pid in list((stored.get(s["key"]) or {}).values())
+               + list((s.get("playlists") or {}).values()) + [s.get("playlist_id")] if pid}
+    st, _, body = _request("GET", f"{API}/channels?part=contentDetails,snippet&mine=true", token)
+    ch = _json(st, body, "Reading the channel")["items"][0]
+    uploads = ch["contentDetails"]["relatedPlaylists"]["uploads"]
+    print(f"Channel: {ch['snippet']['title']}; keeping {len(keep)} upload(s) of "
+          f"{', '.join(s['key'] for s in active_series(cfg))} and {len(keep_pl)} playlist(s)", flush=True)
+    ids = [it["contentDetails"]["videoId"] for it in
+           _paged(token, f"{API}/playlistItems?part=contentDetails&maxResults=50&playlistId={uploads}", "Listing uploads")]
+    videos: list[dict] = []
+    for i in range(0, len(ids), 50):
+        st, _, body = _request("GET", f"{API}/videos?part=snippet,status&id={','.join(ids[i:i + 50])}", token)
+        videos += _json(st, body, "Reading the uploads").get("items", [])
+    todo = [v for v in videos if v["id"] not in keep and v["status"]["privacyStatus"] != "private"]
+    pls = _paged(token, f"{API}/playlists?part=snippet,status&mine=true&maxResults=50", "Listing playlists")
+    todo_pl = [p for p in pls if p["id"] not in keep_pl and p["status"]["privacyStatus"] != "private"]
+    print(f"{len(videos)} video(s) on the channel, {len(todo)} to make private; "
+          f"{len(pls)} playlist(s), {len(todo_pl)} to make private", flush=True)
+    by_vid = {v["video_id"]: k for k, v in ledger.items()}
+    hidden = json.loads(HIDDEN.read_text()) if HIDDEN.exists() else {"videos": [], "playlists": []}
+    for v in todo:
+        was = v["status"]["privacyStatus"]
+        line = f"{v['id']} ({was}) {v['snippet']['title']}"
+        if dry:
+            print(f"would hide {line}", flush=True)
+            continue
+        status = {k: v["status"][k] for k in STATUS_KEEP if k in v["status"]}
+        status["privacyStatus"] = "private"
+        st2, _, resp = _request("PUT", f"{API}/videos?part=status", token,
+                                json.dumps({"id": v["id"], "status": status}).encode(), {"Content-Type": "application/json"})
+        if st2 >= 400:
+            notice(f"{v['id']}: not made private ({st2}): {resp.decode(errors='replace')[:300]}", "warning")
+            continue
+        hidden["videos"].append({"id": v["id"], "title": v["snippet"]["title"], "was": was, "at": iso(now)})
+        if v["id"] in by_vid:
+            ledger[by_vid[v["id"]]].update(hidden=iso(now), linked=False)
+        print(f"hid {line}", flush=True)
+    for p in todo_pl:
+        was = p["status"]["privacyStatus"]
+        line = f"playlist {p['id']} ({was}) {p['snippet']['title']}"
+        if dry:
+            print(f"would hide {line}", flush=True)
+            continue
+        st2, _, resp = _request("PUT", f"{API}/playlists?part=snippet,status", token, json.dumps(
+            {"id": p["id"], "snippet": {k: p["snippet"][k] for k in ("title", "description", "defaultLanguage")
+                                        if k in p["snippet"]}, "status": {"privacyStatus": "private"}}).encode(),
+            {"Content-Type": "application/json"})
+        if st2 >= 400:
+            notice(f"{p['id']}: playlist not made private ({st2}): {resp.decode(errors='replace')[:300]}", "warning")
+            continue
+        hidden["playlists"].append({"id": p["id"], "title": p["snippet"]["title"], "was": was, "at": iso(now)})
+        print(f"hid {line}", flush=True)
+    if not dry:
+        save_ledger(ledger)
+        HIDDEN.write_text(json.dumps(hidden, indent=1, ensure_ascii=False) + "\n")
+        notice(f"hide: {len([h for h in hidden['videos'] if h['at'] == iso(now)])} video(s) and "
+               f"{len([h for h in hidden['playlists'] if h['at'] == iso(now)])} playlist(s) made private")
+    return 0
+
+
 def video_id(text: str) -> str:
     """The 11-character id from a YouTube URL (watch, youtu.be, shorts, studio) or a bare id."""
     import re
@@ -998,11 +1088,11 @@ def cmd_record(episode: str, video: str, when: str | None, tz: str = "Europe/Par
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("command", choices=["check", "plan", "upload", "link", "record", "refresh", "retext", "requeue",
-                                        "unschedule"])
+                                        "unschedule", "hide"])
     ap.add_argument("args", nargs="*", help="record: <episode> <video link> [\"YYYY-MM-DD HH:MM\" Paris time]; "
                                              "requeue: <ledger key> ...; unschedule: <ledger key> ... or --series=KEY")
     a, extra = ap.parse_known_args()
-    if extra and a.command not in ("requeue", "unschedule"):
+    if extra and a.command not in ("requeue", "unschedule", "hide"):
         ap.error(f"unrecognized arguments: {' '.join(extra)}")
     a.args += extra                                 # e.g. unschedule --series=pit-s1
     global QUOTA_TRACK
@@ -1016,6 +1106,8 @@ def main() -> int:
         return cmd_requeue([k for arg in a.args for k in arg.replace(",", " ").split()])
     if a.command == "unschedule":
         return cmd_unschedule([k for arg in a.args for k in arg.replace(",", " ").split()])
+    if a.command == "hide":
+        return cmd_hide(a.args)
     return {"check": lambda: cmd_check(cfg), "plan": lambda: cmd_plan(cfg), "upload": lambda: cmd_upload(cfg),
             "link": cmd_link, "refresh": cmd_refresh, "retext": lambda: cmd_retext(cfg)}[a.command]()
 

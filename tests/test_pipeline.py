@@ -749,6 +749,57 @@ class TestYouTube(unittest.TestCase):
             finally:
                 yt.QUOTA, yt.LEDGER, yt.QUOTA_TRACK, yt._request, yt.access_token, yt.have_credentials = old
 
+    def test_hide_keeps_only_the_current_show(self):
+        import datetime as dt, tempfile
+        yt = self.yt
+        old = (yt.LEDGER, yt.PLAYLISTS, yt.HIDDEN, yt._request, yt.access_token, yt.have_credentials, yt.load_config)
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                yt.LEDGER, yt.PLAYLISTS, yt.HIDDEN = Path(tmp) / "l.json", Path(tmp) / "p.json", Path(tmp) / "h.json"
+                cfg, _, _, _ = self._tsr_fixture()
+                yt.load_config = lambda: cfg
+                yt.LEDGER.write_text(json.dumps({
+                    "C01-E001": {"video_id": "s1", "publish_at": "2026-10-12T15:00:00Z", "linked": True},
+                    "tsr-s1-ep01": {"video_id": "t1", "publish_at": "2026-11-16T16:00:00Z"},
+                    "tsr-s1-trailer": {"video_id": "t0", "publish_at": "2026-11-16T11:00:00Z"}}))
+                yt.PLAYLISTS.write_text(json.dumps({"tsr-s1": {"Shorts · one visitor a day": "PLt"}}))
+                vids = {"s1": "public", "x9": "unlisted", "p1": "private", "t1": "private", "t0": "public"}
+                sent = []
+                def fake(method, url, token=None, data=None, headers=None):
+                    sent.append((method, url, json.loads(data) if data else None))
+                    if "/channels?" in url:
+                        return 200, {}, json.dumps({"items": [{"snippet": {"title": "Timeslip Ramen"},
+                                                               "contentDetails": {"relatedPlaylists": {"uploads": "UU1"}}}]}).encode()
+                    if "/playlistItems?" in url:
+                        return 200, {}, json.dumps({"items": [{"contentDetails": {"videoId": v}} for v in vids]}).encode()
+                    if "/videos?part=snippet,status" in url:
+                        return 200, {}, json.dumps({"items": [{"id": v, "snippet": {"title": v},
+                                                               "status": {"privacyStatus": pv, "license": "youtube"}}
+                                                              for v, pv in vids.items()]}).encode()
+                    if method == "GET" and "/playlists?" in url:
+                        return 200, {}, json.dumps({"items": [
+                            {"id": "PLt", "snippet": {"title": "Shorts"}, "status": {"privacyStatus": "public"}},
+                            {"id": "PLold", "snippet": {"title": "Campaign 1"}, "status": {"privacyStatus": "public"}}]}).encode()
+                    return 200, {}, b"{}"
+                yt._request, yt.access_token, yt.have_credentials = fake, (lambda: "tok"), (lambda: True)
+                now = dt.datetime(2026, 11, 16, 5, tzinfo=dt.timezone.utc)
+                yt.cmd_hide(["--dry-run"], now)
+                self.assertFalse([x for x in sent if x[0] == "PUT"])
+                self.assertFalse(yt.HIDDEN.exists())
+                yt.cmd_hide([], now)
+                puts = {x[2]["id"]: x[2] for x in sent if x[0] == "PUT"}
+                self.assertEqual(set(puts), {"s1", "x9", "PLold"})          # the trailer (t0) is the show's: kept
+                self.assertEqual(puts["s1"]["status"], {"license": "youtube", "privacyStatus": "private"})
+                led = json.loads(yt.LEDGER.read_text())
+                self.assertEqual((led["C01-E001"]["linked"], "hidden" in led["C01-E001"]), (False, True))
+                h = json.loads(yt.HIDDEN.read_text())
+                self.assertEqual([(v["id"], v["was"]) for v in h["videos"]], [("s1", "public"), ("x9", "unlisted")])
+                self.assertEqual([p["id"] for p in h["playlists"]], ["PLold"])
+                yt.cmd_link(dt.datetime(2026, 11, 20, tzinfo=dt.timezone.utc))
+                self.assertFalse(json.loads(yt.LEDGER.read_text())["C01-E001"]["linked"])
+            finally:
+                yt.LEDGER, yt.PLAYLISTS, yt.HIDDEN, yt._request, yt.access_token, yt.have_credentials, yt.load_config = old
+
     def test_slots_are_weekdays_at_local_time(self):
         import datetime as dt
         from zoneinfo import ZoneInfo

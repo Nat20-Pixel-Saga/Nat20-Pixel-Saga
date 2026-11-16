@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run); retext = apply the retext rules to uploaded descriptions now (every run does it after its command); requeue = swap out scheduled uploads (keys below) so the next upload run uploads them again from the current release; unschedule = keep scheduled uploads (keys below, or --series=KEY) from going public"
+        description: "record = register a video you uploaded by hand; check = test the credentials and show each recorded video's visibility; plan = dry run (the whole queue, run by run); upload = upload and schedule the next uploads (max_per_run); retext = apply the retext rules to uploaded descriptions now (every run does it after its command); requeue = swap out scheduled uploads (keys below) so the next upload run uploads them again from the current release; unschedule = keep scheduled uploads (keys below, or --series=KEY) from going public; hide = make private every video and playlist that is not the current show's (keys: --dry-run to only list)"
         default: record
         type: choice
-        options: [record, upload, plan, check, retext, requeue, unschedule]
+        options: [record, upload, plan, check, retext, requeue, unschedule, hide]
       episode:
         description: "record: episode number (e.g. 3), or 3s for its Short"
         required: false
@@ -55,7 +55,7 @@ jobs:
         run: |
           if [ "$CMD" = "record" ]; then
             python scripts/youtube_upload.py record "$EPISODE" "$VIDEO" "$WHEN"
-          elif [ "$CMD" = "requeue" ] || [ "$CMD" = "unschedule" ]; then
+          elif [ "$CMD" = "requeue" ] || [ "$CMD" = "unschedule" ] || [ "$CMD" = "hide" ]; then
             python scripts/youtube_upload.py "$CMD" $KEYS
           else
             python scripts/youtube_upload.py "$CMD"
