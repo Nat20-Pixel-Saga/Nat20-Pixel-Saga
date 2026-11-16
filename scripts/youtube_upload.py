@@ -995,8 +995,8 @@ def cmd_hide(args: list[str], now: dt.datetime | None = None) -> int:
     uploads = ch["contentDetails"]["relatedPlaylists"]["uploads"]
     print(f"Channel: {ch['snippet']['title']}; keeping {len(keep)} upload(s) of "
           f"{', '.join(s['key'] for s in active_series(cfg))} and {len(keep_pl)} playlist(s)", flush=True)
-    ids = [it["contentDetails"]["videoId"] for it in
-           _paged(token, f"{API}/playlistItems?part=contentDetails&maxResults=50&playlistId={uploads}", "Listing uploads")]
+    ids = list(dict.fromkeys(it["contentDetails"]["videoId"] for it in
+               _paged(token, f"{API}/playlistItems?part=contentDetails&maxResults=50&playlistId={uploads}", "Listing uploads")))
     videos: list[dict] = []
     for i in range(0, len(ids), 50):
         st, _, body = _request("GET", f"{API}/videos?part=snippet,status&id={','.join(ids[i:i + 50])}", token)
