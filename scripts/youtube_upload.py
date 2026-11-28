@@ -863,7 +863,8 @@ def cmd_requeue(keys: list[str], now: dt.datetime | None = None) -> int:
     """Swap out scheduled uploads so the next upload run uploads them again from the current release (after a
     re-render). Each old upload is made private with no publish time, so it never goes public, and its title
     gets "[old cut] " in front so it is easy to find and delete in Studio; its ledger entry moves to
-    wiki/data/youtube-replaced.json. Refuses anything already public. Quota: 1 unit to read, 50 per video."""
+    wiki/data/youtube-replaced.json, and it is taken out of its playlists. Refuses anything already public.
+    Quota: 1 unit per read, 50 per video changed and 50 per playlist entry removed."""
     now = now or dt.datetime.now(dt.timezone.utc)
     if not keys:
         raise SystemExit("requeue needs one or more ledger keys, e.g. pit-s1-e07-full")
@@ -896,6 +897,16 @@ def cmd_requeue(keys: list[str], now: dt.datetime | None = None) -> int:
                                     {"Content-Type": "application/json"})
             _json(st2, resp, f"{key}: unscheduling {vid}")
             print(f"{key}: {vid} is now private, unscheduled, titled '{snippet['title']}'", flush=True)
+            # take the old cut out of its playlists, so they don't list a private video (28 Nov 2026)
+            for pl in ledger[key].get("playlists", []):
+                items = _paged(token, f"{API}/playlistItems?part=id,contentDetails&maxResults=50&playlistId={pl}",
+                               f"{key}: reading playlist {pl}")
+                for pi in items:
+                    if pi.get("contentDetails", {}).get("videoId") == vid:
+                        st3, _, r3 = _request("DELETE", f"{API}/playlistItems?id={pi['id']}", token)
+                        if st3 not in (200, 204):
+                            _json(st3, r3, f"{key}: removing {vid} from playlist {pl}")
+                        print(f"{key}: {vid} removed from playlist {pl}", flush=True)
         else:
             print(f"{key}: {vid} no longer exists on YouTube", flush=True)
         replaced.setdefault(key, []).append({**ledger.pop(key), "replaced_at": iso(now)})
